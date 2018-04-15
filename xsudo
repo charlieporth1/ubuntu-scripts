@@ -1,0 +1,47 @@
+#!/bin/bash -e
+
+# Run a program requiring xserver as another user by passing on the xauth cookie
+# s. http://askubuntu.com/questions/871092/failed-to-connect-to-mir-failed-to-connect-to-server-socket-no-such-file-or-di?newreg=811c7a1d637341c5b294d8b515e8b6e7
+# s. http://serverfault.com/questions/51005/how-to-use-xauth-to-run-graphical-application-via-other-user-on-linux
+# AUTHOR: Florian Lentsch <office@florian-lentsch.at>
+# TESTED: on Ubuntu 16.04 only
+#
+# USAGE: xsudo <username> <command>
+
+if [ "$#" -ne 2 ]; then
+        >&2 echo "Usage: $0 <username> <command>"
+        exit 1
+fi
+
+# Create temporary binary:
+temp_bin="$(mktemp)"
+
+cat > $temp_bin <<- EOF
+#!/bin/bash -e 
+# read xauth param from stdin:
+read xauth_param
+touch ~/.Xauthority # <- just in case the user has never logged into an xsession before
+export DISPLAY="\$(echo \$xauth_param | grep -o '^[^ ]\+')"
+# Add the first user's xauth cookie:
+xauth add \$xauth_param
+# Run the actual command:
+\$1
+# Clean up:
+xauth remove \$DISPLAY
+EOF
+
+chmod a+rx $temp_bin
+
+# Get current user's xauth cookie (best guess):
+cookie="$(xauth list | grep `uname -n` | grep 'unix:0' | grep -o '[^ ]\+$' | head -1)"
+
+# Run the command using pkexec:
+set +e
+echo "$DISPLAY . $cookie" | pkexec --user $1 $temp_bin "$2"
+cmd_exit_code=$?
+set -e
+
+# Clean up:
+rm $temp_bin
+
+exit $cmd_exit_code
