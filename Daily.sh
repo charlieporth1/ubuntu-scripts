@@ -3,19 +3,19 @@
 #Daily
 
 #BACKUP
-sudo rm -rf /mnt/HDD/Backup/Website/Daily/www.zip
-sudo zip -r9 /mnt/HDD/Backup/Website/Daily/www.zip /var/www/*
+sudo rm -rf /mnt/HDD/Backup/Website/Daily/www.zip | parallel -j128 -Jcluster
+sudo zip -r9 /mnt/HDD/Backup/Website/Daily/www.zip /var/www/* | parallel -j128 -Jcluster
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo zip -r9 /mnt/HDD/Backup/ /iptables.sh
-sudo echo 3 > /proc/sys/vm/drop_caches
+sudo echo 3 > /proc/sys/vm/drop_caches 
 sudo zip -r9 /mnt/HDD/Backup/iptables/ /iptables/*
-sudo cp /etc/rc.lcoal /mnt/HDD/Backup/
-sudo cp /mnt/HDD/.bashrc /mnt/HDD/Backup/
-sudo rm -rf /mnt/HDD/Backup/etc.zip
-sudo zip -r9 /mnt/HDD/Backup/etc.zip /etc/
+sudo cp /etc/rc.lcoal /mnt/HDD/Backup/ | parallel -j128 -Jcluster
+sudo cp /mnt/HDD/.bashrc /mnt/HDD/Backup/ 
+sudo rm -rf /mnt/HDD/Backup/etc.zip | parallel -j128 -Jcluster
+sudo zip -r9 /mnt/HDD/Backup/etc.zip /etc/ | parallel -j128 -Jcluster
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo rm -rf /mnt/HDD/Backup/ssh.zip 
-sudo zip -r9 /mnt/HDD//Backup/ssh.zip /etc/ssh/ 
+sudo zip -r9 /mnt/HDD//Backup/ssh.zip /etc/ssh/ | parallel -j128 -Jcluster
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo cp /home/ubuntu/.bashrc /mnt/HDD/Backup/ 
 sudo cp /home/ubuntu/.bash_exports /mnt/HDD/Backup/ 
@@ -39,7 +39,10 @@ sudo freshclam
 #sudo timeout  300  "sudo clamscan --remove=yes -i -r /"
 
 #dir change gdrive upload 
-sudo bash /mnt/HDD/Programs//Gdrive-Website-Change-UPLOAD-better.sh
+#sudo bash /mnt/HDD/Programs//Gdrive-Website-Change-UPLOAD-better.sh
+#Git change
+sudo bash /mnt/HDD/Programs/toGithub.sh
+sudo bash /mnt/HDD/Programs//Gdrive-Website-Change-UPLOAD-best.sh
 #sudo bash /mnt/HDD/Programs/Gdrive-Website-Change-UPLOAD.sh
 
 #cleanup 
@@ -51,4 +54,4 @@ sudo bash /iptables/iptables*.sh
 #sudo ufw limit OpenSSH 
 
 ## update where files are
-sudo updatedb
+sudo updatedb | parallel -j128 -Jcluster

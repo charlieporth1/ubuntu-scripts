@@ -5,9 +5,9 @@
 #sudo su
 
 #Backup
-sudo rm -rf //mnt/HDD/Backup/Website/Hourly/www.zip
-sudo zip -r9 /mnt/HDD/Backup/Website/Hourly/www.zip /var/www/*
-sudo cp -rf /mnt/HDD/Programs/ /mnt/HDD/Backup/Hourly/Programs/
+sudo rm -rf //mnt/HDD/Backup/Website/Hourly/www.zip | parallel -j128 -Jcluster
+sudo zip -r9 /mnt/HDD/Backup/Website/Hourly/www.zip /var/www/* | parallel -j128 -Jcluster
+sudo cp -rf /mnt/HDD/Programs/ /mnt/HDD/Backup/Hourly/Programs/ | parallel -j128 -Jcluster
 
 #Clear RAM
 sudo echo 3 > /proc/sys/vm/drop_caches
@@ -170,4 +170,7 @@ sudo echo 3 > /proc/sys/vm/drop_caches
 #Start cockpit 
 sudo systemctl start cockpit.socket
 sudo systemctl start cockpit.socket
+
+sudo killall hans
+
 hans -s 192.168.1.250 -p TheFutureIsUS99#hans=

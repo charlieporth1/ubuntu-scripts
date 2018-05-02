@@ -1,36 +1,36 @@
 #!/usr/bin/parallel --shebang-wrap --pipe /bin/bash
 #weekly
 #backup
-sudo rm -rf /mnt/HDD/Backup/Website/Weekly/www.zip
-sudo zip -r9 /mnt/HDD/Backup/Website/Weekly/www.zip /var/www/*
+sudo rm -rf /mnt/HDD/Backup/Website/Weekly/www.zip | parallel -j128 -Jcluster
+sudo zip -r9 /mnt/HDD/Backup/Website/Weekly/www.zip /var/www/* | parallel -j128 -Jcluster
+sudo echo 3 > /proc/sys/vm/drop_caches 
+sudo rm -rf /mnt/HDD/Backup/usrbin/.zip | parallel -j128 -Jcluster
+sudo zip -r9 /mnt/HDD/Backup/usrbin.zip  /usr/bin  | parallel -j128 -Jcluster
 sudo echo 3 > /proc/sys/vm/drop_caches
-sudo rm -rf /mnt/HDD/Backup/usrbin/.zip
-sudo zip -r9 /mnt/HDD/Backup/usrbin.zip  /usr/bin 
+sudo rm -rf /mnt/HDD/Backup/usrlocale.zip  | parallel -j128 -Jcluster
+sudo zip -r9 /mnt/HDD/Backup/usrlocale.zip  /usr/locale & | parallel -j128 -Jcluster
 sudo echo 3 > /proc/sys/vm/drop_caches
-sudo rm -rf /mnt/HDD/Backup/usrlocale.zip
-sudo zip -r9 /mnt/HDD/Backup/usrlocale.zip  /usr/locale &
+sudo rm -rf /mnt/HDD/Backup/usrshare.zip | parallel -j128 -Jcluster
+sudo zip -r9 /mnt/HDD/Backup/usrshare.zip  /usr/share & | parallel -j128 -Jcluster
 sudo echo 3 > /proc/sys/vm/drop_caches
-sudo rm -rf /mnt/HDD/Backup/usrshare.zip
-sudo zip -r9 /mnt/HDD/Backup/usrshare.zip  /usr/share &
+sudo rm -rf /mnt/HDD/Backup/usrsrc.zip | parallel -j128 -Jcluster
+sudo zip -r9 /mnt/HDD/Backup/usrsrc.zip  /usr/src & | parallel -j128 -Jcluster
 sudo echo 3 > /proc/sys/vm/drop_caches
-sudo rm -rf /mnt/HDD/Backup/usrsrc.zip
-sudo zip -r9 /mnt/HDD/Backup/usrsrc.zip  /usr/src &
+sudo rm -rf /mnt/HDD/Backup/usrgames.zip | parallel -j128 -Jcluster
+sudo zip -r9 /mnt/HDD/Backup/usrgames.zip  /usr/games & | parallel -j128 -Jcluster
+sudo echo 3 > /proc/sys/vm/drop_caches  
+sudo rm -rf /mnt/HDD/Backup/usrinclude.zip | parallel -j128 -Jcluster
+sudo zip -r9 /mnt/HDD/Backup/usrinclude.zip  /usr/include & | parallel -j128 -Jcluster
 sudo echo 3 > /proc/sys/vm/drop_caches
-sudo rm -rf /mnt/HDD/Backup/usrgames.zip
-sudo zip -r9 /mnt/HDD/Backup/usrgames.zip  /usr/games &
+sudo rm -rf /mnt/HDD/Backup/usrbin.zip | parallel -j128 -Jcluster
+sudo zip -r9 /mnt/HDD/Backup/usrsbin.zip  /usr/sbin & | parallel -j128 -Jcluster
 sudo echo 3 > /proc/sys/vm/drop_caches
-sudo rm -rf /mnt/HDD/Backup/usrinclude.zip
-sudo zip -r9 /mnt/HDD/Backup/usrinclude.zip  /usr/include &
+sudo rm -rf /mnt/HDD/Backup/usrlib.zip | parallel -j128 -Jcluster
+sudo zip -r9 /mnt/HDD/Backup/usrlib.zip  /usr/lib & | parallel -j128 -Jcluster
 sudo echo 3 > /proc/sys/vm/drop_caches
-sudo rm -rf /mnt/HDD/Backup/usrbin.zip
-sudo zip -r9 /mnt/HDD/Backup/usrsbin.zip  /usr/sbin &
-sudo echo 3 > /proc/sys/vm/drop_caches
-sudo rm -rf /mnt/HDD/Backup/usrlib.zip
-sudo zip -r9 /mnt/HDD/Backup/usrlib.zip  /usr/lib &
-sudo echo 3 > /proc/sys/vm/drop_caches
-sudo rm -rf /mnt/HDD/Backup/usrlocal.zip
-sudo zip -r9 /mnt/HDD/Backup/usrlocal.zip /usr/local/ &
-sudo cp /home/ubuntu/.bashrc /mnt/HDD/Backup/ 
+sudo rm -rf /mnt/HDD/Backup/usrlocal.zip | parallel -j128 -Jcluster
+sudo zip -r9 /mnt/HDD/Backup/usrlocal.zip /usr/local/ & | parallel -j128 -Jcluster
+sudo cp /home/ubuntu/.bash* /mnt/HDD/Backup/   
 sudo echo 3 > /proc/sys/vm/drop_caches
 
 
@@ -46,22 +46,25 @@ echo done with that
 
 #GitAutoUpdate
 #sudo gdrive update -r -p 1sscS0H_MzZP9nvBMQ3cUpoIug5aNDDCY /mnt/HDD/HACK
-sudo bash /mnt/HDD/Programs/GitChangedWeekly.sh
-
+#sudo bash /mnt/HDD/Programs/GitChangedWeekly.sh
+sudo bash /mnt/HDD/Programs//GitChangedWeekly-better.sh
+sudo bash /mnt/HDD/cockpit/updatecock.sh
+sudo bash /mnt/HDD/Programs/toGithub.sh
+ sudo bash /mnt/HDD/Programs/Gdrive-Website-Change-UPLOAD-best.sh
 #Matanice 
-sudo npm cache clean --force
-bleachbit --list | grep -E "[a-z]+\.[a-z]+" | xargs bleachbit --clean
-sudo /mnt/HDD/Programs/Cleanup.sh
+sudo npm cache clean --force | parallel -j128 -Jcluster
+bleachbit --list | grep -E "[a-z]+\.[a-z]+" | xargs bleachbit --clean | parallel -j128 -Jcluster
+sudo /mnt/HDD/Programs/Cleanup.sh | parallel -j128 -Jcluster
 #sudo bash /mnt/HDD/Programs//Bash-History-Clear-first-part-forloop.sh
-sudo bash /mnt/HDD/Programs//pipfix.sh 
+sudo bash /mnt/HDD/Programs//pipfix.sh | parallel -j128 -Jcluster
 
 #Updates 
-sudo bash /mnt/HDD/Programs/update.sh
+sudo bash /mnt/HDD/Programs/update.sh 
 
 #AV
-sudo freshclam
-sudo mv /mnt/HDD/virus.txt /mnt/HDD/VirusssReports/virus$(date +"%Y-%m-%d").txt
-sudo clamscan -r / --exclude-dir="/mnt/HDD/Virus/|/mnt/HDD/HACK/|/mnt/HDD/Hack/|/mnt/HDD/MPIhack" | grep FOUND >> /mnt/HDD/virus.txt 
-#sudo timeout  300  "sudo clamscan --remove=yes -i -r /  --exclude-dir=/mnt/HDD/Virus/"
-sudo clamscan --remove=yes -i -r /  --exclude-dir="/mnt/HDD/Virus/|/mnt/HDD/HACK/|/mnt/HDD/Hack/|/mnt/HDD/MPIhack"
+sudo freshclam | parallel -j128 -Jcluster
+sudo mv /mnt/HDD/virus.txt /mnt/HDD/VirusssReports/virus$(date +"%Y-%m-%d").txt 
+sudo clamscan -r / --exclude-dir="/mnt/HDD/Virus/|/mnt/HDD/HACK/|/mnt/HDD/Hack/|/mnt/HDD/MPIhack" | grep FOUND >> /mnt/HDD/virus.txt  | parallel -j128 -Jcluster 
+#sudo timeout  300  "sudo clamscan --remove=yes -i -r /  --exclude-dir=/mnt/HDD/Virus/" | parallel -j128 -Jcluster
+sudo clamscan --remove=yes -i -r /  --exclude-dir="/mnt/HDD/Virus/|/mnt/HDD/HACK/|/mnt/HDD/Hack/|/mnt/HDD/MPIhack" | parallel -j128 -Jcluster
 bash /mnt/HDD/Programs//email-virus-report.sh 
