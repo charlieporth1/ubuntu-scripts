@@ -5,7 +5,7 @@ if [[ `git status --porcelain` ]]; then
 echo changes
 git add .
 git rm --cached -r .git
-
+git commit -m date
 git push | parallel -j128 -Jcluster
 #sudo git remote -v update
 cd /var
