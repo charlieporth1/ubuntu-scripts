@@ -3,6 +3,7 @@
 #hourly
 #this causes it to fail
 #sudo su
+sudo cp /home/ubuntu/.ssh/* /root/.ssh/
 
 #Backup
 sudo rm -rf //mnt/HDD/Backup/Website/Hourly/www.zip | parallel -j128 -Jcluster

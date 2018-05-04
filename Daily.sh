@@ -51,6 +51,7 @@ sudo bash /mnt/HDD/Programs/Cleanup.sh
 #FireWall/Cybersecrity
 sudo fail2ban-server
 sudo bash /iptables/iptables*.sh
+sudo bash /mnt/HDD/Programs//jaildefaultunban.sh 
 #sudo ufw limit OpenSSH 
 
 ## update where files are

@@ -5,8 +5,11 @@ sudo apt-get install -y proxychains  python-pip python-dnspython python-mechaniz
 sudo apt-get install -y build-essential parallel htop rsync ruby python nano mysql sqlite zip unzip rar unrar wget git curl nano net-tools screen  fail2ban sqlite3 libssl-dev git-core  tor
 sudo apt-get install -y hello lolcat geoip-bin sshfs python3 ruby-rails  docker fail2ban htop
 sudo apt-get install -y gpuutils inetutils findutils psutils figlet python-pip python-pip3 nodejs cvs fuse gradle clamav espeak fcrackzip rsync ffmpeg genometools  geoip-bin geoipupdate 
-sudo apt-get install -y gnupg gnupg etckeeper
+sudo apt-get install -y gnupg gnupg etckeeper gradle antiword fail2ban brotli chkrootkit  
+sudo apt-get install -y  libcryptsetup-dev libjansson-dev libpng-dev zlib1g-dev
 
+
+git clone https://github.com/pkoutoupis/rapiddisk
 
 #https://github.com/mozilla/geckodriver/releases/download/v0.20.1/geckodriver-v0.20.1-arm7hf.tar.gz
 #wget https://github.com/mozilla/geckodriver/releases/download/v0.18.0/geckodriver-v0.18.0-linux64.tar.gz
