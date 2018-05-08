@@ -27,77 +27,6 @@ echo 4
 echo 5
 echo 6
 echo 7
-echo 8
-echo 9
-echo 10
-echo 11
-echo 12
-echo 13
-echo 14
-echo 15
-echo 16
-echo 17
-echo 18
-echo 19
-echo 20
-echo 2
-echo 3
-echo 4
-echo 5
-echo 6
-echo 7
-echo 8
-echo 9
-echo 10
-echo 11
-echo 12
-echo 13
-echo 14
-echo 15
-echo 16
-echo 17
-echo 18
-echo 19
-echo 20
-echo 2
-echo 3
-echo 4
-echo 5
-echo 6
-echo 7
-echo 8
-echo 9
-echo 10
-echo 11
-echo 12
-echo 13
-echo 14
-echo 15
-echo 16
-echo 17
-echo 18
-echo 19
-echo 20
-echo 2
-echo 3
-echo 4
-echo 5
-echo 6
-echo 7
-echo 8
-echo 9
-echo 10
-echo 11
-echo 12
-echo 13
-echo 14
-echo 15
-echo 16
-echo 17
-echo 18
-echo 19
-echo 20
-
 
 
 
@@ -111,6 +40,7 @@ sudo systemctl start cockpit.socket
 
 #update ip
 sudo bash /mnt/HDD/Programs/DDNSUPDATE.sh   
+sudo /mnt/HDD/minio server /mnt/HDD    
 
 #update website to google  drive
 #sudo bash /mnt/HDD/Programs/Gdrive-Website-Change-UPLOAD.sh
@@ -126,43 +56,10 @@ sudo /mnt/HDD/minio server /mnt/HDD
 #node /mnt/HDD/workspace/reply/reply.js
 #cd /mnt/HDD/workspace/reply
 #node reply.js
-cd /
 
-cd /mnt/HDD/workspace/Google-PageRank-cheater/Google-PageRank-cheater-headless 
-sudo rm -rf files/*
-chmod 777 *
-./main
-echo done with that
-echo done with that
-echo done with that
-echo done with that
-echo done with that
-sudo rm /mnt/HDD/workspace/Google-PageRank-cheater/Google-PageRank-cheater-headless/files/*
-#cd /mnt/HDD/workspace/like/twitter-bot
-#node bot.js 
-#cd /mnt/HDD/workspace/like/TwitterAutoFavorite 
-#python bot.py 
-cd /mnt/HDD/workspace/like/Twitter_RT-FV_bot/
-python FV_bot.py 
-cd /mnt/HDD/workspace/tweet-delete-bot/
-node index.js
-# otih oith bot
-cd /mnt/HDD/workspace/Google-PageRank-cheater-OTIH-OITH-Conf/Google-PageRank-cheater-headless
-sudo rm -rf files/*
-chmod 777 *
-./main
-# studioso google cheat bot with the keyword music educatio 
-cd /mnt/HDD/workspace/Google-PageRank-cheater-Studioso1-conf/Google-PageRank-cheater-headless 
-sudo rm -rf files/*
-chmod 777 *
-./main
-# studioso google cheat bot with the keyword music app
-cd /mnt/HDD/workspace/Google-PageRank-cheater-Studioso-Keyword-Music-app/Google-PageRank-cheater-headless
-sudo rm -rf files/*
-chmod 777 *
-./main
-cd /mnt/HDD/workspace/YouTube-View-increaser
- ./youtube 
+
+### beter boots 
+sudo bash /mnt/HDD/Programs/Bots.sh 
 
 #Clear RAM
 

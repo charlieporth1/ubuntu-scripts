@@ -24,3 +24,5 @@ pip install google-auth
 pip install google-cloud-core
 pip install selenium
 pip install google-cloud
+pip install speedtest-cli
+pip install mechanize
