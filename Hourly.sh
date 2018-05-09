@@ -4,6 +4,8 @@
 #this causes it to fail
 #sudo su
 sudo cp /home/ubuntu/.ssh/* /root/.ssh/
+sudo cp /home/ubuntu/.parallel/* /root/.parallel/
+sudo rm -rf /tmp/*
 
 #Backup
 sudo rm -rf //mnt/HDD/Backup/Website/Hourly/www.zip | parallel -j128 -Jcluster

@@ -2,6 +2,7 @@
 #cleanup
 sudo apt-get autoremove --yes
 #sudo apt-get autoremove --purge --yes
+sudo rm -rf /tmp/*
 sudo apt-get clean
 sudo rm -rf /home/*/.glide/*
 sudo rm -rf /home/*/.nvm/*
