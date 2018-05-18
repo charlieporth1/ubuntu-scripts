@@ -32,10 +32,6 @@ echo 7
 
 
 
-#Start Cockpit
-sudo systemctl start cockpit.socket
-#sudo systemctl start cockpit.socket
-#sudo systemctl start cockpit.socket
 
 #start backup
 #sudo zip -r9 /mnt/HDD/Backup/Website/Hourly/www.zip /var/www/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*
@@ -68,6 +64,7 @@ sudo bash /mnt/HDD/Programs/Bots.sh
 sudo echo 3 > /proc/sys/vm/drop_caches
 
 #Start cockpit 
+systemctl daemon-reload
 sudo systemctl start cockpit.socket
 sudo systemctl start cockpit.socket
 
