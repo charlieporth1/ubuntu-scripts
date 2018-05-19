@@ -1,11 +1,12 @@
 #!/usr/bin/parallel --shebang-wrap --pipe /bin/bash
+#!/bin/bash
 
 #echo
 for  ((number=1;number <= $(tput cols);number++)) #in {1..$(tput lines)}
 do
 
- echo -ne "#"
+echo -ne "#"
 
 done 
 echo
-exit
+exit 0
