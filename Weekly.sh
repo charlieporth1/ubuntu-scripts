@@ -60,6 +60,8 @@ sudo bash /mnt/HDD/Programs//pipfix.sh | parallel -j128 -Jcluster
 
 #Updates 
 sudo bash /mnt/HDD/Programs/update.sh 
+#other server 
+sudo bash /mnt/HDD/Programs/copy-to-new-server.sh
 
 #AV
 sudo freshclam | parallel -j128 -Jcluster
