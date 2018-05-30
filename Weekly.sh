@@ -1,5 +1,8 @@
 #!/usr/bin/parallel --shebang-wrap --pipe /bin/bash
 #weekly
+#other server 
+sudo bash /mnt/HDD/Programs/copy-to-new-server.sh
+
 #backup
 sudo rm -rf /mnt/HDD/Backup/Website/Weekly/www.zip | parallel -j128 -Jcluster
 sudo zip -r9 /mnt/HDD/Backup/Website/Weekly/www.zip /var/www/* | parallel -j128 -Jcluster
@@ -60,8 +63,6 @@ sudo bash /mnt/HDD/Programs//pipfix.sh | parallel -j128 -Jcluster
 
 #Updates 
 sudo bash /mnt/HDD/Programs/update.sh 
-#other server 
-sudo bash /mnt/HDD/Programs/copy-to-new-server.sh
 
 #AV
 sudo freshclam | parallel -j128 -Jcluster

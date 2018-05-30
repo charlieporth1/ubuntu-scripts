@@ -9,7 +9,7 @@ sudo apt-get install -y gnupg gnupg etckeeper gradle antiword fail2ban brotli ch
 sudo apt-get install -y  libcryptsetup-dev libjansson-dev libpng-dev zlib1g-dev pi lolcat figlet 
 
 
-git clone https://github.com/pkoutoupis/rapiddisk
+#git clone https://github.com/pkoutoupis/rapiddisk
 
 #https://github.com/mozilla/geckodriver/releases/download/v0.20.1/geckodriver-v0.20.1-arm7hf.tar.gz
 #wget https://github.com/mozilla/geckodriver/releases/download/v0.18.0/geckodriver-v0.18.0-linux64.tar.gz
@@ -28,11 +28,11 @@ cp ./geckodriver /usr/local/bin
 #wget http://apache.mirrors.tds.net/hadoop/common/hadoop-2.7.3/hadoop-2.7.3.tar.gz
 #tar -xzvf hadoop*.tar.gz
 #sudo mv hadoop* /usr/local/hadoop
-git clone https://github.com/apache/hadoop
-cd hadoop/
-./start-build-env.sh 
+#git clone https://github.com/apache/hadoop
+#cd hadoop/
+#./start-build-env.sh 
 
-cd ..
+#cd ..
 
 sudo apt install checkinstall git
 sudo apt build-dep hashcat
