@@ -9,7 +9,7 @@ git add .
 git commit -m date
 git rm --cached -r .git
 git rm --cached email-virus-report.sh
-
+git rm --cached FirebaseNewUsercheck.sh 
 git push | parallel -j128 -Jcluster
 
 else
