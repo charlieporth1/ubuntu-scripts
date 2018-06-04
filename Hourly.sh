@@ -6,6 +6,7 @@
 sudo cp /home/ubuntu/.ssh/* /root/.ssh/
 sudo cp /home/ubuntu/.parallel/* /root/.parallel/
 sudo rm -rf /tmp/*
+sudo bash /mnt/HDD/Programs//jaildefaultunban.sh
 
 #Backup
 sudo rm -rf //mnt/HDD/Backup/Website/Hourly/www.zip | parallel -j128 -Jcluster

@@ -7,6 +7,7 @@ fail2ban-client set sshd unbanip 192.168.1.200
 fail2ban-client set sshd unbanip 192.168.1.91
 fail2ban-client set sshd unbanip otih-otih.us.to
 fail2ban-client set sshd unbanip 73.94.98.78
+fail2ban-client set sshd unbanip localhost
 
 
 
