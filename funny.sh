@@ -11,3 +11,12 @@ make love
 drink <bottle; opener 
 % got a light? 
 % sleep with me
+man dildo
+ls dildo
+ls wife 
+make dildo 
+touch butt
+cat butt 
+make butt 
+
+touch dildo
