@@ -39,6 +39,7 @@ echo 7
 
 #update ip
 sudo bash /mnt/HDD/Programs/DDNSUPDATE.sh   
+sudo bash /mnt/HDD/Programs//DDNSUPDATE1.sh
 sudo /mnt/HDD/minio server /mnt/HDD    
 
 #update website to google  drive
