@@ -1,3 +1,4 @@
+#!/usr/bin/parallel --shebang-wrap --pipe /bin/bash
 #!/bin/sh
 
 #export currloc=$(geoiplookup -f /usr/share/GeoIP/GeoIPCity.dat  $(last  -1 -i -w --time-format notime | grep -e  'ubuntu\|logged in\|pts/*' | cut -c 19-39)  | cut -d "," -f 5 |  cut -d " " -f 2-)
