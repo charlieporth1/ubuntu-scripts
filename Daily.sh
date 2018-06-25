@@ -48,6 +48,9 @@ sudo bash /mnt/HDD/Programs//Gdrive-Website-Change-UPLOAD-best.sh
 #cleanup 
 sudo bash /mnt/HDD/Programs/Cleanup.sh
 
+#updates 
+sudo apt-get update
+
 #FireWall/Cybersecrity
 sudo fail2ban-server
 sudo bash /iptables/iptables*.sh
