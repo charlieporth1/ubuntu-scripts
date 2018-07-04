@@ -1,7 +1,7 @@
 #!/usr/bin/parallel --shebang-wrap --pipe /bin/bash
 #weekly
 #other server 
-sudo bash /mnt/HDD/Programs/copy-to-new-server.sh
+#sudo bash /mnt/HDD/Programs/copy-to-new-server.sh
 
 #backup
 sudo rm -rf /mnt/HDD/Backup/Website/Weekly/www.zip | parallel -j128 -Jcluster
