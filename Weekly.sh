@@ -33,7 +33,9 @@ sudo zip -r9 /mnt/HDD/Backup/usrlib.zip  /usr/lib & | parallel -j128 -Jcluster
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo rm -rf /mnt/HDD/Backup/usrlocal.zip | parallel -j128 -Jcluster
 sudo zip -r9 /mnt/HDD/Backup/usrlocal.zip /usr/local/ & | parallel -j128 -Jcluster
-sudo cp /home/ubuntu/.bash* /mnt/HDD/Backup/   
+sudo cp -rf /home/ubuntu/.bash* /mnt/HDD/Backup/   
+sudo echo 3 > /proc/sys/vm/drop_caches
+sudo cp -rf /home/ubuntu/.bash* /mnt/HDD/Programs/   
 sudo echo 3 > /proc/sys/vm/drop_caches
 
 
