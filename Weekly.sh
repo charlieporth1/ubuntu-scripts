@@ -60,6 +60,7 @@ sudo bash /mnt/HDD/Programs/Gdrive-Website-Change-UPLOAD-best.sh
 sudo npm cache clean --force | parallel -j128 -Jcluster
 bleachbit --list | grep -E "[a-z]+\.[a-z]+" | xargs bleachbit --clean | parallel -j128 -Jcluster
 sudo /mnt/HDD/Programs/Cleanup.sh | parallel -j128 -Jcluster
+sudo geoipupdate
 #sudo bash /mnt/HDD/Programs//Bash-History-Clear-first-part-forloop.sh
 sudo bash /mnt/HDD/Programs//pipfix.sh | parallel -j128 -Jcluster
 
