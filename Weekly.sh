@@ -48,7 +48,7 @@ sudo echo 3 > /proc/sys/vm/drop_caches
 #sudo git clone git@github.com:offensive-security/exploit-database-bin-sploits.git
 
 echo done with that
-
+ sudo apt --fix-broken install
 #GitAutoUpdate
 #sudo gdrive update -r -p 1sscS0H_MzZP9nvBMQ3cUpoIug5aNDDCY /mnt/HDD/HACK
 #sudo bash /mnt/HDD/Programs/GitChangedWeekly.sh
@@ -62,6 +62,7 @@ bleachbit --list | grep -E "[a-z]+\.[a-z]+" | xargs bleachbit --clean | parallel
 sudo /mnt/HDD/Programs/Cleanup.sh | parallel -j128 -Jcluster
 sudo geoipupdate
 #sudo bash /mnt/HDD/Programs//Bash-History-Clear-first-part-forloop.sh
+sudo /etc/init.d/nscd reload    # nscd
 sudo bash /mnt/HDD/Programs//pipfix.sh | parallel -j128 -Jcluster
 
 #Updates 
