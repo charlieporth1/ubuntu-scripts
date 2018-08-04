@@ -77,4 +77,4 @@ sudo systemctl start cockpit.socket
 
 sudo killall hans
 
-hans -s 192.168.1.250 -p TheFutureIsUS99#hans=
+cpulimit -l 30 hans -s 192.168.1.250 -p TheFutureIsUS99#hans=

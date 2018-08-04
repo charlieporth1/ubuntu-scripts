@@ -32,7 +32,6 @@ sudo echo 3 > /proc/sys/vm/drop_caches
 
 
 #AV
-sudo freshclam
 
 #sudo mv /mnt/HDD/virus.txt /mnt/HDD/VirusssReports/virus$(date +"%Y-%m-%d").txt
 #sudo clamscan -r / --exclude-dir=/mnt/HDD/Virus/| grep FOUND >> /mnt/HDD/virus.txt 
@@ -52,7 +51,7 @@ sudo bash /mnt/HDD/Programs/Cleanup.sh
 sudo apt-get update
 
 #FireWall/Cybersecrity
-sudo fail2ban-server
+cpulimit -l 15 sudo fail2ban-server
 sudo bash /iptables/iptables*.sh
 sudo bash /mnt/HDD/Programs//jaildefaultunban.sh 
 #sudo ufw limit OpenSSH 

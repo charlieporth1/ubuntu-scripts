@@ -57,6 +57,7 @@ sudo bash /mnt/HDD/cockpit/updatecock.sh
 sudo bash /mnt/HDD/Programs/toGithub.sh
 sudo bash /mnt/HDD/Programs/Gdrive-Website-Change-UPLOAD-best.sh
 #Matanice 
+sudo freshclam
 sudo npm cache clean --force | parallel -j128 -Jcluster
 bleachbit --list | grep -E "[a-z]+\.[a-z]+" | xargs bleachbit --clean | parallel -j128 -Jcluster
 sudo /mnt/HDD/Programs/Cleanup.sh | parallel -j128 -Jcluster
