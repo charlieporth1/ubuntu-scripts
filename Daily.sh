@@ -48,7 +48,7 @@ sudo bash /mnt/HDD/Programs//Gdrive-Website-Change-UPLOAD-best.sh
 sudo bash /mnt/HDD/Programs/Cleanup.sh
 
 #updates 
-sudo apt-get update
+sudo yes | sudo apt-get update
 
 #FireWall/Cybersecrity
 cpulimit -l 15 sudo fail2ban-server
