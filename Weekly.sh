@@ -48,7 +48,6 @@ sudo echo 3 > /proc/sys/vm/drop_caches
 #sudo git clone git@github.com:offensive-security/exploit-database-bin-sploits.git
 
 echo done with that
-sudo yes | sudo apt --fix-broken install
 #GitAutoUpdate
 #sudo gdrive update -r -p 1sscS0H_MzZP9nvBMQ3cUpoIug5aNDDCY /mnt/HDD/HACK
 #sudo bash /mnt/HDD/Programs/GitChangedWeekly.sh
