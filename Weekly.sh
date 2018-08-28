@@ -75,3 +75,6 @@ sudo clamscan -r / --exclude-dir="/mnt/HDD/Virus/|/mnt/HDD/HACK/|/mnt/HDD/Hack/|
 #sudo timeout  300  "sudo clamscan --remove=yes -i -r /  --exclude-dir=/mnt/HDD/Virus/" | parallel -j128 -Jcluster
 sudo clamscan --remove=yes -i -r /  --exclude-dir="/mnt/HDD/Virus/|/mnt/HDD/HACK/|/mnt/HDD/Hack/|/mnt/HDD/MPIhack" | parallel -j128 -Jcluster
 bash /mnt/HDD/Programs//email-virus-report.sh 
+
+#reboot kernel and linux
+kexec-reboot --reboot

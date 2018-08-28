@@ -68,7 +68,9 @@ sudo bash /mnt/HDD/Programs/UpdateDate.sh
 
 #Clear RAM
 
-sudo echo 3 > /proc/sys/vm/drop_caches
+sync && sudo echo 3 > /proc/sys/vm/drop_caches
+sync && sudo echo 1 > /proc/sys/vm/drop_caches
+sync && sudo echo 2 > /proc/sys/vm/drop_caches
 
 #Start cockpit 
 systemctl daemon-reload
