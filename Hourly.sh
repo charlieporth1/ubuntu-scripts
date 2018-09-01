@@ -65,7 +65,9 @@ sudo service ntp start
 sudo bash /mnt/HDD/Programs/Bots.sh 
 #Update Date
 sudo bash /mnt/HDD/Programs/UpdateDate.sh
-
+killall go-twitter-bot
+cd /mnt/HDD/workspace/GET_FOLLOWERS/go-twitter-bot 
+./go-twitter-bot 
 #Clear RAM
 
 sync && sudo echo 3 > /proc/sys/vm/drop_caches
