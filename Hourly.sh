@@ -67,8 +67,8 @@ sudo bash /mnt/HDD/Programs/Bots.sh
 sudo bash /mnt/HDD/Programs/UpdateDate.sh
 killall go-twitter-bot
 
-cd /mnt/HDD/workspace/GET_FOLLOWERS/twitter-bot-for-increased-growth 
-python app.py 
+#cd /mnt/HDD/workspace/GET_FOLLOWERS/twitter-bot-for-increased-growth 
+#python app.py 
 #cd /mnt/HDD/workspace/GET_FOLLOWERS/go-twitter-bot 
 #./go-twitter-bot 
 
