@@ -3,12 +3,14 @@ sudo npm cache clean --force
 bleachbit --list | grep -E "[a-z]+\.[a-z]+" | xargs bleachbit --clean
 sudo /home/*Programs/Cleanup.sh
 #sudo bash /mnt/HDD/Programs//Bash-History-Clear-first-part-forloop.sh
+
 sudo bash /home/*/Programs//pipfix.sh 
 
 #Updates 
 sudo bash /mnt/HDD/Programs/update.sh
 sudo bash /mnt/HDD/cockpit/updatcock.sh
 
+sudo cp -rf /home/*/Programs/phoneone.sh /opt/
 #copy to master node
 scp /home/*/Programs/* ubuntu@192.168.1.250:/mnt/HDD/Programs/serverbashandcron/
 

@@ -31,7 +31,7 @@ echo 5
 echo 6
 echo 7
 
-
+sudo cp -rf /opt/*.sh  /mnt/HDD/Programs/
 
 
 #start backup
@@ -40,7 +40,8 @@ echo 7
 #update ip
 sudo bash /mnt/HDD/Programs/DDNSUPDATE.sh   
 sudo bash /mnt/HDD/Programs//DDNSUPDATE1.sh
-sudo /mnt/HDD/minio server /mnt/HDD    
+sudo bash /opt/serveripchange.sh
+#sudo /mnt/HDD/minio server /mnt/HDD    
 
 #update website to google  drive
 #sudo bash /mnt/HDD/Programs/Gdrive-Website-Change-UPLOAD.sh
