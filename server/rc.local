@@ -1,0 +1,54 @@
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+
+
+
+
+
+
+#cat /proc/cpuinfo | awk '/^processor/{print $3}' | tail -1
+export cpunum=$(cat /proc/cpuinfo | awk '/^processor/{print $3}' | wc -l)
+
+#sudo tune2fs -o journal_data_writeback /dev/sdb1
+
+for ((i=0; i <=$cpunum; i++))
+do 
+
+echo 1 > /sys/devices/system/cpu/cpu$i/online
+echo performance > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor
+done
+
+bash /home/*/filesystemparallel.sh 
+bash /home/*/Programs/filesystemparallel.sh 
+
+fail2ban-server
+fail2ban-client
+
+swapon -a
+sudo modprobe dm-cache 
+	
+sudo hdparm -B255 /dev/sda
+hdparm -a256 /dev/sda
+sudo tune2fs -o journal_data_writeback /dev/sda1
+
+
+export hddnum=($(sudo ls /dev/sd*)) 
+for ((a=0; a <= ${#hddnum[@]}; a++))
+do 
+sudo hdparm -B255 /dev/${hddnum[$a]}
+hdparm -a256 /dev/${hddnum[$a]}
+sudo tune2fs -o journal_data_writeback /dev/${hddnum[$a]}
+
+done
+exit 0

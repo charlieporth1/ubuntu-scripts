@@ -9,11 +9,16 @@ sudo bash /home/*/Programs//pipfix.sh
 #Updates 
 sudo bash /mnt/HDD/Programs/update.sh
 sudo bash /mnt/HDD/cockpit/updatcock.sh
+sudo bash /home/*/Programs/installnewserver.sh
+sudo geoipupdate
 
+#copy from master node
+#scp /home/*/Programs/* ubuntu@192.168.1.250:/mnt/HDD/Programs/serverbashandcron/
 sudo cp -rf /home/*/Programs/phoneone.sh /opt/
-#copy to master node
-scp /home/*/Programs/* ubuntu@192.168.1.250:/mnt/HDD/Programs/serverbashandcron/
-
+sudo cp -rf /home/*/Progams/rc.local /etc/rc.local
+sudo cp -rf /home/*/Progams/emailcred.sh /usr/sbin/
+sudo chmod 777 /opt/phoneone.sh
+sudo chmod 777 /etc/rc.local
 
 #AV
 sudo freshclam

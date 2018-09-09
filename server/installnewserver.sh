@@ -7,9 +7,10 @@ sudo apt-get install -y hello lolcat geoip-bin sshfs python3 ruby-rails  docker 
 sudo apt-get install -y gpuutils inetutils findutils psutils figlet python-pip python-pip3 nodejs cvs fuse gradle clamav espeak fcrackzip rsync ffmpeg genometools  geoip-bin geoipupdate 
 sudo apt-get install -y gnupg gnupg etckeeper gradle antiword fail2ban brotli chkrootkit  
 sudo apt-get install -y  libcryptsetup-dev libjansson-dev libpng-dev zlib1g-dev pi figlet npm
-sudo apt -y install apticron
-sudo apt -y install unattended-upgrades sendmail 
- 
+sudo apt -y install apticron sudo  geoipupdate geoip-bin mosh
+sudo apt -y install unattended-upgrades sendmail sendemail
+npm install geoip-native
+sudo apt -y install golang-go 
 #git clone https://github.com/pkoutoupis/rapiddisk
 
 #https://github.com/mozilla/geckodriver/releases/download/v0.20.1/geckodriver-v0.20.1-arm7hf.tar.gz

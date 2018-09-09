@@ -44,6 +44,7 @@ sudo bash /mnt/HDD/Programs/toGithub.sh
 sudo bash /mnt/HDD/Programs//Gdrive-Website-Change-UPLOAD-best.sh
 #sudo bash /mnt/HDD/Programs/Gdrive-Website-Change-UPLOAD.sh
 
+sudo cp -rf /opt/*.sh /mnt/HDD/Programs/
 #cleanup 
 sudo bash /mnt/HDD/Programs/Cleanup.sh
 

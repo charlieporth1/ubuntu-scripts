@@ -7,14 +7,20 @@ if [[ "$(hostname)" == "$master" ]]; then
         for host in $(grep -v $master "${HOME}/.parallel/sshloginfile"); do
             # Recurse to connect to master node; -t required for passwords.
             # source ~/.profile required to get this script in $PATH.
-scp $hdd/cockpit/updatecock.sh $host:~/Progams/ 
-scp $prog/update-fix.sh $host:~/Progams/
-scp $prog/update.sh $host:~/Progams/
-scp $prog/weather.sh $host:~/Progams/
-scp $prog/lines.sh $host:~/Progams/
-scp $prog/Cleanup.sh $host:~/Progams/
-scp $prog/install-new-server.sh $host:~/Progams/
+scp $hdd/cockpit/updatecock.sh $host:~/Programs/ 
+scp $prog/update-fix.sh $host:~/Programs/
+scp $prog/update.sh $host:~/Programs/
+scp $prog/weather.sh $host:~/Programs/
+scp $prog/killMemoryHogs.sh $host:~/Programs/
+scp $prog/lines.sh $host:~/Programs/
+scp $prog/Cleanup.sh $host:~/Programs/
+scp $prog/email-virus-report.sh $host:~/Programs/
+scp $prog/install-new-server.sh $host:~/Programs/
+scp $prog/Cleanup.sh $host:~/Programs/
 scp $prog/server/* $host:~/Programs/
+scp /opt/*.sh $host:~/Programs/
+scp /usr/sbin/emailcred.sh $host~/Programs/
+
         echo done connecting to $host
         done
 fi

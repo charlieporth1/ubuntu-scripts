@@ -6,7 +6,8 @@ if [[ `git status --porcelain` ]]; then
   # Changes
 echo changes
 git add .
-git commit -m date
+git commit -m "$(date)"
+git config --global credential.helper
 git rm --cached -r .git
 #git rm --cached email-virus-report.sh
 git rm --cached FirebaseNewUsercheck.sh 
@@ -24,7 +25,7 @@ if [[ `git status --porcelain` ]]; then
   # Changes
 echo changes
 git add .
-git commit -m date
+git commit -m "$(date)"
 git rm --cached -r .git
 #git rm --cached email-virus-report.sh
 #git rm --cached FirebaseNewUsercheck.sh 

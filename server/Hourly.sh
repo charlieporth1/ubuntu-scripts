@@ -7,4 +7,5 @@ sudo echo 1 > /proc/sys/vm/drop_caches
 #Start Cockpit
 sudo systemctl start cockpit.socket
 #sudo bash /home/charlieporth/startup/youtrack-2018.1.41051/bin/youtrack.sh start
-
+sudo bash /home/*/Programs/filesystemparallel.sh
+sudo bash /home/*/filesystemparallel.sh
