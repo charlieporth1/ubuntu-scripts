@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /mnt/HDD/Programs
+cd /mnt/HDD/Programs/
 
 if [[ `git status --porcelain` ]]; then
   # Changes
