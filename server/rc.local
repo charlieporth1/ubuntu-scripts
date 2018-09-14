@@ -31,7 +31,7 @@ done
 
 bash /home/*/filesystemparallel.sh 
 bash /home/*/Programs/filesystemparallel.sh 
-
+bash /home/*/Programs/jaildefaultunban.sh 
 fail2ban-server
 fail2ban-client
 
