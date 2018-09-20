@@ -49,6 +49,6 @@ do
 sudo hdparm -B255 /dev/${hddnum[$a]}
 hdparm -a256 /dev/${hddnum[$a]}
 sudo tune2fs -o journal_data_writeback /dev/${hddnum[$a]}
-
+sudo bash /opt/serveronline.sh
 done
 exit 0

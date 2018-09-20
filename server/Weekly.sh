@@ -19,11 +19,15 @@ sudo geoipupdate
 #copy from master node
 #scp /home/*/Programs/* ubuntu@192.168.1.250:/mnt/HDD/Programs/serverbashandcron/
 sudo cp -rf /home/*/Programs/phoneone.sh /opt/
+sudo cp -rf /home/*/Programs/serveronline.sh /opt/
 sudo cp -rf /home/*/Programs/rc.local /etc/rc.local
 sudo cp -rf /home/*/Programs/cred.x /usr/sbin/
+sudo cp -rf /home/*/Programs/cred.sh /usr/bin/
 sudo chmod 777 /opt/phoneone.sh
+sudo chmod 777 /opt/serveronline.sh
 sudo chmod 777 /etc/rc.local
 sudo chmod 777 /usr/sbin/cred.x
+sudo chmod 777 /usr/bin/cred.sh
 
 #AV
 sudo freshclam
