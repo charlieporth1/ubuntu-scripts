@@ -20,6 +20,7 @@ scp $prog/Cleanup.sh $host:~/Programs/
 scp $prog/server/* $host:~/Programs/
 scp $prog/jaildefaultunban.sh  $host:~/Programs
 scp /opt/*.sh $host:~/Programs/
+scp /opt/*.sh $host:~/Programs/
 scp /usr/sbin/cred.x $host:~/Programs/
 scp /usr/bin/cred.sh $host:~/Programs/
 scp /usr/bin/cred.sh $host:/usr/bin/
