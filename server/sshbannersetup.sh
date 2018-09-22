@@ -1,7 +1,7 @@
 #!/bin/bash
-
-echo -e "Charles Timothy Porths Website OTIH-OITH http://otih-oith.us.to hosted by" >> /etc/issue.net
-echo -e "$(uname -s)  $HOSTNAME  $HOSTTYPE  " >> /etc/issue.net
+sudo apt -y install whereami 
+echo -e "Charles Timothy Porth's Website OTIH-OITH http://otih-oith.us.to" >> /etc/issue.net
+echo -e "$(uname -s) $HOSTNAME $HOSTTYPE $(uname -p) $(curl -s ipinfo.io/ip) $(whereami)"  >> /etc/issue.net
 echo -e "You Will be prosecuted, China or anyone who hacks this server if" >> /etc/issue.net
 echo -e "the goverment doesn't I will, whether illegal or legal metheds I will find you" >> /etc/issue.net
 echo -e "and Destroy your life you will not fuck up mine. You will be sorry." >> /etc/issue.net
@@ -9,7 +9,7 @@ echo -e "I will use Kali linux and hydra if I have to I will fuck you up and I h
 echo -e "because they take to damn long " >> /etc/issue.net
 echo -e "I will exploit your computer wipe it and demand a rasnom and you will not get you god damn data back" >> /etc/issue.net
 echo -e "I will kill you if you hack me I swear to god I will fly to where you live and murrder you if I god damn needed." >> /etc/issue.net
-echo -e "Its not hard to track you using geoip I can get the street and even the house you live on you should know that my auth logs keep you ip dumnasses " >> /etc/issue.net
+echo -e "Its not hard to track you using geoip I can get the street and even the house you live on you should know that my auth logs keep you ip dumbasses " >> /etc/issue.net
 echo -e "" >> /etc/issue.net
 echo -e "" >> /etc/issue.net
 echo -e "" >> /etc/issue.net
@@ -201,3 +201,4 @@ echo -e "#You have been warned. (^^^^Go to the top^^^^)#" >> /etc/issue.net
 echo -e "#                                             #" >> /etc/issue.net
 echo -e "#You have been warned. (^^^^Go to the top^^^^)#" >> /etc/issue.net
 echo -e "###############################################" >> /etc/issue.net
+sudo sed -e -i 's/#Banner /etc/issue.net/Banner /etc/issue.net/g' /etc/ssh/sshd_config

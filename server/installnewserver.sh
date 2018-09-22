@@ -11,6 +11,7 @@ sudo apt -y install apticron sudo  geoipupdate geoip-bin mosh
 sudo apt -y install unattended-upgrades sendmail sendemail
 npm install geoip-native
 sudo apt -y install golang-go 
+sudo apt-get -y install tmpreaper
 #git clone https://github.com/pkoutoupis/rapiddisk
 
 #https://github.com/mozilla/geckodriver/releases/download/v0.20.1/geckodriver-v0.20.1-arm7hf.tar.gz
