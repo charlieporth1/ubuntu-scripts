@@ -8,7 +8,6 @@ if [[ "$(hostname)" == "$master" ]]; then
         for host in $(grep -iv $master "${HOME}/.parallel/sshloginfile" | grep -iv root); do
             # Recurse to connect to master node; -t required for passwords.
             # source ~/.profile required to get this script in $PATH.
-ssh $host mkdir ~/Programs/
 scp $hdd/cockpit/updatecock.sh $host:~/Programs/ 
 scp $prog/update-fix.sh $host:~/Programs/
 scp $prog/update.sh $host:~/Programs/
@@ -37,7 +36,7 @@ scp /usr/bin/cred.sh $host:/usr/bin/
 scp /usr/sbin/cred.sh $host:/usr/sbin/
 scp /opt/*.sh $host:/opt/
 ssh $host bash /home/*/Programs/installnewserver.sh 
-ssh $host bash /home/*/programs/sshbannersetup.sh
+ssh $host bash /home/*/Programs/installnewserver.sh 
 
 echo "done with ROOT $host"
 done
