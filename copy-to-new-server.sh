@@ -37,7 +37,7 @@ scp /usr/bin/cred.sh $host:/usr/bin/
 scp /usr/sbin/cred.sh $host:/usr/sbin/
 scp /opt/*.sh $host:/opt/
 ssh $host bash /home/*/Programs/installnewserver.sh 
-ssh $host bash /home/*/programs/sshbannersetup.sh
+ssh $host bash /home/*/Programs/sshbannersetup.sh
 
 echo "done with ROOT $host"
 done

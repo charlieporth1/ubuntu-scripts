@@ -2,6 +2,8 @@
 #!/usr/bin/parallel --shebang-wrap --pipe /bin/bash
 #Daily
 
+sudo systemctl enable rc-local
+
 #BACKUP
 sudo rm -rf /mnt/HDD/Backup/Website/Daily/www.zip | parallel -j128 -Jcluster
 sudo zip -r9 /mnt/HDD/Backup/Website/Daily/www.zip /var/www/* | parallel -j128 -Jcluster

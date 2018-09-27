@@ -2,6 +2,7 @@
 #weekly
 #other server 
 #sudo bash /mnt/HDD/Programs/copy-to-new-server.sh
+sudo systemctl enable rc-local
 
 #backup
 sudo rm -rf /mnt/HDD/Backup/Website/Weekly/www.zip | parallel -j128 -Jcluster
@@ -47,6 +48,7 @@ sudo echo 3 > /proc/sys/vm/drop_caches
 #sudo git clone https://github.com/offensive-security/exploit-database-papers.git
 #sudo git clone git@github.com:offensive-security/exploit-database-bin-sploits.git
 #emails
+sudo cp -rf /opt/*.sh /mnt/HDD/Programs/
 sudo bash /mnt/HDD/Programs/email-virus-report.sh
 sudo bash /mnt/HDD/Programs/copy-to-new-server.sh
 
