@@ -1,16 +1,25 @@
+#!/usr/bin/parallel --shebang-wrap --pipe /bin/bash
+#!/bin/bash
 
-#!/bin/bash !/usr/bin/parallel --shebang-wrap --pipe /bin/bash
 # curl -X POST https://textbelt.com/text \
 #       --data-urlencode phone='19523341587' \
 #       --data-urlencode message='Someone has logged into one of your servers' \
 #       -d key=textbelt
-source /home/ubuntu/.bash_exports 
-alert="alert"
-owner="owner"
-Login="Login"
-IP="IP"
+#source /home/ubuntu/.bash_exports 
+export blue='\e[0;34m'
+export green='\e[0;32m'
+export cyan='\e[0;36m'
+export red='\e[0;31m'
+export yellow='\e[1;33m'
+export white='\e[1;37m'
+export nc='\e[0m'
+
+export alert="alert"
+export owner="owner"
+export Login="Login"
+export IP="IP"
 echo -e "$yellow$Login $red$alert$nc sent to the $yellow$owner$nc of this server"
-export llll=$(last  -1  --time-format notime | grep -e  'ubuntu\|logged in\|pts/*\|tty*' |  sed -n '1p' |  grep -e  'ubuntu\|logged in\|pts/*\|tty*' |  awk '{print $3}' )
+export llll=$(last  -1  --time-format notime | grep -e  'ubuntu\|logged in\|pts/*\|tty*' |  sed -n '1p' |  grep -e  'ubuntu\|logged in\|pts/*\|tty*' |  awk '{print $3}'  )
 echo -e "Your IP has been tracked; your $yellow$IP$nc address is $red$llll$nc"
 echo -e "If you log-off nothing will happen to you; if not your fucked"
 . /usr/bin/cred.sh
