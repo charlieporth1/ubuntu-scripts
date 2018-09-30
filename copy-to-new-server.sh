@@ -35,7 +35,7 @@ for host in $(grep -iv $master "${HOME}/.parallel/sshloginfile" | grep -i root);
 
 scp /usr/bin/cred.sh $host:/usr/bin/
 scp /usr/sbin/cred.sh $host:/usr/sbin/
-scp /opt/*.sh $host:/opt/
+scp /opt/*.sh $host:/opt
 ssh $host bash /home/*/Programs/installnewserver.sh 
 ssh $host bash /home/*/Programs/sshbannersetup.sh
 
