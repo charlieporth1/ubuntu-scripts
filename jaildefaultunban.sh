@@ -32,4 +32,5 @@ sudo iptables -D INPUT -s 192.168.1.91 -j DROP
 sudo iptables -D INPUT -s 192.168.1.200 -j DROP
 #sudo service iptables save
 
-sudo service networking reload
+ #sudo service networking reload
+exit 0
