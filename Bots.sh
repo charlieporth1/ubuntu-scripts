@@ -112,11 +112,17 @@ python FV_bot.py
 cd /mnt/HDD/comcasttweetpi
 python comcasttweetpi.py 
 
+
 #cd /mnt/HDD/workspace/like/twitter-bot
 #node bot.js 
 #cd /mnt/HDD/workspace/like/TwitterAutoFavorite 
 #python bot.py 
 
+
+#cd /mnt/HDD/workspace/GET_FOLLOWERS/twitter-bot-for-increased-growth 
+#python app.py 
+#cd /mnt/HDD/workspace/GET_FOLLOWERS/go-twitter-bot 
+#./go-twitter-bot 
 
 # /start bot
 #sudo bash /mnt/HDD/workspace/reply/start.sh
