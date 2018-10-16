@@ -83,4 +83,4 @@ sudo clamscan --remove=yes -i -r /  --exclude-dir="/mnt/HDD/Virus/|/mnt/HDD/HACK
 bash /mnt/HDD/Programs//email-virus-report.sh 
 
 #reboot kernel and linux
-kexec-reboot --reboot
+#kexec-reboot --reboot
