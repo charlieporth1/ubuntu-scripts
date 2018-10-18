@@ -1,0 +1,23 @@
+{
+  "name": "smscommands",
+  "version": "1.0.0",
+  "description": "SMS COMMANDS",
+  "main": "Y",
+  "scripts": {
+    "test": "npm start"
+  },
+  "keywords": [
+    "SERVER",
+    "DEFCON"
+  ],
+  "author": "CHARLIE PORTH",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "browserify": "^16.2.3",
+    "child-process-promise": "^2.2.1",
+    "express": "^4.16.4",
+    "moment": "^2.22.2",
+    "sanitize-html": "^1.19.1"
+  }
+}
