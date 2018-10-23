@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd /mnt/HDD/Programs/
-
+git add .
 if [[ `git status --porcelain` ]]; then
   # Changes
 echo changes
@@ -20,7 +20,7 @@ echo no changes
 fi
 
 cd /var/www/
-
+git add .
 if [[ `git status --porcelain` ]]; then
   # Changes
 echo changes
