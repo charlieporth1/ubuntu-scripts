@@ -85,5 +85,5 @@ sudo systemctl start cockpit.socket
 sudo systemctl start cockpit.socket
 
 sudo killall hans
-
+sudo node /var/www/SMSLinkRECIVED.js 
 cpulimit -l 30 hans -s 192.168.1.250 -p TheFutureIsUS99#hans=
