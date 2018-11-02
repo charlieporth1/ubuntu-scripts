@@ -15,6 +15,8 @@ sudo bash /home/*/Programs/update.sh
 sudo bash /home/*/cockpit/updatcock.sh
 sudo bash /home/*/Programs/installnewserver.sh
 sudo geoipupdate
+sudo ntpdate -u 192.168.1.91
+sudo timedatectl set-ntp on
 
 #copy from master node
 #scp /home/*/Programs/* ubuntu@192.168.1.250:/mnt/HDD/Programs/serverbashandcron/

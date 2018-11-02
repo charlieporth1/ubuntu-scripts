@@ -5,6 +5,7 @@ sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
 sudo rm -rf /tmp/*
+sudo ntpdate -u 192.168.1.91
 #Start Cockpit
 sudo systemctl start cockpit.socket
 #sudo bash /home/charlieporth/startup/youtrack-2018.1.41051/bin/youtrack.sh start

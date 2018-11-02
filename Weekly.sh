@@ -74,6 +74,9 @@ sudo bash /mnt/HDD/Programs//pipfix.sh | parallel -j128 -Jcluster
 #Updates 
 sudo bash /mnt/HDD/Programs/update.sh 
 
+sudo ntpdate -u 192.168.1.91
+sudo timedatectl set-ntp on
+
 #AV
 sudo freshclam | parallel -j128 -Jcluster
 sudo mv /mnt/HDD/virus.txt /mnt/HDD/VirusssReports/virus$(date +"%Y-%m-%d").txt 

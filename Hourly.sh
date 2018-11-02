@@ -58,9 +58,10 @@ sudo /mnt/HDD/minio server /mnt/HDD
 #cd /mnt/HDD/workspace/reply
 #node reply.js
 
-sudo service ntp stop
-sudo ntpd -gq
-sudo service ntp start
+sudo ntpdate -u 192.168.1.91
+#sudo service ntp stop
+#sudo ntpd -gq
+#sudo service ntp start
 
 ### beter boots 
 sudo bash /mnt/HDD/Programs/Bots.sh 

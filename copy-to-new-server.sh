@@ -19,7 +19,7 @@ scp $prog/Cleanup.sh $host:~/Programs/
 scp $prog/email-virus-report.sh $host:~/Programs/
 #scp $prog/install-new-server.sh $host:~/Programs/
 scp $prog/server/installnewserver.sh $host:~/Programs/
-scp $prog/server/install-new-server.sh $host:~/Programs/
+#scp $prog/server/install-new-server.sh $host:~/Programs/
 scp $prog/Cleanup.sh $host:~/Programs/
 scp $prog/server/* $host:~/Programs/
 scp $prog/jaildefaultunban.sh  $host:~/Programs
@@ -30,7 +30,7 @@ scp /usr/sbin/cred.x $host:~/Programs/
 scp /usr/bin/cred.sh $host:~/Programs/
 scp /usr/bin/cred.sh $host:/usr/bin/
 scp $prog/server/sshbannersetup.sh $host:~/Programs/
-        echo "done connecting to USER $host"
+echo "done connecting to USER $host" | grep -i $host
      done
 for host in $(grep -iv $master "${HOME}/.parallel/sshloginfile" | grep -i root); do
 
@@ -40,8 +40,8 @@ scp /opt/*.sh $host:/opt
 ssh $host bash /home/*/Programs/installnewserver.sh 
 ssh $host bash /home/*/Programs/sshbannersetup.sh
 
-echo "done with ROOT $host"
+echo "done with ROOT $host" | grep -i $host
 done
-
+echo done
 fi
 

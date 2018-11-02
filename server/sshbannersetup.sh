@@ -1,6 +1,6 @@
 #!/bin/bash
 sudo apt -y install whereami 
-echo -e "Charles Timothy Porth's Website OTIH-OITH http://otih-oith.us.to" >> /etc/issue.net
+echo -e "Charles Timothy Porth's Website OTIH-OITH http://otih-oith.us.to" > /etc/issue.net
 echo -e "$(uname -s) $HOSTNAME $HOSTTYPE $(uname -p) $(curl -s ipinfo.io/ip) $(whereami)"  >> /etc/issue.net
 echo -e "You Will be prosecuted, China or anyone who hacks this server if" >> /etc/issue.net
 echo -e "the goverment doesn't I will, whether illegal or legal metheds I will find you" >> /etc/issue.net
@@ -202,3 +202,4 @@ echo -e "#                                             #" >> /etc/issue.net
 echo -e "#You have been warned. (^^^^Go to the top^^^^)#" >> /etc/issue.net
 echo -e "###############################################" >> /etc/issue.net
 sudo sed -e -i 's/#Banner /etc/issue.net/Banner /etc/issue.net/g' /etc/ssh/sshd_config
+sudo sed -e -i 's/#Banner none/Banner /etc/issue.net/g' /etc/ssh/sshd_config
