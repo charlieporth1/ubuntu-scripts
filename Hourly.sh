@@ -3,6 +3,8 @@
 #hourly
 #this causes it to fail
 #sudo su
+sudo ntpdate -u 192.168.1.91
+
 sudo cp /home/ubuntu/.ssh/* /root/.ssh/
 sudo cp /home/ubuntu/.parallel/* /root/.parallel/
 sudo rm -rf /tmp/*
@@ -58,7 +60,6 @@ sudo /mnt/HDD/minio server /mnt/HDD
 #cd /mnt/HDD/workspace/reply
 #node reply.js
 
-sudo ntpdate -u 192.168.1.91
 #sudo service ntp stop
 #sudo ntpd -gq
 #sudo service ntp start
