@@ -13,16 +13,12 @@ sudo mkdir /home/*/sshfs/tegra-ubuntu/
 #kernel_cache,auto_cache,IdentityFile=/home/*/.ssh/id_rsa \
 #ubuntu@192.168.1.250:/ /home/*/sshfs/tegra-ubuntu
 #bash /home/charlieporth/startup/youtrack-2018.1.41051/bin/youtrack.sh start
-sudo sshfs -o Compression=no -o \
-idmap=user,nonempty,allow_root,direct_io,\
-kernel_cache,auto_cache,IdentityFile=/home/*/.ssh/id_rsa \
-ubuntu@192.168.1.250:/ /home/*/sshfs/tegra-ubuntu
 
 #bash /home/charlieporth/startup/youtrack-2018.1.41051/bin/youtrack.sh start
 mount -t tmpfs -o size=1G tmpfs /home/*/sshfs/tegra-ubuntu
-sudo sshfs -o Compression=no -o \
+sudo sshfs -o -o Ciphers=rijndael-cbc@lysator.liu.se Compression=no -o \
 idmap=user,nonempty,allow_root,direct_io,\
-kernel_cache,auto_cache,IdentityFile=/home/*/.ssh/id_rsa \
-ubuntu@192.168.1.250:/ /home/*/sshfs/tegra-ubuntu
+kernel_cache,auto_cache,default_permissions,big_writes,IdentityFile=/home/*/.ssh/id_rsa \
+tegra-ubuntu:/ /home/*/sshfs/tegra-ubuntu
 
 

@@ -24,6 +24,7 @@ scp $prog/Cleanup.sh $host:~/Programs/
 scp $prog/server/* $host:~/Programs/
 scp $prog/jaildefaultunban.sh  $host:~/Programs
 scp $prog/filesystemparallel.sh  $host:~/
+scp $prog/filesystemparallel.sh  $host:~/Programs
 scp /opt/*.sh $host:~/Programs/
 scp /opt/*.sh $host:/opt/
 scp /usr/sbin/cred.x $host:~/Programs/
