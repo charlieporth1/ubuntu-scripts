@@ -21,11 +21,11 @@ sudo apt-get -y install tmpreaper
 #chmod +x geckodriver
 #cp ./geckodriver /usr/local/bin
 #git clone https://github.com/mozilla/geckodriver/
-git clone https://github.com/mozilla/geckodriver/tree/release
-cd geckodriver
-./build.sh
-./ci.sh
-cp ./geckodriver /usr/local/bin
+#git clone https://github.com/mozilla/geckodriver/tree/release
+#cd geckodriver
+#./build.sh
+#./ci.sh
+#cp ./geckodriver /usr/local/bin
 
 
 #wget http://apache.mirrors.tds.net/hadoop/common/hadoop-2.7.3/hadoop-2.7.3.tar.gz
@@ -37,15 +37,15 @@ cp ./geckodriver /usr/local/bin
 
 #cd ..
 
-sudo apt install checkinstall git
-sudo apt build-dep hashcat
-git clone https://github.com/hashcat/hashcat.git
-cd hashcat
-git submodule update --init
-sudo make
-sudo checkinstall
-sudo make install
-cd .. 
+#sudo apt install checkinstall git
+#sudo apt build-dep hashcat
+#git clone https://github.com/hashcat/hashcat.git
+#cd hashcat
+#git submodule update --init
+#sudo make
+#sudo checkinstall
+#sudo make install
+#cd .. 
 
 sudo  apt-get -y install build-essential zlib1g zlib1g-dev libxml2 libxml2-dev libxslt-dev locate libreadline6-dev libcurl4-openssl-dev git-core libssl-dev libyaml-dev openssl autoconf libtool ncurses-dev bison curl wget postgresql postgresql-contrib libpq-dev libapr1 libaprutil1 libsvn1 libpcap-dev
 
