@@ -1,3 +1,4 @@
+#!/bin/bash
 #!/bin/sh -e
 #
 # rc.local
@@ -14,6 +15,7 @@
 
 
 
+/sbin/getty -L 115200 ttyS0 
 
 
 
@@ -34,6 +36,7 @@ bash /home/*/Programs/filesystemparallel.sh
 bash /home/*/Programs/jaildefaultunban.sh 
 fail2ban-server
 fail2ban-client
+ifconfig eth0 up 
 
 swapon -a
 sudo modprobe dm-cache 
