@@ -8,7 +8,7 @@ if [[ "$(hostname)" == "$master" ]]; then
         for host in $(grep -iv $master "${HOME}/.parallel/sshloginfile" | grep -iv root); do
             # Recurse to connect to master node; -t required for passwords.
             # source ~/.profile required to get this script in $PATH.
-		ssh $host mkdir ~/Programs/
+		ssh $host "mkdir ~/Programs/"
 		scp $hdd/cockpit/updatecock.sh $host:~/Programs/ 
 		scp $prog/update-fix.sh $host:~/Programs/
 		scp $prog/update.sh $host:~/Programs/
@@ -31,6 +31,7 @@ if [[ "$(hostname)" == "$master" ]]; then
 		scp /usr/bin/cred.sh $host:~/Programs/
 		scp /usr/bin/cred.sh $host:/usr/bin/
 		scp $prog/server/sshbannersetup.sh $host:~/Programs/
+		scp $prog/echotissues.sh $host:~/Programs/
 	echo "done connecting to USER $host" | grep -i $host
 	done
 	for host in $(grep -iv $master "${HOME}/.parallel/sshloginfile" | grep -i root); do
@@ -42,6 +43,7 @@ if [[ "$(hostname)" == "$master" ]]; then
 		scp $prog/server/rc.local  $host:/etc/rc.local
 		ssh $host chmod a+x /etc/rc.local
 		ssh $host bash /home/*/Programs/sshbannersetup.sh
+		ssh $host /home/*/Programs/echotissues.sh
 		ssh $host bash /home/*/Programs/installnewserver.sh 
 
 	echo "done with ROOT $host" | grep -i $host
