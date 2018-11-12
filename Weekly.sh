@@ -2,7 +2,7 @@
 #weekly
 #other server 
 #sudo bash /mnt/HDD/Programs/copy-to-new-server.sh
-sudo systemctl enable rc-local
+#sudo systemctl enable rc-local
 
 #backup
 sudo rm -rf /mnt/HDD/Backup/Website/Weekly/www.zip | parallel -j128 -Jcluster
