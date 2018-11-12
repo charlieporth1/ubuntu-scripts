@@ -4,5 +4,5 @@
 . /usr/bin/cred.sh
 sendemail -f $USER@otih-oith.us.to -t $email -m "Virus Report from server $HOSTNAME" -a  /mnt/HDD/virus.txt -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp $passwd
 sendemail -f $USER@otih-oith.us.to -t $email -m "Virus Report from server $HOSTNAME" -a  /home/*/virus.txt -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp $passwd
-sendemail -f $USER@otih-oith.us.to -t $phonee  -m "Virus Report from server" -a  /mnt/HDD/virus.txt -s smtp.gmail.com:587 -o tls=yes  $usr  -xp  $passwd
+sendemail -f $USER@otih-oith.us.to -t $phonee  -m "Virus Report from server" -a  /mnt/HDD/virus.txt -s smtp.gmail.com:587 -o tls=yes -xu $usr  -xp  $passwd
 echo done

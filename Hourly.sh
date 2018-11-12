@@ -15,6 +15,9 @@ sudo rm -rf //mnt/HDD/Backup/Website/Hourly/www.zip | parallel -j128 -Jcluster
 sudo zip -r9 /mnt/HDD/Backup/Website/Hourly/www.zip /var/www/* | parallel -j128 -Jcluster
 sudo cp -rf /mnt/HDD/Programs/ /mnt/HDD/Backup/Hourly/Programs/ | parallel -j128 -Jcluster
 
+cd /mnt/HDD/itunes-connect-slack
+sudo node poll-itc.js 
+
 #Clear RAM
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo service gitlab stop
