@@ -7,4 +7,4 @@
 #wget -q -O- "$URL" | awk -F\' '/acm_RecentLocationsCarousel\.push/{print $2": "$16", "$12"°", $13 }'| head -1 | cut -d '"' -f 1-2 | awk -F'text:"' '{print $1 $2}'
 #wget -q -O- "$URL" | awk -F\' '/acm_RecentLocationsCarousel\.push/{print $2": "$16", Really "$10", Feels like "$12"°", $13  }' | head -1 | cut -d '"' -f 1-2 | awk -F'text:"' '{print $1 $2}'
 ansiweather -l edina -u imperial -a true -s true
-exit 1
+exit 0

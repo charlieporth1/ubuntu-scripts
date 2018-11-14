@@ -51,6 +51,7 @@ sudo echo 3 > /proc/sys/vm/drop_caches
 sudo cp -rf /opt/*.sh /mnt/HDD/Programs/
 sudo bash /mnt/HDD/Programs/email-virus-report.sh
 sudo bash /mnt/HDD/Programs/copy-to-new-server.sh
+cp -rf /usr/bin/mikrotik /mnt/HDD/Programs
 
 echo done with that
 #GitAutoUpdate

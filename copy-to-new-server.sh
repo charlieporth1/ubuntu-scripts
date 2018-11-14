@@ -33,11 +33,11 @@ if [[ "$(hostname)" == "$master" ]]; then
 		scp $prog/server/sshbannersetup.sh $host:~/Programs/
 		scp $prog/echotissues.sh $host:~/Programs/
 		scp $prog/server/setup-new-server.sh $host:~/Programs/
-
+	
 	echo "done connecting to USER $host" | grep -i $host
 	done
 	for host in $(grep -iv $master "${HOME}/.parallel/sshloginfile" | grep -i root); do
-
+		scp /usr/bin/mikrotik $host:/usr/bin
 		scp /usr/bin/cred.sh $host:/usr/bin/
 		scp /usr/sbin/cred.sh $host:/usr/sbin/
 		scp /opt/*.sh $host:/opt

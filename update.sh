@@ -11,4 +11,4 @@ gcloud components update
 
 pip install --upgrade -y pip
 sudo gem update 
-
+bundle install
