@@ -38,6 +38,8 @@ fail2ban-server
 fail2ban-client
 ifconfig eth0 up 
 
+sudo /home/*/smartagent/smagent.sh start
+
 swapon -a
 sudo modprobe dm-cache 
 	
