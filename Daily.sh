@@ -55,8 +55,8 @@ sudo bash /mnt/HDD/Programs/Cleanup.sh
 #updates 
 sudo yes | sudo apt-get update
 
-cd /mnt/HDD/workspace/GET_FOLLOWERS/twitter-bot-for-increased-growth/ 
-sudo python app.py 
+#cd /mnt/HDD/workspace/GET_FOLLOWERS/twitter-bot-for-increased-growth/ 
+#sudo python app.py 
 
 #FireWall/Cybersecrity
 cpulimit -l 15 sudo fail2ban-server
