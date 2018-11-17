@@ -40,7 +40,7 @@ if [[ "$(hostname)" == "$master" ]]; then
 		scp /usr/bin/mikrotik $host:/usr/bin
 		scp /usr/bin/cred.sh $host:/usr/bin/
 		scp /usr/sbin/cred.sh $host:/usr/sbin/
-		scp /opt/*.sh $host:/opt
+		scp /opt/*.sh $host:/opt/
 		ssh $host chmod a+x /opt/*.sh
 		scp $prog/server/rc.local  $host:/etc/rc.local
 		ssh $host chmod a+x /etc/rc.local
