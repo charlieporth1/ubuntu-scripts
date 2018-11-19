@@ -221,10 +221,10 @@ echo -e "********************************************************************" >
 echo -e "" >> /etc/issue.net && sleep 1
 echo -e "###############################################" >> /etc/issue.net && sleep 1
 echo -e "#You have been warned. (^^^^Go to the top^^^^)# " >> /etc/issue.net && sleep 1
-echo -e "#                                             #" >> /etc/issue.net && sleep 1
+echo -e "#                                             \#" >> /etc/issue.net && sleep 1
 echo -e "#You have been warned. (^^^^Go to the top^^^^)#" >> /etc/issue.net && sleep 1
 echo -e "#You have been warned. (^^^^Go to the top^^^^)#" >> /etc/issue.net && sleep 1
-echo -e "#                                             #" >> /etc/issue.net && sleep 1
+echo -e "#                                             \#" >> /etc/issue.net && sleep 1
 echo -e "#You have been warned. (^^^^Go to the top^^^^)#" >> /etc/issue.net && sleep 1
 echo -e "###############################################" >> /etc/issue.net && sleep 1
 sudo sed -e -i 's/#Banner /etc/issue.net/Banner /etc/issue.net/g' /etc/ssh/sshd_config

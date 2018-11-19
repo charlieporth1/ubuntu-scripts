@@ -17,9 +17,7 @@ if [[ "$(hostname)" == "$master" ]]; then
 		scp $prog/lines.sh $host:~/Programs/
 		scp $prog/Cleanup.sh $host:~/Programs/
 		scp $prog/email-virus-report.sh $host:~/Programs/
-		#scp $prog/install-new-server.sh $host:~/Programs/
-		scp $prog/server/installnewserver.sh $host:~/Programs/
-		#scp $prog/server/install-new-server.sh $host:~/Programs/
+		scp $prog/server/installnewserver.sh  $host:~/Programs/
 		scp $prog/Cleanup.sh $host:~/Programs/
 		scp $prog/server/* $host:~/Programs/
 		scp $prog/jaildefaultunban.sh  $host:~/Programs
@@ -39,6 +37,7 @@ if [[ "$(hostname)" == "$master" ]]; then
 	for host in $(grep -iv $master "${HOME}/.parallel/sshloginfile" | grep -i root); do
 		scp /usr/bin/mikrotik $host:/usr/bin
 		scp /usr/bin/cred.sh $host:/usr/bin/
+		scp $prog/server/installnewserver.sh  $host:/home/*/Programs/
 		scp /usr/sbin/cred.sh $host:/usr/sbin/
 		scp /opt/*.sh $host:/opt/
 		ssh $host chmod a+x /opt/*.sh
@@ -46,9 +45,10 @@ if [[ "$(hostname)" == "$master" ]]; then
 		ssh $host chmod a+x /etc/rc.local
 		ssh $host bash /home/*/Programs/sshbannersetup.sh
 		ssh $host bash /home/*/Programs/echotissues.sh
+		ssh $host "mkdir ~/Programs/"
 		ssh $host bash /home/*/Programs/installnewserver.sh 
 		scp /tmp/fail2ban.zip $host:/tmp/fail2ban.zip
-		ssh cp -rf /tmp/fail2ban.zip / && unzip -o /fail2ban.zip 
+		ssh $host cp -rf /tmp/fail2ban.zip / && unzip -o /fail2ban.zip 
 		ssh $host bash /home/*/Programs/setup-new-server.sh
 	echo "done with ROOT $host" | grep -i $host
 	done

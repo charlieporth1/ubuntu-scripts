@@ -8,7 +8,17 @@ sudo mkdir /home/*/sshfs/
 sudo mkdir /home/*/sshfs/tegra-ubuntu/
 #sudo mkdir ~/tegra-ubuntu/
 
-
+export arcfour=$(ssh -Q cipher localhost | paste -d , -s - | grep -o "arcfour")
+export aes128=$(ssh -Q cipher localhost | paste -d , -s - | grep -o "aes128-cbc")
+export rj=$(ssh -Q cipher localhost | paste -d , -s - | grep -o "rijndael-cbc@lysator.liu.se")
+if [ ! -z "$arcfour" ]; then
+export cipher=$arcfour
+elif [ ! -z "rj" ]
+export cipher=$rj
+elif [ ! -z ]
+else 
+export cipher=
+fi
 #sudo sshfs -o Ciphers=arcfour128 -o Compression=no -o idmap=user,nonempty,allow_root,direct_io,\
 #kernel_cache,auto_cache,IdentityFile=/home/*/.ssh/id_rsa \
 #ubuntu@192.168.1.250:/ /home/*/sshfs/tegra-ubuntu
@@ -16,7 +26,7 @@ sudo mkdir /home/*/sshfs/tegra-ubuntu/
 
 #bash /home/charlieporth/startup/youtrack-2018.1.41051/bin/youtrack.sh start
 mount -t tmpfs -o size=1G tmpfs /home/*/sshfs/tegra-ubuntu
-sudo sshfs -o -o Ciphers=rijndael-cbc@lysator.liu.se Compression=no -o \
+sudo sshfs -o -o Ciphers=$cipher Compression=no -o \
 idmap=user,nonempty,allow_root,direct_io,\
 kernel_cache,auto_cache,default_permissions,big_writes,IdentityFile=/home/*/.ssh/id_rsa \
 tegra-ubuntu:/ /home/*/sshfs/tegra-ubuntu

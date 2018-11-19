@@ -12,6 +12,26 @@ sudo apt -y install unattended-upgrades sendmail sendemail
 npm install geoip-native
 sudo apt -y install golang-go 
 sudo apt-get -y install tmpreaper
+
+
+
+wget https://www.openssl.org/source/openssl-1.0.2p.tar.gz
+tar -xvf ./openssl-1.0.2p.tar.gz
+cd ./openssl-1.0.2p/
+./config
+make
+make install
+cd ..
+wget https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/openssh/1:7.2p2-4/openssh_7.2p2.orig.tar.gz
+tar -xvf ./openssh-7.2p1.tar.gz
+cd ./openssh-7.2p1/
+./configure --with-md5-passwords --with-selinux --with-privsep-path=/var/lib/sshd/ --sysconfdir=/etc/ssh  --prefix=/usr/
+make
+make install
+sudo cp -rf ./ssh /usr/bin/
+sudo cp -rf ./sshd /usr/sbin/
+sudo apt-mark hold openssh-server
+
 #git clone https://github.com/pkoutoupis/rapiddisk
 
 #https://github.com/mozilla/geckodriver/releases/download/v0.20.1/geckodriver-v0.20.1-arm7hf.tar.gz

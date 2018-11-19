@@ -66,7 +66,7 @@ fi
 export dns="dns-nameservers 1.1.1.1 8.8.8.8 8.8.4.4 9.9.9.9"
 export ethdev="$(ifconfig | awk '{print $1}' | grep -v 'docker\|inet\|lo\|inet6\|UP\|RX\|TX\|collisions:*\|virbr0')"
 if [ -z "$(cat /etc/network/interfaces | grep -o 'auto $ethdev')" ]; then
-export masterip="$(ssh tegra-ubuntu cat /etc/ssh/ssh_config | grep -A 1  $HOSTNAME | grep -oE  "\b([0-9]{1,3}\.)"{3}[0-9]{1,3}\b")"
+export masterip="$(ssh tegra-ubuntu cat /etc/ssh/ssh_config | grep -A 1  $HOSTNAME | grep -oE  '\b([0-9]{1,3}\.){3}[0-9]{1,3}\b')"
 echo "" >> /etc/network/interfaces
 echo "auto $ethdev" >> /etc/network/interfaces
 echo "iface $ethdev inet static" >> /etc/network/interfaces
@@ -80,4 +80,10 @@ if [ -z "$(cat /etc/network/interfaces | grep -o '$dns')" ]; then
 export oldDns="$(cat /etc/network/interfaces | grep 'dns')"
 sudo sed  -i.bak -e 's/$oldDns/$dns' /etc/ssh/sshd_config
 #echo "$dns"  >> /etc/network/interfaces
+fi
+if [ -z "$()" ]; then 
+echo "net.core.rmem_default = 10000000" >>
+echo "net.core.wmem_default = 10000000" >>
+echo "net.core.rmem_max = 16777216" >>
+echo "net.core.wmem_max = 16777216" >>
 fi

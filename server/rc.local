@@ -23,12 +23,16 @@
 export cpunum=$(cat /proc/cpuinfo | awk '/^processor/{print $3}' | wc -l)
 
 #sudo tune2fs -o journal_data_writeback /dev/sdb1
-
+export cpuMax=$(cat /sys/devices/system/cpu/cpu*/cpufreq/cpuinfo_max_freq | sed -n '1p')
 for ((i=0; i <=$cpunum; i++))
 do 
 
 echo 1 > /sys/devices/system/cpu/cpu$i/online
-echo performance > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor
+#echo performance > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor
+echo "userspace" > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor
+echo "$cpuMax"  > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_setspeed
+echo "$cpuMax" > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_max_freq
+echo "$cpuMax" > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_min_freq 
 done
 
 bash /home/*/filesystemparallel.sh 
@@ -37,7 +41,7 @@ bash /home/*/Programs/jaildefaultunban.sh
 fail2ban-server
 fail2ban-client
 ifconfig eth0 up 
-
+ifup eth0
 sudo /home/*/smartagent/smagent.sh start
 
 swapon -a
@@ -54,6 +58,7 @@ do
 sudo hdparm -B255 /dev/${hddnum[$a]}
 hdparm -a256 /dev/${hddnum[$a]}
 sudo tune2fs -o journal_data_writeback /dev/${hddnum[$a]}
-sudo bash /opt/serveronline.sh
+echo "cfq" > /sys/block/sda/queue/scheduler
 done
+sudo bash /opt/serveronline.sh
 exit 0
