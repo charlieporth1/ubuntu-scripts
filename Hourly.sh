@@ -4,7 +4,7 @@
 #this causes it to fail
 #sudo su
 sudo ntpdate -u 192.168.1.91
-
+sudo ufw disable
 sudo cp /home/ubuntu/.ssh/* /root/.ssh/
 sudo cp /home/ubuntu/.parallel/* /root/.parallel/
 sudo rm -rf /tmp/*
