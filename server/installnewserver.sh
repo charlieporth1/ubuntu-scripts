@@ -23,8 +23,10 @@ make
 make install
 cd ..
 wget https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/openssh/1:7.2p2-4/openssh_7.2p2.orig.tar.gz
-tar -xvf ./openssh-7.2p1.tar.gz
-cd ./openssh-7.2p1/
+#tar -xvf ./openssh-7.2p1.tar.gz
+tar -xvf ./openssh_7.2p2.orig.tar.gz
+cd ./openssh-7.2p2/
+#cd ./openssh-7.2p1/
 ./configure --with-md5-passwords --with-selinux --with-privsep-path=/var/lib/sshd/ --sysconfdir=/etc/ssh  --prefix=/usr/
 make
 make install

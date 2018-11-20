@@ -31,6 +31,7 @@ sudo echo 1 > /proc/sys/vm/drop_caches
 
 #updates 
 #sudo apt-get upgrade  --yes
+sudo bash /mnt/HDD/Programs//fromGithub.sh
 
 #sudo apt-get dist-upgrade  --yes
 
