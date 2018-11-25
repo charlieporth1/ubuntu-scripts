@@ -1,6 +1,7 @@
-sudo apt-get install -y lolcat brotli cmake  dateutils  dns2tcp gzip gputils  gcc  flac hydra httrack lzip make mac-robber nodejs nutcracker 
-sudo apt-get install -y openssl sendmail binutils crunch coreutils codec2  m4 moreutils mosh  ntp p7zip pwgen 
-sudo apt-get install -y proxychains  python-pip python-dnspython python-mechanize python-slowaes python-xlsxwriter python-jsonrpclib python-lxml psutils recutils sipcalc  wordnet wordplay antiword 
+sudo apt-get install -y lolcat brotli cmake dateutils dns2tcp gzip gputils gcc flac hydra httrack lzip make mac-robber nodejs 
+nutcracker sudo apt-get install -y openssl sendmail binutils crunch coreutils codec2 m4 moreutils mosh ntp p7zip pwgen sudo 
+apt-get install -y proxychains python-pip python-dnspython python-mechanize python-slowaes python-xlsxwriter python-jsonrpclib 
+python-lxml psutils recutils sipcalc wordnet wordplay antiword
 
 sudo apt-get install -y build-essential parallel htop rsync ruby python nano mysql sqlite zip unzip rar unrar wget git curl nano net-tools screen  fail2ban sqlite3 libssl-dev git-core  tor
 sudo apt-get install -y hello lolcat geoip-bin sshfs python3 ruby-rails  docker fail2ban htop
@@ -14,13 +15,14 @@ sudo apt -y install golang-go
 sudo apt-get -y install tmpreaper
 
 
+sudo apt-get -y install libssl1.0-dev
 
 wget https://www.openssl.org/source/openssl-1.0.2p.tar.gz
 tar -xvf ./openssl-1.0.2p.tar.gz
 cd ./openssl-1.0.2p/
 ./config
 make
-make install
+sudo make install
 cd ..
 wget https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/openssh/1:7.2p2-4/openssh_7.2p2.orig.tar.gz
 #tar -xvf ./openssh-7.2p1.tar.gz
@@ -29,7 +31,8 @@ cd ./openssh-7.2p2/
 #cd ./openssh-7.2p1/
 ./configure --with-md5-passwords --with-selinux --with-privsep-path=/var/lib/sshd/ --sysconfdir=/etc/ssh  --prefix=/usr/
 make
-make install
+sudo make install
+sudo cp -rf ./scp /usr/bin/scp 
 sudo cp -rf ./ssh /usr/bin/
 sudo cp -rf ./sshd /usr/sbin/
 sudo apt-mark hold openssh-server
