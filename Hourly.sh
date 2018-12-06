@@ -40,6 +40,7 @@ sudo cp -rf /opt/*.sh  /mnt/HDD/Programs/
 
 #start backup
 #sudo zip -r9 /mnt/HDD/Backup/Website/Hourly/www.zip /var/www/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*
+node /mnt/HDD/itunes-connect-slack/poll-itc.js 
 
 #update ip
 sudo bash /mnt/HDD/Programs/DDNSUPDATE.sh   
@@ -49,7 +50,6 @@ sudo bash /opt/serveripchange.sh
 
 #update website to google  drive
 #sudo bash /mnt/HDD/Programs/Gdrive-Website-Change-UPLOAD.sh
-
 # /start bot
 #sudo bash /mnt/HDD/workspace/reply/start.sh
 #node /mnt/HDD/workspace/reply/reply.js

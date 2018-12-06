@@ -61,6 +61,7 @@ sudo bash /mnt/HDD/Programs//GitChangedWeekly-better.sh
 sudo bash /mnt/HDD/cockpit/updatecock.sh
 sudo bash /mnt/HDD/Programs/toGithub.sh
 sudo bash /mnt/HDD/Programs/Gdrive-Website-Change-UPLOAD-best.sh
+cd /mnt/HDD/HACK && sudo bash /mnt/HDD/Programs//gitUpdateRecurive.sh 
 
 #Matanice 
 sudo freshclam
