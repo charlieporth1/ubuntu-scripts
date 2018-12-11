@@ -61,4 +61,11 @@ sudo tune2fs -o journal_data_writeback /dev/${hddnum[$a]}
 echo "cfq" > /sys/block/sda/queue/scheduler
 done
 sudo bash /opt/serveronline.sh
+if [ -z  ifconfig | grep -A 1 "enp2s0" | grep -o '192.168.1.200' ]; then 
+sudo ntpdate -u 192.168.1.200
+else 
+sudo ntpdate -u ntp.your.org
+#sudo ntpdate -u tock.cerias.purdue.edu
+fi
+
 exit 0

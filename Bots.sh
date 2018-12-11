@@ -120,7 +120,8 @@ python comcasttweetpi.py
 
 
 cd /mnt/HDD/workspace/GET_FOLLOWERS/twitter-bot-for-increased-growth 
-python app.py 
+timeout 300 python app.py 
+
 #cd /mnt/HDD/workspace/GET_FOLLOWERS/go-twitter-bot 
 #./go-twitter-bot 
 

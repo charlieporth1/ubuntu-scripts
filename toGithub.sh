@@ -37,7 +37,7 @@ echo no changes
   # No changes
 fi
 
-cd /mnt/HDD/workspace
+cd /mnt/HDD/workspace/MARKETING/
 git add .
 if [[ `git status --porcelain` ]]; then
   # Changes

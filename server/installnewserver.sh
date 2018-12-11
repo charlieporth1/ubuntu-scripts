@@ -12,7 +12,7 @@ sudo apt -y install apticron sudo  geoipupdate geoip-bin mosh
 sudo apt -y install unattended-upgrades sendmail sendemail
 npm install geoip-native
 sudo apt -y install golang-go 
-sudo apt-get -y install tmpreaper
+sudo apt-get -y install tmpreaper ntp ntpd 
 
 
 sudo apt-get -y install libssl1.0-dev

@@ -1,4 +1,6 @@
 #Matanice 
+curl -fsS --retry 3 https://hc-ping.com/9eb23b7c-5d62-4f81-823b-72ac06415d57
+
 sudo npm cache clean --force
 bleachbit --list | grep -E "[a-z]+\.[a-z]+" | xargs bleachbit --clean
 sudo /home/*/Programs/Cleanup.sh

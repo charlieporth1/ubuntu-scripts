@@ -3,7 +3,11 @@
 #hourly
 #this causes it to fail
 #sudo su
-sudo ntpdate -u 192.168.1.91
+alias pingCmd="curl -fsS --retry 3"
+pingCmd https://hc-ping.com/f0465043-4644-4a32-8e60-f2d0292bce9d
+curl -fsS --retry 3 https://hc-ping.com/f0465043-4644-4a32-8e60-f2d0292bce9d
+
+sudo ntpdate -u 192.168.1.200
 sudo ufw disable
 sudo cp /home/ubuntu/.ssh/* /root/.ssh/
 sudo cp /home/ubuntu/.parallel/* /root/.parallel/
@@ -40,7 +44,8 @@ sudo cp -rf /opt/*.sh  /mnt/HDD/Programs/
 
 #start backup
 #sudo zip -r9 /mnt/HDD/Backup/Website/Hourly/www.zip /var/www/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*
-node /mnt/HDD/itunes-connect-slack/poll-itc.js 
+sudo node /mnt/HDD/itunes-connect-slack/poll-itc.js 
+cd /mnt/HDD/itunes-connect-slack && sudo node poll-itc.js 
 
 #update ip
 sudo bash /mnt/HDD/Programs/DDNSUPDATE.sh   
@@ -91,3 +96,4 @@ sudo systemctl start cockpit.socket
 sudo killall hans
 sudo node /var/www/SMSLinkRECIVED.js 
 cpulimit -l 30 hans -s 192.168.1.250 -p TheFutureIsUS99#hans=
+pingCmd https://cronitor.link/afmG6q/complete

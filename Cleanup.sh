@@ -23,3 +23,4 @@ sudo rm -rf /home/*/.config/chromium
 cpulimit -l 30 | sudo bleachbit --list | grep -E "[a-z]+\.[a-z]+" | xargs bleachbit --clean
 sudo npm cache clean --force
 #sudo bash /mnt/HDD/Programs//pipfix.sh 
+sudo dpkg --configure -a

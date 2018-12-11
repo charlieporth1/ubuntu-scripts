@@ -1,5 +1,8 @@
 #!/bin/bash
 #fastlane env
+alias pingCmd="curl -fsS --retry 3"
+
+pingCmd https://cronitor.link/vNjpd3/run
 . /usr/bin/cred.sh
 #echo $itcpwd | sudo nohup watchbuild -a com.studiosoapp.student -u charlieporth@yahoo.com > /mnt/HDD/buildprocessalert.out 2> /mnt/HDD/buildprocessalert.err 
 export cmd="/mnt/HDD/watchbuild/bin/watchbuild -a com.studiosoapp.student -u charlieporth@yahoo.com  | awk '{print $2}'  | cut -d '/' -f 13-14  | grep '/'" 
@@ -12,3 +15,4 @@ export var='/mnt/HDD/watchbuild/bin/watchbuild -a com.studiosoapp.student -u cha
 if [ ! -z "$var" ]; then 
 sendemail -f $USER@otih-oith.us.to -t $phonee  -m "Apple Successfully finished processing the build please submit the app Date: $(date) and Version: $(cat /mnt/HDD/buildstatusver.txt) " -s smtp.gmail.com:587 -o tls=yes -xu $usr  -xp  $passwd
 fi
+pingCmd https://cronitor.link/vNjpd3/complete
