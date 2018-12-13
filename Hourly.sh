@@ -45,8 +45,7 @@ sudo cp -rf /opt/*.sh  /mnt/HDD/Programs/
 #start backup
 #sudo zip -r9 /mnt/HDD/Backup/Website/Hourly/www.zip /var/www/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*
 sudo node /mnt/HDD/itunes-connect-slack/poll-itc.js 
-cd /mnt/HDD/itunes-connect-slack && sudo node poll-itc.js 
-
+cd /mnt/HDD/itunes-connect-slack && sudo node poll-itc.
 #update ip
 sudo bash /mnt/HDD/Programs/DDNSUPDATE.sh   
 sudo bash /mnt/HDD/Programs//DDNSUPDATE1.sh
