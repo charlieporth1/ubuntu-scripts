@@ -51,7 +51,7 @@ sudo hdparm -B255 /dev/sda
 hdparm -a256 /dev/sda
 sudo tune2fs -o journal_data_writeback /dev/sda1
 
-
+sudo /home/*/smartagent/smagent.sh start
 export hddnum=($(sudo ls /dev/sd*)) 
 for ((a=0; a <= ${#hddnum[@]}; a++))
 do 

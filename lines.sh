@@ -1,4 +1,5 @@
-#!/usr/bin/parallel --shebang-wrap --pipe /bin/bash !/bin/bash
+#!/usr/bin/parallel --shebang-wrap --pipe /bin/bash 
+#!/bin/bash
 export bMonth="June"
 export cMonth="December"
 export currentDate=$(date | awk '{print $2}')
