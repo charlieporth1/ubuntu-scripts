@@ -6,3 +6,6 @@ sudo node /mnt/HDD/itunes-connect-slack/poll-itc.js
 node /mnt/HDD/SLACK/2fa-2-slack/app.js
 cd /mnt/HDD/itunes-connect-slack/
 sudo node poll-itc.js 
+cd /mnt/HDD/SLACK/2fa-2-slack/
+npm start
+
