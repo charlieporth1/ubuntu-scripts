@@ -36,6 +36,7 @@ sudo cp -rf ./scp /usr/bin/scp
 sudo cp -rf ./ssh /usr/bin/
 sudo cp -rf ./sshd /usr/sbin/
 sudo apt-mark hold openssh-server
+sudo apt-mark hold openssh*
 
 #git clone https://github.com/pkoutoupis/rapiddisk
 
