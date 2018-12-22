@@ -24,10 +24,11 @@ fi
 #bash /home/charlieporth/startup/youtrack-2018.1.41051/bin/youtrack.sh start
 
 #bash /home/charlieporth/startup/youtrack-2018.1.41051/bin/youtrack.sh start
-mount -t tmpfs -o size=1G tmpfs /home/*/sshfs/tegra-ubuntu
-sudo sshfs -o Ciphers=$cipher -o Compression=no -o \
-idmap=user,nonempty,allow_root,direct_io,\
-kernel_cache,auto_cache,default_permissions,big_writes,IdentityFile=/home/*/.ssh/id_rsa \
-tegra-ubuntu:/ /home/*/sshfs/tegra-ubuntu
-
+mount -t tmpfs -o size=1512M tmpfs /home/*/sshfs/
+#sudo sshfs -o cache_timeout=115200 -o attr_timeout=115200 -o entry_timeout=1200 -o max_readahead=90000 \
+#-o Ciphers=$cipher -o Compression=no -o \
+#idmap=user,nonempty,large_read,allow_root,direct_io,\
+#kernel_cache,auto_cache,reconnect,default_permissions,big_writes,IdentityFile=/home/*/.ssh/id_rsa \
+#tegra-ubuntu:/ /home/*/sshfs/tegra-ubuntu
+sudo mount 192.168.1.250:/ ./sshfs/tegra-ubuntu -o fsc
 

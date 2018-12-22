@@ -16,6 +16,7 @@
 
 
 /sbin/getty -L 115200 ttyS0 
+systemctl start cachefilesd
 
 
 
