@@ -29,14 +29,14 @@ echo "Generating $test_size kB test file..."
 
 # upload test
 echo "Testing upload to $ssh_server..."
-up_speed=`scp -v $test_file $ssh_server:$test_file 2>&1 | \
+up_speed=`scp -o Cipher=arcfour -v $test_file $ssh_server:$test_file 2>&1 | \
   grep "Bytes per second" | \
   sed "s/^[^0-9]*\([0-9.]*\)[^0-9]*\([0-9.]*\).*$/\1/g"`
 up_speed=`echo "($up_speed*0.0009765625*100.0+0.5)/1*0.01" | bc`
 
 # download test
 echo "Testing download from $ssh_server..."
-down_speed=`scp -v $ssh_server:$test_file $test_file 2>&1 | \
+down_speed=`scp -o Cipher=arcfour -v $ssh_server:$test_file $test_file 2>&1 | \
   grep "Bytes per second" | \
   sed "s/^[^0-9]*\([0-9.]*\)[^0-9]*\([0-9.]*\).*$/\2/g"`
 down_speed=`echo "($down_speed*0.0009765625*100.0+0.5)/1*0.01" | bc`
