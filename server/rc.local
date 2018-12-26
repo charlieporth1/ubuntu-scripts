@@ -58,8 +58,26 @@ for ((a=0; a <= ${#hddnum[@]}; a++))
 do 
 sudo hdparm -B255 /dev/${hddnum[$a]}
 hdparm -a256 /dev/${hddnum[$a]}
+hdparm -a512 /dev/sda
+hdparm -M 254 /dev/sda
+
+hdparm -W /dev/sda
 sudo tune2fs -o journal_data_writeback /dev/${hddnum[$a]}
+echo cfq > /sys/block/sda/queue/scheduler
+echo 10000 > /sys/block/sda/queue/iosched/fifo_expire_async
+echo 250 > /sys/block/sda/queue/iosched/fifo_expire_sync
+echo 80 > /sys/block/sda/queue/iosched/slice_async
+echo 1 > /sys/block/sda/queue/iosched/low_latency
+echo 6 > /sys/block/sda/queue/iosched/quantum
+echo 5 > /sys/block/sda/queue/iosched/slice_async_rq
+echo 3 > /sys/block/sda/queue/iosched/slice_idle
+echo 100 > /sys/block/sda/queue/iosched/slice_sync
+hdparm -q -M 254 /dev/sda
+hdparm -m16 --yes-i-know-what-i-am-doing /dev/sda
+hdparm -c1 /dev/sda
+
 echo "cfq" > /sys/block/sda/queue/scheduler
+
 done
 sudo bash /opt/serveronline.sh
 if [ -z  ifconfig | grep -A 1 "enp2s0" | grep -o '192.168.1.200' ]; then 

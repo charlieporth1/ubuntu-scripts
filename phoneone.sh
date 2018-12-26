@@ -29,7 +29,7 @@ export llll=$(parallel -j16  --semaphore  bash | last  -1  --time-format notime 
 echo -e "Your IP has been $yellow$tracked$nc; your $yellow$IP$nc address is $red$llll$nc"
 echo -e "If you log-off nothing will happen to you; if not your fucked"
 . /usr/bin/cred.sh
-parallel -j32 --semaphore bash | sendemail -f $USER@otih-oith.us.to -t $phonee  -m "Someone has logged into your one of your servers under the User: $USER; and the Server: $HOSTNAME; at the time of $(date); the external IP address of the login was from $llll; the GeoIP $(parallel -j8  --semaphoretimeout 1 bash | geoiplookup $llll | grep  City | cut -d ':' -f 2 | cut -d ',' -f -7 ); the ISP of the login  $(parallel -j8  --semaphoretimeout 1 bash | geoiplookup $llll | grep  ASNum | cut -d ':' -f 2); Was it you: $linkyes $linkno"   -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd | GREP_COLOR='01;31' grep --color=always 'successfully!' | GREP_COLOR='01;36' grep  --color=always 'Email' | GREP_COLOR='01;33'  grep  --color=always 'sent'
+parallel -j20 --semaphore bash | sendemail -f $USER@otih-oith.us.to -t $phonee  -m "Someone has logged into your one of your servers under the User: $USER; and the Server: $HOSTNAME; at the time of $(date); the external IP address of the login was from $llll; the GeoIP $(parallel -j8  --semaphoretimeout 1 bash | geoiplookup $llll | grep  City | cut -d ':' -f 2 | cut -d ',' -f -7 ); the ISP of the login  $(parallel -j8  --semaphoretimeout 1 bash | geoiplookup $llll | grep  ASNum | cut -d ':' -f 2); Was it you: $linkyes $linkno"   -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd | GREP_COLOR='01;31' grep --color=always 'successfully!' | GREP_COLOR='01;36' grep  --color=always 'Email' | GREP_COLOR='01;33'  grep  --color=always 'sent'
 exit 0
 
 
