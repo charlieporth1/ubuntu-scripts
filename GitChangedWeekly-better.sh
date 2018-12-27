@@ -37,8 +37,6 @@ echo no changes
 fi
 
 
-cd /mnt/HDD/HACK/exploit-database-papers
-
 if [[ `git status --porcelain` ]]; then
   # Changes
 echo changes
@@ -113,6 +111,53 @@ cd /mnt/HDD/HACK/
 #sudo gdrive update -r -p 1sscS0H_MzZP9nvBMQ3cUpoIug5aNDDCY /mnt/HDD/HACK/bashbunny-payloads/
 sudo rclone delete -v Gdrive:HACK/exploit-database-bin-spoits  | parallel -128 -Jcluster
 sudo rclone copy -v /mnt/HDD/HACK/exploit-database-bin-sploits  Gdrive:HACK/exploit-database-bin-sploits | parallel -128 -Jcluster
+else
+echo no changes
+  # No changes
+fi
+cd /mnt/HDD/HACK/PINEAPPLE
+git clone --recurse-submodules -j8 ./ | parallel -128 -Jcluster
+git add . | parallel -128 -Jcluster
+git commit -m "$(date)" | parallel -128 -Jcluster
+if [[ `git status --porcelain` ]]; then
+  # Changes
+echo changes
+git push | parallel -128 -Jcluster
+cd /mnt/HDD/HACK/PINEAPPLE 
+#sudo gdrive update -r -p 1sscS0H_MzZP9nvBMQ3cUpoIug5aNDDCY /mnt/HDD/HACK/bashbunny-payloads/
+sudo rclone delete -v Gdrive:HACK/PINEAPPLE  | parallel -128 -Jcluster
+sudo rclone copy -v /mnt/HDD/HACK/PINEAPPLE  Gdrive:HACK/PINEAPPLE | parallel -128 -Jcluster
+else
+echo no changes
+  # No changes
+fi
+cd /mnt/HDD/HACK/BB
+git clone --recurse-submodules -j8 ./ | parallel -128 -Jcluster
+git commit -m "$(date)" | parallel -128 -Jcluster
+if [[ `git status --porcelain` ]]; then
+  # Changes
+echo changes
+git push | parallel -128 -Jcluster
+cd /mnt/HDD/HACK/BB
+#sudo gdrive update -r -p 1sscS0H_MzZP9nvBMQ3cUpoIug5aNDDCY /mnt/HDD/HACK/bashbunny-payloads/
+sudo rclone delete -v Gdrive:HACK/BB  | parallel -128 -Jcluster
+sudo rclone copy -v /mnt/HDD/HACK/BB  Gdrive:HACK/BB | parallel -128 -Jcluster
+else
+echo no changes
+  # No changes
+fi
+
+cd /mnt/HDD/HACK/TURTLE
+git clone --recurse-submodules -j8 ./ | parallel -128 -Jcluster
+git commit -m "$(date)" | parallel -128 -Jcluster
+if [[ `git status --porcelain` ]]; then
+  # Changes
+echo changes
+git push | parallel -128 -Jcluster
+cd /mnt/HDD/HACK/TURTLE
+#sudo gdrive update -r -p 1sscS0H_MzZP9nvBMQ3cUpoIug5aNDDCY /mnt/HDD/HACK/bashbunny-payloads/
+sudo rclone delete -v Gdrive:HACK/TURTLE  | parallel -128 -Jcluster
+sudo rclone copy -v /mnt/HDD/HACK/TURTLE  Gdrive:HACK/TURLE | parallel -128 -Jcluster
 else
 echo no changes
   # No changes

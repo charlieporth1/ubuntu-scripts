@@ -5,7 +5,8 @@
 #idmap=user,nonempty,allow_other,direct_io,kernel_cache,auto_cache,IdentityFile=/home/charlieporth/.ssh/id_rsa 
 #ubuntu@192.168.1.250:/mnt/HDD /home/charlieporth/sshfs/tegra-ubuntu allow_other,allow_root
 
-sudo mkdir /home/*/sshfs/ sudo mkdir /home/*/sshfs/tegra-ubuntu/
+sudo mkdir /home/*/sshfs/
+sudo mkdir /home/*/sshfs/tegra-ubuntu/
 #sudo mkdir ~/tegra-ubuntu/
 
 export arcfour=$(ssh -Q cipher localhost | paste -d , -s - | grep -o "arcfour")
@@ -24,11 +25,12 @@ fi
 #bash /home/charlieporth/startup/youtrack-2018.1.41051/bin/youtrack.sh start
 
 #bash /home/charlieporth/startup/youtrack-2018.1.41051/bin/youtrack.sh start
-mount -t tmpfs -o size=1512M tmpfs /home/*/sshfs/
+mount -t tmpfs -o size=1400M tmpfs /home/*/sshfs/
 #sudo sshfs -o cache_timeout=115200 -o attr_timeout=115200 -o entry_timeout=1200 -o max_readahead=90000 \
 #-o Ciphers=$cipher -o Compression=no -o \
 #idmap=user,nonempty,large_read,allow_root,direct_io,\
 #kernel_cache,auto_cache,reconnect,default_permissions,big_writes,IdentityFile=/home/*/.ssh/id_rsa \
 #tegra-ubuntu:/ /home/*/sshfs/tegra-ubuntu
-sudo mount 192.168.1.250:/ ./sshfs/tegra-ubuntu -o fsc
+sudo mount -a
+sudo mount 192.168.1.250:/ /home/*/sshfs/ -o fsc,rw,noatime,rsize=32768,wsize=32768,timeo=5,retrans=4,hard,intr 
 

@@ -1,5 +1,7 @@
 #!/bin/bash
 #ssh banner
+echo will cite | parallel --citation
+
 if [ ! -z "$(cat /etc/ssh/sshd_config | grep -o '#Banner /etc/issue.net')" ]; then
 sudo sed -i.bak -e  's##Banner /etc/issue.net##g' /etc/ssh/sshd_config
 echo "Banner /etc/issue.net" >> /etc/ssh/sshd_config
@@ -403,3 +405,13 @@ echo "fs.suid_dumpable = 0" >> /etc/sysctl.conf
 echo "fs.file-max = 785928" >> /etc/sysctl.conf
 
 fi
+
+if [ -z "$(cat /etc/fstab | grep -o '192.168.1.250:/')"]; then
+echo "192.168.1.250:/    /home/ubuntuserver/sshfs/   nfs     rw,noatime,rsize=32768,wsize=32768,fsc,timeo=5,retrans=4,hard,intr 0 0" >> /etc/fstab 
+fi 
+
+if [ -z "$(cat /etc/fstab | grep -o 'tmpfs /tmp tmpfs)"]; then
+echo tmpfs /tmp tmpfs defaults,noatime,nosuid,nodev,noexec,mode=1777,size=148M 0 0 >> /etc/fstab
+fi 
+
+
