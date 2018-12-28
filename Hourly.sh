@@ -15,7 +15,7 @@ sudo rm -rf /tmp/*
 sudo bash /mnt/HDD/Programs//jaildefaultunban.sh
 
 #Backup
-sudo rm -rf //mnt/HDD/Backup/Website/Hourly/www.zip | parallel -j128 -Jcluster
+sudo rm -rf /mnt/HDD/Backup/Website/Hourly/www.zip | parallel -j128 -Jcluster
 sudo zip -r9 /mnt/HDD/Backup/Website/Hourly/www.zip /var/www/* | parallel -j128 -Jcluster
 sudo cp -rf /mnt/HDD/Programs/ /mnt/HDD/Backup/Hourly/Programs/ | parallel -j128 -Jcluster
 
@@ -89,6 +89,9 @@ killall go-twitter-bot
 sync && sudo echo 3 > /proc/sys/vm/drop_caches
 sync && sudo echo 1 > /proc/sys/vm/drop_caches
 sync && sudo echo 2 > /proc/sys/vm/drop_caches
+
+sudo bash /mnt/HDD/Programs/cleanSysLog.sh
+
 
 #Start cockpit 
 systemctl daemon-reload

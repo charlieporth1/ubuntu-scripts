@@ -82,7 +82,7 @@ echo "			address $masterip" >> /etc/network/interfaces
 echo "			netmask 255.255.255.0" >> /etc/network/interfaces
 echo "			gateway 192.168.1.1" >> /etc/network/interfaces
 echo "			$dns" >> /etc/network/interfaces
-echo "			mtu 32768" >> /etc/network/interfaces
+echo "			mtu 9000" >> /etc/network/interfaces
 fi
 export host=$HOSTNAME
 if [ -z "$(cat /etc/network/interfaces | grep -o "$dns")" ]; then
