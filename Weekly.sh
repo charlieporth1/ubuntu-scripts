@@ -12,35 +12,35 @@ export hdd=/mnt/HDD/
 export prog=/mnt/HDD/Programs
 alias cleanMem="sudo echo 3 > /proc/sys/vm/drop_caches && sudo echo 2 > /proc/sys/vm/drop_caches && sudo echo 1 > /proc/sys/vm/drop_caches "
 #backup
-sudo rm -rf $back/Website/Weekly/www.zip | parallel -j128 -Jcluster
-sudo zip -r9 $back/Website/Weekly/www.zip /var/www/* | parallel -j128 -Jcluster
+sudo rm -rf $back/Website/Weekly/www.zip | parallel -Jcluster
+sudo zip -r9 $back/Website/Weekly/www.zip /var/www/* | parallel -Jcluster
 cleanMem
-sudo rm -rf $back/usrbin/.zip | parallel -j128 -Jcluster
-sudo zip -r9 $back/usrbin.zip  /usr/bin  | parallel -j128 -Jcluster
+sudo rm -rf $back/usrbin/.zip | parallel -Jcluster
+sudo zip -r9 $back/usrbin.zip  /usr/bin  | parallel -Jcluster
 cleanMem
-sudo rm -rf $back/usrlocale.zip  | parallel -j128 -Jcluster
-sudo zip -r9 $back/usrlocale.zip  /usr/locale & | parallel -j128 -Jcluster
+sudo rm -rf $back/usrlocale.zip  | parallel -Jcluster
+sudo zip -r9 $back/usrlocale.zip  /usr/locale & | parallel -Jcluster
 cleanMem
-sudo rm -rf $back/usrshare.zip | parallel -j128 -Jcluster
-sudo zip -r9 $back/usrshare.zip  /usr/share & | parallel -j128 -Jcluster
+sudo rm -rf $back/usrshare.zip | parallel -Jcluster
+sudo zip -r9 $back/usrshare.zip  /usr/share & | parallel -Jcluster
 cleanMem
-sudo rm -rf $back/usrsrc.zip | parallel -j128 -Jcluster
-sudo zip -r9 $back/usrsrc.zip  /usr/src & | parallel -j128 -Jcluster
+sudo rm -rf $back/usrsrc.zip | parallel -Jcluster
+sudo zip -r9 $back/usrsrc.zip  /usr/src & | parallel -Jcluster
 cleanMem
-sudo rm -rf $back/usrgames.zip | parallel -j128 -Jcluster
-sudo zip -r9 $back/usrgames.zip  /usr/games & | parallel -j128 -Jcluster
+sudo rm -rf $back/usrgames.zip | parallel -Jcluster
+sudo zip -r9 $back/usrgames.zip  /usr/games & | parallel -Jcluster
 cleanMem
-sudo rm -rf $back/usrinclude.zip | parallel -j128 -Jcluster
-sudo zip -r9 $back/usrinclude.zip  /usr/include & | parallel -j128 -Jcluster
+sudo rm -rf $back/usrinclude.zip | parallel -Jcluster
+sudo zip -r9 $back/usrinclude.zip  /usr/include & | parallel -Jcluster
 cleanMem
-sudo rm -rf  $hack/usrbin.zip | parallel -j128 -Jcluster
-sudo zip -r9 $back/usrsbin.zip  /usr/sbin & | parallel -j128 -Jcluster
+sudo rm -rf  $hack/usrbin.zip | parallel -Jcluster
+sudo zip -r9 $back/usrsbin.zip  /usr/sbin & | parallel -Jcluster
 cleanMem
-sudo rm -rf $back/usrlib.zip | parallel -j128 -Jcluster
-sudo zip -r9 $back/usrlib.zip  /usr/lib & | parallel -j128 -Jcluster
+sudo rm -rf $back/usrlib.zip | parallel -Jcluster
+sudo zip -r9 $back/usrlib.zip  /usr/lib & | parallel -Jcluster
 cleanMem
-sudo rm -rf $back/usrlocal.zip | parallel -j128 -Jcluster
-sudo zip -rf $back/usrlocal.zip /usr/local/ & | parallel -j128 -Jcluster
+sudo rm -rf $back/usrlocal.zip | parallel -Jcluster
+sudo zip -rf $back/usrlocal.zip /usr/local/ & | parallel -Jcluster
 sudo cp -rf /home/ubuntu/.bash* $back  
 cleanMem 
 sudo cp -rf /home/ubuntu/.bash* /mnt/HDD/Programs/   
@@ -72,13 +72,13 @@ cd /mnt/HDD/HACK && sudo bash $prog/gitUpdateRecurive.sh
 
 #Matanice 
 sudo freshclam
-sudo npm cache clean --force | parallel -j128 -Jcluster
-bleachbit --list | grep -E "[a-z]+\.[a-z]+" | xargs bleachbit --clean | parallel -j128 -Jcluster
-sudo $prog/Cleanup.sh | parallel -j128 -Jcluster
+sudo npm cache clean --force | parallel -Jcluster
+bleachbit --list | grep -E "[a-z]+\.[a-z]+" | xargs bleachbit --clean | parallel -Jcluster
+sudo $prog/Cleanup.sh | parallel -Jcluster
 sudo geoipupdate
 #sudo bash /mnt/HDD/Programs//Bash-History-Clear-first-part-forloop.sh
 #sudo /etc/init.d/nscd reload    # nscd
-sudo bash /mnt/HDD/Programs//pipfix.sh | parallel -j128 -Jcluster
+sudo bash /mnt/HDD/Programs//pipfix.sh | parallel -Jcluster
 
 #Updates 
 sudo bash $prog//update.sh 
@@ -87,11 +87,11 @@ sudo ntpdate -u 192.168.1.200
 sudo timedatectl set-ntp on
 
 #AV
-sudo freshclam | parallel -j128 -Jcluster
+sudo freshclam | parallel -Jcluster
 sudo mv /mnt/HDD/virus.txt /mnt/HDD/VirusssReports/virus$(date +"%Y-%m-%d").txt 
-sudo clamscan -r / --exclude-dir="/mnt/HDD/Virus/|/mnt/HDD/HACK/|/mnt/HDD/Hack/|/mnt/HDD/MPIhack" | grep FOUND >> /mnt/HDD/virus.txt  | parallel -j128 -Jcluster 
-#sudo timeout  300  "sudo clamscan --remove=yes -i -r /  --exclude-dir=/mnt/HDD/Virus/" | parallel -j128 -Jcluster
-sudo clamscan --remove=yes -i -r /  --exclude-dir="/mnt/HDD/Virus/|/mnt/HDD/HACK/|/mnt/HDD/Hack/|/mnt/HDD/MPIhack" | parallel -j128 -Jcluster
+sudo clamscan -r / --exclude-dir="/mnt/HDD/Virus/|/mnt/HDD/HACK/|/mnt/HDD/Hack/|/mnt/HDD/MPIhack" | grep FOUND >> /mnt/HDD/virus.txt  | parallel -Jcluster 
+#sudo timeout  300  "sudo clamscan --remove=yes -i -r /  --exclude-dir=/mnt/HDD/Virus/" | parallel -Jcluster
+sudo clamscan --remove=yes -i -r /  --exclude-dir="/mnt/HDD/Virus/|/mnt/HDD/HACK/|/mnt/HDD/Hack/|/mnt/HDD/MPIhack" | parallel -Jcluster
 bash /mnt/HDD/Programs/email-virus-report.sh 
 
 #reboot kernel and linux

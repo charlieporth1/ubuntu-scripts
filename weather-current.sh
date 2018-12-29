@@ -4,7 +4,7 @@
 #export currentip=$(last  -1 -i -w --time-format notime | grep -e  'ubuntu\|logged in\|pts/*' | cut -c 19-39)
 export  currentip=$(last  -1  -w --time-format notime | grep -e  'ubuntu\|logged in\|pts/*' | awk '{print $3}')
 if [[ $currentip  =~ ^192.168.1+\.[0-9]+$ ]]; then
-export currentip=$(parallel -j16 --semaphoretimeout 1 bash  | curl -s ipinfo.io/ip)
+export currentip=$(parallel -j16 --xargs --semaphoretimeout 1 bash  | curl -s ipinfo.io/ip)
 #echo "internal ip"
 fi
 #export mosh="0.0.0.0"

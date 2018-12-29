@@ -11,7 +11,7 @@ sudo rm -rf files/*
 chmod 777 *
 ##5min
 #cpulimit -l 30 ./main
-./main | parallel -Jcluster -j64
+./main | parallel -Jcluster 
 #timeout $((60 + RANDOM % 300 ))  ./main
 # studioso google cheat bot with the keyword music educatio 
 cd /mnt/HDD/workspace/Google-PageRank-cheater-Studioso1-conf/Google-PageRank-cheater-headless 
@@ -20,7 +20,7 @@ chmod 777 *
 #600 seconds == ten min
 #timeout $((55 + RANDOM % 600 )) ./main
 #cpulimit -l 30 ./main
-./main | parallel -Jcluster -j64
+./main | parallel -Jcluster 
 # otih oith bot
 cd /mnt/HDD/workspace/Google-PageRank-cheater-OTIH-OITH-Conf/Google-PageRank-cheater-headless
 sudo rm -rf files/*
@@ -28,7 +28,7 @@ chmod 777 *
 #3min
 #timeout $((55 + RANDOM % 180 ))  ./main
 #cpulimit -l 30 ./main
-./main | parallel -Jcluster -j64
+./main | parallel -Jcluster 
 cd /mnt/HDD/workspace/Google-PageRank-cheater/Google-PageRank-cheater-headless 
 sudo rm -rf files/*
 chmod 777 *
@@ -46,61 +46,61 @@ sudo rm -rf files/*
 chmod 777 *
 #timeout $((15 + RANDOM % 180 ))  ./main
 #cpulimit -l 30 ./main
- ./main | parallel -Jcluster -j64
+ ./main | parallel -Jcluster 
 cd /mnt/HDD/workspace/Google-PageRank-cheater-apps_for_teachers_to_track_student_progress/Google-PageRank-cheater-headless/
 sudo rm -rf files/*   
 chmod 777 *
 #timeout $((60 + RANDOM % 300 ))  ./main
 #cpulimit -l 30 ./main
-./main | parallel -Jcluster -j64
+./main | parallel -Jcluster 
 cd /mnt/HDD/workspace/Google-PageRank-cheater-apps_for_teachers_to_track_student_progress/Google-PageRank-cheater-headless/
 sudo rm -rf files/*   
 chmod 777 *
 #timeout $((30 + RANDOM % 180 ))  ./main
 #cpulimit -l 30 ./main
-./main | parallel -Jcluster -j64
+./main | parallel -Jcluster 
 cd /mnt/HDD/workspace/Google-PageRank-cheater-apps_music_majesty/Google-PageRank-cheater-headless/
 sudo rm -rf files/*   
 chmod 777 *
 #timeout $((1 + RANDOM % 120 ))  ./main
 #cpulimit -l 30 ./main
-./main | parallel -Jcluster -j64
+./main | parallel -Jcluster 
 cd /mnt/HDD/workspace/Google-PageRank-cheater-music_practice_tracker/Google-PageRank-cheater-headless/
 sudo rm -rf files/*   
 chmod 777 *
 #timeout $((1 + RANDOM % 60 ))  ./main
 #cpulimit -l 30 ./main
-./main | parallel -Jcluster -j64
+./main | parallel -Jcluster 
 cd /mnt/HDD/workspace/Google-PageRank-cheater-music_teacher_app/Google-PageRank-cheater-headless/
 sudo rm -rf files/*   
 chmod 777 *
 #timeout $((30 + RANDOM % 240 ))  ./main
 #cpulimit -l 30 ./main
-./main | parallel -Jcluster -j64
+./main | parallel -Jcluster 
 cd /mnt/HDD/workspace/Google-PageRank-cheater-music_teacher_app/Google-PageRank-cheater-headless/Google-PageRank-cheater-music_teacher_app/Google-PageRank-cheater-headless/
 sudo rm -rf files/*   
 chmod 777 *
 #timeout $((60 + RANDOM % 300 ))  ./main
 #cpulimit -l 30 ./main
-./main | parallel -Jcluster -j64
+./main | parallel -Jcluster 
 cd /mnt/HDD/workspace/Google-PageRank-cheater-music_teaching_app/Google-PageRank-cheater-headless/
 sudo rm -rf files/*   
 chmod 777 *
 #timeout $((60 + RANDOM % 240 ))  ./main
 #cpulimit -l 30 ./main
-./main | parallel -Jcluster -j64
+./main | parallel -Jcluster 
 cd /mnt/HDD/workspace/Google-PageRank-cheater-studio_so/Google-PageRank-cheater-headless/
 sudo rm -rf files/*   
 chmod 777 *
 #timeout $((60 + RANDOM % 240 ))  ./main
 #cpulimit -l 30 ./main
-./main | parallel -Jcluster -j64
+./main | parallel -Jcluster 
 cd /mnt/HDD/workspace/Google-PageRank-cheater-teacher_student_app/Google-PageRank-cheater-headless/
 sudo rm -rf files/*   
 chmod 777 *
 #timeout $((60 + RANDOM % 240 ))  ./main
 #cpulimit -l 30 ./main
-./main | parallel -Jcluster -j64
+./main | parallel -Jcluster 
 #######BOTS 
 cd /mnt/HDD/workspace/tweet-delete-bot/
 node index.js

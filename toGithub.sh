@@ -12,7 +12,7 @@ git rm --cached -r .git
 #git rm --cached email-virus-report.sh
 git rm --cached FirebaseNewUsercheck.sh 
 #git rm --cached .sh 
-git push | parallel -j128 -Jcluster
+git push | parallel -Jcluster
 
 else
 echo no changes
@@ -30,7 +30,7 @@ git rm --cached -r .git
 #git rm --cached email-virus-report.sh
 #git rm --cached FirebaseNewUsercheck.sh 
 #git rm --cached .sh 
-git push | parallel -j128 -Jcluster
+git push | parallel -Jcluster
 
 else
 echo no changes
@@ -48,7 +48,7 @@ git rm --cached -r .git
 #git rm --cached email-virus-report.sh
 #git rm --cached FirebaseNewUsercheck.sh 
 #git rm --cached .sh 
-git push | parallel -j128 -Jcluster
+git push | parallel -Jcluster
 
 else
 echo no changes
