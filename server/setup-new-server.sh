@@ -82,7 +82,7 @@ echo "			address $masterip" >> /etc/network/interfaces
 echo "			netmask 255.255.255.0" >> /etc/network/interfaces
 echo "			gateway 192.168.1.1" >> /etc/network/interfaces
 echo "			$dns" >> /etc/network/interfaces
-echo "			mtu 9000" >> /etc/network/interfaces
+echo "			mtu 9200" >> /etc/network/interfaces
 fi
 export host=$HOSTNAME
 if [ -z "$(cat /etc/network/interfaces | grep -o "$dns")" ]; then
@@ -95,18 +95,18 @@ if [ -z "$(cat /etc/sysctl.conf | grep -o 'net.core.rmem_default = 10000000')" ]
 ########################## NETWORK SPEED TWEAKS ###############################
 ###############################################################################
 
-echo "net.core.rmem_default = 10000000" >> /etc/sysctl.conf
-echo "net.core.wmem_default = 10000000" >> /etc/sysctl.conf
-echo "net.core.rmem_max = 16777216" >> /etc/sysctl.conf
-echo "net.core.wmem_max = 16777216" >> /etc/sysctl.conf
+echo "net.core.rmem_default = 100000000" >> /etc/sysctl.conf
+echo "net.core.wmem_default = 100000000" >> /etc/sysctl.conf
+echo "net.core.rmem_max = 1677721600" >> /etc/sysctl.conf
+echo "net.core.wmem_max = 1677721600" >> /etc/sysctl.conf
 # If you have a lot of memory set max 54MB buffer (56623104) for 10GE network.
 # net.core.rmem_max = 56623104
 # net.core.wmem_max = 56623104
 # net.core.rmem_default = 56623104
 # net.core.wmem_default = 56623104
-echo "net.core.optmem_max = 40960" >> /etc/sysctl.conf
-echo "net.ipv4.tcp_rmem = 4096 87380 10000000" >> /etc/sysctl.conf
-echo "net.ipv4.tcp_wmem = 4096 65536 10000000" >> /etc/sysctl.conf
+echo "net.core.optmem_max = 409600" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_rmem = 4096 87380 100000000" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_wmem = 4096 65536 100000000" >> /etc/sysctl.conf
 # Setting 10GE capable host to consume a maximum of 32M-64M per socket ensures
 # parallel streams work well and do not consume a majority of system resources.
 # Set max 32MB buffer (33554432) for 10GE network.
@@ -134,8 +134,8 @@ echo "net.ipv4.tcp_fastopen = 1" >> /etc/sysctl.conf
 
 # Set UDP parameters. Adjust them for your network.
 echo "net.ipv4.udp_mem = 8388608 12582912 16777216" >> /etc/sysctl.conf
-echo "net.ipv4.udp_rmem_min = 65536" >> /etc/sysctl.conf
-echo "net.ipv4.udp_wmem_min = 65536" >> /etc/sysctl.conf
+echo "net.ipv4.udp_rmem_min = 655360" >> /etc/sysctl.conf
+echo "net.ipv4.udp_wmem_min = 655360" >> /etc/sysctl.conf
 # 0 - Rate halving based; a smooth and conservative response, results in halved
 # cwnd and ssthresh after one RTT. 1 - Very conservative response; not
 # recommended because even though being valid, it interacts poorly with the
@@ -213,7 +213,7 @@ echo "net.core.somaxconn = 8192" >> /etc/sysctl.conf
 
 # Try to reuse time-wait connections.
 # But don't recycle them (recycle can break clients behind NAT).
-echo "net.ipv4.tcp_tw_recycle = 0" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_tw_recycle = 1" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_tw_reuse = 1" >> /etc/sysctl.conf
 
 # Avoid falling back to slow start after a connection goes idle.
@@ -233,10 +233,10 @@ echo "net.ipv4.tcp_keepalive_intvl = 32" >> /etc/sysctl.conf
 
 # Turn on the tcp_timestamps. More accurate timestamp make TCP congestion
 # control algorithms work better and are recommended for fast networks.
-echo "net.ipv4.tcp_timestamps = 1" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_timestamps = 0" >> /etc/sysctl.conf
 
 # Increase number of incoming connections backlog. Try up to 262144.
-echo "net.core.netdev_max_backlog = 16384" >> /etc/sysctl.conf
+echo "net.core.netdev_max_backlog = 163840" >> /etc/sysctl.conf
 
 # Set max number half open SYN requests to keep in memory.
 echo "net.ipv4.tcp_max_syn_backlog = 8192" >> /etc/sysctl.conf
@@ -410,8 +410,11 @@ if [ -z "$(cat /etc/fstab | grep -o '192.168.1.250:/')"]; then
 echo "192.168.1.250:/    /home/ubuntuserver/sshfs/   nfs     rw,noatime,rsize=32768,wsize=32768,fsc,timeo=5,retrans=4,hard,intr 0 0" >> /etc/fstab 
 fi 
 
-if [ -z "$(cat /etc/fstab | grep -o 'tmpfs /tmp tmpfs)"]; then
+if [ -z "$(cat /etc/fstab | grep -o 'tmpfs /tmp tmpfs')"]; then
 echo tmpfs /tmp tmpfs defaults,noatime,nosuid,nodev,noexec,mode=1777,size=148M 0 0 >> /etc/fstab
+fi 
+if [ -z "$(cat /etc/fstab | grep -o 'tmpfs /var/cache/fscache/')"]; then
+tmpfs /var/cache/fscache/   tmpfs     defaults,noatime,nosuid,nodev,noexec,mode=1777,size=512M         0 0
 fi 
 
 
