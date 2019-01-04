@@ -3,8 +3,6 @@
 #hourly
 #this causes it to fail
 #sudo su
-alias pingCmd="curl -fsS --retry 3"
-pingCmd https://hc-ping.com/f0465043-4644-4a32-8e60-f2d0292bce9d
 curl -fsS --retry 3 https://hc-ping.com/f0465043-4644-4a32-8e60-f2d0292bce9d
 
 sudo ntpdate -u 192.168.1.200
@@ -23,6 +21,8 @@ sudo cp -rf /mnt/HDD/Programs/ /mnt/HDD/Backup/Hourly/Programs/ | parallel  -Jcl
 
 #Clear RAM
 sudo echo 3 > /proc/sys/vm/drop_caches
+sudo echo 2 > /proc/sys/vm/drop_caches
+sudo echo 1 > /proc/sys/vm/drop_caches
 sudo service gitlab stop
 #Start Cockpit
 sudo systemctl start cockpit.socket
@@ -46,14 +46,20 @@ sudo cp -rf /opt/*.sh  /mnt/HDD/Programs/
 #sudo zip -r9 /mnt/HDD/Backup/Website/Hourly/www.zip /var/www/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*
 sudo killall node
 sudo node /mnt/HDD/itunes-connect-slack/poll-itc.js 
-cd /mnt/HDD/itunes-connect-slack && sudo node poll-itc.
+cd /mnt/HDD/itunes-connect-slack && sudo node poll-itc
 cd /mnt/HDD/SLACK/2fa-2-slack/ && npm start
+sudo echo 3 > /proc/sys/vm/drop_caches
+sudo echo 2 > /proc/sys/vm/drop_caches
+sudo echo 1 > /proc/sys/vm/drop_caches
 
 #update ip
 sudo bash /mnt/HDD/Programs/DDNSUPDATE.sh   
 sudo bash /mnt/HDD/Programs//DDNSUPDATE1.sh
 sudo bash /opt/serveripchange.sh
 #sudo /mnt/HDD/minio server /mnt/HDD    
+
+cd /mnt/HDD/workspace/google-rank-finder
+sudo bash notify.sh 
 
 #update website to google  drive
 #sudo bash /mnt/HDD/Programs/Gdrive-Website-Change-UPLOAD.sh
@@ -75,6 +81,9 @@ sudo /mnt/HDD/minio server /mnt/HDD
 
 ### beter boots 
 sudo bash /mnt/HDD/Programs/Bots.sh 
+sudo echo 3 > /proc/sys/vm/drop_caches
+sudo echo 2 > /proc/sys/vm/drop_caches
+sudo echo 1 > /proc/sys/vm/drop_caches
 #Update Date
 sudo bash /mnt/HDD/Programs/UpdateDate.sh
 killall go-twitter-bot
@@ -101,4 +110,4 @@ sudo systemctl start cockpit.socket
 sudo killall hans
 sudo node /var/www/SMSLinkRECIVED.js 
 cpulimit -l 30 hans -s 192.168.1.250 -p TheFutureIsUS99#hans=
-pingCmd https://cronitor.link/afmG6q/complete
+curl -fsS --retry 3 https://hc-ping.com/09bb4e77-b7aa-4aaf-bd64-3f444f29d3ae
