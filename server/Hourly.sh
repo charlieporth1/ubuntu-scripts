@@ -8,9 +8,13 @@ sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
 sudo rm -rf /tmp/*
 if [ -z  ifconfig | grep -A 1 "enp2s0" | grep -o '192.168.1.200' ]; then 
-sudo ntpdate -u 192.168.1.200
+sudo /etc/init.d/ntp stop
+sudo ntpd -4q 192.168.1.200 
+sudo /etc/init.d/ntp start
 else 
-sudo ntpdate -u ntp.your.org
+sudo /etc/init.d/ntp stop
+sudo ntpd -4q ntp.your.org
+sudo /etc/init.d/ntp start
 fi
 #Start Cockpit
 ifconfig eth0 up
@@ -20,3 +24,4 @@ sudo systemctl start cockpit.socket
 sudo bash /home/*/Programs/filesystemparallel.sh
 sudo bash /home/*/filesystemparallel.sh
 sudo bash /home/*/Programs/jaildefaultunban.sh 
+

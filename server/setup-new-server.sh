@@ -417,4 +417,5 @@ if [ -z "$(cat /etc/fstab | grep -o 'tmpfs /var/cache/fscache/')"]; then
 tmpfs /var/cache/fscache/   tmpfs     defaults,noatime,nosuid,nodev,noexec,mode=1777,size=512M         0 0
 fi 
 
-
+sudo timedatectl set-ntp on
+sudo timedatectl set-timezone America/Chicago

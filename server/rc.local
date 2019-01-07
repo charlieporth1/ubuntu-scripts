@@ -82,8 +82,12 @@ done
 sudo bash /opt/serveronline.sh
 if [ -z  ifconfig | grep -A 1 "enp2s0" | grep -o '192.168.1.200' ]; then 
 sudo ntpdate -u 192.168.1.200
+sudo /etc/init.d/ntp stop
+sudo ntpd -4q 192.168.1.200 
 else 
 sudo ntpdate -u ntp.your.org
+sudo /etc/init.d/ntp stop
+sudo ntpd -4q ntp.your.org
 #sudo ntpdate -u tock.cerias.purdue.edu
 fi
 

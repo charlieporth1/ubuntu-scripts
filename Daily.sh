@@ -17,6 +17,7 @@ sudo zip -r9 $hdd/Backup/Website/Daily/www.zip /var/www/* | parallel -Jcluster
 #sudo echo 3 > /proc/sys/vm/drop_caches 
 #sudo zip -r9 /mnt/HDD/Backup/iptables/ /iptables/*
 sudo cp /etc/rc.lcoal $hdd/Backup/ | parallel -Jcluster
+sudo cp /etc/rc.lcoal $prog | parallel -Jcluster
 sudo cp /mnt/HDD/.bashrc /mnt/HDD/Backup/ 
 sudo rm -rf $hdd/Backup/etc.zip | parallel -Jcluster
 sudo zip -r9 $hdd/Backup/etc.zip /etc/ | parallel -Jcluster

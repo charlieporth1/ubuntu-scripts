@@ -13,3 +13,4 @@ date --set="$(ssh $host date)"
 fi
 
 
+exit 0

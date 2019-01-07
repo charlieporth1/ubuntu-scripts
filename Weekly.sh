@@ -17,6 +17,7 @@ sudo zip -r9 $back/Website/Weekly/www.zip /var/www/* | parallel -Jcluster
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
+<< --MULTILINE-COMMENT--
 sudo rm -rf $back/usrbin/.zip | parallel -Jcluster
 sudo zip -r9 $back/usrbin.zip  /usr/bin  | parallel -Jcluster
 sudo echo 3 > /proc/sys/vm/drop_caches
@@ -59,6 +60,8 @@ sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
 sudo rm -rf $back/usrlocal.zip | parallel -Jcluster
 sudo zip -rf $back/usrlocal.zip /usr/local/ & | parallel -Jcluster
+--MULTILINE-COMMENT--
+
 sudo cp -rf /home/ubuntu/.bash* $back  
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
@@ -76,11 +79,11 @@ sudo cp -rf /home/ubuntu/.bash* /mnt/HDD/Programs/
 #emails
 sudo cp -rf /opt/*.sh $prog
 #sudo bash /mnt/HDD/Programs/email-virus-report.sh
+cp -rf /usr/bin/mikrotik $prog
 sudo bash $prog/copy-to-new-server.sh
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
-cp -rf /usr/bin/mikrotik $prog
 
 echo done with that
 #GitAutoUpdate
@@ -115,13 +118,13 @@ sudo $prog/Cleanup.sh | parallel -Jcluster
 sudo geoipupdate
 #sudo bash /mnt/HDD/Programs//Bash-History-Clear-first-part-forloop.sh
 #sudo /etc/init.d/nscd reload    # nscd
-sudo bash /mnt/HDD/Programs//pipfix.sh | parallel -Jcluster
+sudo bash /mnt/HDD/Programs/pipfix.sh | parallel -Jcluster
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
 
 #Updates 
-sudo bash $prog//update.sh 
+sudo bash $prog/update.sh 
 
 sudo ntpdate -u 192.168.1.200
 sudo timedatectl set-ntp on
@@ -130,9 +133,9 @@ sudo timedatectl set-ntp on
 sudo freshclam | parallel -Jcluster
 sudo mv /mnt/HDD/virus.txt /mnt/HDD/VirusssReports/virus$(date +"%Y-%m-%d").txt 
 sudo clamscan -r / --exclude-dir="/mnt/HDD/Virus/|/mnt/HDD/HACK/|/mnt/HDD/Hack/|/mnt/HDD/MPIhack" | grep FOUND >> /mnt/HDD/virus.txt  | parallel -Jcluster 
+bash /mnt/HDD/Programs/email-virus-report.sh 
 #sudo timeout  300  "sudo clamscan --remove=yes -i -r /  --exclude-dir=/mnt/HDD/Virus/" | parallel -Jcluster
 sudo clamscan --remove=yes -i -r /  --exclude-dir="/mnt/HDD/Virus/|/mnt/HDD/HACK/|/mnt/HDD/Hack/|/mnt/HDD/MPIhack" | parallel -Jcluster
-bash /mnt/HDD/Programs/email-virus-report.sh 
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
