@@ -416,6 +416,24 @@ fi
 if [ -z "$(cat /etc/fstab | grep -o 'tmpfs /var/cache/fscache/')"]; then
 tmpfs /var/cache/fscache/   tmpfs     defaults,noatime,nosuid,nodev,noexec,mode=1777,size=512M         0 0
 fi 
+if [ -z "$(cat /etc/fstab | grep -o 'tmpfs /tmp tmpfs')"]; then
+echo tmpfs /tmp tmpfs defaults,noatime,nosuid,nodev,noexec,mode=1777,size=148M 0 0 >> /etc/fstab
+fi 
+if [ -z "$(cat /etc/fstab | grep -o 'tmpfs  /home/')"]; then
+#echo tmpfs  /home/ubuntuserver/sshfs/ tmpfs defaults,size=1G 0 0 >> /etc/fstab
+fi 
+##dns is set above
+if [ -z "$(cat /etc/resolvconf/resolv.conf.d/base  | grep -o "$dns")"]; then
+export p="p"
+IFS=$'\n'  
+mkdir /etc/resolvconf/resolv.conf.d/
+string="$dns"
+char=" "
+export numb=$(awk -F"${char}" '{print NF-1}' <<< "${string}")
+for ((i=1; i <=$numb+1; i++)); do
+echo "$(echo $dns | cut -d ' ' -f $i )" >> /etc/resolvconf/resolv.conf.d/base
+done
+fi 
 
 sudo timedatectl set-ntp on
 sudo timedatectl set-timezone America/Chicago

@@ -143,5 +143,5 @@ sudo echo 1 > /proc/sys/vm/drop_caches
 #reboot kernel and linux
 #kexec-reboot --reboot
 curl -fsS --retry 3 https://hc-ping.com/ab2fe292-6e5b-4f3b-adfb-319a5e08fa45
-
+sleep 20
 sudo reboot

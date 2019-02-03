@@ -190,42 +190,6 @@ sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
 ./main & #| parallel -Jcluster &
-cd /mnt/HDD/workspace/Google-PageRank-cheater-play-music-teach/Google-PageRank-cheater-headless/
-sudo rm -rf files/*   
-chmod 777 *
-#timeout $((60 + RANDOM % 240 ))  ./main
-#cpulimit -l 30 ./main
-sudo echo 3 > /proc/sys/vm/drop_caches
-sudo echo 2 > /proc/sys/vm/drop_caches
-sudo echo 1 > /proc/sys/vm/drop_caches
-./main & #| parallel -Jcluster 
-cd /mnt/HDD/workspace/Google-PageRank-cheater-play-musis-tool/Google-PageRank-cheater-headless/
-sudo rm -rf files/*   
-chmod 777 *
-#timeout $((60 + RANDOM % 240 ))  ./main
-#cpulimit -l 30 ./main
-sudo echo 3 > /proc/sys/vm/drop_caches
-sudo echo 2 > /proc/sys/vm/drop_caches
-sudo echo 1 > /proc/sys/vm/drop_caches
-./main & #| parallel -Jcluster &
-cd /mnt/HDD/workspace/Google-PageRank-cheater-play-student/Google-PageRank-cheater-headless/
-sudo rm -rf files/*   
-chmod 777 *
-#timeout $((60 + RANDOM % 240 ))  ./main
-#cpulimit -l 30 ./main
-sudo echo 3 > /proc/sys/vm/drop_caches
-sudo echo 2 > /proc/sys/vm/drop_caches
-sudo echo 1 > /proc/sys/vm/drop_caches
-./main & #| parallel -Jcluster 
-cd /mnt/HDD/workspace/Google-PageRank-cheater-play-teacher/Google-PageRank-cheater-headless/
-sudo rm -rf files/*   
-chmod 777 *
-#timeout $((60 + RANDOM % 240 ))  ./main
-#cpulimit -l 30 ./main
-sudo echo 3 > /proc/sys/vm/drop_caches
-sudo echo 2 > /proc/sys/vm/drop_caches
-sudo echo 1 > /proc/sys/vm/drop_caches
-./main & #| parallel -Jcluster &
 cd /mnt/HDD/workspace/Google-PageRank-cheater-SMARTMUSIC/Google-PageRank-cheater-headless/
 sudo rm -rf files/*   
 chmod 777 *
@@ -246,6 +210,15 @@ sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
 ./main #| parallel -Jcluster #this one should aways run 
 cd /mnt/HDD/workspace/Google-PageRank-cheater-SMARTMUSIC-AFTER-TRAIN/Google-PageRank-cheater-headless/
+sudo rm -rf files/*   
+chmod 777 *
+#timeout $((60 + RANDOM % 240 ))  ./main
+#cpulimit -l 30 ./main
+sudo echo 3 > /proc/sys/vm/drop_caches
+sudo echo 2 > /proc/sys/vm/drop_caches
+sudo echo 1 > /proc/sys/vm/drop_caches
+./main #| parallel -Jcluster #this one should aways run 
+cd /mnt/HDD/workspace/Google-PageRank-cheater-SMART_MUSIC_STUDIOSO/Google-PageRank-cheater-headless/
 sudo rm -rf files/*   
 chmod 777 *
 #timeout $((60 + RANDOM % 240 ))  ./main

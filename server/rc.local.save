@@ -17,7 +17,6 @@
 
 /sbin/getty -L 115200 ttyS0 
 systemctl start cachefilesd
-systemctl disable ondemand
 
 
 
@@ -31,7 +30,7 @@ do
 
 echo 1 > /sys/devices/system/cpu/cpu$i/online
 #echo performance > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor
-echo "interactive" > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor
+echo "userspace" > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor
 echo "$cpuMax"  > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_setspeed
 echo "$cpuMax" > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_max_freq
 echo "$cpuMax" > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_min_freq 
@@ -53,7 +52,7 @@ swapon -a
 sudo modprobe dm-cache 
 modprobe acpi
 modprobe acpi_cpufreq
-modprobe xt_cpu
+modprobe 
 modprobe async_memcpy
 modprobe async_pq
 modprobe async_tx
@@ -82,49 +81,26 @@ modprobe intel_idle
 modprobe configfs
 modprobe autofs4
 modprobe loop
-modprobe lz4
-modprobe mq_deadline
-modprobe bfq
-modprobe nfs
-modprobe md4
-modprobe cmac
-modprobe mcryptd
+if [ "$(uname -p)" == x86_64 ]; then
+modprobe aes_x86_64
+modprobe blowfish_x86_64
+modprobe sha256_ssse3
+modprobe sha512_ssse3
+modprobe sha256_mb
+modprobe sha512_mb
+modprobe sha3_generic
 modprobe blowfish_generic
-modprobe twofish_generic
 modprobe arc4
-modprobe fscache 
-modporbe xt_cpu
-modprobe xt_cluster
-modprobe xt_tcpudp
-modprobe dm_cache_smq
-modprobe dm_cache
-modprobe aes_generic
-if [ "$(urname -p)" == x86_64 ]
-	modprobe aes_x86_64
-	modprobe blowfish_x86_64
-	modprobe twofish_x86_64
-	modprobe sha1_ssse3
-	modprobe sha256_ssse3
-	modprobe sha512_ssse3
-	modprobe sha256_mb
-	modprobe sha512_mb
-	modprobe sha3_generic
-	modprobe aesni_intel
-	modprobe fpu
-	modprobe msr
-	modprobe acpi-cpufreq
-	modprobe speedstep-lib
-	modprobe powernow-k8
-#	modprobe p4-clockmod P4/PD /PII /PI /PIII 
+modprobe lz4
 else 
-	modprobe aes 
-	modprobe blowfish
-	modprobe twofish
-	modprobe sha256_generic
-	modprobe sha1
-	modprobe sha512
-	modprobe sha3_generic
+modprobe aes
+modprobe blowfish
+modprobe sha256_generic
+modprobe sha3_generic
+modprobe blowfish_generic
+modprobe arc4
 fi
+
 
 sudo hdparm -B255 /dev/sda
 hdparm -a256 /dev/sda

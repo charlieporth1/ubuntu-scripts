@@ -74,8 +74,8 @@ sudo yes | sudo apt-get update
 
 #FireWall/Cybersecrity
 cpulimit -l 15 sudo fail2ban-server
-sudo bash /iptables/iptables*.sh
-sudo bash /mnt/HDD/Programs//jaildefaultunban.sh 
+#sudo bash /iptables/iptables*.sh
+sudo bash /mnt/HDD/Programs/jaildefaultunban.sh 
 #sudo ufw limit OpenSSH 
 
 ## update where files are
@@ -84,3 +84,6 @@ sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches 
 sudo echo 1 > /proc/sys/vm/drop_caches 
 curl -fsS --retry 3 https://hc-ping.com/6f5df9c2-9ded-4707-b527-0550a2270fa4
+sleep 20
+disown -a && exit 0
+#sudo reboot

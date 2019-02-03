@@ -7,3 +7,4 @@ else
 echo "not large enough"
 fi
 echo "done"
+exit 0

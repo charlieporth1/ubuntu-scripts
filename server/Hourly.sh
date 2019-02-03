@@ -10,10 +10,12 @@ sudo rm -rf /tmp/*
 if [ -z  ifconfig | grep -A 1 "enp2s0" | grep -o '192.168.1.200' ]; then 
 sudo /etc/init.d/ntp stop
 sudo ntpd -4q 192.168.1.200 
+ntpdate -u 192.168.1.200
 sudo /etc/init.d/ntp start
 else 
 sudo /etc/init.d/ntp stop
 sudo ntpd -4q ntp.your.org
+ntpdate -u 192.168.1.200
 sudo /etc/init.d/ntp start
 fi
 #Start Cockpit

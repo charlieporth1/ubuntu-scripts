@@ -95,6 +95,8 @@ alias lsdping='ping 192.168.1.1|lolcat '
 alias lsdls='ls |lolcat'
 
 alias fucking="sudo"
+alias applesucks="while true; do echo $red apple $green is a $blue $(bitch); done"
+alias applesuck="while true; do echo $red apple $green is a $blue $(bitch); done"
 
 alias gitr='for x in $(find . -type d) ; do if [ -d "${x}/.git" ] ; then cd "${x}" ; origin="$(git config --get remote.origin.url)" ; cd - 1>/dev/null; echo git submodule add "${origin}" "${x}" ; fi ; done'
 alias gitrs='for x in $(find . -type d) ; do if [ -d "${x}/.git" ] ; then cd "${x}" ; origin="$(git config --get remote.origin.url)" ; cd - 1>/dev/null; git submodule add "${origin}" "${x}" ; fi ; done'

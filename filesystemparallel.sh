@@ -25,7 +25,7 @@ fi
 #bash /home/charlieporth/startup/youtrack-2018.1.41051/bin/youtrack.sh start
 
 #bash /home/charlieporth/startup/youtrack-2018.1.41051/bin/youtrack.sh start
-mount -t tmpfs -o size=1400M tmpfs /home/*/sshfs/
+mount -t tmpfs -o size=1024M tmpfs /home/*/sshfs/
 #sudo sshfs -o cache_timeout=115200 -o attr_timeout=115200 -o entry_timeout=1200 -o max_readahead=90000 \
 #-o Ciphers=$cipher -o Compression=no -o \
 #idmap=user,nonempty,large_read,allow_root,direct_io,\

@@ -148,15 +148,15 @@ esac
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-#echo this is aliases
-    . ~/.bash_aliases
-fi
 # Add bash exports.
 if [ -f ~/.bash_exports ]; then
 #echo this exports
     source ~/.bash_exports
+fi
+
+if [ -f ~/.bash_aliases ]; then
+#echo this is aliases
+    . ~/.bash_aliases
 fi
 
 if [ -f ~/.bash_func ]; then
@@ -320,3 +320,4 @@ eval "$(rbenv init -)"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 #rm -rf /tmp/* &> /dev/null
+echo -e "\a \a \a \a"
