@@ -42,11 +42,11 @@ echo 6
 echo 7
 
 sudo cp -rf /opt/*.sh  /mnt/HDD/Programs/
-
+sudo bash /mnt/HDD/Programs/killMemoryHogs.sh
 
 #start backup
 #sudo zip -r9 /mnt/HDD/Backup/Website/Hourly/www.zip /var/www/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*
-#sudo killall  node
+sudo killall  node
 sudo node /mnt/HDD/itunes-connect-slack/poll-itc.js  &
 cd /mnt/HDD/itunes-connect-slack && sudo node poll-itc.js &
 cd /mnt/HDD/SLACK/2fa-2-slack/ && npm start &

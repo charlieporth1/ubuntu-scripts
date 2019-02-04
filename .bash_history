@@ -1,601 +1,3 @@
-cd $www/SMSC*
-ls
-npm install node-dogstatsd
-sudo npm install node-dogstatsd
-npm audit fix
-sudo npm audit fix
-ls
-git add .
-sudo git add .
-git commit -m "$(date)"
-sudo git commit -m "$(date)"
-git push
-sudo git push
-cd ..
-cd ~
-sudo nano $prog/Hourly.sh
-cd cd /mnt/HDD/SLACK/
- cd /mnt/HDD/SLACK/
-ls
-cd cd ..
-ls reviewet/config/default.yml 
-cat reviewet/config/default.yml 
-cd ReviewMe/
-ls
-node index.js 
-cat myappsconfig.json 
-sudo nano $prog/Hourly.sh
-sudo node /mnt/HDD/SLACK/ReviewMe/index.js 
-cd /mnt/HDD/SLACK/ReviewMe/ && node index.js 
-ls index.js 
-ls
-sudo nano index.js 
-sudo nano constants.js 
-sudo nano index.js 
-sudo nano package.json 
-ls
-npm start
-sudo npm start
-ls
-git pull
-ls
-la
-ls images/
-ls node_modules/
-ls
-node reviews.js 
-node constants.js 
-ls
-mkdir bin
-ls
-npm install -g @trademe/reviewme
-sudo npm install -g @trademe/reviewme
-sudo npm install @trademe/reviewme
- npm install -g @trademe/reviewme@1.0.7 i npm install -g @trademe/reviewme@1.0.7 i
- npm install -g @trademe/reviewme@1.0.7 
-sudo  npm install -g @trademe/reviewme@1.0.7 
-cp -rf /usr/lib/node_modules/@trademe/reviewme/bin/reviewme.js ./bin
-cp -rf bin/reviewme.js  bin/start.js
-npm start
-npm start ./myappsconfig.json 
-ls
-reviewme ./myappsconfig.json 
-ls /usr/lib/node_modules/@trademe/reviewme/bin/reviewme.js
-ls /usr/lib/node_modules/@trademe/
-ls /usr/lib/node_modules/@trademe/reviewme/
-ls /usr/lib/node_modules/@trademe/reviewme/bin/reviewme.js 
-ls
-cat reviews.js 
-ls
-node index.js 
-node bin/
-sudo nano bin/reviewme.js 
-reviewme ./myappsconfig.json 
-reviewme myappsconfig.json 
-sudo nano bin/reviewme.js 
-ls 
-ls ..
-ls ../ReviewMe/
-ls ../ReviewMe/bin/
-ls ../github-review-slack-notifier/
-sudo nano $prog/Daily.sh 
-sudo nano $prog/Hourly.sh
-sudo nano sudo bash /mnt/HDD/Programs/rotate-clean-Logs.sh
-sudo nano sudo bash /mnt/HDD/Programs/cleanSysLog.sh 
-sudo nano $prog/Hourly.sh
-sudo bash $prog/Hourly.sh
-sudo su
-sudo nano ~/.parallel/cluster
-sudo bash $prog/Hourly.sh
-sudo nano ~/.parallel/cluster
-sudo nano ~/.parallel/sshloginfile 
-sudo nano $prog/Hourly.sh
-sudo zip -r9 /mnt/HDD/Backup/Website/Hourly/www.zip /var/www/ | parallel  -Jcluster
-killall perl
-sudo killall perl
-sudo killall -9 perl
-sudo zip -r9 /mnt/HDD/Backup/Website/Hourly/www.zip /var/www/ | parallel  -Jcluster
-sudo bash $prog/Hourly.sh
-sudo nano ~/.parallel/cluster
-sudo bash $prog/Hourly.sh
-exit
-sudo nano $prog/Hourly.sh
-sudo nano ~/.parallel/cluster
-sudo nano ~/.parallel/sshloginfile 
-sudo bash $prog/Hourly.sh
-sudo nano ~/.parallel/sshloginfile 
-sudo nano ~/.parallel/cluster
-sudo bash $prog/Hourly.sh
-sudo nano ~/.parallel/cluster
-  free=$(awk '/^((Swap)?Cached|MemFree|Buffers):/ { sum += $2 }
-              END { print sum }' /proc/meminfo)
-  percpu=$((free / 200 / $(parallel --number-of-threads)))k
-  percpu=$((free / 200 / $(parallel --number-of-threads)))
-  percpu=$(($free / 200 / $(parallel --number-of-threads)))
-percpu=$((free / 200 / $(parallel --number-of-threads)))k
-  percpu=$((free / 200 / $(parallel --number-of-cpu)))
-echo $percpu 
-  percpu=$((free / 50 / $(parallel --number-of-cpu)))
-echo $percpu 
-sudo nano ~/.parallel/cluster
-sudo bash $prog/Hourly.sh
-exit
-sudo nano $prog/Hourly.sh
-sudo ntpd -qt 192.168.1.200 
-ntpq --numeric --peers
-sudo ntpq --numeric --peers
-sudo ntpd -qt 192.168.1.200 
-tpq -c pe
-ntpq -c pe
-sudo ntpq -c pe
-sudo nano /etc/ntp.conf
-ntpdate -u 192.168.1.200
-ping -a 192.168.1.200
-sudo nano ~/.bashrc
-sudo nano /etc/rc.local
-sudo nano $prog/Hourly.sh
-sudo nano $prog/server/Hourly.sh
-sudo nano \$prog/server/rc.local 
-sudo nano $prog/server/rc.local 
-ntpdate -u 192.168.1.200
-sudo nano /etc/ntp.conf
-ntpdate -u 192.168.1.200
-sudo nano /etc/ntp.conf
-sudo /etc/init.d/ntp restart
-ntpdate -u 192.168.1.200
-sudo nano /etc/ntp.conf
-ntpdate -u 192.168.1.200
-sudo ntpq -c pe
-ntpdate ntpdate -buv 192.168.1.200
-ntpdate -buv 192.168.1.200
-ntpdate -bv 192.168.1.200
-sudo ntpdate -bv 192.168.1.200
-sudo /etc/init.d/ntp stop
-sudo ntpdate -bv 192.168.1.200
-sudo /etc/init.d/ntp start
-sudo ntpdate -d192.168.1.200
-sudo ntpdate -d 192.168.1.200
-sudo ntpdate -d ubuntu-server
-sudo nano /etc/ntp.conf
-ntpdate -u 192.168.1.200
-sudo /etc/init.d/ntp start
-sudo /etc/init.d/ntp restart
-ntpdate -u 192.168.1.200
-sudo ntpdate-debian
-sudo ufw allow 123/udp
-sudo ufw allow 123/tcp
-ntpdate -u 192.168.1.200
-ntpdate -b 192.168.1.200
-sudo ntpdate -b 192.168.1.200
-sudo ntpdate -bu 192.168.1.200
-sudo ntpdate -du 192.168.1.200
-ntpdate -u 192.168.1.200
-ntpdate -du 192.168.1.200
-ntpdate -dsu 192.168.1.200
-sudo nano /etc/rc.local
-sudo nano $prog/server/Hourly.sh
-sudo nano $prog/server/rc.local 
-sudo nano $prog/Hourly.sh
-if
-ifconfig
-sudo srtivce ssh re
-sudo service ssh status
-sudo nano $ssh/sshd_coønfig
-sudo nano $ssh/sshd_config
-ping google.com
-bitch
-sudo service ssh start
-systemctl status ssh.service
-sudo nano $prog/Hourly.sh
-bithc
-sudo nano $prog/Hourly.sh
-sudo node /mnt/HDD/itunes-connect-slack/poll-itc.js  &
-cd /mnt/HDD/itunes-connect-slack && sudo node poll-itc.js &
-cd /mnt/HDD/SLACK/2fa-2-slack/ && npm start &
-diwoclear
-clear
-cd 
-exit
-exit
-cd $hdd/App*
-ls
-sudo nano logicscipt.sh
-sudo crontab -e
-sudo nano logicscipt.sh
-sudo ruby get-app-status.rb 
-sudo bash $hdd/App*/logicscipt.sh
-ls
-sudo nano lastStatus 
-cd ..
-cd itun*
-ls
-sudo nano post-update.js 
-bitch
-sudo nano post-update.js 
-sudo nano poll-itc.js 
-sudo nano post-update.js 
-ls 
-sudo nano kvstore.db 
-sudo reboot
-cd $hdd/itu*
-ls
-sudo nano kvstore.db 
-sudo nano poll-itc.js 
-sudo nano post-update.js 
-sudo nano poll-itc.js 
-sudo nano post-update.js 
-ls
-rm -rf kvstore*
-sudo node poll-itc.js 
-sudo nano post-update.js 
-sudo node poll-itc.js 
-sudo nano post-update.js 
-sudo nano poll-itc.js 
-sudo node poll-itc.js 
-sudo nano poll-itc.js 
-sudo node poll-itc.js 
-sudo nano poll-itc.js 
-sudo node poll-itc.js 
-sudo nano poll-itc.js 
-sudo node poll-itc.js 
-sudo nano poll-itc.js 
-sudo node poll-itc.js 
-sudo nano poll-itc.js 
-sudo node poll-itc.js 
-sudo nano poll-itc.js 
-sudo node poll-itc.js 
-sudo nano poll-itc.js 
-sudo node poll-itc.js 
-sudo node post-update.js 
-sudo nano post-update.js 
-sudo node post-update.js 
-sudo nano post-update.js 
-sudo node post-update.js 
-sudo nano post-update.js 
-sudo node post-update.js 
-sudo nano post-update.js 
-sudo node post-update.js 
-sudo nano post-update.js 
-sudo node post-update.js 
-sudo node poll-itc.js 
-rm -rf kvstore
-rm -rf kvstore*
-sudo node poll-itc.js 
-botcj
-bo
-bkk
-too
-sudo node
- bit
-git
-bit
-bitch
-bitch_combo 
-git
-google
-wod
-ls $prog/build*
-ls $prog/itu*
-ls $prog/itc*
-ls ..
-ls $prog
-sudo crontab -e
-cd ..
-cd ApplePaymentsSpoofing/
-ls
-sudo nano logicscipt.sh
-*/5 * *   *   *          bash /mnt/HDD/Programs/iTunesConnecBuildProcessingDone.sh
-bash /mnt/HDD/Programs/iTunesConnecBuildProcessingDone.sh
-sudo bash /mnt/HDD/Programs/iTunesConnecBuildProcessingDone.sh
-sudo nano /mnt/HDD/Programs/iTunesConnecBuildProcessingDone.sh
-sudo bash /mnt/HDD/Programs/iTunesConnecBuildProcessingDone.sh
-sudo nano /mnt/HDD/Programs/iTunesConnecBuildProcessingDone.sh
-sudo  /mnt/HDD/watchbuild/bin/watchbuild -a com.studiosoapp.student -u charlieporth@yahoo.com 
-sudo nano /mnt/HDD/Programs/iTunesConnecBuildProcessingDone.sh
-sudo crontab -e
-sudo nano /mnt/HDD/Programs/iTunesConnecBuildProcessingDone.sh
-sudo bash /mnt/HDD/Programs/iTunesConnecBuildProcessingDone.sh
-sudo nano /mnt/HDD/Programs/iTunesConnecBuildProcessingDone.sh
-sudo bash /mnt/HDD/Programs/iTunesConnecBuildProcessingDone.sh
-sudo nano /mnt/HDD/Programs/iTunesConnecBuildProcessingDone.sh
-/mnt/HDD/watchbuild/bin/watchbuild -a com.studiosoapp.student -u charlieporth@yahoo.com | grep -o "Successfully finished processing the build"'
-'
-/mnt/HDD/watchbuild/bin/watchbuild -a com.studiosoapp.student -u charlieporth@yahoo.com | grep -o "Successfully finished processing the build"
-sudo /mnt/HDD/watchbuild/bin/watchbuild -a com.studiosoapp.student -u charlieporth@yahoo.com | grep -o "Successfully finished processing the build"
-sudo nano /mnt/HDD/watchbuild/bin/watchbuild 
-sudo nano /mnt/HDD/watchbuild/lib/watchbuild
-sudo nano /mnt/HDD/watchbuild/lib/watchbuild/options.rb 
-sudo nano /mnt/HDD/watchbuild/lib/watchbuild.rb 
-sudo nano /mnt/HDD/watchbuild/lib/watchbuild/runner.rb 
-sudo /mnt/HDD/watchbuild/bin/watchbuild -a com.studiosoapp.student -u charlieporth@yahoo.com | grep -o "Successfully finished processing the build"
-sudo /mnt/HDD/watchbuild/bin/watchbuild -a com.studiosoapp.student -u charlieporth@yahoo.com 
-sudo nano /mnt/HDD/watchbuild/lib/watchbuild/runner.rb 
-sudo nano /mnt/HDD/watchbuild/lib/watchbuild/options.rb 
-sudo /mnt/HDD/watchbuild/bin/watchbuild --help
-sudo /mnt/HDD/watchbuild/bin/watchbuild -a com.studiosoapp.student -u charlieporth@yahoo.com -k 37GBSX4J39
-udo gem install watchbuil
-sudo gem install watchbuil
-sudo nano /mnt/HDD/watchbuild/lib/watchbuild/runner.rb 
-sudo /mnt/HDD/watchbuild/bin/watchbuild -a com.studiosoapp.student -u charlieporth1@gmail.com -k 37GBSX4J39
-sudo nano /mnt/HDD/watchbuild/lib/watchbuild/options.rb 
-sudo nano /mnt/HDD/watchbuild/lib/watchbuild/runner.rb 
-sudo /mnt/HDD/watchbuild/bin/watchbuild -a com.studiosoapp.student -u charlieporth1@gmail.com -k 37GBSX4J39
-sudo /mnt/HDD/watchbuild/bin/watchbuild -a com.studiosoapp.student -u charlieporth@yahoo.com -k 37GBSX4J39
-sudo gem cleanup
-sudo /mnt/HDD/watchbuild/bin/watchbuild -a com.studiosoapp.student -u charlieporth@yahoo.com -k 37GBSX4J39
-sudo gem install watchbuild
-cd ..
-cd watchbuild/
-ls
-git pull
-git stash
-git pull
-sudo nano lib/watchbuild/runner.rb 
-sudo /mnt/HDD/watchbuild/bin/watchbuild -a com.studiosoapp.student -u charlieporth@yahoo.com -k 37GBSX4J39
-sudo nano lib/watchbuild/runner.rb 
-sudo nano $hdd/ApplePaymentsSpoofing/get-app-status.rb 
-sudo nano lib/watchbuild/runner.rb 
-sudo /mnt/HDD/watchbuild/bin/watchbuild -a com.studiosoapp.student -u charlieporth@yahoo.com -k 37GBSX4J39
-sudo nano lib/watchbuild/runner.rb 
-git stash
-sudo nano lib/watchbuild/runner.rb 
-sudo /mnt/HDD/watchbuild/bin/watchbuild -a com.studiosoapp.student -u charlieporth@yahoo.com -k 37GBSX4J39
-sudo nano lib/watchbuild/runner.rb 
-echo 'Sciencetech99' |sudo /mnt/HDD/watchbuild/bin/watchbuild -a com.studiosoapp.student -u charlieporth@yahoo.com -k 37GBSX4J39
-export FASTLANE_PASSWORD="Sciencetech99"
-echo $FASTLANE_PASSWORD | sudo /mnt/HDD/watchbuild/bin/watchbuild -a com.studiosoapp.student -u charlieporth@yahoo.com -k 37GBSX4J39
- sudo /mnt/HDD/watchbuild/bin/watchbuild -a com.studiosoapp.student -u charlieporth@yahoo.com -k 37GBSX4J39
-git pull
-sudo gem update
-cd ..
-cd $prog
-cd ..
-cd ApplePaymentsSpoofing/
-ls
-sudo nano logicscipt.sh
-sudo reboot
-sudo nano logicscipt.sh
-sudo bash $prog/Hourly.sh
-sudo bash /etc/rc.local
-hisotry | grep ssh
-history | grep ssh
-sudo service ssh status
-sudo service ssh start
-sudo nano $hdd/itu*
-cd $hdd/itu*
-ls
-sudo node poll-itc.js & &>/dev/null
-sudo node poll-itc.js & 2>/dev/null
-bitch
-sudo node poll-itc.js & 2> /dev/null
-sudo node poll-itc.js &
-sudo node poll-itc.js 
-sudo node poll-itc.js &
-killall node
-sudo killall node
-sudo killall -9 node
-sudo node poll-itc.js & 2>/dev/null
-sudo nano /etc/rc.local
-sudo nano $prog/Hourly.sh
-sudo reboot
-cd $hdd/itu*
-ls
-sudo ruby  get-app-status.rb 
-sudo nano  get-app-status.rb 
-sudo ruby  get-app-status.rb 
-ping 192.168.1.1
-ping google.com
-ping purple.com
-sudo nano /etc/resolv.conf 
-ping purple.com
-sudo nano /etc/network/interfaces
-ping purple.com
-sudo service networking reload
-sudo nano /etc/resolv.conf 
-sudo nano /etc/network/interfaces
-sudo nano /etc/resolvconf/resolv.conf.d/base 
-sudo nano /etc/resolvconf/resolv.conf.d/head
-sudo service networking reload
-ping purple.com
-ping -4 purple.com
-ping -6 purple.com
-sudo nano  get-app-status.rb 
-sudo nano /etc/network/interfaces
-sudo service networking reload
-ping -6 purple.com
-ping -6 google.com
-sudo nano /etc/resolvconf/resolv.conf.d/head
-sudo service networking reload
-ping -6 google.com
-sudo nano  get-app-status.rb 
-sudo ruby  get-app-status.rb 
-sudo nano  get-app-status.rb 
-sudo 
-sudo ruby  get-app-status.rb 
-fastlane
-sudo ruby  get-app-status.rb 
-ls
-ls fastlane/
-mkdir ../itc-test
-cp -rf * ../itc-test/
-git stash
-ls
-sudo nano get-app-status
-sudo nano get-app-status.rb 
-sudo ruby get-app-status
-sudo ruby get-app-status.rb 
-sudo nano $prog/bitch
-sudo crontab -e
-sudo nano $prog/bitch
-bitch
-wo
-w -l
-w- h
-w -h
-w 
-bitch
-cd ..
-cd ApplePaymentsSpoofing/
-ls
-sudo nano logicscipt.sh
-htop
-sudo nano $prog/killMemoryHogs.sh
-sudo nano $prog/Hourly.sh
-sudo bash /mnt/HDD/Programs/Bots.sh | parallel -Jcluster &
-htop
-sudo service mysqld disable
-sudo service mysql disable
-sudo systemctl mysql mask
-sudo systemctl  mask mysql
-sudo nano $prog/NOTE.SH
-sudo bash /mnt/HDD/Programs/Bots.sh | parallel -Jcluster &
-sudo nano /mnt/HDD/Programs/Bots.sh 
-htop
-killall mysqld
-sudo killall mysqld
-sudo reboot
-reboot
-sudo reboot
-ls /
-cd /sbin/
-reboot
-sudo ./reboot
-ps node
-sudo nano $prog/NOTE.SH
-sudo nano $prog/Hourly.sh
-sudo bash /mnt/HDD/Programs/Bots.sh | parallel -Jcluster &
-sudo nano /mnt/HDD/Programs/Bots.sh 
-ls /mnt/HDD/workspace/Google-PageRank-cheater-Studioso1-conf/Google-PageRank-cheater-headless 
-sudo nano /mnt/HDD/Programs/Bots.sh 
-cp -rf /mnt/HDD/workspace/Google-PageRank-cheater /mnt/HDD/workspace/Google-PageRank-cheater-Studioso1-conf
-sudo nano /mnt/HDD/workspace/Google-PageRank-cheater-Studioso1-conf/Google-PageRank-cheater-headless/config.ini
-sudo nano /mnt/HDD/Programs/Bots.sh 
-sudo nano crontab -e
-sudo  crontab -e
-sudo nano /etc/rc.local
-ls
-bitch
-cd $work
-sudo reboot
-sudo nano /etc/sysctl.conf
-sudo reboot
-bitch
-ls
-cd $hdd/itu*
-ls
-sudo ruby get-app-status.rb 
-sudo nano $prog/Hourly.sh
-sudo reboot
-exit
-cd $work
-cd GET_FOLLOWERS/
-ls
-cd twitter-bot-for-increased-growth/
-ls
-sudo nano app.py
-sudo python app.py
-sudo nano app.py
-sudo python app.py
-bitch
-exit
-sudo reboot
-bitch
-bitch_combo 
-ls
-cd $hdd/itu*
-ls
-bitch
-get-app-status.rb
-sudo ruby get-app-status.rb
-cd $prog/
-bitch
-ce
-ss
-..
-.
-..
-...
-..
-...
-....
-.....
-......
-..........................
-cd 
-ls
-cd ..
-cd 
-cd ..
-d
-cd
-c
-cc
-gcc
-git stash
-bitch
-while true bitch; ;done
-bit
-cock
-bitch
-bithc
-sudo nano /bitch
-ss
-git add .
-git stash
-bitch
-do
-po
-pi
-pi 400000000 | paralell -Jcluster
-pi 400000000 | parallel -Jcluster
-sudo nano $prog/filesystemparallel.sh
-sudo reboot
-bitch
-apple
-google
-googler
-pi 400000000 | paralellbitch
-pi 400000000 | parallel -Jcluster
-killall perl
-sudo killall perl
-sudo killall -9perl
-sudo killall -9 perl
-octane
-ssh ubuntuserver
-$work
-ls
-cd Yellow-Page-Email-Scraper/
-ls
-nano crawller.sh 
-nano scraper.js
-cd ..
-cd GET_FOLLOWERS/
-ls
-cd twitter-bot-for-increased-growth/
-ls
-sudo nano app.py
-sudo python app.py
-cd ..
-ls
-sudo nano ~/.parallel/cluster
-nano ~/.parallel/cluster
-sudo nano ~/.parallel/cluster
-sudo  nano/etc/security/limits.conf
-sudo  nano /etc/security/limits.conf
-/proc/sys/kernel/pid_max
-sudo nano /proc/sys/kernel/pid_max
-sudo  nano /etc/security/limits.conf
-sudo nano /proc/sys/kernel/pid_max
-sudo echo 65536 > /proc/sys/kernel/pid_max
-sudo su
-ulimit -u
-ulimit -u --help
-ulimit -T
-ulimit -uT
-ulimit -u 
-ulimit -u 32768
-sudo ulimit -u 32768
-sudo nano /etc/rc.local
 sudo reboot
 sudo su
 ls
@@ -1034,3 +436,538 @@ sudo node SMSLinkRECIVED.js
 sudo git push
 bitch
 sudo git push
+bitch
+botcj
+btocj
+obi
+oo
+boo
+cd 
+bit j
+op
+p
+ppo
+ausoresudo reboot
+x
+sudo reboot
+cd $hdd/itu*
+cd $hdd/itun*
+cd $hdd/itu
+cd $hdd/itun
+cd ..
+cd itunes-connect-slack/
+ls
+sudo node poll-itc.js 
+sudo node poll-itc.js & &> /dev/null
+sudo node poll-itc.js
+ls
+sudo ruby get-app-status.rb 
+sudo nano get-app-status.rb 
+sudo ruby get-app-status.rb 
+sudo nano get-app-status.rb 
+sudo ruby get-app-status.rb 
+git stash
+git add .
+git stash
+sudo ruby get-app-status.rb 
+ls
+sudo nano get-app-status.rb 
+sudo ruby get-app-status.rb 
+sudo gem update
+sudo ruby get-app-status.rb 
+sudo gem update
+sudo ruby get-app-status.rb 
+sudo nano get-app-status.rb 
+sudo ruby get-app-status.rb 
+sudo nano /var/lib/gems/2.5.0/gems/psych-3.1.0/lib/psych.rb
+sudo ruby get-app-status.rb 
+sudo nano /var/lib/gems/2.5.0/gems/psych-3.1.0/lib/psych.rb
+sudo ruby get-app-status.rb 
+sudo nano get-app-status.rb 
+sudo ruby get-app-status.rb 
+sudo nano get-app-status.rb 
+sudo ruby get-app-status.rb 
+sudo nano get-app-status.rb 
+sudo ruby get-app-status.rb 
+sudo nano get-app-status.rb 
+sudo ruby get-app-status.rb 
+sudo nano get-app-status.rb 
+sudo ruby get-app-status.rb 
+fastlane
+syudi reoboot
+sudo reboot
+syudi reoboot
+exit
+cd $work
+sudo nano $prog/Bots.sh
+bitch
+fastlane
+cd ../itu*
+cd ../itunes-connect-slack/
+fastlane
+sudo gem install fastlane
+fastlane
+sudo ruby get-app-status.rb 
+git stash
+git add .
+git stash
+ls
+sudo ruby get-app-status.rb 
+sudo gem install psych 
+sudo ruby get-app-status.rb 
+sudo gem install psych 
+sudo ruby get-app-status.rb 
+sudo ruby get-app-status-teacher.rb 
+fastlane tests
+ls
+sudo ruby get-app-status.rb 
+ll
+git stash
+git add .
+git stash
+ls
+ls -a
+rvm use ruby --install --defaul
+rvm use ruby --install --default
+sudo rvm use ruby --install --default
+ls
+sudo nnao get-app-status.rb 
+sudo nano get-app-status.rb 
+sudo ruby get-app-status.rb 
+sudo ruby get-app-status-teacher.rb 
+ssh ubuntuserver
+sudo ruby get-app-status.rb 
+cd $hdd/itunes-connect-slack/
+sudo ruby get-app-status.rb 
+cp -rf get-app-status.rb  get-app-statusctp.rb
+nano  get-app-statusctp.rb
+sudo ruby get-app-statusctp.rb
+fastlane fastlane-credentials add --username charlieporth1@gmail.com
+sudo ruby get-app-statusctp.rb
+fastlane fastlane-credentials add --username charlieporth1@gmail.com
+sudo nano get-app-statusctp.rb
+fastlane fastlane-credentials add --username charlieporth1@gmail.com
+sudo ruby get-app-statusctp.rb
+sudo ruby get-app-status.rb
+sudo nano get-app-status.rb
+sudo ruby get-app-statusctp.rb
+sudo nano get-app-status.rb
+sudo ruby get-app-status.rb
+sudo nano /var/lib/gems/2.5.0/gems/psych-3.1.0/lib/psych.rb
+sudo ruby get-app-status.rb
+cd $hdd/itunes-connect-slack/
+sudo ruby get-app-status.rb
+sudo nano get-app-status.rb
+sudo ruby get-app-status.rb
+sudo nano get-app-status.rb
+sudo ruby get-app-status.rb
+sudo nano get-app-status.rb
+sudo ruby get-app-status.rb
+sudo nano get-app-status.rb
+sudo ruby get-app-status.rb
+cd  /var/lib/gems/2.5.0/gems/fastlane-2.115.0/
+ls
+ls /var/lib/gems/2.5.0/gems/fastlane-2.115.0/spaceship/lib/spaceship/tunes/spaceship.rb
+ls /var/lib/gems/2.5.0/gems/fastlane-2.115.0/spaceship/lib/spaceship/
+sudo ruby get-app-status.rb
+cd $hdd/itunes-connect-slack/
+sudo ruby get-app-status.rb
+sudo nano get-app-status.rb
+sudo gem install fastlane@2.113.0
+sudo gem install fastlane -b 2.113.0
+sudo gem install fastlane -v 2.113.0
+sudo ruby get-app-status.rb
+ls  /var/lib/gems/2.5.0/gems/fastlane-2.115.0/
+ln -s  /var/lib/gems/2.5.0/gems/fastlane-2.115.0 /dev/null
+ln  /var/lib/gems/2.5.0/gems/fastlane-2.115.0 /dev/null
+ln =f /var/lib/gems/2.5.0/gems/fastlane-2.115.0 /dev/null
+ln -f /var/lib/gems/2.5.0/gems/fastlane-2.115.0 /dev/null
+ln -f /var/lib/gems/2.5.0/gems/fastlane-2.115.0/ /dev/null
+ln -sf /var/lib/gems/2.5.0/gems/fastlane-2.115.0/ /dev/null
+sudo ln -sf /var/lib/gems/2.5.0/gems/fastlane-2.115.0/ /dev/null
+sudo ruby get-app-status.rb
+rm -rf  /var/lib/gems/2.5.0/gems/fastlane-2.115.0/s
+rm -rf  /var/lib/gems/2.5.0/gems/fastlane-2.115.0/
+sudo rm -rf  /var/lib/gems/2.5.0/gems/fastlane-2.115.0/
+sudo ruby get-app-status.rb
+sudo rm -rf  /var/lib/gems/2.5.0/gems/fastlane-2.113.0
+sudo ruby get-app-status.rb
+ls  /var/lib/gems/2.5.0/gems/fastlane-2.1
+ls  /var/lib/gems/2.5.0/gems/fastlane-2.108
+ls  /var/lib/gems/2.5.0/gems/fastlane-2.108.0
+ls  /var/lib/gems/2.5.0/gems/fastlane-2.108.0/
+ls  /var/lib/gems/2.5.0/gems/fastlane-2.108.0/spaceship
+ls  /var/lib/gems/2.5.0/gems/fastlane-2.108.0/spaceship/lib/
+ls  /var/lib/gems/2.5.0/gems/fastlane-2.108.0/spaceship/lib/spaceship
+ls  /var/lib/gems/2.5.0/gems/fastlane-2.108.0/spaceship/lib/spaceship/tunes
+sudo ruby get-app-status.rb
+unlink /dev/null
+sudo unlink /dev/null
+sudo   /var/lib/gems/2.5.0/gems/fastlane-2.115.0/
+sudo unlink  /var/lib/gems/2.5.0/gems/fastlane-2.115.0/
+sudo unlink  /var/lib/gems/2.5.0/q
+sudo unlink  /var/lib/gems/2.5.0/
+sudo ls  /var/lib/gems/2.5.0/
+sudo ls  /var/lib/gems/2.5.0/gems
+sudo ruby get-app-status.rb
+ls
+sudo ruby get-app-status.rb
+ruby get-app-status.rb
+sudo ruby get-app-status.rb
+ruby get-app-status.rb
+ll /home/ubuntu/.rvm/
+ll /mnt/HDD/.rvm/gems/ruby-2.3.7/gems/fastlane-2.115.0/spaceship/lib/spaceship/test_flight/
+ruby get-app-status.rb
+sudo -u ubunturuby get-app-status.rb
+sudo -u ubuntu ruby get-app-status.rb
+fastlane-credentials add --username felix@krausefx.com
+sudo fastlane-credentials add --username felix@krausefx.com
+sudo gem install fastlane
+fastlane-credentials add --username felix@krausefx.com
+sudo fastlane-credentials add --username felix@krausefx.com
+fastlane-credentials add --username felix@krausefx.com
+sudo fastlane-credentials add --username felix@krausefx.com
+sudo gem fastlane-credential
+sudo gem fastlane-credentials
+sudo gem install fastlane-credentials
+sudo -u ubuntu ruby get-app-status.rb
+ll /home/ubuntu/.fastlane/spaceship/charlieporth@yahoo.com/cookie
+sudo chown ubuntu:ubuntu  /home/ubuntu/.fastlane/spaceship/charlieporth@yahoo.com/cookie
+sudo chown ubuntu:ubuntu  /home/ubuntu/.fastlane/spaceshi
+sudo chown ubuntu:ubuntu  /home/ubuntu/.fastlane/spaceship
+sudo -u ubuntu ruby get-app-status.rb
+ruby get-app-status.rb
+sudo ruby get-app-status.rb
+ln -s /home/ubuntu/.fastlane/spaceship/ /var/lib/gem/q
+ln -s /home/ubuntu/.fastlane/spaceship/ /var/lib/gem/fast
+ln -s /home/ubuntu/.fastlane/ /var/lib/gem/fastlane
+ln -s /home/ubuntu/.fastlane/ var/lib/gems/2.5.0/gems/fastlane-2.115.0
+ln -s /home/ubuntu/.fastlane/ var/lib/gems/2.5.0/gems/fastlane-2.115.0/
+ln -s /home/ubuntu/.fastlane/ /var/lib/gems/2.5.0/gems/fastlane-2.115.0/
+sudo ln -s /home/ubuntu/.fastlane/ /var/lib/gems/2.5.0/gems/fastlane-2.115.0/
+sudo ruby get-app-status.rb
+rm -rf /var/lib/gems/2.5.0/gems/fastlane-2.115.0
+sudo rm -rf /var/lib/gems/2.5.0/gems/fastlane-2.115.0
+sudo ln -s /home/ubuntu/.fastlane/ /var/lib/gems/2.5.0/gems/fastlane-2.115.0/
+sudo ln -s /home/ubuntu/.fastlane/ /var/lib/gems/2.5.0/gems/fastlane-2.115.0q
+sudo gem install fastlan
+sudo gem install fastlane
+sudo su
+sudo ruby get-app-status.rb
+ls
+rm -rf kv
+rm -rf kvstore*
+sudo reboot
+viw
+wowm
+wom
+sudo nano $prog/Weekly.sh
+sudo nano  $prog/Daily.sh
+sudo nano $prog/Daily.sh
+sudo nano $prog/Weekly.sh
+sudo nano $prog/Daily.sh
+sudo bash $pro
+sudo bash
+sudo nano /opt/phoneone.sh 
+sudo nano $prog/email-virus-report.sh 
+sudo nano /opt/phoneone.sh 
+sudo nano $prog/email-virus-report.sh 
+sudo nano $prog/Daily.sh
+sudo nano $prog/Weekly.sh
+ last -w | awk "'"{print $1}"'"  | sed -n "'"1p"'"
+ last -w | awk "'"{print $1}"'"  | sed -n '1p'
+ last -w | awk '{print $1}'  | sed -n '1p'
+ last -w | awk '{print $1}' 
+ last -w | awk '{print $1}'  | sed -n '1p'
+sudo nano /opt/phoneone.sh 
+ last -w | awk '{print $1}'  | sed -n '1p'
+cd $www
+cd SMSCOMMANDS/
+git pull
+sudo git pull
+. ~/.bashrc
+sudo nano SMSLinkRECIVED.js 
+sudo node SMSLinkRECIVED.js 
+killall node
+sudo killall node
+exit
+sudo node SMSLinkRECIVED.js 
+sudo node SMSLinkRECIVED.js &
+last -w 
+last -w  -1
+sudo nano SMSLinkRECIVED.js 
+w -
+w 
+w  -
+w  
+w
+sudo nano /etc/rc.local
+w | sed -n '1p'
+w | awk '{print $1}'
+w | awk '{print $1}' | less 30
+w | awk '{print $1}' | less -1
+w | awk '{print $1}' | tail -2
+w | awk '{print $1}' | tail -3
+w | awk '{print $1}' | tail -4
+w | awk '{print $1}' | tail -5
+w | awk '{print $1}' | tail +1
+w | awk '{print $1}' | tail +3
+w | awk '{print $1}' | tail +2
+w | awk '{print $1}' | tail +3
+exit
+if [ -n "$(w | awk '{print $1}' | tail +3)" ]; then fo; fi
+"$(w | awk '{print $1}' | tail +3)" 
+w | awk '{print $1}' | tail +3 
+for $(w | awk '{print $1}' | tail +3) in p; "
+"
+for $(w | awk '{print $1}' | tail +3) in p; do echo $p; done
+for $(w | awk '{print $1}' | tail +3) in p do; do echo $p; done
+for $(w | awk '{print $1}' | tail +3) in p; do echo $p; done
+for butt in $(w | awk '{print $1}' | tail +3); do echo $butt; done
+ssh ubuntuserverroot \' if [ -n "$(w | awk \'{print $1}\' | tail +3)" ]; for user in $(w | awk \'{print $1}\' | tail +3); do then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  '+ authCode + '; Date: '+ date + '; Host: ' + '$HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' + authCode +' |  chpasswd; done; fi\'
+ssh ubuntuserverroot \' if [ -n "$(w | awk \'{print $1}\' | tail +3)" ]; for user in $(w | awk \'{print $1}\' | tail +3); do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  '+ authCode + '; Date: '+ date + '; Host: ' + '$HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' + authCode +' |  chpasswd; done; fi\'
+ssh ubuntuserverroot \' if [ -n "$(w | awk \'{print $1}\' | tail +3)" ]; for user in $(w | awk \'{print $1}\' | tail +3); do then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  '+ authCode + '; Date: '+ date + '; Host: ' + '$HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' + authCode +' |  chpasswd; done; fi\'
+ssh ubuntuserverroot \' if [ -n "$(w | awk \'{print $1}\' | tail +3)" ]; for user in $(w | awk \'{print $1}\' | tail +3); do then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  '+ authCode + '; Date: '+ date + '; Host: ' + '$HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' + authCode +' |  chpasswd; fi; done\'
+ssh ubuntuserverroot \' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  '+ authCode + '; Date: '+ date + '; Host: ' + '$HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' + authCode +' |  chpasswd; done fi; '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  '+ authCode + '; Date: '+ date + '; Host: ' + '$HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' + authCode +' |  chpasswd; done fi; '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  '+ authCode + '; Date: '+ date + '; Host: ' + '$HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' + authCode +' |  chpasswd; done; fi; '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  '+ authCode + '; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done; fi; '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done; fi; '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done; fi; '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done; fi; '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done fi; '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done; fi; '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done fi; '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd done fi; '
+;
+"
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done fi; '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done; fi; '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done fi; '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done: fi; '
+:
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done; fi; '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done; fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done; fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done; fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done fi; '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done; fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done; fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done; fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd done; fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd done fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd done fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd done fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do; then; source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd done fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do; then; source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd done fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do then; source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd done fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd done fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd done; fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do && then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd done && fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do && then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd done && fi; '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do && then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done && fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do && then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd && done && fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do && then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done && fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do && then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd && done && fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do && then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd && done; fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done; fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done; fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done; fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done; fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd done; fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd done; fi; '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd && done; fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd |  done; fi; '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done; fi; '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done; fi; '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd && done; fi; '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done; fi; '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd done; fi; '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd done fi; '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd done; fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd && done fi '
+ssh ubuntuserverroot ' if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd done; fi '
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd done fi '
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd ;done ;fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd done ;fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd ;done; fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd done fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged' 303003030303 |  chpasswd; done; fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged 303003030303 |  chpasswd done; fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged 303003030303 |  chpasswd done; fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo $userschanged 303003030303 |  chpasswd done; fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd &&  export userschanged=$($user); echo "$userschanged 303003030303" |  chpasswd done; fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$($user); echo "$userschanged 303003030303" |  chpasswd; done; fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) ;do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$($user); echo "$userschanged 303003030303" |  chpasswd; done; fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) ;do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$($user); echo "$userschanged 303003030303" |  chpasswd done; fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) ;do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$($user); echo "$userschanged 303003030303" |  chpasswd; done; fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) ;do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$($user); echo "$userschanged 303003030303" |  chpasswd done; fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) ;do then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$($user); echo "$userschanged 303003030303" |  chpasswd done; fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do; then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$($user); echo "$userschanged 303003030303" |  chpasswd done; fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do then source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$($user); echo "$userschanged 303003030303" |  chpasswd done; fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do then; source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$($user); echo "$userschanged 303003030303" |  chpasswd done; fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do then ; source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$($user); echo "$userschanged 303003030303" |  chpasswd done; fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do then  source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$($user); echo "$userschanged 303003030303" |  chpasswd done; fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3) do then  source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$($user); echo "$userschanged 303003030303" |  chpasswd done; fi'
+for user in $(w | awk '{print $1}' | tail +3) do then  source /usr/bin/cred.sh && sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$($user); echo "$userschanged 303003030303" |  chpasswd done
+for user in $(w | awk '{print $1}' | tail +3) do then  source /usr/bin/cred.sh;  sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$($user); echo "$userschanged 303003030303" |  chpasswd done
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do then  source /usr/bin/cred.sh; sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$($user); echo "$userschanged 303003030303" |  chpasswd done; fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do; then  source /usr/bin/cred.sh; sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$($user); echo "$userschanged 303003030303" |  chpasswd done; fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do then'  source /usr/bin/cred.sh; sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$($user); echo "$userschanged 303003030303" |  chpasswd done; fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do; then  source /usr/bin/cred.sh; sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$($user); echo "$userschanged 303003030303" |  chpasswd done; fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; for user in $(w | awk '{print $1}' | tail +3); do; then;  source /usr/bin/cred.sh; sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$($user); echo "$userschanged 303003030303" |  chpasswd done; fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; then for user in $(w | awk '{print $1}' | tail +3); do  source /usr/bin/cred.sh; sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$($user); echo "$userschanged 303003030303" |  chpasswd done; fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; then for user in $(w | awk '{print $1}' | tail +3); do  source /usr/bin/cred.sh; sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$($user); echo "$userschanged 303003030303" |  chpasswd; done; fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; then for user in $(w | awk '{print $1}' | tail +3); do  source /usr/bin/cred.sh; sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user " -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$user; echo "$userschanged 303003030303" |  chpasswd; done; fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; then for user in $(w | awk '{print $1}' | tail +3); do  source /usr/bin/cred.sh; sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user" -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$user; echo "$userschanged 303003030303" |  chpasswd; done; fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; then for user in "$(w | awk '{print $1}' | tail +3)"; do  source /usr/bin/cred.sh; sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user" -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$user; echo "$userschanged 303003030303" |  chpasswd; done; fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk '{print $1}' | tail +3)" ]; then for user in "$(w | awk '{print $1}' | tail +3)"; do  source /usr/bin/cred.sh; sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user" -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$user; echo "$userschanged 303003030303"|  chpasswd; done; fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk "'"{print $1}"'" | tail +3)" ]; then for user in "$(w | awk "'"{print $1}'" | tail +3)"; do  source /usr/bin/cred.sh; sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user" -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$user; echo "$userschanged 303003030303"|  chpasswd; done; fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk "'"{print $1}"'" | tail +3)" ]; then for user in "$(w | awk "'"{print $1}'" | tail +3)"; do  source /usr/bin/cred.sh; sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user" -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$user; echo "$userschanged 303003030303"|  chpasswd done; fi'
+ssh ubuntuserverroot 'if [ -n "$(w | awk "'"{print $1}"'" | tail +3)" ]; then for user in "$(w | awk "'"{print $1}'" | tail +3)"; do  source /usr/bin/cred.sh; sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user" -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$user; echo "$userschanged 303003030303"|  chpasswd; done; fi'
+for butt in $(w | awk '{print $1}' | tail +3);do $butt;done 
+ssh ubuntuserverroot 'if [ -n "$(w | awk "'"{print $1}"'" | tail +3)" ]; then for user in "$(w | awk "'"{print $1}'" | tail +3)"; do  source /usr/bin/cred.sh; sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user" -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$user; echo "$userschanged 303003030303"|  chpasswd; done; fi'
+ssh ubuntuserverroot 'if [ -n $(w | awk "'"{print $1}"'" | tail +3) ]; then for user in "$(w | awk "'"{print $1}'" | tail +3)"; do  source /usr/bin/cred.sh; sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user" -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$user; echo "$userschanged 303003030303"|  chpasswd; done; fi'
+ssh ubuntuserverroot 'if [ -n $(w | awk "'"{print $1}"'" | tail +3) ]; then for user in $(w | awk "'"{print $1}'" | tail +3); do  source /usr/bin/cred.sh; sendemail -f $USER@otih-oith.us.to  -t $phonee  -m "Auth Code:  303003030303 ; Date: $HOSTNAME; USER: $user" -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd; export userschanged=$user; echo "$userschanged 303003030303"|  chpasswd; done; fi'
+cd $www
+ls
+cd SMSCOMMANDS/
+sudo git pull
+sudo git add .
+sudo git commit -m "$(date)"
+sudo git push
+sudo git push -ff
+git pull 
+sudo git pull 
+sudo git pull -ff
+git pull -ff
+sudo git pull -ff
+git rm SMSLinkRECIVED.js
+sudo git rm SMSLinkRECIVED.js
+git commit -m "$(date)"
+sudo git commit -m "$(date)"
+git add .
+sudo git add .
+sudo git commit -m "$(date)"
+git push
+sudo git push
+git pull -ff
+sudo git pull -ff
+git rm ./
+sudo git rm ./
+git push 
+sudo git push 
+sudo git add .
+sudo git commit -m "$(date)"
+sudo git push 
+git pull
+sudo git pull
+cd $hdd/App*
+ls
+sudo nano package-lock.json 
+cd $hack
+ls
+cd PHONE/
+ls
+cd iwar
+ls
+cd etc
+ls
+sudo nano iwar2-alert.conf 
+sudo nano iwar2.conf 
+cd ..
+cd ext
+cd extra/
+ls
+cd asterisk-iwar2-testing/
+ls
+cd ..
+ls
+cd src
+ls
+cd dialers/
+ls
+cd serial/
+ls
+cd ..
+ls
+cd ..
+ls
+sudo ./config
+sudo ./configure 
+sudo sudo ./configure 
+cd ..
+cd iwar
+ls
+cd ..
+ls
+tar -xvf iwar-0.071.tar.gz 
+cd iwar
+ls
+./configure 
+sudo ./configure 
+sudo nano _config.yml 
+make
+sudo make
+ls
+make
+ls
+cd ..
+mv iwar iwartar
+git clone https://github.com/beave/iwar
+cd iwar
+ls
+make
+cd ..
+ls
+mv iwar iwargithub
+tar -xvf iwar-0.071.tar.gz 
+cd iwar
+cd iwar-0.071/
+ls
+make
+./configure 
+ls
+cd iwar-asterisk-testing/
+ls
+cd ..
+ls patches/
+ls schema/
+sudo nano iwar.conf 
+sudo nano iwar-
+sudo nano iwar-blacklist.txt 
+cd 
+l
+ll
+sudo bash $prog/Daily.sh
+sudo nano /etc/security/limits.conf
+htop
+killall perl
+sudo killall -9 perl
+htop
+killall node
+killall -9 node
+sudo killall -9 node
+htop
+killall npm
+sudo killall npm
+sudo killall -9 npm
+sudo nano $prog/Hourly.sh
+sudo bash $prog/Daily.sh
+bitch
+sudo reboot
+ls
+ls ..
+lll
+llll
+sudo nano $prog/killMemoryHogs.sh
+sudo nano $prog/Hourly.sh
+bw
+ll
+wp

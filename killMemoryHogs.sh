@@ -21,6 +21,8 @@ sudo killall -9 docker-containerd
 sudo killall -9 htop
 sudo killall -9 snapd
 sudo killall -9 postgres
+sudo killall -9 perl 
+
 #declare -a tooManySSH
 #tooManySSH=(`ps -u root | grep -iv sshd  | grep -i ssh  |   awk '{print $1}'`)
 
