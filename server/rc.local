@@ -31,7 +31,7 @@ do
 
 echo 1 > /sys/devices/system/cpu/cpu$i/online
 #echo performance > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor
-echo "interactive" > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor
+echo "userspace" > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor
 echo "$cpuMax"  > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_setspeed
 echo "$cpuMax" > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_max_freq
 echo "$cpuMax" > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_min_freq 
@@ -99,7 +99,7 @@ modprobe xt_tcpudp
 modprobe dm_cache_smq
 modprobe dm_cache
 modprobe aes_generic
-if [ "$(urname -p)" == x86_64 ]
+if [ "$(urname -p)" == "x86_64" ]
 	modprobe aes_x86_64
 	modprobe blowfish_x86_64
 	modprobe twofish_x86_64
@@ -158,7 +158,7 @@ echo "cfq" > /sys/block/${hddnum[$a]}/queue/scheduler
 
 done
 sudo bash /opt/serveronline.sh
-if [ -z  ifconfig | grep -A 1 "enp2s0" | grep -o '192.168.1.200' ]; then 
+if [ -z  "$(ifconfig | grep -A 1 'enp2s0' | grep -o '192.168.1.200')" ]; then 
 sudo ntpdate -u 192.168.1.200
 sudo /etc/init.d/ntp stop
 sudo ntpd -4q 192.168.1.200 

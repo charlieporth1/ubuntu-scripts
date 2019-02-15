@@ -17,6 +17,8 @@ sudo apt-get install cachefilesd
 systemctl enable cachefilesd
 sudo apt-get -y install libssl1.0-dev
 sudo apt-get install cpufrequtils sysfsutils
+sudo apt-get install smartmontools 
+
 
 wget https://www.openssl.org/source/openssl-1.0.2p.tar.gz
 tar -xvf ./openssl-1.0.2p.tar.gz

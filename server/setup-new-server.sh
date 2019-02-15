@@ -1,6 +1,7 @@
 #!/bin/bash
 #ssh banner
 echo will cite | parallel --citation
+sudo smartctl -s on /dev/sda 
 
 if [ ! -z "$(cat /etc/ssh/sshd_config | grep -o '#Banner /etc/issue.net')" ]; then
 sudo sed -i.bak -e  's##Banner /etc/issue.net##g' /etc/ssh/sshd_config

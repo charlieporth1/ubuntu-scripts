@@ -6,6 +6,7 @@ sudo rm -rf /tmp/*
 sudo apt-get clean
 sudo rm -rf /home/*/.glide/*
 sudo rm -rf /home/*/.nvm/*
+sudo rm -rf /home/*/.npm/_cacache/*
 #sudo rm -rf /home/*/
 sudo ucaresystem-core
 sudo rm  -rf /var/cache/apt/archives/*

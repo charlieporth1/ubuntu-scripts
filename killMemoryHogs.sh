@@ -9,24 +9,30 @@
 #sudo killall snapd
 #sudo killall htop
 #sudo killall -s SIGKILL perl
-sudo killall -s SIGKILL mysqld
-sudo killall -s SIGKILL docker-containerd
-sudo killall -s SIGKILL htop
-#sudo killall -s SIGKILL bash
-sudo killall -s SIGKILL snapd
-sudo killall -9 postgres
-#sudo killall -9 perl
-sudo killall -9 mysqld
-sudo killall -9 docker-containerd
-sudo killall -9 htop
-sudo killall -9 snapd
-sudo killall -9 postgres
-sudo killall -9 perl 
+declare -a programs
+programs=('mysqld' 'docker-containerd' 'htop' 'postgress' 'snapd' 'perl' 'fail2ban')
 
+for ((k=0; i <= ${#programs[@]}; k++)); do 
+sudo killall -s SIGKILL ${programs[$k]}
+sudo killall -9 ${programs[$k]}
+sudo killall -8 ${programs[$k]}
+sudo killall -7 ${programs[$k]}
+sudo killall -6 ${programs[$k]}
+sudo killall -5 ${programs[$k]}
+sudo killall -4 ${programs[$k]}
+sudo killall -3 ${programs[$k]}
+sudo killall -2 ${programs[$k]}
+sudo killall -1 ${programs[$k]}
+sudo killall -0 ${programs[$k]}
+done
 #declare -a tooManySSH
 #tooManySSH=(`ps -u root | grep -iv sshd  | grep -i ssh  |   awk '{print $1}'`)
+sync; echo 1 > /proc/sys/vm/drop_caches
+sync; echo 2 > /proc/sys/vm/drop_caches
+sync; echo 3 > /proc/sys/vm/drop_caches
 
-
+sudo rm -rf /var/run/fail2ban/fail2ban.sock 
+cpulimit -l 15 -- fail2ban-server
 #for (( i = 0 ; i < ${#tooManySSH[@]} ; i++))
 #do
 #echo "On $i"
