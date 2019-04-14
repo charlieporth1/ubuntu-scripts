@@ -1,4 +1,5 @@
 #!/bin/bash
+export ethdev="$(ifconfig | awk '{print $1}' | grep -v 'docker\|inet\|lo\|inetxf6\|UP\|RX\|TX\|collisions:*\|virbr0\|ether'| cut -d ':' -f 1)"
 sudo apt -y install whereami figlet
 #figlet $HOSTNAME > /etc/issues.net
 echo -e "Charles Timothy Porth's Website OTIH-OITH http://otih-oith.us.to" > /etc/issue.net

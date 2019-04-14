@@ -73,7 +73,7 @@ echo "iface lo inet loopback" >> /etc/network/interfaces
 fi
 
 export dns="dns-nameservers 1.1.1.1 8.8.8.8 8.8.4.4 9.9.9.9"
-export ethdev="$(ifconfig | awk '{print $1}' | grep -v 'docker\|inet\|lo\|inetxf6\|UP\|RX\|TX\|collisions:*\|virbr0\|ether'| cut -d ':' -f 1)"
+xport ethdev="$(ifconfig | awk '{print $1}' | grep -v 'docker\|inet\|lo\|inetxf6\|UP\|RX\|TX\|collisions:*\|virbr0\|ether'| cut -d ':' -f 1)"
 if [ -z "$(cat /etc/network/interfaces | grep -o "auto $ethcdev")" ]; then
 export masterip="$(ssh tegra-ubuntu cat /etc/ssh/ssh_config | grep -A 1  $HOSTNAME | grep -oE  'b([0-9]{1,3}.){3}[0-9]{1,3}b')"
 echo "" >> /etc/network/interfaces
@@ -251,7 +251,9 @@ echo "net.ipv4.tcp_moderate_rcvbuf = 1" >> /etc/sysctl.conf
 # command $sysctl net.ipv4.tcp_available_congestion_control and to find algo
 # that can be loaded run $grep TCP_CONG /boot/config-$(uname -r).
 # also read this - http://fasterdata.es.net/host-tuning/linux/
-echo "net.ipv4.tcp_congestion_control = cubic" >> /etc/sysctl.conf
+echo "net.core.default_qdisc=fq = bbr" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_congestion_control = bbr" >> /etc/sysctl.conf
+#echo "net.ipv4.tcp_congestion_control = cubic" >> /etc/sysctl.conf
 
 ###############################################################################
 ######################### MEMORY SUBSYSTEM OPTIONS ############################
@@ -333,7 +335,7 @@ echo "vm.min_free_kbytes = 131072" >> /etc/sysctl.conf
 
 # Controls the System Request debugging functionality of the kernel.
 # In most of the situations you do not need Magic SysRq.
-echo "kernel.sysrq = 0" >> /etc/sysctl.conf
+echo "kernel.sysrq = 1" >> /etc/sysctl.conf
 
 # Controls whether core dumps will append the PID to the core filename.
 # Useful when you for example debugging multi-threaded applications.

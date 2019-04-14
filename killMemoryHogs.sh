@@ -10,7 +10,7 @@
 #sudo killall htop
 #sudo killall -s SIGKILL perl
 declare -a programs
-programs=('mysqld' 'docker-containerd' 'htop' 'postgress' 'snapd' 'perl' 'fail2ban')
+programs=('mysqld' 'docker-containerd' 'htop' 'postgress' 'snapd' 'perl'} #W'fail2ban')
 
 for ((k=0; i <= ${#programs[@]}; k++)); do 
 sudo killall -s SIGKILL ${programs[$k]}
@@ -31,8 +31,8 @@ sync; echo 1 > /proc/sys/vm/drop_caches
 sync; echo 2 > /proc/sys/vm/drop_caches
 sync; echo 3 > /proc/sys/vm/drop_caches
 
-sudo rm -rf /var/run/fail2ban/fail2ban.sock 
-cpulimit -l 15 -- fail2ban-server
+#sudo rm -rf /var/run/fail2ban/fail2ban.sock 
+#cpulimit -l 15 -- fail2ban-server
 #for (( i = 0 ; i < ${#tooManySSH[@]} ; i++))
 #do
 #echo "On $i"

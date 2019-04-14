@@ -26,10 +26,10 @@ sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches 
 sudo rm -rf $hdd/Backup/ssh.zip 
 sudo zip -r9 $hdd/Backup/ssh.zip /etc/ssh/ | parallel -Jcluster
-sudo cp /home/ubuntu/.bashrc $back
-sudo cp /home/ubuntu/.bash_exports $back
-sudo cp /home/ubuntu/.bash_aliases $back 
-sudo cp /home/ubuntu/.nanorc $back
+sudo cp /home/ubuntuserver/.bashrc $back
+sudo cp /home/ubuntuserver/.bash_exports $back
+sudo cp /home/ubuntuserver/.bash_aliases $back 
+sudo cp /home/ubuntuserver/.nanorc $back
 
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
@@ -67,6 +67,7 @@ sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches 
 sudo echo 1 > /proc/sys/vm/drop_caches 
 #updates 
+
 sudo yes | sudo apt-get update
 
 #cd /mnt/HDD/workspace/GET_FOLLOWERS/twitter-bot-for-increased-growth/ 
@@ -86,4 +87,4 @@ sudo echo 1 > /proc/sys/vm/drop_caches
 curl -fsS --retry 3 https://hc-ping.com/6f5df9c2-9ded-4707-b527-0550a2270fa4
 sleep 20
 disown -a && exit 0
-#sudo reboot
+

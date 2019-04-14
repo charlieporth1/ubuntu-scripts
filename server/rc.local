@@ -139,6 +139,8 @@ hdparm -a256 /dev/${hddnum[$a]}
 hdparm -a512 /dev/${hddnum[$a]}
 hdparm -M 254 /dev/${hddnum[$a]}
 
+sudo /etc/init.d/xinetd restart
+
 hdparm -W /dev/${hddnum[$a]}
 sudo tune2fs -o journal_data_writeback /dev/${hddnum[$a]}
 echo cfq > /sys/block/${hddnum[$a]}/queue/scheduler

@@ -1,232 +1,244 @@
+#!/usr/bin/parallel --shebang-wrap -j32 --pipe /bin/bash
+#!/bin/bash
 #Better Bots for pageraking and youtubeVieing
 #they have random time delays 
 #Youtube charlieporth
 #15min
 curl -fsS --retry 3 https://hc-ping.com/906c2e51-893d-42bb-9915-16cecdb4f873 
-cd /mnt/HDD/workspace/YouTube-View-increaser
+#firefox --headless &
+sudo /etc/init.d/tor start
+headless=true #this is the headless bot not browser 
+export rootDir=/mnt/HDD/workspace
+if [ $headless ]; then
+export dir=Google-PageRank-cheater-headless/
+export cmd=./main
+else
+export dir=Google-PageRank-cheater-browser-aided/
+export cmd=./google
+fi 
+cd $rootDir/YouTube-View-increaser
 #timeout $((1 + RANDOM % 900 )) ./youtube 
-./youtube &
+#./youtube 
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
 #Studioso music app keyword
-cd /mnt/HDD/workspace/Google-PageRank-cheater-Studioso-Keyword-Music-app/Google-PageRank-cheater-headless
+cd $rootDir/Google-PageRank-cheater-Studioso-Keyword-Music-app/$dir/
 sudo rm -rf files/*
 chmod 777 *
 ##5min
-#cpulimit -l 30 ./main
-./main &  #| parallel -Jcluster 
-#timeout $((60 + RANDOM % 300 ))  ./main
+#cpulimit -l 30 $cmd
+$cmd   #| parallel -Jcluster 
+#timeout $((60 + RANDOM % 300 ))  $cmd
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
 # studioso google cheat bot with the keyword music educatio 
-cd /mnt/HDD/workspace/Google-PageRank-cheater-Studioso1-conf/Google-PageRank-cheater-headless 
+cd $rootDir/Google-PageRank-cheater-Studioso1-conf/$dir 
 sudo rm -rf files/*
 chmod 777 *
 #600 seconds == ten min
-#timeout $((55 + RANDOM % 600 )) ./main
-#cpulimit -l 30 ./main
-./main & #| parallel -Jcluster &
+#timeout $((55 + RANDOM % 600 )) $cmd
+#cpulimit -l 30 $cmd
+$cmd  #| parallel -Jcluster 
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
 # otih oith bot
-cd /mnt/HDD/workspace/Google-PageRank-cheater-OTIH-OITH-Conf/Google-PageRank-cheater-headless
+cd $rootDir/Google-PageRank-cheater-OTIH-OITH-Conf/$dir
 sudo rm -rf files/*
 chmod 777 *
 #3min
-#timeout $((55 + RANDOM % 180 ))  ./main
-#cpulimit -l 30 ./main
-./main #| parallel -Jcluster &
+#timeout $((55 + RANDOM % 180 ))  $cmd
+#cpulimit -l 30 $cmd
+$cmd #| parallel -Jcluster 
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
-cd /mnt/HDD/workspace/Google-PageRank-cheater/Google-PageRank-cheater-headless 
+cd $rootDir/Google-PageRank-cheater/$dir 
 sudo rm -rf files/*
 chmod 777 *
-./main &
-#timeout $((1 + RANDOM % 180 )) ./main
+$cmd 
+#timeout $((1 + RANDOM % 180 )) $cmd
 echo done with that
 echo done with that
 echo done with that
 echo done with that
 echo done with that
-sudo rm /mnt/HDD/workspace/Google-PageRank-cheater/Google-PageRank-cheater-headless/files/*
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
 #apps_for_music_teacher
-cd /mnt/HDD/workspace/Google-PageRank-cheater-apps_for_music_teachers/Google-PageRank-cheater-headless/
+cd $rootDir/Google-PageRank-cheater-apps_for_music_teachers/$dir/
 sudo rm -rf files/*   
 chmod 777 *
-#timeout $((15 + RANDOM % 180 ))  ./main
-#cpulimit -l 30 ./main
+#timeout $((15 + RANDOM % 180 ))  $cmd
+#cpulimit -l 30 $cmd
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
- ./main #| parallel -Jcluster 
-cd /mnt/HDD/workspace/Google-PageRank-cheater-apps_for_teachers_to_track_student_progress/Google-PageRank-cheater-headless/
+ $cmd #| parallel -Jcluster 
+cd $rootDir/Google-PageRank-cheater-apps_for_teachers_to_track_student_progress/$dir/
 sudo rm -rf files/*   
 chmod 777 *
-#timeout $((60 + RANDOM % 300 ))  ./main
-#cpulimit -l 30 ./main
+#timeout $((60 + RANDOM % 300 ))  $cmd
+#cpulimit -l 30 $cmd
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
-./main #| parallel -Jcluster &
-cd /mnt/HDD/workspace/Google-PageRank-cheater-apps_for_teachers_to_track_student_progress/Google-PageRank-cheater-headless/
+$cmd #| parallel -Jcluster 
+cd $rootDir/Google-PageRank-cheater-apps_for_teachers_to_track_student_progress/$dir/
 sudo rm -rf files/*   
 chmod 777 *
-#timeout $((30 + RANDOM % 180 ))  ./main
-#cpulimit -l 30 ./main
-./main & #| parallel -Jcluster 
+#timeout $((30 + RANDOM % 180 ))  $cmd
+#cpulimit -l 30 $cmd
+$cmd  #| parallel -Jcluster 
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
-cd /mnt/HDD/workspace/Google-PageRank-cheater-apps_music_majesty/Google-PageRank-cheater-headless/
+cd $rootDir/Google-PageRank-cheater-apps_music_majesty/$dir/
 sudo rm -rf files/*   
 chmod 777 *
-#timeout $((1 + RANDOM % 120 ))  ./main
-#cpulimit -l 30 ./main
-./main | parallel -j32 
+#timeout $((1 + RANDOM % 120 ))  $cmd
+#cpulimit -l 30 $cmd
+$cmd #| parallel -j32 
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
-cd /mnt/HDD/workspace/Google-PageRank-cheater-music_practice_tracker/Google-PageRank-cheater-headless/
+cd $rootDir/Google-PageRank-cheater-music_practice_tracker/$dir/
 sudo rm -rf files/*   
 chmod 777 *
-#timeout $((1 + RANDOM % 60 ))  ./main
-#cpulimit -l 30 ./main
+#timeout $((1 + RANDOM % 60 ))  $cmd
+#cpulimit -l 30 $cmd
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
-./main #| parallel -Jcluster 
-cd /mnt/HDD/workspace/Google-PageRank-cheater-music_teacher_app/Google-PageRank-cheater-headless/
+$cmd #| parallel -Jcluster 
+cd $rootDir/Google-PageRank-cheater-music_teacher_app/$dir/
 sudo rm -rf files/*   
 chmod 777 *
-#timeout $((30 + RANDOM % 240 ))  ./main
-#cpulimit -l 30 ./main
+#timeout $((30 + RANDOM % 240 ))  $cmd
+#cpulimit -l 30 $cmd
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
-./main & #| parallel -Jcluster
-cd /mnt/HDD/workspace/Google-PageRank-cheater-music_teacher_app/Google-PageRank-cheater-headless/Google-PageRank-cheater-music_teacher_app/Google-PageRank-cheater-headless/
+$cmd  #| parallel -Jcluster
+cd $rootDir/Google-PageRank-cheater-music_teacher_app/$dir
 sudo rm -rf files/*   
 chmod 777 *
-#timeout $((60 + RANDOM % 300 ))  ./main
-#cpulimit -l 30 ./main
-./main #| parallel -Jcluster &
-cd /mnt/HDD/workspace/Google-PageRank-cheater-music_teaching_app/Google-PageRank-cheater-headless/
+#timeout $((60 + RANDOM % 300 ))  $cmd
+#cpulimit -l 30 $cmd
+$cmd #| parallel -Jcluster 
+cd $rootDir/Google-PageRank-cheater-music_teaching_app/$dir/
 sudo rm -rf files/*   
 chmod 777 *
-#timeout $((60 + RANDOM % 240 ))  ./main
-#cpulimit -l 30 ./main
+#timeout $((60 + RANDOM % 240 ))  $cmd
+#cpulimit -l 30 $cmd
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
-./main & #| parallel -Jcluster
-cd /mnt/HDD/workspace/Google-PageRank-cheater-studio_so/Google-PageRank-cheater-headless/
+$cmd  #| parallel -Jcluster
+cd $rootDir/Google-PageRank-cheater-studio_so/$dir/
 sudo rm -rf files/*   
 chmod 777 *
-#timeout $((60 + RANDOM % 240 ))  ./main
-#cpulimit -l 30 ./main
+#timeout $((60 + RANDOM % 240 ))  $cmd
+#cpulimit -l 30 $cmd
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
-./main  #| parallel -Jcluster &
-cd /mnt/HDD/workspace/Google-PageRank-cheater-teacher_student_app/Google-PageRank-cheater-headless/
+$cmd  #| parallel -Jcluster 
+cd $rootDir/Google-PageRank-cheater-teacher_student_app/$dir/
 sudo rm -rf files/*   
 chmod 777 *
-#timeout $((60 + RANDOM % 240 ))  ./main
-#cpulimit -l 30 ./main
+#timeout $((60 + RANDOM % 240 ))  $cmd
+#cpulimit -l 30 $cmd
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
-./main & #| parallel -Jcluster 
+$cmd  #| parallel -Jcluster 
 
-cd /mnt/HDD/workspace/Google-PageRank-cheater-ios-music-teach/Google-PageRank-cheater-headless/
+cd $rootDir/Google-PageRank-cheater-ios-music-teach/$dir/
 sudo rm -rf files/*   
 chmod 777 *
-#timeout $((60 + RANDOM % 240 ))  ./main
-#cpulimit -l 30 ./main
+#timeout $((60 + RANDOM % 240 ))  $cmd
+#cpulimit -l 30 $cmd
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
-./main & #| parallel -Jcluster &
-cd /mnt/HDD/workspace/Google-PageRank-cheater-ios-musis-tool/Google-PageRank-cheater-headless/
+$cmd  #| parallel -Jcluster 
+cd $rootDir/Google-PageRank-cheater-ios-musis-tool/$dir/
 sudo rm -rf files/*   
 chmod 777 *
-#timeout $((60 + RANDOM % 240 ))  ./main
-#cpulimit -l 30 ./main
+#timeout $((60 + RANDOM % 240 ))  $cmd
+#cpulimit -l 30 $cmd
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
-./main #| parallel -Jcluster 
-cd /mnt/HDD/workspace/Google-PageRank-cheater-ios-student/Google-PageRank-cheater-headless/
+$cmd #| parallel -Jcluster 
+cd $rootDir/Google-PageRank-cheater-ios-student/$dir/
 sudo rm -rf files/*   
 chmod 777 *
-#timeout $((60 + RANDOM % 240 ))  ./main
-#cpulimit -l 30 ./main
+#timeout $((60 + RANDOM % 240 ))  $cmd
+#cpulimit -l 30 $cmd
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
-./main & #| parallel -Jcluster &
-cd /mnt/HDD/workspace/Google-PageRank-cheater-ios-teacher/Google-PageRank-cheater-headless/
+$cmd  #| parallel -Jcluster 
+cd $rootDir/Google-PageRank-cheater-ios-teacher/$dir/
 sudo rm -rf files/*   
 chmod 777 *
-#timeout $((60 + RANDOM % 240 ))  ./main
-#cpulimit -l 30 ./main
+#timeout $((60 + RANDOM % 240 ))  $cmd
+#cpulimit -l 30 $cmd
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
-./main #| parallel -Jcluster 
-cd /mnt/HDD/workspace/Google-PageRank-cheater-MUSICED/Google-PageRank-cheater-headless/
+$cmd #| parallel -Jcluster 
+cd $rootDir/Google-PageRank-cheater-MUSICED/$dir/
 sudo rm -rf files/*   
 chmod 777 *
-#timeout $((60 + RANDOM % 240 ))  ./main
-#cpulimit -l 30 ./main
+#timeout $((60 + RANDOM % 240 ))  $cmd
+#cpulimit -l 30 $cmd
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
-./main & #| parallel -Jcluster &
-cd /mnt/HDD/workspace/Google-PageRank-cheater-SMARTMUSIC/Google-PageRank-cheater-headless/
+$cmd  #| parallel -Jcluster 
+cd $rootDir/Google-PageRank-cheater-SMARTMUSIC/$dir/
 sudo rm -rf files/*   
 chmod 777 *
-#timeout $((60 + RANDOM % 240 ))  ./main
-#cpulimit -l 30 ./main
+#timeout $((60 + RANDOM % 240 ))  $cmd
+#cpulimit -l 30 $cmd
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
-./main #| parallel -Jcluster #this one should aways run 
+$cmd #| parallel -Jcluster #this one should aways run 
  
-cd /mnt/HDD/workspace/Google-PageRank-cheater-SMARTMUSIC-TRAIN-1/Google-PageRank-cheater-headless/
+cd $rootDir/Google-PageRank-cheater-SMARTMUSIC-TRAIN-1/$dir/
 sudo rm -rf files/*   
 chmod 777 *
-#timeout $((60 + RANDOM % 240 ))  ./main
-#cpulimit -l 30 ./main
+#timeout $((60 + RANDOM % 240 ))  $cmd
+#cpulimit -l 30 $cmd
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
-./main #| parallel -Jcluster #this one should aways run 
-cd /mnt/HDD/workspace/Google-PageRank-cheater-SMARTMUSIC-AFTER-TRAIN/Google-PageRank-cheater-headless/
+$cmd #| parallel -Jcluster #this one should aways run 
+cd $rootDir/Google-PageRank-cheater-SMARTMUSIC-AFTER-TRAIN/$dir/
 sudo rm -rf files/*   
 chmod 777 *
-#timeout $((60 + RANDOM % 240 ))  ./main
-#cpulimit -l 30 ./main
+#timeout $((60 + RANDOM % 240 ))  $cmd
+#cpulimit -l 30 $cmd
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
-./main #| parallel -Jcluster #this one should aways run 
-cd /mnt/HDD/workspace/Google-PageRank-cheater-SMART_MUSIC_STUDIOSO/Google-PageRank-cheater-headless/
+$cmd #| parallel -Jcluster #this one should aways run 
+cd $rootDir/Google-PageRank-cheater-SMART_MUSIC_STUDIOSO/$dir/
 sudo rm -rf files/*   
 chmod 777 *
-#timeout $((60 + RANDOM % 240 ))  ./main
-#cpulimit -l 30 ./main
+#timeout $((60 + RANDOM % 240 ))  $cmd
+#cpulimit -l 30 $cmd
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
-./main #| parallel -Jcluster #this one should aways run 
+$cmd #| parallel -Jcluster #this one should aways run 
  
 
 
@@ -235,42 +247,45 @@ sudo echo 1 > /proc/sys/vm/drop_caches
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
-cd /mnt/HDD/workspace/tweet-delete-bot/
-node index.js &
+cd $rootDir/tweet-delete-bot/
+node index.js 
 
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
-#cd /mnt/HDD/workspace/like/Twitter_RT-FV_bot/
+#cd $rootDir/like/Twitter_RT-FV_bot/
 #timeout $((1 + RANDOM % 600 )) python FV_bot.py  
-#python FV_bot.py &
+#python FV_bot.py 
 
 #cd /mnt/HDD/comcasttweetpi
 #python comcasttweetpi.py 
 
 
-#cd /mnt/HDD/workspace/like/twitter-bot
+#cd $rootDir/like/twitter-bot
 #node bot.js 
-#cd /mnt/HDD/workspace/like/TwitterAutoFavorite 
+#cd $rootDir/like/TwitterAutoFavorite 
 #python bot.py 
 
 
-cd /mnt/HDD/workspace/GET_FOLLOWERS/twitter-bot-for-increased-growth 
-timeout 600 python app.py &
+cd $rootDir/GET_FOLLOWERS/twitter-bot-for-increased-growth 
+timeout 300 python app.py 
 
-#cd /mnt/HDD/workspace/GET_FOLLOWERS/go-twitter-bot 
+#cd $rootDir/GET_FOLLOWERS/go-twitter-bot 
 #./go-twitter-bot 
 
 # /start bot
-#sudo bash /mnt/HDD/workspace/reply/start.sh
-#node /mnt/HDD/workspace/reply/reply.js
-#sudo bash /mnt/HDD/workspace/twitter-contest-js-bot.1/start1.sh*
+#sudo bash $rootDir/reply/start.sh
+#node $rootDir/reply/reply.js
+#sudo bash $rootDir/twitter-contest-js-bot.1/start1.sh*
 #sudo bash /mnt/HDD/Programs/Startup.sh
-# bash /mnt/HDD/workspace/twitter-contest-js-bot.1/start1.sh 
+# bash $rootDir/twitter-contest-js-bot.1/start1.sh 
 #sudo python /mnt/HDD/tuned-ubuntu/tuned.py 
-#node /mnt/HDD/workspace/reply/reply.js
-#cd /mnt/HDD/workspace/reply
+#node $rootDir/reply/reply.js
+#cd $rootDir/reply
 #node reply.js
 curl -fsS --retry 3 https://hc-ping.com/2db2032d-649c-43b5-947a-cc132f769f5d
+sudo bash /mnt/HDD/workspace/keywordCounter/keywordCountertoCSV.sh 
   
-disown -a && exit 0
+killall firefox
+sudo /etc/init.d/tor stop
+disown -a  && exit 0

@@ -8,18 +8,24 @@ sudo apt-get install -y hello lolcat geoip-bin sshfs python3 ruby-rails  docker 
 sudo apt-get install -y gpuutils inetutils findutils psutils figlet python-pip python-pip3 nodejs cvs fuse gradle clamav espeak fcrackzip rsync ffmpeg genometools  geoip-bin geoipupdate 
 sudo apt-get install -y gnupg gnupg etckeeper gradle antiword fail2ban brotli chkrootkit  
 sudo apt-get install -y  libcryptsetup-dev libjansson-dev libpng-dev zlib1g-dev pi figlet npm
-sudo apt -y install apticron sudo  geoipupdate geoip-bin mosh
-sudo apt -y install unattended-upgrades sendmail sendemail
+sudo apt -y install apticron sudo  geoipupdate geoip-bin mosh 
+sudo apt-get -y install xinetd telnetd
+sudo apt -y install unattended-upgrades sendmail sendemail logrotate
 npm install geoip-native
 sudo apt -y install golang-go 
 sudo apt-get -y install tmpreaper ntp ntpd 
-sudo apt-get install cachefilesd
+sudo apt-get -y install cachefilesd
 systemctl enable cachefilesd
-sudo apt-get -y install libssl1.0-dev
-sudo apt-get install cpufrequtils sysfsutils
-sudo apt-get install smartmontools 
-
-
+sudo apt-get -y install libssl1.0-dev tor
+sudo apt-get -y install cpufrequtils sysfsutils
+sudo apt-get -y install smartmontools cpulimit
+sudo apt-get -y install libcryptsetup-dev libjansson-dev xorg
+sudo apt-get -y install  *`uname -r`* rsync rclone gdrive
+sudo apt install --install-recommends linux-generic-hwe-18.04
+sudo git clone https://github.com/pkoutoupis/rapiddisk/
+cd rapiddisk
+make 
+sudo make install
 wget https://www.openssl.org/source/openssl-1.0.2p.tar.gz
 tar -xvf ./openssl-1.0.2p.tar.gz
 cd ./openssl-1.0.2p/
@@ -41,6 +47,7 @@ sudo cp -rf ./sshd /usr/sbin/
 sudo apt-mark hold openssh-server
 sudo apt-mark hold openssh*
 
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
 #git clone https://github.com/pkoutoupis/rapiddisk
 
 #https://github.com/mozilla/geckodriver/releases/download/v0.20.1/geckodriver-v0.20.1-arm7hf.tar.gz
@@ -75,7 +82,9 @@ sudo apt-mark hold openssh*
 #sudo checkinstall
 #sudo make install
 #cd .. 
-
+git clone https://github.com/pkoutoupis/rapiddisk/
+cd rapiddisk
+make install
 sudo  apt-get -y install build-essential zlib1g zlib1g-dev libxml2 libxml2-dev libxslt-dev locate libreadline6-dev libcurl4-openssl-dev git-core libssl-dev libyaml-dev openssl autoconf libtool ncurses-dev bison curl wget postgresql postgresql-contrib libpq-dev libapr1 libaprutil1 libsvn1 libpcap-dev
 
 wget https://downloads.metasploit.com/data/releases/metasploit-latest-linux-x64-installer.run && wget https://downloads.metasploit.com/data/releases/metasploit-latest-linux-x64-installer.run.sha1 && echo $(cat metasploit-latest-linux-x64-installer.run.sha1)'  'metasploit-latest-linux-x64-installer.run > metasploit-latest-linux-x64-installer.run.sha1 && shasum -c metasploit-latest-linux-x64-installer.run.sha1 && chmod +x ./metasploit-latest-linux-x64-installer.run && sudo ./metasploit-latest-linux-x64-installer.runwget https://downloads.metasploit.com/data/releases/metasploit-latest-linux-x64-installer.run && wget https://downloads.metasploit.com/data/releases/metasploit-latest-linux-x64-installer.run.sha1 && echo $(cat metasploit-latest-linux-x64-installer.run.sha1)'  'metasploit-latest-linux-x64-installer.run > metasploit-latest-linux-x64-installer.run.sha1 && shasum -c metasploit-latest-linux-x64-installer.run.sha1 && chmod +x ./metasploit-latest-linux-x64-installer.run && sudo ./metasploit-latest-linux-x64-installer.runwget https://downloads.metasploit.com/data/releases/metasploit-latest-linux-x64-installer.run && wget https://downloads.metasploit.com/data/releases/metasploit-latest-linux-x64-installer.run.sha1 && echo $(cat metasploit-latest-linux-x64-installer.run.sha1)'  'metasploit-latest-linux-x64-installer.run > metasploit-latest-linux-x64-installer.run.sha1 && shasum -c metasploit-latest-linux-x64-installer.run.sha1 && chmod +x ./metasploit-latest-linux-x64-installer.run && sudo ./metasploit-latest-linux-x64-installer.run

@@ -507,8 +507,7 @@ function validphone () {
      *) return 0 ;;  # Success
     esac
 }
-function valid_ip()
-{
+function valid_ip() {
     local  ip=$1
     local  stat=1
 
@@ -524,3 +523,67 @@ function valid_ip()
     return $stat
 }
 
+function jb() {       
+figlet "Welcome 007"
+PS1='007:+($debian_chroot)}\u@\h:\w\\$ '
+}
+function MacGyver() {       
+figlet "Welcome Agus MacGyver"
+PS1='AgusMacGyver:+($debian_chroot)}\u@\h:\w\\$ '
+}
+function MrRobot() {       
+figlet "Welcome Agus Mr. Robot"
+PS1='MrRobot:+($debian_chroot)}\u@\h:\w\\$ '
+}       
+function FBI() {
+figlet "Welcoome FBI SHELL"
+PS1='FBI:+($debian_chroot)}\u@\h:\w\\$ '
+}
+function CIA() {
+figlet "Welcoome CIA SHELL"
+PS1='CIA:+($debian_chroot)}\u@\h:\w\\$ '
+}
+function NSA() {
+figlet "Welcoome NSA SHELL"
+PS1='NSA:+($debian_chroot)}\u@\h:\w\\$ '
+}
+function DoD() {
+figlet "Welcoome DoD SHELL"
+PS1='DoD:+($debian_chroot)}\u@\h:\w\\$ '
+}
+function USAF() {
+figlet "Welcoome USAF SHELL"
+PS1='USAF:+($debian_chroot)}\u@\h:\w\\$ '
+}
+function USNAVY() {
+figlet "Welcoome US Navy SHELL"
+PS1='USNavy:+($debian_chroot)}\u@\h:\w\\$ '
+}
+function USNG() {
+figlet "Welcoome US Natinal Gaurd SHELL"
+PS1='USNG:+($debian_chroot)}\u@\h:\w\\$ '
+}
+function USMC(){
+figlet "Welcoome USMC SHELL"
+PS1='USMC:+($debian_chroot)}\u@\h:\w\\$ '
+}
+function US_A() {
+figlet "Welcoome US Army SHELL"
+PS1='USArmy:+($debian_chroot)}\u@\h:\w\\$ '
+}
+function MNNG() {
+figlet "Welcoome US MN NG SHELL"
+PS1='USMNNG:+($debian_chroot)}\u@\h:\w\\$ '
+}
+function USM() {
+figlet "Welcoome US Marchels SHELL"
+PS1='USM:+($debian_chroot)}\u@\h:\w\\$ '
+}
+function CIAC() {
+figlet "Welcoome Charlie to the CIA computer network"
+PS1='CIA:+($debian_chroot)}\u@\h:\w\\$ '
+}
+function FBIC() {
+figlet "Welcoome Charlie to the FBI computer network"
+PS1='FBI+($debian_chroot)}\u@\h:\w\\$ '
+}

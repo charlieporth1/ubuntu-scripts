@@ -34,7 +34,7 @@ export ubuntuserver='192.168.1.200'
 #export GOPATH=~/golang/go
 #export PATH=/bin
 #export GOPATH=$HOME/work
-export GOPATH=/mnt/HDD/goworkspace
+export GOPATH="/mnt/HDD/goworkspace"
 export GOBIN=$GOPATH/bin
 export LGOBIN=$GOPATH/bin
 export PATH=$PATH:$LGOBIN:$GOBIN:${JAVA_HOME}/bin
@@ -53,21 +53,22 @@ PERL_MM_OPT="INSTALL_BASE=/home/ubuntu/perl5"; export PERL_MM_OPT;
 
 
 
-export prog=/mnt/HDD/Programs/
-export Prog=/mnt/HDD/Programs/
-export www=/var/www/
-export hdd=/mnt/HDD/
-export HDD=/mnt/HDD/
-export work=/mnt/HDD/workspace/
-export workspace=/mnt/HDD/workspace/
-export hack=/mnt/HDD/HACK
-export Hack=/mnt/HDD/HACK
-export HACK=/mnt/HDD/HACK
-export local=/usr/local/
-export tmp=/mnt/HDD/tmp
-export ssh=/etc/ssh/
-export cock=/mnt/HDD/cockpit/
-export cock1=/etc/cockpit/
+export prog="/mnt/HDD/Programs/"
+export Prog="/mnt/HDD/Programs/"
+export PROG="/mnt/HDD/Programs/"
+export www="/var/www/"
+export hdd="/mnt/HDD/"
+export HDD="/mnt/HDD/"
+export work="/mnt/HDD/workspace/"
+export workspace="/mnt/HDD/workspace/"
+export hack="/mnt/HDD/HACK"
+export Hack="/mnt/HDD/HACK"
+export HACK="/mnt/HDD/HACK"
+export local="/usr/local/"
+export tmp="/mnt/HDD/tmp"
+export ssh="/etc/ssh/"
+export cock="/mnt/HDD/cockpit/"
+export cock1="/etc/cockpit/"
 
 
 #------------------------------------------////

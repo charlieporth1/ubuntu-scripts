@@ -9,7 +9,7 @@ alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-
+bigprograms="dpkg-query -Wf '${Installed-Size}\t${Package}\n' | sort -n"
 #fi
 
 # some more ls aliases
@@ -66,14 +66,14 @@ alias cd.....='cd ../../../../'
 alias cd.4='cd ../../../../'
 alias cd.5='cd ../../../../../'
 
-
+alias sshdiplogs='grep "Failed password for" /var/log/auth.log | grep -Po "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" \| sort | uniq -c'
 alias ls...='ls ../../'
 alias ls....='ls ../../../'
 alias ls.....='ls ../../../../'
 alias ls.4='ls ../../../../'
 alias ls.5='ls ../../../../..'
 
-
+alias timer='date1=`date +%s`; while true; do    echo -ne "$(date -u --date @$((`date +%s` - $date1)) +%H:%M:%S)\r";done'
 
 alias ls='ls -GFh'
 

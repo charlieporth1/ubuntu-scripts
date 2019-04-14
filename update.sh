@@ -6,6 +6,8 @@ npm i npm
 sudo apt-get -y update
 sudo apt-get -y dist-upgrade --yes
 sudo apt-get -y upgrade --yes
+
+sudo apt-get --with-new-pkgs -y upgrade
 sudo npm update
 sudo npm upgrade
 gcloud components update

@@ -1,6 +1,6 @@
 #!/usr/bin/parallel --shebang-wrap --pipe /bin/bash
-#chmod 777 /home/ubuntu/.parallel/semaphores
-#rm -rf /home/ubuntu/.parallel/semaphores/*
+#chmod 777 /home/ubuntuserubuntuseubuntuser/.parallel/semaphores
+#rm -rf /home/ubuntuser/.parallel/semaphores/*
 
 # ~/.bashrc: executed by bash(1) for non-login shells. see 
 # /usr/share/doc/bash/examples/startup-files (in the package bash-doc) 
@@ -168,21 +168,30 @@ if [ -f ~/.bash_sudo ]; then
     source ~/.bash_sudo
 fi
 
-if [ -f  /home/ubuntu/.rvm/scripts/rvm ]; then 
-#echo this rvm 
-   source /home/ubuntu/.rvm/scripts/rvm
-fi 
 
 function cdn(){ for i in `seq $1`; do cd ..; done;}
+shopt -s dirspell             # change to named directory
+#shopt -s xpg_echo             # change to named directory
+shopt -s promptvars             # change to named directory
+shopt -s progcomp             # change to named directory
+#shopt -s progcomp_alias             # change to named directory
+shopt -s histappend             # change to named directory
+shopt -s globstar             # change to named directory
+shopt -s dirspell             # change to named directory
+shopt -s direxpand             # change to named directory
+shopt -s complete_fullquote             # change to named directory
+shopt -s compat40             # change to named directory
+shopt -s compat32             # change to named directory
+shopt -s compat31             # change to named directory
 shopt -s autocd             # change to named directory
-shopt -s cdable_vars        # if cd arg is not valid, assumes its a var defining a dir
-shopt -s cdspell            # autocorrects cd misspellings
 shopt -s checkwinsize       # update the value of LINES and COLUMNS after each command if altered
 shopt -s cmdhist            # save multi-line commands in history as single line
 shopt -s dotglob            # include dotfiles in pathname expansion
 shopt -s expand_aliases     # expand aliases
 shopt -s extglob            # enable extended pattern-matching features
 shopt -s hostcomplete       # attempt hostname expansion when @ is at the beginning of a word
+shopt -s cdable_vars        # if cd arg is not valid, assumes its a var defining a dir
+shopt -s cdspell            # autocorrects cd misspellings
 #shopt -s posix
 #shopt -s nocaseglob         # wpathname expansion will be treated as case-insensitive
 
@@ -204,42 +213,51 @@ shopt -s hostcomplete       # attempt hostname expansion when @ is at the beginn
 #rm -rf /tmp/* &> /dev/null
 
 #echo done with scritps
-#export NVM_DIR="/home/ubuntu/.nvm"
+#export NVM_DIR="/home/ubuntuser/.nvm"
 #[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 #export extip=$(cuControlPersist 60mrl ipecho.net/plain ; echo)
-#geoiplookup (last  -1 -i -w --time-format notime | grep -e  'ubuntu\|logged in\|pts/*' | cut -c 19-39)
+#geoiplookup (last  -1 -i -w --time-format notime | grep -e  'ubuntuser\|logged in\|pts/*' | cut -c 19-39)
 #export extip=$(dig +short myip.opendns.com @resolver1.opendns.com)
 export extip=$(parallel -j16 --xargs --semaphoretimeout 1 bash | curl -s ipinfo.io/ip)
 #echo done with curl
-#geoiplookup  last  -2 -i -w --time-format notime | grep -e  'ubuntu\|logged in\|pts/*' |  sed -n '2p' | cut -d " " -f12
-#geoiplookup  $( last  -2 -i -w --time-format notime | grep -e  'ubuntu\|logged in\|pts/*\|tty*' |  sed -n '2p' |  grep -e  'ubuntu\|logged in\|pts/*\|tty*' | cut -b 19-38)
-#lll=$(last  -2 -i -w --time-format notime | grep -e  'ubuntu\|logged in\|pts/*' |  sed -n '2p' | cut -d " " -f12)
-#llll=$(last  -2 -i -w --time-format notime | grep -e  'ubuntu\|logged in\|pts/*\|tty*' |  sed -n '2p' |  grep -e  'ubuntu\|logged in\|pts/*\|tty*')
-#export llll=$(last  -2 -i -w --time-format notime | grep -e  'ubuntu\|logged in\|pts/*\|tty*' |  sed -n '2p' |  grep -e  'ubuntu\|logged in\|pts/*\|tty*' | cut -b 19-38)
-export llll=$(last  -2  --time-format notime | grep -e  'ubuntu\|logged in\|pts/*\|tty*' |  sed -n '2p' |  grep -e  'ubuntu\|logged in\|pts/*\|tty*' |  awk '{print $3}')
+#geoiplookup  last  -2 -i -w --time-format notime | grep -e  'ubuntuser\|logged in\|pts/*' |  sed -n '2p' | cut -d " " -f12
+#geoiplookup  $( last  -2 -i -w --time-format notime | grep -e  'ubuntuser\|logged in\|pts/*\|tty*' |  sed -n '2p' |  grep -e  'ubuntuser\|logged in\|pts/*\|tty*' | cut -b 19-38)
+#lll=$(last  -2 -i -w --time-format notime | grep -e  'ubuntuser\|logged in\|pts/*' |  sed -n '2p' | cut -d " " -f12)
+#llll=$(last  -2 -i -w --time-format notime | grep -e  'ubuntuser\|logged in\|pts/*\|tty*' |  sed -n '2p' |  grep -e  'ubuntuser\|logged in\|pts/*\|tty*')
+#export llll=$(last  -2 -i -w --time-format notime | grep -e  'ubuntuser\|logged in\|pts/*\|tty*' |  sed -n '2p' |  grep -e  'ubuntuser\|logged in\|pts/*\|tty*' | cut -b 19-38)
+export llll=$(last  -2  --time-format notime | grep -e  'ubuntuser\|logged in\|pts/*\|tty*' |  sed -n '2p' |  grep -e  'ubuntuser\|logged in\|pts/*\|tty*' |  awk '{print $3}')
 export lll=$(last -2 -R -w  | sed -n '2p' | cut -c 20- )
-export lastip4=$(last -4  --time-format notime | grep -e  'ubuntu\|logged in\|pts/*\|tty*' |  sed -n '4p' |  grep -e  'ubuntu\|logged in\|pts/*\|tty*' | awk '{print $3}')
-export lastip3=$(last -3  --time-format notime | grep -e  'ubuntu\|logged in\|pts/*\|tty*' |  sed -n '3p' |  grep -e  'ubuntu\|logged in\|pts/*\|tty*' | awk '{print $3}')
+export lastip4=$(last -4  --time-format notime | grep -e  'ubuntuser\|logged in\|pts/*\|tty*' |  sed -n '4p' |  grep -e  'ubuntuser\|logged in\|pts/*\|tty*' | awk '{print $3}')
+export lastip3=$(last -3  --time-format notime | grep -e  'ubuntuser\|logged in\|pts/*\|tty*' |  sed -n '3p' |  grep -e  'ubuntuser\|logged in\|pts/*\|tty*' | awk '{print $3}')
 #echo done with llll
 #stty -echo
 export mosh='0.0.0.0'
 if [[ $llll  =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-export llll=$(last  -2  --time-format notime | grep -e  'ubuntu\|logged in\|pts/*\|tty*' |  sed -n '2p' |  grep -e  'ubuntu\|logged in\|pts/*\|tty*' |  awk '{print $3}')
+export llll=$(last  -2  --time-format notime | grep -e  'ubuntuser\|logged in\|pts/*\|tty*' |  sed -n '2p' |  grep -e  'ubuntuser\|logged in\|pts/*\|tty*' |  awk '{print $3}')
 export lll=$(last -2 -R -w  | sed -n '2p' | cut -c 20- )
 elif [[ $lastip3  =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
 #stty echo
-export llll=$(last  -3  --time-format notime | grep -e  'ubuntu\|logged in\|pts/*\|tty*' |  sed -n '3p' |  grep -e  'ubuntu\|logged in\|pts/*\|tty*' | awk '{print $3}')
+export llll=$(last  -3  --time-format notime | grep -e  'ubuntuser\|logged in\|pts/*\|tty*' |  sed -n '3p' |  grep -e  'ubuntuser\|logged in\|pts/*\|tty*' | awk '{print $3}')
 export lll=$(last -3 -R -w  | sed -n '3p' | cut -c 20- )
 elif [[ $lastip4  =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-export llll=$(last  -4  --time-format notime | grep -e  'ubuntu\|logged in\|pts/*\|tty*' |  sed -n '4p' |  grep -e  'ubuntu\|logged in\|pts/*\|tty*' | awk '{print $3}')
+export llll=$(last  -4  --time-format notime | grep -e  'ubuntuser\|logged in\|pts/*\|tty*' |  sed -n '4p' |  grep -e  'ubuntuser\|logged in\|pts/*\|tty*' | awk '{print $3}')
 export lll=$(last -4 -R -w  | sed -n '4p' | cut -c 20- )
 #elif ( echo -ne $inv  $llll   = echo -ne  $mosh  $reset ); then
 echo 
 else
-export llll=$(last  -2  --time-format notime | grep -e  'ubuntu\|logged in\|pts/*\|tty*' |  sed -n '2p' |  grep -e  'ubuntu\|logged in\|pts/*\|tty*' |  awk '{print $3}')
+export llll=$(last  -2  --time-format notime | grep -e  'ubuntuser\|logged in\|pts/*\|tty*' |  sed -n '2p' |  grep -e  'ubuntuser\|logged in\|pts/*\|tty*' |  awk '{print $3}')
 export lll=$(last -2 -R -w  | sed -n '2p' | cut -c 20- )
 fi
 
+
+export StrDay=${1:-${Today:0:10}}
+export N_Crash=`last -F  |grep crash  |  grep "$StrDay"  | sort -k 7 -u | wc -l`
+export N_Reboot=`last -F | grep reboot | grep "$StrDay"  | wc -l `
+export N_LoginU=`last | grep $USER| grep -v "reboot\|crash" | wc -l`
+export N_LoginT=`last | grep ^ | grep -v "reboot\|crash" | wc -l`
+export N_LoginLU=`last | grep $USER| grep 'logged in' | wc -l`
+export N_LoginLT=`last | grep ^ | grep 'logged in' | wc -l`
+export stillLogin=`last | grep ^igor | grep 'still logged'`
 #echo done with  lll export
 
 #fi
@@ -264,8 +282,8 @@ export disk1=$(df -h | grep /dev/sda)
 #echo done with disk
 #ll=$(last -2 -R -w  | head -1 | cut -c 20-)
 #lll=$(last -1 -i  $USER | head -1 | cut -c 20-)
-#lll=$( last -1 -i -w --time-format notime | grep -e  'ubuntu\|logged in\|pts/*'  | cut -d  " " -f12)
-#llll=$( last -2 -i -w --time-format notime | grep -e  'ubuntu\|logged in\|pts/*'  | cut -d  " " -f12)
+#lll=$( last -1 -i -w --time-format notime | grep -e  'ubuntuser\|logged in\|pts/*'  | cut -d  " " -f12)
+#llll=$( last -2 -i -w --time-format notime | grep -e  'ubuntuser\|logged in\|pts/*'  | cut -d  " " -f12)
 echo "last login time [$lll]"    # adjust to your login messages, fortunes, etc
 #export PS1='\n\h:\W\$ '         # replace by your favorite prompt
 #export whosinjailnumber=$(parallel -j4  --semaphoretimeout 1 bash | fail2ban-client status | sed -n '2p' | awk '{print $5 }')
@@ -281,12 +299,13 @@ WEATHERARRAY=( `lynx -dump "http://www.google.com/search?hl=en&lr=&client=firefo
 echo ${WEATHERARRAY[@]}
 }
 # Alias definitions.
+#echo -e "# Today $Today  Report for crash and reboot on $StrDay  "
 
 echo -ne $reset
 figlet Welcome ${USER} |lolcat
 figlet MASTER NODE |lolcat
-#figlet Ubuntu Server | pv -qL 15|lolcat
-figlet Ubuntu Server | pv -qL 60|lolcat
+#figlet ubuntuser Server | pv -qL 15|lolcat
+figlet ubuntuser Server | pv -qL 60|lolcat
 hello| pv -qL 15|lolcat 
 bash $prog/lines.sh
 echo -e "# Welcome ${USER} "| pv -qL 30 | lolcat -p 0.9 -F 0.9  
@@ -294,6 +313,8 @@ echo -e "# Welcome Charlie Porth" | pv -qL 30
 echo -ne "# Today is: $BIPurple"; date; echo -ne "$nc"  |  pv -qL 80 #date +"Today is %A %D, and it is now %R"
 echo -ne "# Up time: $BICyan ";uptime | awk /'up/'; echo -ne "$nc" |  pv -qL 80
 echo -ne "# Last reboot time: $brown"; who -b; echo -ne "$nc" |  pv -qL 80
+echo -e "# Crashes && Reboots$lightgray today$nc: Crashes: $URed$N_Crash$nc && Reboots: $UBlue$N_Reboot$nc"
+echo -e "# You have logged in $UGreen$N_Login$nc and everyone else has logined in $UYellow$N_LoginT$nc times" 
 echo -e "# This machine has $IRed $critupdate and $IBlue $updates $nc" |  pv -qL 70
 echo -e "# You have $BPurple$whosinjailnumber$nc in the Jail" #; echo -ne "$BPurple$whosinjail$nc"
 echo -e "# You have $white$MAILCHECK$nc in your inbox" |  pv -qL 80
@@ -318,6 +339,6 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+
 #rm -rf /tmp/* &> /dev/null
 echo -e "\a \a \a \a"

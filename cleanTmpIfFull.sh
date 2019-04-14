@@ -1,11 +1,11 @@
 #!/bin/bash
-export per=$(df | grep "/tmp" | awk '{print $5}')
-
-if [ "$per" == "75%" ]; then
+export per=$(df | grep "/tmp" | awk '{print $5}' | cut -d "%" -f 1)
+export  perFull=85
+if [[ $per > $perFull ]]; then
 echo "cleanning"
  rm -rf /tmp/*
 echo "done"
 else 
-echo "not at percent its at $per"
+echo "limit $perFull; not at percent its at $per; "
 fi
 

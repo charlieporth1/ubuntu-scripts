@@ -62,11 +62,11 @@ sudo rm -rf $back/usrlocal.zip | parallel -Jcluster
 sudo zip -rf $back/usrlocal.zip /usr/local/ & | parallel -Jcluster
 --MULTILINE-COMMENT--
 
-sudo cp -rf /home/ubuntu/.bash* $back  
+sudo cp -rf /home/ubuntuserver/.bash* $back  
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
-sudo cp -rf /home/ubuntu/.bash* /mnt/HDD/Programs/   
+sudo cp -rf /home/ubuntuserver/.bash* /mnt/HDD/Programs/   
 
 
 
@@ -139,9 +139,10 @@ sudo clamscan --remove=yes -i -r /  --exclude-dir="/mnt/HDD/Virus/|/mnt/HDD/HACK
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
-
+sudo bash /mnt/HDD/workspace/keywordCounter/keywordCountertoCSV.sh 
 #reboot kernel and linux
 #kexec-reboot --reboot
 curl -fsS --retry 3 https://hc-ping.com/ab2fe292-6e5b-4f3b-adfb-319a5e08fa45
 sleep 20
-sudo reboot
+disown -a && exit 0 
+#sudo reboot -f

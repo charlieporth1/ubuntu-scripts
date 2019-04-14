@@ -25,3 +25,4 @@ cpulimit -l 30 | sudo bleachbit --list | grep -E "[a-z]+\.[a-z]+" | xargs bleach
 sudo npm cache clean --force
 #sudo bash /mnt/HDD/Programs//pipfix.sh 
 sudo dpkg --configure -a
+journalctl --vacuum-size=25M
