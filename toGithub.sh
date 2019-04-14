@@ -9,7 +9,9 @@ else
 	cluster=-jcluster
 fi
 cd $dir
-rm /mnt/HDD/Programs/.git/index.lock
+if [ -f $dir/.git/index.lock ];then
+	rm $dir/.git/index.lock
+fi
 git add .
 if [[ `git status --porcelain` ]]; then
   # Changes
