@@ -14,6 +14,7 @@ function toGit() {
 		rm $dir/.git/index.lock
 	fi
 	git add .
+	git ignore ".git/"
 	if [[ `git status --porcelain` ]]; then
 	  # Changes
 		echo changes
