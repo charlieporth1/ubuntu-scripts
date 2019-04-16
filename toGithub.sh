@@ -17,9 +17,9 @@ function toGit() {
 	if [[ `git status --porcelain` ]]; then
 	  # Changes
 		echo changes
-		git add -f . | parallel $cluster
-		git commit -m "$(date)" | parallel $cluster
-		git rm --cached -r .git | parallel $cluster
+		git add -f . #| parallel $cluster
+		git commit -m "$(date)" #| parallel $cluster
+		git rm --cached -r .git #| parallel $cluster
 		#git rm --cached email-virus-report.sh
 		#git rm --cached .sh 
 		git push | parallel $cluster
