@@ -7,6 +7,7 @@ export PATH=$PATH:/usr/local/bin/geckodriver:/usr/local/libexec:/usr/libexec:/ho
 
 #export PATH=$PATH/usr/local/cuda/bin:/home/ubuntu/.sdkman/candidates/kotlin/current/bin:/usr/local/cuda-6.5/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 #export PATH=$PATH/usr/local/cuda/bin:/usr/local/cuda/bin:/home/ubuntu/.sdkman/candidates/kotlin/current/bin:/usr/local/cuda-6.5/bin:/usr/local/sbin:/usr/loc
+export DISPLAY=:10
 
 #export DISPLAY=:1
 #export DISPLAY=:10.0
@@ -22,6 +23,7 @@ export JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk-armhf/"
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib:/usr/local/cuda-6.5/lib:/usr/lib:/usr/local/lib:/lib:/usr/local/var/lib/
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/var/lib/:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64
 export LD_LIBRARY_PATH=$LB_LIBRARY_PATH:/usr/lib/arm-linux-gnueabihf/ #:/mnt/HDD/LD_LIBRARY/
+export LD_PRELOAD=$LD_PRELOAD:/usr/local/bin/gitbslr.so 
 
 export grandma='192.168.1.91'
 export tegraubuntu='192.168.1.250'
@@ -69,7 +71,7 @@ export tmp="/mnt/HDD/tmp"
 export ssh="/etc/ssh/"
 export cock="/mnt/HDD/cockpit/"
 export cock1="/etc/cockpit/"
-
+export apa="/etc/apache2"
 
 #------------------------------------------////
 # Colors:

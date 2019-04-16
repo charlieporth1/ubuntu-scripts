@@ -15,6 +15,7 @@ npm install geoip-native
 sudo apt -y install golang-go 
 sudo apt-get -y install tmpreaper ntp ntpd 
 sudo apt-get -y install cachefilesd
+
 systemctl enable cachefilesd
 sudo apt-get -y install libssl1.0-dev tor
 sudo apt-get -y install cpufrequtils sysfsutils
@@ -47,15 +48,19 @@ sudo cp -rf ./sshd /usr/sbin/
 sudo apt-mark hold openssh-server
 sudo apt-mark hold openssh*
 
+sudo add-apt-repository -y ppa:apt-fast/stable
+sudo apt-get -y update
+sudo apt -y install apt-fast
+
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
 #git clone https://github.com/pkoutoupis/rapiddisk
 
 #https://github.com/mozilla/geckodriver/releases/download/v0.20.1/geckodriver-v0.20.1-arm7hf.tar.gz
 #wget https://github.com/mozilla/geckodriver/releases/download/v0.18.0/geckodriver-v0.18.0-linux64.tar.gz
-#wget https://github.com/mozilla/geckodriver/releases/download/v0.20.1/geckodriver-v0.20.1-linux64.tar.gz
-#tar -xvzf geckodriver*
-#chmod +x geckodriver
-#cp ./geckodriver /usr/local/bin
+wget https://github.com/mozilla/geckodriver/releases/download/v0.22.1/geckodriver-v0.20.1-linux64.tar.gz
+tar -xvzf geckodriver*
+chmod +x geckodriver
+cp ./geckodriver /usr/local/bin
 #git clone https://github.com/mozilla/geckodriver/
 #git clone https://github.com/mozilla/geckodriver/tree/release
 #cd geckodriver
@@ -115,10 +120,10 @@ sudo apt-get install -y bash-completion
 #sudo apt-get install -y oracle-java8-set-default
 
 #install -y latest node version
-apt-get install -y python-software-properties
+sudo apt-get install -y python-software-properties
 curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
-apt-get update
-apt-get install -y nodejs
+sudo apt-get -y update
+sudo apt-get install -y nodejs
 
 
 #install -y docker

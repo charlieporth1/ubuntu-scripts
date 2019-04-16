@@ -1,4 +1,4 @@
-#!/usr/bin/parallel --shebang-wrap -j32 --pipe /bin/bash
+#!/usr/bin/parallel --shebang-wrap -j+64 --pipe /bin/bash
 #!/bin/bash
 #Better Bots for pageraking and youtubeVieing
 #they have random time delays 

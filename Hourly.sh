@@ -53,6 +53,7 @@ sudo bash /mnt/HDD/Programs/killMemoryHogs.sh
 #start backup
 #sudo zip -r9 /mnt/HDD/Backup/Website/Hourly/www.zip /var/www/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*
 sudo killall  node
+sleep 2
 sudo node /mnt/HDD/itunes-connect-slack/poll-itc.js  &
 cd /mnt/HDD/itunes-connect-slack && sudo node poll-itc.js &
 cd /mnt/HDD/SLACK/2fa-2-slack/ && npm start &

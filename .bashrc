@@ -269,7 +269,7 @@ export stillLogin=`last | grep ^igor | grep 'still logged'`
 #  echo "fail"
 #fi
 
-export geoo=$(parallel -j16 --xargs --semaphoretimeout 1 bash  | geoiplookup   $(echo $llll))
+export geoo=$(parallel -j16 --xargs --semaphoretimeout 2 bash  | geoiplookup   $(echo $llll))
 export geo="Edina, MN, USA"
 #export geo=$(parallel -j16 --semaphoretimeout 1 bash | whereami )
 #export disk=$(df -h | grep G)
@@ -277,8 +277,10 @@ export geo="Edina, MN, USA"
 export critupdate=$( /usr/lib/update-notifier/apt-check --human-readable | sed -n '2p')
 export updates=$( /usr/lib/update-notifier/apt-check --human-readable | sed -n '1p')
 #echo done with updae
-export disk=$(df -h | grep /dev/root)
-export disk1=$(df -h | grep /dev/sda)
+#export disk=$(df -h | grep /dev/root)
+#export disk1=$(df -h | grep /dev/sda)
+export disk=$(df -h | grep /dev/sda)
+export disk1=$(df -h | grep /dev/sdb)
 #echo done with disk
 #ll=$(last -2 -R -w  | head -1 | cut -c 20-)
 #lll=$(last -1 -i  $USER | head -1 | cut -c 20-)
@@ -300,6 +302,7 @@ echo ${WEATHERARRAY[@]}
 }
 # Alias definitions.
 #echo -e "# Today $Today  Report for crash and reboot on $StrDay  "
+#echo -ne "# Last reboot time: $brown"; who -b; echo -ne "$nc" |  pv -qL 80
 
 echo -ne $reset
 figlet Welcome ${USER} |lolcat
@@ -312,7 +315,7 @@ echo -e "# Welcome ${USER} "| pv -qL 30 | lolcat -p 0.9 -F 0.9
 echo -e "# Welcome Charlie Porth" | pv -qL 30
 echo -ne "# Today is: $BIPurple"; date; echo -ne "$nc"  |  pv -qL 80 #date +"Today is %A %D, and it is now %R"
 echo -ne "# Up time: $BICyan ";uptime | awk /'up/'; echo -ne "$nc" |  pv -qL 80
-echo -ne "# Last reboot time: $brown"; who -b; echo -ne "$nc" |  pv -qL 80
+echo -ne "# Last reboot time: $brown";  last -x reboot; echo -ne "$nc" |  pv -qL 80
 echo -e "# Crashes && Reboots$lightgray today$nc: Crashes: $URed$N_Crash$nc && Reboots: $UBlue$N_Reboot$nc"
 echo -e "# You have logged in $UGreen$N_Login$nc and everyone else has logined in $UYellow$N_LoginT$nc times" 
 echo -e "# This machine has $IRed $critupdate and $IBlue $updates $nc" |  pv -qL 70

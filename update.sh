@@ -1,5 +1,7 @@
 #!/bin/bash
 #update
+bash /mnt/HDD/Programs//fixdpkg-apt.sh
+
 sudo dpkg --configure -a
 sudo yes | sudo apt -y --fix-broken install
 npm i npm
