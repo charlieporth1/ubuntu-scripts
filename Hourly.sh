@@ -73,7 +73,7 @@ sudo bash /opt/serveripchange.sh
 
 cd /mnt/HDD/workspace/google-rank-finder
 sudo bash notify.sh &
-
+sudo bash /mnt/HDD/Programs/newKernelCustomModprobes.sh
 #update website to google  drive
 #sudo bash /mnt/HDD/Programs/Gdrive-Website-Change-UPLOAD.sh
 # /start bot

@@ -43,7 +43,6 @@ parallel -j16 --xargs --semaphore bash | sendemail -f $USER@otih-oith.us.to -t $
 #else 
 #	ssh tegra-ubuntu "timeout 600 node /var/www/SMSLinkRECIVED.js " & &>/dev/null
 #fi
-exit 0
 
 
 

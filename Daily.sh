@@ -69,7 +69,7 @@ sudo echo 1 > /proc/sys/vm/drop_caches
 #updates 
 
 sudo yes | sudo apt-get update
-
+sudo bash  $prog/localGitAuto
 #cd /mnt/HDD/workspace/GET_FOLLOWERS/twitter-bot-for-increased-growth/ 
 #sudo python app.py 
 

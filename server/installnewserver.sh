@@ -1,3 +1,7 @@
+export ubuVer=`lsb_release -a | sed -n  '3p' | awk '{print $2}'`
+export kernV=`uname -r`
+export kernVC=`uname -r | cut -d "-" -f 1`
+export latestV=`grep -oE "\-[0-9]{1,2}{3,4}-" | tail -1`
 sudo apt-get install -y lolcat brotli cmake dateutils dns2tcp gzip gputils gcc flac hydra httrack lzip make mac-robber nodejs 
 nutcracker sudo apt-get install -y openssl sendmail binutils crunch coreutils codec2 m4 moreutils mosh ntp p7zip pwgen sudo 
 apt-get install -y proxychains python-pip python-dnspython python-mechanize python-slowaes python-xlsxwriter python-jsonrpclib 
@@ -9,19 +13,19 @@ sudo apt-get install -y gpuutils inetutils findutils psutils figlet python-pip p
 sudo apt-get install -y gnupg gnupg etckeeper gradle antiword fail2ban brotli chkrootkit  
 sudo apt-get install -y  libcryptsetup-dev libjansson-dev libpng-dev zlib1g-dev pi figlet npm
 sudo apt -y install apticron sudo  geoipupdate geoip-bin mosh 
-sudo apt-get -y install xinetd telnetd
+sudo apt-get -y install xinetd telnetd libdevmapper-dev
 sudo apt -y install unattended-upgrades sendmail sendemail logrotate
 npm install geoip-native
 sudo apt -y install golang-go 
 sudo apt-get -y install tmpreaper ntp ntpd 
-sudo apt-get -y install cachefilesd
+sudo apt-get -y install cachefilesd freebsd-manpages 
 
 systemctl enable cachefilesd
 sudo apt-get -y install libssl1.0-dev tor git-extras
 sudo apt-get -y install cpufrequtils sysfsutils
 sudo apt-get -y install smartmontools cpulimit
 sudo apt-get -y install libcryptsetup-dev libjansson-dev xorg
-sudo apt-get -y install  *`uname -r`* rsync rclone gdrive
+sudo apt-get -y install  *`uname -r`* rsync rclone gdrive linux-firmware intel-microcode fwupdate-signed fwupdate-amd64-signed fwupdate fwupd flashrom efibootmgr amd64-microcode
 sudo apt install --install-recommends linux-generic-hwe-18.04
 sudo git clone https://github.com/pkoutoupis/rapiddisk/
 cd rapiddisk
@@ -47,6 +51,16 @@ sudo cp -rf ./ssh /usr/bin/
 sudo cp -rf ./sshd /usr/sbin/
 sudo apt-mark hold openssh-server
 sudo apt-mark hold openssh*
+
+#kernel 
+sudo apt -y install zram-config acpi-call-dkms aespipe cpufreqd cpufrequtils cpuset cpuset debianutils cpuset
+sudo apt -y install dkms dm-writeboost-dkms dmeventd dmsetup efibootmgr fbterm git-all hdparm ifenslave initramfs-tools initramfs-tools-core iotop latencytop libcpufreq-dev libcpufreq0 libdevmapper1.02.1
+sudo apt -y install libdevmapper-event1.02.1 libselinux1-dev libselinux1 libsemanage1 libsemanage-common libsemanage1-dev libsepol1 
+#sudo apt -y install linux-buildinfo*$kernVC*gcp linux-buildinfo*$kernVC*oem  linux-buildinfo*$kernVC*kvm 
+#sudo apt -y install linux-cloud-tools-`uname -r`*generic linux-gcp-edge-tools*`uname -r`* linux-cloud-tools-generic-hwe*$ubuVer* linux-cloud-tools-common
+#sudo apt -y install linux-cloud-tools-virtual-hwe*$ubuVer* linux-gcp-edge-tools*$kernVC* linux-gcp-headers*$kernVC* linux-gcp-tools*$kernVC* linux-generic-hwe*$ubuVer*
+#sudo apt -y install linux-headers*$kernVC*-gcp
+
 
 sudo add-apt-repository -y ppa:apt-fast/stable
 sudo apt-get -y update

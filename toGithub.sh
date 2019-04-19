@@ -31,7 +31,7 @@ function toGit() {
 	fi
 }
 function marketing_special() {
-	ln -s $work/Google* /mnt/HDD/workspace/MARKETING/
+	ln -s $work/Google* $work/MARKETING/
 }
 toGit /mnt/HDD/Programs/
 toGit /var/www/
