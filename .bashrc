@@ -1,4 +1,4 @@
-#!/usr/bin/parallel --shebang-wrap --pipe /bin/bash
+#!/usr/bin/parallel -j+32 --shebang-wrap --pipe /bin/bash
 #chmod 777 /home/ubuntuserubuntuseubuntuser/.parallel/semaphores
 #rm -rf /home/ubuntuser/.parallel/semaphores/*
 
@@ -218,7 +218,7 @@ shopt -s cdspell            # autocorrects cd misspellings
 #export extip=$(cuControlPersist 60mrl ipecho.net/plain ; echo)
 #geoiplookup (last  -1 -i -w --time-format notime | grep -e  'ubuntuser\|logged in\|pts/*' | cut -c 19-39)
 #export extip=$(dig +short myip.opendns.com @resolver1.opendns.com)
-export extip=$(parallel -j16 --xargs --semaphoretimeout 1 bash | curl -s ipinfo.io/ip)
+export extip=$(parallel -j16 --xargs --semaphoretimeout 2 bash | curl -s ipinfo.io/ip)
 #echo done with curl
 #geoiplookup  last  -2 -i -w --time-format notime | grep -e  'ubuntuser\|logged in\|pts/*' |  sed -n '2p' | cut -d " " -f12
 #geoiplookup  $( last  -2 -i -w --time-format notime | grep -e  'ubuntuser\|logged in\|pts/*\|tty*' |  sed -n '2p' |  grep -e  'ubuntuser\|logged in\|pts/*\|tty*' | cut -b 19-38)
@@ -274,8 +274,8 @@ export geo="Edina, MN, USA"
 #export geo=$(parallel -j16 --semaphoretimeout 1 bash | whereami )
 #export disk=$(df -h | grep G)
 #echo done with geo
-export critupdate=$( /usr/lib/update-notifier/apt-check --human-readable | sed -n '2p')
-export updates=$( /usr/lib/update-notifier/apt-check --human-readable | sed -n '1p')
+export critupdate=$(parallel -j16 --xargs --semaphore bash | /usr/lib/update-notifier/apt-check --human-readable | sed -n '2p')
+export updates=$(parallel -j16 --xarg --semaphore bash | /usr/lib/update-notifier/apt-check --human-readable | sed -n '1p')
 #echo done with updae
 #export disk=$(df -h | grep /dev/root)
 #export disk1=$(df -h | grep /dev/sda)
@@ -289,7 +289,8 @@ export disk1=$(df -h | grep /dev/sdb)
 echo "last login time [$lll]"    # adjust to your login messages, fortunes, etc
 #export PS1='\n\h:\W\$ '         # replace by your favorite prompt
 #export whosinjailnumber=$(parallel -j4  --semaphoretimeout 1 bash | fail2ban-client status | sed -n '2p' | awk '{print $5 }')
-export whosinjailnumber=$( parallel -j4  --semaphoretimeout 1 bash | sudo fail2ban-client status sshd | sed -n '7p' | awk '{print $4 }')
+export whosinjailnumber=$(parallel -j8  --semaphoretimeout 2 bash | sudo fail2ban-client status sshd | sed -n '7p' | awk '{print $4 }')
+export lReboot=$(last -x reboot | sed -n '2p')
 #export whosinjail=$(sudo fail2ban-client status | sed -n '2p' )
 #echo done with jail
 
@@ -308,24 +309,24 @@ echo -ne $reset
 figlet Welcome ${USER} |lolcat
 figlet MASTER NODE |lolcat
 #figlet ubuntuser Server | pv -qL 15|lolcat
-figlet ubuntuser Server | pv -qL 60|lolcat
-hello| pv -qL 15|lolcat 
+figlet $HOSTNAME | pv -qL 80|lolcat
+hello| pv -qL 20|lolcat 
 bash $prog/lines.sh
 echo -e "# Welcome ${USER} "| pv -qL 30 | lolcat -p 0.9 -F 0.9  
 echo -e "# Welcome Charlie Porth" | pv -qL 30
 echo -ne "# Today is: $BIPurple"; date; echo -ne "$nc"  |  pv -qL 80 #date +"Today is %A %D, and it is now %R"
 echo -ne "# Up time: $BICyan ";uptime | awk /'up/'; echo -ne "$nc" |  pv -qL 80
-echo -ne "# Last reboot time: $brown";  last -x reboot; echo -ne "$nc" |  pv -qL 80
+echo -e "# Last reboot time: $brown$lReboot$nc" |  pv -qL 80
 echo -e "# Crashes && Reboots$lightgray today$nc: Crashes: $URed$N_Crash$nc && Reboots: $UBlue$N_Reboot$nc"
 echo -e "# You have logged in $UGreen$N_Login$nc and everyone else has logined in $UYellow$N_LoginT$nc times" 
 echo -e "# This machine has $IRed $critupdate and $IBlue $updates $nc" |  pv -qL 70
 echo -e "# You have $BPurple$whosinjailnumber$nc in the Jail" #; echo -ne "$BPurple$whosinjail$nc"
 echo -e "# You have $white$MAILCHECK$nc in your inbox" |  pv -qL 80
-echo -e "# Diskspace on the primary disk on this machine is: $lightred $disk $nc" |  pv -qL 40
-echo -e "# Diskspace on the secondary disk on this machine is: $lightblue $disk1 $nc" |  pv -qL 40
+echo -e "# Diskspace on the primary disk on this machine is: $lightred $disk $nc" |  pv -qL 80
+echo -e "# Diskspace on the secondary disk on this machine is: $lightblue $disk1 $nc" |  pv -qL 80
 echo -e "# The server external IP address is [$yellow$extip$nc]  " |  pv -qL 80
-echo -e "# Last login time [$green$lll$nc]                           "  |  pv -qL 60
-echo -e "# Last login IP [$red$llll$nc]" |  pv -qL 40
+echo -e "# Last login time [$green$lll$nc]                           "  |  pv -qL 70
+echo -e "# Last login IP [$red$llll$nc]" |  pv -qL 60
 echo -ne "# Last server location: "; echo -e "$BIYellow$geo$nc"
 echo -e "# Last login location:  $geoo"
 echo -e "# Weather where the server is:"

@@ -1,1172 +1,931 @@
-cat /sys/bus/i2c/devices/i2c-*/name
-cat /sys/bus/i2c/devices/6*/name
-cat /sys/bus/vme
-cat /sys/bus/cpu/devices/cpu0/
-i2cdetect -l
-sudo apt install i2c-tools
-i2cdetect -l
-sudo i2cdetect -l
-i2cdump
-i2cdetect -l
-sudo i2cdetect -l
-sudo nano /boot/config-4.18.0-17-generic 
-uname -r
-nmap -T4 192.168.1.1/24
-nmap -T4A 192.168.1.1/24
-apache -S
-apache2 -S
-sudo apache2 -S
+ls
+ls /lib/modulesl
+ls /lib/modules
+ls /lib/modules/`uname -r`
+ls /lib/modules/4.18.0-17-generic/kernel/
+ls /lib/modules/4.18.0-17-generic/kernel/kernel/
+ls /lib/modules/4.18.0-17-generic/kernel/drivers/
+nano /lib/modules/4.18.0-17-generic/modules.order 
+dd if=/dev/zero of=/testfile bs=512 count=8M
+sudo dd if=/dev/zero of=/testfile bs=512 count=8M
+rm -rf /testfile 
+sudo rm -rf /testfile 
+ls /lib/modules/`uname -r`/kernel
+ls /lib/modules/`uname -r`/kerneldrives
+ls /lib/modules/`uname -r`/kernel/drives
+ls /lib/modules/`uname -r`/kernel/drivers
+ls /lib/modules/`uname -r`/kernel/drivers/misc
 sudo nano /etc/rc.local
-sudo nano /etc/bash.bashrc 
-source /etc/apache2/envvars
-sudo apache2 -S
-sudo nano /etc/bash.bashrc 
-sudo nano /etc/rc.local
-sudo service apache2 start
-firefox
-exit
-sudo nano /mnt/HDD/Programs//server/installnewserver.sh 
-firefox
-sudo nano /etc/rc.local
-sudo nano ~/.bash_exports 
-firefox
-export DISPLAY=:10
-firefox
-export DISPLAY=localhost:10
-firefox
-sudo nano ~/.bash_exports 
-sudo nano /etc/rc.local
-Xvfb :10 -ac & > /dev/null
-Xvfb :10 -ac 
-firefox
-export DISPLAY=:10
-firefox
-sudo nano /etc/ssh/sshd_config
-firefox
-Xvfb :1 -screen 0 1280x1024x24 &
-export DISPLAY=:1
-firefox
-killall firefox
-killall Xvfb
-killall Xvfb
-killall Xvfb
-export DISPLAY=:1
-export DISPLAY=localhost:1s
-firefox
-sudo apt-get install xorg
-exit
-export DISPLAY=localhost:1s
-export DISPLAY=localhost:1
-firefox
-export DISPLAY=localhost:10
-firefox
-export DISPLAY=localhost
-firefox
-export DISPLAY=:10
-firefox
-sudo firefox
-sudo firefox
-sudo firefox
-quit
-exxit
-exit
-mosh
-sudo service ssh restart
-startx
-sudo firefox
-export DISPLAY=:10
-sudo firefox 
-sudo firefox 
-export DISPLAY=localhost:10
-sudo firefox 
-startx
-startx &
-sudo firefox 
-sudo nano $ssh/sshd_co
-sudo nano $ssh/sshd_config
-sudo nano /etc/ssh/sshd_config
-sudo nano /etc/ssh/sshd_config
-killall starx
-killall startx
-sudo nano /etc/ssh/sshd_config
-sudo nano /etc/ssh/sshd_config
-sudo service ssh reload
-sudo service ssh restart
-sudo service ssh start
-sudo service sshd start
-systemctl status ssh.service
-firefox
- xauth list
-sudo apt install x11vnc
-xauth
-sudo xauth
-rm -rf .Xauthority 
-sudo xauth
- xauth
- xauth
-xauth
-xauth --help
-xauth list
-xauth source
-xauth
-touch ~/.Xauthority
-xauth
-xauth generate :10 . trusted 
-sudo xauth generate :10 . trusted 
-export DISPLAY=:10
-sudo xauth generate :10 . trusted 
-sudo xauth generate :0 . trusted 
- xauth generate :0 . trusted 
-xauth generate :0 . trusted 
-df -
-df -h
-modprobe fscache
-modprobe fscache
-df -h
-df -h
-ls /var/cache/
-ls /var/cache/fscache/
-exit
-exit
-ls .Xauthority 
-cat .Xauthority 
-rm -rf .Xauthority 
-exit
-sudo startx
-cat .Xauthority 
-cat ~?.Xauthority 
-cat ~/.Xauthority 
-modprobe fscache
-xauth
+rm -rf /testfile 
+sudo rm -rf /testfile 
+bitch
+sudo apt upgrad
+sudo apt upgrade
+cd ..
+cd itunes-connect-slack/
+ls
+sudo node poll-itc.js 
+ifconfig
+sudo apt-get install  if_urndis
+cd /etc/
+sudo apt-get install  if_urndis
+sudo apt-get install freebsd-manpages
+sudo apt install freebsd-manpages
 sudo su
-xauth generate :0 . trusted 
-xauth generate :0 . trusted 
-cat ~/.Xauthority 
-touch ~/.Xauthority 
-xauth
- chmod 0600 ~/.Xauthority
-xauth
-nano ~/.Xauthority
-sudo apt install --reinstall xauth
-ls ~/.Xauthority 
-nano ~/.Xauthority 
-rm -rf  ~/.Xauthority 
-xauth generate :0 . trusted 
-sudo xauth generate :0 . trusted 
-sudo xauth generate localhost:0 . trusted 
-sudo su 
-sudo xauth generate localhost:0 . trusted 
-sudo xauth generate :0 . trusted 
-export DISPLAY=:0
-sudo xauth generate :0 . trusted 
-sudo xauth generate :10 . trusted 
-export DISPLAY=:10
-sudo xauth generate :10 . trusted 
-export DISPLAY=:10.0
-sudo xauth generate :10.0 . trusted 
-sudo nano /etc/ssh/sshd_config
-X11UseLocalhost
-sudo xauth list
-sudo xauth list
-sudo su
-sudo xauth list
-xauth
-xauth --help
-xauth -f
-xauth -f ~/.Xauth
-touch Xauthority
-touch .Xauthority
-rm -rf Xauthority 
-xauth -f ~/.Xauthority 
-xauth
-xauth -f ~/.Xauthority 
-randomkey=`/usr/bin/ksh -c 'echo $(( $RANDOM * $RANDOM * 2 ))'` 
-randomkey=`/usr/bin/sh -c 'echo $(( $RANDOM * $RANDOM * 2 ))'` 
-randomkey=`bin/sh -c 'echo $(( $RANDOM * $RANDOM * 2 ))'` 
-randomkey=`/bin/sh -c 'echo $(( $RANDOM * $RANDOM * 2 ))'` 
-xauth add ${HOST}:0 . $randomkey 
-xauth add ${localhost}:0 . $randomkey 
-xauth -f ~/.Xauthorityadd ${localhost}:0 . $randomkey 
-xauth -f ~/.Xauthority add ${localhost}:0 . $randomkey 
-xauth -f ~/.Xauthority add ${HOST}:0 . $randomkey 
-xauth  add ${HOST}:0 . $randomkey 
-xargs
-xauth list 
-ls .Xauthority 
-tail -f .Xauthority 
-xauth list 
-sudo xauth list 
-sudo su
-exit
-xauth list 
-sudo xauth list 
-sudo xauth ?
-sudo xauth nlist
-sudo apt-get purge xauth
-sudo apt-get install xauth xorg xvfb xinit
-xauth generate :0 . trusted
-xauth list
-xauth generate :0 . trusted
-ls .Xauthority 
-rm .Xauthority 
-xauth generate :0 . trusted
-xauth generate :0 . trusted
-xauth
-xauth?
-xauth p
-xauth -f ~/.Xauthority generate :0 . trusted
-touch~/.Xauthority
-touch ~/.Xauthority
-xauth -f ~/.Xauthority generate :0 . trusted
-xauth generate
-xauth generate
-xauth -f ~/.Xauthority generate 
-xauth -f ~/.Xauthority generate =h
-xauth -f ~/.Xauthority generate -h
-xauth -f ~/.Xauthority generate ?
-xauth -f ~/.Xauthority generate :0
-xauth add
-xauth list
-quit
-exit
-quit
-exit
-xauth 
-xauth generate :0 . trusted
-xauth -f ~/.Xauthority generate :0
-xauth  generate :0
-xauth 
-sh /etc/X11/xinit/xinitrc
-nano /etc/X11/xinit/xinitrc
-nano /etc/X11/xinit/xserverrc 
-xauth generate :0 . trusted
-xauth 
-xauth ?
-xauth -h
-xauth info
-xauth -v
-xauth merge
-xauth add
-xauth -f .Xauthority add
-xauth -f .Xauthority ?
-xauth -f .Xauthority source
-sudo su
-xauth -f .Xauthority source
-xauth generate :0 .Xauthority trusted 
-xauth generate :0.0 .Xauthority trusted 
-xauth generate 
-xauth info
-rm ~/.Xauthority
-xauth generate :0.0 .Xauthority trusted 
-touch ~/.Xauthority
-xauth generate :0.0 . trusted 
-xauth generate :0.0 . trusted 
-xauth 
-xauth list
-/etc/rc.d/rc.sshd restart
-/etc/init.d/rc.sshd restart
-/etc/init.d/sshd restart
-/etc/init.d/ssh restart
-sudo /etc/init.d/ssh restart
-rm -rf .Xauthority 
-exit
-sh /etc/X11/xinit/xinitrc
-xauth generate :0 . trusted
-xauth list
-xauth generate :0 . trusted 
-xauth generate :0 . trusted 
-xauth generate :0 . trusted 
-xauth generate :0 . trusted 
-xauth generate :0 . trusted 
-xauth generate :0 . trusted 
-xauth generate :0 . trusted
-nano .Xauthority 
-xauth generate :0 . trusted 
-xauth list
-quit
-exit
-xauth list
-exit
-remotebox$ firefox -no-remote
- firefox -no-remote
- firefox --no-remote
-sudo nano ~/.vnc/xstartup 
-sudo mkdir ~/.vnc/
-sudo nano ~/.vnc/xstartup 
-x11vnc 
-vnc
-sudo apt-get install tigervnc
-sudo apt-get install tightvncserver c
-vnc
-sudo apt-get install tightvncserver 
-sudo apt-get install vnc4server
-xauth list
-xauth list
-xauth list
-xauth list
-xauth list
-xauth list
-xauth generate :0 . trusted 
-xauth generate :0 . trusted 
-xauth generate :0 . trusted 
-xauth list
-exit
-sudo nano ~/.vnc/xstartup 
-xauth list 
-xauth generate :0 . trusted 
-xauth generate :0 . trusted 
-xauth generate :0 . trusted 
-xauth list
-xauth -f .Xauthority list
-xauth -f .Xauthority  generate :0 . trusted 
-xauth -f .Xauthority  generate :10.0 . trusted 
-xauth -f .Xauthority  generate :0.0 . trusted 
-xauth -f .Xauthority  generate :0 . trusted 
-xauth -f .Xauthority  generate localhost:0 . trusted 
-xauth -f .Xauthority  generate :0.0 . trusted 
-gedit
-firefox
-firefox
-export DISPLAY=:0
-firefox
-firefox
-sudo startx
-sudo pkill -9 Xorg
-startx
-sudo pkill -9 Xorg
-sudo startx
-sudo startx 
-sudo chmod a+rw /home/admin/.Xauthority
-sudo chmod a+rw /home/ubuntuserver/.Xauthority
-sudo startx
-firefox
-export DISPLAY=:0
-firefox
-export DISPLAY=localhost:0
-firefox
-sudo apt-get install xorg-x11-xauth xterm
-export DISPLAY=:0.0
-firefox
-xclock
-export DISPLAY=localhost:0
-xclock
-sudo apt-get install openbox
-xclock
-xclock
-export DISPLAY=:0
-xclock
-xclock
-xclock
-xclock &
-sudo Xvfb :10 -ac -screen 0 1024x768x24 &
-xclock &
-export DISPLAY=:0
-export DISPLAY=:10
-xclock &
-xclock &
-xclock 
-firefox
-firefox --no-remote
-sudo nano /lib/systemd/system/x11vnc.service
-sudo systemctl daemon-reload
-sudo systemctl enable x11vnc.service
-sudo systemctl start x11vnc.service
-sudo apt-get install i3
-vnc
-vnc
-vncserver 
-vncpasswd 
-sudo nano /etc/network/interfaces
-ifconfig
-sudo nano /etc/network/interfaces
-vncserver
-export HOME=~?
-export HOME=~/
-vncserver
-export HOME=~/
-vncserver
-unset HOME
-export HOME=~/
-vncserver
-sudo vncserver
-sudo vncserver
-sudo vncpasswd 
-nmap -T4 otih-oith.us.to
-nmap -T4 localhost
-nmap -T4 otih-oith.us.to
-host otih-oith.us.to
-nmap -T4 174.53.128.50
-nmap -T4 174.53.128.50
-ipe
-sud
-nmap -T4 174.53.128.50
-host 174.53.128.50
-host otih-oith.us.to
-nmap -T4 174.53.128.50
-ping google.com
-
-host 174.53.128.50
-nmap -T4 174.53.128.50
-host 174.53.128.50
-killall vnc
-vncserver
-sudo vncserver
-ls /home/ubuntuserver//.vnc/ubuntu-server
-ls /home/ubuntuserver//.vnc/
-rm -rf /home/ubuntuserver//.vnc/ubuntu-server\*
-sudo vncserver
-sudo killall vncserver
-sudo killall vncs
-sudo killall vnc
-sudo killall *vnc*
-sudo killall vnc
-vncserver
-chown $USER:$USER ~/.vnc/
-sudo chown $USER:$USER ~/.vnc/
-vncserver
-sudo chown $USER:$USER -R ~/.vnc/
-vncserver
-sudo chown $USER:$USER .Xauthority  ~/.vnc/
-vncserver
-sudo vncserver
-sudo nano /home/ubuntuserver/.vnc/
-nmap -T4 localhost
-htop
-killall Xtightvnc 
-nmap -T4 localhost
-ps 
-sudo ps
-killall -9 Xtightvnc 
-sudo killall -9 Xtightvnc 
-killall -9 Xtightvnc 
-sudo killall -9 Xtightvnc 
-nmap -T4 localhost
-sudo vncserver
-vncserver
-ls rm -fr .Xauthority-c 
-rm -fr .Xauthority-c 
-vncserver
-killall -9 Xtightvnc 
-rm -fr .Xauthority-c 
-rm -rf /tmp/X*
-vncserver
-rm -rf .Xauthority
-touch .Xauthority
-vncserver
-rm -rf /tmp/.X6-lock 
-rm -rf /tmp/.X*
-sudo rm -rf /tmp/.X*
-vncserver
-sudo rm -rf /tmp/.X*
-killall -9 Xtightvnc 
-killall -9 Xtightvnc 
-vncserver
-nmap -T4 174.53.128.50
-sudo service networking reload
-sudo nano /etc/network/interfaces
-ifconfig
-ls /etc/network/interfaces.d/
-ifconfig -a
-sudo ifconfig eth0 up
-sudo ifconfig eth1 up
-sudo ifconfig enx002275d6f169 don
-sudo ifconfig enx002275d6f169 down
-sudo ifconfig enx002275d6f169 up
-ifconfig
-ifconfig
-sudo nano /etc/udev/rules.d/70-persistent-net.rules
-ifconfig
-ifconfig eth0
-ifconfig eth1
-sudo ifconfig enx002275d6f169 192.168.1.99
-ifconfig eth1
-ifconfig enx002275d6f169
-nmap -T4 174.53.128.50
-nmap -T4 174.53.128.50
-\nmap -T4 174.53.128.50
-T4 174.53.128.50
-ifconfig
-ifconfig
-\nmap -T4 174.53.128.50
-telnet 192.168.1.1
-firefox
+lsusb -t
+lsusb --help
+lsusb -
+lsusb -s
+lsusb -d
+lsusb -v
+modprobe xhci_hcd
+lsusb
+lsmod |grep xhc
+dmesg |grep xhc
+dmesg
+lsusb
 sudo reboot 
-parallel --citation
-exit
-sudo nano ~/.bashrc
-sudo nano /etc/rc.local
+source ~/.bashrc
 sudo nano /etc/bash.bashrc 
-exit
-exit
+sudo nano /opt/phoneone.sh 
+lsusb
+sudo apt search `kernel`
+sudo apt search kernel
+source ~/.bashrc
+sudo nano /mnt/HDD/Programs//server/installnewserver.sh 
+uname -r
+uname -u
+uname -h
+uname --help
+uname --h-o
+uname -o
+uname -n
+uname -m
+uname -p
+uname -r
+uname -k
+uname -v
+uname -s
+uname -m
+uname -ow
+uname -or
+uname -a
+uname 
+uname -a
+host
+sudo nano /mnt/HDD/Programs//server/installnewserver.sh 
+ lsb_release -a
+ lsb_release -a sed -n '3p'
+ lsb_release -a | sed -n  '3p'
+ lsb_release -a | sed -n  '3p' | awk '{print $2}'
+sudo nano /mnt/HDD/Programs//server/installnewserver.sh 
+uname -r
+uname -r | cut -d "-" -f 1
+sudo nano /mnt/HDD/Programs//server/installnewserver.sh 
+sudo apt -y install linux-headers*$kernVC^([1-9]|[1-9]{1}[0-9]{1})$\*-gcp
+sudo apt -y install linux-headers*$kernVC^([1-9]|[1-9]{1}[0-9]{1})$*-gcp
+sudo apt -y install linux-headers*$kernVC^([1-9]|[1-9]{1}[0-9]{1})$
+sudo apt -y install linux-headers*$kernVC^([1-9]|[1-9]{2}[0-9]{1})$*-gcp
+sudo apt -y install linux-headers*$kernVC*-gcp
+rm -rf /var/lib/dpkg/lock*
+sudo rm -rf /var/lib/dpkg/lock*
+sudo dpkg --configure -a
+sudo apt -y install linux-headers*$kernVC*-gcp
+sudo apt -y install linux-headers*`uname -r`*-gcp
+sudo apt -y install linux-headers*`uname -r | cut -d "-" -f 1`*-gcp
+sudo apt -y install linux-headers*`uname -r | cut -d "-" -f 1`^([1-9]|[1-9]{1}[0-9]{1})$*-gcp
+sudo apt -y install linux-headers*`uname -r | cut -d "-" -f 1`\^([1-9]|[1-9]{1}[0-9]{1})$*-gcp
+sudo apt -y install linux-headers*`uname -r | cut -d "-" -f 1`^[0-9]{2}$*-gcp
+sudo dpkg --configure -a
+sudo rm -rf /var/lib/dpkg/lock*
+sudo dpkg --configure -a
+sudo apt -y install linux-headers*`uname -r | cut -d "-" -f 1`^[0-9]{2}$*-gcp
+sudo apt -y install linux-headers*`uname -r | cut -d "-" -f 1`$(echo ^[0-9]{2}$)*-gcp
+sudo apt -y install linux-headers*`uname -r | cut -d "-" -f 1`[[^[0-9]{2}$]]*-gcp
+sudo apt search linux-headers
+sudo apt search linux-headers*`uname -r`
+sudo apt search linux-headers`uname -r`
+sudo apt search linux-headers-`uname -r`
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1`
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep ^[0-9]{1,2,3,4}$
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -E ^[0-9]{1,2,3,4}$
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -E `uname -r`^[0-9]{1,2,3,4}$
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -E `uname -r`^[0-9]$
+sudo apt search linux-headers-`uname -r` | cut -d "-" -f 1` | grep -E `uname -r`^[0-9]$
+sudo apt search linux-headers-`uname -r` | cut -d "-" -f 1 | grep -E `uname -r`^[0-9]$
+sudo apt search linux-headers-`uname -r` | cut -d "-" -f 1 | grep ^[0-9]{1,2,3,4}$
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -E `uname -r`^[0-9]$
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -oE `uname -r`^[0-9]{1,4}$
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -oE `uname -r | cut -d "-" -f 1`^[0-9]{1,4}$
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -o `uname -r | cut -d "-" -f 1`^[0-9]{1,4}$
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep  `uname -r | cut -d "-" -f 1`^[0-9]{1,4}$
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -E `uname -r | cut -d "-" -f 1`^[0-9]{1,4}$
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -E '`uname -r | cut -d "-" -f 1`^[0-9]{1,4}'
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -E "`uname -r | cut -d "-" -f 1`[0-9]{1,4}"
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -oE "`uname -r | cut -d "-" -f 1`[0-9]{1,4}"
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -E "`uname -r | cut -d "-" -f 1`-[0-9]{1,4}"
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -E "-[0-9]{1,4}-"
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -E "[0-9]{1,4}-"
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -E "-\[0-9]{1,4}-"
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -E "\-[0-9]{1,4}-"
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -E "\-[0-9]{1,2,3,4}-"
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -E "[0-9]{1,2,3,4}"
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -E "\-[0-9]{1,4}-"
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -E "[0-9]{1,4}"
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -E "\-[0-9]{1,4}-"
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -E "\-[0-9]{1-4}-"
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -E "\-[0-9]{1,2,3,4}-"
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -E "\-[0-9]{1..4}-"
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -E "\-[0-9]{1,2}-"
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -E "\-[0-9]{1,2,3}-"
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -E "\-[0-9]{1,2}{3,4}-"
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -E "\-[0-9]{1,2}{3,4}-" | cut -d bit
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -E "\-[0-9]{1,2}{3,4}-" | tail -1
+sudo nano /mnt/HDD/Programs//server/installnewserver.sh 
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -E "\-[0-9]{1,2}{3,4}-" | tail -1
+sudo nano /mnt/HDD/Programs//server/installnewserver.sh 
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -E "\-[0-9]{1,2}{3,4}-" | tail -1
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -OE "\-[0-9]{1,2}{3,4}-" | tail -1
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -oE "\-[0-9]{1,2}{3,4}-" | tail -1
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -oE "\-[0-9]{1,2}{3,4}-" | tail -1 | cut -d "-" 1 2
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -oE "\-[0-9]{1,2}{3,4}-" | tail -1 | cut -d "-" -f 1 2
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -oE "\-[0-9]{1,2}{3,4}-" | tail -1 | cut -d "-" -f 1-2
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -oE "\-[0-9]{1,2}{3,4}-" | tail -1 | cut -d "-" -f 1
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -oE "\-[0-9]{1,2}{3,4}-" | tail -1 | cut -d "-" -f 1-
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -oE "\-[0-9]{1,2}{3,4}-" | tail -1 | cut -d "-" -f -1
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -oE "\-[0-9]{1,2}{3,4}-" | tail -1 | cut -d "-" -f -2
+sudo apt search linux-headers-`uname -r | cut -d "-" -f 1` | grep -oE "\-[0-9]{1,2}{3,4}-" | tail -1 | cut -d "-" -f 2
+sudo nano /mnt/HDD/Programs//server/installnewserver.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs//server/installnewserver.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs//server/installnewserver.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs//server/installnewserver.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs//server/installnewserver.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs//server/installnewserver.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs//server/installnewserver.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+uname -r
+sudo nano /mnt/HDD/Programs//server/installnewserver.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+htop
+sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+git push
+got 
+com 
 ifconfig
+ifconfig -a
 sudo nano /etc/network/interfaces
-ping raspberrypi
-ping raspberrypi.local
-ssh raspberrypi.local
-ssh po@raspberrypi.local
-ssh pi@raspberrypi.local
+ifconfig -a
+lsusb
 ifconfig
-sudo reboot
-sudo nano /etc/rc.local
+sudo nano /var/log/kern.log
+sudo nano /var/log/
+sudo nano /var/log/kern.log
+sudo nano /var/log/syslog
+df -h
+lsusb
+lusb
+dmesg
+dmesg | grep "usbcore"
 ifconfig
-ls /dev/
-ls /dev/port 
-cat /dev/port 
-sudo cat /dev/port 
+dmesg | grep "usbcore"
+dmesg | grep "usb"
+sudo modprobe -r ehci_hcd
+modprobe -r ehci_hcd 
+sudo apt install linux-firmware-nonfree
+sudo rm -rf /var/lib/dpkg/lock
+sudo apt install linux-firmware-nonfree
+sudo rm -rf /var/lib/dpkg/lock*
+sudo apt install linux-firmware-nonfree
+sudo apt install linux-firmware
+rm -rf var/cache/apt/archives/lock
+rm -rf /var/cache/apt/archives/lock
+sudo rm -rf /var/cache/apt/archives/lock
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo apt install linux-modules-extra*`uname -r`
+sudo apt install linux-modules*`uname -r`
+dmesg | grep "usb"
+sudo modprobe -r ehci_hcd
+sudo modprobe -rf ehci_hcd
+modprobe -fr ehci_hcd 
+sudo modprobe -fr ehci_hcd 
+modprobe -fr xhci_hcd 
+sudo modprobe -fr xhci_hcd 
+sudo apt install coreutils
+sudo apt install linux-firmware-nonfree
+sudo apt install linux-firmware*
+sudo apt search linux-firmware
+sudo apt search firmware
+sudo nano /mnt/HDD/Programs//server/installnewserver.sh 
+sudo apt install  fwupdate-signed fwupdate-amd64-signed fwupdate fwupd
+sudo service fwupd start
+sudo fwupdmgr refresh
+sudo nano /mnt/HDD/Programs//Weekly.sh
+sudo fwupdmgr update
+sudo nano /mnt/HDD/Programs//Weekly.sh
+ls
+sudo fwupdmgr refresh
+sudo fwupdmgr update
+ls
+ls /
+sudo fwupdmgr update
+sudo fwupdmgr refresh
+sudo fwupdmgr update
+ls /etc/fwupd/
+ls /etc/fwupd/remotes.d/
+sudo fwupdmgr update
+sudo su
+sudo fwupdmgr update
+lsusb
+sudo fwupdmgr --help
+sudo fwupdmgr -f update
+sudo fwupdmgr update -f
+sudo fwupdmgr update --force
+sudo fwupdmgr unlock*
+sudo fwupdmgr unlock  *
+sudo fwupdmgr   get-devices
+sudo fwupdmgr  hwids
+sudo fwupdmgr unlock  *
+sudo fwupdmgr unlock  276b6d9d-44af-597f-b981-baf78cd188b6
+sudo fwupdmgr unlock  {276b6d9d-44af-597f-b981-baf78cd188b6}
+sudo fwupdmgr -f update
+sudo fwupdmgr --help
+sudo fwupdmgr refresh
+sudo fwupdmgr  get-updates
+sudo fwupdmgr--allow-reinstall  
+sudo fwupdmgr --allow-reinstall update  
+sudo fwupdmgr --show-all-devices  
+sudo fwupdmg --show-all-devices  
+sudo fwupdmgr --show-all-devices  hwids 
+sudo fwupdmgr --show-all-devices ?
+sudo fwupdmgr get-devices
+ls
+ls /tmp
+ls /tmp/systemd-private-6d5b97be94a24e6b9a0b17d0115dd79a-fwupd.service-d4mBc9/
+suod ls /tmp/systemd-private-6d5b97be94a24e6b9a0b17d0115dd79a-fwupd.service-d4mBc9/
+sudo ls /tmp/systemd-private-6d5b97be94a24e6b9a0b17d0115dd79a-fwupd.service-d4mBc9/
+sudo ls /tmp/systemd-private-6d5b97be94a24e6b9a0b17d0115dd79a-fwupd.service-d4mBc9/tmp
+sudo fwupdmgr refresh
+sudo ls /tmp/systemd-private-6d5b97be94a24e6b9a0b17d0115dd79a-fwupd.service-d4mBc9/tmp
+sudo ls /tmp/systemd-private-6d5b97be94a24e6b9a0b17d0115dd79a-fwupd.service-d4mBc9/
+ls 
+sudo fwupdmgr refresh ./
+sudo fwupdmgr refresh
+ls
+sudo fwupdmgr refresh
+sudo fwupdmgr update
+efibootmgr
+sudo efibootmgr
+sudo fwupdmgr update -v
+udo fwupdmgr get-devices
+sudo fwupdmgr get-devices
+sudo apt-get install flashrom
+sudo dmidecode -t baseboard
+sudo dmidecode -s baseboard-product-name
+sudo nano /etc/bash.bashrc 
+sudo dmidecode -s baseboard-product-name
+sudo nano /opt/phoneone.sh 
+sudo dmidecode -s baseboard-product-name
+sudo dmidecode -s
+sudo dmidecode -s baseboard-manufacturer
+
+source ~/.bashrc
+sudo dmidecode 
+sudo dmidecode 
+sudo dmidecode -s baseboard-manufacturer
+sudo dmidecode -s baseboard
+sudo dmidecode  baseboard
+sudo dmidecode -t baseboard
+sudo dmidecode -t 2
+lscpu
+sudo lshw 
+sudo dmidecode | more
+sudo lshw 
+lspci
+cat /proc/cpuinfo 
+lsusb
 ifconfig
-nmap -T4 192.168.1.1/24
-sudo service apache2 start
-nmap -T4 192.168.1.1/24
-nmap  192.168.1.1/24
-ifconfig
-cd $prog
-wget https://raw.githubusercontent.com/hak5darren/wp6/master/wp6.sh
-bash wp6.sh 
-sudo bash wp6.sh 
-sudo nano wp6.sh 
-sudo nano /etc/shorewall/masq
-sudo apt-get install Shorewall
-sudo apt-get install shorewall
-sudo nano /etc/shorewall/masq
-ifconfig
-sudo nano /etc/shorewall/masq
- sudo nano /etc/shorewall/shorewall.conf
- sudo shorewall restart
-ls  /usr/share/shorewall/helpers
-ls  /usr/share/shorewall/
- sudo nano /etc/shorewall/shorewall.conf
- sudo shorewall restart
- sudo nano /etc/shorewall/shorewall.conf
- sudo shorewall restart
-sudo nano /etc/shorewall/interfaces
-sudo nano /etc/shorewall/masq 
-/etc/shorewall/hosts
-sudo nano /etc/shorewall/hosts
-ifconfig
-?
+lsubs
+lsusb
+lspci
+lsusb
 ifconfig
 lsusb
-/etc/init.d/avahi-daemon status
-sudo /etc/init.d/avahi-daemon status
-sudo /etc/init.d/avahi-daemon 
-sudo apt-get install avahi-daemon
-/etc/init.d/avahi-daemon status
 ifconfig
-ssh ssh pi@raspberrypi.loca
-ssh pi@raspberrypi.local
-modprobe rndis_host
-sudo modprobe rndis_host
+ifconfig -a
+ifconfig
+ifconfig enp2s0 mtu 9999
+sudo ifconfig enp2s0 mtu 9999
+sudo ifconfig enp2s0 mtu 9200
+sudo ifconfig enp2s0 mtu 9222
+sudo ifconfig enp2s0 mtu 9202
+sudo ifconfig enp2s0 mtu 9201
+sudo ifconfig enp2s0 mtu 9205
+ifconfig
+sudo nano /etc/network/interfaces
+sudo modprobe -r rndis
+sudo modprobe -r rndis_host 
+ifconfig
+ifconfig -a
+sudo networking reload
+sudo service networking reload
+d ifconfig -a
+ ifconfig -a
+ifconfig
+sudo modprobe usb_f_rndis 
+ifconfg
+ifconfig
+ifconfig -a
+sudo netowrking reload
+sudo service netorking reload
+sudo service networking reload
+ifconfig
+ip address 
+sudo ip address 
+sudo nano /etc/udev/rules.d/network_drivers.rules 
+sudo nano /etc/shorewall/
+sudo nano /etc/shorewall/shorewall.conf 
+sudo service shorewall disable
+sudo nano /usr/share/doc/shorewall/README.Debian.gz 
 sudo nano /etc/rc.local
 ifconfig
-ls /lib/modules/4.13.0-38-generic/kernel/drivers/net/usb/
-ls /lib/modules/`uname -r`
-ls /lib/modules/`uname -r`/kernel/drivers/net/usb/
-ls /lib/modules/`uname -r`/kernel/drivers/net/usb/usbnet.ko
-sudo nano /etc/rc.local
-ls /lib/modules/`uname -r`/kernel/drivers/net/usb/
-urndis
-sudo apt install urndis
-sudo apt install if_urndis
-uname -r
-sudo nano /boot/config-4.18.0-17-generic 
-sudo nano /etc/fstab 
-sudo mount -a
-uname -r
+lsusb
+sudo apt-get purge shorewall
 ifconfig
-host aron.ns.cloudflare.com
+ifconfig -a
 ifconfig
-sudo reboot 
-sudo nano /mnt/HDD/Programs//Cleanup.sh
-sudo nano /opt/phoneone.sh 
-mount -a
-sudo mount -a
-sudo mount -o rw,remount /dev/sda1 /
-sudo nano /opt/phoneone.sh 
-last
+sudo ip link set eth0 up
+sudo ip link set * up
+ls
+sudo ip link set * up
+sudo nano /etc/nsswitch.conf 
+sudo nano /etc/networkd-dispatcher/*
+ls /etc/networkd-dispatcher/*
+modprobe usbnet
+sudo modprobe usbnet
+ls /dev
+ls vhost-net
+ls /dev/vhost-net
+cat /dev/vhost-net
+sudo cat /dev/vhost-net
+sudo cat /dev/vhi
+sudo cat /dev/vhci
+killall cat
+sudo killall cat
+ls
 ifconfig
-ls /var/log
-ls /var/log/wtmp
-sudo nano /var/log/wtmp
-sudo nano /etc/logrotate.conf 
-last 
-last 
-last
-last -w
-las -w
-w
- last -x reboot
-sudo nano ~/.bashrc
-sudo nano  /var/log/wtmp
+ifconfig -a
+ifconfig -a dev
+ifconfig -a?
+ls /sys/class/net
+ls /sys/class/mem
+ls /sys/class/ppp
+ls /sys/class/hwmon/
+ls /sys/class/mmc_host/
+ls /sys/class/pci_bus/
+ls /sys/class/pci_epc/
+ls /sys/class/firmware/
+ls /sys/class/leds
+ls /sys/class/rtc
+ls /sys/class/rtc/
+ls /sys/class/tty
+ls /sys/class/
+ls /sys/class/dma
+ls /sys/class/dmi
+ls /sys/class/iscsi_host/
+ls /sys/class/hmm
+ls /sys/class/hmm_device/
+ls /sys/class/phy
+ls /sys/bus/
+ls /sys/bus/acpi/
+ls /sys/bus/acpi/devices/
+ls /sys/bus/acpi/devices/device\:00
+ls /sys/bus/acpi/devices/device\:00/path
+cat /sys/bus/acpi/devices/device\:00/path
+cat /sys/bus/acpi/devices/device\:01/path
+cat /sys/bus/acpi/devices/device\:02/path
+cat /sys/bus/acpi/devices/device\:03/path
+cat /sys/bus/acpi/devices/device\:04/path
+cat /sys/bus/acpi/devices/device\:05/path
+cat /sys/bus/acpi/devices/device\:06/path
+cat /sys/bus/acpi/devices/device\:07/path
+cat /sys/bus/acpi/devices/device\:08/path
 source ~/.bashrc
-sudo nano /mnt/HDD/Programs/rotate-clean-Logs.sh 
+sudo nano /etc/bash.bashrc 
+source ~/.bash
+source ~/.bashrc
+df -h
+ls
+dsmeg
+desmg
+source ~/.bashrc
+dmesg
+ifconfig
+ifconfig -a
+dmesg | grep usb
+lsusb
+lspci
+dmesg | grep usb
+ifconfig
+ifconfig -a
+modprobe g_ether 
+sudo modprobe g_ether 
+ifconfig -a
+modprobe usbip-host
+sudo modprobe usbip-host
+ifconfig -a
+sudo service networking reload
+ifconfig
+sudo nano /etc/network/interfaces
+ifconfig
+sudo service networking reload
+ifconfig
+ifconfig -a
+ifconfig
+lsusb -t
+ifconfig
+sudo nano /etc/rc.local
+lsusb
+lsusb --help
+lsusb -tD
+lsusb -tv
+ifconfig
+lsusb
+ssh raspberrypi.local
+ifconfig
+modprobe usbnet
+sudo modprobe usbnet
+ifconfig
+lsusb
+ifconfig
+sudo apt-get update
+sudo nano /mnt/HDD/Programs//update.sh 
+sudo apt-get upgrade
+sudo apt-get update
+sudo apt-get upgrade
+sudo nano /etc/default/grub
+sudo nano /boot/grub/grub.cfg
+sudo nano /etc/default/grub
+sudo cp -rf /etc/default/grub /etc/default/grub.bk
+sudo nano /etc/default/grub
+ifconfig
+setupcon
+sudo apt dist-upgrade 
+ifconfig
+setupcon
+sudo setupcon
+ifconfig
+ls /proc/bus/usb
+ls /proc/bus/
+ls /proc/bus/input/
+ls /proc/bus/pci
+ls /proc/bus/pci/devices 
+cat /proc/bus/pci/devices 
+lspci
+lsusb
+sudo nano /etc/ssh//ssh_config
+sudo nano /mnt/HDD/Programs//notifywithArgs.sh 
+sudo bash /mnt/HDD/Programs//notifywithArgs.sh isdone
 last
-nmap -T4 192.168.1.1/24
+df -h
 ifconfig
-sudo nano ~/.bash_exports 
-sudo rm ~/.bash_exportsy
-cd /etc/apache2
-ls
-cd sites-enabled/
-ls
-sudo cp -rf ctp-tech.conf ctp-tk.conf 
-sudo cp -rf ctp-tech.conf ctp-tk-ssl.conf 
-sudo cp -rf ctp-tech-ssl.conf ctp-tk-ssl.conf 
-sudo nano ctp-tk.conf 
-sudo nano ctp-tk-ssl.conf 
-sudo nano ctp-tech.conf 
-sudo nano ctp-tech-ssl.conf 
-sudo nano ctp-tech.conf 
-sudo nano ctp-tk.conf 
-ls
-unlink *tk*
-sudo unlink *tk*
-sudo unlink *tk-ssl.conf
-cd ..
-cd sites-available/
-ls
-history | grep cp
-sudo cp -rf ctp-tech-ssl.conf ctp-tk-ssl.conf 
- sudo cp -rf ctp-tech.conf ctp-tk.conf 
-sudo nano ctp-tk.conf 
-sudo nano ctp-tk-ssl.conf 
-sudo nano /etc/rc.local
-extip
-ls
-sudo nano ctp-tk.conf 
-sudo nano ctp-tk-ssl.conf 
-a2ensite *
-rm -rf /etc/apache2/sites-enabled/ctp-tk.conf
-sudo rm -rf /etc/apache2/sites-enabled/ctp-tk.conf
-a2ensite *
-sudo a2ensite *
-sudo nano /mnt/HDD/Programs//DDNS.sh 
-sudo nano /mnt/HDD/Programs//DDNSUPDATE1.sh 
-sudo nano $prog/DDNSUPDATE1ctp.sh
-sudo nano /mnt/HDD/Programs//Hourly.sh
-ystemctl reload apache2
-sudo systemctl reload apache2
-sudo systemctl start apache2
-sudo nano /etc/rc.local
-sudo nano /mnt/HDD/Programs//killMemoryHogs.sh
-telnet 192.168.1.58
-nmap -T4 192.168.1.1/24
-nmap -T4 localhost
-nmap  localhost
-sudo service apache2 start
-sudo service apache2 status
-sudo nano /etc/host
-sudo nano /etc/hosts
-sudo service apache2 start
-sudo service apache2 status
-sudo systemctl reload apache2
-sudo service apache2 start
-sudo nano /var/log/apache2/error.log
-sudo apt search geoip
-sudo apt search geoip
-sudo apt-get remove trafficserver-experimental-plugins
-sudo apt intall syslog-ng-mod-geoip syslog-ng-mod-add-contextual-data
-sudo apt-get purge libapache2-mod-geoip
-sudo apt-get purge libapache2-mod-geoip rsyslog 
-sudo apt install syslog-ng-mod-geoip syslog-ng-mod-add-contextual-data
-sudo apt install rsyslog
-sudo apt-get purge libapache2-mod-geoip 
-sudo service apache2 start
-sudo service apache2 status
-sudo systemctl reload apache2
-sudo service apache2 start
-sudo service apache2 status
-sudo nano /var/log/apache2/error.log
-ls var/run/apache2/
-ls /var/run/apache2/
-sudo mkdir /var/run/apache2/
-sudo nano /etc/rc.local
-sudo service apache2 status
-mkdir /var/run/apache2/
-sudo service apache2 start
-sudo service apache2 status
-ifconfig
-ifconfig
-fi
-if fi
-if fi
-if else fi
-if; else; fi
-if; else fi
-if;then; else; fi
-if;then else; fi
-sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
-sudo bash /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
-sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
-sudo bash /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
-sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
-sudo bash /mnt/HDD/Programs/iTunesConnecBuildProcessingDone.sh 
-sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
-sudo bash /mnt/HDD/Programs/iTunesConnecBuildProcessingDone.sh 
-sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
-ls  /mnt/HDD/buildstatusver.txt
-cat  /mnt/HDD/buildstatusver.txt
-sudo bash /mnt/HDD/Programs/iTunesConnecBuildProcessingDone.sh 
-sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
-sudo bash /mnt/HDD/Programs/iTunesConnecBuildProcessingDone.sh 
-sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
-sudo crontab -e
-sudo nano /mnt/HDD/ApplePaymentsSpoofing/
-sudo crontab -e
-sudo nano /mnt/HDD/ApplePaymentsSpoofing/logicscipt.sh
-cd /mnt/HDD/ApplePaymentsSpoofing/logicscipt.sh
-cd /mnt/HDD/ApplePaymentsSpoofing/
-ls
-sudo nano serverT.js 
-sudo nano /mnt/HDD/ApplePaymentsSpoofing/logicscipt.sh
-git add 
-git add .
-git commit -m "$(date)"
-git push
-sudo git push
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-ls
-cd ..
+sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
+sudo nano /mnt/HDD/Programs//installLatestKernels.sh 
+sudo nano /etc/bash.bashrc 
+sudo bash /mnt/HDD/Programs//notifywithArgs.sh "Your Craller is done emails"
+ssh-copy-id charlieporth@35.224.239.201
+rm -rf /home/ubuntuserver/.ssh/id_dsa.pub
+ssh-copy-id charlieporth@35.224.239.201
+sudo nano ~/.ssh/known_hosts 
+sudo nano ~/.ssh/authorized_keys 
+htop
+ssh-copy-id charlieporth@35.224.239.201
+sudo nano ~/.ssh/authorized_keys 
+htop
+rm -rf /opt/datadog-agent
+sudo rm -rf /opt/datadog-agent
+fail2ban-client get sshd jail
+sudo fail2ban-client get sshd jail
+fail2ban-client get sshd jail
+htop
+fail2ban-client ?
+sudo fail2ban-client ?
+source ~/.bashrc
+htop
 cd $work
 ls
-cd MARKETING/
-ls
-ln -s ../keywordCounter/ ./
-ln -s ../userAgentLists/ ./
+ln -s Yellow-Page-Email-Scraper.zip MARKETING/
+ln -s python-email-crawler.zip MARKETING/
 sudo nano /mnt/HDD/Programs//toGithub.sh 
-ln source
-ln source ./*
-ln source Google-EmailScraper
-ln  Google-EmailScraper
-ls 
-ls -sh
-ls -l
-unlink Google-PageRank-cheater*
-sudo unlink Google-PageRank-cheater*
-sudo unlink Google-PageRank-cheater
-ln  /mnt/HDD/workspace/Google-PageRank-cheater ./
-ln -s /mnt/HDD/workspace/Google-PageRank-cheater ./
-ls -l
-git add .
-sudo git add .
-sudo git commit -m "$(date)"
-git push
-sudo git push
-git push -ff
-sudo git push -ff
+ifconfig
+ifconfgi
+ifcofngi
+ifconfig
+bitch
+ifconfig
+ping 8.8.8.8
+ping 1.1.1.1
+geoip 64.124.183.58
+geoiplookup 64.124.183.58
+geoiplookup 37.204.4.249
+traceroute
+sudo apt install inetutils-traceroute
+sudo bash $prog/Bots.sh
+sudo nano$prog/Bots.sh
+sudo nano $prog/Bots.sh
+sudo bash $prog/Bots.sh
+sudo nano $prog/Bots.sh
+sudo bash $prog/Bots.sh
+cd $work
+ls
+sudo bash $prog/Bots.sh
+sudo nano $prog/Bots.sh
+tree
+cd Google-PageRank-cheater/
+tree
+cd $work
+ls
+unlink Google-PageRank-cheater*/Google-PageRank-cheater-headless/main
+sudo apt-get install tree
+sudo nano /mnt/HDD/Programs//copyr.sh 
+for i in $( ls -d Google-PageRank-cheater* ) ; do  unlink $i/Google-PageRank-cheater-headless/main  ;done
+for i in $( ls -d Google-PageRank-cheater* ) ; do  unlink $i/Google-PageRank-cheater-headless/browsermod.py  ;done
+for i in $( ls -d $work/Google-PageRank-cheater* ) ; do  ln -s $work/Google-PageRank-cheater/Google-PageRank-cheater-headless/browsermod.py $i/Google-PageRank-cheater-headless/browsermod.py  ;done
+for i in $( ls -d $work/Google-PageRank-cheater* ) ; do  ln -s $work/Google-PageRank-cheater/Google-PageRank-cheater-headless/main $i/Google-PageRank-cheater-headless/main  ;done
+sudo bash $prog/Bots.sh
+tree Google-PageRank-cheater*
+tree Google-PageRank-cheater-apps_for_music_teachers/
+ls  Google-PageRank-cheater-apps_for_music_teachers/Google-PageRank-cheater-headless/
+for i in $( ls -d Google-PageRank-cheater* ) ; do  unlink $i/Google-PageRank-cheater-headless/uafile.ini  ;done
+for i in $( ls -d $work/Google-PageRank-cheater* ) ; do  ln -s $work/Google-PageRank-cheater/Google-PageRank-cheater-headless/uafile.ini $i/Google-PageRank-cheater-headless/uafile.ini  ;done
+ls
+ls -s
+ll
+ll  Google-PageRank-cheater-apps_for_music_teachers/Google-PageRank-cheater-headless/
+ll  Google-PageRank-cheater-apps_for_music_teachers/
+ll  Google-PageRank-cheater-apps_for_music_teachers/Google-PageRank-cheater-headless/
+sudo nano ~/.bashrc
+sudo nano ~/.bash_aliases 
+for i in $( ls -d Google-PageRank-cheater* ) ; do  unlink $i/Google-PageRank-cheater-headless/*  ;done
+for i in $( ls -d $work/Google-PageRank-cheater* ) ; do  ln -s $work/Google-PageRank-cheater/Google-PageRank-cheater-headless/uafile.ini $i/Google-PageRank-cheater-headless/uafile.ini  ;done
+for i in $( ls -d Google-PageRank-cheater* ) ; do  unlink $i/Google-PageRank-cheater-headless/uafile.ini  ;done
+for i in $( ls -d Google-PageRank-cheater* ) ; do  unlink $i/Google-PageRank-cheater-headless/main  ;done
+for i in $( ls -d Google-PageRank-cheater* ) ; do  unlink $i/Google-PageRank-cheater-headless/broswer.py  ;done
+for i in $( ls -d Google-PageRank-cheater* ) ; do  unlink $i/Google-PageRank-cheater-headless/browser.py  ;done
+for i in $( ls -d Google-PageRank-cheater* ) ; do  unlink $i/Google-PageRank-cheater-headless/ffbrowser.py  ;done
+for i in $( ls -d Google-PageRank-cheater* ) ; do  unlink $i/Google-PageRank-cheater-headless/browsermod.py  ;done
+for i in $( ls -d $work/Google-PageRank-cheater* ) ; do  ln -s $work/Google-PageRank-cheater/Google-PageRank-cheater-headless/uafile.ini $i/Google-PageRank-cheater-headless/uafile.ini  ;done
+for i in $( ls -d $work/Google-PageRank-cheater* ) ; do  ln -s $work/Google-PageRank-cheater/Google-PageRank-cheater-headless/main $i/Google-PageRank-cheater-headless/main  ;done
+for i in $( ls -d $work/Google-PageRank-cheater* ) ; do  ln -s $work/Google-PageRank-cheater/Google-PageRank-cheater-headless/browsermod.py $i/Google-PageRank-cheater-headless/browsermod.py  ;done
+for i in $( ls -d Google-PageRank-cheater* ) ; do  unlink $i/Google-PageRank-cheater-headless/broswer.py  ;done
+for i in $( ls -d Google-PageRank-cheater* ) ; do  unlink $i/Google-PageRank-cheater-headless/browsermod.py  ;done
+for i in $( ls -d Google-PageRank-cheater* ) ; do  unlink $i/Google-PageRank-cheater-headless/uafile.ini  ;done
+for i in $( ls -d Google-PageRank-cheater* ) ; do  unlink $i/Google-PageRank-cheater-headless/main  ;done
+for i in $( ls -d $work/Google-PageRank-cheater* ) ; do  ln -P $work/Google-PageRank-cheater/Google-PageRank-cheater-headless/browsermod.py $i/Google-PageRank-cheater-headless/browsermod.py  ;done
+ls $work/Google-PageRank-cheater/Google-PageRank-cheater-headless/browsermod.py
+ls /mnt/HDD/workspace/
+ls $work/Google-PageRank-cheater/Google-PageRank-cheater-headless/browsermod.py
+ls $work/Google-PageRank-cheater/Google-PageRank-cheater-headless/
+cp -rf cp -rf 
+cp -rf /mnt/HDD/workspace/Google-PageRank-cheaterTest/Google-PageRank-cheater-headless/browsermod.py Google-PageRank-cheater-headless/
+ls /mnt/HDD/workspace/Google-PageRank-cheaterTest/Google-PageRank-cheater-headless/browsermod.py Google-PageRank-cheater-headless/
 cd ..
-sudo apt install git-lfs
-ls
-rm -rf theHarvester.zip 
-ls  -s theHarvester/
-ls  -s theHarvester/theHarvester/
-ls  -sh theHarvester/theHarvester/
-ls  -sh theHarvester/theHarvester/tests/
-ls  -sh theHarvester/theHarvester/discovery/
-sudo git push -ff
 cd MARKETING/
-ls
-git push -ff
-sudo git push -ff
-git rm --cached *
-git rm --cached -R *
-git rm --cached -f *
-git rm --cached -r *
-git rm -r --cached  *
-git rm -r --cached  
-git rm -r --cached  ./
-git add .
-sudo git add .
-git commit -m  `date`
-git commit -m  "`date`"
-git push 
-sudo git push 
-sudo git push -ff
-git lfs install
-git lfs track *
-git add .gitattributes
-git add .
-git commit -m "fuk me fuk you and fuck apple"
-sudo git commit -m "fuk me fuk you and fuck apple"
-git push
-sudo git push
-sudo git push -ff
-git add .gitattributes
-git lfs install
-git lfs track "*.zip
-"
-git lfs track "*.zip"
-git lfs track "*.out"
-git add .
-sudo git add .
-sudo git pull
-sudo git pull --ff
-sudo git pull -ff
-sudo git pull -h
-sudo git pull -f -ff
-sudo git pull -f 
-sudo git pull --force
-git --allow-unrelated-histories
-git pull --allow-unrelated-histories
-sudo git pull --allow-unrelated-histories
-git commit -m "`date`"
-sudo git commit -m "`date`"
-sudo git pull --allow-unrelated-histories
-ls
-git pull 
-sudo git push
-git pull 
-sudo git pull 
-git status
-git push dev orgin 
-git fetch all
-sudo git fetch all
-sudo git fetch --all
-git push dev orgin 
-git push dev origin
-git push dev
-git switch dev
-git checkout dev
-git checkout -b dev
-ls
-git push 
-git add .
-git push
-    git push dev
-  git push --set-upstream dev dev
-sudo   git push --set-upstream dev dev
-sudo   git push --set-upstream dev master
-sudo   git push --set-upstream dev orgin
-sudo   git push --set-upstream dev origin
-sudo git push --set-upstream dev origin
-sudo git push --set-upstream dev orgin
-sudo git push --set-upstream dev origin
-sudo git push --set-upstream origin dev
-git push dev
-sudo git push dev
-sudo  git push --set-upstream dev dev
-sudo  git push --set-upstream dev master
-sudo  git push --set-upstream master dev
-git push
-git push -u origin dev
-sudo git push -u origin dev
-sudo git push -u dev
-git remote add origin https://github.com/StudiosoLLC/ScriptsforMarketing
-sudo git push -u dev
-git fetch
-sudo git fetch
-git checkout -b dev
-git switch  dev
-git push
-git push --set-upstream origin dev
-sudo git push --set-upstream origin dev
-rm -rf .git
-ls git/objects/0c/9efa3e193adc97a73359a40588031bd7c90528
-ls .git/objects/0c/9efa3e193adc97a73359a40588031bd7c90528
-sudo rm -rf  .git/objects
-sudo git push --set-upstream origin dev
-git push
-sudo git push
-git add .
-git commit -m "$(date)"
-git push
-sudo git push
-ls .git/hooks/pre-commit
-ls .git/hooks/
-ls .git/
-git init .git/
-git init 
-ls .git
-git push
- git remote add origin https://github.com/StudiosoLLC/ScriptsforMarketing/
-git push
-    git push --set-upstream origin master
-sudo     git push --set-upstream origin master
-git fetch --all
-sudo git fetch --all
-sudo     git push --set-upstream origin master
-git add .
-sudo git add .
-git commit -m "$(date)"
-sudo git commit -m "$(date)"
-sudo     git push --set-upstream origin master
-sudo     git push --set-upstream origin master -ff
 git pull
 sudo git pull
-git checkout -b master
-sudo git checkout -b master
-sudo git branch master
-sudo     git push --set-upstream origin master
-ls .git
-ls .git/hooks/
-sudo nano .git/hooks/pre-commit
-git add .
-git commit -m "$(date)"
-sudo git commit -m "$(date)"
-chmod 777 .git/hooks/pre-commit
-sudo chmod 777 .git/hooks/pre-commit
-sudo git commit -m "$(date)"
-sudo nano .git/hooks/pre-commit
-process_links_to_nondir
-sudo git commit -m "$(date)"
-sudo nano .git/hooks/pre-commit
-sudo git commit -m "$(date)"
-git add .
-sudo git commit -m "$(date)"
+sudo git add .
+git pull
+sudo git pull
+ls /
+ls 
+ls ls AI-Google-Pagerank-cheater/
+ls ls AI-Google-Pagerank-cheater/Google-PageRank-cheater-headless/
+ls /mnt/HDD/workspace/Google-PageRank-cheaterTest/Google-PageRank-cheater-headless/browsermod.py Google-PageRank-cheater-headless/
+ls /mnt/HDD/workspace/Google-PageRank-cheaterTest/Google-PageRank-cheater-headless/
+git pull
+ls
+ls Google-PageRank-cheaterTest
+ls Google-PageRank-cheaterTest/Google-PageRank-cheater-headless/
+rm -rf Google-PageRank-cheaterTest/
+ls Google-PageRank-cheaterTest/
+ls Google-PageRank-cheaterTest/Google-PageRank-cheater-headless/
+ls Google-PageRank-cheaterTest/Google-PageRank-cheater-headless/userAgentLists/
+ls Google-PageRank-cheater/Google-PageRank-cheater-headless/
+ls Google-PageRank-cheater/Google-PageRank-cheater-headless/userAgentLists/
+ls Google-PageRank-cheater/Google-PageRank-cheater-headless/userAgentLists/csv
 git stash
-touch smp'
+ls
+ls Google-PageRank-cheaterTest/
+ls Google-PageRank-cheaterTest/Google-PageRank-cheater-headless/
+ls Google-PageRank-cheaterTest/Google-PageRank-cheater-headless/userAgentLists/
+git stash
+sudo git stash
+ls
+ls Google-PageRank-cheaterTest
+ls Google-PageRank-cheaterTest/Google-PageRank-cheater-headless/
+ls 'Email-extractor/EmailExtractor.PNG
 '
+ls Email-extractor/EmailExtractor.PNG
+unlink Email-extractor/EmailExtractor.PNG
+ls Email-extractor/EmailExtractor.PNG
+sudo git stash
+sudo git stash
+ls Google-PageRank-cheater
+ls Google-PageRank-cheaterTest/
+ln -sr source_file some_directory/other_link
 ls
-git add .
-sudo git commit -m "$(date)"
-git push
-sudo git push
-sudo nano .git/hooks/pre-commit
+unlink Email-extractor
+sudo git stash
 ls
-git push
-sudo git push
-git add .
-git commit -m "`date`"
-rm smp 
-rm smp\n
-rm "smp\n"
-rm "smp" 
-rm smp 
-touch tmp
-git add .
-git commit -m "`date`"
-sudo git commit -m "`date`"
-git push
-sudo git push
-ls .git/refs/remotes/origin/dev 
+ls .git/
+ls .git/branches/
+ls .git/hooks/
+ls .git/refs/
+ls .git/refs/heads/re
+ls .git/refs/heads/remotes
+ls .git/refs/remotes/
+ls .git/refs/remotes/master/master 
+cat .git/refs/remotes/master/master 
+git stash
+sudo git stash
 ls
- git add symlink
-sudo nano $prog/soft2hard.sh
-sudo bash $prog/soft2hard.sh .
-sudo bash $prog/soft2hard.sh ./
-sudo sudo bash $prog/soft2hard.sh ./
-ls
-sudo  bash $prog/soft2hard.sh ./
-git --git-dir --work-tree ./
-git --git-dir --work-tree add ./
-git --git-dir --work-tree add .
-git add . --git-dir --work-tree 
-git rm --cached -r
-git rm --cached -r ./
-git add . --git-dir --work-tree 
-git add  --git-dir --work-tree .
-git add -fuea
-git add -f
-git add -f .
-sudo git add -fuea .
-sudo git add -f .
-ls
-git push
-git commit -m "`date`"
-sudo git commit -m "`date`"
-sudo git add -f .
-rm tmp
-sudo rm tmp
-sudo git add -f .
-sudo git commit -m "`date`"
-git push
-sudo git push
-ls
-sudo git add ?
-sudo git add -h
-sudo git add -u
-sudo git add -i
-git push
-git add .
-git add -h
-git -g
-git --work-tree ../ add .
-sudo git --work-tree ../ add .
-ls
-sudo git --work-tree ../ --git-dir=./ add .
-sudo git --work-tree ../ --git-dir=.git add .
-l
-ls
-git add .
-sudo git add .
-sudo git commit -m "`date`"
-touch tmp
-sudo git add .
-rm Google-PageRank-cheater
-unlink Google-PageRank-cheater
-ln ../Google-PageRank-cheater ./
-ln -f ../Google-PageRank-cheater ./
-ln -r ../Google-PageRank-cheater ./
-ln -R ../Google-PageRank-cheater ./
-ln -h ../Google-PageRank-cheater ./
-ln --help ../Google-PageRank-cheater ./
-ln -fp ../Google-PageRank-cheater ./
-ln -f -p ../Google-PageRank-cheater ./
-ln -fP ../Google-PageRank-cheater ./
-ln -fF ../Google-PageRank-cheater ./
-sudo ln -fF ../Google-PageRank-cheater ./
-sudo ln -fFP ../Google-PageRank-cheater ./
-sudo ln -F ../Google-PageRank-cheater ./
-sudo ln -df ../Google-PageRank-cheater ./
-sudo ln -d ../Google-PageRank-cheater ./
-sudo su
-sudo ln -s ../Google-PageRank-cheater ./
-ls -l
-git add .
-sudo git add .
-sudo git commit -m "`date`"
-git rm --cached -r ./
-git push
-sudo git push
-sudo git commit -m "`date`"
-git push
-sudo git push
-git add -f .
-sudo git add -f .
-sudo git push
-sudo git commit -m "`date`"
-sudo git push
-cd ..
-git clone https://github.com/Alcaro/GitBSLR
-cd GitBSLR/
-ls
-make
-cp -rf gitbslr.so /usr/local/lib/
-sudo cp -rf gitbslr.so /usr/local/lib/
-ls
-./install.sh --help
-./install.sh /usr/local/bin
-cp -rf install.sh install.sh.bk
-sudo nano install.sh
-./install.sh 
-ls
-ls test
-cd ..
-cd MARKETING/
-git add .
-git rm --cached -r ./
-sudo git commit -m "`date`"
-sudo git push
-export LD_PRELOAD=/usr/local/bin/gitbslr.so
-sudo nano /etc/bash.bashrc 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-git rm --cached -r ./
-git add .
-ls /usr/local/bin/gitbslr.so
-rm  /usr/local/bin/gitbslr.so
-export LD_PRELOAD=/usr/local/lib/gitbslr.so 
-git add .
-unlink ~/bin/gitbslr.so 
-sudo unlink ~/bin/gitbslr.so 
-sudo unlink ~/bin/git 
-git add .
-cd ..
-cd GitBSLR/
-ls
-make
-sudo make
-./install.sh
-sudo ./install.sh
-cd ..
-cd MA
-cd MARKETING/
-ls
-git add .
-ls /usr/lib/git-core/
-ls /usr/lib/
-cd ..
-cd GitBSLR/
-ls
-./install.sh.bk 
-sudo ./install.sh.bk 
-ln -sr /home/ubuntuserver/bin/ /usr/local/bin/
-sudo ln -sr /home/ubuntuserver/bin/ /usr/local/bin/
-sudo ln -sr /home/ubuntuserver/bin/ /usr/local/
-sudo ln -sr /home/ubuntuserver/bin/* /usr/local/bin
-/usr/local/bin/git 
-cd .. 
-cd MARKETING/
-/usr/local/bin/git add .
-sudo /usr/local/bin/git add .
-sudo nano /etc/bash.bashrc 
-export LD_PRELOAD=$LD_PRELOAD/usr/local/lib/gitbslr.so 
-export LD_PRELOAD=$LD_PRELOAD:/usr/local/lib/gitbslr.so 
-/usr/local/bin/git add .
-unset LD_PRELOAD
-export LD_PRELOAD=$LD_PRELOAD:/usr/local/lib/gitbslr.so 
-/usr/local/bin/git add .
-export LD_PRELOAD=$LD_PRELOAD:/usr/local/bin/gitbslr.so 
-/usr/local/bin/git add .
-unset LD_PRELOAD
-export LD_PRELOAD=$LD_PRELOAD:/usr/local/bin/gitbslr.so 
-/usr/local/bin/git add .
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-export LD_PRELOAD=$LD_PRELOAD:/usr/local/bin/
-/usr/local/bin/git add .
-unset LD_PRELOAD
-export LD_PRELOAD=$LD_PRELOAD:/usr/local/bin/gitbslr.so 
-sudo nano ~/.bash_exports 
-ldd /usr/local/bin/gitbslr.so 
-sudo ldd /usr/local/bin/gitbslr.so 
-sudo ld /usr/local/bin/gitbslr.so 
-cd ..
-cd GitBSLR/
-ls
-rm -rf gitbslr.so 
-sudo make
-ls
-export LD_PRELOAD=gitbslr.so
-git
-git add .
-./install.sh
-sudo ./install.sh
-export LD_PRELOAD=/usr/local/bin/gitbslr.so
-git add .
-cd ..
-cd MARKETING/
-git rm --cached -r ./
-git add .
-sudo git add .
-git add .
-sudo git add .
-git commit -m "`date`"
-sudo git commit -m "`date`"
-git add .
-sudo git add .
-sudo git add -f .
-ls Google-PageRank-cheater-teacher_student_app/Google-PageRank-cheater/Google-PageRank-cheater-headless/userAgentLists
-rm -rf Google-PageRank-cheater-teacher_student_app/Google-PageRank-cheater/Google-PageRank-cheater-headless/userAgentLists/.git
-git add .
-sudo git add .
-rm Yellow-Page-Email-Scraper/.git
-sudo rm Yellow-Page-Email-Scraper/.git
-sudo rm -rf Yellow-Page-Email-Scraper/.git
-git add .
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-git bitch
-rm -rf /home/ubuntuserver/bin/gitbslr.so
-sudo nano /etc/bash.bashrc 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo nano /etc/bash.bashrc 
-sudo git add .
-rm -rf /mnt/HDD/workspace/MARKETING/Yellow-Page-Email-Scraper/userAgentLists/
 ls userAgentLists
 ls userAgentLists/
+ls userAgentLists 
+ls Google-PageRank-cheaterTest/
+git stah
+sudo git stash
 ls
-ls ..
-rm -rf ../userAgentLists/
-ln -s ../Google-PageRank-cheater/Google-PageRank-cheater-headless/userAgentLists/ ../
-ln -s ../Google-PageRank-cheater/Google-PageRank-cheater-headless/userAgentLists/ ./
+ls Google-PageRank-cheaterTest/
+ls Google-PageRank-cheaterTest/Google-PageRank-cheater-headless/
+sudo git stash
 ls
-unlink userAgentLists 
-ls
-ln -s ../Google-PageRank-cheater/Google-PageRank-cheater-headless/userAgentLists/ ./
-ls
+unalias git
+unalias=git
+unalias
+unalias -a git
+unalias  git
+cd $work
+sudo su
+sudo git pull
+sudo git pull -ff
+sudo git pull 
+cd MARKETING/
+git pull
+sudo git pull
+git stash
+git add .
+sudo git pull
+sudo git pull --force
+git add * 
+git stash
+git pull
+sudo git add * 
 sudo git add .
-sudo git commit -m "`date`"
-sudo git push
+sudo git stash
+git pull
+sudo git pull
+git clean  -d  -f .
+git pull
+suod git pull
+sudo git pull
+git fetch --all
+suido git fetch --all
+sudo git fetch --all
+sudo git pull
+git reset --hard origin/master
+sudo git reset --hard origin/master
+ls
+ls Google-PageRank-cheaterTest
+ls
+ls Google-PageRank-cheater
+ls Google-PageRank-cheaterTest
+ls Google-PageRank-cheater/Google-PageRank-cheater-headless/
+ls Google-PageRank-cheater/Google-PageRank-cheater-headless/userAgentLists/
+ls Google-PageRank-cheater/Google-PageRank-cheater-headless/userAgentLists/csv
+nano Google-PageRank-cheater/Google-PageRank-cheater-headless/userAgentLists/csv/csvtostringparser.sh 
+git stash
+sudo git stash
+ls
+ls Google-
+ls Google-PageRank-cheater
+ls Google-PageRank-cheaterTest
+cd ..
+ls
+ls Google-PageRank-cheaterTest/
+ debugfs -w /dev/mapper/control 
+ls
+ls Google-PageRank-cheaterTest/
+ls Google-PageRank-cheaterTest/workpsace 
+ls Google-PageRank-cheaterTest/workpsace/
+rm -rf Google-PageRank-cheaterTest/workpsace
+ls
+ls Google-PageRank-cheaterTest/
+ls /mnt/HDD/Programs//csvtostringparser.sh 
+nano/mnt/HDD/Programs//csvtostringparser.sh 
+nano /mnt/HDD/Programs//csvtostringparser.sh 
+ls $back
+ls ../Back
+ls ../Backup/
+ls ../Backup/Hourly/
+ls ../Backup/Weekly/
+ls ../Backup/Programs/
+ls ../Backup/Daily/
+rm -rf Google-PageRank-cheaterTest/workpsace
+ls Google-PageRank-cheaterTest/workpsace
+ls Google-PageRank-cheaterTest/
+ls Google-PageRank-cheaterTest/workspace/
+ls Google-PageRank-cheaterTest/workspace/Google-PageRank-cheaterTest/
+ls Google-PageRank-cheaterTest/workspace/Google-PageRank-cheaterTest/Google-PageRank-cheater-headless/
+cd MARKETING/
+git stash apply
+sudo git stash apply
+git commit -a
+sudo git diff
+git stash list
+git stash 
+git stash list
+git stash pop
+ls
+ls Google-PageRank-cheaterTest
+ls Google-PageRank-cheaterTest/workspace/
+ls .git/refs/
+ls .git/refs/heads/
+ls .git/refs/tags/
+cat .git/refs/tags/
+ls.git/refs/tags
+ls .git/refs/tags
+ls .git/refs/remotes/origin/
+ls .git/refs/heads/
+cat .git/refs/heads/master 
+git stash pop
+git stash apply --index
+git stash pop
+git reflog show
+git checkout a18ef18
+sudo git checkout a18ef18
+git stash
+git rm --cached keywordCounter/data.csv
+git rm --cached Yellow-Page-Email-Scraper/keywordCounter/data.csv
+git stash
+sudo git checkout a18ef18
+unlink Yellow-Page-Email-Scraper/keywordCounter
+ls eywordCounter/data.csv
+ls keywordCounter/data.csv
+unlink keywordCounter
+sudo git checkout a18ef18
+git add .
+sudo git add .
+sudo git commit -m "hope I didn't fuck up this bad"
+sudo git checkout a18ef18
+ls Google-PageRank-cheaterTest/Google-PageRank-cheater-headless/
+ls Google-PageRank-cheaterTest/Google-PageRank-cheater-headless/userAgentLists/
+ls Google-PageRank-cheaterTest/Google-PageRank-cheater-headless/userAgentLists/csv
+mv Google-PageRank-cheaterTest TestGoogle-PageRank-cheater
+cd TestGoogle-PageRank-cheater
+ls
+cd Google-PageRank-cheater-headless/
+ls
+cp -rf browsermod.py ../../Google-PageRank-cheater/Google-PageRank-cheater-headless/
+cp -rf main ../../Google-PageRank-cheater/Google-PageRank-cheater-headless/
+cp -rf uafile.ini ../../Google-PageRank-cheater/Google-PageRank-cheater-headless/
+cp -rf userAgentLists/ ../../Google-PageRank-cheater/Google-PageRank-cheater-headless/
+sudo cp -rf userAgentLists/ ../../Google-PageRank-cheater/Google-PageRank-cheater-headless/
+cd ..
+zip TestGoogle-PageRank-cheater.zip.bk TestGoogle-PageRank-cheater.zip
+zip -r9 TestGoogle-PageRank-cheater.zip.bk TestGoogle-PageRank-cheater.zip
+zip -r9 TestGoogle-PageRank-cheater.zip.bk TestGoogle-PageRank-cheater/
+ls
+cd Google-PageRank-cheater/Google-PageRank-cheater-headless/
+ls
+cd ..
+ Google-PageRank-cheater-headless/
+sudo nano /mnt/HDD/Programs//copyr.sh 
+ for i in $( ls -d $work//Google-PageRank-cheater* ) ; do  chmod 777  $i/Google-PageRank-cheater-headless  ;done
+ for i in $( ls -d $work//Google-PageRank-cheater* ) ; do  chmod 777  $i/Google-PageRank-cheater-headless/*  ;done
+ for i in $( ls -d $work//Google-PageRank-cheater* ) ; do  sudo chmod 777  $i/Google-PageRank-cheater-headless/*  ;done
+ls
+sudo nano ~/.bash_aliases 
+ls --color=auto
+mv browsermod.py browsermod.py.bk 
+cp -rf main main.bk
+cp -rf uafile.ini uafile.ini.bk3
+ for i in $( ls -d $work//Google-PageRank-cheater* ) ; do  unlink  $i/Google-PageRank-cheater-headless/main ;done
+ for i in $( ls -d $work//Google-PageRank-cheater* ) ; do  unlink  $i/Google-PageRank-cheater-headless/browsermod.py ;done
+ for i in $( ls -d $work//Google-PageRank-cheater* ) ; do  unlink  $i/Google-PageRank-cheater-headless/uafile.ini ;done
+ls
+cp -rf browsermod.py.bk  browsermod.py
+cp -rf main.bk main
+cp -rf uafile.ini.bk3 uafile.ini
+ for i in $( ls -d $work//Google-PageRank-cheater* ) ; do ln -s $work/Google-PageRank-cheater/Google-PageRank-cheater-headless  $i/Google-PageRank-cheater-headless/uafile.ini ;done
+ls
+cd $work
+ls
+cd Google-PageRank-cheater/Google-PageRank-cheater-headless/
+ls
+ls ../../Google-PageRank-cheater-apps_music_majesty/
+ls ../../Google-PageRank-cheater-apps_music_majesty/Google-PageRank-cheater-
+ls ../../Google-PageRank-cheater-apps_music_majesty/Google-PageRank-cheater-headless/
+ls --color=auto  ../../Google-PageRank-cheater-apps_music_majesty/Google-PageRank-cheater-headless/
+ for i in $( ls -d $work//Google-PageRank-cheater* ) ; do  unlink  $i/Google-PageRank-cheater-headless/uafile.ini ;done
+ls
+cp -rf uafile.ini.bk3 uafile.ini
+ls
+ for i in $( ls -d $work//Google-PageRank-cheater* ) ; do ln -s $work/Google-PageRank-cheater/Google-PageRank-cheater-headless/uafile.ini  $i/Google-PageRank-cheater-headless/uafile.ini ;done
+ for i in $( ls -d $work//Google-PageRank-cheater* ) ; do ln -s $work/Google-PageRank-cheater/Google-PageRank-cheater-headless/main  $i/Google-PageRank-cheater-headless/main ;done
+ for i in $( ls -d $work//Google-PageRank-cheater* ) ; do ln -s $work/Google-PageRank-cheater/Google-PageRank-cheater-headless/browsermod.py  $i/Google-PageRank-cheater-headless/browsermod.py ;done
+ls
+ls ../../Google-PageRank-cheater-apps_music_majesty/Google-PageRank-cheater-headless/
+ls --color=auto  ../../Google-PageRank-cheater-apps_music_majesty/Google-PageRank-cheater-headless/
+sudo nano /mnt/HDD/Programs/Bots.sh
+ll
+ls
+ls -sl

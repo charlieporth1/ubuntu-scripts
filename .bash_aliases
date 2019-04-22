@@ -1,4 +1,4 @@
-#!/usr/bin/parallel --shebang-wrap --pipe /bin/bash
+#!/usr/bin/parallel -j+32 --shebang-wrap --pipe /bin/bash
 
 # enable color support of ls and also add handy aliases
 #if [ -x /usr/bin/dircolors ]; then
@@ -11,7 +11,6 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 bigprograms="dpkg-query -Wf '${Installed-Size}\t${Package}\n' | sort -n"
 #fi
-
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
@@ -258,3 +257,4 @@ alias findandrmdups="find -type f -exec md5sum '{}' ';' -delete| sort | uniq --a
 alias wifiqrcode='qrencode -s 7 -o qr-wifi.png "WIFI:S:$(zenity --entry --text="Network name (SSID)" --title="Create WiFi QR");T:WPA;P:$(zenity --password --title="Wifi Password");;"'
 alias lastreboot='who -b'
 
+alias ln="ln -r"

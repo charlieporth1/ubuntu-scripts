@@ -1,4 +1,4 @@
-#!/usr/bin/parallel --shebang-wrap --pipe /bin/bash
+#!/usr/bin/parallel -j+32 --shebang-wrap --pipe /bin/bash
 COL_LIGHT_GREEN='\e[1;32m'
 COL_LIGHT_RED='\e[1;31m'
 COL_NC='\e[0m' # No Color

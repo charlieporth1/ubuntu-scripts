@@ -23,6 +23,7 @@ export JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk-armhf/"
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib:/usr/local/cuda-6.5/lib:/usr/lib:/usr/local/lib:/lib:/usr/local/var/lib/
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/var/lib/:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64
 export LD_LIBRARY_PATH=$LB_LIBRARY_PATH:/usr/lib/arm-linux-gnueabihf/ #:/mnt/HDD/LD_LIBRARY/
+
 export LD_PRELOAD=$LD_PRELOAD:/usr/local/bin/gitbslr.so 
 
 export grandma='192.168.1.91'
