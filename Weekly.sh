@@ -132,10 +132,10 @@ sudo ntpdate -u 192.168.1.200
 sudo timedatectl set-ntp on
 
 #AV
+bash /mnt/HDD/Programs/email-virus-report.sh 
 sudo freshclam | parallel -Jcluster
 sudo mv /mnt/HDD/virus.txt /mnt/HDD/VirusssReports/virus$(date +"%Y-%m-%d").txt 
 sudo clamscan -r / --exclude-dir="/mnt/HDD/Virus/|/mnt/HDD/HACK/|/mnt/HDD/Hack/|/mnt/HDD/MPIhack" | grep FOUND >> /mnt/HDD/virus.txt  | parallel -Jcluster 
-bash /mnt/HDD/Programs/email-virus-report.sh 
 #sudo timeout  300  "sudo clamscan --remove=yes -i -r /  --exclude-dir=/mnt/HDD/Virus/" | parallel -Jcluster
 sudo clamscan --remove=yes -i -r /  --exclude-dir="/mnt/HDD/Virus/|/mnt/HDD/HACK/|/mnt/HDD/Hack/|/mnt/HDD/MPIhack" | parallel -Jcluster
 sudo echo 3 > /proc/sys/vm/drop_caches

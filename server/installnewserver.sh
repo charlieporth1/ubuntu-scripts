@@ -19,7 +19,7 @@ npm install geoip-native
 sudo apt -y install golang-go 
 sudo apt-get -y install tmpreaper ntp ntpd 
 sudo apt-get -y install cachefilesd freebsd-manpages 
-
+sudo apt install -y clamav
 systemctl enable cachefilesd
 sudo apt-get -y install libssl1.0-dev tor git-extras
 sudo apt-get -y install cpufrequtils sysfsutils
