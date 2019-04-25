@@ -112,6 +112,8 @@ sudo echo 1 > /proc/sys/vm/drop_caches
 
 #Matanice 
 sudo freshclam
+#sudo e4defrag /dev/*
+sudo e4defrag /dev/sd*
 sudo npm cache clean --force | parallel -Jcluster
 bleachbit --list | grep -E "[a-z]+\.[a-z]+" | xargs bleachbit --clean | parallel -Jcluster
 sudo $prog/Cleanup.sh | parallel -Jcluster
@@ -125,9 +127,9 @@ sudo echo 1 > /proc/sys/vm/drop_caches
 sudo service fwupd start
 sudo fwupdmgr refresh
 sudo fwupdmgr update
+
 #Updates 
 sudo bash $prog/update.sh 
-
 sudo ntpdate -u 192.168.1.200
 sudo timedatectl set-ntp on
 
