@@ -6,8 +6,16 @@
 #15min
 curl -fsS --retry 3 https://hc-ping.com/906c2e51-893d-42bb-9915-16cecdb4f873 
 #firefox --headless &
-sudo /etc/init.d/tor start
-headless=true #this is the headless bot not browser 
+function torOn() {
+	sudo /etc/init.d/tor start
+	sudo service privoxy start
+}
+function torOff() {
+	sudo /etc/init.d/tor stop
+	sudo service privoxy stop
+}
+torOn
+headless=false #this is the headless bot not browser 
 export rootDir=/mnt/HDD/workspace
 if [ $headless ]; then
 export dir=Google-PageRank-cheater-headless/
@@ -33,6 +41,8 @@ sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
 # studioso google cheat bot with the keyword music educatio 
+torOff
+torOn
 cd $rootDir/Google-PageRank-cheater-Studioso1-conf/$dir 
 sudo rm -rf files/*
 
@@ -44,6 +54,8 @@ sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
 # otih oith bot
+torOff
+torOn
 cd $rootDir/Google-PageRank-cheater-OTIH-OITH-Conf/$dir
 sudo rm -rf files/*
 
@@ -54,6 +66,8 @@ $cmd #| parallel -Jcluster
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
+torOff
+torOn
 cd $rootDir/Google-PageRank-cheater/$dir 
 sudo rm -rf files/*
 
@@ -68,6 +82,8 @@ sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
 #apps_for_music_teacher
+torOff
+torOn
 cd $rootDir/Google-PageRank-cheater-apps_for_music_teachers/$dir/
 sudo rm -rf files/*   
 
@@ -77,6 +93,8 @@ sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
  $cmd #| parallel -Jcluster 
+torOff
+torOn
 cd $rootDir/Google-PageRank-cheater-apps_for_teachers_to_track_student_progress/$dir/
 sudo rm -rf files/*   
 
@@ -86,6 +104,8 @@ sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
 $cmd #| parallel -Jcluster 
+torOff
+torOn
 cd $rootDir/Google-PageRank-cheater-apps_for_teachers_to_track_student_progress/$dir/
 sudo rm -rf files/*   
 
@@ -95,6 +115,8 @@ $cmd  #| parallel -Jcluster
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
+torOff
+torOn
 cd $rootDir/Google-PageRank-cheater-apps_music_majesty/$dir/
 sudo rm -rf files/*   
 
@@ -104,6 +126,8 @@ $cmd #| parallel -j32
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
+torOff
+torOn
 cd $rootDir/Google-PageRank-cheater-music_practice_tracker/$dir/
 sudo rm -rf files/*   
 
@@ -113,6 +137,8 @@ sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
 $cmd #| parallel -Jcluster 
+torOff
+torOn
 cd $rootDir/Google-PageRank-cheater-music_teacher_app/$dir/
 sudo rm -rf files/*   
 
@@ -122,12 +148,16 @@ sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
 $cmd  #| parallel -Jcluster
+torOff
+torOn
 cd $rootDir/Google-PageRank-cheater-music_teacher_app/$dir
 sudo rm -rf files/*   
 
 #timeout $((60 + RANDOM % 300 ))  $cmd
 #cpulimit -l 30 $cmd
 $cmd #| parallel -Jcluster 
+torOff
+torOn
 cd $rootDir/Google-PageRank-cheater-music_teaching_app/$dir/
 sudo rm -rf files/*   
 
@@ -137,6 +167,8 @@ sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
 $cmd  #| parallel -Jcluster
+torOff
+torOn
 cd $rootDir/Google-PageRank-cheater-studio_so/$dir/
 sudo rm -rf files/*   
 
@@ -146,6 +178,8 @@ sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
 $cmd  #| parallel -Jcluster 
+torOff
+torOn
 cd $rootDir/Google-PageRank-cheater-teacher_student_app/$dir/
 sudo rm -rf files/*   
 
@@ -155,6 +189,8 @@ sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
 $cmd  #| parallel -Jcluster 
+torOff
+torOn
 
 cd $rootDir/Google-PageRank-cheater-ios-music-teach/$dir/
 sudo rm -rf files/*   
@@ -164,6 +200,8 @@ sudo rm -rf files/*
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
+torOff
+torOn
 $cmd  #| parallel -Jcluster 
 cd $rootDir/Google-PageRank-cheater-ios-musis-tool/$dir/
 sudo rm -rf files/*   
@@ -174,6 +212,8 @@ sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
 $cmd #| parallel -Jcluster 
+torOff
+torOn
 cd $rootDir/Google-PageRank-cheater-ios-student/$dir/
 sudo rm -rf files/*   
 
@@ -183,6 +223,8 @@ sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
 $cmd  #| parallel -Jcluster 
+torOff
+torOn
 cd $rootDir/Google-PageRank-cheater-ios-teacher/$dir/
 sudo rm -rf files/*   
 
@@ -192,6 +234,8 @@ sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
 $cmd #| parallel -Jcluster 
+torOff
+torOn
 cd $rootDir/Google-PageRank-cheater-MUSICED/$dir/
 sudo rm -rf files/*   
 
@@ -201,6 +245,8 @@ sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
 $cmd  #| parallel -Jcluster 
+torOff
+torOn
 cd $rootDir/Google-PageRank-cheater-SMARTMUSIC/$dir/
 sudo rm -rf files/*   
 
@@ -210,6 +256,8 @@ sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
 $cmd #| parallel -Jcluster #this one should aways run 
+torOff
+torOn
  
 cd $rootDir/Google-PageRank-cheater-SMARTMUSIC-TRAIN-1/$dir/
 sudo rm -rf files/*   
@@ -220,6 +268,8 @@ sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
 $cmd #| parallel -Jcluster #this one should aways run 
+torOff
+torOn
 cd $rootDir/Google-PageRank-cheater-SMARTMUSIC-AFTER-TRAIN/$dir/
 sudo rm -rf files/*   
 
@@ -229,6 +279,8 @@ sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
 $cmd #| parallel -Jcluster #this one should aways run 
+torOff
+torOn
 cd $rootDir/Google-PageRank-cheater-SMART_MUSIC_STUDIOSO/$dir/
 sudo rm -rf files/*   
 
@@ -286,5 +338,4 @@ curl -fsS --retry 3 https://hc-ping.com/2db2032d-649c-43b5-947a-cc132f769f5d
 sudo bash /mnt/HDD/workspace/keywordCounter/keywordCountertoCSV.sh 
   
 killall firefox
-sudo /etc/init.d/tor stop
 disown -a  && exit 0
