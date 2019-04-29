@@ -54,11 +54,13 @@ sudo bash /mnt/HDD/Programs/killMemoryHogs.sh
 #sudo zip -r9 /mnt/HDD/Backup/Website/Hourly/www.zip /var/www/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*
 sudo killall  node
 sleep 2
-sudo node /mnt/HDD/itunes-connect-slack/poll-itc.js  &
+sudo nohup node /mnt/HDD/itunes-connect-slack/poll-itc.js  & > /dev/null
 cd /mnt/HDD/itunes-connect-slack && sudo node poll-itc.js &
-cd /mnt/HDD/SLACK/2fa-2-slack/ && npm start &
-sudo node /mnt/HDD/SLACK/AppReviewSlack/server.js &
-#sudo node /mnt/HDD/SLACK/ReviewMe/index.js 
+cd /mnt/HDD/SLACK/2fa-2-slack/ && nohup npm start & > /dev/null
+sudo nohup node /mnt/HDD/SLACK/2fa-2-slack/app.js  & > /dev/null
+sudo nohup node /mnt/HDD/SLACK/AppReviewSlack/server.js & > /dev/null
+udo nohup node  /var/www/SMSLinkRECIVED.js  & > /dev/null
+#sudo node /mnt/HDD/SLACK/ReviewMe/index.js  
 
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches

@@ -258,3 +258,5 @@ alias wifiqrcode='qrencode -s 7 -o qr-wifi.png "WIFI:S:$(zenity --entry --text="
 alias lastreboot='who -b'
 
 alias ln="ln -r"
+alias quit="exit"
+

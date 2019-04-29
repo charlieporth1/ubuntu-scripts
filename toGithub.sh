@@ -1,4 +1,4 @@
-#!/bin/bash
+ #!/bin/bash
 export work=/mnt/HDD/workspace/
 export LD_PRELOAD=$LD_PRELOAD:/usr/local/bin/gitbslr.so 
 function toGit() {

@@ -1,6 +1,6 @@
 #!/bin/bash
 #fastlane env
-#curl -fsS --retry 3 https://hc-ping.com/64b266e2-f3d4-4d82-b8ee-43a65e884476
+curl -fsS --retry 3 https://hc-ping.com/64b266e2-f3d4-4d82-b8ee-43a65e884476
 . /usr/bin/cred.sh
 #echo $itcpwd | sudo nohup watchbuild -a com.studiosoapp.student -u charlieporth@yahoo.com > /mnt/HDD/buildprocessalert.out 2> /mnt/HDD/buildprocessalert.err 
 export cmd="$(/mnt/HDD/watchbuild/bin/watchbuild -a com.studiosoapp.student -u charlieporth@yahoo.com  | awk '{print $2}'  | cut -d '/' -f 13-14  | grep '/')" 
