@@ -10,4 +10,10 @@ RANGE=${#word[@]}
 number=$RANDOM
 let "number %= $RANGE"
 export bitch=${word[$number]}
+cunt=$1 
+if [[ $cunt = "[]" ]]; then
+echo $cunt
 echo $bitch
+else 
+echo $bitch
+fi

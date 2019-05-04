@@ -23,7 +23,7 @@ systemctl enable cachefilesd
 sudo apt-get -y install libssl1.0-dev tor git-extras
 sudo apt-get -y install cpufrequtils sysfsutils
 sudo apt-get -y install smartmontools cpulimit
-sudo apt-get -y install libcryptsetup-dev libjansson-dev xorg
+sudo apt-get -y install libcryptsetup-dev libjansson-dev xorg bsdmainutils
 sudo apt-get -y install  *`uname -r`* rsync rclone gdrive linux-firmware intel-microcode fwupdate-signed fwupdate-amd64-signed fwupdate fwupd flashrom efibootmgr amd64-microcode
 sudo apt install --install-recommends linux-generic-hwe-18.04
 sudo git clone https://github.com/pkoutoupis/rapiddisk/
