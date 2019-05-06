@@ -9,10 +9,12 @@ curl -fsS --retry 3 https://hc-ping.com/906c2e51-893d-42bb-9915-16cecdb4f873
 function torOn() {
 	sudo /etc/init.d/tor start
 	sudo service privoxy start
+	sleep 2
 }
 function torOff() {
 	sudo /etc/init.d/tor stop
 	sudo service privoxy stop
+	sleep 2
 }
 torOn
 headless=false #this is the headless bot not browser 
@@ -319,7 +321,8 @@ sudo echo 1 > /proc/sys/vm/drop_caches
 
 
 cd $rootDir/GET_FOLLOWERS/twitter-bot-for-increased-growth 
-timeout 300 python app.py 
+#timeout 300 
+python app.py 
 
 #cd $rootDir/GET_FOLLOWERS/go-twitter-bot 
 #./go-twitter-bot 
