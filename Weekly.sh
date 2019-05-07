@@ -122,7 +122,7 @@ sudo $prog/Cleanup.sh | parallel -Jcluster
 sudo geoipupdate
 #sudo bash /mnt/HDD/Programs//Bash-History-Clear-first-part-forloop.sh
 #sudo /etc/init.d/nscd reload    # nscd
-sudo bash /mnt/HDD/Programs/pipfix.sh | parallel -Jcluster
+#sudo bash /mnt/HDD/Programs/pipfix.sh | parallel -Jcluster
 sudo echo 3 > /proc/sys/vm/drop_caches
 sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches

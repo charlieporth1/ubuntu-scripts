@@ -407,6 +407,8 @@ echo "fs.suid_dumpable = 0" >> /etc/sysctl.conf
 # Find values = $getconf _PHYS_PAGES and $getconf PAGE_SIZE.
 echo "fs.file-max = 785928" >> /etc/sysctl.conf
 
+echo "net.ipv4.tcp_mtu_probing=1" > /etc/sysctl.conf
+
 fi
 
 if [ -z "$(cat /etc/fstab | grep -o '192.168.1.250:/')"]; then
