@@ -6,12 +6,16 @@
 #15min
 #PORT=$(($RANDOM + ($RANDOM % 2) * 32768))
 #PORT=$(( ((RANDOM<<15)|RANDOM) % 63001 + 2000 ))
-curl -fsS --retry 3 https://hc-ping.com/906c2e51-893d-42bb-9915-16cecdb4f873 
+curl -fsS --retry 3 https://hc-ping.com/906c2e51-893d-42bb-9915-16cecdb4f873  &
+export SHELL=$(type -p bash)
+
+prog=/mnt/HDD/Programs/
 function randomWait() {
+	echo "exec randomWait"
 	range=255
-	hex=`randomHex $range`
+	hex=`randomHex $range $cutCharMin $cutCharMax`
 	hexRev=`echo $hex | rev`
-	hexSub=echo ${numRev:1-0}
+	hexSub=`echo ${numRev:1-0}`
 	hexFirstDigit=echo ${num:0-1} | rev
 	singleHex=`randomSingleHex`
 	if [[ $numSub = "F" ]]; then 
@@ -25,8 +29,10 @@ function randomWait() {
 #	waitTime=`cat /dev/urandom | hexdump | sed -n '$num$p' | bc`
 	echo "sleeping (ms): dec: $num; hex: $hex; ms: $ms"
 	sleep $ms
+	echo "exec done randomWait"
 }
 function randomHex() {
+	echo "exec randomHex"
 	range=$1
 	cutMin=$2
 	cutMax=$3 
@@ -35,15 +41,18 @@ function randomHex() {
 	p='p'
 	hex=`head -c $range+5 /dev/urandom | hexdump | sed -n '$num$p' | cut -c $cutMin-$cutMax | tr " " "$randomHex"`
 	HEX=${hex^^}
+	echo "exec done with randomHex"
 	return $HEX
 }
 function randomNum() {
+	echo "exec randomNum"
 	RANGE=$1
 	number=$RANDOM
 	let "number %= $RANGE"
 	return $number
 }
 function cutLength() {
+	echo "exec cutLength"
         range=109
 	maxLength=`randomNum 6`
 	charMin=`randomNum 8`
@@ -52,8 +61,12 @@ function cutLength() {
 	charStart=8
 	let "charStart = $maxLength - $charSelection"
 	hex=`head -c $range+5 /dev/urandom | hexdump | sed -n '$number$p' | cut -c $charStart-$charSelection | sed 's/ //g'`
+	echo "done cutLength"
+	export -f cutCharMax=$charMax
+	export -f cutCharMin=$charMin
 }
 function randomSingleHex() {
+	echo "exec randomSingleHex"
         range=18
 	num=`randomNum $range`
 	maxLength=`randomNum 6`
@@ -76,24 +89,24 @@ function randomSingleHex() {
 	fi
 	p='p'
 	hex=`head -c $num+5 /dev/urandom | hexdump | sed -n '$num$p' | cut -c $charStart-$charSelection | sed 's/ //g'`
+	echo "done randomSingleHex"
 	return $hex
 }
 randomWait
 function torOn() {
 
 	sudo /etc/init.d/tor start
-	sleep 1
+	sleep 0.1
 	sudo service privoxy start
-	sleep 2
+	sleep 0.1
 }
 function torOff() {
 
 	sudo /etc/init.d/tor stop
-	sleep 1
+	sleep 0.1
 	sudo service privoxy stop
-	sleep 2
-	rm -rf /tmp/*
-	sleep 1
+	sleep 0.1
+	bash $prog/cleanTmpIfFull.sh
 }
 function clearRAM() {
 	sudo echo 3 > /proc/sys/vm/drop_caches
