@@ -8,90 +8,154 @@
 #PORT=$(( ((RANDOM<<15)|RANDOM) % 63001 + 2000 ))
 curl -fsS --retry 3 https://hc-ping.com/906c2e51-893d-42bb-9915-16cecdb4f873  &
 export SHELL=$(type -p bash)
-
 prog=/mnt/HDD/Programs/
+debugg=true
+function log() {
+	if [[ $debugg ]]; then
+		if [[ -z ${FUNCNAME[1]} ]]; then
+			echo "Log message: $1" >&2
+		else
+			echo "${FUNCNAME[0]} message: Function: ${FUNCNAME[1]}: $1" >&2
+		fi
+	fi
+}
 function randomWait() {
-	echo "exec randomWait"
-	range=255
-	hex=`randomHex $range $cutCharMin $cutCharMax`
-	hexRev=`echo $hex | rev`
-	hexSub=`echo ${numRev:1-0}`
-	hexFirstDigit=echo ${num:0-1} | rev
-	singleHex=`randomSingleHex`
+	log 'exec randomWait '
+	local range=255
+	cutLength
+	log "starting hex "
+	local hex=`randomHex $range $cutCharMin $cutCharMax`
+	log "hex $hex"
+	log "hex done"
+	local hexRev=`echo "$hex" | rev`
+	log "hexRev $hexRev"
+	local hexSub=`echo ${numRev:1-0}`
+	log "hexSub $hexSub"
+	local hexFirstDigit=`echo ${num:0-1} | rev`
+	log "hexFirstDigit $hexFirstDigit"
 	if [[ $numSub = "F" ]]; then 
+		local singleHex=`randomSingleHex`
+		log "first char F so choosing a random hex"
+		log "hexFirstDigit $singlecHex"
 		waitTime=`echo "$(randomSingleHex)$hexSub"`
 	else 
-		waitTime=`echo "$hex"`
+		waitTime="$hex"
 	fi
-	num=`echo "base=16; $waitTime" | bc`
-	ms=1000
-	let "ms = 1000 / $num"
+	local num=`echo "ibase=16; $waitTime" | bc`
+	local msS=1000
+	ms=`bc -l <<< "scale=4;$num/1000"`
+#	ms=$(($num/ 1000 ))
+#	let "ms=/\$num"
 #	waitTime=`cat /dev/urandom | hexdump | sed -n '$num$p' | bc`
-	echo "sleeping (ms): dec: $num; hex: $hex; ms: $ms"
+	log "sleeping ms: $ms; dec: $num; hex: $hex; ms: $ms "
 	sleep $ms
-	echo "exec done randomWait"
+	log "exec done randomWait "
+	return
 }
 function randomHex() {
-	echo "exec randomHex"
-	range=$1
-	cutMin=$2
-	cutMax=$3 
-	randomHex=`randomSingleHex`
-	num=`randomNum $range`
-	p='p'
-	hex=`head -c $range+5 /dev/urandom | hexdump | sed -n '$num$p' | cut -c $cutMin-$cutMax | tr " " "$randomHex"`
-	HEX=${hex^^}
-	echo "exec done with randomHex"
-	return $HEX
+	log 'exec randomHex '
+	local range=$1
+	local cutMin=$2
+	local cutMax=$3 
+	local minusCut=6
+	local num=`randomNum $range false`
+#	let "minusCut=$cutMin-$cutMax"
+	minusCut=$(($cutMax-$cutMin))
+	local randomHex=`randomSingleHex`
+	local p='p'
+	local hex=`head -c $(($num*16+5)) /dev/urandom | hexdump | sed -n "$num$p" | cut -c $minusCut-$cutMax | tr " " "$randomHex"`
+	local HEX=${hex^^}
+	log "exec done with randomHex "
+	echo $HEX
+	return
 }
 function randomNum() {
-	echo "exec randomNum"
-	RANGE=$1
-	number=$RANDOM
-	let "number %= $RANGE"
-	return $number
+	log 'exec randomNum '
+	local RANGE=$1
+	log "RANGE: $RANGE " 
+	local acceptZero=$2
+	local number=$RANDOM
+	if [[  $acceptZero ]]; then
+		log "accept ZERO $acceptZero "
+		export number=$(( ((RANDOM<<1)|RANDOM) % $RANGE ))
+	elif [[ $acceptZero =~ [0-9]^ ]]; then
+		log "Number regex; Min number $acceptZero "
+		export number=$((((RANDOM<<$acceptZero)|RANDOM) % $RANGE ))
+	else
+		log "accept ZERO $acceptZero "
+		let "number%=$RANGE"
+	fi
+	log "RANDOM NUMBER: $number "
+	echo $number
+	return
 }
 function cutLength() {
-	echo "exec cutLength"
-        range=109
-	maxLength=`randomNum 6`
-	charMin=`randomNum 8`
-	charMax=`randomNum 32`
-	charSelection=$(( ((RANDOM<<8)|RANDOM) % 32 ))
-	charStart=8
-	let "charStart = $maxLength - $charSelection"
-	hex=`head -c $range+5 /dev/urandom | hexdump | sed -n '$number$p' | cut -c $charStart-$charSelection | sed 's/ //g'`
-	echo "done cutLength"
-	export -f cutCharMax=$charMax
-	export -f cutCharMin=$charMin
+	log 'exec cutLength '
+        local range=109
+	local maxLength=`randomNum 6 false`
+	log "maxLength: $maxLength "
+	#sleep 1s
+	local charStart=$((9+$maxLength))
+	#charMin=`randomNum 8`
+	local charMax=`randomNum 32 $charStart`
+	log "charMax: $charMax "
+	local charSelection=$(( ((RANDOM<<$charStart)|RANDOM) % $charMax ))
+	log "selected Char \#: $charSelection "
+	log "selected Char \# min: $maxLength "
+#	selectHex=`randomNum $charSelection`
+#	hexSelection=$(( ((RANDOM<<)|RANDOM) % 32 ))
+	local p='p'
+#	let "charStart=$maxLength-$charSelection"
+	local charStart=$(($charSelection-$maxLength))
+#	hex=`head -c $(($range+5)) /dev/urandom | hexdump | sed -n '$number$p' | cut -c $charStart-$charSelection | sed 's/\ //g'`
+#	export cutCharMin=$charMin
+	export cutCharMin=$maxLength
+	export cutCharMax=$charSelection
+	export charSelection=$charSelection
+	export maxLength=$maxLength
+	log "done cutLength "
+	return
 }
 function randomSingleHex() {
-	echo "exec randomSingleHex"
-        range=18
-	num=`randomNum $range`
-	maxLength=`randomNum 6`
-	charMin=`randomNum 8`
-	charMax=`randomNum 32`
-	charSelection=$(( ((RANDOM<<8)|RANDOM) % 32 ))
-	charStart=2
-	minus=1
-	if [[ $charMin < $charMax ]]; then
-		let "charStart = $maxLength - $charSelection"
-	else
-		while true; do
-			if [[ $charMax < $charMax ]]; then 
-				let "charStart = $maxLength - $charSelection"
-				break
-			else
-				continue
-			fi
-		done
-	fi
-	p='p'
-	hex=`head -c $num+5 /dev/urandom | hexdump | sed -n '$num$p' | cut -c $charStart-$charSelection | sed 's/ //g'`
-	echo "done randomSingleHex"
-	return $hex
+	log "exec randomSingleHex "
+        local range=18
+	local minus=6 # this make sure there are chars 
+	local num=`randomNum $range false`
+	local minChar=$((10+$minus))
+	local charStart=2
+	#local charMin=`randomNum 8`
+	local charMax=`randomNum 32 $minChar`
+	log "charMax $charMax"
+	local charSelection=$(( ((RANDOM<<$minChar)|RANDOM) % $charMax ))
+	log "charSelection $charSelection"
+	local p='p'
+	#if [[ $charMin < $charMax ]]; then
+	let "charStart=$minus-$charSelection"
+	local charStart=$(($charSelection-$minus))
+#	local charStart=$(($minus-$charSelection))
+	log "charStart $charStart"
+	#fi
+	local hexa=`head -c $(($num*16+6)) /dev/urandom | hexdump | sed -n "$num$p" | cut -c $charStart-$charSelection | sed "s/ //g"`
+	#if [[  $hex =~ [[:space:]]* ]]; then
+	#	log "found spaces"
+	#	local hexa=`echo $hex | sed 's/ //g'`
+	#else 
+	#	local hexa=${hex} 
+	#fi 
+	log "hexa $hexa"
+#	log "hex $hex"
+	local hexadecimal=`echo ${hexa^^} | cut -c 1-1`
+	log "hexadecimal $hexadecimal"
+	echo $hexadecimal
+	log "done randomSingleHex "
+	return
 }
+export -f randomSingleHex 
+export -f cutLength
+export -f randomNum
+export -f randomWait
+export -f randomHex
+
 randomWait
 function torOn() {
 
@@ -99,6 +163,7 @@ function torOn() {
 	sleep 0.1
 	sudo service privoxy start
 	sleep 0.1
+	return
 }
 function torOff() {
 
@@ -107,12 +172,14 @@ function torOff() {
 	sudo service privoxy stop
 	sleep 0.1
 	bash $prog/cleanTmpIfFull.sh
+	return
 }
 function clearRAM() {
 	sudo echo 3 > /proc/sys/vm/drop_caches
 	sudo echo 2 > /proc/sys/vm/drop_caches
 	sudo echo 1 > /proc/sys/vm/drop_caches
 	sync
+	return 
 }
 torOn
 useChrome=true
