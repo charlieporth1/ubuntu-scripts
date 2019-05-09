@@ -155,10 +155,17 @@ export -f cutLength
 export -f randomNum
 export -f randomWait
 export -f randomHex
-
-randomWait
+function onlyOnce() {
+	isRunning=`sudo ps -x |  grep -o "Bots.sh"`
+	if [[ -n $isRunning ]]; then 
+		curl -fsS --retry 3 https://hc-ping.com/2db2032d-649c-43b5-947a-cc132f769f5d
+		torOff
+		sleep 1s
+		exit 0 
+	fi
+}
 function torOn() {
-
+	randomWait
 	sudo /etc/init.d/tor start
 	sleep 0.1
 	sudo service privoxy start
@@ -181,6 +188,7 @@ function clearRAM() {
 	sync
 	return 
 }
+onlyOnce
 torOn
 useChrome=true
 if [ $useChrome ]; then

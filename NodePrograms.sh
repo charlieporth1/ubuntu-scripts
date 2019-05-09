@@ -4,18 +4,37 @@ sudo killall  node
 echo "success"
 sleep 5
 echo "starting node"
-sudo nohup node /mnt/HDD/itunes-connect-slack/poll-itc.js  & > /dev/null
-#cd /mnt/HDD/itunes-connect-slack && sudo node poll-itc.js &
-cd /mnt/HDD/SLACK/2fa-2-slack/ && nohup npm start & > /dev/null
-sudo nohup node /mnt/HDD/SLACK/2fa-2-slack/app.js  & > /dev/null
-sudo nohup node /mnt/HDD/SLACK/AppReviewSlack/server.js & > /dev/null
-sudo nohup node /var/www/SMSLinkRECIVED.js  & > /dev/null
-sudo nohup node /mnt/HDD/itunes-connect-slack/poll-itc.js  & > /dev/null
-#echo "starting without nohup"
-#sudo node /mnt/HDD/itunes-connect-slack/poll-itc.js  & > /dev/null
-#cd /mnt/HDD/itunes-connect-slack && sudo node poll-itc.js &
-#cd /mnt/HDD/SLACK/2fa-2-slack/ && npm start & > /dev/null
-#sudo node /mnt/HDD/SLACK/2fa-2-slack/app.js  & > /dev/null
-#sudo node /mnt/HDD/SLACK/AppReviewSlack/server.js & > /dev/null
-#sudo node  /var/www/SMSLinkRECIVED.js  & > /dev/null
-echo "success"
+#function startNode() {
+	hup=false
+	bkg=true
+	node=false
+#	redirect=/dev/null 2>&1 &
+	redirect=/bin/cat > /dev/null 2>&1 &
+	sleep 1s
+	if [[ $bkg == true ]];then
+		bg=\&
+	else
+		bg=
+	fi
+	if [[ $hup == true ]]; then
+		out=nohup
+	else
+		out=
+	fi
+	#if [[ $node == true ]]; then
+	#	prog=node
+	#else 
+		#prog=forever -o /dev/null
+	#fi
+	sleep 1s
+	sudo $out node /mnt/HDD/itunes-connect-slack/poll-itc.js > /dev/null 2>&1 &
+	#cd /mnt/HDD/itunes-connect-slack && sudo node poll-itc.js &
+	cd /mnt/HDD/SLACK/2fa-2-slack/ && $out npm start  > /dev/null 2>&1 &
+	sudo $out node /mnt/HDD/SLACK/2fa-2-slack/app.js > /dev/null 2>&1 &
+	sudo $out node /mnt/HDD/SLACK/AppReviewSlack/server.js > /dev/null 2>&1 &
+	sudo $out node /var/www/SMSLinkRECIVED.js > /dev/null 2>&1 &
+	sudo $out node /mnt/HDD/itunes-connect-slack/poll-itc.js > /dev/null 2>&1 &
+	echo "success"
+#return
+#}
+#startNode
