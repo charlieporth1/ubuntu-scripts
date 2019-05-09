@@ -19,6 +19,59 @@ function log() {
 		fi
 	fi
 }
+function randomNum() {
+	log 'exec randomNum '
+	local RANGE=$1
+	log "RANGE: $RANGE " 
+	local acceptZero=$2
+	local number=$RANDOM
+	if [[  $acceptZero ]]; then
+		log "accept ZERO $acceptZero "
+		export number=$(( ((RANDOM<<1)|RANDOM) % $RANGE ))
+	elif [[ $acceptZero =~ [0-9]^ ]]; then
+		log "Number regex; Min number $acceptZero "
+		export number=$((((RANDOM<<$acceptZero)|RANDOM) % $RANGE ))
+	else
+		log "accept ZERO $acceptZero "
+		let "number%=$RANGE"
+	fi
+	log "RANDOM NUMBER: $number "
+	echo $number
+	return
+}
+function chooseRandom() {
+        log "choosing random"
+        declare -a randoms=()
+        if [[ -f /dev/urandom ]]; then 
+                log '/dev/urandom'
+                local urandom=true
+                local randoms+=('/dev/urandom')
+        fi
+        if [[ -f /dev/frandom ]]; then
+                log '/dev/frandom'
+                local frandom=true
+                local randoms+=('/dev/frandom')
+        fi
+        if [[ -f /dev/erandom ]]; then
+                log '/dev/erandom'
+                local erandom=true
+                local randoms+=('/dev/erandom')
+        fi
+        if [[ -f /dev/random ]]; then 
+                log '/dev/random'
+                local randoms+=('/dev/random')
+                local random=true
+        fi
+        local arrayMax=$((${#randoms[@]}))
+#        local num=`randomNum $arrayMax false`
+ #       local num= #`randomNum $arrayMax false`
+#       log "${randoms[@]}"
+        export whatRandom=/dev/frandom #${randoms[$num]}
+        echo $whatRandom
+        log "Array Size: $arrayMax"
+        log "CHOOSE RANDOM \#:$num; random: $whatRandom"
+}
+export whatRandom=/dev/frandom
 function randomWait() {
 	log 'exec randomWait '
 	local range=255
@@ -46,7 +99,7 @@ function randomWait() {
 	ms=`bc -l <<< "scale=4;$num/1000"`
 #	ms=$(($num/ 1000 ))
 #	let "ms=/\$num"
-#	waitTime=`cat /dev/urandom | hexdump | sed -n '$num$p' | bc`
+#	waitTime=`cat $whatRandom | hexdump | sed -n '$num$p' | bc`
 	log "sleeping ms: $ms; dec: $num; hex: $hex; ms: $ms "
 	sleep $ms
 	log "exec done randomWait "
@@ -63,30 +116,10 @@ function randomHex() {
 	minusCut=$(($cutMax-$cutMin))
 	local randomHex=`randomSingleHex`
 	local p='p'
-	local hex=`head -c $(($num*16+5)) /dev/urandom | hexdump | sed -n "$num$p" | cut -c $minusCut-$cutMax | tr " " "$randomHex"`
+	local hex=`head -c $(($num*16+5)) $whatRandom | hexdump | sed -n "$num$p" | cut -c $minusCut-$cutMax | tr " " "$randomHex"`
 	local HEX=${hex^^}
 	log "exec done with randomHex "
 	echo $HEX
-	return
-}
-function randomNum() {
-	log 'exec randomNum '
-	local RANGE=$1
-	log "RANGE: $RANGE " 
-	local acceptZero=$2
-	local number=$RANDOM
-	if [[  $acceptZero ]]; then
-		log "accept ZERO $acceptZero "
-		export number=$(( ((RANDOM<<1)|RANDOM) % $RANGE ))
-	elif [[ $acceptZero =~ [0-9]^ ]]; then
-		log "Number regex; Min number $acceptZero "
-		export number=$((((RANDOM<<$acceptZero)|RANDOM) % $RANGE ))
-	else
-		log "accept ZERO $acceptZero "
-		let "number%=$RANGE"
-	fi
-	log "RANDOM NUMBER: $number "
-	echo $number
 	return
 }
 function cutLength() {
@@ -107,7 +140,7 @@ function cutLength() {
 	local p='p'
 #	let "charStart=$maxLength-$charSelection"
 	local charStart=$(($charSelection-$maxLength))
-#	hex=`head -c $(($range+5)) /dev/urandom | hexdump | sed -n '$number$p' | cut -c $charStart-$charSelection | sed 's/\ //g'`
+#	hex=`head -c $(($range+5)) $whatRandom | hexdump | sed -n '$number$p' | cut -c $charStart-$charSelection | sed 's/\ //g'`
 #	export cutCharMin=$charMin
 	export cutCharMin=$maxLength
 	export cutCharMax=$charSelection
@@ -135,7 +168,7 @@ function randomSingleHex() {
 #	local charStart=$(($minus-$charSelection))
 	log "charStart $charStart"
 	#fi
-	local hexa=`head -c $(($num*16+6)) /dev/urandom | hexdump | sed -n "$num$p" | cut -c $charStart-$charSelection | sed "s/ //g"`
+	local hexa=`head -c $(($num*16+6)) $whatRandom | hexdump | sed -n "$num$p" | cut -c $charStart-$charSelection | sed "s/ //g"`
 	#if [[  $hex =~ [[:space:]]* ]]; then
 	#	log "found spaces"
 	#	local hexa=`echo $hex | sed 's/ //g'`
@@ -156,12 +189,18 @@ export -f randomNum
 export -f randomWait
 export -f randomHex
 function onlyOnce() {
-	isRunning=`sudo ps -x |  grep -o "Bots.sh"`
-	if [[ -n $isRunning ]]; then 
+#	isRunning=`sudo ps -x |  grep -o "Bots.sh"`
+#	isRunning=`sudo ps -x | grep "Bots.sh" | grep -v 'grep --color=auto Bots.sh'`
+	isRunning=`sudo ps -x | grep "Bots.sh" | grep -v  'grep Bots.sh'`
+	isThisOne=`echo $isRunning | awk '{print $4}' | sort  -k4 | tail +3` ##this is the simplest way to do this for loop is the other option for making sure 
+	log "isRunning $isRunning"
+	log "isThisOne $isThisOne"
+	if [[ -n $isRunning && -n $isThisOne ]]; then
+		echo "already running"
 		curl -fsS --retry 3 https://hc-ping.com/2db2032d-649c-43b5-947a-cc132f769f5d
-		torOff
+#		torOff
 		sleep 1s
-		exit 0 
+		exit 0
 	fi
 }
 function torOn() {
@@ -186,9 +225,11 @@ function clearRAM() {
 	sudo echo 2 > /proc/sys/vm/drop_caches
 	sudo echo 1 > /proc/sys/vm/drop_caches
 	sync
-	return 
+	return
 }
 onlyOnce
+#chooseRandom
+#sleep 5s
 torOn
 useChrome=true
 if [ $useChrome ]; then
