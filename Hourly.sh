@@ -52,7 +52,7 @@ sudo bash /mnt/HDD/Programs/killMemoryHogs.sh
 
 #start backup
 #sudo zip -r9 /mnt/HDD/Backup/Website/Hourly/www.zip /var/www/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*
-sudo bash $prog/NodePrograms.sh
+sudo bash /mnt/HDD/Programs//NodePrograms.sh 
 #sudo node /mnt/HDD/SLACK/ReviewMe/index.js  
 
 sudo echo 3 > /proc/sys/vm/drop_caches
