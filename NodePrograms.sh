@@ -5,7 +5,7 @@ echo "success"
 sleep 5
 echo "starting node"
 #function startNode() {
-	hup=false
+	hup=true
 	bkg=true
 	node=false
 #	redirect=/dev/null 2>&1 &
@@ -27,14 +27,17 @@ echo "starting node"
 		#prog=forever -o /dev/null
 	#fi
 	sleep 1s
-	sudo $out node /mnt/HDD/itunes-connect-slack/poll-itc.js > /dev/null 2>&1 &
+	sudo $out node /mnt/HDD/itunes-connect-slack/poll-itc.js > /dev/null 2>&1 &!
+	echo "itc slack done" 
+	sudo forever -o /dev/null  /mnt/HDD/itunes-connect-slack/poll-itc.js > /dev/null 2>&1 &!
 	#cd /mnt/HDD/itunes-connect-slack && sudo node poll-itc.js &
-	cd /mnt/HDD/SLACK/2fa-2-slack/ && $out npm start  > /dev/null 2>&1 &
-	sudo $out node /mnt/HDD/SLACK/2fa-2-slack/app.js > /dev/null 2>&1 &
-	sudo $out node /mnt/HDD/SLACK/AppReviewSlack/server.js > /dev/null 2>&1 &
-	sudo $out node /var/www/SMSLinkRECIVED.js > /dev/null 2>&1 &
-	sudo $out node /mnt/HDD/itunes-connect-slack/poll-itc.js > /dev/null 2>&1 &
+	cd /mnt/HDD/SLACK/2fa-2-slack/ && $out npm start > /dev/null 2>&1 &!
+	sudo $out node /mnt/HDD/SLACK/2fa-2-slack/app.js > /dev/null 2>&1 &!
+	sudo $out node /mnt/HDD/SLACK/AppReviewSlack/server.js > /dev/null 2>&1 &!
+	sudo $out node /var/www/SMSLinkRECIVED.js > /dev/null 2>&1 &!
 	echo "success"
 #return
 #}
 #startNode
+disown -a && exit 0
+

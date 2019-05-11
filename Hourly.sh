@@ -77,7 +77,7 @@ sudo bash /mnt/HDD/Programs/newKernelCustomModprobes.sh
 #sudo bash /mnt/HDD/workspace/twitter-contest-js-bot.1/start1.sh*
 #sudo bash /mnt/HDD/Programs/Startup.sh
 # bash /mnt/HDD/workspace/twitter-contest-js-bot.1/start1.sh 
-sudo /mnt/HDD/minio server /mnt/HDD & 
+#sudo /mnt/HDD/minio server /mnt/HDD & 
 #sudo python /mnt/HDD/tuned-ubuntuserver/tuned.py 
 #node /mnt/HDD/workspace/reply/reply.js
 #cd /mnt/HDD/workspace/reply
@@ -94,7 +94,6 @@ sudo bash /mnt/HDD/Programs/Bots.sh #| parallel -Jcluster &
 #sudo echo 1 > /proc/sys/vm/drop_caches
 #Update Date
 #sudo bash /mnt/HDD/Programs/UpdateDate.sh
-#killall go-twitter-bot
 
 #cd /mnt/HDD/workspace/GET_FOLLOWERS/twitter-bot-for-increased-growth 
 #python app.py 

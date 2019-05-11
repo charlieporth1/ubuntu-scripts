@@ -7,8 +7,7 @@ export cmd="$(/mnt/HDD/watchbuild/bin/watchbuild -a com.studiosoapp.student -u c
 export cmdT="$(/mnt/HDD/watchbuild/bin/watchbuild -a com.Studioso-teacher -u charlieporth@yahoo.com  | awk '{print $2}'  | cut -d '/' -f 13-14  | grep '/')" 
 export pre="$(cat /mnt/HDD/buildstatusver.txt)"
 export preT="$(cat /mnt/HDD/buildstatusverT.txt)"
-sudo echo "$cmdT" #> /mnt/HDD/buildstatusverT.txt
-sudo echo "$cmd" #> /mnt/HDD/buildstatusver.txt
+sleep 3s
 echo "cmd: " $cmd
 echo "pre: " $pre
 echo "cmdT: " $cmdT
