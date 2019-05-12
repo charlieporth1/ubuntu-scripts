@@ -28,6 +28,7 @@ echo "starting node"
 	#fi
 	sleep 1s
 	sudo $out node /mnt/HDD/itunes-connect-slack/poll-itc.js > /dev/null 2>&1 &!
+	sudo $out node /mnt/HDD/itunes-connect-slack/poll-itc.js > /tmp/itcnode  2>&1  &!
 	echo "itc slack done" 
 	sudo forever -o /dev/null  /mnt/HDD/itunes-connect-slack/poll-itc.js > /dev/null 2>&1 &!
 	#cd /mnt/HDD/itunes-connect-slack && sudo node poll-itc.js &
