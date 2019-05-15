@@ -142,12 +142,9 @@ sudo clamscan -r / --exclude-dir="/mnt/HDD/Virus/|/mnt/HDD/HACK/|/mnt/HDD/Hack/|
 #sudo timeout  300  "sudo clamscan --remove=yes -i -r /  --exclude-dir=/mnt/HDD/Virus/" | parallel -Jcluster
 bash /mnt/HDD/Programs/email-virus-report.sh 
 sudo clamscan --remove=yes -i -r /  --exclude-dir="/mnt/HDD/Virus/|/mnt/HDD/HACK/|/mnt/HDD/Hack/|/mnt/HDD/MPIhack" | parallel -Jcluster
-sudo echo 3 > /proc/sys/vm/drop_caches
-sudo echo 2 > /proc/sys/vm/drop_caches
-sudo echo 1 > /proc/sys/vm/drop_caches
 #reboot kernel and linux
 #kexec-reboot --reboot
 curl -fsS --retry 3 https://hc-ping.com/ab2fe292-6e5b-4f3b-adfb-319a5e08fa45
-sleep 20
-disown -a && exit 0 
-#sudo reboot -f
+sleep 30
+sudo reboot
+#disown -a && exit 0 

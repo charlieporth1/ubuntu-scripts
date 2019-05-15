@@ -58,4 +58,4 @@
 # You might need to include this path line in crontab, (or specify full paths)
 PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin
 
-3,8,13,18,23,28,33,38,43,48,53,58 * * * * sleep 24 ; wget -O - http://freedns.afraid.org/dynamic/update.php?eXZNbHJqZEdoWk5zTXkzZjZFeG8wZkdKOjE4MTcwNjE0 >> /tmp/freedns_charlie-tech_us_to.log 2>&1 &
+wget -O - http://freedns.afraid.org/dynamic/update.php?eXZNbHJqZEdoWk5zTXkzZjZFeG8wZkdKOjE4MTcwNjE0 >> /tmp/freedns_charlie-tech_us_to.log 2>&1 &

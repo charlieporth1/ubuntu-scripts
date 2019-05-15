@@ -9,9 +9,9 @@
 curl -fsS --retry 3 https://hc-ping.com/906c2e51-893d-42bb-9915-16cecdb4f873  &
 export SHELL=$(type -p bash)
 prog=/mnt/HDD/Programs/
-debugg=true
+debugg=false
 function log() {
-	if [[ $debugg ]]; then
+	if [[ $debugg == true ]]; then
 		if [[ -z ${FUNCNAME[1]} ]]; then
 			echo "Log message: $1" >&2
 		else
@@ -25,7 +25,7 @@ function randomNum() {
 	log "RANGE: $RANGE " 
 	local acceptZero=$2
 	local number=$RANDOM
-	if [[  $acceptZero ]]; then
+	if [[  $acceptZero == true ]]; then
 		log "accept ZERO $acceptZero "
 		export number=$(( ((RANDOM<<1)|RANDOM) % $RANGE ))
 	elif [[ $acceptZero =~ [0-9]^ ]]; then
@@ -101,7 +101,12 @@ function randomWait() {
 #	let "ms=/\$num"
 #	waitTime=`cat $whatRandom | hexdump | sed -n '$num$p' | bc`
 	log "sleeping ms: $ms; dec: $num; hex: $hex; ms: $ms "
-	sleep $ms
+	if [[ -n $ms  ]]; then
+		echo "sleeping $ms ms"
+		sleep $ms
+	else
+		echo "not sleeping "
+	fi
 	log "exec done randomWait "
 	return
 }
@@ -232,17 +237,25 @@ onlyOnce
 #sleep 5s
 torOn
 useChrome=true
-if [ $useChrome ]; then
+if [[ $useChrome == true ]]; then
+	echo 'using chrome'
+	log "using chrome"
 	chromium-browser --headless --no-sandbox &
 else
+	echo 'using fire'
+	log "using fire"
 	firefox --headless &
 fi
 headless=false #this is the headless bot not browser 
 export rootDir=/mnt/HDD/workspace
-if [ $headless ]; then
+if [[ $headless == true ]]; then
+	echo "using headless"
+	log "using headless"
 	export dir=Google-PageRank-cheater-headless/
 	export cmd=./main
 else
+	echo "using browser aided headless"
+	log "using browser aided headless"
 	export dir=Google-PageRank-cheater-browser-aided/
 	export cmd=./google
 fi 

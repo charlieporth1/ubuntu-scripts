@@ -1,9 +1,7 @@
 #!/bin/bash
 #update
 bash /mnt/HDD/Programs//fixdpkg-apt.sh
-
-sudo dpkg --configure -a
-sudo yes | sudo apt -y --fix-broken install
+bash /mnt/HDD/Programs//fixdpkg-apt.sh
 npm i npm
 sudo apt -y update
 sudo apt -y dist-upgrade --yes

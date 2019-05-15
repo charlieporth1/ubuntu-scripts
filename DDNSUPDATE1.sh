@@ -60,3 +60,4 @@ PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin
 
 #4,9,14,19,24,29,34,39,44,49,54,59 * * * * sleep 30 ; 
 wget -O - http://freedns.afraid.org/dynamic/update.php?eXZNbHJqZEdoWk5zTXkzZjZFeG8wZkdKOjE3NTIwMTEx >> /tmp/freedns_otih-oith_us_to.log 2>&1 &
+curl -fsS --retry 3  https://hc-ping.com/ec7a5b42-9652-4638-b0b3-44a54e522b90

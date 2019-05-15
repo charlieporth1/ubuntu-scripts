@@ -9,10 +9,17 @@ sudo ntpd -q 192.168.1.200
 ntpdate -u 192.168.1.200
 sudo /etc/init.d/ntp start
 sudo ufw disable
+
+sudo bash /mnt/HDD/Programs/DDNSUPDATE.sh   
+sudo bash /mnt/HDD/Programs//DDNSUPDATE1.sh
+sudo bash /mnt/HDD/Programs//DDNSUPDATE1ctp.sh
+sudo bash /opt/serveripchange.sh
+
 sudo cp -rf /home/ubuntuserver/.ssh/* /root/.ssh/
 sudo cp -rf /home/ubuntuserver/.parallel/* /root/.parallel/
 sudo cp -rf /home/ubuntuserver/.config/* /root/.config/
 sudo rm -rf /tmp/*
+
 sudo bash /mnt/HDD/Programs//jaildefaultunban.sh &
 
 journalctl --flush
@@ -60,10 +67,6 @@ sudo echo 2 > /proc/sys/vm/drop_caches
 sudo echo 1 > /proc/sys/vm/drop_caches
 
 #update ip
-sudo bash /mnt/HDD/Programs/DDNSUPDATE.sh   
-sudo bash /mnt/HDD/Programs//DDNSUPDATE1.sh
-sudo bash /mnt/HDD/Programs//DDNSUPDATE1ctp.sh
-sudo bash /opt/serveripchange.sh
 #sudo /mnt/HDD/minio server /mnt/HDD    
 
 cd /mnt/HDD/workspace/google-rank-finder
