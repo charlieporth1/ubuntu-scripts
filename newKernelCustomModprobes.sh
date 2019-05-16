@@ -2,23 +2,23 @@
 cKernel=$(uname -r)
 lKernel=$(cat /mnt/HDD/lastK)
 rootDir=/mnt/HDD/Kernel
-#sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
 function testModprobe() {
 	local mod=$1
 	depmod -a
-	modprobe $mod 2>/tmp/kernel$mod\Tmp ##checking for modprobe errors 2> or redirect 2 is error redirect
+	modprobe $mod 2> /tmp/kernel$mod\Tmp ##checking for modprobe errors 2> or redirect 2 is error redirect
 	local testCmd=`cat /tmp/kernel$mod\Tmp`
-	if [[ -n $testCmd  ]]; then
+	if [[ -z $testCmd  ]]; then
 		echo true
 		rm /tmp/kernel$mod\Tmp
 	else
 		echo false
-		rm /tmp/kernel$mod\Tmp
+		#rm /tmp/kernel$mod\Tmp
 	fi
 	return
  }
 cd $rootDir
 if [[ $cKernel != $lKernel ]] || [[ -z $lKernel ]]; then
+	sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
 	cd $rootDir
 	. /usr/bin/cred.sh
 	sendemail -f $USER@otih-oith.us.to -t $phonee -m "Kernel has changed installing custom modules; kernel was: $lKernel; and now is: $cKernel; Date $(date)" -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp $passwd 
@@ -43,16 +43,28 @@ if [[ $cKernel != $lKernel ]] || [[ -z $lKernel ]]; then
 	echo "kernel/frandom.ko" >> /lib/modules/`uname -r`/modules.order 
 	cd $rootDir
 	declare -a totalKM=('rapiddisk' 'rapiddisk-cache' 'frandom')
-	for mod in ${#totalKM[@]}
+	for mod in ${totalKM[@]}
 	do
 		success=`testModprobe $mod`
+		echo "$mod was $success"
 		if [[ $success == true ]]; then
 			if [[ ${totalKM[@]} == $mod ]]; then
 				echo $cKernel > /mnt/HDD/lastK
-				sendemail -f $USER@otih-oith.us.to -t $phonee -m "Install of custom kernel modules successful"-s smtp.gmail.com:587 -o tls=yes -xu  $usr -xp $passwd 
+				sleep 3s
+				sendemail -f $USER@otih-oith.us.to -t $phonee -m "Install of custom kernel modules successful; Date `date`" -s smtp.gmail.com:587 -o tls=yes -xu  $usr -xp $passwd 
 			fi
 		else
-			sendemail -f $USER@otih-oith.us.to -t $phonee -m "Install of custom kernel modules unsuccessful; please check why"-s smtp.gmail.com:587 -o tls=yes -xu  $usr -xp $passwd 
+			echo "Problem module $mod; trying make uninstall"
+			modprobe -r $mod
+			cd $rootDir
+			dir=`ls -d $mod*/`
+			cd $dir 
+			make uninstall
+			cd $rootDir
+			rm -rf $dir
+			sendemail -f $USER@otih-oith.us.to -t $phonee -m "Install of custom kernel modules unsuccessful; problem module $mod; Date `date`; please check why" -s smtp.gmail.com:587 -o tls=yes -xu  $usr -xp $passwd 
+			echo "unsuccessful"
+			cd $rootDir
 			sleep 5s
 			break
 		fi
