@@ -1,11 +1,11 @@
 #!/bin/bash
-echo "killing node"
-sudo killall  node
-echo "success"
+echo "killing node" 
+sudo killall node 
+echo "success" 
 sleep 5
-echo "starting node"
-hup=true
-bkg=true
+echo "starting node" 
+hup=true 
+bkg=true 
 node=false
 #	redirect=/dev/null 2>&1 &
 redirect=/bin/cat > /dev/null 2>&1 &
@@ -29,7 +29,9 @@ sleep 1s
 rm -rf /dev/shm/*
 #sudo $out node /mnt/HDD/itunes-connect-slack/poll-itc.js > /dev/null 2>&1 &!
 #sudo $out node /mnt/HDD/itunes-connect-slack/poll-itc.js > /tmp/itcnode   2>&1  &!
+sudo node /mnt/HDD/itunes-connect-slack/poll-itc.js  &
 sudo $out node /mnt/HDD/itunes-connect-slack/poll-itc.js > /dev/shm/itcnode   2>&1  &!
+sudo  node /mnt/HDD/itunes-connect-slack/poll-itc.js > /dev/shm/itcnode   2>&1  &!
 echo "itc slack done" 
 #sudo forever -o /dev/null  /mnt/HDD/itunes-connect-slack/poll-itc.js > /dev/null 2>&1 &!
 #cd /mnt/HDD/itunes-connect-slack && sudo node poll-itc.js &
@@ -38,5 +40,7 @@ sudo $out node /mnt/HDD/SLACK/2fa-2-slack/app.js > /dev/shm/2factor 2>&1 &!
 sudo $out node /mnt/HDD/SLACK/AppReviewSlack/server.js > /dev/shm/appReview  2>&1 &!
 sudo $out node /var/www/SMSLinkRECIVED.js > /dev/shm/SMS 2>&1 &!
 echo "success"
+curl -fsS --retry 3 https://hc-ping.com/9f8f6426-883e-41ff-b47d-98d77b8e01d2
+
 disown -a && exit 0
 
