@@ -37,8 +37,9 @@ echo "pre: " $pre
 echo "cmdT: " $cmdT
 echo "preT: " $preT
 sleep 3s
-if [[ "$preT" != "$cmdT" ]]; then
-	sudo echo "$cmdT"  > /mnt/HDD/buildstatusT.txt
+function s() {
+if [[ "$pre" != "$cmd" ]]; then
+	sudo echo "$cmd"  > /mnt/HDD/buildstatusT.txt
 	sync
 	sleep 1s
 	while true 
@@ -47,6 +48,8 @@ if [[ "$preT" != "$cmdT" ]]; then
 		echo "var " $var
 		if [ ! -z "$var" ]; then 
 			sendemail -f $USER@otih-oith.us.to -t $phonee  -m "Apple Successfully finished processing the build STUDENT please submit the app Date: $(date) and Version: $(cat /mnt/HDD/buildstatusver.txt) " -s smtp.gmail.com:587 -o tls=yes -xu $usr  -xp  $passwd
+			killall ruby
+			sleep 3s
 			break
 		else
 			echo "not done"
@@ -55,16 +58,21 @@ if [[ "$preT" != "$cmdT" ]]; then
 else
 	echo "is equal"
 fi
-if [[ "$pre" != "$cmd" ]]; then
-	sudo echo "$cmd"  > /mnt/HDD/buildstatus.txt
+}
+function t() {
+if [[ "$preT" != "$cmdT" ]]; then
+	sudo echo "$cmdT"  > /mnt/HDD/buildstatus.txt
 	sync
 	sleep 1s
 	while true 
 	do
+		sleep 2s
 		export varT=$(/mnt/HDD/watchbuild/bin/watchbuild -a com.Studioso-teacher -u charlieporth@yahoo.com | grep -o "Successfully finished processing the build")
 		echo "varT " $varT
 		if [ ! -z "$varT" ]; then 
 			sendemail -f $USER@otih-oith.us.to -t $phonee  -m "Apple Successfully finished processing the build TEACHER please submit the app Date: $(date) and Version: $(cat /mnt/HDD/buildstatusver.txt) " -s smtp.gmail.com:587 -o tls=yes -xu $usr  -xp  $passwd
+			killall ruby
+			sleep 3s
 			break
 		else
 			echo "not done"
@@ -73,6 +81,8 @@ if [[ "$pre" != "$cmd" ]]; then
 else
 	echo "is equal"
 fi
-
+}
+t &!
+s &!
 sync
-exit 0
+disown -a && exit 0

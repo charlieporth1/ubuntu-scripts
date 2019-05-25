@@ -5,15 +5,16 @@
 curl -fsS --retry 3 https://hc-ping.com/f0465043-4644-4a32-8e60-f2d0292bce9d
 
 sudo /etc/init.d/ntp stop
-sudo ntpd -q 192.168.1.200 
+sudo ntpd -q 192.168.1.200
 ntpdate -u 192.168.1.200
 sudo /etc/init.d/ntp start
 sudo ufw disable
 
-sudo bash /mnt/HDD/Programs/DDNSUPDATE.sh   
-sudo bash /mnt/HDD/Programs//DDNSUPDATE1.sh
-sudo bash /mnt/HDD/Programs//DDNSUPDATE1ctp.sh
+sudo bash /mnt/HDD/Programs/DDNSUPDATE.sh
+sudo bash /mnt/HDD/Programs/DDNSUPDATE1.sh
+sudo bash /mnt/HDD/Programs/DDNSUPDATE1ctp.sh
 sudo bash /opt/serveripchange.sh
+sudo bash /mnt/HDD/Programs/NodePrograms.sh
 
 sudo cp -rf /home/ubuntuserver/.ssh/* /root/.ssh/
 sudo cp -rf /home/ubuntuserver/.parallel/* /root/.parallel/
@@ -32,7 +33,7 @@ sudo rm -rf /mnt/HDD/Backup/Website/Hourly/www.zip | parallel  -Jcluster
 sudo zip -r9 /mnt/HDD/Backup/Website/Hourly/www.zip /var/www/ | parallel  -Jcluster
 sudo cp -rf /mnt/HDD/Programs/ /mnt/HDD/Backup/Hourly/Programs/ | parallel  -Jcluster
 
-#sudo node /mnt/HDD/itunes-connect-slack/poll-itc.js 
+#sudo node /mnt/HDD/itunes-connect-slack/poll-itc.js
 
 #Clear RAM
 sudo echo 3 > /proc/sys/vm/drop_caches
@@ -59,7 +60,6 @@ sudo bash /mnt/HDD/Programs/killMemoryHogs.sh
 
 #start backup
 #sudo zip -r9 /mnt/HDD/Backup/Website/Hourly/www.zip /var/www/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*
-sudo bash /mnt/HDD/Programs//NodePrograms.sh 
 #sudo node /mnt/HDD/SLACK/ReviewMe/index.js  
 
 sudo echo 3 > /proc/sys/vm/drop_caches
