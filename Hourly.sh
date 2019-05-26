@@ -9,7 +9,8 @@ sudo ntpd -q 192.168.1.200
 ntpdate -u 192.168.1.200
 sudo /etc/init.d/ntp start
 sudo ufw disable
-
+sudo bash /mnt/HDD/Programs/killMemoryHogs.sh
+sleep 5s
 sudo bash /mnt/HDD/Programs/DDNSUPDATE.sh
 sudo bash /mnt/HDD/Programs/DDNSUPDATE1.sh
 sudo bash /mnt/HDD/Programs/DDNSUPDATE1ctp.sh
@@ -56,7 +57,6 @@ echo 6
 echo 7
 
 sudo cp -rf /opt/*.sh  /mnt/HDD/Programs/
-sudo bash /mnt/HDD/Programs/killMemoryHogs.sh
 
 #start backup
 #sudo zip -r9 /mnt/HDD/Backup/Website/Hourly/www.zip /var/www/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*
@@ -120,4 +120,6 @@ sudo systemctl start cockpit.socket
 #sudo node /var/www/SMSLinkRECIVED.js &
 #cpulimit -l 30 hans -s 192.168.1.250 -p TheFutureIsUS99#hans=
 curl -fsS --retry 3 https://hc-ping.com/09bb4e77-b7aa-4aaf-bd64-3f444f29d3ae
-disown -a && exit 0
+disown -a 
+#&& exit 0
+return

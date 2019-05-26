@@ -6,7 +6,7 @@
 #15min
 #PORT=$(($RANDOM + ($RANDOM % 2) * 32768))
 #PORT=$(( ((RANDOM<<15)|RANDOM) % 63001 + 2000 ))
-curl -fsS --retry 3 https://hc-ping.com/906c2e51-893d-42bb-9915-16cecdb4f873  &
+curl -fsS --retry 3 https://hc-ping.com/906c2e51-893d-42bb-9915-16cecdb4f873 
 export SHELL=$(type -p bash)
 prog=/mnt/HDD/Programs/
 debugg=false
@@ -481,8 +481,20 @@ sudo rm -rf files/*
 #cpulimit -l 30 $cmd
 clearRAM
 $cmd #| parallel -Jcluster #this one should aways run 
+torOff
+torOn
+cd $rootDir/Google-PageRank-cheater-Twitter/$dir/
+clearRAM
+$cmd #| parallel -Jcluster #this one should aways run 
+torOff
+torOn
+cd $rootDir/Google-PageRank-cheater-Facebook/$dir/
+clearRAM
+$cmd #| parallel -Jcluster #this one should aways run 
+
 sleep 5
-if [ $useChrome ]; then
+
+if [ $useChrome == true ]; then
 	killall chromium-browser
 else
 	killall firefox

@@ -42,5 +42,7 @@ sudo $out node /var/www/SMSLinkRECIVED.js > /dev/shm/SMS 2>&1 &!
 echo "success"
 curl -fsS --retry 3 https://hc-ping.com/9f8f6426-883e-41ff-b47d-98d77b8e01d2
 
-disown -a && exit 0
+disown -a  
+return
+#&& exit 0
 
