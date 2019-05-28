@@ -31,7 +31,6 @@ rm -rf /dev/shm/*
 #sudo $out node /mnt/HDD/itunes-connect-slack/poll-itc.js > /tmp/itcnode   2>&1  &!
 sudo node /mnt/HDD/itunes-connect-slack/poll-itc.js  &
 sudo $out node /mnt/HDD/itunes-connect-slack/poll-itc.js > /dev/shm/itcnode   2>&1  &!
-sudo  node /mnt/HDD/itunes-connect-slack/poll-itc.js > /dev/shm/itcnode   2>&1  &!
 echo "itc slack done" 
 #sudo forever -o /dev/null  /mnt/HDD/itunes-connect-slack/poll-itc.js > /dev/null 2>&1 &!
 #cd /mnt/HDD/itunes-connect-slack && sudo node poll-itc.js &
@@ -43,6 +42,5 @@ echo "success"
 curl -fsS --retry 3 https://hc-ping.com/9f8f6426-883e-41ff-b47d-98d77b8e01d2
 
 disown -a  
-return
 #&& exit 0
 

@@ -18,8 +18,7 @@ function testModprobe() {
  }
 cd $rootDir
 if [[ $cKernel != $lKernel ]] || [[ -z $lKernel ]]; then
-	sudo rm -rf /var/lib/dpkg/lock*
-	sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+#	sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
 	cd $rootDir
 	pwd
 	echo "rootDir $rootDir"

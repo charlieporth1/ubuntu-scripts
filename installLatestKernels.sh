@@ -36,27 +36,27 @@ do
 		export noSplit=`sudo apt search $kernel | lastK`
 		if [[ -n "$searchForFourDig" ]]; then
 			echo "found Kernel $searchForFourDig"
-			kernel=$kernP1*$kernVC*$searchForFourDig*$kernP2
+			kernel="$kernP1$kernVC$searchForFourDig$kernP2"
 			echo "Kernel found: $kernel"
 			sudo apt -y install 
 		elif [[ -n "$searchForKMVer" ]]; then
 			echo "found Kernel $searchForKMVer"
-			kernel=$kernP1*$$kernVCMacro*$searchForKMVer*$kernP2
+			kernel="$kernP1$$kernVCMacro$searchForKMVer$kernP2"
 			echo "Kernel found: $kernel"
 			sudo apt -y install
 		elif [[ -n "$searchForKGVer" ]]; then
 			echo "found Kernel $searchForKGVer" 
-			kernel=$kernP1*$kernV*$searchForKGVer*$kernP2
+			kernel="$kernP1$kernV$searchForKGVer$kernP2"
 			echo "Kernel found: $kernel"
 			sudo apt -y install
 		elif [[ -n "$searchForKVer" ]]; then
 			echo "found Kernel $searchForKVer"
-			kernel=$kernP1*$kernVC*$searchForKVer*$kernP2
+			kernel="$kernP1$kernVC$searchForKVer$kernP2"
 			echo "Kernel found: $kernel"
 			sudo apt -y install 
 		elif [[  "$(echo $kernel | cut -d '-' -f 1)" = "$(echo $kernel)" ]] && [[ -n $noSplit ]]; then
 			echo "found Kernel $noSplit"
-			kernel=$noSplit
+			kernel="$noSplit"
 			echo "Kernel found: $kernel"
 			sudo apt -y install $kernel
 		else 
