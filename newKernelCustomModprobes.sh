@@ -2,6 +2,18 @@
 cKernel=$(uname -r)
 lKernel=$(cat /mnt/HDD/lastK)
 rootDir=/mnt/HDD/Kernel
+UBlue='\033[4;34m'
+nc='\e[0m'
+debugg=true #always true
+function log() {
+        if [[ $debugg == true ]]; then
+                if [[ -z ${FUNCNAME[1]} ]]; then
+                        echo -e "$UBlue Log message: $1 $nc" #>&2
+                else    
+                        echo -e "$UBlue ${FUNCNAME[0]} message: Function: ${FUNCNAME[1]}: $1 $nc" #>&2
+                fi
+        fi
+}
 function testModprobe() {
 	local mod=$1
 	depmod -a
@@ -9,9 +21,11 @@ function testModprobe() {
 	local testCmd=`cat /tmp/kernel$mod\Tmp`
 	if [[ -z $testCmd  ]]; then
 		echo true
+#		log "success removing stderror"
 		rm /tmp/kernel$mod\Tmp
 	else
 		echo false
+#		log "error not removing stderror"
 		#rm /tmp/kernel$mod\Tmp
 	fi
 	return
@@ -19,11 +33,11 @@ function testModprobe() {
 cd $rootDir
 if [[ $cKernel != $lKernel ]] || [[ -z $lKernel ]]; then
 	sudo rm -rf /var/lib/dpkg/lock*
-	sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
+#	sudo bash /mnt/HDD/Programs/installLatestKernels.sh 
 	cd $rootDir
 	pwd
-	echo "rootDir $rootDir"
-	echo "pwd "`pwd`
+	log "rootDir $rootDir"
+	log "pwd "`pwd`
 	. /usr/bin/cred.sh
 	sendemail -f $USER@otih-oith.us.to -t $phonee -m "Kernel has changed installing custom modules; kernel was: $lKernel; and now is: $cKernel; Date $(date)" -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp $passwd 
 	if [ ! -d rapiddisk ]; then
@@ -45,26 +59,29 @@ if [[ $cKernel != $lKernel ]] || [[ -z $lKernel ]]; then
 	cd frandom-1.2
 	make
 	install -m 644 frandom.ko /lib/modules/`uname -r`/kernel/drivers/misc/
-	echo "kernel/frandom.ko" >> /lib/modules/`uname -r`/modules.order 
+	log "kernel/frandom.ko" >> /lib/modules/`uname -r`/modules.order 
 	cd $rootDir
-	declare -a totalKM=('rapiddisk' 'rapiddisk-cache' 'frandom')
+	declare -a totalKM=('rapiddisk' 'rapiddisk-cache' 'frandom') 
 	for mod in ${totalKM[@]}
 	do
 		success=`testModprobe $mod`
-		echo "$mod was successful $success"
-		echo "mod #: ${#totalKM[@]} "
-		echo "mod #: ${totalKM[@]} "
-		echo "count: $count"
+		log "$mod was successful $success"
+		log "mod #: ${#totalKM[@]} "
+		log "mod #: ${totalKM[@]} "
+		log "count: $count"
 		if [[ $success == "true" ]]; then
-			if [[ ${totalKM[${#totalKM[@]}]} == $mod ]]; then
+			if [[ "${totalKM[${#totalKM[@]}-1]}" == "$mod" ]]; then
 				echo $cKernel > /mnt/HDD/lastK
 				sleep 3s
 				sendemail -f $USER@otih-oith.us.to -t $phonee -m "Install of custom kernel modules successful; Date `date`" -s smtp.gmail.com:587 -o tls=yes -xu  $usr -xp $passwd 
 				sleep 1s
+			else
+				log "not last one"
 			fi
+
 		else
 			sleep 5s
-			echo "Problem module $mod; trying make uninstall"
+			log "Problem module $mod; trying make uninstall"
 			modprobe -r $mod
 			cd $rootDir
 			dir=`ls -d $mod*/`
@@ -73,13 +90,13 @@ if [[ $cKernel != $lKernel ]] || [[ -z $lKernel ]]; then
 			cd $rootDir
 			rm -rf $dir
 			sendemail -f $USER@otih-oith.us.to -t $phonee -m "Install of custom kernel modules unsuccessful; problem module $mod; Date `date`; please check why" -s smtp.gmail.com:587 -o tls=yes -xu  $usr -xp $passwd 
-			echo "unsuccessful"
+			log "unsuccessful"
 			cd $rootDir
 			sleep 5s
 			break
 		fi
 	done
 else
-	echo "same k"
+	log "same k"
 fi
 

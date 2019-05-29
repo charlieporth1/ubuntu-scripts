@@ -193,18 +193,37 @@ export -f cutLength
 export -f randomNum
 export -f randomWait
 export -f randomHex
+function killBots() {
+	for process in `sudo ps -x | grep Bots.sh | awk '{print $1}'`
+	do
+		kill $process
+		kill -9 $process
+		log "process killed $process"
+	done
+}
+
 function onlyOnce() {
+	curl -fsS --retry 3 https://hc-ping.com/906c2e51-893d-42bb-9915-16cecdb4f873 
 #	isRunning=`sudo ps -x |  grep -o "Bots.sh"`
 #	isRunning=`sudo ps -x | grep "Bots.sh" | grep -v 'grep --color=auto Bots.sh'`
-	isRunning=`sudo ps -x | grep "Bots.sh" | grep -v  'grep Bots.sh'`
-	isThisOne=`echo $isRunning | awk '{print $4}' | sort  -k4 | tail +3` ##this is the simplest way to do this for loop is the other option for making sure 
+	local isRunning=`sudo ps -x | grep "Bots.sh" | grep -v  'grep Bots.sh'`
+	local isThisOne=`echo $isRunning | awk '{print $4}' | sort  -k4 | tail +3` ##this is the simplest way to do this for loop is the other option for making sure 
 	log "isRunning $isRunning"
 	log "isThisOne $isThisOne"
+	local echo `date` | cut -d ':' -f 1 | awk '{print $4}'
+	local randomHour=$((`randomNum 23`)) 
+	echo `date` | cut -d ':' -f 1 | awk '{print $4}'
+	if [ $randomHour == ]; then
+
+	fi 
 	if [[ -n $isRunning && -n $isThisOne ]]; then
 		echo "already running"
+		log "already running"
+		echo "ending process"
+		log "ending process"
 		curl -fsS --retry 3 https://hc-ping.com/2db2032d-649c-43b5-947a-cc132f769f5d
 #		torOff
-		sleep 1s
+		sleep 10s
 		exit 0
 	fi
 }
@@ -226,6 +245,7 @@ function torOff() {
 	return
 }
 function clearRAM() {
+	sync
 	sudo echo 3 > /proc/sys/vm/drop_caches
 	sudo echo 2 > /proc/sys/vm/drop_caches
 	sudo echo 1 > /proc/sys/vm/drop_caches
@@ -476,7 +496,7 @@ $cmd #| parallel -Jcluster #this one should aways run
 torOff
 torOn
 cd $rootDir/Google-PageRank-cheater-SMART_MUSIC_STUDIOSO/$dir/
-sudo rm -rf files/*   
+sudo rm -rf files/*  
 #timeout $((60 + RANDOM % 240 ))  $cmd
 #cpulimit -l 30 $cmd
 clearRAM
@@ -542,5 +562,5 @@ clearRAM
 #cd $rootDir/reply
 #node reply.js
 curl -fsS --retry 3 https://hc-ping.com/2db2032d-649c-43b5-947a-cc132f769f5d
-sudo bash /mnt/HDD/workspace/keywordCounter/keywordCountertoCSV.sh 
+sudo bash /mnt/HDD/workspace/keywordCounter/keywordCountertoCSV.sh
 disown -a  && exit 0

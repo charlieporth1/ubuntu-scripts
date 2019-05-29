@@ -5,67 +5,46 @@
 #sudo systemctl enable rc-local
 #this is used for low memory devices
 curl -fsS --retry 3 https://hc-ping.com/18542605-64ed-400a-b3ff-e2845da0d44e
+source /mnt/HDD/Programs//memoryClean.sh
 export back=/mnt/HDD/Backup/
 export hdd=/mnt/HDD/
 export prog=/mnt/HDD/Programs
-sudo echo 3 > /proc/sys/vm/drop_caches
-sudo echo 2 > /proc/sys/vm/drop_caches
-sudo echo 1 > /proc/sys/vm/drop_caches
+cleanMemory
 #backup
 sudo rm -rf $back/Website/Weekly/www.zip | parallel -Jcluster
 sudo zip -r9 $back/Website/Weekly/www.zip /var/www/* | parallel -Jcluster
-sudo echo 3 > /proc/sys/vm/drop_caches
-sudo echo 2 > /proc/sys/vm/drop_caches
-sudo echo 1 > /proc/sys/vm/drop_caches
+cleanMemory
 << --MULTILINE-COMMENT--
 sudo rm -rf $back/usrbin/.zip | parallel -Jcluster
 sudo zip -r9 $back/usrbin.zip  /usr/bin  | parallel -Jcluster
-sudo echo 3 > /proc/sys/vm/drop_caches
-sudo echo 2 > /proc/sys/vm/drop_caches
-sudo echo 1 > /proc/sys/vm/drop_caches
+cleanMemory
 sudo rm -rf $back/usrlocale.zip  | parallel -Jcluster
 sudo zip -r9 $back/usrlocale.zip  /usr/locale & | parallel -Jcluster
-sudo echo 3 > /proc/sys/vm/drop_caches
-sudo echo 2 > /proc/sys/vm/drop_caches
-sudo echo 1 > /proc/sys/vm/drop_caches
+cleanMemory
 sudo rm -rf $back/usrshare.zip | parallel -Jcluster
 sudo zip -r9 $back/usrshare.zip  /usr/share & | parallel -Jcluster
-sudo echo 3 > /proc/sys/vm/drop_caches
-sudo echo 2 > /proc/sys/vm/drop_caches
-sudo echo 1 > /proc/sys/vm/drop_caches
+cleanMemory
 sudo rm -rf $back/usrsrc.zip | parallel -Jcluster
 sudo zip -r9 $back/usrsrc.zip  /usr/src & | parallel -Jcluster
-sudo echo 3 > /proc/sys/vm/drop_caches
-sudo echo 2 > /proc/sys/vm/drop_caches
-sudo echo 1 > /proc/sys/vm/drop_caches
+cleanMemory
 sudo rm -rf $back/usrgames.zip | parallel -Jcluster
 sudo zip -r9 $back/usrgames.zip  /usr/games & | parallel -Jcluster
-sudo echo 3 > /proc/sys/vm/drop_caches
-sudo echo 2 > /proc/sys/vm/drop_caches
-sudo echo 1 > /proc/sys/vm/drop_caches
+cleanMemory
 sudo rm -rf $back/usrinclude.zip | parallel -Jcluster
 sudo zip -r9 $back/usrinclude.zip  /usr/include & | parallel -Jcluster
-sudo echo 3 > /proc/sys/vm/drop_caches
-sudo echo 2 > /proc/sys/vm/drop_caches
-sudo echo 1 > /proc/sys/vm/drop_caches
+cleanMemory
 sudo rm -rf  $hack/usrbin.zip | parallel -Jcluster
 sudo zip -r9 $back/usrsbin.zip  /usr/sbin & | parallel -Jcluster
-sudo echo 3 > /proc/sys/vm/drop_caches
-sudo echo 2 > /proc/sys/vm/drop_caches
-sudo echo 1 > /proc/sys/vm/drop_caches
+cleanMemory
 sudo rm -rf $back/usrlib.zip | parallel -Jcluster
 sudo zip -r9 $back/usrlib.zip  /usr/lib & | parallel -Jcluster
-sudo echo 3 > /proc/sys/vm/drop_caches
-sudo echo 2 > /proc/sys/vm/drop_caches
-sudo echo 1 > /proc/sys/vm/drop_caches
+cleanMemory
 sudo rm -rf $back/usrlocal.zip | parallel -Jcluster
 sudo zip -rf $back/usrlocal.zip /usr/local/ & | parallel -Jcluster
 --MULTILINE-COMMENT--
 
 sudo cp -rf /home/ubuntuserver/.bash* $back  
-sudo echo 3 > /proc/sys/vm/drop_caches
-sudo echo 2 > /proc/sys/vm/drop_caches
-sudo echo 1 > /proc/sys/vm/drop_caches
+cleanMemory
 sudo cp -rf /home/ubuntuserver/.bash* /mnt/HDD/Programs/   
 
 
@@ -81,9 +60,7 @@ sudo cp -rf /opt/*.sh $prog
 #sudo bash /mnt/HDD/Programs/email-virus-report.sh
 cp -rf /usr/bin/mikrotik $prog
 sudo bash $prog/copy-to-new-server.sh
-sudo echo 3 > /proc/sys/vm/drop_caches
-sudo echo 2 > /proc/sys/vm/drop_caches
-sudo echo 1 > /proc/sys/vm/drop_caches
+cleanMemory
 sudo bash /mnt/HDD/workspace/keywordCounter/keywordCountertoCSV.sh 
 
 echo done with that
@@ -92,25 +69,15 @@ echo done with that
 #sudo bash /mnt/HDD/Programs/GitChangedWeekly.sh
 #sudo bash $prog/GitChangedWeekly-better.sh
 sudo bash $prog/GitChangedWeeklyv2.sh
-sudo echo 3 > /proc/sys/vm/drop_caches
-sudo echo 2 > /proc/sys/vm/drop_caches
-sudo echo 1 > /proc/sys/vm/drop_caches
+cleanMemory
 sudo bash /mnt/HDD/cockpit/updatecock.sh
-sudo echo 3 > /proc/sys/vm/drop_caches
-sudo echo 2 > /proc/sys/vm/drop_caches
-sudo echo 1 > /proc/sys/vm/drop_caches
+cleanMemory
 sudo bash $prog/toGithub.sh
-sudo echo 3 > /proc/sys/vm/drop_caches
-sudo echo 2 > /proc/sys/vm/drop_caches
-sudo echo 1 > /proc/sys/vm/drop_caches
+cleanMemory
 sudo bash $prog/Gdrive-Website-Change-UPLOAD-best.sh
-sudo echo 3 > /proc/sys/vm/drop_caches
-sudo echo 2 > /proc/sys/vm/drop_caches
-sudo echo 1 > /proc/sys/vm/drop_caches
+cleanMemory
 cd /mnt/HDD/HACK && sudo bash $prog/gitUpdateRecurive.sh 
-sudo echo 3 > /proc/sys/vm/drop_caches
-sudo echo 2 > /proc/sys/vm/drop_caches
-sudo echo 1 > /proc/sys/vm/drop_caches
+cleanMemory
 
 #Matanice 
 sudo freshclam
@@ -123,9 +90,7 @@ sudo geoipupdate
 #sudo bash /mnt/HDD/Programs//Bash-History-Clear-first-part-forloop.sh
 #sudo /etc/init.d/nscd reload    # nscd
 #sudo bash /mnt/HDD/Programs/pipfix.sh | parallel -Jcluster
-sudo echo 3 > /proc/sys/vm/drop_caches
-sudo echo 2 > /proc/sys/vm/drop_caches
-sudo echo 1 > /proc/sys/vm/drop_caches
+cleanMemory
 sudo service fwupd start
 sudo fwupdmgr refresh
 sudo fwupdmgr update

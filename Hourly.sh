@@ -3,7 +3,7 @@
 #this causes it to fail
 #sudo su
 curl -fsS --retry 3 https://hc-ping.com/f0465043-4644-4a32-8e60-f2d0292bce9d
-
+source /mnt/HDD/Programs//memoryClean.sh 
 sudo /etc/init.d/ntp stop
 sudo ntpd -q 192.168.1.200
 ntpdate -u 192.168.1.200
@@ -37,9 +37,7 @@ sudo cp -rf /mnt/HDD/Programs/ /mnt/HDD/Backup/Hourly/Programs/ | parallel  -Jcl
 #sudo node /mnt/HDD/itunes-connect-slack/poll-itc.js
 
 #Clear RAM
-sudo echo 3 > /proc/sys/vm/drop_caches
-sudo echo 2 > /proc/sys/vm/drop_caches
-sudo echo 1 > /proc/sys/vm/drop_caches
+cleanMemory
 #sudo service gitlab stop
 ##Start Cockpit
 sudo systemctl start cockpit.socket
@@ -62,9 +60,7 @@ sudo cp -rf /opt/*.sh  /mnt/HDD/Programs/
 #sudo zip -r9 /mnt/HDD/Backup/Website/Hourly/www.zip /var/www/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*
 #sudo node /mnt/HDD/SLACK/ReviewMe/index.js  
 
-sudo echo 3 > /proc/sys/vm/drop_caches
-sudo echo 2 > /proc/sys/vm/drop_caches
-sudo echo 1 > /proc/sys/vm/drop_caches
+cleanMemory
 
 #update ip
 #sudo /mnt/HDD/minio server /mnt/HDD    
@@ -104,14 +100,10 @@ sudo bash /mnt/HDD/Programs/Bots.sh #| parallel -Jcluster &
 #./go-twitter-bot 
 
 #Clear RAM
-
-sync && sudo echo 3 > /proc/sys/vm/drop_caches
-sync && sudo echo 1 > /proc/sys/vm/drop_caches
-sync && sudo echo 2 > /proc/sys/vm/drop_caches
+cleanMemory
 
 sudo bash /mnt/HDD/Programs/cleanSysLog.sh
-sudo bash /mnt/HDD/Programs/cleanSysLog.sh 
-sudo bash /mnt/HDD/Programs/rotate-clean-Logs.sh 
+sudo bash /mnt/HDD/Programs/rotate-clean-Logs.sh
 #Start cockpit 
 systemctl daemon-reload
 sudo systemctl start cockpit.socket
@@ -120,6 +112,5 @@ sudo systemctl start cockpit.socket
 #sudo node /var/www/SMSLinkRECIVED.js &
 #cpulimit -l 30 hans -s 192.168.1.250 -p TheFutureIsUS99#hans=
 curl -fsS --retry 3 https://hc-ping.com/09bb4e77-b7aa-4aaf-bd64-3f444f29d3ae
-disown -a 
+disown -a
 #&& exit 0
-return
