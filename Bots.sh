@@ -210,12 +210,15 @@ function onlyOnce() {
 	local isThisOne=`echo $isRunning | awk '{print $4}' | sort  -k4 | tail +3` ##this is the simplest way to do this for loop is the other option for making sure 
 	log "isRunning $isRunning"
 	log "isThisOne $isThisOne"
-	local echo `date` | cut -d ':' -f 1 | awk '{print $4}'
-	local randomHour=$((`randomNum 23`)) 
-	echo `date` | cut -d ':' -f 1 | awk '{print $4}'
-	if [ $randomHour == ]; then
-
-	fi 
+	local randomHour=`randomNum 23` 
+	local currentHour=`echo $(date) | cut -d ':' -f 1 | awk '{print $4}'`
+	if [ $randomHour == $currentHour ]; then
+		echo "random kill"
+		curl -fsS --retry 3 https://hc-ping.com/2db2032d-649c-43b5-947a-cc132f769f5d
+		sleep 10s
+		killBots
+		exit 0
+	fi
 	if [[ -n $isRunning && -n $isThisOne ]]; then
 		echo "already running"
 		log "already running"
