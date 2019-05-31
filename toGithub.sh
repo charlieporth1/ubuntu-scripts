@@ -1,6 +1,14 @@
  #!/bin/bash
 export work=/mnt/HDD/workspace/
 export LD_PRELOAD=$LD_PRELOAD:/usr/local/bin/gitbslr.so 
+function gitIgnore() {
+	git rm -r --cached ./.git/   
+	git ignore ".git/"
+	git ignore "*.git/"
+	git ignore ".git/*"
+	git ignore "./.git/"
+	git ignore "./.git/*"
+}
 function toGit() {
 	dir=$1
 	ifClus=false
@@ -13,11 +21,12 @@ function toGit() {
 	if [ -f $dir/.git/index.lock ];then
 		rm $dir/.git/index.lock
 	fi
+	gitIgnore
 	git add .
-	git ignore ".git/"
 	if [[ `git status --porcelain` ]]; then
 	  # Changes
 		echo changes
+		gitIgnore
 		git add -f . #| parallel $cluster
 		git commit -m "$(date)" #| parallel $cluster
 		git rm --cached -r .git #| parallel $cluster
