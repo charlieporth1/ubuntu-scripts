@@ -22,11 +22,13 @@ function toGit() {
 		rm $dir/.git/index.lock
 	fi
 	gitIgnore
+	sleep 5s
 	git add .
 	if [[ `git status --porcelain` ]]; then
 	  # Changes
 		echo changes
 		gitIgnore
+		sleep 5s
 		git add -f . #| parallel $cluster
 		git commit -m "$(date)" #| parallel $cluster
 		git rm --cached -r .git #| parallel $cluster
