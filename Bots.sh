@@ -207,7 +207,8 @@ function onlyOnce() {
 #	isRunning=`sudo ps -x |  grep -o "Bots.sh"`
 #	isRunning=`sudo ps -x | grep "Bots.sh" | grep -v 'grep --color=auto Bots.sh'`
 	local isRunning=`sudo ps -x | grep "Bots.sh" | grep -v  'grep Bots.sh'`
-	local isThisOne=`echo $isRunning | awk '{print $4}' | sort  -k4 | tail +3` ##this is the simplest way to do this for loop is the other option for making sure 
+#	local isThisOne=`echo $isRunning | awk '{print $4}' | sort  -k4 | tail +3` ##this is the simplest way to do this for loop is the other option for making sure 
+	local isThisOne=`echo $isRunning | awk '{print $4}' | sort  -k4 | tail +6` ##this is the simplest way to do this for loop is the other option for making sure 
 	log "isRunning $isRunning"
 	log "isThisOne $isThisOne"
 	local randomHour=`randomNum 23` 

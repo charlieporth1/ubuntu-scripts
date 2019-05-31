@@ -55,7 +55,9 @@ sudo apt-mark hold openssh*
 sudo apt -y install zram-config acpi-call-dkms aespipe cpufreqd cpufrequtils cpuset cpuset debianutils cpuset
 sudo apt -y install dkms dm-writeboost-dkms dmeventd dmsetup efibootmgr fbterm git-all hdparm ifenslave initramfs-tools initramfs-tools-core iotop latencytop libcpufreq-dev libcpufreq0 libdevmapper1.02.1
 sudo apt -y install libdevmapper-event1.02.1 libselinux1-dev libselinux1 libsemanage1 libsemanage-common libsemanage1-dev libsepol1 
+pip install protobuf virtualenv
 for install in `pip search google cloud sdk | awk '{print $1}'`; do pip install $install; done
+
 #sudo apt -y install linux-buildinfo*$kernVC*gcp linux-buildinfo*$kernVC*oem  linux-buildinfo*$kernVC*kvm 
 #sudo apt -y install linux-cloud-tools-`uname -r`*generic linux-gcp-edge-tools*`uname -r`* linux-cloud-tools-generic-hwe*$ubuVer* linux-cloud-tools-common
 #sudo apt -y install linux-cloud-tools-virtual-hwe*$ubuVer* linux-gcp-edge-tools*$kernVC* linux-gcp-headers*$kernVC* linux-gcp-tools*$kernVC* linux-generic-hwe*$ubuVer*

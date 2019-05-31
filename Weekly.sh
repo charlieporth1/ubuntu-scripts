@@ -8,7 +8,7 @@ curl -fsS --retry 3 https://hc-ping.com/18542605-64ed-400a-b3ff-e2845da0d44e
 source /mnt/HDD/Programs//memoryClean.sh
 export back=/mnt/HDD/Backup/
 export hdd=/mnt/HDD/
-export prog=/mnt/HDD/Programs
+export prog=/mnt/HDD/Programs/
 cleanMemory
 #backup
 sudo rm -rf $back/Website/Weekly/www.zip | parallel -Jcluster
@@ -87,6 +87,7 @@ sudo npm cache clean --force | parallel -Jcluster
 bleachbit --list | grep -E "[a-z]+\.[a-z]+" | xargs bleachbit --clean | parallel -Jcluster
 sudo $prog/Cleanup.sh | parallel -Jcluster
 sudo geoipupdate
+sudo bash $prog/TrackInternetUsage.sh
 #sudo bash /mnt/HDD/Programs//Bash-History-Clear-first-part-forloop.sh
 #sudo /etc/init.d/nscd reload    # nscd
 #sudo bash /mnt/HDD/Programs/pipfix.sh | parallel -Jcluster
