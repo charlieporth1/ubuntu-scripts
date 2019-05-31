@@ -2,12 +2,12 @@
 export work=/mnt/HDD/workspace/
 export LD_PRELOAD=$LD_PRELOAD:/usr/local/bin/gitbslr.so 
 function gitIgnore() {
-	git rm -r --cached ./.git/   
+	git rm -r --cached .git/ 
+	git rm -r --cached *.git/ 
 	git ignore ".git/"
 	git ignore "*.git/"
 	git ignore ".git/*"
-	git ignore "./.git/"
-	git ignore "./.git/*"
+	git ignore "*.git/*"
 }
 function toGit() {
 	dir=$1
