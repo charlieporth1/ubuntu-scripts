@@ -9,6 +9,22 @@ function gitIgnore() {
 	git ignore ".git/*"
 	git ignore "*.git/*"
 }
+function removeSubModules() {
+	submodules=($(git config --file .gitmodules --get-regexp path | awk '{ print $2 }'))
+
+	# Loop over submodules and convert to regular files
+	for submodule in "${submodules[@]}"
+	do  
+	   echo "Removing $submodule"
+	   git rm --cached $submodule # Delete references to submodule HEAD
+	   rm -rf $submodule/.git* # Remove submodule .git references to prevent confusion from main repo
+	   git add $submodule # Add the left over files from the submodule to the main repo
+ 	   git commit -m "Converting submodule $submodule to regular files" # Commit the new regular files!
+	done
+
+	# Finally remove the submodule mapping
+	git rm.gitmodules
+}
 function toGit() {
 	dir=$1
 	ifClus=false
@@ -24,12 +40,15 @@ function toGit() {
 	gitIgnore
 	sleep 5s
 	git add .
+	removeSubModules
 	if [[ `git status --porcelain` ]]; then
 	  # Changes
 		echo changes
 		gitIgnore
+		removeSubModules
 		sleep 5s
-		git add -f . #| parallel $cluster
+		git add  . #| parallel $cluster
+		removeSubModules
 		git commit -m "$(date)" #| parallel $cluster
 		git rm --cached -r .git #| parallel $cluster
 		#git rm --cached email-virus-report.sh
