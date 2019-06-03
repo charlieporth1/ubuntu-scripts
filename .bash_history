@@ -1,372 +1,3 @@
-heroku ps:type worker=free -a wwpww
-heroku ps
-heroku ps:exec
-heroku ps:exec -a wwpww
-heroku ps
-heroku buildpacks:add --index 1 heroku-community/apt
-heroku buildpacks:add --index 1 heroku-community/apt -a wwpww
-heroku ps:scale worker=1
-heroku ps:scale worker=1 -a wwpww
-heroku ps
-heroku keys:add 
-ssh -v git@heroku.com
-ssh -v heroku.com
-ssh -v charlieporth1@heroku.com
-heroku keys
-ssh -v ubuntuserver@heroku.com
-heroku keys
-ssh -v charlieporth@heroku.com
-ssh -v ubuntuserver@https://wwpww.herokuapp.com/
-ssh -v ubuntuserver@wwpww.herokuapp.com/
-nmap -T4  ubuntuserver@wwpww.herokuapp.com/
-nmap -T4  ubuntuserver@wwpww.herokuapp.com
-ssh -v charlieporth@heroku.com
-ssh -v charlieporth1@heroku.com
-ssh -v heroku.com
-heroku keys
-ssh -v git@heroku.com
-sudo nano /etc/ssh/ssh_config
-ssh -v git@heroku.com
-ssh -v heroku.com
-ssh -v ubuntuserver@heroku.com
-ssh -v charlieporth1@heroku.com
-heroku keys:add
-sudo nano /etc/ssh/ssh_config
-ssh -v charlieporth1@heroku.com
-ssh -v ubuntuserver@heroku.com
-ssh -v heroku.com
-ssh -v git@heroku.com
-ssh -v heroku.com
-heroku keys
-ssh -v charlieporth1@heroku.com
-ssh -v @heroku.com
-ssh -v git@heroku.com
-ssh -v heroku.com
-heroku --helpp
-heroku --help
-heroku keys --help
-heroku keys -l
-ssh -v heroku.com
-heroku --help
-heroku ps
-heroku ps:exec -a wwpww
-heroku labs
-heroku labs:enable containerized-network
-heroku plugins:install https://github.com/fabiokung/heroku-ssh.git
-heroku ssh:authorize
-ssh u1.linuxshell.picrofo.come
-host u1.linuxshell.picrofo.com
-ssh freeshell.org
-ssh charlieporth1@freeshell.org
-host https://c1.linuxshell.picrofo.com/
-host c1.linuxshell.picrofo.com
-sh srvgam01.freessh.net
-ssh srvgam01.freessh.net
-telnet  nyx.nyx.net
-ssh -p 2222 ssh.blinkenshell.org
-ssh -p 2222 signup@ssh.blinkenshell.org
-ssh -p 2222 otihoith@ssh.blinkenshell.org
-ssh -p 2222 signup@ssh.blinkenshell.org
-ssh charlieporth1@tty.sdf.org
-htop
-sudo nano /usr/bin/cred.sh 
-host tty.sdf.org
-sudo nano /etc/hosts
-sudo nano /usr/bin/cred.sh 
-host freeshell.org
-sudo nano /usr/bin/cred.sh 
-sudo nano /etc/hosts
-cd $hdd
-cd itunes-connect-slack/
-ls
-sudo node poll-itc.js 
-sudo nano poll-itc.js 
-sudo node poll-itc.js 
-sudo nano poll-itc.js 
-sudo node poll-itc.js 
-sudo nano poll-itc.js 
-sudo node poll-itc.js 
-sudo nano poll-itc.js 
-sudo node poll-itc.js 
-sudo nano poll-itc.js 
-sudo node poll-itc.js 
-sudo nano poll-itc.js 
-sudo node poll-itc.js c
-sudo nano poll-itc.js 
-sudo node poll-itc.js c
-sudo nano /usr/bin/cred.sh 
-ssh -p 2222 signup@ssh.blinkenshell.org
-sudo nano /usr/bin/cred.sh 
-sudo nano poll-itc.js 
-ssh -p 2222 signup@ssh.blinkenshell.org
-sudo node poll-itc.js c
-sudo node poll-itc.js 
-host blinkenshell.org
-geoiplookup blinkenshell.org
-sudo node poll-itc.js c
-sudo node poll-itc.js 
-sudo nano poll-itc.js 
-sudo node poll-itc.js 
-sudo nano poll-itc.js 
-sudo node poll-itc.js 
-sudo nano poll-itc.js 
-sudo ruby get-app-status.rb 
-sudo ruby get-app-status-teacher.rb 
-sudo nano get-app-status-teacher.rb  
-sudo nano poll-itc.js 
-sudo ruby get-app-status-teacher.rb 
-df -h
-sudo ruby get-app-status-teacher.rb 2> /tmp/teacher
-cat /tmp/teacher 
-sudo ruby get-app-status-teacher.rb 2> /tmp/teacher && cat /tmp/teacher 
-sudo ruby get-app-status-teacher.rb 2> /tmp/teacher && cat /tmp/teacher && echo "done"
-sudo ruby get-app-status-teacher.rb 2> /tmp/teacher && echo cat /tmp/teacher && echo "done"
-sudo ruby get-app-status-teacher.rb 2> /tmp/teacher && cat /tmp/teacher && echo "done"
-/msg MemoServ read last  
-sudo ruby get-app-status-teacher.rb 2> /tmp/teacher && cat /tmp/teacher && echo "done"
-while true sudo ruby get-app-status-teacher.rb 2> /tmp/teacher | grep "undefined" && cat /tmp/teacher && echo "done"
-while true;do sudo ruby get-app-status-teacher.rb 2> /tmp/teacher | grep "undefined" && cat /tmp/teacher && echo "done";dobe
-while true;do sudo ruby get-app-status-teacher.rb 2> /tmp/teacher | grep "undefined" && cat /tmp/teacher && echo "done";done
-ssh -p 2222 signup@ssh.blinkenshell.org
-df -h
-ls /tmp
-df -h
-while true;do sudo ruby get-app-status-teacher.rb 2> /tmp/teacher && echo "*******************************************" && cat /tmp/teacher && echo "done";done
-sudo nano poll-itc.js 
-sudo node poll-itc.js 
-sudo nano poll-itc.js 
-sudo node poll-itc.js 
-sudo nano poll-itc.js 
-sudo node poll-itc.js 
-sudo nano poll-itc.js 
-sudo node poll-itc.js 
-sudo nano /mnt/HDD/Programs//NodePrograms.sh 
-sudo modprobe rapiddisk
-sudo nano /mnt/HDD/Programs//NodePrograms.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-ls
-ls rapiddisk/
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-cat /tmp/kernelrapiddiskTmp 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-ls -d $mod*/
-cd /mnt/HDD/K
-cd /mnt/HDD/Kernel/
-ls
-ls -d $mod*/
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-pwd
-cd pwd
-cd `pwd`
-cd ..
-cd `pwd`
-cd Kernel/
-ls
-cd `pwd`
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-cd
-cd /mnt/HDD/Kernel/
-ls
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-cd $rootDir
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-cat /tmp/kernelrapiddiskTmp 
-sudo modprobe rapiddisk
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-cd /mnt/HDD/Kernel/
-ls
-git clone https://github.com/pkoutoupis/rapiddisk/
-cd rapiddisk/
-ls
-make
-sudo make install
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-modprobe $mod 2> /tmp/kernelTmp  
-modprobe rapiddisk 2> /tmp/kernelTmp  
-cat /tmp/kernelTmp 
-sudo make install
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
- /lib/modules/`uname -r`/kernel/
-ls 
-ls fs/
-ls kernel/
-find . -f name rapiddisk
-find .  name rapiddisk
-find .  -name rapiddisk
-cd ..
-ls
-find .  -name rapiddisk
-cd kernel/
-ls
-find .  -name rapiddisk
-ls ubuntu/
-ls block/
-ls arch/
-ls kernel/
-ls lib/
-ls drivers/
-ls drivers/crypto/
-cd /mnt/HDD/Kernel/
-ls
-cd rapiddisk/
-make
-ls /lib/modules/4.18.0-18-generic/build
-sudo make install
-sudo make
-sudo modprobe rapiddisk
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-cat /mnt/HDD/lastK
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-cd ../SLACK
-cd ../../SLACK
-ls 
-sudo nano /mnt/HDD/Programs//NodePrograms.sh 
-cd /mnt/HDD/SLACK/AppReviewSlack/
-ls
-sudo node server.js 
-sudo node poll-itc.js 
-sudo nano /mnt/HDD/Programs//NodePrograms.sh 
-sudo node poll-itc.js 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-cat /mnt/HDD/lastK
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo node server.js 
-cd...
-ccd HDD/
-cd SLACK
-cd HDD/
-cd SLACK
-ls
-cd AppReviewSlack/
-ls
-sudo nano server.js 
-sudo nano ../itunes-connect-slack/
-sudo nano ../itunes-connect-slack/poll-itc.js 
-sudo nano ../itunes-connect-slack/
-sudo nano server.js 
-sudo nano ../itunes-connect-slack/
-sudo nano ../itunes-connect-slack/poll-itc.js 
-sudo nano ../itunes-connect-slack/
-sudo nano server.js 
-sudo node server.js 
-sudo nano server.js 
-sudo node server.js 
-sudo nano server.js 
-cd ..
-cd AppReviewSlack/
-ls
-htop
-node server.js 
-sudo nano server.js 
-node server.js 
-sudo nano server.js 
-node server.js 
-sudo nano server.js 
-node server.js 
-sudo nano server.js 
-node server.js 
-sudo nano server.js 
-node server.js 
-sudo nano server.js 
-node server.js 
-sudo nano server.js 
-node server.js 
-sudo nano server.js 
-cd $hdd/SLACK
-git clone https://github.com/saiday/JonSnow
-node server.js 
-sudo nano server.js 
-node server.js 
-sudo nano server.js 
-node server.js 
-sudo nano server.js 
-node server.js 
-sudo nano server.js 
-node server.js 
-sudo nano server.js 
-cd AppReviewSlack/
-ls
-sudo nano server.js 
-node server.js 
-sudo nano server.js 
-node server.js 
-sudo nano server.js 
-node server.js 
-sudo nano server.js 
-node server.js 
-sudo nano server.js 
-node server.js 
-sudo nano server.js 
-node server.js 
-sudo nano server.js 
-node server.js 
-sudo nano server.js 
-sudo nano client_secret_playdeveloper.json 
-node server.js 
-sudo nano client_secret_playdeveloper.json 
-nano server.js 
-sudo nano server.js 
-sudo nano ../../ApplePaymentsSpoofing/server.js 
-ls
-cd ..
-ls
-cd ..
-ls $prog/
 cd $prog/
 ls
 cd ..
@@ -590,3 +221,420 @@ sudo killall node
 htop
 q
 we 
+wget https://github.com/google/earthenterprise/releases/download/5.3.0-891.12/earthenterprise-5.3.0-891.12.zip
+git clone https://github.com/nasa-gibs/worldview
+git clone https://github.com/nasa-gibs/onearth
+git clone https://github.com/google/earthenterprise
+git clone https://github.com/nasa-gibs/worldview-design
+gut clongut clone https://github.com/chrislgarry/Apollo-11
+git clone https://github.com/nasa/NASA-Acronyms
+git clone https://github.com/nasa
+git clone https://github.com/nasa/earthdata-search
+git clone https://github.com/nasa/common-mapping-client
+git clone https://github.com/nasa/podaac_tools_and_services
+git clone https://github.com/nasa/apod-api
+git clone https://github.com/nasa/astrobot
+git clone https://github.com/nasa/dictionaries
+git clone https://github.com/nasa/openmct-heatmap
+git clone https://github.com/nasa/ominas_maps
+sudo bash  /mnt/HDD/Programs//NodePrograms.sh 
+sudo nano  /mnt/HDD/Programs//NodePrograms.sh 
+sudo bash  /mnt/HDD/Programs//NodePrograms.sh 
+sudo nano  /mnt/HDD/Programs//NodePrograms.sh 
+sudo bash  /mnt/HDD/Programs//NodePrograms.sh 
+git clone https://github.com/chrislgarry/Apollo-11
+git clone https://github.com/nasa/NASA-3D-Resources
+cd $work
+ls
+sudo nano Google-PageRank-cheater-studio_so/Google-PageRank-cheater-headless/config.ini
+sudo nano Google-PageRank-cheater-studio_so/Google-PageRank-cheater-browser-aided/
+sudo nano Google-PageRank-cheater-studio_so/Google-PageRank-cheater-browser-aided/googleconfig.ini 
+sudo nano Google-PageRank-cheate*/Google-PageRank-cheater-browser-aided/googleconfig.ini 
+ls
+sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
+sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
+cd $hdd/kernel
+ls
+cd frandom-1.2/
+;s
+ls
+make
+sudo make install
+sudo apt install gcc
+sudo apt install gcc@8
+sudo apt install gcc-8
+sudo make install
+sudo make 
+sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo mount -o rw,remount /
+sudo mount -o rw,remount /mnt/HDD
+sudo mount -o rw,remount /dev/sdb /mnt/HDD
+sudo mount -o ro,remount /dev/sdb /mnt/HDD
+sudo mount -o rw,remount /dev/sdb /mnt/HDD
+sudo umount -o rw,remount /dev/sdb
+sudo umount  /dev/sdb
+sudo umount -f /dev/sdb
+exit
+sudo reboot
+touch /mnt/HDD/bitc
+cd /mnt/HDD/Kernel/
+;s
+ls
+cd frandom-1.2/
+make
+sudo make
+sudo make install
+ls
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
+sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
+sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
+sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
+sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
+rm -rf /var/lib/dpkg/lock
+sudo rm -rf /var/lib/dpkg/lock
+sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
+sudo rm -rf /var/lib/dpkg/lock*
+sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
+sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
+sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
+sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
+sudo reboot 
+sudo bash $prog/NodePrograms.sh 
+sudo nano $prog/NodePrograms.sh 
+sudo bash $prog/NodePrograms.sh 
+cd itunes-connect-slack/
+ls
+cd ..
+cd /mnt/HDD/itunes-connect-slack/
+ls
+sudo ruby get-app-status.rb 
+sudo nano $prog/pol
+sudo nano poll-itc.js 
+tail -f /dev/shm/itcnode 
+sudo bash $prog/NodePrograms.sh 
+sudo nano $hdd/itunes-connect-slack/poll-itc.js 
+sudo bash $prog/NodePrograms.sh 
+sudo bash $prog/NodePrograms.sh 
+htop
+ls
+sudo nano $prog/NodePrograms.sh 
+sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh
+cat /mnt/HDD/lastK
+sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh
+sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh
+sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh
+sudo nano ~/.bash_exports 
+sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh
+sudo nano /mnt/HDD/Programs//Bots.sh 
+sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh
+sudo nano ~/.bash_exports 
+sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh
+sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh
+sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh
+sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh
+sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh
+sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh
+sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh
+sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh
+sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh
+sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh
+sudo nano $prog/Bot.sh
+sudo nano /mnt/HDD/Programs//Bots.sh 
+`sudo ps -x | grep "Bots.sh" | grep -v  'grep Bots.sh
+`
+sudo ps -x | grep "Bots.sh" | grep -v  'grep Bots.sh
+'
+sudo ps -x | grep "Bots.sh" 
+sudo nano /mnt/HDD/Programs//Daily.sh 
+sudo mkdir $prog/.save
+sudo nano /mnt/HDD/Programs//Daily.sh 
+sudo nano /mnt/HDD/Programs//memoryClean.sh 
+sudo nano /mnt/HDD/Programs//Daily.sh 
+sudo nano /mnt/HDD/Programs//memoryClean.sh 
+sudo nano /mnt/HDD/Programs//Daily.sh 
+sudo nano /mnt/HDD/Programs//Hourly.sh
+sudo nano /mnt/HDD/Programs//Daily.sh 
+sudo nano /mnt/HDD/Programs//Hourly.sh
+sudo nano /mnt/HDD/Programs//Daily.sh 
+sudo nano /mnt/HDD/Programs//Weekly.sh
+sudo nano /mnt/HDD/Programs//Daily.sh 
+sudo nano /mnt/HDD/Programs//Weekly.sh
+sudo nano /mnt/HDD/Programs//Bots.sh
+sudo nano /mnt/HDD/Programs//memoryClean.sh 
+sudo nano /mnt/HDD/Programs//Bots.sh
+exit
+ls
+cd $work su
+cd $work
+ls
+git clone https://github.com/toadlyBroodle/spam-bot-3000
+htop
+tail -f /dev/shm/itcnode 
+sudo nano /mnt/HDD/Programs//Bots.sh
+sudo nano $prog/NodePrograms.sh 
+sudo ps -x | grep Bots.sh
+sudo nano $prog/Bots.sh
+sudo ps -x | grep Bots.sh
+sudo ps -x | grep Bot.sh sort -k4 
+sudo ps -x | grep Bot.sh | awk '{print $4 }'| sort -k4 
+sudo ps -x | grep Bot.sh | awk '{print $4 }'
+sudo ps -x | grep Bot.sh | awk '{print $1 }'
+sudo ps -x | grep Bot.sh | awk '{print $2 }'
+sudo ps -x | grep Bot.sh | awk '{print $2}'
+sudo ps -x | grep Bot.sh #| awk '{print $2}'
+sudo ps -x | grep Bots.sh
+sudo ps -x | grep Bot.sh #| awk '{print $2}'
+sudo ps -x | grep Bots.sh #| awk '{print $2}'
+sudo ps -x | grep Bots.sh #| awk '{print $1}'
+sudo ps -x | grep Bots.sh | awk '{print $1}'
+sudo ps -x | grep Bots.sh | awk '{print $1}' | sort -k4
+for process in `sudo ps -x | grep Bots.sh | awk '{print $1}'`; do kill $process; echo "process killed $process"; done
+echo `date`
+echo `date` | cut -d ':' -f 1
+echo `date` | cut -d ':' -f 1-1
+echo `date` | cut -d ':' -f 0-1
+echo `date` | cut -d ':' -f 1 | awk '{print $3}'
+echo `date` | cut -d ':' -f 1 | awk '{print $4}'
+sudo nano $prog/Bots.sh
+htop
+sudo nano /mnt/HDD/Programs/server/installnewserver.sh 
+sudo nano /mnt/HDD/Programs/update.sh 
+sudo nano /mnt/HDD/Programs/Bots.sh
+sudo nano ~/.bash_func 
+sudo nano /mnt/HDD/Programs/Bots.sh
+wonda 
+sudo ps -x | grep "Bots.sh"
+sudo ps -x | grep Bots.sh
+sudo ps -x
+sudo ps -x | grep bots
+sudo ps -x | grep Bots
+sudo ps -x | grep Bot
+lol
+sudo nano /mnt/HDD/Programs//Bots.sh 
+sudo ps -x | grep Bot
+sudo nano /mnt/HDD/Programs//Bots.sh 
+sudo bash /mnt/HDD/Programs//Bots.sh 
+sudo nano /mnt/HDD/Programs//Bots.sh 
+sudo bash /mnt/HDD/Programs//Bots.sh 
+sudo nano /mnt/HDD/Programs//Bots.sh 
+sudo bash /mnt/HDD/Programs//Bots.sh 
+sudo nano /mnt/HDD/Programs//Bots.sh 
+fgg
+fg
+ping 1.1.1.1
+home
+lol
+lol
+lolgate
+df h-
+df -h
+htop
+sudo nano /mnt/HDD/Programs//server/installnewserver.sh 
+sudo nano $prog/Bots.sh
+sudo ps -x | grep Bots
+sudo ps -x | grep Bots.sh
+df -h
+ifconfig
+ifconfig | grep GB
+ifconfig | grep "GB\|MB"
+sudo nano $prog/Weekly.sh
+sudo nano $prog/TrackInternetUsage
+sudo nano $prog/TrackInternetUsage.sh
+sudo bash $prog/TrackInternetUsage.sh
+sudo nano $prog/TrackInternetUsage.sh
+sudo bash $prog/TrackInternetUsage.sh
+sudo nano $prog/TrackInternetUsage.sh
+sudo bash $prog/TrackInternetUsage.sh
+ls /mnt/HDD/internetUsage.csv
+cat /mnt/HDD/internetUsage.csv
+sudo bash $prog/TrackInternetUsage.sh
+sudo nano $prog/TrackInternetUsage.sh
+ifconfig | grep "GB\|MB"
+sudo nano /mnt/HDD/Programs/killMemoryHogs.sh 
+sudo nano /mnt/HDD/Programs/Bots.sh
+sudo nano /mnt/HDD/Programs/server/installnewserver.sh 
+sudo nano $prog/TrackInternetUsage.sh
+sudo bash $prog/TrackInternetUsage.sh
+cat /mnt/HDD/internetUsage.csv
+rm -rf /mnt/HDD/internetUsage.csv
+sudo bash $prog/TrackInternetUsage.sh
+cat /mnt/HDD/internetUsage.csv
+nano /mnt/HDD/internetUsage.csv
+sudo nano $prog/TrackInternetUsage.sh
+cat /mnt/HDD/internetUsage.csv
+sudo bash $prog/TrackInternetUsage.sh
+cat /mnt/HDD/internetUsage.csv
+sudo nano $prog/TrackInternetUsage.sh
+sudo bash $prog/TrackInternetUsage.sh
+cat /mnt/HDD/internetUsage.csv
+rm /mnt/HDD/internetUsage.csv
+sudo nano $prog/TrackInternetUsage.sh
+sudo nano /mnt/HDD/Programs//GitChangedWeeklyv2.sh 
+sudo nano $prog/TrackInternetUsage.sh
+sudo nano /mnt/HDD/Programs//GitChangedWeeklyv2.sh 
+sudo nano $prog/TrackInternetUsage.sh
+sudo nano /mnt/HDD/Programs//Weekly.sh 
+df -h
+df -j
+df -
+df -h
+df -
+df -h
+sudo ps -x | grep Botsh
+sudo ps -x | grep Bots.sh
+cd /var/www
+ls
+sudo git add 
+sudo git add .
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+sudo apt-get install git-extras
+exit
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+ls /dev
+ls /dev/net
+ifconfig -a
+ls
+ifconfig
+ls
+ls /dev
+mkfs.ext4 /dev/sdc
+sudo mkfs.ext4 /dev/sdc
+ sudo modprobe dm-cache
+ls
+wget https://raw.githubusercontent.com/mingzhao/dm-cache/master/dmc-setup.pl
+cp -rf dmc-setup.pl  /usr/local/bin/
+ sudo perl dmc-setup.pl -o /dev/sda -c /dev/sdc -n cache -b 8 -w
+ sudo perl dmc-setup.pl -o /dev/sdb -c /dev/sdc -n cache -b 8 -w
+sudo sy
+sudo su
+git clone https://github.com/stec-inc/EnhanceIO
+cd EnhanceIO/
+ls
+/home/ubuntuserver/EnhanceIO/CLI/eio_cli 
+cp CLI/eio_cli /sbin/
+sudo cp CLI/eio_cli /sbin/
+chmod 700 CLI/eio_cli
+chmod 700 /sbin/eio_cli
+sudo chmod 700 /sbin/eio_cli
+ls
+  make && make install
+cd Driver/
+ls
+cd enhanceio/
+ls
+  make && make install
+sudo  make && sudo make install
+sudo apt search bcache
+sudo apt install bcache-tools 
+sudo make-bcache -C /dev/sdc -B /dev/sdb5 --block 4k --discard --writeback
+sudo wipefs -a /dev/sdc
+sudo sudo wipefs -a /dev/sdc
+sudo wipefs -a /dev/sdc
+sudo make-bcache -C /dev/sdc -B /dev/sda --block 4k --discard --writeback
+sudo umount /dev/sda
+df -h
+sudo make-bcache -C /dev/sdc -B /dev/sda1 --block 4k --discard --writeback
+sudo umount /dev/sdc
+sudo make-bcache -C /dev/sdc -B /dev/sda1 --block 4k --discard --writeback
+sudo wipefs -a /dev/sdc
+sudo umount -f /dev/sdc
+sudo make-bcache -C /dev/sdc -B /dev/sda1 --block 4k --discard --writeback
+sudo su
+sudo mkfs.ext4 /dev/sdc
+ls /dev/mapper/
+umount -f /dev/sdb
+umount -f /dev/sdc
+suod umount -f /dev/sdc
+sudo umount -f /dev/sdc
+sudo umount -r /dev/sdc
+sudo umount -l /dev/sdc
+sudo mkfs.ext4 /dev/sdc
+sudo make-bcache -C /dev/sdc -B /dev/sdb5 --block 4k --discard --writeback
+sudo make-bcache -C /dev/sdc -B /dev/sda --block 4k --discard --writeback
+ls /dev
+ sudo wipefs -a /dev/sdc
+sudo bcache-super-show -f /dev/sdb
+sudo bcache-super-show -f /dev/sdc
+modprobe bcache
+sudo make-bcache -C /dev/sdc -B /dev/sdb5 --block 4k --discard --writeback
+sudo su - - c ‘echo /dev/sdb > /sys/fs/bcache/register’
+sudo su
+sudo reboot
+ls /dev/
+ls /dev/sdc
+sudo mkfs.ext4 /dev/sdc
+sudo wipefs -a /dev/sdc
+wipefs -af /dev/sdc
+sudo wipefs -af /dev/sdc
+sudo mkfs.ext4 /dev/sdc
+ls /dev/sdc
+ls /dev/
+ls /dev/sdc
+mkdir /mnt/cache
+sudo mkdir /mnt/cache
+sudo mount /dev/sdc /mnt/cache
+sudo mount -f /dev/sdc /mnt/cache
+sudo umount /dev/sdc
+df -
+df -h
+ls
+ls /
+ls 
+ls /dev/
+ls /dev/mapper/
+ls
+ls /dev
+sudo mount /dev/sdc /mnt/cache
+sudo umount -f /dev/sdc
+fsuser /dev/sdc
+fuser /dev/sdc
+fuser -l /dev/sdc
+fuser -vm  /dev/sdc
+lsof +D big
+lsof +D /dev/sdc
+lsof +D /mnt/cache
+lsof +f  /mnt/cache
+lsof f  /mnt/cache
+lsof -f  /mnt/cache
+ls /mnt
+lsof +D /mnt/cache
+sudo killall bcache
+sudo killall -9 bcache
+htop
+ls /dev/sdc
+sudo mkfs.ext4 /dev/sdc
+sudo mkfs.ext4 -f /dev/sdc
+sudo mkfs.ext4 -ff /dev/sdc
+sudo mkfs.ext4 -f /dev/sdc
+sudo mkfs.ext4  /dev/sdc
+fdisk -l
+sudo fdisk -l
+mdadm --stop /dev/sdc
+sudo mdadm --stop /dev/sdc
+sfdisk --list /dev/sdb
+sudo sfdisk --list /dev/sdb
+sudo sfdisk --list /dev/sdc
+sudo dc3dd wipe=/dev/sdb
+sudo apt install dc3dd
+sudo dc3dd wipe=/dev/sdc
+sudo mkfs.ext4  /dev/sdc
+sudo dc3dd wipe=/dev/sdc
+sudo mkfs.ext4  /dev/sdc
+ls /dev/mapper/
+sudo mkfs.ext4  /dev/sdc

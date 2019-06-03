@@ -587,3 +587,20 @@ function FBIC() {
 figlet "Welcoome Charlie to the FBI computer network"
 PS1='FBI+($debian_chroot)}\u@\h:\w\\$ '
 }
+function c_f2i() {
+        fP=$1
+        printf '%.0f\n' $fP
+}
+function mult1000 () {
+    local floor=${1%.*}
+    [[ $floor = "0" ]] && floor=''
+    local frac='0000'
+    [[ $floor != $1 ]] && frac=${1#*.}$frac
+    echo ${floor}${frac:0:3}
+}
+function convertFpToBase10() {
+        fP=$1
+        printf '%.0f\n' $fP
+
+}
+   
