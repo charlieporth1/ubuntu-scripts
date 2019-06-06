@@ -50,12 +50,12 @@ function marketing_special() {
 toGit /mnt/HDD/Programs/
 toGit /var/www/
 toGit /var/www/SMSCOMMANDS/
+marketing_special
+toGit /mnt/HDD/workspace/MARKETING/
+toGit /mnt/HDD/ApplePaymentSpoofing
 toGit /mnt/HDD/HACK/BB
 toGit /mnt/HDD/HACK/TURTLE
 toGit /mnt/HDD/HACK/TURTLE
 toGit /mnt/HDD/HACK/PINEAPPLE
-marketing_special
-toGit /mnt/HDD/workspace/MARKETING/
-toGit /mnt/HDD/ApplePaymentSpoofing
 exit 0
 
