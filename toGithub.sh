@@ -32,7 +32,6 @@ function toGit() {
 		git submodule deinit --all
 		sleep 5s
 		git add  . #| parallel $cluster
-		removeSubModules
 		git commit -m "$(date)" #| parallel $cluster
 		git rm --cached -r .git #| parallel $cluster
 		#git rm --cached email-virus-report.sh
