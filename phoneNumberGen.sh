@@ -1,8 +1,0 @@
-#!/bin/bash
-RANGEMIN=11111111111
-RANGEMAX=9999999999
-number=$RANDOM
-let "number %= $RANGEMAX"
-PORT=$(( (($RANDOM<<15)|$RANDOM) % $RANGEMAX + $RANGEMIN ))
-
-echo $PORT

@@ -1,6 +1,0 @@
-
-#!/bin/bash
-#weekly
-
-sudo zip /mnt/HDD/Backup/Website/Weekly/www.zip www/*
-https://github.com/offensive-security/exploit-database.git
