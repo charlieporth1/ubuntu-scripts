@@ -36,7 +36,7 @@ function toGit() {
 		git rm --cached -r .git #| parallel $cluster
 		#git rm --cached email-virus-report.sh
 		#git rm --cached .sh 
-		git push | parallel $cluster
+		git push #| parallel $cluster
 
 	else
 		echo no changes
