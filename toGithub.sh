@@ -52,7 +52,7 @@ toGit /var/www/
 toGit /var/www/SMSCOMMANDS/
 marketing_special
 toGit /mnt/HDD/workspace/MARKETING/
-toGit /mnt/HDD/ApplePaymentSpoofing
+toGit /mnt/HDD/ApplePaymentsSpoofing
 toGit /mnt/HDD/HACK/BB
 toGit /mnt/HDD/HACK/TURTLE
 toGit /mnt/HDD/HACK/TURTLE
