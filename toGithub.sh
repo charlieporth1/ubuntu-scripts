@@ -14,6 +14,7 @@ function addSubmoduleR() {
 	done
 }
 function gitBefore() {
+{
 	git submodule deinit -f --all
 	git rm -r --cached .git/ 
 	git rm -r --cached *.git/
@@ -31,8 +32,12 @@ function gitBefore() {
 		echo "not remove cache day"
 	fi
 	git submodule deinit -f --all
+} || {
+	echo "error"
+}
 }
 function toGit() {
+{
 	dir=$1
 	cd $dir
 	pwd
@@ -67,6 +72,9 @@ function toGit() {
  	 # No changes
 	fi
 	sleep 3s
+} || {
+	echo "error toGit failed" 
+}
 }
 function marketing_special() {
 	ln -s $work/Google* $work/MARKETING/
