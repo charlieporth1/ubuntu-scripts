@@ -1,0 +1,24 @@
+#!/bin/bash 
+#NOTE this is just a proof of consept array list that gererates a swear word at you
+# I got tired of google searching how to make an bash array list 
+#on slow a slow internet connection this is quite useful because it can take google longer to load than your server somethinge 
+
+
+declare -a word
+word=('bitch' 'ass' 'fuck' 'cunt' 'shit' 'asshole' 'hell' 'bollocks' 'child-fucker' 'damn' 'crap' 'goddamn' 'motherfucker' 'shitass' 'whore' 'cock-sucker' 'cock' 'fucker' 'shithole' 'assfucker' 'phucker' 'dick' 'dickhead' 'cocksucker' 'ass-hat' 'assbag' 'assbite' 'assclown' 'assfucker' 'assfuck' 'assface' 'asshat' 'asshead' 'assmonkey' 'assshit' 'asswipe' 'bastard' 'bullshit' 'buttfucker' 'clusterfuck' 'cockass' 'cockbite' 'cockface' 'cockfucker' 'cock' 'cockmonkey' 'cockshit' 'dickhead' 'dickface' 'dickfucker' 'dickhole' 'dickbag' 'dickweed' 'dipshit' 'dike' 'dbag' 'doochbag' 'dumbass' 'dumass' 'dumbfuck' 'dumbshit' 'dumshit' 'dyke' 'fatass' 'fuckbutt' 'fuckboy' 'fuckbrain' 'fuckbutt' 'fuckface' 'fucking' 'fuckhole' 'fuckin' 'fucknut' 'fucks' 'fuckoff' 'fucktard' 'fuckup' 'fuckwitt' 'fuckwad' 'fuckwit' 'gayass' 'goddamnit' 'hoe' 'jackass' 'jagoff' 'lardass' 'mick' 'mothafucka' 'motherfucking' 'pecker' 'pussie' 'pussies' 'prick' 'ruski' 'shitbag' 'shitcunt' 'shitdick' 'shitbrains' 'shitface' 'shitfaced' 'shithole' 'shithead' 'shitter' 'shitty' 'shiz' 'suckass' 'tard' 'twats' 'thundercunt' 'twatlips' 'mindfuck' 'mindfucker' 'mindfucking' 'hag' 'assmat' 'gaytard' 'tard' 'gaycuck' 'gay tard' 'gay cuck' 'gay fucker')
+RANGE=${#word[@]}
+number=$RANDOM
+let "number %= $RANGE"
+export bitch=${word[$number]}
+cunt="$1" 
+if [[ $cunt =~ "["*"]" ]]; then
+	if [[ `expr "$bitch"  : '.*gay*.'` != 0 ]] ; then
+		echo "$cunt" | lolcat -p 0.9 -F 0.9
+		echo "$bitch" | lolcat -p 0.9 -F 0.9
+	else
+		echo "$cunt" | lolcat
+		echo "$bitch" | lolcat
+	fi
+else 
+	echo -e $bitch
+fi
