@@ -13,9 +13,9 @@ function toGit() {
 	dir=$1
 	ifClus=true
 	if [[ $ifClus == true ]]; then
-		cluster=-j+64
+		cluster='-j+64'
 	else 
-		cluster=-Jcluster
+		cluster='-Jcluster'
 	fi
 	cd $dir
 	if [[ -f $dir/.git/index.lock ]];then
