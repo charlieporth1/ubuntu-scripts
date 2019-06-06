@@ -42,6 +42,7 @@ function toGit() {
 		echo "no changes"
  	 # No changes
 	fi
+	sleep 3s
 }
 function marketing_special() {
 	ln -s $work/Google* $work/MARKETING/
