@@ -3,7 +3,7 @@ export work=/mnt/HDD/workspace/
 export LD_PRELOAD=$LD_PRELOAD:/usr/local/bin/gitbslr.so 
 function gitIgnore() {
 	git rm -r --cached .git/ 
-	git rm -r --cached *.git/ 
+	git rm -r --cached *.git/
 	git ignore ".git/"
 	git ignore "*.git/"
 	git ignore ".git/*"
@@ -11,14 +11,14 @@ function gitIgnore() {
 }
 function toGit() {
 	dir=$1
-	ifClus=false
-	if [ $ifClus ]; then
+	ifClus=true
+	if [[ $ifClus == true ]]; then
 		cluster=-j+64
 	else 
 		cluster=-Jcluster
 	fi
 	cd $dir
-	if [ -f $dir/.git/index.lock ];then
+	if [[ -f $dir/.git/index.lock ]];then
 		rm $dir/.git/index.lock
 	fi
 	gitIgnore
