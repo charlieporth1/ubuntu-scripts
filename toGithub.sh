@@ -11,13 +11,13 @@ function gitIgnore() {
 }
 function toGit() {
 	dir=$1
+	cd $dir
 	ifClus=true
 	if [[ $ifClus == true ]]; then
 		cluster='-j+64'
 	else 
 		cluster='-Jcluster'
 	fi
-	cd $dir
 	if [[ -f $dir/.git/index.lock ]];then
 		rm $dir/.git/index.lock
 	fi
