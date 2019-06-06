@@ -27,7 +27,7 @@ function toGit() {
 	git add .
 	if [[ `git status --porcelain` ]]; then
 	  # Changes
-		echo changes
+		echo "changes"
 		gitIgnore
 		git submodule deinit --all
 		sleep 5s
@@ -37,9 +37,9 @@ function toGit() {
 		#git rm --cached email-virus-report.sh
 		#git rm --cached .sh 
 		git push #| parallel $cluster
-
+		echo "push complete"
 	else
-		echo no changes
+		echo "no changes"
  	 # No changes
 	fi
 }
