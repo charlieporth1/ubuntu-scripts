@@ -11,14 +11,15 @@ sudo /etc/init.d/ntp start
 sudo ufw disable
 sudo bash /mnt/HDD/Programs/killMemoryHogs.sh
 sleep 5s
-sudo bash /mnt/HDD/Programs/DDNSUPDATE.sh
+sudo bash /opt/serveripchange.sh
+#sudo bash /mnt/HDD/Programs/DDNSUPDATE.sh
 sudo bash /mnt/HDD/Programs/DDNSUPDATE1.sh
 sudo bash /mnt/HDD/Programs/DDNSUPDATE1ctp.sh
-sudo bash /opt/serveripchange.sh
 sudo bash /mnt/HDD/Programs/NodePrograms.sh
 
 sudo cp -rf /home/ubuntuserver/.ssh/* /root/.ssh/
 sudo cp -rf /home/ubuntuserver/.parallel/* /root/.parallel/
+sudo cp -rf /home/ubuntuserver/.fastlane/ /root/.fastlane
 sudo cp -rf /home/ubuntuserver/.config/* /root/.config/
 sudo rm -rf /tmp/*
 

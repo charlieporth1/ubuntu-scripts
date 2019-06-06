@@ -55,7 +55,5 @@
 # Example #3:
 # fetch -o - http://freedns.afraid.org/dynamic/update.php?eXZNbHJqZEdoWk5zTXkzZjZFeG8wZkdKOjE4MTcwNjE0
 
-# You might need to include this path line in crontab, (or specify full paths)
-PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin
 
 wget -O - http://freedns.afraid.org/dynamic/update.php?eXZNbHJqZEdoWk5zTXkzZjZFeG8wZkdKOjE4MTcwNjE0 >> /tmp/freedns_charlie-tech_us_to.log 2>&1 &
