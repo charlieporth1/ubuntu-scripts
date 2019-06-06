@@ -22,8 +22,8 @@ function toGit() {
 		rm $dir/.git/index.lock
 	fi
 	gitIgnore
-	sleep 5s
 	git submodule deinit --all
+	sleep 5s
 	git add .
 	if [[ `git status --porcelain` ]]; then
 	  # Changes
