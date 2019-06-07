@@ -47,6 +47,10 @@ sudo cp -rf /home/ubuntuserver/.bash* $back
 cleanMemory
 sudo cp -rf /home/ubuntuserver/.bash* /mnt/HDD/Programs/   
 
+#Updates 
+sudo bash $prog/update.sh 
+sudo ntpdate -u 192.168.1.200
+sudo timedatectl set-ntp on
 
 
 #sudo rm -r /mnt/HDD/HACK/*
@@ -96,10 +100,6 @@ sudo service fwupd start
 sudo fwupdmgr refresh
 sudo fwupdmgr update
 
-#Updates 
-sudo bash $prog/update.sh 
-sudo ntpdate -u 192.168.1.200
-sudo timedatectl set-ntp on
 
 #AV
 sudo freshclam | parallel -Jcluster

@@ -1,8 +1,6 @@
 #!/bin/bash
 . /usr/bin/cred.sh
 cd /mnt/HDD/itunes-connect-slack/
-sudo gem install fastlane
-sudo gem install spaceship
 sudo cp -rf /home/ubuntuserver/.fastlane/ /root/.fastlane
 fastlane env
 #echo fastlane spaceship

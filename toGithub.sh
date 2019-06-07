@@ -8,6 +8,8 @@ function addSubmoduleR() {
 	for d in `ls -d */`
 	do
 	    pushd $d
+	    cd $d
+	    pwd
 	    export url=$(git config --get remote.origin.url)
 	    popd
 	    git submodule add $url $d
