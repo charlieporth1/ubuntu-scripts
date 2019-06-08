@@ -1,7 +1,6 @@
 #!/usr/bin/parallel --shebang-wrap --pipe /bin/bash
 #fastlane env
 curl -fsS --retry 3 https://hc-ping.com/64b266e2-f3d4-4d82-b8ee-43a65e884476
-date
 . /usr/bin/cred.sh
 cd /mnt/HDD/watchbuild/
 if [[ ! -f  /mnt/HDD/buildstatus.txt ]]; then
@@ -40,7 +39,6 @@ echo "preT: " $preT
 sleep 3s
 function s() {
 sleep 5s
-if [ -n  "$cmd" ]; then
 if [[ "$pre" != "$cmd" ]]; then
 	if [ -n  "$cmd" ]; then
 		sudo echo "$cmd"  > /mnt/HDD/buildstatus.txt
@@ -54,7 +52,7 @@ if [[ "$pre" != "$cmd" ]]; then
 		export var=$(/mnt/HDD/watchbuild/bin/watchbuild -a com.studiosoapp.student -u charlieporth@yahoo.com | grep -o "Successfully finished processing the build")
 		echo "var " $var
 		if [[ ! -z "$var" ]]; then
-			sendemail -f $USER@otih-oith.us.to -t $phonee  -m "Apple Successfully finished processing the build STUDENT please submit the app Date: $(date) and Version: $pre " -s smtp.gmail.com:587 -o tls=yes -xu $usr  -xp  $passwd
+			sendemail -f root@otih-oith.us.to -t $phonee  -m "Apple Successfully finished processing the build STUDENT please submit the App Store; Date: $(date) and Version: $pre" -s smtp.gmail.com:587 -o tls=yes -xu $usr  -xp  $passwd
 			killall ruby
 			sleep 3s
 			break
@@ -65,11 +63,9 @@ if [[ "$pre" != "$cmd" ]]; then
 else
 	echo "is equal"
 fi
-fi
 }
 function t() {
 sleep 5s
-if [ -n "$cmd" ]; then
 if [[ "$preT" != "$cmdT" ]]; then
 	if [ -n "$cmd" ]; then
 		sudo echo "$cmdT"  > /mnt/HDD/buildstatusT.txt
@@ -84,7 +80,7 @@ if [[ "$preT" != "$cmdT" ]]; then
 		export varT=$(/mnt/HDD/watchbuild/bin/watchbuild -a com.Studioso-teacher -u charlieporth@yahoo.com | grep -o "Successfully finished processing the build")
 		echo "varT " $varT
 		if [[ ! -z "$varT" ]]; then 
-			sendemail -f $USER@otih-oith.us.to -t $phonee  -m "Apple Successfully finished processing the build TEACHER please submit the app Date: $(date) and Version: $pre " -s smtp.gmail.com:587 -o tls=yes -xu $usr  -xp  $passwd
+			sendemail -f root@otih-oith.us.to -t $phonee  -m "Apple Successfully finished processing the build TEACHER please submit the App Store; Date: $(date) and Version: $pre " -s smtp.gmail.com:587 -o tls=yes -xu $usr  -xp  $passwd
 			killall ruby
 			sleep 3s
 			break
@@ -94,7 +90,6 @@ if [[ "$preT" != "$cmdT" ]]; then
 	done
 else
 	echo "is equal"
-fi
 fi
 }
 t &!
