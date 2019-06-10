@@ -1,353 +1,3 @@
-cd $prog/
-ls
-cd ..
-bitch [you\'re\ a]
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-ls
-lows
-lw
-la
-lp
-le
-lm
-lmmm
-bik
-bitch
-bitch [wond]
-bitch [wonder]
-bitch [wonder \\\]
-bitch [wonder \\]
-bitch [wonder \/]
-bitch [wonder \\/]
-bitch [wonder \]
-bitch [wonder /]
-bitch [wonder \/]
-bitch [wonder\ \/]
-bitch [wonder\ \\]
-bitch [wonder\ /\\]
-bitch [wonder\ \/\\]
-bitch [wonder\ \\/\\]
-ls
-l
-bitch [you\'re\ a]
-bitch [you\'re\ a]'
-'
-bitch [you\'re\ a]
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-bitch [cuck]
-lol
-git clone https://github.com/iineva/ipa-server
-cd $hdd]
-cd $hdd
-git clone 
-git clone https://github.com/iineva/ipa-server
-git clone https://github.com/Pagat-Ultimo/IPASideLoader
-git clone https://github.com/cxmlg/iosapp
-df -h
-cd $hdd
-mkdir iPhone
-cd iPhone/
-git clone https://github.com/JSSManager/jssmanager
-sudo /mnt/HDD/iPhone/jssmanager/jssmanager.sh 
-mysql
-mysql -u root
-mysql -u root -p NetTechScience99#root=
-mysql -u root -p 
-ls ../
-nano ../SLACK/slack-auditor/utils/SlackConfig.js 
-mysql -u root -p 
-sudo bash /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
-sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
-fuser /mnt/HDD/buildstatus*.txt
-ps | grep 51219
-pid
-htop
-fuser /mnt/HDD/buildstatus*.txt
-htop
-sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
-/mnt/HDD/watchbuild/bin/watchbuild -a com.studiosoapp.student -u charlieporth@yahoo.com 
-ln -s /mnt/HDD/itunes-connect-slack/fixfastlane.sh $prog
-sudo nano /mnt/HDD/itunes-connect-slack/fixfastlane.sh
-sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
-/mnt/HDD/watchbuild/bin/watchbuild -a com.studiosoapp.student -u charlieporth@yahoo.com 
-sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
-fastlane env
-sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
-cd /mnt/HDD/watchbuild/bin/watchbuild 
-cd /mnt/HDD/watchbuild
-fastlane env
-ls
-sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
-sudo bash /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
-tail -f /mnt/HDD/buildstatus*.txt
-htop
-tail -f /dev/shm/itcc
-tail -f /dev/shm/itcnode 
-ls
-sudo nano /mnt/HDD/Programs//NodePrograms.sh 
-sudo node /mnt/HDD/itunes-connect-slack/poll-itc.js 
-lsd
-exit
-sudo reboto -f
-sudo reb
-sudo reboot
-tittle
-ifconfig
-sudo crontab -e
-sudo nano /home/ubuntuserver/Programs/Hourly.sh
-ls /opt/serveripchange.sh
-cat /opt/serveripchange.sh
-bash /opt/serveripchange.sh
-sudo nano  /opt/serveripchange.sh
-bash /opt/serveripchange.sh
-sudo nano  /opt/serveripchange.sh
-bash /opt/serveripchange.sh
-sudo nano  /opt/serveripchange.sh
-bash /opt/serveripchange.sh
-sudo nano  /opt/serveripchange.sh
-rm /opt/ipaddress.txt
-sudo rm /opt/ipaddress.txt
-sudo bash /opt/serveripchange.sh
-sudo nano  /opt/serveripchange.sh
-sudo nano /usr/bin/cred.sh
-sudo bash /opt/serveripchange.sh
-sudo nano  /opt/serveripchange.sh
-rm  /opt/ipaddress.txt
-sudo rm  /opt/ipaddress.txt
-sudo bash /opt/serveripchange.sh
-sudo nano /home/ubuntuserver/Programs/Hourly.sh
-sudo bash /mnt/HDD/Programs//NodePrograms.sh 
-sudo crontab -e
-echo $PATH
-sudo nano /home/ubuntuserver/Programs/Hourly.sh
-sudo crontab -e
-pgrep cron 
-sudo service cron start
-nano /var/log/cron.log
-/var/log/cron.log
-sudo tail -f /var/log/cron.log
-sudo nano /etc/rsyslog.conf
-sudo reboot 
-sudo reboot 
-sudo bash /mnt/HDD/Programs//NodePrograms.sh 
-sudo nano /mnt/HDD/Programs//NodePrograms.sh 
-sudo node /mnt/HDD/itunes-connect-slack/poll-itc.js
-sudo node /mnt/HDD/itunes-connect-slack/poll-itc.js &
-diswon -a
-disown -a
-exit 
-sudo bash /mnt/HDD/Programs//NodePrograms.sh 
-sudo nano /mnt/HDD/Programs//NodePrograms.sh 
-sudo nano /mnt/HDD/Programs//Hourly.sh
-sudo nano /mnt/HDD/Programs//
-sudo nano /mnt/HDD/Programs//Daily.sh 
-cd $work
-ls
-cp -rf Google-PageRank-cheater/ Google-PageRank-cheater-Twitter
-cp -rf Google-PageRank-cheater/ Google-PageRank-cheater-Facebook
-sudo nano  Google-PageRank-cheater-Twitter/Google-PageRank-cheater-browser-aided/google.int
-sudo nano  Google-PageRank-cheater-Twitter/Google-PageRank-cheater-browser-aided/googleconfig.ini 
-sudo nano  Google-PageRank-cheater-Facebook/Google-PageRank-cheater-browser-aided/
-sudo nano  Google-PageRank-cheater-Facebook/Google-PageRank-cheater-browser-aided/googleconfig.ini 
-y
-sudo nano  Google-PageRank-cheater-Facebook/Google-PageRank-cheater-browser-aided/googleconfig.ini 
-sudo nano $prog/Bots.sh
-ls
-htop
-sudo nano $prog/Bots.sh
-frandom
-ls /dev/frandom
-sudo nano $prog/Bots.sh
-sudo nano /mnt/HDD/Programs//Hourly.sh
-htop
-killall ruby2.5
-sudo killall ruby2.5
-sudo nano ../itunes-connect-slack/fixfastlane.sh 
-htop
-killall ruby2.5 
-killall fastlane
-pgrep ruby2.5
-for process in `pgrep ruby2.5`; do; kill -9 $process; echo killed $process; done
-for process in `pgrep ruby2.5`; do kill -9 $process; echo killed $process; done
-sudo nano ../itunes-connect-slack/fixfastlane.sh 
-sudo nano $prog/Hourly.sh
-sudo nano /mnt/HDD/Programs//killMemoryHogs.sh
-sudo bash /mnt/HDD/Programs//killMemoryHogs.sh
-sudo nano /mnt/HDD/Programs//killMemoryHogs.sh
-sudo bash /mnt/HDD/Programs//killMemoryHogs.sh
-sudo nano /mnt/HDD/Programs//killMemoryHogs.sh
-sudo bash /mnt/HDD/Programs//killMemoryHogs.sh
-sudo nano /mnt/HDD/Programs//killMemoryHogs.sh
-sudo bash /mnt/HDD/Programs//killMemoryHogs.sh
-sudo nano /mnt/HDD/Programs//killMemoryHogs.sh
-sudo bash /mnt/HDD/Programs//killMemoryHogs.sh
-sudo nano /mnt/HDD/Programs//killMemoryHogs.sh
-sudo bash /mnt/HDD/Programs//killMemoryHogs.sh
-sudo nano /mnt/HDD/Programs//killMemoryHogs.sh
-killall -9
-killall -9 kill
-sudo nano /mnt/HDD/Programs//killMemoryHogs.sh
-sudo bash /mnt/HDD/Programs//killMemoryHogs.sh
-sudo nano /mnt/HDD/Programs//killMemoryHogs.sh
-sudo bash /mnt/HDD/Programs//killMemoryHogs.sh
-sudo nano /mnt/HDD/Programs//killMemoryHogs.sh
-sudo bash /mnt/HDD/Programs//killMemoryHogs.sh
-sudo nano /mnt/HDD/Programs//killMemoryHogs.sh
-sudo nano /mnt/HDD/Programs//Bots.sh 
-sudo nano /mnt/HDD/Programs//copyr.sh
-sudo nano /mnt/HDD/Programs//killMemoryHogs.sh
-sudo nano /mnt/HDD/Programs//copyr.sh
-sudo bash /mnt/HDD/Programs//killMemoryHogs.sh
-sudo nano /mnt/HDD/Programs//copyr.sh
-sudo bash /mnt/HDD/Programs//killMemoryHogs.sh
-sudo nano /mnt/HDD/Programs//copyr.sh
-sudo nano /mnt/HDD/Programs//killMemoryHogs.sh
-sudo bash /mnt/HDD/Programs//killMemoryHogs.sh
-sudo nano /mnt/HDD/Programs//killMemoryHogs.sh
-sudo nano /mnt/HDD/Programs//NodePrograms.sh 
-sudo nano /mnt/HDD/Programs//killMemoryHogs.sh
-sudo nano /mnt/HDD/Programs//Bots.sh 
-sudo nano /mnt/HDD/Programs//killMemoryHogs.sh
-sudo bash /mnt/HDD/Programs//killMemoryHogs.sh
-sudo nano /mnt/HDD/Programs//killMemoryHogs.sh
-sudo bash /mnt/HDD/Programs//killMemoryHogs.sh
-sudo nano /mnt/HDD/Programs//killMemoryHogs.sh
-htop
-sudo nano /mnt/HDD/Programs//killMemoryHogs.sh
-sudo nano $prog/Hourly.sh
-htop
-killall node
-sudo killall node
-htop
-q
-we 
-wget https://github.com/google/earthenterprise/releases/download/5.3.0-891.12/earthenterprise-5.3.0-891.12.zip
-git clone https://github.com/nasa-gibs/worldview
-git clone https://github.com/nasa-gibs/onearth
-git clone https://github.com/google/earthenterprise
-git clone https://github.com/nasa-gibs/worldview-design
-gut clongut clone https://github.com/chrislgarry/Apollo-11
-git clone https://github.com/nasa/NASA-Acronyms
-git clone https://github.com/nasa
-git clone https://github.com/nasa/earthdata-search
-git clone https://github.com/nasa/common-mapping-client
-git clone https://github.com/nasa/podaac_tools_and_services
-git clone https://github.com/nasa/apod-api
-git clone https://github.com/nasa/astrobot
-git clone https://github.com/nasa/dictionaries
-git clone https://github.com/nasa/openmct-heatmap
-git clone https://github.com/nasa/ominas_maps
-sudo bash  /mnt/HDD/Programs//NodePrograms.sh 
-sudo nano  /mnt/HDD/Programs//NodePrograms.sh 
-sudo bash  /mnt/HDD/Programs//NodePrograms.sh 
-sudo nano  /mnt/HDD/Programs//NodePrograms.sh 
-sudo bash  /mnt/HDD/Programs//NodePrograms.sh 
-git clone https://github.com/chrislgarry/Apollo-11
-git clone https://github.com/nasa/NASA-3D-Resources
-cd $work
-ls
-sudo nano Google-PageRank-cheater-studio_so/Google-PageRank-cheater-headless/config.ini
-sudo nano Google-PageRank-cheater-studio_so/Google-PageRank-cheater-browser-aided/
-sudo nano Google-PageRank-cheater-studio_so/Google-PageRank-cheater-browser-aided/googleconfig.ini 
-sudo nano Google-PageRank-cheate*/Google-PageRank-cheater-browser-aided/googleconfig.ini 
-ls
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-cd $hdd/kernel
-ls
-cd frandom-1.2/
-;s
-ls
-make
-sudo make install
-sudo apt install gcc
-sudo apt install gcc@8
-sudo apt install gcc-8
-sudo make install
-sudo make 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
-sudo mount -o rw,remount /
-sudo mount -o rw,remount /mnt/HDD
-sudo mount -o rw,remount /dev/sdb /mnt/HDD
-sudo mount -o ro,remount /dev/sdb /mnt/HDD
-sudo mount -o rw,remount /dev/sdb /mnt/HDD
-sudo umount -o rw,remount /dev/sdb
-sudo umount  /dev/sdb
-sudo umount -f /dev/sdb
-exit
-sudo reboot
-touch /mnt/HDD/bitc
-cd /mnt/HDD/Kernel/
-;s
-ls
-cd frandom-1.2/
-make
-sudo make
-sudo make install
-ls
-sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs/installLatestKernels.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-rm -rf /var/lib/dpkg/lock
-sudo rm -rf /var/lib/dpkg/lock
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo rm -rf /var/lib/dpkg/lock*
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh 
-sudo reboot 
-sudo bash $prog/NodePrograms.sh 
-sudo nano $prog/NodePrograms.sh 
-sudo bash $prog/NodePrograms.sh 
-cd itunes-connect-slack/
-ls
-cd ..
-cd /mnt/HDD/itunes-connect-slack/
-ls
-sudo ruby get-app-status.rb 
-sudo nano $prog/pol
-sudo nano poll-itc.js 
-tail -f /dev/shm/itcnode 
-sudo bash $prog/NodePrograms.sh 
-sudo nano $hdd/itunes-connect-slack/poll-itc.js 
-sudo bash $prog/NodePrograms.sh 
-sudo bash $prog/NodePrograms.sh 
-htop
-ls
-sudo nano $prog/NodePrograms.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh
-cat /mnt/HDD/lastK
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh
-sudo nano ~/.bash_exports 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh
-sudo nano /mnt/HDD/Programs//Bots.sh 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh
-sudo nano ~/.bash_exports 
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh
-sudo nano /mnt/HDD/Programs//newKernelCustomModprobes.sh
-sudo bash /mnt/HDD/Programs//newKernelCustomModprobes.sh
-sudo nano $prog/Bot.sh
-sudo nano /mnt/HDD/Programs//Bots.sh 
 `sudo ps -x | grep "Bots.sh" | grep -v  'grep Bots.sh
 `
 sudo ps -x | grep "Bots.sh" | grep -v  'grep Bots.sh
@@ -638,3 +288,389 @@ sudo dc3dd wipe=/dev/sdc
 sudo mkfs.ext4  /dev/sdc
 ls /dev/mapper/
 sudo mkfs.ext4  /dev/sdc
+ls
+ls /dev/
+ls /dev/sdc
+sudo mkfs.ext4  /dev/sdc
+sudo pvcreate /dev/sda
+udo pvcreate /dev/sdc
+sudo pvcreate /dev/sdc
+sudo vgcreate cache /dev/sda /dev/sdc
+sudo vgcreate cache /dev/sda1 /dev/sdc
+sudo umount /mnt/HDD
+sudo umount -f /mnt/HDD
+sudo umount -fr /mnt/HDD
+sudo umount -fl /mnt/HDD
+ls /mnt/HDD
+lvcreate -L 22G -n cachedisk data /dev/sdb1
+lvcreate -L 22G -n cachedisk data /dev/sdc
+sudo lvcreate -L 22G -n cachedisk data /dev/sdc
+sudo pvcreate /dev/sdb
+sudo pvcreate /dev/sdc
+sudo umount -f /dev/sda
+sudo umount -f /dev/sda1
+sudo umount -fl /dev/sda1
+l
+sudo pvcreate /dev/sda1
+sudo su
+nano /etc/rc.local
+ls
+nano /etc/fstab
+reboot
+ssh mikro
+nmap -T4 
+mactelnet -l
+ssh 192.168.1.4
+ssh admin@192.168.1.4
+telnet  6c:3b:6b:7e:ff:36 
+mactelnet  6c:3b:6b:7e:ff:36 
+ls
+mactelnet 6c:3b:6b:7e:ff:36 
+mactelnet  6c:3b:6b:7e:ff:36 
+ssh admin@192.168.1.4
+./
+?
+print
+nmap -T4 192.168.1.64
+ping 192.168.1.64
+nmap -T4 192.168.1.64
+ssh admin@192.168.1.4
+mactelnet  6c:3b:6b:7e:ff:36 
+nmap -T4 192.168.1.64
+ssh mikro
+mactelnet  6c:3b:6b:7e:ff:36 
+nmap -T4 192.168.1.58
+mactelnet  6c:3b:6b:7e:ff:36 
+ls
+nmap -T4 192.168.1.64
+ssh mikro
+sudo perl dmc-setup.pl -o /dev/sda -c /dev/sdc -n cache -b 8 -w
+sudo perl dmc-setup.pl -o /dev/sda -c /dev/sdc -n c -b 8 -w
+sudo perl dmc-setup.pl -o /dev/sda1 -c /dev/sdc -n cache -b 8 -w
+sudo perl dmc-setup.pl -o /dev/sda -c /dev/sdc -n c -b 8 -w
+sudo perl dmc-setup.pl -o /dev/sda1 -c /dev/sdc -n cache -b 8 -w
+ls /dev/mapper/
+sudo umount -fl /dev/sdb
+ls /mnt/HDD
+sudo perl dmc-setup.pl -o /dev/sda1 -c /dev/sdb -n cache -b 8 -w
+echo 0 3905026048 cache /dev/sda1 /dev/sdb 0 8 65536 16 1 | dmsetup create cache
+sudo modprobe dm-cache dm-setup
+echo 0 3905026048 cache /dev/sda1 /dev/sdb 0 8 65536 16 1 | dmsetup create cache
+sudo apt install libdevmapper
+sudo apt install libdevmapper-dev
+sudo su
+cd flashcache/
+ls
+sudo apt-get install dkms build-essential
+ls
+make -f Makefile.dkms
+sudo make -f Makefile.dkms
+cd ..
+cd $hdd/Kernel
+rm -rf flashcache/
+sudo rm -rf flashcache/
+git clone git://github.com/facebook/flashcache; cd flashcache
+make -f Makefile.dkms
+sudo make -f Makefile.dkms
+ls
+make
+sudo make
+echo 0 3905026048 cache /dev/sdb /dev/sdc 0 8 65536 16 1 | dmsetup create cache
+sudo perl dmc-setup.pl -o /dev/sdb -c /dev/sdc -n cache -b 8 -w
+cd..
+sudo perl dmc-setup.pl -o /dev/sdb -c /dev/sdc -n cache -b 8 -w
+sudo apt install flashcache
+ modprobe flashcache
+sudo apt-get install -y flashcache-dkms
+sudo apt update
+sudo apt-get install -y flashcache-dkms
+cd EnhanceIO/
+ls
+ cp CLI/eio_cli /sbin/
+ls
+cd Driver/
+ls
+cd enhanceio/
+ls
+make && make install
+sudo make && sudo make install
+cd ..
+cd flashcache/
+ls
+make -f Makefile.dkms 
+sudo make -f Makefile.dkms 
+ls lib/modules/4.18.0-20-generic/build
+ls /lib/modules/4.18.0-20-generic/build
+ls
+ make -f Makefile.dkms boot_conf
+sudo  make -f Makefile.dkms boot_conf
+sudo apt-get install dkms build-essential linux-headers-`uname -r`
+ls /boot/initrd.img-4.18.0-20-generic
+nano /boot/initrd.img-4.18.0-20-generic
+sudo dpkg 
+sudo nano  /boot/grub/grub.cfg
+dpkg 
+make -f Makefile.dkms
+sudo make -f Makefile.dkms
+sudo su
+sudo reboot
+la
+su -h
+ls
+df -h
+ls /dev/mapper/
+sudo nano /etc/rc.local
+bitch
+bitch [Im]
+bitch [Im\ done]
+ls /mnt/HDD
+sudo bash /mnt/HDD/Programs//NodePrograms.sh 
+sudo nano /mnt/HDD/Programs//NodePrograms.sh 
+sudo node /mnt/HDD/itunes-connect-slack/poll-itc.js > /dev/shm/itcnode 2>&1  &!
+sudo su
+cd /mnt/HDD/itunes-connect-slack/
+ls
+sudo ruby get-app-status.rb 
+cd..
+sudo node /mnt/HDD/itunes-connect-slack/poll-itc.js > /dev/shm/itcnode 2>&1  &!
+sudo nano /mnt/HDD/Programs//Hourly.sh 
+sudo nano sudo bash /mnt/HDD/Programs/DDNSUPDATE.sh
+sudo nano  /mnt/HDD/Programs/DDNSUPDATE*
+sudo nano /mnt/HDD/Programs//Hourly.sh 
+sudo nano /mnt/HDD/Programs//DDNSUPDATE
+sudo nano /mnt/HDD/Programs//DDNSUPDATE.sh 
+sudo nano /mnt/HDD/Programs//Hourly.sh 
+sudo nano /mnt/HDD/Programs//DDNSUPDATE.sh
+sudo nano /mnt/HDD/Programs//DDNS.sh 
+sudo nano /mnt/HDD/Programs//Hourly.sh 
+sudo nano  /mnt/HDD/Programs/DDNSUPDATE1.sh
+sudo nano  /mnt/HDD/Programs/DDNSUPDATE.sh
+sudo nano /mnt/HDD/Programs//Hourly.sh 
+tail -f /dev/shm/itcnode 
+cd /mnt/HDD/itunes-connect-slack/
+ls
+sudo bash fixfastlane.sh 
+sudo nanofixfastlane.sh 
+spaceship
+spaceship --help
+gems install spaceship
+gem install spaceship
+sudo gem install spaceship
+sudo su
+cd itunes-connect-slack/
+ls
+sudo ruby get-app-status.rb 
+sudo nano /mnt/HDD/Programs//Hourly.sh 
+sudo nanofixfastlane.sh 
+sudo nano fixfastlane.sh 
+sudo nano /mnt/HDD/Programs//Hourly.sh 
+sudo nano fixfastlane.sh 
+sudo nano fixfastlane.sh 
+ls
+cat Gemfile
+bundle install
+sudo nano fixfastlane.sh 
+Sciencetech99gem install bundler
+gem install bundler
+sudo gem install bundler
+bundle install
+ls
+sudo ruby get-app-status-
+sudo ruby get-app-status
+sudo ruby get-app-status.rb 
+ls ~/.pki/
+sudo ls ~/.pki/
+sudo ls ~/.local/
+sudo ls ~/.local/lib/
+sudo ls ~/.gem/
+sudo ls ~/.config/
+sudo ls ~/.bundle/
+sudo ls ~/.bundle/cache/
+sudo ls ~/.bundle/cache/compact_index/
+sudo ls ~/.bundle/cache/compact_index/rubygems.org.443.29b0360b937aa4d161703e6160654e47/
+sudo ls ~/.bundle/cache/compact_index/rubygems.org.443.29b0360b937aa4d161703e6160654e47/versions 
+ls ~/.bundle/cache/compact_index/rubygems.org.443.29b0360b937aa4d161703e6160654e47/versions 
+ls ~/.bundle/cache/compact_index/rubygems.org.443.29b0360b937aa4d161703e6160654e47/
+ls ~/.bundle/cache/compact_index/rubygems.org.443.29b0360b937aa4d161703e6160654e47/info-special-characters/
+ls
+sudo chown $USER:$USER get-app-status*
+fastlane spaceship
+fastlane spaceauth -u user@example.org
+fastlane spaceauth -u charlieporth1@gmail.com
+tail -f /dev/shm/itcnode 
+ls /mnt/HDD
+sudo nano /etc/rc.local
+sudo reboot 
+ls 
+cd /mnt/HDD/itunes-connect-slack/
+ls
+sudo nano /mnt/HDD/Programs//NodePrograms.sh 
+tail -f /dev/shm/itcnode 
+ls 
+killall node
+sudo killall node
+ls
+cd ..
+ls
+cd workspace/
+ls
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+lds
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+cd /var/www
+ls
+rm -rf Base256
+sudo rm -rf Base256
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+cd /var/www
+ls
+rm -rf fusionpbx/
+sudo rm -rf fusionpbx/
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+ls /mnt/HDD
+ls /mnt/HDD/ApplePaymentsSpoofing/
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+git submodule deinit --all
+git submodule deinit --help --all
+git submodule deinit -f  --all
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+ls
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+git rm --help
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+cd $prog/
+ls
+git add .
+rm -rf .git/in
+sudo git add .
+git add -f .
+sudo git add -f .
+git submodule update --init --recursive
+sudo git add -f .
+git submodule update --init --recursive
+git submodule foreach --recursive git fetch
+git add .
+sudo git add .
+sudo git submodule foreach --recursive git fetch
+sudo git add .
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+ls
+sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
+cat /mnt/HDD/buildstatus(
+cat /mnt/HDD/buildstatus*
+sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
+sudo crontab -e
+ls /dev/shm
+tail -f /dev/shm/appReview 
+sudo nano /mnt/HDD/Programs//Hourly.sh 
+sudo crontab -e
+ls /
+ls /dev/shm
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano $prog/Hourly.sh
+sudo crontab -e
+cd /mnt/HDD/HACK/PINEAPPLE/
+ls
+mv ARPing-GUI/.git/ ARPing-GUI/.git.old
+ls /dev/shm
+sudo bash /mnt/HDD/Programs//toGithub.sh 
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+cd ..
+cd workspace/
+ls
+cd MARKETING/
+ls
+git config --help
+sudo nano /mnt/HDD/Programs//toGithub.sh 
+ls 
+ls MARKETING/
+tail -f /dev/shm/itcbuildproc 
+htop
+cd /mnt/HDD/itunes-connect-slack/
+ls
+sudo nano fixfastlane.sh 
+sudo nano /mnt/HDD/Programs//update.sh 
+gem update
+sudo nano /mnt/HDD/Programs/update.sh 
+sudo nano /mnt/HDD/Programs/Weekly.sh 
+sudo nano /mnt/HDD/Programs/update.sh 
+sudo nano /mnt/HDD/Programs/Weekly.sh 
+sudo nano /mnt/HDD/Programs/update.sh 
+sudo crontab -e
+sudo gem update
+ls
+sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
+cat /mnt/HDD/buildstatus*
+sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
+tail -f /mnt/HDD/buildstatus*
+sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
+tail -f /dev/shm/itcbuildproc 
+sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
+tail -f /dev/shm/itcbuildproc 
+sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
+tail -f /dev/shm/itcbuildproc 
+sudo nano /mnt/HDD/Programs//Hourly.sh 
+tail -f /dev/shm/itcbuildproc 
+sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
+tail -f /dev/shm/itcbuildproc 
+sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
+sudo nano /mnt/HDD/Programs//Hourly.sh 
+tail -f /dev/shm/itcbuildproc 
+sudo nano /mnt/HDD/Programs//Hourly.sh 
+sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
+tail -f /dev/shm/itcbuildproc 
+sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
+tail -f /dev/shm/itcbuildproc 
+sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
+sudo bash /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
