@@ -233,20 +233,21 @@ export lastip3=$(last -3  --time-format notime | grep -e  'ubuntuser\|logged in\
 #stty -echo
 export mosh='0.0.0.0'
 if [[ $llll  =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-export llll=$(last  -2  --time-format notime | grep -e  'ubuntuser\|logged in\|pts/*\|tty*' |  sed -n '2p' |  grep -e  'ubuntuser\|logged in\|pts/*\|tty*' |  awk '{print $3}')
-export lll=$(last -2 -R -w  | sed -n '2p' | cut -c 20- )
+	export llll=$(last -2 --time-format notime | grep -e 'ubuntuser\|logged in\|pts/*\|tty*' | sed -n '2p' | grep -e 'ubuntuser\|logged in\|pts/*\|tty*' |  awk '{print $3}')
+	export lll=$(last -2 -R -w | sed -n '2p' | awk '{print $3 " " $4 " " $5 " " $6 " " $7 " " $8 " " $9 " " $10}')
 elif [[ $lastip3  =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-#stty echo
-export llll=$(last  -3  --time-format notime | grep -e  'ubuntuser\|logged in\|pts/*\|tty*' |  sed -n '3p' |  grep -e  'ubuntuser\|logged in\|pts/*\|tty*' | awk '{print $3}')
-export lll=$(last -3 -R -w  | sed -n '3p' | cut -c 20- )
+	#stty echo
+	export llll=$(last -3 --time-format notime | grep -e 'ubuntuser\|logged in\|pts/*\|tty*' | sed -n '3p' | grep -e 'ubuntuser\|logged in\|pts/*\|tty*' | awk '{print $3}')
+	export lll=$(last -3 -R -w | sed -n '2p' | awk '{print $3 " " $4 " " $5 " " $6 " " $7 " " $8 " " $9 " " $10}')
 elif [[ $lastip4  =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-export llll=$(last  -4  --time-format notime | grep -e  'ubuntuser\|logged in\|pts/*\|tty*' |  sed -n '4p' |  grep -e  'ubuntuser\|logged in\|pts/*\|tty*' | awk '{print $3}')
-export lll=$(last -4 -R -w  | sed -n '4p' | cut -c 20- )
+	export llll=$(last -4 --time-format notime | grep -e 'ubuntuser\|logged in\|pts/*\|tty*' | sed -n '4p' | grep -e 'ubuntuser\|logged in\|pts/*\|tty*' | awk '{print $3}')
+	export lll=$(last -4 -R -w | sed -n '2p' | awk '{print $3 " " $4 " " $5 " " $6 " " $7 " " $8 " " $9 " " $10}')
 #elif ( echo -ne $inv  $llll   = echo -ne  $mosh  $reset ); then
-echo 
+	echo 
 else
-export llll=$(last  -2  --time-format notime | grep -e  'ubuntuser\|logged in\|pts/*\|tty*' |  sed -n '2p' |  grep -e  'ubuntuser\|logged in\|pts/*\|tty*' |  awk '{print $3}')
-export lll=$(last -2 -R -w  | sed -n '2p' | cut -c 20- )
+	export llll=$(last -2 --time-format notime | grep -e 'ubuntuser\|logged in\|pts/*\|tty*' | sed -n '2p' | grep -e 'ubuntuser\|logged in\|pts/*\|tty*' | awk '{print $3}')
+	export lll=$(last -2 -R -w | sed -n '2p' | awk '{print $3 " " $4 " " $5 " " $6 " " $7 " " $8 " " $9 " " $10}')
+	#export lll=$(last -2 -R -w  | sed -n '2p' | cut -c 20- )
 fi
 
 

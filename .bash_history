@@ -1,327 +1,3 @@
-`sudo ps -x | grep "Bots.sh" | grep -v  'grep Bots.sh
-`
-sudo ps -x | grep "Bots.sh" | grep -v  'grep Bots.sh
-'
-sudo ps -x | grep "Bots.sh" 
-sudo nano /mnt/HDD/Programs//Daily.sh 
-sudo mkdir $prog/.save
-sudo nano /mnt/HDD/Programs//Daily.sh 
-sudo nano /mnt/HDD/Programs//memoryClean.sh 
-sudo nano /mnt/HDD/Programs//Daily.sh 
-sudo nano /mnt/HDD/Programs//memoryClean.sh 
-sudo nano /mnt/HDD/Programs//Daily.sh 
-sudo nano /mnt/HDD/Programs//Hourly.sh
-sudo nano /mnt/HDD/Programs//Daily.sh 
-sudo nano /mnt/HDD/Programs//Hourly.sh
-sudo nano /mnt/HDD/Programs//Daily.sh 
-sudo nano /mnt/HDD/Programs//Weekly.sh
-sudo nano /mnt/HDD/Programs//Daily.sh 
-sudo nano /mnt/HDD/Programs//Weekly.sh
-sudo nano /mnt/HDD/Programs//Bots.sh
-sudo nano /mnt/HDD/Programs//memoryClean.sh 
-sudo nano /mnt/HDD/Programs//Bots.sh
-exit
-ls
-cd $work su
-cd $work
-ls
-git clone https://github.com/toadlyBroodle/spam-bot-3000
-htop
-tail -f /dev/shm/itcnode 
-sudo nano /mnt/HDD/Programs//Bots.sh
-sudo nano $prog/NodePrograms.sh 
-sudo ps -x | grep Bots.sh
-sudo nano $prog/Bots.sh
-sudo ps -x | grep Bots.sh
-sudo ps -x | grep Bot.sh sort -k4 
-sudo ps -x | grep Bot.sh | awk '{print $4 }'| sort -k4 
-sudo ps -x | grep Bot.sh | awk '{print $4 }'
-sudo ps -x | grep Bot.sh | awk '{print $1 }'
-sudo ps -x | grep Bot.sh | awk '{print $2 }'
-sudo ps -x | grep Bot.sh | awk '{print $2}'
-sudo ps -x | grep Bot.sh #| awk '{print $2}'
-sudo ps -x | grep Bots.sh
-sudo ps -x | grep Bot.sh #| awk '{print $2}'
-sudo ps -x | grep Bots.sh #| awk '{print $2}'
-sudo ps -x | grep Bots.sh #| awk '{print $1}'
-sudo ps -x | grep Bots.sh | awk '{print $1}'
-sudo ps -x | grep Bots.sh | awk '{print $1}' | sort -k4
-for process in `sudo ps -x | grep Bots.sh | awk '{print $1}'`; do kill $process; echo "process killed $process"; done
-echo `date`
-echo `date` | cut -d ':' -f 1
-echo `date` | cut -d ':' -f 1-1
-echo `date` | cut -d ':' -f 0-1
-echo `date` | cut -d ':' -f 1 | awk '{print $3}'
-echo `date` | cut -d ':' -f 1 | awk '{print $4}'
-sudo nano $prog/Bots.sh
-htop
-sudo nano /mnt/HDD/Programs/server/installnewserver.sh 
-sudo nano /mnt/HDD/Programs/update.sh 
-sudo nano /mnt/HDD/Programs/Bots.sh
-sudo nano ~/.bash_func 
-sudo nano /mnt/HDD/Programs/Bots.sh
-wonda 
-sudo ps -x | grep "Bots.sh"
-sudo ps -x | grep Bots.sh
-sudo ps -x
-sudo ps -x | grep bots
-sudo ps -x | grep Bots
-sudo ps -x | grep Bot
-lol
-sudo nano /mnt/HDD/Programs//Bots.sh 
-sudo ps -x | grep Bot
-sudo nano /mnt/HDD/Programs//Bots.sh 
-sudo bash /mnt/HDD/Programs//Bots.sh 
-sudo nano /mnt/HDD/Programs//Bots.sh 
-sudo bash /mnt/HDD/Programs//Bots.sh 
-sudo nano /mnt/HDD/Programs//Bots.sh 
-sudo bash /mnt/HDD/Programs//Bots.sh 
-sudo nano /mnt/HDD/Programs//Bots.sh 
-fgg
-fg
-ping 1.1.1.1
-home
-lol
-lol
-lolgate
-df h-
-df -h
-htop
-sudo nano /mnt/HDD/Programs//server/installnewserver.sh 
-sudo nano $prog/Bots.sh
-sudo ps -x | grep Bots
-sudo ps -x | grep Bots.sh
-df -h
-ifconfig
-ifconfig | grep GB
-ifconfig | grep "GB\|MB"
-sudo nano $prog/Weekly.sh
-sudo nano $prog/TrackInternetUsage
-sudo nano $prog/TrackInternetUsage.sh
-sudo bash $prog/TrackInternetUsage.sh
-sudo nano $prog/TrackInternetUsage.sh
-sudo bash $prog/TrackInternetUsage.sh
-sudo nano $prog/TrackInternetUsage.sh
-sudo bash $prog/TrackInternetUsage.sh
-ls /mnt/HDD/internetUsage.csv
-cat /mnt/HDD/internetUsage.csv
-sudo bash $prog/TrackInternetUsage.sh
-sudo nano $prog/TrackInternetUsage.sh
-ifconfig | grep "GB\|MB"
-sudo nano /mnt/HDD/Programs/killMemoryHogs.sh 
-sudo nano /mnt/HDD/Programs/Bots.sh
-sudo nano /mnt/HDD/Programs/server/installnewserver.sh 
-sudo nano $prog/TrackInternetUsage.sh
-sudo bash $prog/TrackInternetUsage.sh
-cat /mnt/HDD/internetUsage.csv
-rm -rf /mnt/HDD/internetUsage.csv
-sudo bash $prog/TrackInternetUsage.sh
-cat /mnt/HDD/internetUsage.csv
-nano /mnt/HDD/internetUsage.csv
-sudo nano $prog/TrackInternetUsage.sh
-cat /mnt/HDD/internetUsage.csv
-sudo bash $prog/TrackInternetUsage.sh
-cat /mnt/HDD/internetUsage.csv
-sudo nano $prog/TrackInternetUsage.sh
-sudo bash $prog/TrackInternetUsage.sh
-cat /mnt/HDD/internetUsage.csv
-rm /mnt/HDD/internetUsage.csv
-sudo nano $prog/TrackInternetUsage.sh
-sudo nano /mnt/HDD/Programs//GitChangedWeeklyv2.sh 
-sudo nano $prog/TrackInternetUsage.sh
-sudo nano /mnt/HDD/Programs//GitChangedWeeklyv2.sh 
-sudo nano $prog/TrackInternetUsage.sh
-sudo nano /mnt/HDD/Programs//Weekly.sh 
-df -h
-df -j
-df -
-df -h
-df -
-df -h
-sudo ps -x | grep Botsh
-sudo ps -x | grep Bots.sh
-cd /var/www
-ls
-sudo git add 
-sudo git add .
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo apt-get install git-extras
-exit
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-ls /dev
-ls /dev/net
-ifconfig -a
-ls
-ifconfig
-ls
-ls /dev
-mkfs.ext4 /dev/sdc
-sudo mkfs.ext4 /dev/sdc
- sudo modprobe dm-cache
-ls
-wget https://raw.githubusercontent.com/mingzhao/dm-cache/master/dmc-setup.pl
-cp -rf dmc-setup.pl  /usr/local/bin/
- sudo perl dmc-setup.pl -o /dev/sda -c /dev/sdc -n cache -b 8 -w
- sudo perl dmc-setup.pl -o /dev/sdb -c /dev/sdc -n cache -b 8 -w
-sudo sy
-sudo su
-git clone https://github.com/stec-inc/EnhanceIO
-cd EnhanceIO/
-ls
-/home/ubuntuserver/EnhanceIO/CLI/eio_cli 
-cp CLI/eio_cli /sbin/
-sudo cp CLI/eio_cli /sbin/
-chmod 700 CLI/eio_cli
-chmod 700 /sbin/eio_cli
-sudo chmod 700 /sbin/eio_cli
-ls
-  make && make install
-cd Driver/
-ls
-cd enhanceio/
-ls
-  make && make install
-sudo  make && sudo make install
-sudo apt search bcache
-sudo apt install bcache-tools 
-sudo make-bcache -C /dev/sdc -B /dev/sdb5 --block 4k --discard --writeback
-sudo wipefs -a /dev/sdc
-sudo sudo wipefs -a /dev/sdc
-sudo wipefs -a /dev/sdc
-sudo make-bcache -C /dev/sdc -B /dev/sda --block 4k --discard --writeback
-sudo umount /dev/sda
-df -h
-sudo make-bcache -C /dev/sdc -B /dev/sda1 --block 4k --discard --writeback
-sudo umount /dev/sdc
-sudo make-bcache -C /dev/sdc -B /dev/sda1 --block 4k --discard --writeback
-sudo wipefs -a /dev/sdc
-sudo umount -f /dev/sdc
-sudo make-bcache -C /dev/sdc -B /dev/sda1 --block 4k --discard --writeback
-sudo su
-sudo mkfs.ext4 /dev/sdc
-ls /dev/mapper/
-umount -f /dev/sdb
-umount -f /dev/sdc
-suod umount -f /dev/sdc
-sudo umount -f /dev/sdc
-sudo umount -r /dev/sdc
-sudo umount -l /dev/sdc
-sudo mkfs.ext4 /dev/sdc
-sudo make-bcache -C /dev/sdc -B /dev/sdb5 --block 4k --discard --writeback
-sudo make-bcache -C /dev/sdc -B /dev/sda --block 4k --discard --writeback
-ls /dev
- sudo wipefs -a /dev/sdc
-sudo bcache-super-show -f /dev/sdb
-sudo bcache-super-show -f /dev/sdc
-modprobe bcache
-sudo make-bcache -C /dev/sdc -B /dev/sdb5 --block 4k --discard --writeback
-sudo su - - c ‘echo /dev/sdb > /sys/fs/bcache/register’
-sudo su
-sudo reboot
-ls /dev/
-ls /dev/sdc
-sudo mkfs.ext4 /dev/sdc
-sudo wipefs -a /dev/sdc
-wipefs -af /dev/sdc
-sudo wipefs -af /dev/sdc
-sudo mkfs.ext4 /dev/sdc
-ls /dev/sdc
-ls /dev/
-ls /dev/sdc
-mkdir /mnt/cache
-sudo mkdir /mnt/cache
-sudo mount /dev/sdc /mnt/cache
-sudo mount -f /dev/sdc /mnt/cache
-sudo umount /dev/sdc
-df -
-df -h
-ls
-ls /
-ls 
-ls /dev/
-ls /dev/mapper/
-ls
-ls /dev
-sudo mount /dev/sdc /mnt/cache
-sudo umount -f /dev/sdc
-fsuser /dev/sdc
-fuser /dev/sdc
-fuser -l /dev/sdc
-fuser -vm  /dev/sdc
-lsof +D big
-lsof +D /dev/sdc
-lsof +D /mnt/cache
-lsof +f  /mnt/cache
-lsof f  /mnt/cache
-lsof -f  /mnt/cache
-ls /mnt
-lsof +D /mnt/cache
-sudo killall bcache
-sudo killall -9 bcache
-htop
-ls /dev/sdc
-sudo mkfs.ext4 /dev/sdc
-sudo mkfs.ext4 -f /dev/sdc
-sudo mkfs.ext4 -ff /dev/sdc
-sudo mkfs.ext4 -f /dev/sdc
-sudo mkfs.ext4  /dev/sdc
-fdisk -l
-sudo fdisk -l
-mdadm --stop /dev/sdc
-sudo mdadm --stop /dev/sdc
-sfdisk --list /dev/sdb
-sudo sfdisk --list /dev/sdb
-sudo sfdisk --list /dev/sdc
-sudo dc3dd wipe=/dev/sdb
-sudo apt install dc3dd
-sudo dc3dd wipe=/dev/sdc
-sudo mkfs.ext4  /dev/sdc
-sudo dc3dd wipe=/dev/sdc
-sudo mkfs.ext4  /dev/sdc
-ls /dev/mapper/
-sudo mkfs.ext4  /dev/sdc
-ls
-ls /dev/
-ls /dev/sdc
-sudo mkfs.ext4  /dev/sdc
-sudo pvcreate /dev/sda
-udo pvcreate /dev/sdc
-sudo pvcreate /dev/sdc
-sudo vgcreate cache /dev/sda /dev/sdc
-sudo vgcreate cache /dev/sda1 /dev/sdc
-sudo umount /mnt/HDD
-sudo umount -f /mnt/HDD
-sudo umount -fr /mnt/HDD
-sudo umount -fl /mnt/HDD
-ls /mnt/HDD
-lvcreate -L 22G -n cachedisk data /dev/sdb1
-lvcreate -L 22G -n cachedisk data /dev/sdc
-sudo lvcreate -L 22G -n cachedisk data /dev/sdc
-sudo pvcreate /dev/sdb
-sudo pvcreate /dev/sdc
-sudo umount -f /dev/sda
-sudo umount -f /dev/sda1
-sudo umount -fl /dev/sda1
-l
-sudo pvcreate /dev/sda1
-sudo su
-nano /etc/rc.local
-ls
-nano /etc/fstab
-reboot
-ssh mikro
-nmap -T4 
-mactelnet -l
-ssh 192.168.1.4
-ssh admin@192.168.1.4
 telnet  6c:3b:6b:7e:ff:36 
 mactelnet  6c:3b:6b:7e:ff:36 
 ls
@@ -674,3 +350,352 @@ sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh
 tail -f /dev/shm/itcbuildproc 
 sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
 sudo bash /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
+ls
+cd $hdd/SLACK
+ls
+cd AppReviewSlack/
+ls
+tail -f /dev/shm/appReview 
+ls
+cd $work
+mkdir ITC
+ln -s ITC MARKETING/
+ls MARKETING/ITC
+cd ITC/
+git clone https://github.com/bitrise-steplib/steps-deploy-to-itunesconnect-deliver
+git clone https://github.com/fedoco/itc-reporter
+git clone https://github.com/stoprocent/node-itunesconnect
+git clone https://github.com/kmonaghan/itunes-connect-auto-ingest
+git clone https://github.com/thecb4/MotherShip
+git clone https://github.com/kirbyt/appdailysales
+git clone https://github.com/clayallsopp/applebot
+git clone https://github.com/rhaining/itc-localized-screenshot-uploader
+git clone https://github.com/beardon/apple-reporter
+git clone https://github.com/iizvv/MoreiTunesConnect_iOS
+git clone https://github.com/wjlafrance/itunesconnect_autoingestion
+git clone https://github.com/simongcx/pytunesconnect
+git clone https://github.com/beardon/apple-reporter
+git clone https://github.com/hankinsoft/AppWage
+git clone https://github.com/fastlane/itc-api-docs
+git clone https://github.com/oney/iTunesConnect
+git clone https://github.com/Donohue/testflight_invite
+cd testflight_invite/
+ls
+sudo nano server.js 
+tail -f /dev/shm/appReview 
+sudo nano server.js 
+ls
+ls /
+ls /etc
+ls /etc/*.json
+sudo nano server.js 
+ls reviews-to-slack
+ls ../
+ls ../reviews-to-slack
+ls ../reviews-to-slack/index.js 
+cat ../reviews-to-slack/index.js 
+nano ../reviews-to-slack/index.js 
+sudo nano server.js 
+sudo poll server.js 
+sudo node server.js 
+sudo nano server.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+sudo nano server.js 
+sudo nano ../reviews-to-slack/index.js 
+sudo nano server.js 
+sudo nano ../reviews-to-slack/index.js 
+sudo nano server.js 
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+sudo nano /mnt/HDD/SLACK/itunes-connect-slack/poll-itc.js 
+ls /mnt/HDD/SLACK/
+ls /mnt/HDD/SLACK/reviews-to-slack/
+ls /mnt/HDD/SLACK/
+sudo node server.js 
+ls
+sudo nano testflight_invite.py 
+ pip install autoflight
+sudo  pip install autoflight
+cd ..
+git clone https://github.com/tomwhipple/auto-testflight
+git clone https://github.com/Rchowley/TestFlight-Auto-Invite-PHP
+git clone https://github.com/hellosa/autobuild-upload-testflight
+git clone https://github.com/astagi/autoflight
+git clone https://github.com/carlinyuen/AutoTestFlightUploadXcode
+sudo nano testflight_invite.py 
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+sudo reboot 
+sudo bash /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh
+ls
+sudo crontab -e
+cd /mnt/HDD/ApplePaymentsSpoofing/logicscipt.sh
+cd /mnt/HDD/ApplePaymentsSpoofing/
+sudo nano logicscipt.sh
+sudo bash logicscipt.sh
+sudo nano logicscipt.sh
+sudo bash logicscipt.sh
+npm rebuild
+sudo npm rebuild
+sudo bash logicscipt.sh
+sudo nano logicscipt.sh
+sudo bash logicscipt.sh
+htop
+ls
+a
+ls
+bitch
+lol
+sudo nano logicscipt.sh
+ df -h
+lol
+lolcat programs
+lolcat < charlieporth@192.168.1.34 
+cd //
+cd /////
+cd ///
+cd ////
+cd //
+cd ~/
+away
+sudo reboot 
+sudo nano ~/.bashrc
+last -2 -R -w  | sed -n '2p' | cut -c 20-
+last -2 -R -w  | sed -n '2p'
+last -2 -R -w  | sed -n '2p' |  awk '{print $1}'
+last -2 -R -w  | sed -n '2p' |  awk '{print $2}'
+last -2 -R -w  | sed -n '2p' |  awk '{print $3}'
+last -2 -R -w  | sed -n '2p' |  awk '{print $3 " " $4}'
+last -2 -R -w  | sed -n '2p' |  awk '{print $3 " " $4 " " $5}'
+last -2 -R -w  | sed -n '2p' |  awk '{print $3 " " $4 " " $5 " " $6}'
+last -2 -R -w  | sed -n '2p' |  awk '{print $3 " " $4 " " $5 " " $6   " "  $7  }'
+last -2 -R -w  | sed -n '2p' |  awk '{print $3 " " $4 " " $5 " " $6 " " $7 " " $8 }'
+last -2 -R -w  | sed -n '2p' |  awk '{print $3 " " $4 " " $5 " " $6 " " $7 " " $8 " " $9\}'
+last -2 -R -w  | sed -n '2p' |  awk '{print $3 " " $4 " " $5 " " $6 " " $7 " " $8 " " $9}'
+last -2 -R -w  | sed -n '2p' |  awk '{print $3 " " $4 " " $5 " " $6 " " $7 " " $8 " " $9 " "    }'
+last -2 -R -w  | sed -n '2p' |  awk '{print $3 " " $4 " " $5 " " $6 " " $7 " " $8 " " $9 " " $10}'
+sudo nano ~/.bashrc
+source ~/.bashrcc
+source ~/.bashrc
+last -2 -R -w  | sed -n '2p' |  awk '{print $3 " " $4 " " $5 " " $6 " " $7 " " $8 }'
+cd //
+ls
+lss
+..
+cd /
+cd 
+last -2 -R -w  | sed -n '2p' |  awk '{print $3 " " $4 " " $5 " " $6 " " $7 " " $8 }'
+last -2 -R -w  | sed -n '2p' |  awk '{print \/$3 " " $4 " " $5 " " $6 " " $7 " " $8 }'
+last -2 -R -w  | sed -n '2p' |  awk '{print \\$3 " " $4 " " $5 " " $6 " " $7 " " $8 }'
+last -2 -R -w  | sed -n '2p' |  awk '{print $3 "\ " $4 " " $5 " " $6 " " $7 " " $8 }'
+last -2 -R -w  | sed -n '2p' |  awk '{print $3 "i " $4 " " $5 " " $6 " " $7 " " $8 }'
+last -2 -R -w  | sed -n '2p' |  awk '{print $3 "l " $4 " " $5 " " $6 " " $7 " " $8 }'
+last -2 -R -w  | sed -n '2p' |  awk '{print $3 "l l" $4 " " $5 " " $6 " " $7 " " $8 }'
+last -2 -R -w  | sed -n '2p' |  awk '{print $3 "" $4 " " $5 " " $6 " " $7 " " $8 }'
+lolcaat
+exit
+exit
+exit
+sudo nano $hdd
+cd $hdd
+ls
+cd SLACK
+ls
+cd ReviewMe/
+ls
+cd ..
+ls
+cd reviews-to-slack/
+ls
+cd ..
+cd reviewt
+ls
+cd ..
+ls
+cd ReviewMe/
+ls
+cd.
+cd ..
+ls
+cd reviews-to-slack/
+ls
+cd ..
+ls
+cd AppReviewSlack/
+ls
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+cd $hdd/SLACK
+ls
+cd AppReviewSlack/
+ls
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+sudo nano server.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+ls
+ls ..
+nano ../1313552512.db 
+sudo nano ../reviews-to-slack/index.js 
+nano ../1313552512.db 
+sudo nano ../reviews-to-slack/index.js 
+nano ../1313552512.db 
+sudo nano ../reviews-to-slack/index.js 
+nano ../1313552512.db 
+sudo nano ../1317821640.db 
+sudo nano ../reviews-to-slack/index.js 
+rm -rf ../*db
+sudo nano ../reviews-to-slack/index.js 
+sudo nano server.js 
+sudo node server.js 
+sudo nano server.js 
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+sudo nano server.js 
+sudo node server.js 
+sudo nano server.js 
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+sudo nano server.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+sudo nano server.js 
+sudo node server.js 
+sudo nano server.js 
+ls ./
+ls ..
+nano ../1313552512.db 
+sudo nano server.js 
+sudo nano ../reviews-to-slack/index.js 
+y
+sudo node server.js 
+nano ../1313552512.db 
+nano ../1317821640.db 
+sudo nano ../reviews-to-slack/index.js 
+nano ../1313552512.db 
+rm -rf ../*db
+sudo node server.js 
+ls
+sudo nano ../1317821640.db 
+sudo nano ../reviews-to-slack/index.js 
+killall node
+sudo killall node
+sudo node server.js 
+sudonano server.js 
+sudo nano server.js 
+ls
+cat ../1313552512.db 
+rm -rf ../*db
+sudo node server.js 
+sudo nano server.js 
+sudo nano ../reviews-to-slack/index.js 
+nano ../1313552512.db 
+sudo node server.js 
+nano ../1313552512.db 
+sudo nano ../reviews-to-slack/index.js 
+nano ../../itunes-connect-slack/kvstore.db 
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+nano ../../itunes-connect-slack/kvstore.db 
+sudo nano ../reviews-to-slack/index.js 
+ls ..
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+rm -rf ../*db
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+ls
+ls ..
+sudo nano ../1313552512.db 
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+ls
+ls ..
+ls ../AppReviewSlack/
+cat ../AppReviewSlack/
+cat ../AppReviewSlack/kvstore.db 
+ls
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+ls
+ls ..
+sudo nano ../1313552512.db 
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+npm install dirty --save
+sudo npm install -g dirty --save
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+sudo killall node
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+nano ../1313552512.db 
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+ls ..
+nano ../1313552512.db
+nano ../1317821640.db
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+sudo nano ../reviews-to-slack/index.js 
+sudo node server.js 
+sudo nano server.js 
+ls
+sudo nano $prog/Bots.sh
+cd $work
+cd /GET_FOLLOWERS/twitter-bot-for-increased-growth 
+cd ./GET_FOLLOWERS/twitter-bot-for-increased-growth 
+ls
+sudo nano app.py
+sudo python app.py
+sudo nano app.py
+sudo nano $prog/Bots.sh
+sudo nano app.py
+sudo python app.py
+sudo nano $prog/Bots.sh

@@ -256,6 +256,10 @@ function clearRAM() {
 	sync
 	return
 }
+cd $rootDir/GET_FOLLOWERS/twitter-bot-for-increased-growth 
+#timeout 300 
+python app.py  &
+clearRAM
 onlyOnce
 #chooseRandom
 #sleep 5s
@@ -547,10 +551,6 @@ clearRAM
 #python bot.py 
 
 
-cd $rootDir/GET_FOLLOWERS/twitter-bot-for-increased-growth 
-#timeout 300 
-python app.py 
-clearRAM
 
 #cd $rootDir/GET_FOLLOWERS/go-twitter-bot 
 #./go-twitter-bot 
