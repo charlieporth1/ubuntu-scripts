@@ -11,8 +11,9 @@ function addSubmoduleR() {
 	    cd $d
 	    pwd
 	    export url=$(git config --get remote.origin.url)
-	    popd
-	    git submodule add $url $d
+#	    popd
+	    git submodule add $url $d #2>&1/dev/null
+            cd ..
 	done
 }
 function gitBefore() {
@@ -74,9 +75,12 @@ function toGit() {
  	 # No changes
 	fi
 	sleep 3s
+	return
 } || {
 	echo "error toGit failed" 
+	return
 }
+return
 }
 function marketing_special() {
 	ln -s $work/Google* $work/MARKETING/

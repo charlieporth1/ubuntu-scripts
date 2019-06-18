@@ -52,3 +52,72 @@
 [submodule "terminals-are-sexy"]
 	path = terminals-are-sexy
 	url = https://github.com/k4m4/terminals-are-sexy
+[submodule "4393116/4393116"]
+	path = 4393116/4393116
+	url = git@github.com:charlieporth1/ubuntu-scripts.git
+[submodule "absolute/absolute"]
+	path = absolute/absolute
+	url = git@github.com:charlieporth1/ubuntu-scripts.git
+[submodule "absolute/b7fc7ded1858be854251"]
+	path = absolute/b7fc7ded1858be854251
+	url = git@github.com:charlieporth1/ubuntu-scripts.git
+[submodule "Embedded-Systems---Wifi-scanner/Embedded-Systems---Wifi-scanner"]
+	path = Embedded-Systems---Wifi-scanner/Embedded-Systems---Wifi-scanner
+	url = git@github.com:charlieporth1/ubuntu-scripts.git
+[submodule "error,/error,"]
+	path = error,/error,
+	url = git@github.com:charlieporth1/ubuntu-scripts.git
+[submodule "GitBSLR:/GitBSLR:"]
+	path = GitBSLR:/GitBSLR:
+	url = git@github.com:charlieporth1/ubuntu-scripts.git
+[submodule "handshaker/handshaker"]
+	path = handshaker/handshaker
+	url = git@github.com:charlieporth1/ubuntu-scripts.git
+[submodule "internal/internal"]
+	path = internal/internal
+	url = git@github.com:charlieporth1/ubuntu-scripts.git
+[submodule "iptables/iptables"]
+	path = iptables/iptables
+	url = git@github.com:charlieporth1/ubuntu-scripts.git
+[submodule "path/path"]
+	path = path/path
+	url = git@github.com:charlieporth1/ubuntu-scripts.git
+[submodule "responceoversms/responceoversms"]
+	path = responceoversms/responceoversms
+	url = git@github.com:charlieporth1/ubuntu-scripts.git
+[submodule "server/server"]
+	path = server/server
+	url = git@github.com:charlieporth1/ubuntu-scripts.git
+[submodule "unexpected/unexpected"]
+	path = unexpected/unexpected
+	url = git@github.com:charlieporth1/ubuntu-scripts.git
+[submodule "4393116/56a9f3eba5374db589801e213da6645e"]
+	path = 4393116/56a9f3eba5374db589801e213da6645e
+	url = git@github.com:charlieporth1/ubuntu-scripts.git
+[submodule "Embedded-Systems---Wifi-scanner/error,"]
+	path = Embedded-Systems---Wifi-scanner/error,
+	url = git@github.com:charlieporth1/ubuntu-scripts.git
+[submodule "GitBSLR:/hack-captive-portals"]
+	path = GitBSLR:/hack-captive-portals
+	url = git@github.com:charlieporth1/ubuntu-scripts.git
+[submodule "handshaker/internal"]
+	path = handshaker/internal
+	url = git@github.com:charlieporth1/ubuntu-scripts.git
+[submodule "iptables/Kali-Linux-on-Ubuntu"]
+	path = iptables/Kali-Linux-on-Ubuntu
+	url = git@github.com:charlieporth1/ubuntu-scripts.git
+[submodule "responceoversms/server"]
+	path = responceoversms/server
+	url = git@github.com:charlieporth1/ubuntu-scripts.git
+[submodule "absolute/error,"]
+	path = absolute/error,
+	url = git@github.com:charlieporth1/ubuntu-scripts.git
+[submodule "GitBSLR:/internal"]
+	path = GitBSLR:/internal
+	url = git@github.com:charlieporth1/ubuntu-scripts.git
+[submodule "iptables/responceoversms"]
+	path = iptables/responceoversms
+	url = git@github.com:charlieporth1/ubuntu-scripts.git
+[submodule "server/terminals-are-sexy"]
+	path = server/terminals-are-sexy
+	url = git@github.com:charlieporth1/ubuntu-scripts.git
