@@ -14,4 +14,4 @@ do
 done
 
 # Finally remove the submodule mapping
-git rm.gitmodules
+git rm .gitmodules

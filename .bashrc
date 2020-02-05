@@ -226,7 +226,7 @@ export extip=$(parallel -j16 --xargs --semaphoretimeout 2 bash | curl -s ipinfo.
 #llll=$(last  -2 -i -w --time-format notime | grep -e  'ubuntuser\|logged in\|pts/*\|tty*' |  sed -n '2p' |  grep -e  'ubuntuser\|logged in\|pts/*\|tty*')
 #export llll=$(last  -2 -i -w --time-format notime | grep -e  'ubuntuser\|logged in\|pts/*\|tty*' |  sed -n '2p' |  grep -e  'ubuntuser\|logged in\|pts/*\|tty*' | cut -b 19-38)
 export llll=$(last  -2  --time-format notime | grep -e  'ubuntuser\|logged in\|pts/*\|tty*' |  sed -n '2p' |  grep -e  'ubuntuser\|logged in\|pts/*\|tty*' |  awk '{print $3}')
-export lll=$(last -2 -R -w  | sed -n '2p' | cut -c 20- )
+export lll=$(last -2 -R -w  | sed -n '2p' | cut -c 20- | xargs)
 export lastip4=$(last -4  --time-format notime | grep -e  'ubuntuser\|logged in\|pts/*\|tty*' |  sed -n '4p' |  grep -e  'ubuntuser\|logged in\|pts/*\|tty*' | awk '{print $3}')
 export lastip3=$(last -3  --time-format notime | grep -e  'ubuntuser\|logged in\|pts/*\|tty*' |  sed -n '3p' |  grep -e  'ubuntuser\|logged in\|pts/*\|tty*' | awk '{print $3}')
 #echo done with llll
@@ -296,8 +296,7 @@ export lReboot=$(last -x reboot | sed -n '2p')
 #echo done with jail
 
 # Weather by us zip code - Can be called two ways # weather 50315 # weather "Des Moines"
-weather ()
-{
+weather () {
 declare -a WEATHERARRAY
 WEATHERARRAY=( `lynx -dump "http://www.google.com/search?hl=en&lr=&client=firefox-a&rls=org.mozilla%3Aen-US%3Aofficial&q=weather+${1}&btnG=Search" | grep -A 5 -m 1 "Weather for"`)
 echo ${WEATHERARRAY[@]}

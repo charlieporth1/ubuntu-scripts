@@ -4,33 +4,38 @@ export LD_PRELOAD=$LD_PRELOAD:/usr/local/bin/gitbslr.so
 DAY=$(date -d "$D" '+%d')
 MONTH=$(date -d "$D" '+%m')
 YEAR=$(date -d "$D" '+%Y')
+declare -a ignore=('node_modules/' '*node_modules/' '*/node_modules/' '*/node_modules/*' '*node_modules/*' 'Pods/' 'Pods/*' '*Pods/' '*/Pods/' '*Pods/*'
+'*/Pods/*' '.git/' '*.git/' '.git/*' '*.git/*' '*/.git/*' '*/.git/')
 function addSubmoduleR() {
+	backDir=$1
 	for d in `ls -d */`
 	do
+	if [ -d ./.git ]; then
 	    pushd $d
 	    cd $d
 	    pwd
 	    export url=$(git config --get remote.origin.url)
+	    echo "dir: $d URL: $url"
 #	    popd
+	    for ig in ${ignore[@]}; do git ignore "$ig"; done
+       	    for rem in ${ignore[@]}; do git rm -r --cached $rem; done
 	    git submodule add $url $d #2>&1/dev/null
-            cd ..
+            cd $backDir
+	fi
 	done
 }
 function gitBefore() {
 {
+	dir=$1
 	git submodule deinit -f --all
-	git rm -r --cached .git/ 
-	git rm -r --cached *.git/
-	git ignore ".git/"
-	git ignore "*.git/"
-	git ignore ".git/*"
-	git ignore "*.git/*"
-	addSubmoduleR
+	for rem in ${ignore[@]}; do git rm -r --cached $rem; done
+        for ig in ${ignore[@]}; do git ignore "$ig"; done
+	addSubmoduleR  $dir
 	if [ $DAY == 29 ]; then 
 		echo "remove cache day"
 		git rm -rf --cached ./
 		git add .
-		addSubmoduleR
+		addSubmoduleR $dir
 	else 
 		echo "not remove cache day"
 	fi
@@ -39,9 +44,8 @@ function gitBefore() {
 	echo "error"
 }
 }
-function toGit() {
-{
-	dir=$1
+function toGit() { 
+{	dir=$1
 	cd $dir
 	pwd
 	ifClus=true
@@ -53,22 +57,19 @@ function toGit() {
 	if [[ -f $dir/.git/index.lock ]];then
 		rm $dir/.git/index.lock
 	fi
-	gitBefore
+	gitBefore $dir
 	sleep 5s
 	git add .
-	addSubmoduleR
-	git submodule deinit -f --all
 	if [[ `git status --porcelain` ]]; then
 	  # Changes
 		echo "changes"
-		gitBefore
+		gitBefore $dir
 		sleep 5s
 		git add  . #| parallel $cluster
-		git submodule deinit -f --all
-		git commit -m "$(date)" #| parallel $cluster
+		git commit -a -m "$(date)" #| parallel $cluster
 		#git rm --cached email-virus-report.sh
 		#git rm --cached .sh 
-		git push #| parallel $cluster
+		git push -ff #| parallel $cluster
 		echo "push complete"
 	else
 		echo "no changes"
@@ -86,14 +87,14 @@ function marketing_special() {
 	ln -s $work/Google* $work/MARKETING/
 }
 toGit /mnt/HDD/Programs/
-toGit /var/www/
-toGit /var/www/SMSCOMMANDS/
-marketing_special
-toGit /mnt/HDD/workspace/MARKETING/
-toGit /mnt/HDD/ApplePaymentsSpoofing
-toGit /mnt/HDD/HACK/BB
-toGit /mnt/HDD/HACK/TURTLE
-toGit /mnt/HDD/HACK/TURTLE
-toGit /mnt/HDD/HACK/PINEAPPLE
+#toGit /var/www/
+#toGit /var/www/SMSCOMMANDS/
+#marketing_special
+#toGit /mnt/HDD/workspace/MARKETING/
+#toGit /mnt/HDD/ApplePaymentsSpoofing
+#toGit /mnt/HDD/HACK/BB
+#toGit /mnt/HDD/HACK/TURTLE
+#toGit /mnt/HDD/HACK/TURTLE
+#toGit /mnt/HDD/HACK/PINEAPPLE
 exit 0
 

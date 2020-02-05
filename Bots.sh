@@ -1,3 +1,4 @@
+
 #!/usr/bin/parallel --shebang-wrap -j+64 --pipe /bin/bash
 #!/bin/bash
 #Better Bots for pageraking and youtubeVieing
@@ -8,8 +9,11 @@
 #PORT=$(( ((RANDOM<<15)|RANDOM) % 63001 + 2000 ))
 curl -fsS --retry 3 https://hc-ping.com/906c2e51-893d-42bb-9915-16cecdb4f873 
 export SHELL=$(type -p bash)
+export rootDir=/mnt/HDD/workspace
 prog=/mnt/HDD/Programs/
 debugg=false
+export DISPLAY=:10
+Xvfb :10 -ac & #> /dev/null
 function log() {
 	if [[ $debugg == true ]]; then
 		if [[ -z ${FUNCNAME[1]} ]]; then
@@ -203,21 +207,22 @@ function killBots() {
 }
 
 function onlyOnce() {
-	curl -fsS --retry 3 https://hc-ping.com/906c2e51-893d-42bb-9915-16cecdb4f873 
+	curl -fsS --retry 3 https://hc-ping.com/906c2e51-893d-42bb-9915-16cecdb4f873
 #	isRunning=`sudo ps -x |  grep -o "Bots.sh"`
 #	isRunning=`sudo ps -x | grep "Bots.sh" | grep -v 'grep --color=auto Bots.sh'`
 	local isRunning=`sudo ps -x | grep "Bots.sh" | grep -v  'grep Bots.sh'`
 #	local isThisOne=`echo $isRunning | awk '{print $4}' | sort  -k4 | tail +3` ##this is the simplest way to do this for loop is the other option for making sure 
-	local isThisOne=`echo $isRunning | awk '{print $4}' | sort  -k4 | tail +6` ##this is the simplest way to do this for loop is the other option for making sure 
+	local isThisOne=`echo $isRunning | awk '{print $4}' | sort  -k4 | tail +5` ##this is the simplest way to do this for loop is the other option for making sure 
 	log "isRunning $isRunning"
 	log "isThisOne $isThisOne"
-	local randomHour=`randomNum 23` 
+	local randomHour=`randomNum 64` #23 
 	local currentHour=`echo $(date) | cut -d ':' -f 1 | awk '{print $4}'`
-	if [ $randomHour == $currentHour ]; then
+	if [[ $randomHour == $currentHour ]]; then
 		echo "random kill"
 		curl -fsS --retry 3 https://hc-ping.com/2db2032d-649c-43b5-947a-cc132f769f5d
 		sleep 10s
 		killBots
+		disown -a
 		exit 0
 	fi
 	if [[ -n $isRunning && -n $isThisOne ]]; then
@@ -228,6 +233,7 @@ function onlyOnce() {
 		curl -fsS --retry 3 https://hc-ping.com/2db2032d-649c-43b5-947a-cc132f769f5d
 #		torOff
 		sleep 10s
+		disown -a
 		exit 0
 	fi
 }
@@ -258,9 +264,8 @@ function clearRAM() {
 }
 cd $rootDir/GET_FOLLOWERS/twitter-bot-for-increased-growth 
 #timeout 300 
-python app.py  &
+#timeout 3600 python app.py  & 2>&1 /dev/shm/twitterBot
 clearRAM
-onlyOnce
 #chooseRandom
 #sleep 5s
 torOn
@@ -268,14 +273,15 @@ useChrome=true
 if [[ $useChrome == true ]]; then
 	echo 'using chrome'
 	log "using chrome"
-	chromium-browser --headless --no-sandbox &
+	chromedriver &
+#	chromium-browser --headless --no-sandbox &
+	google-chrome --no-sandbox  --disable-setuid-sandbox & 
 else
 	echo 'using fire'
 	log "using fire"
 	firefox --headless &
 fi
 headless=false #this is the headless bot not browser 
-export rootDir=/mnt/HDD/workspace
 if [[ $headless == true ]]; then
 	echo "using headless"
 	log "using headless"
@@ -293,6 +299,7 @@ cd $rootDir/YouTube-View-increaser
 #./youtube 
 #Studioso music app keyword
 clearRAM
+onlyOnce
 cd $rootDir/Google-PageRank-cheater-Studioso-Keyword-Music-app/$dir/
 sudo rm -rf files/*
 ##5min
@@ -530,7 +537,7 @@ fi
  
 
 
-
+bash /mnt/HDD/Programs//fix-chrome.sh 
 #######BOTS 
 clearRAM
 cd $rootDir/tweet-delete-bot/

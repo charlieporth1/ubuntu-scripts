@@ -112,5 +112,6 @@ sudo clamscan --remove=yes -i -r /  --exclude-dir="/mnt/HDD/Virus/|/mnt/HDD/HACK
 #kexec-reboot --reboot
 curl -fsS --retry 3 https://hc-ping.com/ab2fe292-6e5b-4f3b-adfb-319a5e08fa45
 sleep 30
-sudo reboot
+sync 
+sudo reboot -f
 #disown -a && exit 0 

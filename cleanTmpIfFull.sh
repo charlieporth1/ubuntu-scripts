@@ -1,6 +1,6 @@
 #!/bin/bash
 export per=$(df | grep "/tmp" | awk '{print $5}' | cut -d "%" -f 1)
-export perFull=85
+export perFull=75
 if [[ $per > $perFull ]]; then
 	echo "cleanning"
 	rm -rf /tmp/*

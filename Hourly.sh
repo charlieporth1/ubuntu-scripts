@@ -11,15 +11,16 @@ sudo /etc/init.d/ntp start
 sudo ufw disable
 sudo bash /mnt/HDD/Programs/killMemoryHogs.sh
 sleep 5s
-sudo bash /opt/serveripchange.sh
 #sudo bash /mnt/HDD/Programs/DDNSUPDATE.sh
-sudo bash /mnt/HDD/Programs/DDNSUPDATE1.sh
-sudo bash /mnt/HDD/Programs/DDNSUPDATE1ctp.sh
+sudo bash /mnt/HDD/Programs/DDNSUPDATE1.sh 
+sudo bash /mnt/HDD/Programs/DDNSUPDATE1ctp.sh 
+sudo bash /opt/serveripchange.sh
 
 sudo cp -rf /home/ubuntuserver/.ssh/* /root/.ssh/
 sudo cp -rf /home/ubuntuserver/.parallel/* /root/.parallel/
-sudo cp -rf /home/ubuntuserver/.fastlane/ /root/.fastlane
+sudo cp -rf /home/ubuntuserver/.fastlane/* /root/.fastlane/
 sudo cp -rf /home/ubuntuserver/.config/* /root/.config/
+sudo cp -rf /home/ubuntuserver/.git* /root/.git*
 sudo rm -rf /tmp/*
 
 sudo bash /mnt/HDD/Programs/NodePrograms.sh
@@ -48,14 +49,6 @@ sudo systemctl start cockpit.socket
 #Time Delay #1 Start Cockpit
 #sudo timeout 10 "sudo systemctl start cockpit.socket"
 
-#Time Delay #2 Start Cockpit & backup
-echo 1
-echo 2
-echo 3
-echo 4
-echo 5
-echo 6
-echo 7
 
 sudo cp -rf /opt/*.sh  /mnt/HDD/Programs/
 
@@ -90,7 +83,10 @@ sudo bash /mnt/HDD/Programs/newKernelCustomModprobes.sh
 #sudo service ntp start
 
 ### beter boots 
-sudo bash /mnt/HDD/Programs/Bots.sh #| parallel -Jcluster &
+#sudo bash /mnt/HDD/Programs/Bots.sh #| parallel -Jcluster &
+#cd /mnt/HDD/workspace/GET_FOLLOWERS/twitter-bot-for-increased-growth 
+#timeout 300 
+#timeout 3600 python app.py  & 2>&1 /dev/shm/twitterBot
 #sudo echo 3 > /proc/sys/vm/drop_caches
 #sudo echo 2 > /proc/sys/vm/drop_caches
 #sudo echo 1 > /proc/sys/vm/drop_caches
@@ -115,5 +111,5 @@ sudo systemctl start cockpit.socket
 #sudo node /var/www/SMSLinkRECIVED.js &
 #cpulimit -l 30 hans -s 192.168.1.250 -p TheFutureIsUS99#hans=
 curl -fsS --retry 3 https://hc-ping.com/09bb4e77-b7aa-4aaf-bd64-3f444f29d3ae
-disown -a
+#disown -a
 #&& exit 0

@@ -10,7 +10,7 @@
 #sudo killall htop
 #sudo killall -s SIGKILL perl
 debugg=true
-declare -a programs=('mysqld' 'docker-containerd' 'htop' 'postgress' 'snapd' 'perl' 'ruby2.5' 'ruby') #W'fail2ban')
+declare -a programs=('mysqld' 'docker-containerd' 'htop' 'postgress' 'snapd' 'perl' 'ruby2.5' 'ruby') #'chromedriver') #W'fail2ban')
 function log() {
         if [[ $debugg == true ]]; then
                     echo "Log message: $1" >&2

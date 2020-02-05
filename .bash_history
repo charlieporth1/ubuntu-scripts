@@ -1,701 +1,551 @@
-telnet  6c:3b:6b:7e:ff:36 
-mactelnet  6c:3b:6b:7e:ff:36 
+cat config.txt*
+sudo bash /mnt/HDD/Programs//runtwitter.sh 
+sudo nano app.py
+sudo bash /mnt/HDD/Programs//runtwitter.sh 
+cd ..
+git clone https://github.com/chbrown/autoauth
+cd autoauth/
 ls
-mactelnet 6c:3b:6b:7e:ff:36 
-mactelnet  6c:3b:6b:7e:ff:36 
-ssh admin@192.168.1.4
-./
-?
-print
-nmap -T4 192.168.1.64
-ping 192.168.1.64
-nmap -T4 192.168.1.64
-ssh admin@192.168.1.4
-mactelnet  6c:3b:6b:7e:ff:36 
-nmap -T4 192.168.1.64
-ssh mikro
-mactelnet  6c:3b:6b:7e:ff:36 
-nmap -T4 192.168.1.58
-mactelnet  6c:3b:6b:7e:ff:36 
+npm install
+cd ..
+cd twitter-bot-for-increased-growth/
 ls
-nmap -T4 192.168.1.64
-ssh mikro
-sudo perl dmc-setup.pl -o /dev/sda -c /dev/sdc -n cache -b 8 -w
-sudo perl dmc-setup.pl -o /dev/sda -c /dev/sdc -n c -b 8 -w
-sudo perl dmc-setup.pl -o /dev/sda1 -c /dev/sdc -n cache -b 8 -w
-sudo perl dmc-setup.pl -o /dev/sda -c /dev/sdc -n c -b 8 -w
-sudo perl dmc-setup.pl -o /dev/sda1 -c /dev/sdc -n cache -b 8 -w
-ls /dev/mapper/
-sudo umount -fl /dev/sdb
+nano app.py
+sudo nano config.txt
+nano app.py
+sudo nano config.txt
+nano app.py
+ls
+sudo nano config.txt
+sudo python app.py 
+sudo nano config.txt
+nano app.py
+touch sendAlert.sh
+nano /mnt/HDD/SLACK/meetingsBot/poster.sh
+cp -rf /mnt/HDD/SLACK/meetingsBot/poster.sh ./
+nano poster.sh 
+rm sendAlert.sh
+nano poster.sh 
+sudo nano config.txt
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+ls
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+nano poster.sh 
+sudo python app.py 
+nano poster.sh 
+sudo nano app.py
+nano poster.sh 
+sudo python app.py 
+sudo nano config.txt
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+sudo python app.py 
+sudo nano config.txt
+sudo python app.py 
+sudo nano config.txt
+sudo python app.py 
+sudo nano config.txt
+sudo nano app.py
+sudo python app.py 
+sudo nano app.py
+cat date
+cat date.txt 
+sudo python app.py 
+cat date
+cat date.txt 
+sudo nano app.py
+cat date.txt 
+sudo python app.py 
+sudo bash /mnt/HDD/Programs//runtwitter.sh 
+sudo nano /mnt/HDD/Programs//runtwitter.sh 
+nano config.txt.r0 
+sudo nano /mnt/HDD/Programs//runtwitter.sh 
+nano config.txt.r2
+sudo bash /mnt/HDD/Programs//runtwitter.sh 
+sudo nano /mnt/HDD/Programs//runtwitter.sh 
+cd $work
+ls
+cd GET_FOLLOWERS/twitter-bot-for-increased-growth/
+ls
+cat date
+rm -rf date*
+touch date.txt
+sudo bash /mnt/HDD/Programs//runtwitter.sh 
+nano app.py
+nano config.txt
+cat date.txt 
+ls
+sudo bash /mnt/HDD/Programs//runtwitter.sh 
+cat date
+cat date.txt 
+sudo nano /mnt/HDD/Programs//runtwitter.sh 
+nano app.py
+cat dates.txt 
+sudo bash /mnt/HDD/Programs//runtwitter.sh 
+nano app.py
+sudo bash /mnt/HDD/Programs//runtwitter.sh 
+nano app.py
+sudo bash /mnt/HDD/Programs//runtwitter.sh 
+nano app.py
+sudo bash /mnt/HDD/Programs//runtwitter.sh 
+nano app.py
+sudo bash /mnt/HDD/Programs//runtwitter.sh 
+nano app.py
+sudo bash /mnt/HDD/Programs//runtwitter.sh 
+mdkir https://raw.githubusercontent.com/StudiosoLLC/Studioso-Student/master/Studioso%20Student/Student%20App/Core/Assets.xcassets/LoadingLogo.dataset/LoadingLogo.svg?token=ADHRZ5FULYWSDCNGEPYD47C6APOBW
+cd /mnt/HDD/workspace/STUDIOSO/
+ls
+cd marketing_images_sync/
+ls
+./script.sh 
+sudo ./script.sh 
+ls
+ls images/
+nano ./script.sh 
+sudo rclone delete -vvv Gdrive:Studioso_images
+sudo crontab -e
+nano ./script.sh 
+cd images/
+sudo rclone copy -vvv ./* Gdrive:Studioso_images
+sudo rclone copy -vvv ./ Gdrive:Studioso_images
+nano ./script.sh 
+nano ../script.sh 
+"
+
+
+sudo rclone copy -vvv ./ Gdrive:Studioso_images
+cd $work
+cd GET_FOLLOWERS/
+ls
+cd twitter-bot-for-increased-growth/
+ls
+nano app.py
+my_bot = TwitterBot()
+try: 
+nano TwitterFollowBot/__init__.py
+ls
+sudo nano app.py
+cp -rf app.py covert.py
+nano covert.py 
+sudo nano covert.py 
+sudo python covert.py 
+cd $work
+ls
+cd GET_FOLLOWERS/twitter-bot-for-increased-growth/
+ls
+sudo python covert.py 
+sudo python covert.py | grep "ip"
+sudo python covert.py | grep -E "ip"
+exit
+cd $wokr
+cd $work
+ls
+cd GET_FOLLOWERS/
+ls
+cd twitter-bot-for-increased-growth/
+ls
+python app.py 
+sudo python app.py 
+nano $prog/Bots.sh
+sudo bash $prog/Bots.sh
+cd $wirj
+cd $work
+ls
+cd Google-PageRank-cheater-SMARTMUSIC/Google-PageRank-cheater-browser-aided/
+ls
+nano googleconfig.ini 
+cd ..
+cd Google-PageRank-cheater-SMARTMUSIC-TRAIN-1/Google-PageRank-cheater-browser-aided/
+nano googleconfig.ini 
+./google
+sudo ./google
+cd ..
+cd Google-PageRank-cheater-browser-aided/
+ls
+ls -sh
+nano ../../Google-PageRank-cheater/Google-PageRank-cheater-browser-aided/support/ffbrowsermod.py
+sudo ./google
+nano ../../Google-PageRank-cheater/Google-PageRank-cheater-browser-aided/support/ffbrowsermod.py
+sudo nano ../../Google-PageRank-cheater/Google-PageRank-cheater-browser-aided/support/ffbrowsermod.py
+sudo ./google
+sudo nano ../../Google-PageRank-cheater/Google-PageRank-cheater-browser-aided/support/ffbrowsermod.py
+sudo ./google
+sudo nano ../../Google-PageRank-cheater/Google-PageRank-cheater-browser-aided/support/ffbrowsermod.py
+sudo ./google
+killall google
+killall Google Chrome
+killall Google\ Chrome
+killall Chrome
+killall Google
+htop
+killlal chrome
+killall chrome
+killall chromedriver
+sudo killall chromedriver
+sudo killall chrome
+sudo ./google
+sudo nano ../../Google-PageRank-cheater/Google-PageRank-cheater-browser-aided/support/ffbrowsermod.py
+sudo ./google
+sudo nano ../../Google-PageRank-cheater/Google-PageRank-cheater-browser-aided/support/ffbrowsermod.py
+sudo ./google
+sudo nano ../../Google-PageRank-cheater/Google-PageRank-cheater-browser-aided/support/ffbrowsermod.py
+sudo ./google
+sudo nano ../../Google-PageRank-cheater/Google-PageRank-cheater-browser-aided/support/ffbrowsermod.py
+sudo ./google
+sudo nano ../../Google-PageRank-cheater/Google-PageRank-cheater-browser-aided/support/ffbrowsermod.py
+sudo ./google
+sudo nano ../../Google-PageRank-cheater/Google-PageRank-cheater-browser-aided/support/ffbrowsermod.py
+nano googleconfig.ini 
+sudo ./google
+cd $prog
+sudo touch trycatch.sh
+sudo nano trycatch.sh
+touch trycatch1.sh
+nano trycatch1.sh
+sudo nano trycatch1.sh
+git clone https://gist.github.com/YakDriver/d5285a1d6f0f7b595240f508665e856d
+cd d5285a1d6f0f7b595240f508665e856d/
+ls
+cp -rf shell_try_catch.sh ../
+cd ..
+sudo nano /mnt/HDD/Programs//Hourly.sh 
+sudo nano /mnt/HDD/Programs/DDNSUPDATE1.sh 
+sudo nano /mnt/HDD/Programs//Hourly.sh 
+ls
+ls /mnt
 ls /mnt/HDD
-sudo perl dmc-setup.pl -o /dev/sda1 -c /dev/sdb -n cache -b 8 -w
-echo 0 3905026048 cache /dev/sda1 /dev/sdb 0 8 65536 16 1 | dmsetup create cache
-sudo modprobe dm-cache dm-setup
-echo 0 3905026048 cache /dev/sda1 /dev/sdb 0 8 65536 16 1 | dmsetup create cache
-sudo apt install libdevmapper
-sudo apt install libdevmapper-dev
-sudo su
-cd flashcache/
-ls
-sudo apt-get install dkms build-essential
-ls
-make -f Makefile.dkms
-sudo make -f Makefile.dkms
-cd ..
-cd $hdd/Kernel
-rm -rf flashcache/
-sudo rm -rf flashcache/
-git clone git://github.com/facebook/flashcache; cd flashcache
-make -f Makefile.dkms
-sudo make -f Makefile.dkms
-ls
-make
-sudo make
-echo 0 3905026048 cache /dev/sdb /dev/sdc 0 8 65536 16 1 | dmsetup create cache
-sudo perl dmc-setup.pl -o /dev/sdb -c /dev/sdc -n cache -b 8 -w
-cd..
-sudo perl dmc-setup.pl -o /dev/sdb -c /dev/sdc -n cache -b 8 -w
-sudo apt install flashcache
- modprobe flashcache
-sudo apt-get install -y flashcache-dkms
-sudo apt update
-sudo apt-get install -y flashcache-dkms
-cd EnhanceIO/
-ls
- cp CLI/eio_cli /sbin/
-ls
-cd Driver/
-ls
-cd enhanceio/
-ls
-make && make install
-sudo make && sudo make install
-cd ..
-cd flashcache/
-ls
-make -f Makefile.dkms 
-sudo make -f Makefile.dkms 
-ls lib/modules/4.18.0-20-generic/build
-ls /lib/modules/4.18.0-20-generic/build
-ls
- make -f Makefile.dkms boot_conf
-sudo  make -f Makefile.dkms boot_conf
-sudo apt-get install dkms build-essential linux-headers-`uname -r`
-ls /boot/initrd.img-4.18.0-20-generic
-nano /boot/initrd.img-4.18.0-20-generic
-sudo dpkg 
-sudo nano  /boot/grub/grub.cfg
-dpkg 
-make -f Makefile.dkms
-sudo make -f Makefile.dkms
-sudo su
+chown /mnt/HDD
+ls -sh /mnt/HDD
+sudo ls -sh /mnt/HDD
+sudo ls -shl /mnt/HDD
 sudo reboot
-la
-su -h
 ls
-df -h
-ls /dev/mapper/
-sudo nano /etc/rc.local
-bitch
-bitch [Im]
-bitch [Im\ done]
+cd /etc
+;s
+ls
+ls fstab
+ls -ls fstab
+sudo nano fstab
+ls /dev/
+sudo mount /dev/sdb /mnt/HDD
 ls /mnt/HDD
-sudo bash /mnt/HDD/Programs//NodePrograms.sh 
-sudo nano /mnt/HDD/Programs//NodePrograms.sh 
-sudo node /mnt/HDD/itunes-connect-slack/poll-itc.js > /dev/shm/itcnode 2>&1  &!
-sudo su
-cd /mnt/HDD/itunes-connect-slack/
+sudo  /mnt/HDD
+sudo ls /mnt/HDD
+sudo umount /mnt/HDD
+lsof /mnt/HDD
+fuser /mnt/HDD
+sudo fuser /mnt/HDD
+sudo lsof /mnt/HDD
+sudo umount -l /mnt/HDD
+sudo mount /dev/sdb /mnt/HDD
+ls /mnt/JDD
+ls /mnt/HDD
+sudo ls /mnt/HDD
+sudo ls -a /mnt/HDD
+cd /mnt/HDD
 ls
-sudo ruby get-app-status.rb 
-cd..
-sudo node /mnt/HDD/itunes-connect-slack/poll-itc.js > /dev/shm/itcnode 2>&1  &!
-sudo nano /mnt/HDD/Programs//Hourly.sh 
-sudo nano sudo bash /mnt/HDD/Programs/DDNSUPDATE.sh
-sudo nano  /mnt/HDD/Programs/DDNSUPDATE*
-sudo nano /mnt/HDD/Programs//Hourly.sh 
-sudo nano /mnt/HDD/Programs//DDNSUPDATE
-sudo nano /mnt/HDD/Programs//DDNSUPDATE.sh 
-sudo nano /mnt/HDD/Programs//Hourly.sh 
-sudo nano /mnt/HDD/Programs//DDNSUPDATE.sh
-sudo nano /mnt/HDD/Programs//DDNS.sh 
-sudo nano /mnt/HDD/Programs//Hourly.sh 
-sudo nano  /mnt/HDD/Programs/DDNSUPDATE1.sh
-sudo nano  /mnt/HDD/Programs/DDNSUPDATE.sh
-sudo nano /mnt/HDD/Programs//Hourly.sh 
-tail -f /dev/shm/itcnode 
-cd /mnt/HDD/itunes-connect-slack/
-ls
-sudo bash fixfastlane.sh 
-sudo nanofixfastlane.sh 
-spaceship
-spaceship --help
-gems install spaceship
-gem install spaceship
-sudo gem install spaceship
-sudo su
+sudo nano /mnt/HDD/Programs/DDNSUPDATE1
+sudo nano /mnt/HDD/Programs/DDNSUPDATE1.sh 
+sudo nano /mnt/HDD/Programs/serveripchange.sh 
+sudo nano /mnt/HDD/Programs/DDNSUPDATE1.sh 
+sudo nano /mnt/HDD/Programs/serveripchange.sh 
+sudo bash /mnt/HDD/Programs/serveripchange.sh 
+sudo nano /mnt/HDD/Programs/serveripchange.sh 
+sudo crontab -e
+/mnt/HDD/Programs/iTunesConnecBuildProcessingDone.sh 
+sudo /mnt/HDD/Programs/iTunesConnecBuildProcessingDone.sh 
+sudo bash /mnt/HDD/Programs/iTunesConnecBuildProcessingDone.sh 
+cd $hdd
 cd itunes-connect-slack/
 ls
-sudo ruby get-app-status.rb 
-sudo nano /mnt/HDD/Programs//Hourly.sh 
-sudo nanofixfastlane.sh 
-sudo nano fixfastlane.sh 
-sudo nano /mnt/HDD/Programs//Hourly.sh 
-sudo nano fixfastlane.sh 
-sudo nano fixfastlane.sh 
+exit
+cd /mnt/HDD/workspace/STUDIOSO/
 ls
-cat Gemfile
-bundle install
-sudo nano fixfastlane.sh 
-Sciencetech99gem install bundler
-gem install bundler
-sudo gem install bundler
-bundle install
+mkdir db_backuper
+cd db_backuper/
 ls
-sudo ruby get-app-status-
-sudo ruby get-app-status
-sudo ruby get-app-status.rb 
-ls ~/.pki/
-sudo ls ~/.pki/
-sudo ls ~/.local/
-sudo ls ~/.local/lib/
-sudo ls ~/.gem/
-sudo ls ~/.config/
-sudo ls ~/.bundle/
-sudo ls ~/.bundle/cache/
-sudo ls ~/.bundle/cache/compact_index/
-sudo ls ~/.bundle/cache/compact_index/rubygems.org.443.29b0360b937aa4d161703e6160654e47/
-sudo ls ~/.bundle/cache/compact_index/rubygems.org.443.29b0360b937aa4d161703e6160654e47/versions 
-ls ~/.bundle/cache/compact_index/rubygems.org.443.29b0360b937aa4d161703e6160654e47/versions 
-ls ~/.bundle/cache/compact_index/rubygems.org.443.29b0360b937aa4d161703e6160654e47/
-ls ~/.bundle/cache/compact_index/rubygems.org.443.29b0360b937aa4d161703e6160654e47/info-special-characters/
-ls
-sudo chown $USER:$USER get-app-status*
-fastlane spaceship
-fastlane spaceauth -u user@example.org
-fastlane spaceauth -u charlieporth1@gmail.com
-tail -f /dev/shm/itcnode 
-ls /mnt/HDD
-sudo nano /etc/rc.local
-sudo reboot 
-ls 
-cd /mnt/HDD/itunes-connect-slack/
-ls
-sudo nano /mnt/HDD/Programs//NodePrograms.sh 
-tail -f /dev/shm/itcnode 
-ls 
-killall node
-sudo killall node
-ls
-cd ..
-ls
-cd workspace/
-ls
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-lds
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-cd /var/www
-ls
-rm -rf Base256
-sudo rm -rf Base256
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-cd /var/www
-ls
-rm -rf fusionpbx/
-sudo rm -rf fusionpbx/
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-ls /mnt/HDD
-ls /mnt/HDD/ApplePaymentsSpoofing/
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-git submodule deinit --all
-git submodule deinit --help --all
-git submodule deinit -f  --all
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-ls
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-git rm --help
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-cd $prog/
-ls
-git add .
-rm -rf .git/in
-sudo git add .
-git add -f .
-sudo git add -f .
-git submodule update --init --recursive
-sudo git add -f .
-git submodule update --init --recursive
-git submodule foreach --recursive git fetch
-git add .
-sudo git add .
-sudo git submodule foreach --recursive git fetch
-sudo git add .
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-ls
-sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
-cat /mnt/HDD/buildstatus(
-cat /mnt/HDD/buildstatus*
-sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
+touch start.sh
+nano start.sh 
 sudo crontab -e
-ls /dev/shm
-tail -f /dev/shm/appReview 
-sudo nano /mnt/HDD/Programs//Hourly.sh 
-sudo crontab -e
-ls /
-ls /dev/shm
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano $prog/Hourly.sh
-sudo crontab -e
-cd /mnt/HDD/HACK/PINEAPPLE/
-ls
-mv ARPing-GUI/.git/ ARPing-GUI/.git.old
-ls /dev/shm
-sudo bash /mnt/HDD/Programs//toGithub.sh 
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-cd ..
-cd workspace/
-ls
-cd MARKETING/
-ls
-git config --help
-sudo nano /mnt/HDD/Programs//toGithub.sh 
-ls 
-ls MARKETING/
-tail -f /dev/shm/itcbuildproc 
-htop
-cd /mnt/HDD/itunes-connect-slack/
-ls
-sudo nano fixfastlane.sh 
-sudo nano /mnt/HDD/Programs//update.sh 
-gem update
-sudo nano /mnt/HDD/Programs/update.sh 
-sudo nano /mnt/HDD/Programs/Weekly.sh 
-sudo nano /mnt/HDD/Programs/update.sh 
-sudo nano /mnt/HDD/Programs/Weekly.sh 
-sudo nano /mnt/HDD/Programs/update.sh 
-sudo crontab -e
-sudo gem update
-ls
-sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
-cat /mnt/HDD/buildstatus*
-sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
-tail -f /mnt/HDD/buildstatus*
-sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
-tail -f /dev/shm/itcbuildproc 
-sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
-tail -f /dev/shm/itcbuildproc 
-sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
-tail -f /dev/shm/itcbuildproc 
-sudo nano /mnt/HDD/Programs//Hourly.sh 
-tail -f /dev/shm/itcbuildproc 
-sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
-tail -f /dev/shm/itcbuildproc 
-sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
-sudo nano /mnt/HDD/Programs//Hourly.sh 
-tail -f /dev/shm/itcbuildproc 
-sudo nano /mnt/HDD/Programs//Hourly.sh 
-sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
-tail -f /dev/shm/itcbuildproc 
-sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
-tail -f /dev/shm/itcbuildproc 
-sudo nano /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
-sudo bash /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh 
-ls
-cd $hdd/SLACK
-ls
-cd AppReviewSlack/
-ls
-tail -f /dev/shm/appReview 
-ls
+./start.sh 
+chmod 777 start.sh 
+./start.sh 
+sudo apt install gcloud
+sudo apt search gcloud sdk
+sudo apt search gcloud
+echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+# Import the Google Cloud Platform public key
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+# Update the package list and install the Cloud SDK
+sudo apt-get update && sudo apt-get install google-cloud-sdk
+ sudo apt-get install google-cloud-sdk
+open chrome
+firefox 
+xauth list
+xauth
+sudo nano /etc/ssh/sshd_configo
+sudo nano /etc/ssh/sshd_config
+set DISPLAY=:10
+xauth list
+firefox 
+xterm
+exit
+firefox
+fire
+exit
+exit
+firefox
+quit
+gcloud init
+exit
+exit
+firefox
+echo $DISPLAY
 cd $work
-mkdir ITC
-ln -s ITC MARKETING/
-ls MARKETING/ITC
-cd ITC/
-git clone https://github.com/bitrise-steplib/steps-deploy-to-itunesconnect-deliver
-git clone https://github.com/fedoco/itc-reporter
-git clone https://github.com/stoprocent/node-itunesconnect
-git clone https://github.com/kmonaghan/itunes-connect-auto-ingest
-git clone https://github.com/thecb4/MotherShip
-git clone https://github.com/kirbyt/appdailysales
-git clone https://github.com/clayallsopp/applebot
-git clone https://github.com/rhaining/itc-localized-screenshot-uploader
-git clone https://github.com/beardon/apple-reporter
-git clone https://github.com/iizvv/MoreiTunesConnect_iOS
-git clone https://github.com/wjlafrance/itunesconnect_autoingestion
-git clone https://github.com/simongcx/pytunesconnect
-git clone https://github.com/beardon/apple-reporter
-git clone https://github.com/hankinsoft/AppWage
-git clone https://github.com/fastlane/itc-api-docs
-git clone https://github.com/oney/iTunesConnect
-git clone https://github.com/Donohue/testflight_invite
-cd testflight_invite/
 ls
-sudo nano server.js 
-tail -f /dev/shm/appReview 
-sudo nano server.js 
+cd STUDIOSO/
 ls
-ls /
-ls /etc
-ls /etc/*.json
-sudo nano server.js 
-ls reviews-to-slack
-ls ../
-ls ../reviews-to-slack
-ls ../reviews-to-slack/index.js 
-cat ../reviews-to-slack/index.js 
-nano ../reviews-to-slack/index.js 
-sudo nano server.js 
-sudo poll server.js 
-sudo node server.js 
-sudo nano server.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-sudo nano server.js 
-sudo nano ../reviews-to-slack/index.js 
-sudo nano server.js 
-sudo nano ../reviews-to-slack/index.js 
-sudo nano server.js 
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-sudo nano /mnt/HDD/SLACK/itunes-connect-slack/poll-itc.js 
-ls /mnt/HDD/SLACK/
-ls /mnt/HDD/SLACK/reviews-to-slack/
-ls /mnt/HDD/SLACK/
-sudo node server.js 
+cd db_backuper/
 ls
-sudo nano testflight_invite.py 
- pip install autoflight
-sudo  pip install autoflight
-cd ..
-git clone https://github.com/tomwhipple/auto-testflight
-git clone https://github.com/Rchowley/TestFlight-Auto-Invite-PHP
-git clone https://github.com/hellosa/autobuild-upload-testflight
-git clone https://github.com/astagi/autoflight
-git clone https://github.com/carlinyuen/AutoTestFlightUploadXcode
-sudo nano testflight_invite.py 
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-sudo reboot 
-sudo bash /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh
-ls
+xterm
+firefox
+open firefox
+sudo open firefox
+set DISPLAY=localhost:10
+open firefox
+firefox
+gnome-session
+sudo apt install gnome-session-bin
+firefox
+gnome-session
+firefox
+firefox --help
+firefox --display=x11
+firefox --display=:10
+firefox --display=$DISPLAY
+firefox open DISPLAY
+firefox open $DISPLAY
+open firefox
+firefox -no-remote #open firefox
+firefox -no-remote  -no-xshm
+firefox -no-remote  -no-xshm --display=$DISPLAY
+exit
+firefox
+set DISPLAY=:10
+firefox
+firefox
+set DISPLAY=:10
+firefox
+expoer DISPLAY=:10
+export DISPLAY=:10
+firefox
+firefox
+firefox -no-remote
+firefox -no-remote -no-xshm
+quit
+exit
+s
+firefox
+firefox --display=:10
+open
+open firefox
+sudo open firefox
+ˆ
+echo $DISPLAY
+export DISPLAY=127.0.0.1:10
+echo $DISPLAY
+firef
+firefox
+export DISPLAY=localhost:10
+firefox
+xauth list
+xhost +
+q
+exit
+sudo nano /etc/environment 
+exit
+xterm
+ç
+xauth +
+xauth +10
+xauth +local
+xhost +
+xhost 
+xhost enable
+xhost +localhost
+firefox
+export DISPLAY=localhost:10
+firefox
+xhost +$HOSTNAME
+xhost +192.168.1.250
+xhost +192.168.1.250:10
+export DISPLAY=:10
+xhost +192.168.1.250:10
+xhost +192.168.1.250
+firefox
+xauth list
+xload
+xterm &
+xterm
+xeyes
+x11vnc
+cat ~/.vnc/passwd 
+gcloud init
+x11vnc
+gcloud init 
+./start.sh 
 sudo crontab -e
-cd /mnt/HDD/ApplePaymentsSpoofing/logicscipt.sh
-cd /mnt/HDD/ApplePaymentsSpoofing/
-sudo nano logicscipt.sh
-sudo bash logicscipt.sh
-sudo nano logicscipt.sh
-sudo bash logicscipt.sh
-npm rebuild
-sudo npm rebuild
-sudo bash logicscipt.sh
-sudo nano logicscipt.sh
-sudo bash logicscipt.sh
+nano ./start.sh 
+ls /mnt/HDD/
+ls /mnt/HDD/SLACK
+sudo nano /opt/phoneone.sh 
+nano ./start.sh 
+git add .
+cd ..
+ls
+git add .
+git boot
+x11vnc -storepasswd
+nmap -T4 localhost
+nmap -T4 localhost
+git add.
+cd..
+exit
 htop
-ls
-a
-ls
-bitch
-lol
-sudo nano logicscipt.sh
- df -h
-lol
-lolcat programs
-lolcat < charlieporth@192.168.1.34 
-cd //
-cd /////
-cd ///
-cd ////
-cd //
-cd ~/
-away
-sudo reboot 
-sudo nano ~/.bashrc
-last -2 -R -w  | sed -n '2p' | cut -c 20-
-last -2 -R -w  | sed -n '2p'
-last -2 -R -w  | sed -n '2p' |  awk '{print $1}'
-last -2 -R -w  | sed -n '2p' |  awk '{print $2}'
-last -2 -R -w  | sed -n '2p' |  awk '{print $3}'
-last -2 -R -w  | sed -n '2p' |  awk '{print $3 " " $4}'
-last -2 -R -w  | sed -n '2p' |  awk '{print $3 " " $4 " " $5}'
-last -2 -R -w  | sed -n '2p' |  awk '{print $3 " " $4 " " $5 " " $6}'
-last -2 -R -w  | sed -n '2p' |  awk '{print $3 " " $4 " " $5 " " $6   " "  $7  }'
-last -2 -R -w  | sed -n '2p' |  awk '{print $3 " " $4 " " $5 " " $6 " " $7 " " $8 }'
-last -2 -R -w  | sed -n '2p' |  awk '{print $3 " " $4 " " $5 " " $6 " " $7 " " $8 " " $9\}'
-last -2 -R -w  | sed -n '2p' |  awk '{print $3 " " $4 " " $5 " " $6 " " $7 " " $8 " " $9}'
-last -2 -R -w  | sed -n '2p' |  awk '{print $3 " " $4 " " $5 " " $6 " " $7 " " $8 " " $9 " "    }'
-last -2 -R -w  | sed -n '2p' |  awk '{print $3 " " $4 " " $5 " " $6 " " $7 " " $8 " " $9 " " $10}'
-sudo nano ~/.bashrc
-source ~/.bashrcc
-source ~/.bashrc
-last -2 -R -w  | sed -n '2p' |  awk '{print $3 " " $4 " " $5 " " $6 " " $7 " " $8 }'
-cd //
-ls
-lss
-..
-cd /
-cd 
-last -2 -R -w  | sed -n '2p' |  awk '{print $3 " " $4 " " $5 " " $6 " " $7 " " $8 }'
-last -2 -R -w  | sed -n '2p' |  awk '{print \/$3 " " $4 " " $5 " " $6 " " $7 " " $8 }'
-last -2 -R -w  | sed -n '2p' |  awk '{print \\$3 " " $4 " " $5 " " $6 " " $7 " " $8 }'
-last -2 -R -w  | sed -n '2p' |  awk '{print $3 "\ " $4 " " $5 " " $6 " " $7 " " $8 }'
-last -2 -R -w  | sed -n '2p' |  awk '{print $3 "i " $4 " " $5 " " $6 " " $7 " " $8 }'
-last -2 -R -w  | sed -n '2p' |  awk '{print $3 "l " $4 " " $5 " " $6 " " $7 " " $8 }'
-last -2 -R -w  | sed -n '2p' |  awk '{print $3 "l l" $4 " " $5 " " $6 " " $7 " " $8 }'
-last -2 -R -w  | sed -n '2p' |  awk '{print $3 "" $4 " " $5 " " $6 " " $7 " " $8 }'
-lolcaat
+top
 exit
+ docker run --privileged  pinfake/android-emulator-x11
+sudo service start docker
+sudo service  docker start
+ docker run --privileged  pinfake/android-emulator-x11
+sudo  docker run --privileged  pinfake/android-emulator-x11
 exit
-exit
-sudo nano $hdd
+cd $prog
+ls
+git add .
+sudo git add .
+npm i clisim --global
+sudo npm i clisim --global
+npm i run-emu -g
 cd $hdd
+mkdir android-vnc
+cd android-vnc/
 ls
-cd SLACK
-ls
-cd ReviewMe/
-ls
-cd ..
-ls
-cd reviews-to-slack/
-ls
-cd ..
-cd reviewt
-ls
-cd ..
-ls
-cd ReviewMe/
-ls
-cd.
-cd ..
-ls
-cd reviews-to-slack/
-ls
-cd ..
-ls
-cd AppReviewSlack/
-ls
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-cd $hdd/SLACK
-ls
-cd AppReviewSlack/
-ls
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-sudo nano server.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-ls
-ls ..
-nano ../1313552512.db 
-sudo nano ../reviews-to-slack/index.js 
-nano ../1313552512.db 
-sudo nano ../reviews-to-slack/index.js 
-nano ../1313552512.db 
-sudo nano ../reviews-to-slack/index.js 
-nano ../1313552512.db 
-sudo nano ../1317821640.db 
-sudo nano ../reviews-to-slack/index.js 
-rm -rf ../*db
-sudo nano ../reviews-to-slack/index.js 
-sudo nano server.js 
-sudo node server.js 
-sudo nano server.js 
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-sudo nano server.js 
-sudo node server.js 
-sudo nano server.js 
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-sudo nano server.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-sudo nano server.js 
-sudo node server.js 
-sudo nano server.js 
-ls ./
-ls ..
-nano ../1313552512.db 
-sudo nano server.js 
-sudo nano ../reviews-to-slack/index.js 
-y
-sudo node server.js 
-nano ../1313552512.db 
-nano ../1317821640.db 
-sudo nano ../reviews-to-slack/index.js 
-nano ../1313552512.db 
-rm -rf ../*db
-sudo node server.js 
-ls
-sudo nano ../1317821640.db 
-sudo nano ../reviews-to-slack/index.js 
-killall node
-sudo killall node
-sudo node server.js 
-sudonano server.js 
-sudo nano server.js 
-ls
-cat ../1313552512.db 
-rm -rf ../*db
-sudo node server.js 
-sudo nano server.js 
-sudo nano ../reviews-to-slack/index.js 
-nano ../1313552512.db 
-sudo node server.js 
-nano ../1313552512.db 
-sudo nano ../reviews-to-slack/index.js 
-nano ../../itunes-connect-slack/kvstore.db 
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-nano ../../itunes-connect-slack/kvstore.db 
-sudo nano ../reviews-to-slack/index.js 
-ls ..
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-rm -rf ../*db
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-ls
-ls ..
-sudo nano ../1313552512.db 
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-ls
-ls ..
-ls ../AppReviewSlack/
-cat ../AppReviewSlack/
-cat ../AppReviewSlack/kvstore.db 
-ls
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-ls
-ls ..
-sudo nano ../1313552512.db 
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-npm install dirty --save
-sudo npm install -g dirty --save
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-sudo killall node
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-nano ../1313552512.db 
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-ls ..
-nano ../1313552512.db
-nano ../1317821640.db
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-sudo nano ../reviews-to-slack/index.js 
-sudo node server.js 
-sudo nano server.js 
-ls
-sudo nano $prog/Bots.sh
-cd $work
-cd /GET_FOLLOWERS/twitter-bot-for-increased-growth 
-cd ./GET_FOLLOWERS/twitter-bot-for-increased-growth 
-ls
-sudo nano app.py
-sudo python app.py
-sudo nano app.py
-sudo nano $prog/Bots.sh
-sudo nano app.py
-sudo python app.py
-sudo nano $prog/Bots.sh
+# build the image
+# set the working directory to the project's root directory first
+docker build -t android-sdk android-sdk
+# or you can also pass specific tool version as you wish (optional, while there is default version)
+docker build --build-arg GRADLE_VERSION=<gradle_version> --build-arg KOTLIN_VERSION=<kotlin_version> --build-arg ANDROID_SDK_VERSION=<android_sdk_version> -t android-sdk android-sdk
+# or pull the image instead of building on your own
+docker pull thyrlian/android-sdk
+# below commands assume that you've pulled the image
+# copy the pre-downloaded SDK to the mounted 'sdk' directory
+docker run -it --rm -v $(pwd)/sdk:/sdk thyrlian/android-sdk bash -c 'cp -a $ANDROID_HOME/. /sdk'
+# go to the 'sdk' directory on the host, update the SDK
+# ONLY IF the host machine is the same target architecture as the container
+# JDK required on the host
+sdk/tools/bin/sdkmanager --update
+# or install specific packages
+sdk/tools/bin/sdkmanager "build-tools;x.y.z" "platforms;android-x" ...
+# mount the updated SDK to container again
+# if the host SDK directory is mounted to more than one container
+# to avoid multiple containers writing to the SDK directory at the same time
+# you should mount the SDK volume in read-only mode
+docker run -it -v $(pwd)/sdk:/opt/android-sdk:ro thyrlian/android-sdk /bin/bash
+# you can mount without read-only option, only if you need to update SDK inside container
+docker run -it -v $(pwd)/sdk:/opt/android-sdk thyrlian/android-sdk /bin/bash
+# to keep and reuse Gradle cache
+docker run -it -v $(pwd)/sdk:/opt/android-sdk -v $(pwd)/gradle_caches:/root/.gradle/caches thyrlian/android-sdk /bin/bash
+# to stop and remove container
+# when the image was pulled from a registry
+docker stop $(docker ps -aqf "ancestor=thyrlian/android-sdk") &> /dev/null && docker rm $(docker ps -aqf "ancestor=thyrlian/android-sdk") &> /dev/null
+# when the image was built locally
+docker stop $(docker ps -aqf "ancestor=android-sdk") &> /dev/null && docker rm $(docker ps -aqf "ancestor=android-sdk") &> /dev/null
+# more flexible way - doesn't matter where the image comes from
+docker stop $(docker ps -a | grep 'android-sdk' | awk '{ print $1 }') &> /dev/null && docker rm $(docker ps -a | grep 'android-sdk' | awk '{ print $1 }') &> /dev/null
+sudo su
+sudo killall -9 Xtightvnc
+killall -9 Xtightvnc
+sudo su
+gcloud beta compute --project "studioso-node-server" ssh --zone "us-central1-c" "nested-vm-image-android-on-linux"
+exit
+sudo su
+exit
