@@ -44,6 +44,7 @@ function gitBefore() {
 	echo "error"
 }
 }
+. /usr/bin/cred.sh
 function toGit() { 
 {	dir=$1
 	cd $dir
@@ -69,7 +70,8 @@ function toGit() {
 		git commit -a -m "$(date)" #| parallel $cluster
 		#git rm --cached email-virus-report.sh
 		#git rm --cached .sh 
-		git push -ff #| parallel $cluster
+		export GIT_ASKPASS=$gitToken
+	        git push -ff #| parallel $cluster
 		echo "push complete"
 	else
 		echo "no changes"
