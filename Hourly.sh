@@ -21,6 +21,7 @@ sudo cp -rf /home/ubuntuserver/.parallel/* /root/.parallel/
 sudo cp -rf /home/ubuntuserver/.fastlane/* /root/.fastlane/
 sudo cp -rf /home/ubuntuserver/.config/* /root/.config/
 sudo cp -rf /home/ubuntuserver/.git* /root/.git*
+sudo cp -rf /home/ubuntuserver/.netrc /root/
 sudo rm -rf /tmp/*
 
 sudo bash /mnt/HDD/Programs/NodePrograms.sh

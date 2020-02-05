@@ -19,7 +19,7 @@ function addSubmoduleR() {
 #	    popd
 	    for ig in ${ignore[@]}; do git ignore "$ig"; done
        	    for rem in ${ignore[@]}; do git rm -r --cached $rem; done
-	    git submodule add $url $d #2>&1/dev/null
+	    git --git-dir=$backDir submodule add -f $url $d #2>&1/dev/null
             cd $backDir
 	fi
 	done
@@ -70,7 +70,6 @@ function toGit() {
 		git commit -a -m "$(date)" #| parallel $cluster
 		#git rm --cached email-virus-report.sh
 		#git rm --cached .sh 
-		export GIT_ASKPASS=$gitToken
 	        git push -ff #| parallel $cluster
 		echo "push complete"
 	else
@@ -89,14 +88,14 @@ function marketing_special() {
 	ln -s $work/Google* $work/MARKETING/
 }
 toGit /mnt/HDD/Programs/
-#toGit /var/www/
-#toGit /var/www/SMSCOMMANDS/
-#marketing_special
-#toGit /mnt/HDD/workspace/MARKETING/
-#toGit /mnt/HDD/ApplePaymentsSpoofing
-#toGit /mnt/HDD/HACK/BB
-#toGit /mnt/HDD/HACK/TURTLE
-#toGit /mnt/HDD/HACK/TURTLE
-#toGit /mnt/HDD/HACK/PINEAPPLE
+toGit /var/www/
+toGit /var/www/SMSCOMMANDS/
+marketing_special
+toGit /mnt/HDD/workspace/MARKETING/
+toGit /mnt/HDD/ApplePaymentsSpoofing
+toGit /mnt/HDD/HACK/BB
+toGit /mnt/HDD/HACK/TURTLE
+toGit /mnt/HDD/HACK/TURTLE
+toGit /mnt/HDD/HACK/PINEAPPLE
 exit 0
 
