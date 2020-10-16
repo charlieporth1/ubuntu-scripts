@@ -26,7 +26,7 @@ function log() {
 function randomNum() {
 	log 'exec randomNum '
 	local RANGE=$1
-	log "RANGE: $RANGE " 
+	log "RANGE: $RANGE "
 	local acceptZero=$2
 	local number=$RANDOM
 	if [[  $acceptZero == true ]]; then
@@ -46,7 +46,7 @@ function randomNum() {
 function chooseRandom() {
         log "choosing random"
         declare -a randoms=()
-        if [[ -f /dev/urandom ]]; then 
+        if [[ -f /dev/urandom ]]; then
                 log '/dev/urandom'
                 local urandom=true
                 local randoms+=('/dev/urandom')
@@ -61,7 +61,7 @@ function chooseRandom() {
                 local erandom=true
                 local randoms+=('/dev/erandom')
         fi
-        if [[ -f /dev/random ]]; then 
+        if [[ -f /dev/random ]]; then
                 log '/dev/random'
                 local randoms+=('/dev/random')
                 local random=true
@@ -192,7 +192,7 @@ function randomSingleHex() {
 	log "done randomSingleHex "
 	return
 }
-export -f randomSingleHex 
+export -f randomSingleHex
 export -f cutLength
 export -f randomNum
 export -f randomWait

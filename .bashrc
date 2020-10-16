@@ -312,7 +312,7 @@ figlet MASTER NODE |lolcat
 figlet $HOSTNAME | pv -qL 80|lolcat
 hello| pv -qL 20|lolcat 
 bash $prog/lines.sh
-echo -e "# Welcome ${USER} "| pv -qL 30 | lolcat -p 0.9 -F 0.9  
+.echo -e "# Welcome ${USER} "| pv -qL 30 | lolcat -p 0.9 -F 0.9  
 echo -e "# Welcome Charlie Porth" | pv -qL 30
 echo -ne "# Today is: $BIPurple"; date; echo -ne "$nc"  |  pv -qL 80 #date +"Today is %A %D, and it is now %R"
 echo -ne "# Up time: $BICyan ";uptime | awk /'up/'; echo -ne "$nc" |  pv -qL 80
