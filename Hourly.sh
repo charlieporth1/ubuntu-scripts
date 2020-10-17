@@ -2,7 +2,7 @@
 #hourl
 #this causes it to fail
 #sudo su
-curl -fsS --retry 3 https://hc-ping.com/f0465043-4644-4a32-8e60-f2d0292bce9d
+#curl -fsS --retry 3 https://hc-ping.com/f0465043-4644-4a32-8e60-f2d0292bce9d
 source /mnt/HDD/Programs//memoryClean.sh 
 sudo /etc/init.d/ntp stop
 sudo ntpd -q 192.168.1.200
@@ -24,8 +24,8 @@ sudo cp -rf /home/ubuntuserver/.git* /root/.git*
 sudo cp -rf /home/ubuntuserver/.netrc /root/
 sudo rm -rf /tmp/*
 
-sudo bash /mnt/HDD/Programs/NodePrograms.sh
-sudo bash /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh
+#sudo bash /mnt/HDD/Programs/NodePrograms.sh
+#sudo bash /mnt/HDD/Programs//iTunesConnecBuildProcessingDone.sh
 
 sudo bash /mnt/HDD/Programs//jaildefaultunban.sh &
 
@@ -64,7 +64,7 @@ cleanMemory
 
 cd /mnt/HDD/workspace/google-rank-finder
 sudo bash notify.sh &
-sudo bash /mnt/HDD/Programs/newKernelCustomModprobes.sh
+#sudo bash /mnt/HDD/Programs/newKernelCustomModprobes.sh
 #update website to google  drive
 #sudo bash /mnt/HDD/Programs/Gdrive-Website-Change-UPLOAD.sh
 # /start bot
