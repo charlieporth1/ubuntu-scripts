@@ -1,487 +1,3 @@
-sudo nano $prog/toGithub.sh
-source ~/.netrc 
-sudp cp -rf ~/.netrc /root/
-sudo cp -rf ~/.netrc /root/
-sudo nano $prog/Hourly.sh
-sudo bash $prog/toGithub.sh
-git config --list --show-origin
-git config --global --list --show-origin
-nano ~/.gitconfig 
-[credential]
-exit
-cd $prog/
-ls
-cd ..
-cd $work
-ls
-cd GET_FOLLOWERS/
-ls
-cd twitter-followers-bot/
-cd ..
-cd twitter-bot-for-increased-growth/
-ls
-sudo python hit_up.py 
-sudo nano bio_data.jsonl 
-cd $HDD/SLACK
-ls
-cd  meetingsBot/
-ls
-cd ..
-cd slackalytics/
-ls
-exot
-gcloud compute instances start
-gcloud compute instances start  --project studioso-node-server --zone us-central1-c
-gcloud compute instances start  --project studioso-node-server --zone us-central1-c  company-private-vpn
-sudo crontab -e
-cd $HDD
-cd SLACk
-sl
-ls
-cd AppReviewSlack/
-ls
-npm start
-sudo npm start
-ls
-nano server.js 
-sudo nano server.js 
-sudo npm start
-ls
-npm install
-sudo npm install
-ld
-ls
-nano server.js 
-sudo npmm start
-sudo npm start
-cd ../reviews-to-slack/
-ls
-npm install
-sudo npm install
-nano ../AppReviewSlack/server.js 
-node ../AppReviewSlack/server.js 
-sudo node ../AppReviewSlack/server.js 
-nano ../AppReviewSlack/server.js 
-sudo nano ../AppReviewSlack/server.js 
-sudo crontab -e
-cd $work
-ls
-cd GET_FOLLOWERS/
-ls
-cd twitter-bot-for-increased-growth/
-ls
-sudo python app.py 
-sudo bash /mnt/HDD/Programs//runtwitter.sh 
-nano app.py
-sudo bash /mnt/HDD/Programs//runtwitter.sh 
-nano app.py
-sudo bash /mnt/HDD/Programs//runtwitter.sh 
-nano app.py
-sudo bash /mnt/HDD/Programs//runtwitter.sh 
-nano app.py
-sudo bash /mnt/HDD/Programs//runtwitter.sh 
-nano app.py
-sudo bash /mnt/HDD/Programs//runtwitter.sh 
-nano app.py
-sudo bash /mnt/HDD/Programs//runtwitter.sh 
-nano app.py
-sudo bash /mnt/HDD/Programs//runtwitter.sh 
-nano app.py
-sudo bash /mnt/HDD/Programs//runtwitter.sh 
-nano app.py
-sudo bash /mnt/HDD/Programs//runtwitter.sh 
-nano app.py
-sudo bash /mnt/HDD/Programs//runtwitter.sh 
-nano app.py
-sudo bash /mnt/HDD/Programs//runtwitter.sh 
-nano app.py
-sudo bash /mnt/HDD/Programs//runtwitter.sh 
-nano app.py
-sudo bash /mnt/HDD/Programs//runtwitter.sh 
-nano app.py
-sudo bash /mnt/HDD/Programs//runtwitter.sh 
-nano app.py
-sudo bash /mnt/HDD/Programs//runtwitter.sh 
-nano app.py
-sudo bash /mnt/HDD/Programs//runtwitter.sh 
-nano app.py
-sudo crontab -e
-ls
-cd ..
-cd STUDIOSO/
-ls
-cd db_backuper/
-ls
-sudo crontab -e
-sudo nano start.sh 
-sudo bash start.sh 
-cd $work
-ls
-cd GET_FOLLOWERS/
-ls
-cd twitter-bot-for-increased-growth/
-ls
-sudo hit_up.py
-sudo ./hit_up.py
-sudo python hit_up.py
-ls
-nano write_last_follower_to_get_message.txt 
-ls
-nano stats.json 
-nano bio_data.jsonl 
-nano stats.json 
-sudo nano hit_up.py
-rm -rf bio_data.jsonl 
-sudo nano hit_up.py
-sudo python hit_up.py
-sudo nano hit_up.py
-sudo python hit_up.py
-sudo nano hit_up.py
-nano bio_data.jsonl 
-sudo nano hit_up.py
-nano bio_data.jsonl 
-sudo nano hit_up.py
-sudo python hit_up.py
-sudo nano hit_up.py
-sudo python hit_up.py
-sudo nano hit_up.py
-sudo nano bio_data.jsonl 
-sudo python hit_up.py
-sudo nano bio_data.jsonl 
-sudo nano hit_up.py
-sudo python hit_up.py
-sudo nano hit_up.py
-nano bio_data.jsonl 
-sudo nano hit_up.py
-sudo python hit_up.py
-rm bio_data.jsonl 
-sudo python hit_up.py
-rm bio_data.jsonl 
-sudo nano hit_up.py
-sudo python hit_up.py
-rm bio_data.jsonl 
-sudo python hit_up.py
-touch insturments.csv
-nano insturments.csv 
-sudo nano app.py
-sudo python app.py
-sudo nano app.py
-sudo python app.py
-sudo nano app.py
-sudo python app.py
-sudo nano app.py
-sudo python app.py
-sudo nano app.py
-sudo python app.py
-sudo nano app.py
-cd $work
-cd GET_FOLLOWERS/twitter-bot-for-increased-growth/
-ls
-sudo nano app.py
-sudo python app.py 
-sudo nano app.py
-sudo nano /mnt/HDD/Programs//runtwitter.sh 
-sudo nano config.txt.r2
-sudo bash /mnt/HDD/Programs//runtwitter.sh 
-sudo nano config.txt.r2
-sudo corntab -e
-sudo crotab -e
-sudo crontab -e
-bash /mnt/HDD/workspace/STUDIOSO/db_backuper/start.sh
-sudo crontab -e
-bash /mnt/HDD/workspace/STUDIOSO/marketing_images_sync/script.sh
-cd $work
-ls
-cd STUDIOSO/
-ls
-cd db_backuper/
-ls
-nano start.sh 
-sudo crontab -e
-nano start.sh 
-./start.sh 
-cd $work
-ls
-cd GET_FOLLOWERS/
-ls
-cd twitter-bot-for-increased-growth/
-;s
-ls
-nano app.py
-git add .
-git commit -m "add" 
-git push
-cd $work
-ls
-cd GET_FOLLOWERS/
-ls
-cd twitter-bot-for-increased-growth/
-ls
-nano app.py
-python  app.py
-nano app.py
-python  app.py
-sudo python  app.py
-nano app.py
-sudo python  app.py
-nano app.py
-cd $work
-ls
-cd Yellow-Page-Email-Scraper/
-ls
-nano crawller.sh 
-ls
-htop
-nano jew.bo
-htop
-rm -rf /opt/datadog-agent/
-sudo rm -rf /opt/datadog-agent/
-sudo reboot
-cd $hdd
-ls
-cd itunes-connect-slack/
-ls
-node  poll-itc.js 
-sudo node  poll-itc.js 
-ls
-chmod 777 ./fixfastlane.sh 
-sudo chmod 777 ./fixfastlane.sh 
-./fixfastlane.sh 
-sudo node  poll-itc.js 
-cd $hdd
-cd itunes-connect-slack/
-sudo node  poll-itc.js 
-ls
-rm -rf *.db
-sudo node  poll-itc.js 
-rm -rf *.db
-node  poll-itc.js 
-fastlane auth
-fastlane ios auth
-fastlane  ios custom_lane
-spaceship 
-spaceauth 
-spaceship --help
-fastlane
-fastlane auth --help
-fastlane auth 
-ls
-node  poll-itc.js 
-nano poll-itc.js 
-node  poll-itc.js 
-ruby get-app-status.rb 
-sudo gem cleanup
-ruby get-app-status.rb 
-fastlane
-sudo gem install faraday
-sudo gem install faraday -v .017
-sudo gem install faraday -v 0.17
-fastlane
-sudo gem install google-api-client -v 0.37
-sudo gem install google-api-client -v 0.37.0
-sudo gem install google-api-client -v 0.36.0
-fastlane
-sudo gem uninstall faraday 
-fastlane
-sudo gem install faraday -v 0.17.3
-fastlane
-sudo gem install aws-sdk -v 2.3
-fastlane
-ruby get-app-status.rb 
-sudo ruby get-app-status.rb 
-nano ~/.bashrc
-sudo nano /etc/fstab
-cd $work
-cd GET_FOLLOWERS/
-ls
-cd twitter-bot-for-increased-growth/
-ls
-sudo nano ~/.bashrc
-cd $hdd
-cd itunes-connect-slack/
-ls
-sudo node poll-itc.js 
-rm -rf kvstore*
-sudo node poll-itc.js 
-nano poll-itc.js 
-sudo node poll-itc.js 
-ruby get-app-status.rb 
-sudo gem uninstall faraday
-ruby get-app-status.rb 
-sudo gem install faraday -v 0.17.3
-sudo gem uninstall faraday
-ruby get-app-status.rb 
-sudo gem install faraday -v 0.17.3
-sudo gem uninstall faraday
-ruby get-app-status.rb 
-sudo ruby get-app-status.rb 
-sudo reboot
-cd 
-cd /mnt/HDD/itunes-connect-slack/
-ls
-node poll-itc.js 
-sudo node poll-itc.js 
-rm -rf kvstore*
-sudo node poll-itc.js 
-nano fixfastlane.sh
-sudo node poll-itc.js 
-nano fixfastlane.sh
-cd $www
-ls
-sudo crontab -e
-cd $work
-cd GET_FOLLOWERS/twitter-bot-for-increased-growth/
-ls
-nano app.py
-python app.py 
-nano app.py
-nano /mnt/HDD/Programs//runtwitter.sh 
-sudo nano /mnt/HDD/Programs//runtwitter.sh 
-nano app.py
-nano config.txt
-cp -rf config.txt config.txt.r2
-nano app.py
-IS_PROD=True
-python app.py 
-nano app.py
-python app.py 
-nano app.py
-IS_PROD=True
-python app.py 
-nano app.py
-IS_PROD=True
-python app.py 
-export IS_PROD=True
-python app.py 
-nano /mnt/HDD/Programs//runtwitter.sh 
-sudo nano /mnt/HDD/Programs//runtwitter.sh 
-nano app.py
-unset IS_PROD
-python app.py 
-nano config.txt
-python app.py 
-nano config.txt
-python app.py 
-sudo python app.py 
-nano config.txt
-cp -rf config.txt config.txt.r2
-nano app.py
-cd /mnt/HDD/workspace/GET_FOLLOWERS/twitter-bot-for-increased-growth/
-ls
-nano app.py
-sudo python app.py 
-nano app.py
-sudo python app.py 
-nano app.py
-sudo python app.py 
-nano app.py
-sudo python app.py 
-pip install unidecode
-sudo python app.py 
-nano app.py
-sudo python app.py 
-nano app.py
-sudo python app.py 
-nano app.py
-sudo python app.py 
-nano app.py
-sudo python app.py 
-nano app.py
-sudo python app.py 
-export IS_PROD=True
-sudo python app.py 
-export IS_PROD=True
-sudo python app.py 
-nano app.py
-export IS_PROD=True
-sudo python app.py 
-export IS_PROD=True
-sudo python app.py 
-sudo export IS_PROD=True
-python app.py 
-unset IS_PROD
-sudo python app.py 
-nano app.py
-sudo python app.py 
-cd /mnt/HDD/workspace/GET_FOLLOWERS/twitter-bot-for-increased-growth/
-ls
-sudo python app.py 
-nano app.py
-sudo python app.py 
-nano app.py
-sudo python app.py 
-nano app.py
-sudo python app.py 
-nano app.py
-sudo python app.py 
-nano app.py
-sudo python app.py 
-cd ..
-l
-ls
-cd ..
-ls
-cd GET_FOLLOWERS/
-nano /mnt/HDD/Programs//Hourly.sh 
-sudo nano /mnt/HDD/Programs//Bots.sh 
-cd /tweet-delete-bot
-cd ../tweet-delete-bot
-ls
-npm install
-nano README.md 
-nano index.js 
-npm start
-ls
-ls -a
-nano .env 
-npm start
-nano README.md 
-nano src/config.js 
-nano src/screen_name.js 
-npm start
-nano src/config.js 
-ls src/
-ln -s  .env src/
-rm -rf src/.env 
-ln -s  .env src/
-npm start
-npm update
-sudo npm start
-sudo npm update
-sudo npm start
-nano src/unlike_bot.js
-nano package.json 
-nano src/unlike_bot.js
-nano package.json 
-sudo npm start
-nano .env 
-sudo npm start
-nano src/unlike_bot.js
-sudo npm start
-nano package.json 
-nano src/.env 
-nano .env 
-sudo npm start
-nano src/unlike_bot.js
-sudo npm start
-nano src/unlike_bot.js
-sudo npm start
-nano .env 
-sudo npm start
-nano src/unlike_bot.js
-sudo npm start
-nano src/screen_name.js 
-sudo npm start
-cd /mnt/HDD/workspace/GET_FOLLOWERS/twitter-bot-for-increased-growth/
-ls
-nano app.py
-cd $work
- cd GET_FOLLOWERS/twitter-bot-for-increased-growth/
-nano app.py
-sudo crontab -e
-cd /mnt/HDD/workspace/GET_FOLLOWERS/twitter-bot-for-increased-growth/
-touch verbify.py
-nano verbify.py 
 cd $work
 ls
 cd STUDIOSO/
@@ -526,3 +42,459 @@ rm -rf /var/lib/dpkg/lock-frontend
 sudo rm -rf /var/lib/dpkg/lock-frontend 
 sudo nano /mnt/HDD/Programs//Bots.sh 
 adduser paste
+sudo nano /etc/hosts
+ifconfig
+sudo apt install afro
+sudo crontab -e
+pip3
+pip3 install afro
+pip --upgrade pip
+pip install --ugprade pip
+pip install --upgrade pip
+sudo pip install --upgrade pip
+pip3 install afro
+sudo apt update
+sudo apt install fuse libfuse3-dev bzip2 libbz2-dev cmake gcc-c++ git libattr1-dev zlib1g-dev
+sudo apt install fuse libfuse3-dev bzip2 libbz2-dev cmake gcc-c\+\+ git libattr1-dev zlib1g-dev
+sudo apt install fuse libfuse3-dev bzip2 libbz2-dev cmake "gcc-c++" git libattr1-dev zlib1g-dev
+git clone https://github.com/sgan81/apfs-fuse.git
+cd apfs-fuse
+git submodule init
+git submodule update
+mkdir build
+cd build
+cmake ..
+make
+sudo apt install libfuse-dev
+sudo apt install fuse libfuse3-dev bzip2 libbz2-dev cmake git libattr1-dev zlib1g-dev
+sudo apt install fuse  bzip2 libbz2-dev cmake git libattr1-dev zlib1g-dev
+make
+ls
+make
+fdisk -l /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 
+sudo fdisk -l /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 
+sudo fsck.hfsplus -f  /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 
+sudo fsck.hfsplus -f  /dev/sdd
+sudo fsck.hfsplus -f  /dev/sdc
+sudo fsck.hfsplus -f  /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 
+sudo fsck.hfs -f  /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 
+sudo fsck.hfsplus -f  /dev/sdc
+sudo fsck.hfsplus -f  /dev/sdd
+sudo fsck.hfsplus --help  /dev/sdd
+sudo fsck.hfsplus  /dev/sdd
+sudo fsck.hfsplus -ry /dev/sdd
+sudo fsck.hfsplus -ry /dev/sb
+sudo fsck.hfsplus -ry /dev/sdb
+sudo fsck.hfsplus -ry /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 
+sudo mount -t hfsplus -o force,rw /dev/MacBookAir drive /mnt
+sudo mount -t hfsplus -o force,rw /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 drive /mnt
+sudo mount -t hfsplus -o rw /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 drive /mnt
+sudo mount -t hfsplus -o rw /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0  /mnt
+sudo apt search hfs
+sudo fsck.hfsplus -ry /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 
+sudo fsck.hfsplus -ry /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-00 
+sudo fsck.hfsplus -ry /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0
+sudo fsck.hfsplus -ry /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 
+sudo fsck.hfsplus -ry /dev/disk/by-id/usb-Verbatim_STORE_N_GO_070B676D13BF9551-0\:0 
+sudo fsck.hfsplus  /dev/disk/by-id/ata-WDC_WD5000AAKX-60U6AA0_WD-WCC2EYM75092 
+ls /dev/
+fdisk /dev/sd
+fdisk /dev/sda 
+fdisk -l /dev/sda 
+sudo fdisk -l /dev/sda 
+sudo fdisk -l 
+source .bash_exports
+source .bashrc
+afro
+sudo fsck.hfsplus  --help
+git clone https://github.com/rbrito/pkg-hfsprogs
+cd pkg-hfsprogs/
+ls
+make
+sudo make
+cd ..
+wget https://github.com/rbrito/pkg-hfsprogs/archive/debian/332.25-11.tar.gz
+tar -xvf 332.25-11.tar.gz 
+cd pkg-hfsprogs-debian-332.25-11/
+ls
+make
+sudo apt search pb project
+sudo apt search pkg-hfsprogs
+git clone https://github.com/vasi/hfsj
+cd hfsj/
+ls
+make
+sudo apt install guestfs-dev
+mkdir /mnt/MacintoshHD
+sudo mkdir /mnt/MacintoshHD
+sudo apt search guestfs
+sudo apt install libguestfs0  libguestfs-tools libguestfs-rescue  libguestfs-hfsplus libguestfs-dev 
+sudo apt install libguestfs0  libguestfs-tools libguestfs-rescue  libguestfs-hfsplus libguestfs-dev guestfsd
+git clone https://github.com/thejoelpatrol/fusehfs
+cd fusehfs/
+ls
+./mount_fusefs_hfs 
+sudo ./mount_fusefs_hfs 
+ls
+cd ..
+git clone https://github.com/alanswx/LinuxFuseHFS
+cd LinuxFuseHFS/
+ls
+make
+hfsutil
+hfsutil --help
+/fusehfs --debug /dev/sdc /mnt/MacintoshHD/ 
+fusehfs --debug /dev/sdc /mnt/MacintoshHD/ 
+sudo apt install fusehfs
+sudo apt install libguestfs0  libguestfs-tools libguestfs-rescue  libguestfs-hfsplus libguestfs-dev guestfsd fusehfs
+hmount /dev/sdc /mnt/MacintoshHD/ 
+sudo hmount /dev/sdc /mnt/MacintoshHD/ 
+sudo hmount /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 /mnt/MacintoshHD/ 
+hpls
+hpls /dev/sdc
+sudo hpls /dev/sdc
+hls 
+hls --help
+hvol
+sudo hmount /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 
+sudo hmount /dev/sdc /mnt/MacintoshHD/ 
+sudo hmount /dev/sdc 
+sudo hmount --help /dev/sdc 
+sudo hmount -h /dev/sdc 
+sudo hmount /dev/sdc 
+sudo hmount /dev/sdc
+hfs --help
+sudo hfs /dev/sdc
+sudo hfs /dev/sdc 1
+sudo hfs /dev/sdc 2
+sudo hfs /dev/sdc 3
+sudo hfs /dev/sdc 4
+sudo hfs mount /dev/sdc 4
+sudo hfs mount /dev/sdc 41
+sudo hfs mount /dev/sdc 1
+sudo hmount /dev/sdc 1
+sudo hmount /dev/sdc 2
+sudo hmount /dev/sdc 3
+ls /dev/sd
+ls /dev/sdc
+sudo dpkg --configure -a
+history | grep apt
+udo apt install libguestfs0  libguestfs-tools libguestfs-rescue  libguestfs-hfsplus libguestfs-dev guestfsd fusehfs
+sudo apt install libguestfs0  libguestfs-tools libguestfs-rescue  libguestfs-hfsplus libguestfs-dev guestfsd fusehfs
+sudo apt install libguestfs0  libguestfs-tools libguestfs-rescue  libguestfs-hfsplus libguestfs-dev guestfsd 
+hdparm -W /dev/sda
+sudo hdparm -W /dev/sdb
+modprobe rapididks
+modprobe rapiddisk
+rapiddisk 
+rapiddisk --help
+sudo rapiddisk --help
+mkfs.ext4 /dev/disk/by-id/usb-Verbatim_STORE_N_GO_070B676D13BF9551-0\:0 
+sudo mkfs.ext4 /dev/disk/by-id/usb-Verbatim_STORE_N_GO_070B676D13BF9551-0\:0 
+rapiddisk --cache-map /dev/disk/by-id/usb-Verbatim_STORE_N_GO_070B676D13BF9551-0\:0 /dev/sdb
+sudo rapiddisk --cache-map /dev/disk/by-id/usb-Verbatim_STORE_N_GO_070B676D13BF9551-0\:0 /dev/sdb
+sudo rapiddisk --cache-map /dev/sdc /dev/sdb
+ls /dev/sdd
+mount /dev/sdd
+mount /dev/sdc
+ls /sda
+ls /dev/sda
+mount /dev/sda
+sudo mkfs.ext4 /dev/disk/by-id/usb-Verbatim_STORE_N_GO_070B676D13BF9551-0\:0 
+sudo rapiddisk --cache-map /dev/disk/by-id/usb-Verbatim_STORE_N_GO_070B676D13BF9551-0\:0 /dev/sdb
+sudo nano /etc/rc.local
+rapiddisk --attach 512mb
+sudo rapiddisk --attach 512mb
+sudo nano /etc/rc.local
+rapiddisk --cache-map rd0 /dev/sdb wt
+sudo mount /dev/mapper/rc-wt_sdb /mnt/HDD -o defaults,rw,data=writeback,nobh,commit=64,barrier=0
+sidp si
+sudo su
+sudo nano /etc/rc.local
+sudo if=/dev/urandom of=/mnt/extra/test_file status=progress
+sudo dd if=/dev/urandom of=/mnt/extra/test_file status=progress
+df -h
+sudo nano /etc/rc.local
+htop
+sudo nano /etc/rc.local
+sudo rapiddisk --help
+sudo rapiddisk/ --attach 5GB /dev/disk/by-id/usb-Verbatim_STORE_N_GO_070B676D13BF9551-0\:0
+sudo rapiddisk --attach 5GB /dev/disk/by-id/usb-Verbatim_STORE_N_GO_070B676D13BF9551-0\:0
+sudo nano /etc/rc.local
+rapiddisk --cache-map rd0 /dev/sdb wa
+sudo rapiddisk --cache-map rd0 /dev/sdb wa
+df -h
+umount /dev/mapper/rc-wt_sdb3
+sudo umount /dev/mapper/rc-wt_sdb3
+sudo rapiddisk --cache-map rd0 /dev/sdb wa
+sudo rapiddisk --help
+sudo rapiddisk --cache-unmap rc_sdb3
+sudo rapiddisk --cache-unmap rc_wt_sdb3
+sudo rapiddisk --cache-unmap rc=wt_sdb3
+sudo rapiddisk --cache-unmap rc-wt_sdb3
+sudo rapiddisk --cache-map rd0 /dev/sdb wa
+sudo rapiddisk --cache-map rd0 /dev/sdb3 wa
+sudo dd if=/dev/urandom of=/mnt/extra/test_file status=progress
+sudo dd if=/dev/urandom of=/mnt/extra/test_file status=progress bs512
+sudo dd if=/dev/urandom of=/mnt/extra/test_file status=progress bs=512
+sudo rapiddisk --attach 5GB /dev/disk/by-id/usb-Verbatim_STORE_N_GO_070B676D13BF9551-0\:0
+sudo rapiddisk --attach 5GB --source  /dev/disk/by-id/usb-Verbatim_STORE_N_GO_070B676D13BF9551-0\:0
+sudo rapiddisk --attach 5GB /dev/sg0 
+fdisk  -l
+sudo fdisk  -l
+sudo rapiddisk --attach 5GB --source /dev/sdc
+sudo rapiddisk --attach 5GB  /dev/sdc
+sudo rapiddisk --help
+cache
+sudo nano /etc/rc.local
+apiddisk --attach 512mb cache
+sudo rapiddisk --attach 512mb cache
+sudo rapiddisk --attach 512mb /dev/sdc
+sudo rapiddisk --attach /dev/sdc 512mb 
+sudo rapiddisk --attach /dev/sdc 512
+sudo rapiddisk --attach  512mb
+sudo rapiddisk --dettach  r1
+sudo rapiddisk --help
+sudo rapiddisk --detach  r1
+sudo rapiddisk --attach /dev/sdc
+df -h
+sudo rapiddisk --attach /dev/sdc /dev/sdb
+sudo rapiddisk --attach /dev/sdc /dev/sdb3
+sudo rapiddisk --attach /dev/sdc 19gb #/dev/sdb3
+sudo rapiddisk --attach 1gb /dev/sdc  #/dev/sdb3
+sudo rapiddisk --attach  /dev/sdc  #/dev/sdb3
+sudo rapiddisk --attach  /dev/sdc  /dev/sdb3
+sudo rapiddisk --attach  /dev/sdc 19GB
+sudo rapiddisk --attach  /dev/sdc 19G
+sudo rapiddisk --attach  /dev/sdc --size 19gb
+sudo rapiddisk --list
+rapiddisk --detach r3
+sudo rapiddisk --detach r3
+sudo rapiddisk --detach rd3
+sudo rapiddisk --detach rd2
+sudo rapiddisk --detach rd1
+vgmerge -v sysvg datavg
+sudo vgmerge -v sysvg datavg
+sudo vgmerge -v sysvg /dev/sdc
+sudo vgmerge -v sysvg sdc
+lvcreate -n cache -l 100%FREE --type cache-pool sysvg /dev/sdc
+sudo lvcreate -n cache -l 100%FREE --type cache-pool sysvg /dev/sdc
+sudo lvcreate -n cache -l 100%FREE --type cache-pool sdc /dev/sdc
+sudo vgmerge -v sysvg datavg
+sudo apt install bcache
+sudo apt install bcache-tools 
+make-bcache -C /dev/sdc -B /dev/sdb3
+sudo make-bcache -C /dev/sdc -B /dev/sdb3
+umount /dev/sdc
+swapoff /mnt/swap/swapfile 
+sudo swapoff /mnt/swap/swapfile 
+sudo make-bcache -C /dev/sdc -B /dev/sdb3
+umount /dev/sdc
+sudo umount /dev/sdc
+sudo make-bcache -C /dev/sdc -B /dev/sdb3
+wipefs /dev/sdc
+sudo wipefs /dev/sdc
+sudo make-bcache -C /dev/sdc -B /dev/sdb3
+sudo wipefs -a /dev/sdc
+sudo make-bcache -C /dev/sdc -B /dev/sdb3
+sudo wipefs -a /dev/sdc
+sudo umount /dev/sdb3
+sudo rapiddisk --help
+sudo rapiddisk rapiddisk --cache-unmap rc_sdb3
+df -h
+sudo make-bcache -C /dev/sdc -B /dev/sdb3
+umount /dev/sdc
+sudo wipefs -a /dev/sdc
+sudo make-bcache -C /dev/sdc -B /dev/sdb3
+sudo wipefs -a /dev/sdc
+sudo umount /dev/sdc
+sudo wipefs -a /dev/sdc
+lsof /dev/sdc
+sudo lsof /dev/sdc
+sudo lsof /dev/sdd
+sudo make-bcache -C /dev/disk/by-id/usb-Verbatim_STORE_N_GO_070B676D13BF9551-0\:0 -B /dev/sdb3
+sudo wipefs -a /dev/disk/by-id/usb-Verbatim_STORE_N_GO_070B676D13BF9551-0\:0 
+sudo lsof /dev/sdc
+sudo wipefs -a /dev/disk/by-id/usb-Verbatim_STORE_N_GO_070B676D13BF9551-0\:0 
+sudo make-bcache -C /dev/disk/by-id/usb-Verbatim_STORE_N_GO_070B676D13BF9551-0\:0 -B /dev/sdb3
+umount /dev/sdb3
+sudo umount  /dev/sdb3
+sudo make-bcache -C /dev/disk/by-id/usb-Verbatim_STORE_N_GO_070B676D13BF9551-0\:0 -B /dev/sdb3
+sudo wipefs -a /dev/disk/by-id/usb-Verbatim_STORE_N_GO_070B676D13BF9551-0\:0 
+sudo make-bcache -C /dev/disk/by-id/usb-Verbatim_STORE_N_GO_070B676D13BF9551-0\:0 -B /dev/sdb3
+sudo wipefs -a /dev/sdb3
+sudo wipefs -a /dev/disk/by-id/usb-Verbatim_STORE_N_GO_070B676D13BF9551-0\:0 
+sudo wipefs -a /dev/sdb3
+sudo make-bcache -C /dev/disk/by-id/usb-Verbatim_STORE_N_GO_070B676D13BF9551-0\:0 -B /dev/sdb3
+sudo make-bcache -C /dev/disk/by-id/usb-Verbatim_STORE_N_GO_070B676D13BF9551-0\:0 -B /dev/sdb3 --discard --writeback
+ls /dev/bcache0
+sudo mkfs.ext4 /dev/bcache0
+df -h
+sudo mount /dev/bcache0 /mnt/extra/
+df -h
+sudo nano /etc/rc.local
+history | grep dd
+ sudo dd if=/dev/urandom of=/mnt/extra/test_file status=progress bs=512
+ sudo dd if=/dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 of=/mnt/extra/img-512gb_mac_ssd.img status=progress bs=512
+ sudo dd if=/dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 of=/mnt/extra/img-512gb_mac_ssd.img bs=512 status=progress 
+ sudo dd if=/dev/sdg of=/mnt/extra/img-512gb_mac_ssd.img bs=512 status=progress  && bash /mnt/HDD/Programs/notifywithArgs.sh "DD is done"
+ sudo dd if=/dev/sdg of=/mnt/extra/img-512gb_mac_ssd.img bs=512 status=progress # && bash /mnt/HDD/Programs/notifywithArgs.sh "DD is done"
+ sudo dd if=/dev/sdg of=/mnt/extra/img-512gb_mac_ssd.img  status=progress # && bash /mnt/HDD/Programs/notifywithArgs.sh "DD is done"
+fdisk -l
+sudo fdisk -l
+;s /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 
+ls /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 
+ sudo dd if='/dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0:0' of=/mnt/extra/img-512gb_mac_ssd.img  status=progress # && bash /mnt/HDD/Programs/notifywithArgs.sh "DD is done"
+df -h
+ sudo dd if='/dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0:0' of=/mnt/extra/img-512gb_mac_ssd.img  status=progress # && bash /mnt/HDD/Programs/notifywithArgs.sh "DD is done"
+ls /dev/sdg 
+mount /dev/sdg /mnt/MacintoshHD/
+sudo mount /dev/sdg /mnt/MacintoshHD/
+fsck.hfsplus /dev/sdg
+sudo fsck.hfsplus /dev/sdg
+sudo fsck.hfsplus -r /dev/sdg
+sudo mount /dev/sdg /mnt/MacintoshHD/
+sudo fsck.hfsplus -ry /dev/sdg
+ sudo dd if='/dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0:0' of=/mnt/extra/img-512gb_mac_ssd.img  status=progress # && bash /mnt/HDD/Programs/notifywithArgs.sh "DD is done"
+ sudo dd if='/dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0:0' of=/mnt/extra/img-512gb_mac_ssd.img bs=512 count=100GB  status=progress # && bash /mnt/HDD/Programs/notifywithArgs.sh "DD is done"
+ sudo dd if=/dev/sdg of=/mnt/extra/img-512gb_mac_ssd.img bs=512   status=progress # && bash /mnt/HDD/Programs/notifywithArgs.sh "DD is done"
+dd --help
+ sudo dd if=/dev/sdg of=/mnt/extra/img-512gb_mac_ssd.img bs=512   status=progress # && bash /mnt/HDD/Programs/notifywithArgs.sh "DD is done"
+apfs-fuse 
+cd ..
+apfs-fuse /dev/sdg
+apfs-fuse /dev/sdg /mnt/MacintoshHD/
+cd apfs-fuse/
+ls
+cd build/
+make install
+ sudo dd if=/dev/sdg of=/mnt/extra/img-512gb_mac_ssd.img bs=512   status=progress # && bash /mnt/HDD/Programs/notifywithArgs.sh "DD is done"
+ sudo dd if=/dev/sdg of=/mnt/HDD/mg.g bs=512   status=progress # && bash /mnt/HDD/Programs/notifywithArgs.sh "DD is done"
+ sudo dd if=/dev/sdg of=/mnt/extra/img-512gb_mac_ssd.img bs=512   status=progress # && bash /mnt/HDD/Programs/notifywithArgs.sh "DD is done"
+ls /dev/sdg
+mount -t apfs /dev/sdg
+sudo mount -t apfs /dev/sdg
+sudo mount -t apfs /dev/sdg /mnt/MacintoshHD/
+sudo mount -t hfsplus, /dev/sdg /mnt/MacintoshHD/
+sudo mount -t hfsplus /dev/sdg /mnt/MacintoshHD/
+fsck.hfsplus /dev/sdg
+sudo fsck.hfsplus /dev/sdg
+sudo parted /dev/sdg 'print'
+umount /dev/sdg
+sudo fsck.hfsplus -N /dev/sdg
+sudo fsck.hfsplus -n /dev/sdg
+sudo fsck.hfsplus -d /dev/sdg
+sudo fsck.hfsplus -n /dev/sdg
+sudo fsck.hfsplus -d /dev/sdg
+sudo fsck.hfsplus -lu /dev/sdg
+sudo fsck  /dev/sdg
+sudo fsck.ex4  /dev/sdg
+sudo fsck.ext4  /dev/sdg
+sudo fsck.hfs/dev/sdg
+sudo fsck.hfs /dev/sdg
+sudo fsck.hfs -d /dev/sdg
+fdisk -l
+sudo fdisk -l
+sudo hdisk -l
+sudo gdisk -l
+sudo gdisk 
+teskdisk /dev/sdg
+testdisk /dev/sdg
+sudo testdisk /dev/sdg
+sudo testdisk # /dev/sdg
+sudo gdisk -l
+sudo gdisk 
+sudo gdisk /dev/sdg
+fdisk  --help
+lsdfix
+sudo hdparm -N /dev/sdc
+sudo hdparm -N /dev/sdg
+sudo gdisk /dev/sdg
+ls /dev/sdg
+ /dev/sdg
+sudo  /dev/sdg
+sudo mount /dev/sdg
+sudo mount /dev/sdg /mnt/MacintoshHD/ 
+dumpe2fs /dev/sdg
+sudo dumpe2fs /dev/sdg
+ fsck -b 0 /dev/sdb
+ fsck -b 0 /dev/sdg
+sudo  fsck -b 0 /dev/sdg
+sudo  fsck.hfs -b 0 /dev/sdg
+sudo  fsck.hfs dfl /dev/sdg
+sudo  fsck.hfs -dfl /dev/sdg
+sudo  fsck -r  /dev/sdg
+sudo  fsck.hfs -r  /dev/sdg
+sudo  fsck.hfs -fr  /dev/sdg
+dumpe2fs /dev/sdg
+sudo dumpe2fs /dev/sdg
+sudo  fsck -r  /dev/sdg
+sudo  fsck.hfsplus -r  /dev/sdg
+sudo  fsck.hfsplus -rf  /dev/sdg
+sudo  fsck.hfsplus -rfd  /dev/sdg
+sudo  fsck.hfsplus -hd  /dev/sdg
+sudo  fsck.hfsplus -l  /dev/sdg
+sudo  fsck.hfsplus -ld  /dev/sdg
+sudo  fsck.hfsplus -ld  /dev/sdg 
+wipefs
+ls /dev/sdg
+testdisk /dev/sdg
+sudo testdisk /dev/sdg
+history | grep dd
+ sudo dd if=/dev/sdg of=/mnt/extra/img-512gb_mac_ssd.img bs=512   status=progress # && bash /mnt/HDD/Programs/notifywithArgs.sh "DD is done"
+ mount sb=0 /dev/sdg /mnt
+sudo  mount sb=0 /dev/sdg /mnt
+ sudo dd if=/dev/sdg of=/mnt/extra/img-512gb_mac_ssd.img bs=512   status=progress # && bash /mnt/HDD/Programs/notifywithArgs.sh "DD is done"
+ sudo dd if=/dev/sdd of=/mnt/extra/img-512gb_mac_ssd.img bs=512   status=progress # && bash /mnt/HDD/Programs/notifywithArgs.sh "DD is done"
+lsof /dev/sdd
+sudo lsof /dev/sdd
+sudo lsof /dev/sdc
+ sudo dd if=/dev/sdc of=/mnt/extra/img-512gb_mac_ssd.img bs=512   status=progress # && bash /mnt/HDD/Programs/notifywithArgs.sh "DD is done"
+ sudo dd if=/dev/sdc of=/mnt/extra/img-512gb_mac_ssd.img bs=512   status=progress&& bash /mnt/HDD/Programs/notifywithArgs.sh "DD is done"
+ sudo dd if=/dev/sdc of=/mnt/extra/img-512gb_mac_ssd.img bs=512   status=progress && bash /mnt/HDD/Programs/notifywithArgs.sh "DD is done"
+ource .bashrc
+hfsprescue
+sudo apt install hfsprescue
+wget https://download.plop.at/hfsprescue/hfsprescue-3.4.tar.gz https://download.plop.at/hfsprescue/hfsprescue-3.4-precompiled.tar.gz
+tar -xvf hfsprescue-3.4-precompiled.tar.gz 
+cd hfsprescue-3.4
+cd hfsprescue-3.4-precompiled
+ls
+chmod 777 Linux/
+chmod 777 Linux/hfsprescue_x64 
+./ Linux/hfsprescue_x64 
+./Linux/hfsprescue_x64 
+./Linux/hfsprescue_x64  --help
+./Linux/hfsprescue_x64  --list
+./Linux/hfsprescue_x64  /dev/sdg
+./Linux/hfsprescue_x64  /dev/sdd
+./Linux/hfsprescue_x64  -h /dev/sdd
+./Linux/hfsprescue_x64 s1 -h /dev/sdd
+./Linux/hfsprescue_x64 -s1  /dev/sdd
+sudo ./Linux/hfsprescue_x64 -s1  /dev/sdd
+sudo ./Linux/hfsprescue_x64 -s1 -b 2097152 /dev/sdd
+sudo ./Linux/hfsprescue_x64 -b 2097152 -s1  /dev/sdd
+sudo ./Linux/hfsprescue_x64 -b 2097152 -s1  /dev/sdc
+sudo ./Linux/hfsprescue_x64 -b 2097152 -s1  /dev/sdc --force
+ls /dev/
+ls /dev/sda
+sudo ./Linux/hfsprescue_x64 -b 2097152 -s1  /dev/sda --force
+sudo ./Linux/hfsprescue_x64 -s1  /dev/sda --force
+sudo ./Linux/hfsprescue_x64 -s1  /dev/sdd --force
+sudo ./Linux/hfsprescue_x64 -s1  /dev/sdc --force
+sudo ./Linux/hfsprescue_x64 -s1  /dev/sda --force
+sudo ./Linux/hfsprescue_x64 -s1  /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 --force
+sudo ./Linux/hfsprescue_x64 -s1  /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 --force
+sudo ./Linux/hfsprescue_x64 -s1 -b 0 /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 --force
+sudo ./Linux/hfsprescue_x64 -b 0-s1  /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 --force
+sudo ./Linux/hfsprescue_x64 -b 0 -s1  /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 --force
+sudo ./Linux/hfsprescue_x64 -s2 -b 0 /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 --force
+sudo ./Linux/hfsprescue_x64 -s2 -b 0 /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0  --force
+./Linux/hfsprescue_x64 -s3 -b0/dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0:0 --force
+./Linux/hfsprescue_x64 -s3 -b0/dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0:0--force
+./Linux/hfsprescue_x64 -s3 -b0 /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 --force
+./Linux/hfsprescue_x64 -s3 -b 0 /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 --force
+./Linux/hfsprescue_x64 -s3  /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 --force
+sudo ./Linux/hfsprescue_x64 -s3  /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 --force
+sudo ./Linux/hfsprescue_x64 -b 0 -s3  /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 --force
+sudo ./Linux/hfsprescue_x64  -s3  /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 --force
