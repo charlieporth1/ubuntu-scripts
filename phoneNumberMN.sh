@@ -1,0 +1,9 @@
+#!/bin/bash
+RANGEMIN=11111111
+RANGEMAX=99999999
+AREA=952
+number=$RANDOM
+let "number %= $RANGEMAX"
+PORT=$(( (($RANDOM<<15)|$RANDOM) % $RANGEMAX + $RANGEMIN ))
+export randomPhone=$AREA$PORT
+echo $AREA$PORT

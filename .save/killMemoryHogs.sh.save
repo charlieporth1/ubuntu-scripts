@@ -1,0 +1,28 @@
+#!/bin/bash
+echo note this may log every conntection you have off 
+read -p "press y/n if you want to continue"  yn
+case $yn  in 
+[Yy]* )
+echo "alrigh then by"e
+#sudo killall docker-containerd 
+#sudo killall mysqld
+#sudo killall perl
+#sudo killall bash
+#sudo killall sudo
+#sudo killall postgres
+#sudo killall dockerd
+#sudo killall snapd
+#sudo killall htop
+sudo killall -s SIGKILL perl
+sudo killall -s SIGKILL mysqld
+sudo killall -s SIGKILL docker-containerd
+sudo killall -s SIGKILL htop
+sudo killall -s SIGKILL bash
+sudo killall -s SIGKILL snapd
+sudo killall -s SIGKILL postgres
+ps -u ubuntu | grep ssh | awk '{print $1}' | sudo xargs kill -KILL
+ps -u root | grep fail2ban | awk '{print $1}' | sudo xargs kill -KILL
+done;;
+[Nn]* ) 
+echo ok exiting 
+exit 1

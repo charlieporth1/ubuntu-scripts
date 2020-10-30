@@ -1,0 +1,3 @@
+[submodule "Kali-Linux-on-Ubuntu"]
+	path = Kali-Linux-on-Ubuntu
+	url = https://github.com/Salmandjuli/Kali-Linux-on-Ubuntu/

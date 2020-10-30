@@ -1,0 +1,3 @@
+[submodule "hack-captive-portals"]
+	path = hack-captive-portals
+	url = https://github.com/systematicat/hack-captive-portals
