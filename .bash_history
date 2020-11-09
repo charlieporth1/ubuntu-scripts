@@ -498,3 +498,5 @@ sudo ./Linux/hfsprescue_x64 -s2 -b 0 /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883
 sudo ./Linux/hfsprescue_x64 -s3  /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 --force
 sudo ./Linux/hfsprescue_x64 -b 0 -s3  /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 --force
 sudo ./Linux/hfsprescue_x64  -s3  /dev/disk/by-id/usb-KINGWIN_NVMe_DD56419883A43-0\:0 --force
+nano .bashrc
+exot
