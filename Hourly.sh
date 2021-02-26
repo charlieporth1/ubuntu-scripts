@@ -34,10 +34,6 @@ journalctl --rotate
 journalctl --vacuum-size=20M
 journalctl --vacuum-time=1d
 
-#Backup
-sudo rm -rf /mnt/HDD/Backup/Website/Hourly/www.zip | parallel  -Jcluster
-sudo zip -r9 /mnt/HDD/Backup/Website/Hourly/www.zip /var/www/ | parallel  -Jcluster
-sudo cp -rf /mnt/HDD/Programs/ /mnt/HDD/Backup/Hourly/Programs/ | parallel  -Jcluster
 
 #sudo node /mnt/HDD/itunes-connect-slack/poll-itc.js
 
@@ -45,7 +41,6 @@ sudo cp -rf /mnt/HDD/Programs/ /mnt/HDD/Backup/Hourly/Programs/ | parallel  -Jcl
 cleanMemory
 #sudo service gitlab stop
 ##Start Cockpit
-sudo systemctl start cockpit.socket
 
 #Time Delay #1 Start Cockpit
 #sudo timeout 10 "sudo systemctl start cockpit.socket"
@@ -104,9 +99,6 @@ cleanMemory
 
 sudo bash /mnt/HDD/Programs/cleanSysLog.sh
 sudo bash /mnt/HDD/Programs/rotate-clean-Logs.sh
-#Start cockpit 
-systemctl daemon-reload
-sudo systemctl start cockpit.socket
 
 #sudo killall hans
 #sudo node /var/www/SMSLinkRECIVED.js &
