@@ -1,519 +1,529 @@
-docker list
-docker --help
-docker tag
-docker start
-docker ps
-sudo docker ps
-docker rm 6f510e498f00
-sudo docker rm 6f510e498f00
-sudo docker stop 6f510e498f00
-sudo docker logs f03771fcbf9b
-sudo docker ps
-sudo docker logs f03771fcbf9b
-ls
-nano deploy.sh 
-ls
-nano default.conf 
-nano search.py 
-nano Dockerfile 
-acestream_search
-pip uninstall acestream_search
-sudo pip install acestream_search
-acestream_search -h
-sudo pip install urlib
-sudo pip install urllib
-sudo pip install urllib2
-sudo pip3 install acestream_search
-sudo python3 -m pip install acestream_search
-acestream_search -h
-acestream_search -p 192.168.44.44:6878
-sudo acestream_search -p 192.168.44.44:6878
-acestream_search -p 192.168.44.128:6878
-sudo acestream_search -p 192.168.44.128:6878
-nmap -T4 192.168.44.128
-acestream_search -h
-acestream_search -q
-nano Dockerfile 
-curl -kL https://github.com/vstavrinov/acestream_search/archive/master.zip > acestream_search.zip
-nano Dockerfile 
-   curl http://acestream.org/downloads/linux/acestream_3.1.49_debian_9.9_x86_64.tar.gz |                  tar xzf -
-ls
-git stash
-ls
-cd ..
-mkdir local_acestream
-ls
-cd local_acestream/
-ls
-   curl http://acestream.org/downloads/linux/acestream_3.1.49_debian_9.9_x86_64.tar.gz |                  tar xzf -
-curl -kL https://github.com/vstavrinov/acestream_search/archive/master.zip > acestream_search.zip
-ls
-./acestreamengine 
-nano ../acestream-service/Dockerfile 
-./acestreamengine --client-console &    
-nmap -T4 localhost
-nmap 192.168.44.44
-ls
-./acestreamengine --client-console --help
-./start-engine 
-ls
-./acestreamengine  --client-console  
-nano acestreamengine 
-ls
-pip install acestreamengine
-python3 -m pip install acestreamengine
-ls
-sudo apt-get install python-setuptools
-sudo apt-get install python-m2crypto
-sudo apt-get install python-apsw
-nano ../acestream-service/Dockerfile 
-./acestreamengine  --client-console  
-python3 -m pip install pysegmenter
-python -m pip install pysegmenter
-pip install pysegment
-./acestreamengine  --client-console  
-ps -aux  | grep acestre
-cd ..
-cd acestream-service/
-ls
-nano Dockerfile 
-git remote add origin https://github.com/charlieporth1/ACESTREAM.git
-git push -u origin master
-git remote remove origin 
-git remote add origin https://github.com/charlieporth1/ACESTREAM.git
-git add .
-git commit -m "Minor udpate to pip"
-git push
-git push --set-upstream origin master
-cd ..
-cd acestream-service/
-cd ..
-cd local_acestream/
-ls
-./acestreamengine  --client-console  
-ps -aux  | grep acestre
-kill -9 5083 16945
-./acestreamengine  --client-console  
-./acestreamengine --help
-./acestreamengine  --client-console  --client-wx
-./acestreamengine    --client-wx
-nmap -T4 localhost
-./acestreamengine  --client-console  
-cd ..
-cd acestream-service/
-ls
-nano Dockerfile 
-cd ..
-cd local_acestream/
-ls
-git clone https://github.com/charlieporth1/ACESTREAM
-sudo git clone https://github.com/charlieporth1/ACESTREAM
-cd ACESTREAM/
-ls
-cd ..
-rm -rf ACESTREAM/
-sudo git clone https://github.com/charlieporth1/ACESTREAM
-rm -rf ACESTREAM/
-sudo rm -rf ACESTREAM/
-git clone https://github.com/charlieporth1/ACESTREAM
-sudo apt update
-sudo apt upgrade
-sudo upgrade-from-grub-legacy 
-sudo apt search 5.10.0-65
-sudo apt search 5.10.0
-sudo apt search 5.10
-sudo do-release-upgrade
-sudo apt upgrade
-sudo apt upgrade 
-sudo do-release-upgrade
-sudo apt upgrade openssh-*
-sudo apt upgrade openssh-server
-sudo apt upgrade openssh-client
-sudo dpkg --configure -a
-sudo apt upgrade 
-sudo dpkg --configure -a
-sudo do-release-upgrade
-systemctl status ssh.service
-sudo systemctl restart  ssh.service
-systemctl status ssh.service
-journalctl -xe
-sudo systemctl restart  ssh.service
-journalctl -xe
-sudo nano /etc/ssh/sshd_config 
-sudo systemctl restart  ssh.service
-sudo do-release-upgrade
-sudo apt upgrade
-sudo dpkg --configure -a
-sudo apt upgrade
-sudo do-release-upgrade
-sudo apt update
-sudo rm -rf /etc/apt/sources.list.d/freeswitch.list*
-sudo rm -rf /etc/apt/sources.list.d/postgresql.list*
-sudo apt update
-sudo rm -rf /etc/apt/sources.list.d/heroku.list 
-sudo apt update
-sudo rm  /etc/apt/trusted.gpg.d/apt.postgresql.org.gpg 
-sudo apt update
-sudo add-apt-repository --help
-sudo add-apt-repository --list
-sudo apt-get install ppa-purge
-sudo ppa-purge http://apt.postgresql.org/pub/repos/apt
-sudo ppa-purge http://apt.postgresql.org/
-sudo apt update
-sudo ls /etc/apt/trusted.gpg.d/apt.postgresql.org.gpg 
-sudo ls /etc/apt/sources.list.save 
-sudo nano /etc/apt/sources.list.save 
-sudo rm /etc/apt/sources.list.d/pgdg.list
-sudo rm /etc/apt/sources.list.d/pgdg.list.save 
-sudo rm /etc/apt/sources.list.d/datadog.list
-sudo rm /etc/apt/sources.list.d/datadog.list.save 
-sudo apt purge datadog
-sudo apt purge datadog-agent 
-sudo apt update
-apt list --upgradable
-sudo apt upgrade
-sudo apt upgrade cockpit-pcp
-sudo apt upgrade cockpit-pcp cockpit-bridge 
-sudo apt upgrade  cockpit-bridge 
-sudo apt upgrade cockpit-pcp cockpit-bridge 
-sudo apt upgrade
-sudo apt purge cockpit
-apt list --upgradable
-sudo apt purge cockpit*
-apt list --upgradable
-sudo do-release-upgrade
-sudo reboot 
-gcloud
-gcloud init
-gcloud beta compute ssh --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521"
-gcloud beta compute ssh --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521" --ssh-flag
-gcloud beta compute ssh --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521" --ssh-flag="-R 43022:localhost:22"
-sudo nano /etc/ssh/ssh_config
-gcloud beta compute ssh --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521" --ssh-flag="-R 43022:localhost:22"
-sudo nano /etc/ssh/ssh_config
-gcloud beta compute ssh --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521" --ssh-flag="-R 43022:localhost:22"
-sudo nano /etc/ssh/ssh_config
-gcloud beta compute ssh --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521" --ssh-flag="-R 43022:localhost:22"
-sudo nano /etc/ssh/ssh_config
-gcloud beta compute ssh --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521" --ssh-flag="-R 43022:localhost:22"
-sudo nano /etc/ssh/ssh_config
-gcloud beta compute ssh --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521" --ssh-flag="-R 43022:localhost:22"
-sudo nano /etc/ssh/ssh_config
-gcloud beta compute ssh --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521" --ssh-flag="-R 43022:localhost:22"
-sudo nano /etc/rc.local
-sudo reboot
 ifconfig
-sudo nano /etc/rc.local
-sudo nano $prog/configure_cpu.sh
-nano $prog/configure_cpu.sh
-nano /mnt/HDD/Programs//configure_hdd.sh
-sudo su
-sudo nano /etc/rc.local
-exit
-dig zoho._domainkey.ctptech.dev
-dig zoho._domainkey.ctptech.dev @vpn.ctptech.dev
-dig zoho._domainkey.ctptech.dev @dns.google
-dig zoho._domainkey.ctptech.dev @vpn.ctptech.dev
-dig -t TXT zoho._domainkey.ctptech.dev @vpn.ctptech.dev
-ping 35.232.120.211
-sudo nano /etc/rc.local
-sudo nano ~/reverse_ssh.sh
-lsof -i :RPORT
-sudo nano ~/reverse_ssh.sh
-lsof -i :43022
-sudo nano ~/reverse_ssh.sh
-sudo bash ~/reverse_ssh.sh
-lsof -i :43022
-lsof -i :22
-netstat -tulpn | grep -o :22
-netstat -tulpn 
-lsof -i :43022
-netstat -tulpn | grep -o :43022
-netstat -tulpn | grep  :43022
-sudo netstat -tulpn | grep  :43022
-sudo netstat -tulpn | grep  :22
-ls
-nano reverse_ssh.sh 
-RPORT=43022
-nano reverse_ssh.sh 
-gcloud beta compute ssh --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521" --ssh-flag="-R $RPORT:localhost:33"
-sudo netstat -tulpn | grep  :33
-sudo netstat -tulpn 
-w
-nano reverse_ssh.sh 
-sudo nano reverse_ssh.sh 
-gcloud beta compute ssh --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521" --ssh-flag="-R $RPORT:localhost:33"
-gcloud beta compute ssh --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521" --ssh-flag="-R $RPORT:localhost:22"
-sudo nano reverse_ssh.sh 
-sudo bash ~?reverse_ssh.sh 
-sudo bash ~/reverse_ssh.sh 
-w
-sudo nano reverse_ssh.sh 
-ps auxwww | grep sshd: | grep -v grep
-netstat -tnpa | grep 'ESTABLISHED.*sshd'
-sudo netstat -tnpa | grep 'ESTABLISHED.*sshd'
-last -a | grep -i still
-last -a 
-ss | grep -i ssh
-ss | grep -i ssh | grep "35.192.105.158\|vpn.ctptech.dev\|35.232.120.211
-ss | grep -i ssh | grep "35.192.105.158\|vpn.ctptech.dev\|35.232.120.211"
-sudo nano ~/reverse_ssh.sh 
-ls ~/reverse_ssh.sh 
-sudo nano /etc/rc.local
-sudo crontab -e
-sudo nano /etc/rc.local
-bash ~/reverse_ssh.sh 
-ifconfig -a 
-sudo nano /mnt/HDD/Programs//configure_networking.sh 
-sudo nano /etc/rc.local
-systemctl status rc-local.service 
-sudo reboot 
-ls ~/reverse_ssh.sh 
-sudo systemctl disable freeswitch.service
-sudo systemctl mask freeswitch.service
+sudo ifconfig wlan0 down
+sudo ifconfig wlan0 up
+sudo killall dhclient
+sudo ifconfig wlan0 up
 ifconfig
-ping 192.168.44.44
-sudo nano /mnt/HDD/Programs//configure_networking.sh 
-sudo nano  /etc/wpa_supplicant.conf
-ip link show wlan0
-sudo ip link show wlan0
- sudo /sbin/iw wlan0 scan
+ls
+sudo nano $prog/configure_networking.sh 
+sudo wpa_supplicant -B -D wext -i wlan0 -c /etc/wpa_supplicant.conf
+ifconfig
+sudo nano $prog/configure_networking.sh 
+iw wlan0 link
+iw wlan0 help
+iw dev wlan0 connect TLHome s:5144Wireless
+iw dev wlan0 connect -w TLHome s:5144Wireless
+iw dev wlan0 connect -w TLHome 0:5144Wireless
+iw dev wlan0 connect -w 2400 TLHome 0:5144Wireless
+iw dev wlan0 connect  TLHome 0:5144Wireless
+iw scan
+iw wlan0 scan
+sudo iw wlan0 scan
+sudo nano $prog
+iw dev wlan0 connect  TLHome 0:5144Wireless
+iw dev wlan0 connect  TLHome 2427 90:3a:72:21:3d:880:5144Wireless
+iw dev wlan0 connect  TLHome 2427 90:3a:72:21:3d:88 0:5144Wireless
+iw dev wlan0 connect  TLHome 2427 90:3a:72:21:3d:88 5144Wireless
+iw dev wlan0 connect  TLHome 2427 90:3a:72:21:3d:88 key 5144Wireless
+sudo nano /etc/wpa_supplicant.conf 
+iw dev wlan0 connect  TLHome 2427 90:3a:72:21:3d:88 key da153cfa75c222a96e268c24fd10220bf33e06ad8bff0931cf8006ed13f65cb0
+iw dev wlan0 connect  TLHome 2427 90:3a:72:21:3d:88 key d:2da153cfa75c222a96e268c24fd10220bf33e06ad8bff0931cf8006ed13f65cb0
+iw dev wlan0 connect  TLHome 2427 90:3a:72:21:3d:88 key psk:2da153cfa75c222a96e268c24fd10220bf33e06ad8bff0931cf8006ed13f65cb0
+iw dev wlan0 connect  TLHome 2427 90:3a:72:21:3d:88  psk:2da153cfa75c222a96e268c24fd10220bf33e06ad8bff0931cf8006ed13f65cb0
+iw dev wlan0 connect  TLHome 2427 90:3a:72:21:3d:88  d:0:2da153cfa75c222a96e268c24fd10220bf33e06ad8bff0931cf8006ed13f65cb0
+iw dev wlan0 connect  TLHome 2427 90:3a:72:21:3d:88  key d:0:2da153cfa75c222a96e268c24fd10220bf33e06ad8bff0931cf8006ed13f65cb0
+iw dev wlan0 connect  TLHome 2427 90:3a:72:21:3d:88  key d:2:2da153cfa75c222a96e268c24fd10220bf33e06ad8bff0931cf8006ed13f65cb0
+iw dev wlan0 connect  TLHome 2427 90:3a:72:21:3d:88  key psk:data:2da153cfa75c222a96e268c24fd10220bf33e06ad8bff0931cf8006ed13f65cb0
+iw dev wlan0 connect  TLHome 2427 90:3a:72:21:3d:88  key psk:2da153cfa75c222a96e268c24fd10220bf33e06ad8bff0931cf8006ed13f65cb0
+iw dev wlan0 connect  TLHome 2427 90:3a:72:21:3d:88  key psk:1:2da153cfa75c222a96e268c24fd10220bf33e06ad8bff0931cf8006ed13f65cb0
+iw dev wlan0 connect  TLHome 2427 90:3a:72:21:3d:88  key 1:2da153cfa75c222a96e268c24fd10220bf33e06ad8bff0931cf8006ed13f65cb0
+iw dev wlan0 connect  TLHome 2427 90:3a:72:21:3d:88  key psk:2da153cfa75c222a96e268c24fd10220bf33e06ad8bff0931cf8006ed13f65cb0
+iw dev wlan0 connect  TLHome 2427 90:3a:72:21:3d:88  key psk:2da153cfa75c222a96e268c24fd10220bf33e06ad8bff0931cf8006ed13f65cb0 where
+iw dev
+iw dev psk
+iw wlan0 connect  TLHome 2427 90:3a:72:21:3d:88  key psk:2da153cfa75c222a96e268c24fd10220bf33e06ad8bff0931cf8006ed13f65cb0 where
+sudo wpa_supplicant  -D wext -i wlan0 -c /etc/wpa_supplicant.conf
+ps -aux | grep wpa
+ps -aux | grep wpa | awk '{print $2}'
+ps -aux | grep wpa | awk '{print $2}' | xargs kill -9
+ps -aux | grep wpa | awk '{print $2}' | xargs sudo kill -9
+iw wlan0 set 4addr 192.168.44.251
+iw wlan0 set 4addr on
+sudo iw wlan0 set 4addr on
+ifconfig
+iw link
+sudo iw  wlan0link
+sudo iw  wlan0 link
+ifconfig
+sudo ifconfig wlan0 192.168.44.251 up
+ifconfig
+sudo iw  wlan0 link
+sudo ifconfig wlan0 192.168.44.82
+ifconfig
+sudo ifdown wlan0
+ifconfig
+sudo ifconfig wlan0 don
+sudo ifconfig wlan0 down
+sudo ifconfig wlan0 up
+sudo ifconfig
+sudo wpa_supplicant  -D wext -i wlan0 -c /etc/wpa_supplicant.conf
+history | grep nano
+ln -s /etc/wpa_supplicant.conf /etc/wpa_supplicant/
+sudo ln -s /etc/wpa_supplicant.conf /etc/wpa_supplicant/
+wpa_passphrase 5144Wireless 
+wpa_passphrase TLHome
+sudo nano /etc/wpa_supplicant.conf 
+sudo wpa_supplicant  -D wext -i wlan0 -c /etc/wpa_supplicant.conf
+sudo nano /etc/wpa_supplicant.conf 
+sudo wpa_supplicant  -D wext -i wlan0 -c /etc/wpa_supplicant.conf
+sudo nano /etc/wpa_supplicant.conf 
+sudo wpa_supplicant  -D wext -i wlan0 -c /etc/wpa_supplicant.conf
+sudo nano /etc/wpa_supplicant.conf 
+sudo wpa_supplicant  -D wext -i wlan0 -c /etc/wpa_supplicant.conf
+sudo nano /etc/wpa_supplicant.conf 
+sudo wpa_supplicant  -D wext -i wlan0 -c /etc/wpa_supplicant.conf
+wpa_passphrase --help 5144Wireless 
+wpa_passphrase TLHome 5144Wireless 
+wpa_passphrase
+wpa_passphrase TLHome 5144Wireless 
+ sudo dhclient wlan0
+ sudo dhclient wlan0 -vvv
+sudo nano $prog/configure_networking.sh 
+sudo wpa_supplicant  -D wext -i wlan0 -c /etc/wpa_supplicant.conf
+sudo nano /etc/wpa_supplicant.conf 
+sudo wpa_supplicant  -D wext -i wlan0 -c /etc/wpa_supplicant.conf
+sudo nano /etc/wpa_supplicant.conf 
+sudo wpa_supplicant  -D wext -i wlan0 -c /etc/wpa_supplicant.conf
+sudo nano /etc/wpa_supplicant.conf 
+sudo wpa_supplicant  -D wext -i wlan0 -c /etc/wpa_supplicant.conf
+sudo nano /etc/wpa_supplicant.conf 
+sudo wpa_supplicant  -Dnl80211,wext -i wlan0 -c /etc/wpa_supplicant.conf
+systemctl status wpa_supplicant.service 
+sudo systemctl restart wpa_supplicant.service 
+systemctl status wpa_supplicant.service 
+ifconfig
+systemctl status wpa_supplicant.service 
+systemctl log wpa_supplicant.service 
+journalctl --help
+journalctl wpa_supplicant.service 
+journalctl wpa_supplicant
+journalctl -u wpa_supplicant
+journalctl wpa_supplicant.service 
+systemctl status wpa_supplicant.service 
+ifconfig
+ls
+history | grep kill
+sudo killall dhclient
+sudo ifup wlan0
+sudo nano /etc/dhcp/dhclient.conf 
+iw wlan0 link
 sudo iw wlan0 link
-sudo nano  /etc/wpa_supplicant.conf
-sudo nano /mnt/HDD/Programs//configure_networking.sh 
-ip addr show wlan0
-sudo ip addr show wlan0
-sudo nano /mnt/HDD/Programs//configure_networking.sh 
-sudo ifconfig wlan0 192.168.44.44/32 up
-sudo ip addr show wlan0
-ip route show
-sudo ip route show
-ping 192.168.44.82
+sudo wpa_supplicant  -D wext -i wlan0 -c /etc/wpa_supplicant.conf
+sudo ifconfig wlan0 up
 ifconfig
+sudo wlan0 down
+sudo ifdown wlan0 down
+sudo ifdown wla0
+sudo ifdown wlan0
+sudo ifconfig wlan0 down
+sudo killall dhclient
+sudo ifup wlan0
+sudo ifconfig wlan0 down
+ifconfig
+history 
+iw wlan0 link
+sudo iw wlan0 link
+sudo killall dhclient
+sudo ifup wlan0
+sudo wpa_supplicant   -i wlan0 -c /etc/wpa_supplicant.conf
+ps -aux | grep wpa
+ps -aux | grep wpa | awk '{print $2}' | xargs sudo kill -9
+sudo killall dhclient
+sudo ifup wlan0
+ps -aux | grep wpa | awk '{print $2}' | xargs sudo kill -9
+sudo wpa_supplicant  -D wext -i wlan0 -c /etc/wpa_supplicant.conf
+sudo nano /etc/wpa_supplicant.conf 
+sudo wpa_supplicant  -D wext -i wlan0 -c /etc/wpa_supplicant.conf
+ifconfig -a
+lspci
+systemctl restart networking.service 
+ps -aux | grep wpa
+sudo systemctl restart networking.service 
+sudo iw wlan0 link
+ifconfig
+ifconfig -a
+sudo ifconfig wlan0 down
+sudo ifdown wlan0
+sudo systemctl restart networking.service 
+ifconfig -a
+ifconfig
+sudo nano /etc/network/interfaces.d/wlan0.conf 
+sudo systemctl restart networking.service 
+ifconfig wlan0 up
+sudo ifup wlan0
+ifconfig
+ifconfig wlan 0 clear
+sudo ifconfig wlan 0 clear
+sudo ifconfig wlan0 clear
+sudo ip
+sudo ip dev route default del 
+sudo ip wlan0  route default del 
+sudo ip  route default del dev wlan0
+sudo ip  route del dev wlan0
+sudo ip 
+sudo ip address del dev wlan0
+sudo ip address 
+ping 192.168.44.251
+sudo ip link
+sudo ip
+sudo ip route 
+sudo nano /etc/network/interfaces.d/wlan0.conf 
+sudo systemctl restart networking.service 
+sudo wpa_supplicant  -D wext -i wlan0 -c /etc/wpa_supplicant.conf
+sudo nano /etc/wpa_supplicant.conf 
+sudo wpa_supplicant  -i wlan0 -c /etc/wpa_supplicant.conf
+sudo wpa_supplicant --help  -i wlan0 -c /etc/wpa_supplicant.conf
+sudo wpa_supplicant -dd  -i wlan0 -c /etc/wpa_supplicant.conf
+sudo nano /etc/wpa_supplicant.conf 
+iw scan
+iw wlan0 scan
+sudo iw wlan0 scan
+sudo ifconfig wlan0 up
+ifconfig
+ifconfig
+sudo iw wlan0 scan
+ifconfig
+sudo ifncofig -a
+sudo ifconfig -a
+sudo modprobe wl18xx  wlcore wlcore_sdio^C
+sudo modprobe iwlwifi
+lsmod | grep iwl
+ifconfig -a
+ dmesg | grep iwl
+ls /lib/firmware/iwlwifi-7260-17.ucode 
+sudo modprobe iwlwifi
+ modprobe -r iwlwifi
+sudo  modprobe -r iwlwifi
+sudo modprobe iwlwifi
+sudo nano /etc/modules
+lsmod | grep iwl
+lspci -nnk | grep 0280 -A3
+lspci -nnk 
+lspci -nnk | grep 0280 -A3
+rfkill list all
+su
+lsmod | grep iwl
+sudo apt install rfkill
+modprobe cfg80211 wl18xx  wlcore rtlwifi mac80211
+lsmod | grep iwl
+modprobe cfg80211 wl18xx  wlcore rtlwifi mac80211 iwlmvm
+rfkill list all
+ifconfig
+df -h
+ls pci
+lspci
+ls /dev
+ls /dev/sda/c
+ifconfig
+iw wlan0 link
 sudo nano /mnt/HDD/Programs//configure_networking.sh 
 sudo dhclient wlan0
 ifconfig
 sudo nano /mnt/HDD/Programs//configure_networking.sh 
-wget https://wireless.wiki.kernel.org/_media/en/users/drivers/iwlwifi-7260-ucode-25.30.14.0.tgz
-tar -xvf iwlwifi-7260-ucode-25.30.14.0.tgz 
-cd iwlwifi-7260-ucode-25.30.14.0/
+ifconfig
+ifcofngi
+ifconfig
 ls
-ls /lib/firmware
-modprobe iwlwifi
-sudo modprobe iwlwifi
-sudo nano /etc/rc.local
 ifconfig
-ifconfig -a
-modprobe iwlwifi
-sudo systemctl restart network-manager.service
-sudo nano /etc/rc.local
+ls
+df -h
+df -h -a
+ls /
+ls
+ls /dev/sdc
+mkfs.ext4   /dev/sdc
+sudo mkfs.ext4   /dev/sdc
+sudo umount /dev/sdc
+sudo umount -l  /dev/sdc
+umount
+umount --help
+sudo umount -l  -R -f /dev/sdc
+sudo umount   -R -f /dev/sdc
+htop
+ifconfig
+ifconfig
+ls
+ls /dev
+lsblk -io NAME,TYPE,SIZE,MOUNTPOINT,FSTYPE,MODEL
+ls /sda
+cd /
+ls
+dd if=/dev/urandom /bcache_test
+dd if=/dev/urandom of=/bcache_test bs=512 count=1024
+sudo dd if=/dev/urandom of=/bcache_test bs=512 count=1024
+sudo dd if=/dev/urandom of=/bcache_test bs=512 count=8192
+sudo dd if=/dev/urandom of=/bcache_test bs=512 count=819200
+sudo dd if=/dev/urandom of=/bcache_test bs=512 count=81920
+sudo dd if=/dev/urandom of=/bcache_test bs=512 count=102400
+sudo dd if=/dev/urandom of=/bcache_test bs=1024 count=102400
+sudo dd if=/dev/urandom of=/bcache_test bs=8K count=1024
+sudo dd if=/dev/urandom of=/bcache_test bs=8M count=1024
+sudo dd if=/dev/urandom of=/bcache_test bs=8M count=16
+sudo dd if=/dev/urandom of=/bcache_test bs=8M count=64
+ifconfig
+ls
+ls /
+ls 
+ls
+ifconfig
+ls
+ifconfig
+ls
+ifconfig
+ls
+ifconfig
+ls
+lsblk
+lsblk -io NAME,TYPE,SIZE,MOUNTPOINT,FSTYPE,MODEL
+sudo mount -o rw /dev/sda3 /mnt/cache/
+sudo mount -t ext4 -o rw /dev/sda3 /mnt/cache/
+mkdir /mnt/ccc
+sudo mkdir /mnt/ccc
+sudo mount -t ext4 -o rw /dev/sda3 /mnt/ccc
+sudo mount -t bcache -o rw /dev/sda3 /mnt/ccc
+sudo mount -t ext4 -o rw /dev/sda3 /mnt/ccc
+umount /dev/sda3
+sudo umount /dev/sda3
+sudo umount -t /dev/sda3
+umount /dev/sda3
+ls /dev
+ls /dev/bcache0
+sudo mount -t bcache -o rw /dev/bcache0 /mnt/ccc
+sudo mount -t bcache -o rw /dev/bcache0 /mnt/cache
+sudo mount -t ext4 -o rw /dev/bcache0 /mnt/cache
+ls /mnt/cache/
+ll /mnt/cache/
+ls /mnt
+ls /mnt/cache
+ls /mnt/ccc
+history | grep dd
+sudo dd if=/dev/urandom of=/mnt/cache/bcache_test bs=8M count=64
+ls
+sudo rm -rf /bcache_test 
+sudo rm -rf /mnt/cache/bcache_test 
+sudo dd if=/dev/urandom of=/mnt/cache/bcache_test bs=8M count=64
+sudo rm -rf /mnt/cache/bcache_test 
+sudo dd if=/dev/urandom of=/mnt/cache/bcache_test bs=1M count=1024
+sudo dd if=/dev/zero of=/mnt/cache/bcache_test bs=1M count=1024
+sudo dd if=/dev/zero of=/bcache_test bs=1M count=1024
+sudo dd if=/dev/zero of=/bcache_test bs=8M count=64
+sudo dd if=/dev/zero of=/bcache_test bs=8M count=128
+ls
+ll swapfile 
+ll -h swapfile 
+sudo nano /etc/fstab
+sudo swapon -a
+ll -h swapfile 
+sudo swapon -s
+ifconfig
+htop
+ifconfig
+tail  /var/log/reverse_ssh.sh.log
+tail -s  /var/log/reverse_ssh.sh.log
+tail -f  /var/log/reverse_ssh.sh.log
+bash /home/ubuntuserver/reverse_ssh.sh
+sudo bash /home/ubuntuserver/reverse_ssh.sh
+sudo nano /home/ubuntuserver/reverse_ssh.sh
+sudo bash /home/ubuntuserver/reverse_ssh.sh
+sudo nano /home/ubuntuserver/reverse_ssh.sh
+sudo bash /home/ubuntuserver/reverse_ssh.sh
+sudo nano /home/ubuntuserver/reverse_ssh.sh
+sudo bash /home/ubuntuserver/reverse_ssh.sh
+sudo nano /home/ubuntuserver/reverse_ssh.sh
+-L $ID_PORT:localhost:$ID_PORT
+sudo nano /home/ubuntuserver/reverse_ssh.sh
+ss -o state listening "sport = $ID_PORT" | grep -c ":$ID_PORT"
+ss -o state listening "sport = 44" | grep -c ":44"
+sudo nano /home/ubuntuserver/reverse_ssh.sh
+killall ssh
+killall python3
+sudo nano /home/ubuntuserver/reverse_ssh.sh
+sudo crontab -e
+sudo bash /home/ubuntuserver/reverse_ssh.sh
+sudo bash /home/ubuntuserver/reverse_ssh.sh
+gcloud init
+ss -o state listening "sport = $ID_PORT" | grep -c ":$ID_PORT"
+ss -o state listening "sport = 44" | grep -c ":$ID_PORT"
+ss -o state listening "sport = 44" | grep -c ":44"
+ss -o state listening "sport = 44" 
+ss -o state listening "sport = 44" | grep -c ":"
+ss -o state listening "sport = 44" 
+ss -o state listening "dport = 44" 
+history | grep ss
+ss -a | grep :44
+ID_PORT=44
+ID_CMD=" -L $ID_PORT:localhost:$ID_PORT"
+RPORT=43022
+IS_SSH_RUNNING=`ss -o state listening "sport = $ID_PORT" | grep -c ":$ID_PORT"`
+sudo gcloud beta compute ssh --zone "$GCLOUD_ZONE" "$GCLOUD_INSTANCE" --project "$GCLOUD_PROJECT" --ssh-flag="-R $RPORT:localhost:22 $ID_CMD"
+        GCLOUD_ZONE="us-central1-a"
+        GCLOUD_INSTANCE="ctp-vpn"
+        GCLOUD_PROJECT="galvanic-pulsar-284521"
+sudo gcloud beta compute ssh --zone "$GCLOUD_ZONE" "$GCLOUD_INSTANCE" --project "$GCLOUD_PROJECT" --ssh-flag="-R $RPORT:localhost:22 $ID_CMD"
+ping google.com
+ping www.google.com
+ifconfig
+sudo nano /etc/network/interfaces.d/wlan0.conf 
+history | grep rfkill
+rfkill list all
+sudo reboot
+sudo nano /home/ubuntuserver/reverse_ssh.sh
+ifconfig
+sudo nano /etc/network/interfaces.d/wlan0.conf 
+sudo systemctl restart networking.service 
+ifconfig
 sudo reboot 
-sudo mkdir -p /etc/systemd/system/networking.service.d/
-sudo mkdir -p /etc/systemd/system/networking.service.d/
-sudo bash -c 'echo -e "[Service]\nTimeoutStartSec=20sec" > /etc/systemd/system/networking.service.d/timeout.conf'
-sudo systemctl daemon-reload
-sudo nano /etc/network/interfaces.d/wlan0.conf 
-sudo nano /etc/network/interfaces.d/enx00227.conf
+ls
 ifconfig
-ifconfig -a
-sudo systemctl daemon-reload
-sudo nano /etc/network/interfaces.d/enx00227.conf
-sudo nano /etc/network/interfaces.d/wlan0.conf 
-sudo nano /mnt/HDD/Programs//configure_networking.sh 
-sudo nano /etc/network/interfaces.d/wlan0.conf 
-sudo bash /mnt/HDD/Programs//configure_networking.sh 
+htop
+sudo crontab -e 
+bash /home/ubuntuserver/start_stream.sh
+sudo crontab -e 
+sudo bash ~/reverse_ssh.sh 
+ping 8.8.8.8
 ifconfig
-sudo nano /etc/network/interfaces.d/wlan0.conf 
-sudo nano /mnt/HDD/Programs//configure_networking.sh 
-iw wlan0 link
-sudo nano /mnt/HDD/Programs//configure_networking.sh 
-sudo bash /mnt/HDD/Programs//configure_networking.sh 
-sudo nano /mnt/HDD/Programs//configure_networking.sh 
-sudo bash /mnt/HDD/Programs//configure_networking.sh 
-sudo nano /mnt/HDD/Programs//configure_networking.sh 
-sudo bash /mnt/HDD/Programs//configure_networking.sh 
-sudo nano /mnt/HDD/Programs//configure_networking.sh 
-sudo bash /mnt/HDD/Programs//configure_networking.sh 
+ping 8.8.8.8
+sudo nano /etc/resolv.conf
+sudo nano /etc/resolvconf/resolv.conf.d/base 
+sudo nano /etc/resolvconf/resolv.conf.d/head 
+sudo nano /etc/resolvconf/resolv.conf.d/original 
+sudo nano /etc/resolvconf/resolv.conf.d/tail 
+sudo nano /etc/resolvconf/resolv.conf.d/original 
+sudo systemctl restart resolvconf
+sudo nano /etc/rc.local
+systemctl status rc-local.service 
+systemctl enable rc-local.service 
+sudo systemctl enable rc-local.service 
 ifconfig
-sudo bash /mnt/HDD/Programs//configure_networking.sh 
-sudo nano /mnt/HDD/Programs//configure_networking.sh 
-sudo bash /mnt/HDD/Programs//configure_networking.sh 
-sudo nano /mnt/HDD/Programs//configure_networking.sh 
-iw wlan0 link
-sudo iw wlan0 link
-sudo bash /mnt/HDD/Programs//configure_networking.sh 
-sudo nano /mnt/HDD/Programs//configure_networking.sh 
-sudo nano /etc/wpa_supplicant.conf
-sudo bash /mnt/HDD/Programs//configure_networking.sh 
 ifconfig
-sudo nano /mnt/HDD/Programs//configure_networking.sh 
-sudo bash /mnt/HDD/Programs//configure_networking.sh 
-sudo bash /mnt/HDD/Programs//configure_networking.sh 
+sudo ifconfig wlan0:0 down
 ifconfig
-systemctl restart networking
-sudo systemctl restart networking
-ifconfig
+ping www.google.com
+sudo ifconfig wlan0:0 up
+sudo ps -aux | grep wpa
+kill 2163
+sudo kill 2163
 sudo nano /mnt/HDD/Programs//configure_networking.sh 
-sudo wpa_supplicant -B -D wext -i wlan0 -c /etc/wpa_supplicant.conf
-sudo bash /mnt/HDD/Programs//configure_networking.sh 
-sudo nano /etc/network/interfaces.d/wlan0.conf 
-sudo nano /etc/network/interfaces.d/enx00227.conf
-sudo bash /mnt/HDD/Programs//configure_networking.sh 
-sudo bash /mnt/HDD/Programs//configure_networking.sh 
-sudo nano /etc/network/interfaces.d/wlan0.conf 
+sudo kill /mnt/HDD/Programs/configure_networking.sh 
+sudo nano /mnt/HDD/Programs/configure_networking.sh 
 sudo reboot
 ifconfig
-ifconfig -a
-lshw -C network
-sudo lshw -C network
-sudo apt-get install firmware-atheros
-sudo modprobe ath5k 
-sudo modprobe ath9k
-sudo modprobe ath
-sudo lshw -C network
+ping www.google.com
+htop
+sudo nano /mnt/HDD/Programs//Hourly.sh 
+sudo nano /mnt/HDD/Programs/Hourly.sh 
+sudo nano /mnt/HDD/Programs/Daily.sh 
 ifconfig
+ping -I wlan0 8.8.8.8
+sudo iw wlan0 link
+ifconfig
+iw wlan0 scan
+ifconfig
+sudo iw wlan0 scan
+history | grep iw
+ifconfig 
+ifconfig down wlan0
+ifconfig
+sudo nano /etc/netplan/01-static.yaml 
+sudo netplan apply
+sudo nano /etc/netplan/01-static.yaml 
+sudo netplan apply
+sudo netplan generate 
+sudo netplan apply
+sudo nano /etc/netplan/01-static.yaml 
+sudo netplan apply
+sudo nano /etc/netplan/01-static.yaml 
+sudo netplan apply
+sudo nano /etc/netplan/01-static.yaml 
+sudo netplan apply
+sudo nano /etc/netplan/01-static.yaml 
+sudo netplan apply
+sudo nano /etc/netplan/01-static.yaml 
+sudo netplan apply
+ifconfig
+ping www.google.com
+sudo nano /etc/rc.local
+sudo reboot
+ifconfig
+ping www.google.com
+sudo nano /etc/rc.local
+sudo nano /etc/rc.local
+bash /home/ubuntuserver/start_stream.sh >>& /var/log/start_stream.sh.log
+sudo nano /etc/rc.local
 sudo crontab -e
-ifconfig
-ping 192.168.44.1
-host
-echo $extip
-echo $ip
-echo $ipext
-source ~/.bashrc
-ifconfig
+ls
+exit
+bash <(curl -Ss https://my-netdata.io/kickstart.sh)
+sudo netdata-claim.sh -token=xW_gXc8ZF0qSPeCt5u1yGWwrJ70QZi1N_xlJ7tlr7q7gvAnD5d89JboKcb12Zyaiq_BnLrBCYLJ6ymGRJdYV1ltWSWqAcaJVqAOqX5Uva_DeEZ7dNK2G5zmAx9_SlfgHvQXYn7A -rooms=45a2c2de-0777-4115-9798-b4d4e2589984 -url=https://app.netdata.cloud
+cd /etc/netdata/
+ls
+sudo ./edit-config netdata.conf 
+sudo systemctl restart netdata
 htop
 sudo nano /etc/rc.local
-ifconfig
-sudo nano ~/reverse_ssh.sh 
-nano ~/reverse_ssh.sh 
-sudo nano ~/reverse_ssh.sh 
-bash ~/reverse_ssh.sh 
-sudo nano ~/reverse_ssh.sh 
-bash ~/reverse_ssh.sh 
-sudo nano ~/reverse_ssh.sh 
-bash ~/reverse_ssh.sh 
-sudo nano ~/reverse_ssh.sh 
-ss | grep -i ssh 
-last
-last -3
-last -6
-last -9
-last -3
-ss | grep -i ssh 
-bash ~/reverse_ssh.sh 
-sudo bash ~/reverse_ssh.sh 
-sudo nano ~/reverse_ssh.sh 
-sudo bash ~/reverse_ssh.sh 
-sudo nano ~/reverse_ssh.sh 
-ss | grep -i ssh
-htop
-sudo nano ~/reverse_ssh.sh 
-sudo bash ~/reverse_ssh.sh 
-lsof -i :22
-lsof -i :
-lsof -i :455119
-lsof -i :455118
-systemctl status rc-local
-sudo reboot 
-systemctl status rc-local
-lsof -i :22
-sudo nano ~/reverse_ssh.sh 
-ss | grep -i ssh
-sudo nano ~/reverse_ssh.sh 
-sudo bash ~/reverse_ssh.sh 
-ps -aux | grep gcp
-ps -aux | grep gcloud
-ps -aux | grep google
-ps -aux | grep cloud
-sudo nano ~/reverse_ssh.sh 
-ss 
-ss  | grep ssh
-ss  | grep 222
-ss  | grep 221
-ss  | grep 223
-sudo nano ~/reverse_ssh.sh 
-       for i in {0..3};         do                 echo "CONNECTING TO PORT $RPORT$i";                 (                         gcloud beta compute ssh --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521" --ssh-flag="-R $RPORT$i:localhost:22";                 )&         done
-ss 
-ss  | grep sh
-et
-t
-ei
-x
-cce
-xit
-ext
+sudo docker ps
+sudo docker logs deb2bec65325
+sudo docker restart deb2bec65325
+sudo docker logs deb2bec65325
+sudo docker restart deb2bec65325
+sudo docker logs deb2bec65325
+python3 -m pip uninstall numpy
+cd ACESTREAM/
+git pull
+./build.sh 
+sudo ./build.sh 
+sudo docker ps 
+sudo docker stop deb2bec65325
+sudo ./run.sh 
+sudo docker logs deb2bec65325
+sudo crontab -e
+bash /home/ubuntuserver/start_stream.sh
+sudo crontab -e
+bash /home/ubuntuserver/start_stream.sh
+sudo bash /home/ubuntuserver/start_stream.sh
+sudo nano /home/ubuntuserver/start_stream.sh
+ps -aux | grep start-engine 
+ps -aux | grep start
+sudo nano /home/ubuntuserver/start_stream.sh
+sudo nano /home/ubuntuserver/reverse_ssh.sh 
+sudo bash /home/ubuntuserver/reverse_ssh.sh 
 exit
-ext
-exitexi
-exit
-exit
-ss  | grep sh
-sudo nano ~/reverse_ssh.sh 
-sudo nano ~/reverse_ssh.sh 
-sudo bash ~/reverse_ssh.sh 
-sudo nano ~/reverse_ssh.sh 
-ss | grep -i ssh 
-sudo nano ~/reverse_ssh.sh 
-nohup gcloud beta compute ssh --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521" --ssh-flag="-R $RPORT$i:localhost:22" 2>&1 /dev/null
-ss | grep -i ssh 
-ss | grep -i ssh 
-ss | grep -i ssh 
-ss | grep -i ssh 
-ss | grep -i ssh 
-ss | grep -i ssh 
-ss | grep -i ssh 
-ss | grep -i ssh 
-sudo lsof -i -n | egrep '\<ssh\>'
-sudo nano ~/reverse_ssh.sh 
-sudo nano ~/reverse_ssh.sh 
-sudo bash ~/reverse_ssh.sh 
-sudo bash ~/reverse_ssh.sh 
-sudo nano ~/reverse_ssh.sh 
-sudo bash ~/reverse_ssh.sh 
-sudo nano ~/reverse_ssh.sh 
-sudo bash ~/reverse_ssh.sh 
-sudo nano ~/reverse_ssh.sh 
-gcloud beta compute ssh --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521" --ssh-flag="-R 222:localhost:22"  
-killall ssh
-killall ssh
-gcloud beta compute ssh --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521" --ssh-flag="-R 222:localhost:22"  
-gcloud beta compute ssh --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521" --ssh-flag="-R 43022:localhost:22"  
-gcloud beta compute ssh --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521" --ssh-flag="-R 43022:localhost:22"  
-sudo nano ~/reverse_ssh.sh 
-sudo bash ~/reverse_ssh.sh 
-killall ssh
-sudo bash ~/reverse_ssh.sh 
-killall ssh
-sudo nano ~/reverse_ssh.sh 
- nohup gcloud beta compute ssh --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521" --ssh-flag="-R 222:localhost:22"  
-gcloud
-ps -aux | grep gcloud
-sudo ps -aux | grep gcloud
-gcloud beta compute ssh --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521" --ssh-flag="-R 222:localhost:22"  &
-sudo ps -aux | grep gcloud
-ei
-ext
-x
-x
-xe
-exit
-exit
-gcloud beta compute ssh --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521" --ssh-flag="-R 22:localhost:22" 
-gcloud beta compute ssh --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521" --ssh-flag="-R 222:localhost:22" 
-gcloud beta compute ssh --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521" --ssh-flag="-R 43022:localhost:22" 
-nano ~/reverse_ssh.sh 
-sudo nano ~/reverse_ssh.sh 
-nano ~/reverse_ssh.sh 
-sudo bash ~/reverse_ssh.sh 
-killall ssh
-killall gcloud
-exit
-sudo nano ~/reverse_ssh.sh 
-scp  ~/reverse_ssh.sh  pi@led-raspberrypi.local
-scp  ~/reverse_ssh.sh  pi@led-raspberrypi3.local
-ssh pi@led-raspberrypi3.local
-scp  ~/reverse_ssh.sh  pi@led-raspberrypi3.local:~/
-scp  ~/reverse_ssh.sh  pi@led-raspberrypi.local:~/
-scp  ~/reverse_ssh.sh  pi@led-raspberry.local:~/
-scp  ~/reverse_ssh.sh  pi@led-raspberrypi.local:~/
-exit
+sudo bash /home/ubuntuserver/start_stream.sh
+nmap -T4 localhost
+sudo nano start_stream.sh
+ sudo gcloud beta compute ssh --zone "$GCLOUD_ZONE" "$GCLOUD_INS$
+sudo nano start_stream.sh
+sudo nano reverse_ssh.sh 
+sudo nano start_stream.sh
+       GCLOUD_ZONE="us-central1-a"
+        GCLOUD_INSTANCE="ctp-vpn"
+        GCLOUD_PROJECT="galvanic-pulsar-284521"
+sudo nano start_stream.sh
+   sudo gcloud beta compute ssh                         --zone "$GCLOUD_ZONE" "$GCLOUD_INSTANCE"                         --project "$GCLOUD_PROJECT"                         --ssh-flag="-R 0.0.0.0:8000:localhost:8000 -R 0.0.0.0:6878:localhost:6878 $ID_CMD"
+   sudo gcloud beta compute ssh                         --zone "$GCLOUD_ZONE" "$GCLOUD_INSTANCE"                         --project "$GCLOUD_PROJECT"                         --ssh-flag="-R 8000:localhost:8000 -R 6878:localhost:6878 $ID_CMD"
+sudo nano start_stream.sh
+   sudo gcloud beta compute ssh                         --zone "$GCLOUD_ZONE" "$GCLOUD_INSTANCE"                         --project "$GCLOUD_PROJECT"                         --ssh-flag="-R 8000:localhost:8000 -R 6878:localhost:6878 $ID_CMD"
+sudo nano start_stream.sh
+   sudo gcloud beta compute ssh                         --zone "$GCLOUD_ZONE" "$GCLOUD_INSTANCE"                         --project "$GCLOUD_PROJECT"                         --ssh-flag="-R 10.128.0.9:8000:localhost:8000 -R 10.128.0.9:6878:localhost:6878 $ID_CMD"
+sudo nano start_stream.sh
+sudo bash /home/ubuntuserver/start_stream.sh
+   sudo gcloud beta compute ssh                         --zone "$GCLOUD_ZONE" "$GCLOUD_INSTANCE"                         --project "$GCLOUD_PROJECT"                         --ssh-flag="-R 10.128.0.9:8000:localhost:8000 -R 10.128.0.9:6878:localhost:6878 $ID_CMD"
+sudo bash /home/ubuntuserver/start_stream.sh
+sudo nano /home/ubuntuserver/start_stream.sh
+sudo bash /home/ubuntuserver/start_stream.sh
+ID_PORT=48877
+ID_CMD=" -L $ID_PORT:localhost:$ID_PORT"
+IS_SSH_RUNNING=`ss -o state listening "sport = $ID_PORT" | grep -c ":$ID_PORT"
+ss -o state listening "sport = $ID_PORT" | grep -c ":$ID_PORT"
+sudo nano /home/ubuntuserver/start_stream.sh
+sudo nano /home/ubuntuserver/reverse_ssh.sh 
