@@ -1,2 +1,0 @@
-#!/bin/bash
-ssh -l ubuntuserver -p22 -i /home/ubuntuserver/.ssh/id_rsa 192.168.1.64 "$1"

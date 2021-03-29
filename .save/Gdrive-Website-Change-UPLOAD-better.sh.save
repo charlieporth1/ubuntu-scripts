@@ -1,6 +1,0 @@
-#!/bin/sh
-while inotifywait -r -m -e modify /var/www/; do
-  if tail -n1 /var/log/messages | grep apache; then
-    kdialog --msgbox "Blah blah Apache"
-  fi
-done

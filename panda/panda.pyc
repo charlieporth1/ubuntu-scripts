@@ -1,80 +1,0 @@
-\F3
-"{Vc\00\00\00\00\00\00\00\00\00\00\00@\00\00\00sG\00\00\00d\00\00d\00l\00\00Z\00\00d\00\00d\00l\00Z\00d\00\00d\00l\00Z\00d\00\84\00\00Z\00e\00d\00k\00rC\00e\00\83\00\00n\00\00d\00S(\00\00\00i\FF\FF\FF\FFNc\00\00\00\00\00\00\00\00\00\00\00\00\00\00sl\00\00\00y\00d\00GH\87\00\00f\00d\00\86\00\00\89\00\00\88\00\00\83\00\00Wn9\00t\00\00k
-\00r7\00d\00GHn$\00t\00k
-\00rZ\00t\00j\00d\00t\00j\00\83\00n\00Xt\00j\00d\00\83\00d\00\00S(\00\00\00Nsj\00\00
-=======================================================================
-============Welcome to add tools kali linux for ubuntu=================
-==========================created by Panda=============================
-================== blog : http://mas-linux.blogspot.com ===============
-=============== Email me : Hidayatullah.afif@yahoo.co.id ==============
-=======================================================================
-                               Vbeta [1;m
- [1;32m+ -- -- +=[ Author: Panda | Blog: mas-linux.blogspot.com+ -- -- +=[1;m
- [1;32m+ -- -- +=[ kali linux tools Tools + -- -- +=[1;m
-			c\00\00\00\00
-\00\00\00\00\00\00\00\00\00sa\00\00xZt\00\00r\d\00GHt\00d\00\83\00\89\00x\B5\88\00d\00k\00r\D1d\00GHt\00d\00\83\00}\00\00|\00\00d\00k\00rg\00t\00j\00d\00\83\00}\00t\00j\00d\00\83\00}\00q\00|\00\00d\00k\00r\85\00t\00j\00d	\00\83\00}\00q\00|\00\00d
-\00k\00r\B2\00t\00j\00d\00\83\00}\00t\00j\00d\00\83\00}\00q\00|\00\00d
-\00k\00rtd\00}\00d\00}\00d\00d\00d\00d\00d\00d\00d\00g\00}\00t\00|\00\83\00}\00t\00j\00d\00\83\00t\00|\00d\00\83\00}	\00x>\00|\00D]6\00}
-\00x \00|\00D]\00}\00|
-\00j\00|\00d\00\83\00}
-\00q!W|	\00j\00|
-\00\83\00qW|\00j\00\83\00\00|	\00j\00\83\00\00d\00GHd\00GHd\00GHq\00|\00\00d\00k\00r\8A\88\00\83\00\00q\00|\00\00d\00k\00r\A0\88\00\83\00\00q\00|\00\00d\00k\00r\C9t\00d\00d\00\83\00}\00|\00j	\00\83\00\00GHq\00d\00GHq\00W\88\00d
-\00k\00r)t\00d\00\83\00}\00\00|\00\00d \00k\00r=t\00j\00d!\00\83\00}\00t\00j\00d"\00\83\00}\00t\00j\00d#\00\83\00}\00q=n\00\88\00d
-\00k\00r=d$\00GHn\00\00\87\00\00\87\00\87\00f\00d%\00\86\00\00\89\00\00\88\00\00\83\00\00q\00Wd\00\00S(&\00\00\00Nsp\00\00\00
-1. Add Key and repo KaliLInux
-2. Install tools bonus
-3. Install menu kali-linux
-4. Help and Note(BACA DULU)
-			s\00\00\00[1;36mPanda |-$ [1;mt\00\00\001s\B5\00\00\00
-1. Add kali linux repositories
-2. Update
-3. Open Synaptic package manager for Manual install tools
-4. Remove kali linux repositories
-5. View the contents of sources.list file
-					s-\00\00\00[1;32mSilahkan pilih salah satu+++>|-$ [1;msE\00\00\00wget -q -O - http://mas-linux.comze.com/kali.pgp | sudo apt-key add -s\ED\00\00echo '# Kali linux repositories | Added by Panda
-deb http://ppa.launchpad.net/wagungs/kali-linux2/ubuntu raring main
-deb-src http://ppa.launchpad.net/wagungs/kali-linux2/ubuntu raring main
-deb http://ppa.launchpad.net/wagungs/kali-linux/ubuntu raring main
-deb-src http://ppa.launchpad.net/wagungs/kali-linux/ubuntu raring main
-deb http://ppa.launchpad.net/wagungs/kali-linux1/ubuntu raring main
-deb-src http://ppa.launchpad.net/wagungs/kali-linux1/ubuntu raring main
-' >> /etc/apt/sources.listt\00\00\002s\00\00\00apt-get update -mt\00\00\003s\00\00\00sudo apt-get install synaptict\00\00\00synaptict\00\00\004s\00\00\00/etc/apt/sources.lists+\00\00\00# Kali linux repositories | Added by Panda
-sC\00\00\00deb http://ppa.launchpad.net/wagungs/kali-linux2/ubuntu raring mainsG\00\00\00deb-src http://ppa.launchpad.net/wagungs/kali-linux2/ubuntu raring mainsB\00\00\00deb http://ppa.launchpad.net/wagungs/kali-linux/ubuntu raring mainsF\00\00\00deb-src http://ppa.launchpad.net/wagungs/kali-linux/ubuntu raring mainsC\00\00\00deb http://ppa.launchpad.net/wagungs/kali-linux1/ubuntu raring mainsG\00\00\00deb-src http://ppa.launchpad.net/wagungs/kali-linux1/ubuntu raring mains\00\00\00w+t\00\00\00\00t\00\00\00 s;\00\00\00[1;31mAll kali linux repositories have been deleted ![1;mt\00\00\00backt\00\00\00gohomet\00\00\005t\00\00\00rs8\00\00\00[1;31mSorry, perintah seng koe masukan salah cok!![1;msD\00\00\00[1;32mDo you want to install Kali menu and indicator ? [y/n]> [1;mt\00\00\00ys7\00\00\00add-apt-repository ppa:diesch/testing && apt-get updates*\00\00\00sudo apt-get install classicmenu-indicators\00\00\00apt-get install kali-menus\A5\00\00 
-****************** +Commands+ ****************** 
-[1;32mpilih angka yang disediakan[1;m 	
-[1;32mketik back jika ingin kembali[1;m 	
-[1;32mketik gohome kalau mau kembali ke menu awal [1;m 	
-[1;32mketik grab back kalo mau salah[1;m 	
-[1;32mnjir mau aja u baca ini[1;m	
-****************** +Note+ ****************** 
-[1;32mJika anda menginstall tools dengan otomatis[1;m 	
-[1;32mdan mengalami masalah setelahnya maka admin tidak bertanggung jawab[1;m 	
-[1;32mJadi disarankan coba lah dengan manual yang tersedia di pilihan 1 [1;m 	
-[1;32mkarena yang manual itu lebih murni jika ada kesalahan bisa di cegah[1;m 	
-[1;32mSederhana itu indah bro Njir..!!![1;m	
-		c\00\00\00\00\00\00\00\00\00\00\00\00\00s\BC\00\00\00x\B5\00\88\00d\00k\00r\B7\00d\00GHd\00GHd\00GHt\00\00d\00\83\00}\00\00|\00\00d\00k\00r@\00\88\00\83\00\00q\00|\00\00d\00k\00rV\00\88\00\83\00\00q\00|\00\00d\00k\00r\88\00t\00j\00d	\00\83\00}\00t\00j\00d
-\00\83\00}\00d\00GHq\00t\00d\00k\00r\9E\00\88\00\00\83\00\00q\00t\00d\00k\00r\00\88\00\83\00\00q\00q\00Wd\00\00S(\00\00\00NR\00\00\00sj\00\00\00
-[1;36mAll Tools[1;m	
-				
-[1;32mwifresti[1;m			
-[1;32msquid3[1;m			
-
-				
-1) Install All Tools
-			 sJ\00\00\00[1;32mPilih Nomer 1 Jika anda yakin untuk menginstall seluruh tools.[1;mR\00\00\00s\00\00\00[1;36mPanda |-$  [1;mR\00\00\00R\00\00\00R\00\00\00\00s\88\00\00\00git clone https://github.com/LionSec/wifresti.git && cp wifresti/wifresti.py /usr/bin/wifresti && chmod +x /usr/bin/wifresti && wifrestis\00\00\00apt-get install squid3(\00\00\00t	\00\00\00raw_inputt\00\00\00ost\00\00\00systemt\00\00\00opcion2(\00\00\00t\00\00\00opcion1t\00\00\00cmd1t\00\00\00cmd2(\00\00\00t\00\00\00iniciot\00\00\00inicio1t\00\00\00opcion0(\00\00\00\00s\00\00\00panda.pyR\00\00\00d\00\00\00s"\00\00\00\00	
-
-
-(
-\00\00\00t\00\00\00TrueR\00\00\00R
-\00\00\00R\00\00\00t\00\00\00opent\00\00\00removet\00\00\00replacet\00\00\00writet\00\00\00closet\00\00\00read(
-\00\00\00t\00\00\00repoR\00\00\00R\00\00\00t\00\00\00cmd3t\00\00\00cmd4t\00\00\00infilet\00\00\00outfilet\00\00\00delete_listt\00\00\00fint\00\00\00foutt\00\00\00linet\00\00\00wordt\00\00\00file(\00\00\00R\00\00\00(\00\00\00R\00\00\00R\00\00\00s\00\00\00panda.pyR\00\00\00\00\00\00s`\00\00\00\00	
-
-
-
-
-
-
-	t\00\00\00CencelR'\00\00\00i\00\00\00\00(\00\00\00t\00\00\00KeyboardInterruptt	\00\00\00Exceptiont	\00\00\00tracebackt	\00\00\00print_exct\00\00\00syst\00\00\00stdoutt\00\00\00exit(\00\00\00\00(\00\00\00\00(\00\00\00R\00\00\00s\00\00\00panda.pyt\00\00\00main\00\00\00s\00\00\00\00n
-
-t\00\00\00__main__(\00\00\00R
-\00\00\00R-\00\00\00R+\00\00\00R0\00\00\00t\00\00\00__name__(\00\00\00\00(\00\00\00\00(\00\00\00\00s\00\00\00panda.pyt\00\00\00<module>\00\00\00s\00\00\00	\83

@@ -1,6 +1,0 @@
-[submodule "panda"]
-	path = panda
-	url = https://github.com/mas-linux/panda
-[submodule "path"]
-	path = path
-	url = https://github.com/mas-linux/panda
