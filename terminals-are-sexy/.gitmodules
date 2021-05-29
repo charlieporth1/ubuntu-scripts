@@ -1,0 +1,6 @@
+[submodule "terminals-are-sexy"]
+	path = terminals-are-sexy
+	url = https://github.com/k4m4/terminals-are-sexy
+[submodule "unexpected"]
+	path = unexpected
+	url = https://github.com/k4m4/terminals-are-sexy

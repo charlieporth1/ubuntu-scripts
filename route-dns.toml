@@ -1,0 +1,71 @@
+[resolvers.ctp-dns-home-dot]
+address = "master.dns.ctptech.dev:853"
+protocol = "dot"
+bootstrap-address = "174.53.130.17"
+[resolvers.ctp-dns-gcp-dot]
+address = "gcp.ctptech.dev:853"
+protocol = "dot"
+bootstrap-address = "35.192.105.158"
+[resolvers.ctp-dns-home-dot-raw]
+address = "master.dns.ctptech.dev:853"
+protocol = "dot"
+bootstrap-address = "174.53.130.17"
+[resolvers.ctp-dns-home-doh-get]
+address = "https://home.ctptech.dev:443/dns-query{?dns}"
+protocol = "doh"
+doh = { method = "GET" }
+bootstrap-address = "174.53.130.17"
+[resolvers.ctp-dns-home-doh-post]
+address = "https://home.ctptech.dev:443/dns-query"
+protocol = "doh"
+bootstrap-address = "174.53.130.17"
+[resolvers.ctp-dns-home-doh-get-raw]
+address = "https://master.dns.ctptech.dev:4443/dns-query{?dns}"
+protocol = "doh"
+doh = { method = "GET" }
+bootstrap-address = "174.53.130.17"
+[resolvers.ctp-dns-home-doh-post-raw]
+address = "https://master.dns.ctptech.dev:4443/dns-query"
+protocol = "doh"
+bootstrap-address = "174.53.130.17"
+
+[bootstrap-resolver]
+address = "1.1.1.1:853"
+protocol = "dot"
+
+[groups.minimize]
+type = "response-minimize"
+resolvers = [ "root-router" ]
+
+[groups.collapse]
+type = "response-collapse"
+resolvers = [ "root-router" ]
+
+[groups.ctp-dns-cached]
+type = "cache"
+resolvers = [ "root-router" ]
+cache-negative-ttl = 900
+cache-size = 50000 
+cache-answer-shuffle = "round-robin"
+
+[groups.static-rfc8482]
+type   = "static-responder"
+answer = ["IN HINFO RFC8482 ANY obsoleted!"]
+
+[routers.root-router]
+routes = [
+  { type = "ANY", resolver="static-rfc8482" }, # Send queries of type ANY to a static responder
+  { resolver = "ctp-dns-blocklist" },             # All other queries are forwarded
+]
+
+
+[groups.static-servfail]
+type   = "static-responder"
+answer = [" IN A 35.232.120.211", " IN A 35.192.105.158 "]
+# Response code: 0 = NOERROR, 1 = FORMERR, 2 = SERVFAIL, 3 = NXDOMAIN, 5 = REFUSED... 
+# https://datatracker.ietf.org/doc/html/rfc2929#section-2.3
+rcode  = 3
+
+[groups.ctp-dns-failover]
+resolvers = [ "ctp-dns-group", "ctp-dns-home-dot", "ctp-dns-gcp-dot", "ctp-dns-home-doh-post", "ctp-dns-home-doh-get", "ctp-dns-ip-home-udp", "ctp-dns-ip-home-tcp", "ctp-dns-ip-gcp-2-udp", "ctp-dns-ip-gcp-2-tcp", "ctp-dns-ip-gcp-1-udp", "ctp-dns-ip-gcp-1-tcp", "ctp-dns-home-doh-post-raw", "ctp-dns-home-doh-get-raw", "ctp-dns-home-dot-raw" ]
+type = "fail-back"

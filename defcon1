@@ -1,0 +1,20 @@
+#!/bin/bash
+prog=/mnt/HDD/Programs
+master=${2:-$(hostname)}
+root="root"
+. /usr/bin/cred.sh
+sendemail -f $USER@otih-oith.us.to -t $phonee  -m "SERVER DEFCON 1 REPEAT DEFCON 1 THIS IS NOT A DRILL"   -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd
+
+if [[ "$(hostname)" == "$master" ]]; then
+        for host in $(gre -iv $master "${HOME}/.parallel/sshloginfile" | grep -i root); do
+            # Recurse to connect to master node; -t required for passwords.
+            # source ~/.profile required to get this script in $PATH.
+. /usr/bin/cred.sh
+sendemail -f $USER@otih-oith.us.to -t $phonee  -m "SERVER DEFCON 1 REPEAT DEFCON 1 THIS IS NOT A DRILL: rebooting $host"   -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd
+
+ssh $host reboot
+done 
+. /usr/bin/cred.sh
+sendemail -f $USER@otih-oith.us.to -t $phonee  -m "Your Xcode build is complete please go back to your computer: rebooting MASTER NODE"   -s smtp.gmail.com:587 -o tls=yes -xu $usr -xp  $passwd
+reboot
+echo done 

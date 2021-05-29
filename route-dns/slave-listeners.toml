@@ -1,0 +1,9 @@
+[listeners.ctp-dns-udp]
+address = "192.168.44.250:53"
+protocol = "udp"
+resolver = "ctp-dns-cached"
+
+[listeners.ctp-dns-tcp]
+address = "192.168.44.250:53"
+protocol = "tcp"
+resolver = "ctp-dns-cached"

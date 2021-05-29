@@ -1,0 +1,151 @@
+#!/bin/bash
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+
+
+
+/sbin/getty -L 115200 ttyS0 
+systemctl start cachefilesd
+
+
+
+#cat /proc/cpuinfo | awk '/^processor/{print $3}' | tail -1
+export cpunum=$(cat /proc/cpuinfo | awk '/^processor/{print $3}' | wc -l)
+
+#sudo tune2fs -o journal_data_writeback /dev/sdb1
+export cpuMax=$(cat /sys/devices/system/cpu/cpu*/cpufreq/cpuinfo_max_freq | sed -n '1p')
+for ((i=0; i <=$cpunum; i++))
+do 
+
+echo 1 > /sys/devices/system/cpu/cpu$i/online
+#echo performance > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor
+echo "userspace" > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor
+echo "$cpuMax"  > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_setspeed
+echo "$cpuMax" > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_max_freq
+echo "$cpuMax" > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_min_freq 
+done
+
+echo 1 >  /sys/kernel/mm/ksm/run
+
+bash /home/*/filesystemparallel.sh 
+bash /home/*/Programs/filesystemparallel.sh 
+bash /home/*/Programs/jaildefaultunban.sh 
+fail2ban-server
+fail2ban-client
+ifconfig eth0 up 
+ifup eth0
+sudo /home/*/smartagent/smagent.sh start
+sudo ufw disable
+
+swapon -a
+sudo modprobe dm-cache 
+modprobe acpi
+modprobe acpi_cpufreq
+modprobe 
+modprobe async_memcpy
+modprobe async_pq
+modprobe async_tx
+modprobe cpufreq
+modprobe coretemp
+modprobe cpuidle
+modprobe cryptomgr
+modprobe dm_mod
+modprobe dns_resolver
+modprobe ext4
+modprobe fscache
+modprobe fuse
+modprobe iptable_filter
+modprobe ip_tables
+modprobe nfs
+modprobe pcc_cpufreq
+modprobe processor
+modprobe tcp_cubic
+modprobe usbcore
+modprobe workqueue
+modprobe zswap
+modprobe random
+modprobe libata
+modprobe efivars
+modprobe intel_idle
+modprobe configfs
+modprobe autofs4
+modprobe loop
+if [ "$(uname -p)" == x86_64 ]; then
+modprobe aes_x86_64
+modprobe blowfish_x86_64
+modprobe sha256_ssse3
+modprobe sha512_ssse3
+modprobe sha256_mb
+modprobe sha512_mb
+modprobe sha3_generic
+modprobe blowfish_generic
+modprobe arc4
+modprobe lz4
+else 
+modprobe aes
+modprobe blowfish
+modprobe sha256_generic
+modprobe sha3_generic
+modprobe blowfish_generic
+modprobe arc4
+fi
+
+
+sudo hdparm -B255 /dev/sda
+hdparm -a256 /dev/sda
+sudo tune2fs -o journal_data_writeback /dev/sda1
+
+sudo /home/*/smartagent/smagent.sh start
+export hddnum=($(sudo ls /dev/sd*)) 
+for ((a=0; a <= ${#hddnum[@]}; a++))
+do 
+sudo hdparm -B255 /dev/${hddnum[$a]}
+hdparm -a256 /dev/${hddnum[$a]}
+hdparm -a512 /dev/${hddnum[$a]}
+hdparm -M 254 /dev/${hddnum[$a]}
+
+hdparm -W /dev/${hddnum[$a]}
+sudo tune2fs -o journal_data_writeback /dev/${hddnum[$a]}
+echo cfq > /sys/block/${hddnum[$a]}/queue/scheduler
+echo 10000 > /sys/block/${hddnum[$a]}/queue/iosched/fifo_expire_async
+echo 250 > /sys/block/${hddnum[$a]}/queue/iosched/fifo_expire_sync
+echo 80 > /sys/block/${hddnum[$a]}/queue/iosched/slice_async
+echo 1 > /sys/block/${hddnum[$a]}/queue/iosched/low_latency
+echo 6 > /sys/block/${hddnum[$a]}/queue/iosched/quantum
+echo 5 > /sys/block/${hddnum[$a]}/queue/iosched/slice_async_rq
+echo 3 > /sys/block/${hddnum[$a]}/queue/iosched/slice_idle
+echo 100 > /sys/block/${hddnum[$a]}/queue/iosched/slice_sync
+hdparm -q -M 254 /dev/${hddnum[$a]}
+hdparm -m16 --yes-i-know-what-i-am-doing /dev/${hddnum[$a]}
+hdparm -c1 /dev/${hddnum[$a]}
+
+echo "cfq" > /sys/block/${hddnum[$a]}/queue/scheduler
+
+done
+sudo bash /opt/serveronline.sh
+if [ -z  ifconfig | grep -A 1 "enp2s0" | grep -o '192.168.1.200' ]; then 
+sudo ntpdate -u 192.168.1.200
+sudo /etc/init.d/ntp stop
+sudo ntpd -4q 192.168.1.200 
+ntpdate -u 192.168.1.200
+sudo /etc/init.d/ntp start
+else 
+sudo ntpdate -u ntp.your.org
+sudo /etc/init.d/ntp stop
+sudo ntpd -4q ntp.your.org
+sudo /etc/init.d/ntp start
+#sudo ntpdate -u tock.cerias.purdue.edu
+fi
+
+exit 0

@@ -1,0 +1,7 @@
+.beacons.
+.beacon.
+beacons
+beacon
+firebaselogging-pa.googleapis.com
+firebaseremoteconfig.googleapis.com
+crashlyticsreports-pa.googleapis.com

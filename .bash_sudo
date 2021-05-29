@@ -1,0 +1,3 @@
+#!/bin/bash
+export whosinjailnumber=$(sudo  fail2ban-client status | sed -n '2p' | awk '{print $5 }')
+export whosinjail=$(sudo fail2ban-client status | sed -n '2p' )
