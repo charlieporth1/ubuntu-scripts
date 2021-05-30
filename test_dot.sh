@@ -1,6 +1,12 @@
 #!/bin/bash
 source $PROG/all-scripts-exports.sh
 CONCURRENT
+if [[ -f /tmp/health-checks.stop.lock ]]; then
+        echo "LOCK FILE"
+        set -e
+        exit 1
+        exit 1
+fi
 echo "Running DOT TEST"
 [[ "$1" == "-a" ]] && isAuto="+short" || isAuto='-d'
 QUERY=www.google.com

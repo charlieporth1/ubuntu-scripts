@@ -1,0 +1,9 @@
+^beacons[0-9]?\.(gcp\.)?gvt[0-6]?\.com$
+(^|\.)(app-measurement|googletagmanager|googleadservices|googlesyndication|adservice\.google)\.com$
+(^|\.)(researchnow|flashtalking|advertising|scorecardresearch|insightexpressai|scorecardresearch|asert-dns-research)\.com$
+(^|\.)(amazon-adsystem|device-metrics-([a-z]{2,2})-([0-4])\.amazon)\.com$
+(^|\.)(clicks\.beap\.bc\.yahoo|ads\.yahoo|global\.ard\.yahoo|nfo\.yahoo|qcomgeo2)\.com$
+(^|\.)(izatcloud|webtrekk|doubleclick)\.net$
+(^|\.)(dynamicyield|exacttarget|ads\.a4cdn\.contentabc\|cnzz|clksite|clickability|appnexus|aliyuncs|000webhostapp|adlegend|adsafeprotected|adsame|adsymptotic|adx1)\.com$
+analytic[s]?
+ad[sxmn]?([k]mob|track|vert[s](|is?[e]?(|er|ing|ement))[s]?|im[g](|age)|choice|serv|sdk|mobile|ervice|system)?[sxmnc]?[0-9]?

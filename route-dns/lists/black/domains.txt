@@ -5,3 +5,10 @@ beacon
 firebaselogging-pa.googleapis.com
 firebaseremoteconfig.googleapis.com
 crashlyticsreports-pa.googleapis.com
+,gcp.gvt6.com
+,gcp.gvt5.com
+,gcp.gvt4.com
+,gcp.gvt3.com
+,gcp.gvt2.com
+,gcp.gvt1.com
+,gcp.gvt.com

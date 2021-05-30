@@ -16,8 +16,6 @@ bash $PROG/update.unbound-config.sh
 bash $PROG/add_cache_interfaces.sh
 #bash $PROG/doq-and-failover-bootstrap-server.sh
 
-systemctl mask unbound
-
 systemctl restart ctp-dns
 systemctl restart doh-server
 systemctl restart nginx

@@ -20,6 +20,7 @@ blocklist-source = [
         {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/nextdns/routedns.blocklist.domain.list", cache-dir = "/var/cache/ctp-dns"},
         {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/typosquat/routedns.blocklist.domain.list", cache-dir = "/var/cache/ctp-dns"},
         {format = "domain", source = "/var/tmp/ctp-dns/lists/black/domains.txt", cache-dir = "/var/cache/ctp-dns"},
+        {format = "regexp", source = "/var/tmp/ctp-dns/lists/black/regex.txt", cache-dir = "/var/cache/ctp-dns"},
 
 #       {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/oisd/routedns.blocklist.domain.list", cache-dir = "/var/cache/ctp-dns"},
 #       {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/nrd/routedns.blocklist.domain.list", cache-dir = "/var/cache/ctp-dns"},

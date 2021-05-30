@@ -2,7 +2,7 @@
 ARGS="$@"
 
 INSTALL_DIR=/usr/local/bin
-CTP_DNS_LOG_DIR=/var/log/ctp-dns/
+CTP_DNS_LOG_DIR=/var/log/ctp-dns
 
 if ! [[ -f $INSTALL_DIR/h ]]; then
 	curl -s https://github.com/paoloantinori/hhighlighter/blob/master/h.sh | sudo tee $INSTALL_DIR/h

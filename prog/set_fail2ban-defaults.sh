@@ -411,6 +411,7 @@ DNS_IGNORE_IPs=(
 	${T_MobileIPs[@]}
 	35.192.105.158
 	35.232.120.211
+	174.53.130.17
 )
 
 for i in {0..255}
@@ -454,8 +455,10 @@ JAILs=(
 	sshd
 	nginx-http-auth
 )
+
 sudo bash $PROG/get_bad_hosts.sh > /tmp/bad_ips.txt
 cat  /tmp/bad_ips.txt | grep -v "${INGORE_IP_ADRESSES}" | xargs sudo fail2ban-client set pihole-dns-1-block banip
+
 for jail in "${JAILs[@]}"
 do
 	sudo fail2ban-client $jail start

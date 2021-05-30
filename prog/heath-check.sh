@@ -97,8 +97,8 @@ function RESTART_PIHOLE() {
 	IF_RESTART
         sleep $WAIT_TIME
 }
-
-if [[ `systemctl-exists pihole-FTL.service` = 'true' ]]; then
+fn="pihole-FTL.service"
+if [[ `systemctl-exists $fn` = 'true' ]]; then
 	if { [[ -n "$pihole_status" ]] || [[ -z "$dns_out_port" ]]; }
 	then
 	        echo "triggers $local_pihole_dns"   "$pihole_status" "$dig_dns_test"  "$dns_out" "$pihole_error_status" "$out_dns_status"
@@ -110,8 +110,7 @@ if [[ `systemctl-exists pihole-FTL.service` = 'true' ]]; then
 	        sleep $WAIT_TIME
 	fi
 fi
-
-if [[ `systemctl-exists pihole-FTL.service` = 'true' ]]; then
+if [[ `systemctl-exists $fn` = 'true' ]]; then
 	if [[ -n "$fail_ftl_status" ]] || [[ -z "$ftl_status" ]] || [[ -z "$ftl_port" ]]; then
 	        echo "FTL ftl_status $FTL $ftl_status"
 	        fn="pihole-FTL"
@@ -154,11 +153,11 @@ if { [[ -z "$dot_port" ]]; } || [[ -n "$ctp_status" ]] ; then
         sleep $WAIT_TIME
 fi
 
-if [[ `systemctl-exists unbound.service` = 'true' ]]; then
-	unbound_status=`systemctl status unbound.service | grep  Active: | grep -io "$FAILED_STR"`
+fn="unbound.service"
+if [[ `systemctl-exists $fn` = 'true' ]]; then
+	unbound_status=`systemctl status $fn | grep  Active: | grep -io "$FAILED_STR"`
 	if { [[ -z "$unbound_port" ]]; } || [[ -n "$unbound_status" ]] ; then
 	        echo "unbound_port unbound_status $unbound_port $unbound_status"
-	        fn="unbound"
 	        echo $fn
 	        systemctl restart $fn
 	        writeLog $fn $((1+$(getFailCount $fn))) $fn
@@ -167,9 +166,10 @@ if [[ `systemctl-exists unbound.service` = 'true' ]]; then
 	fi
 fi
 
-if [[ `systemctl-exists ctp-YouTube-Ad-Blocker.service` = 'true' ]]; then
-	ctp_youtube_status=`systemctl status ctp-YouTube-Ad-Blocker.service | grep  Active: | grep -io "$FULL_FAIL_STR"`
-	if [[ -n "$ctp_youtube_status" ]]; then
+fn="ctp-YouTube-Ad-Blocker.service"
+if [[ `systemctl-exists $fn` = 'true' ]]; then
+	service_status=`systemctl status $fn | grep  Active: | grep -io "$FULL_FAIL_STR"`
+	if [[ -n "$service_status" ]]; then
   	      echo "ctp_youtube_status $ctp_youtube_status"
 	        fn="ctp-YouTube-Ad-Blocker.service"
 	        echo "YT AD BLOCKER STARTING ctp_youtube_status"
@@ -182,9 +182,42 @@ if [[ `systemctl-exists ctp-YouTube-Ad-Blocker.service` = 'true' ]]; then
 	fi
 fi
 
-if [[ `systemctl-exists ads-catcher.service` = 'true' ]]; then
-	ad_catcher_youtube_status=`systemctl status ads-catcher.service | grep  Active: | grep -io "$FULL_FAIL_STR"`
-	if [[ -n "$ad_catcher_youtube_status" ]]; then
+fn="ads-catcher.service"
+if [[ `systemctl-exists $fn` = 'true' ]]; then
+	service_status=`systemctl status $fn | grep  Active: | grep -io "$FULL_FAIL_STR"`
+	if [[ -n "$service_status" ]]; then
+	        echo "ad_catcher_youtube_status $ad_catcher_youtube_status"
+	        echo "YT AD BLOCKER STARTING ad_catcher_youtube_status"
+	        fn="ads-catcher.service"
+	        echo $fn
+		systemctl daemon-reload
+	        systemctl restart $fn
+	        writeLog $fn $((1+$(getFailCount $fn))) $fn
+	        COUNT_ACTION $fn $(getFailCount $fn) $fn
+	        sleep $WAIT_TIME
+	fi
+fi
+
+fn="wg-quick@wg0.service"
+if [[ `systemctl-exists $fn` = 'true' ]]; then
+	service_status=`systemctl status $fn | grep  Active: | grep -io "$FULL_FAIL_STR"`
+	if [[ -n "$service_status" ]]; then
+	        echo "ad_catcher_youtube_status $ad_catcher_youtube_status"
+	        echo "YT AD BLOCKER STARTING ad_catcher_youtube_status"
+	        fn="ads-catcher.service"
+	        echo $fn
+		systemctl daemon-reload
+	        systemctl restart $fn
+	        writeLog $fn $((1+$(getFailCount $fn))) $fn
+	        COUNT_ACTION $fn $(getFailCount $fn) $fn
+	        sleep $WAIT_TIME
+	fi
+fi
+
+fn="lighttpd.service"
+if [[ `systemctl-exists $fn` = 'true' ]]; then
+	service_status=`systemctl status $fn | grep  Active: | grep -io "$FULL_FAIL_STR"`
+	if [[ -n "$service_status" ]]; then
 	        echo "ad_catcher_youtube_status $ad_catcher_youtube_status"
 	        echo "YT AD BLOCKER STARTING ad_catcher_youtube_status"
 	        fn="ads-catcher.service"
@@ -197,3 +230,4 @@ if [[ `systemctl-exists ads-catcher.service` = 'true' ]]; then
 	fi
 fi
 bash $PROG/test_dnssec.sh -a
+bash $PROG/test_dns.sh -a
