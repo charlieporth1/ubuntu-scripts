@@ -56,6 +56,14 @@ export THIS_PID=${BASHPID:-$$}
 export IP_REGEX="([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})"
 export IP_REGEX_FULL="(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])"
 
+if ! command -v pihole &> /dev/null
+then
+        export IS_PIHOLE=true
+        export IS_MASTER=true
+        export MASTER=true
+
+fi
+
 DO=debug_override
 
 function KILL_FILE() {
@@ -242,3 +250,11 @@ function systemctl-exists() {
 	fi
 }
 export -f systemctl-exists
+
+function filter_ip_address_array() {
+        INPUT_ARRAY=( "$@" )
+        # Sort IPs
+        printf "%s\n" "${INPUT_ARRAY[@]}" | sort -t . -k 3,3n -k 4,4n | uniq
+}
+
+export -f filter_ip_address_array

@@ -28,7 +28,18 @@ bootstrap-address = "174.53.130.17"
 address = "https://master.dns.ctptech.dev:4443/dns-query"
 protocol = "doh"
 bootstrap-address = "174.53.130.17"
+[resolvers.ctp-dns-home-dtls]
+address = "master.dns.ctptech.dev:853"
+protocol = "dtls"
+bootstrap-address = "174.53.130.17"
+[resolvers.ctp-dns-gcp-dtls]
+address = "gcp.ctptech.dev:853"
+protocol = "dtls"
+bootstrap-address = "35.192.105.158"
 
+# The bootstrap-resolver is loaded first and used for endpoint lookups
+# as well as blocklist addresses. If the bootstrap-resolver itself uses
+# a hostname, it's possible to configure a bootstrap-address for it.
 [bootstrap-resolver]
 address = "1.1.1.1:853"
 protocol = "dot"
@@ -55,17 +66,26 @@ answer = ["IN HINFO RFC8482 ANY obsoleted!"]
 [routers.root-router]
 routes = [
   { type = "ANY", resolver="static-rfc8482" }, # Send queries of type ANY to a static responder
-  { resolver = "ctp-dns-blocklist" },             # All other queries are forwarded
+  { resolver = "ctp-dns-ecs" },             # All other queries are forwarded
 ]
 
 
 [groups.static-servfail]
 type   = "static-responder"
-answer = [" IN A 35.232.120.211", " IN A 35.192.105.158 "]
+answer = [ " IN A 35.232.120.211 ", " IN A 35.192.105.158 " ]
 # Response code: 0 = NOERROR, 1 = FORMERR, 2 = SERVFAIL, 3 = NXDOMAIN, 5 = REFUSED... 
 # https://datatracker.ietf.org/doc/html/rfc2929#section-2.3
 rcode  = 3
 
 [groups.ctp-dns-failover]
-resolvers = [ "ctp-dns-group", "ctp-dns-home-dot", "ctp-dns-gcp-dot", "ctp-dns-home-doh-post", "ctp-dns-home-doh-get", "ctp-dns-ip-home-udp", "ctp-dns-ip-home-tcp", "ctp-dns-ip-gcp-2-udp", "ctp-dns-ip-gcp-2-tcp", "ctp-dns-ip-gcp-1-udp", "ctp-dns-ip-gcp-1-tcp", "ctp-dns-home-doh-post-raw", "ctp-dns-home-doh-get-raw", "ctp-dns-home-dot-raw" ]
+resolvers = [ "ctp-dns-group", "ctp-dns-home-dot", "ctp-dns-gcp-dot", "ctp-dns-home-doh-post", "ctp-dns-home-doh-get", "ctp-dns-ip-home-udp", "ctp-dns-ip-home-tcp", "ctp-dns-ip-gcp-2-udp", "ctp-dns-ip-gcp-2-tcp", "ctp-dns-ip-gcp-1-udp", "ctp-dns-ip-gcp-1-tcp", "ctp-dns-home-doh-post-raw", "ctp-dns-home-doh-get-raw", "ctp-dns-home-dot-raw" , "ctp-dns-gcp-dtls", "ctp-dns-home-dtls" ]
 type = "fail-back"
+
+
+[groups.ctp-dns-ecs]
+type = "ecs-modifier"
+resolvers = ["ctp-dns-blocklist"]
+ # "add", "delete", "privacy". Defaults to "" which does nothing.
+ecs-op = "add"
+ecs-prefix4 = 24
+ecs-prefix6 = 64

@@ -5,7 +5,12 @@ SCRIPT_DIR=`realpath .`
 mkdir -p /etc/letsencrypt/live/vpn.ctptech.dev
 
 git clone https://github.com/folbricht/routedns.git
-cd routedns/cmd/routedns && go install
+cd routedns
+git stash
+git pull -ff
+git switch update-dtls
+cd cmd/routedns
+sudo /snap/bin/go install
 
 source $SCRIPT_DIR/.project_env.sh
 ROUTE=$PROG/route-dns

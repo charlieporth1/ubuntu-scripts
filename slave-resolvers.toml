@@ -50,14 +50,21 @@ address = "https://master.dns.ctptech.dev:4443/dns-query{?dns}"
 protocol = "doh"
 doh = { method = "GET" }
 bootstrap-address = "35.192.105.158"
-
 [resolvers.ctp-dns-master-doh-gcp-quic]
 address = "https://master.dns.ctptech.dev:1443/dns-query"
 protocol = "doh"
 transport = "quic"
 bootstrap-address = "35.192.105.158"
+[resolvers.ctp-dns-master-home-dtls]
+address = "master.dns.ctptech.dev:853"
+protocol = "dtls"
+bootstrap-address = "174.53.130.17"
+[resolvers.ctp-dns-master-gcp-dtls]
+address = "master.dns.ctptech.dev:853"
+protocol = "dtls"
+bootstrap-address = "35.192.105.158"
+
 
 [groups.ctp-dns-group]
-resolvers = [ "ctp-dns-master-home-dot", "ctp-dns-master-home-quic", "ctp-dns-master-doh-home-post", "ctp-dns-master-doh-home-get", "ctp-dns-master-doh-gcp-quic", "ctp-dns-master-doh-gcp-get", "ctp-dns-master-gcp-dot", "ctp-dns-master-gcp-quic", "ctp-dns-master-doh-gcp-post" ]
 type = "fastest"
-
+resolvers = [ "ctp-dns-master-home-dot", "ctp-dns-master-home-quic", "ctp-dns-master-doh-home-post", "ctp-dns-master-doh-home-get", "ctp-dns-master-doh-gcp-quic", "ctp-dns-master-doh-gcp-get", "ctp-dns-master-gcp-dot", "ctp-dns-master-gcp-quic", "ctp-dns-master-doh-gcp-post", "ctp-dns-master-gcp-dtls", "ctp-dns-master-home-dtls" ]

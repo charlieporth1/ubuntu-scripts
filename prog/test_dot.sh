@@ -15,11 +15,11 @@ QUERY=www.google.com
 # kdig -d @gcp.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
 # kdig -d @ctp-vpn.local +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
 # kdig -d @aws.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
-IP_REGEX="([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})"
+IP_REGEX="((([0-9]{1,3})\.){4})"
 
 WAIT_TIME=16.5s #TO RESTART NEXT
-TIMEOUT=16 #DNS
-TRIES=8
+TIMEOUT=32 #DNS
+TRIES=16
 HOST=dns.ctptech.dev
 
 EDNS=174.53.130.17

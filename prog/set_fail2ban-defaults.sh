@@ -1,6 +1,8 @@
 #!/bin/bash
 source $PROG/all-scripts-exports.sh
 CONCURRENT
+FILE_NAME='ban_ignore_ip_list'
+DEFUALT_FILE=/tmp/$FILE_NAME.txt
 # regex test
 
 # fail2ban-regex /var/log/pihole.log /etc/fail2ban/filter.d/pihole-dns-1-block.conf
@@ -9,33 +11,10 @@ CONCURRENT
 # fail2ban-regex -D --verbosity=4 /var/log/ctp-dns/fail2ban-test.log  /etc/fail2ban/filter.d/ctp-dns-1-block.conf
 # fail2ban-regex -D --verbosity=4 /var/log/ctp-dns/error.log  /etc/fail2ban/filter.d/ctp-dns-1-block.conf
 #$PROG/lookup_ip_address_business.sh --ip=
-IP_REGEX="([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})"
 curl -o /tmp/phising_ip_addres.csv  https://openphish.com/samples/ip_feed.csv
 
-if ! command -v pihole &> /dev/null
-then
-	export IS_PIHOLE=true
-fi
-
-function filter_ip_address_array() {
-	INPUT_ARRAY=( "$@" )
- 	# Sort IPs
-	printf "%s\n" "${INPUT_ARRAY[@]}" | sort -t . -k 3,3n -k 4,4n | uniq
-}
-declare -a DEFAULT_DNS_SERVERS=(
-	1.0.0.1
-	1.1.1.1
-	8.8.8.8
-	8.8.4.4
-	9.9.9.9
-	192.168.44.1
-	192.168.40.1
-	127.0.0.1
-)
-filter_ip_address_array "${DEFAULT_DNS_SERVERS[@]}"
-
-declare -a PIHOLE_BAN_IPs
-PIHOLE_BAN_IPs=(
+declare -a MY_PIHOLE_BAN_IPs
+MY_PIHOLE_BAN_IPs=(
 	38.123.125.111
 	140.177.226.236
 	140.177.226.236/8
@@ -47,7 +26,6 @@ PIHOLE_BAN_IPs=(
 	176.118.193.114/8
 	216.239.190.172/8
 	46.48.207.53/8
-	$(curl https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/fail2ban)
 	91.223.64.203/8
 	71.84.58.32/8
 	45.157.235.194/8
@@ -212,6 +190,12 @@ PIHOLE_BAN_IPs=(
  	104.140.188.10/16
 	74.82.47.6/16
 )
+declare -a PIHOLE_BAN_IPs=(
+	$(curl https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/fail2ban)
+	${MY_PIHOLE_BAN_IPs[@]}
+
+)
+
 PIHOLE_BAN_IPs=( $( filter_ip_address_array "${PIHOLE_BAN_IPs[@]}" ) )
 
 if [[ $IS_PIHOLE == 'true' ]]; then
@@ -221,226 +205,12 @@ fi
 
 sudo fail2ban-client set ctp-dns-1-block banip ${PIHOLE_BAN_IPs[@]}
 
-for ip in ${PIHOLE_BAN_IPs[@]}
+iptables -N BAN-IPS
+for ip in ${MY_PIHOLE_BAN_IPs[@]}
 do
-	iptables -N BAN-IPS
-	iptables -A INPUT -s $ip -p tcp -j DROP
-	iptables -A INPUT -s $ip -p udp -j DROP
+	iptables -A INPUT -s $ip -p tcp -j DROP -w
+	iptables -A INPUT -s $ip -p udp -j DROP -w
 done
-#	122.248.234.0/24
-#	63.143.0.0/16
-
-declare -a UPTIME_IGNORE_IPs=(
-	122.248.234.23/24
-	63.143.42.248/24
-)
-declare -a UNI_IGNORE_IPs
-UNI_IGNORE_IP=(
-	192.168.44.29/16
-	102.168.44.250
-	192.168.44.29
-	17.130.53.174
-	158.105.192.35
-	9.123.168.192
-	8.123.168.192
-	51.44.168.192
-	250.44.168.192
-	192.168.127.10
-	192.168.44.1
-	192.168.40.1
-	0.0.0.0
-	172.58.87.88    #
-	172.58.156.197  # *
-	172.195.69.25
-	127.0.0.0/8
-	174.53.130.17 # Home
-	192.168.0.0/16
-	192.168.44.0/24
-	192.168.40.0/24
-	169.254.169.254
-	10.66.66.1
-	10.66.66.0/24
-	$(bash $PROG/get_ext_ip.sh dns.ctptech.dev | grep -o "${IP_REGEX}")
-	$(bash $PROG/get_ext_ip.sh home.ctptech.dev | grep -o "${IP_REGEX}")
-	$(bash $PROG/get_ext_ip.sh gcp.ctptech.dev | grep -o "${IP_REGEX}")
-	$(bash $PROG/get_ext_ip.sh master.dns.ctptech.dev | grep -o "${IP_REGEX}")
-	$(bash $PROG/get_ext_ip.sh --curent-ip | grep -o "${IP_REGEX}")
-	$(bash $PROG/get_network_devices_ip_address.sh --loop --wlan | grep -o "${IP_REGEX}")
-	home.ctptech.dev
-	azure.ctptech.dev
-	aws.ctptech.dev
-	gcp.ctptech.dev
-	dns.ctptech.dev
-	master.dns.ctptech.dev
-)
-UNI_IGNORE_IPs=( $( filter_ip_address_array "${UNI_IGNORE_IPs[@]}" ) )
-
-declare -a TMobileIPs
-T_MobileIPs=(
-$(curl https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/mobile.tmobile.list)
-$(curl https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/mobile.tmobileus.list)
-$(curl https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/white.tmobileus.ip.list)
-74.125.42.39
-172.56.0.0/8
-172.100.0.0/16
-172.195.0.0/16
-172.56.0.0/16
-100.128.0.0/9
-162.160.0.0/11
-172.32.0.0/11
-172.58.0.0/16   # T-Mobile
-172.58.87.88    #
-172.58.156.197  # *
-172.195.69.25
-100.128.0.0/9
-162.160.0.0/11
-162.186.0.0/15
-162.190.0.0/16
-162.191.0.0/16
-172.32.0.0/11
-172.56.0.0/16
-172.56.10.0/23
-172.56.12.0/23
-172.56.132.0/24
-172.56.134.0/24
-172.56.136.0/24
-172.56.138.0/24
-172.56.140.0/24
-172.56.14.0/23
-172.56.143.0/24
-172.56.146.0/24
-172.56.16.0/23
-172.56.20.0/23
-172.56.2.0/23
-172.56.22.0/23
-172.56.26.0/23
-172.56.28.0/23
-172.56.30.0/23
-172.56.34.0/23
-172.56.36.0/23
-172.56.38.0/23
-172.56.40.0/23
-172.56.4.0/23
-172.56.42.0/23
-172.56.44.0/23
-172.56.6.0/23
-172.58.0.0/15
-172.58.0.0/21
-172.58.104.0/21
-172.58.120.0/21
-172.58.136.0/21
-172.58.144.0/21
-172.58.152.0/21
-172.58.16.0/21
-172.58.168.0/21
-172.58.184.0/21
-172.58.200.0/21
-172.58.216.0/21
-172.58.224.0/21
-172.58.232.0/21
-172.58.24.0/21
-172.58.32.0/21
-172.58.40.0/21
-172.58.56.0/21
-172.58.64.0/21
-172.58.72.0/21
-172.58.80.0/21
-172.58.8.0/21
-172.58.88.0/21
-172.58.96.0/21
-174.141.208.0/20
-206.29.188.0/23
-206.29.190.0/23
-208.54.0.0/17
-208.54.100.0/22
-208.54.104.0/24
-208.54.108.0/22
-208.54.112.0/24
-208.54.117.0/24
-208.54.127.0/24
-208.54.128.0/19
-208.54.134.0/23
-208.54.136.0/23
-208.54.138.0/23
-208.54.140.0/23
-208.54.142.0/24
-208.54.143.0/24
-208.54.144.0/20
-208.54.145.0/24
-208.54.147.0/24
-208.54.153.0/24
-208.54.16.0/24
-208.54.17.0/24
-208.54.18.0/24
-208.54.19.0/24
-208.54.20.0/24
-208.54.2.0/24
-208.54.33.0/24
-208.54.34.0/24
-208.54.35.0/24
-208.54.36.0/24
-208.54.37.0/24
-208.54.39.0/24
-208.54.40.0/24
-208.54.4.0/24
-208.54.44.0/24
-208.54.5.0/24
-208.54.66.0/24
-208.54.67.0/24
-208.54.70.0/24
-208.54.7.0/24
-208.54.74.0/24
-208.54.75.0/24
-208.54.76.0/22
-)
-
-TMobileIPs=( $( filter_ip_address_array "${TMobileIPs[@]}" ) )
-
-declare -a DNS_IGNORE_IPs
-DNS_IGNORE_IPs=(
-        ${UPTIME_IGNORE_IPs[@]}
-	${DEFAULT_DNS_SERVERS[@]}
-	0.0.0.0
-	172.53.0.0/16
-	172.58.0.0/16
-	172.100.122.109
-	192.168.40.0/24 # Internal servers
-	192.168.99.9    #
-	10.128.0.9      # *
-	${UNI_IGNORE_IP[@]}
-	${T_MobileIPs[@]}
-	35.192.105.158
-	35.232.120.211
-	174.53.130.17
-)
-
-for i in {0..255}
-do
-	IP_PRIVATE=192.168.1.$i
-	IP_PRIVATE_1=192.168.44.$i
-	IP_PRIVATE_2=192.168.43.$i
-	IP_PRIVATE_3=192.168.40.$i
-	IP_NON=0.0.0.$i
-	DNS_IGNORE_IPs=(
-		${DNS_IGNORE_IPs[@]}
-		$IP_NON $IP_PRIVATE
-		$IP_PRIVATE_1
-		$IP_PRIVATE_2
-		$IP_PRIVATE_3
-	)
-done
-DNS_IGNORE_IPs=( $( filter_ip_address_array "${DNS_IGNORE_IPs[@]}" ) )
-IP_REGEX="((([0-9]{1,3})\.){4})"
-INGORE_IP_ADRESSES=$(bash $PROG/grepify.sh $(echo "${DNS_IGNORE_IPs[@]}"))
-
-sudo lastb -a | grep -oE "$IP_REGEX" | grep -v "${INGORE_IP_ADRESSES}" | xargs sudo fail2ban-client set sshd banip
-
-if [[ -n "$IS_PIHOLE" ]]; then
-	PIHOLE_F2B_REGEX=`grep 'failregex' /etc/fail2ban/filter.d/pihole-dns-1-block.conf | awk -F= '{print $2}' | cut -d '<' -f -1`
-
-	grep -E "$PIHOLE_F2B_REGEX" /var/log/pihole.log | grepip --exclude-reserved --only-matching | grep -v "${INGORE_IP_ADRESSES}" | xargs sudo fail2ban-client set pihole-dns-1-block banip
-	grep -E "$PIHOLE_F2B_REGEX" /var/log/pihole.log | grepip --exclude-reserved --only-matching | grep -v "${INGORE_IP_ADRESSES}" | xargs sudo fail2ban-client set sshd banip
-fi
 
 declare -a JAIL_PIHOLEs
 JAIL_PIHOLEs=(
@@ -456,19 +226,12 @@ JAILs=(
 	nginx-http-auth
 )
 
-sudo bash $PROG/get_bad_hosts.sh > /tmp/bad_ips.txt
-cat  /tmp/bad_ips.txt | grep -v "${INGORE_IP_ADRESSES}" | xargs sudo fail2ban-client set pihole-dns-1-block banip
-
 for jail in "${JAILs[@]}"
 do
 	sudo fail2ban-client $jail start
 	sudo fail2ban-client set $jail banip ${PIHOLE_BAN_IPs[@]}
 done
 
-for jail in "${JAILs[@]}"
-do
-	sudo fail2ban-client $jail start
-	sudo fail2ban-client set $jail addignoreip ${DNS_IGNORE_IPs[@]}
-	sudo fail2ban-client set $jail unbanip ${DNS_IGNORE_IPs[@]}
-done
+sudo bash $PROG/set_unban_ip.sh
+
 sudo iptables-save

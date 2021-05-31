@@ -1,6 +1,6 @@
 #!/bin/bash
 for env in $( cat /etc/environment ); do export $(echo $env | sed -e 's/"//g'); done
-source /etc/environment 
+source /etc/environment
 echo 1 > /proc/sys/net/ipv4/ip_forward
 
 touch /var/log/unbound.log
@@ -29,4 +29,3 @@ sudo bash $PROG/cpu_group_all_.sh
 if [[ -f /swapfile ]]; then
 	swapon /swapfile
 fi
-

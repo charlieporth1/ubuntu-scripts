@@ -5,15 +5,15 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/us
 echo "Running DNS TEST"
 [[ "$1" == "-a" ]] && isAuto="+short"
 
-WAIT_TIME=2.5s # TO RESTART NEXT
-TIMEOUT=8 # DNS
-TRIES=5
+WAIT_TIME=16.5s # TO RESTART NEXT
+TIMEOUT=24 # DNS
+TRIES=8
 HOST=dns.ctptech.dev
 
 EDNS=174.53.130.17
 
 QUERY=www.google.com
-IP_REGEX="([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})"
+IP_REGEX="((([0-9]{1,3})\.){4})"
 
 DNS_IP=$(bash $PROG/grepify.sh $(bash $PROG/get_ext_ip.sh))
 ROOT_NETWORK=`bash $PROG/get_network_devices_ip_address.sh --grepify`

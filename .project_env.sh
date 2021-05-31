@@ -69,7 +69,7 @@ function is_user_sure() {
 	set -e
 	read -r -p "Are you sure you want to install this script? The user: $USER will be the default admin with the home dir of $HOME  [y/N]" response
 	case "$response" in
-    		[yY][eE][sS]|[yY]) 
+    		[yY][eE][sS]|[yY])
         		echo "Ok...continuing"
 			set +e
         		;;

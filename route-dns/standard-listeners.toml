@@ -13,12 +13,12 @@ resolver = "ctp-dns-cached"
 server-crt = "/etc/letsencrypt/live/vpn.ctptech.dev/fullchain.pem"
 server-key = "/etc/letsencrypt/live/vpn.ctptech.dev/nopassword.key"
 
-#[listeners.ctp-dtls]
-#address = ":853"
-#protocol = "dtls"
-#resolver = "ctp-dns-cached"
-#server-crt = "/etc/letsencrypt/live/vpn.ctptech.dev/fullchain.pem"
-#server-key = "/etc/letsencrypt/live/vpn.ctptech.dev/nopassword.key"
+[listeners.ctp-dtls]
+address = ":853"
+protocol = "dtls"
+resolver = "ctp-dns-cached"
+server-crt = "/etc/letsencrypt/live/vpn.ctptech.dev/fullchain.pem"
+server-key = "/etc/letsencrypt/live/vpn.ctptech.dev/nopassword.key"
 
 [listeners.ctp-dot]
 address = ":853"

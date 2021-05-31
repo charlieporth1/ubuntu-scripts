@@ -1,215 +1,3 @@
-curl --resolve master.dns.ctptech.dev:443:174.53.130.17 'https://master.dns.ctptech.dev/.well-known/acme-challenge/PsJZK_OsWocWzg2rjw6xJVU7Zn8zGjHnUyuZWINyquc'
-sudo systemctl restart nginx
-curl --resolve master.dns.ctptech.dev:443:174.53.130.17 'https://master.dns.ctptech.dev/.well-known/acme-challenge/PsJZK_OsWocWzg2rjw6xJVU7Zn8zGjHnUyuZWINyquc'
-sudo chown -R root:root /etc/nginx/ssl
-sudo systemctl restart nginx
-curl --resolve master.dns.ctptech.dev:443:174.53.130.17 'https://master.dns.ctptech.dev/.well-known/acme-challenge/PsJZK_OsWocWzg2rjw6xJVU7Zn8zGjHnUyuZWINyquc'
-restorecon -v -R /etc/nginx
-sudo apt install policycoreutils
-restorecon -v -R /etc/nginx
-sudo systemctl restart nginx
-curl --resolve master.dns.ctptech.dev:443:174.53.130.17 'https://master.dns.ctptech.dev/.well-known/acme-challenge/PsJZK_OsWocWzg2rjw6xJVU7Zn8zGjHnUyuZWINyquc'
-sudo restorecon -v -R /etc/nginx
-sudo systemctl restart nginx
-curl --resolve master.dns.ctptech.dev:443:174.53.130.17 'https://master.dns.ctptech.dev/.well-known/acme-challenge/PsJZK_OsWocWzg2rjw6xJVU7Zn8zGjHnUyuZWINyquc'
-curl --resolve master.dns.ctptech.dev:443:192.168.44.1 'https://master.dns.ctptech.dev/.well-known/acme-challenge/PsJZK_OsWocWzg2rjw6xJVU7Zn8zGjHnUyuZWINyquc'
-curl --resolve master.dns.ctptech.dev:443:174.53.130.17 'https://master.dns.ctptech.dev/.well-known/acme-challenge/PsJZK_OsWocWzg2rjw6xJVU7Zn8zGjHnUyuZWINyquc'
-chmod 710 /etc/nginx/ssl/fullchain.pem"
-chmod 710 /etc/nginx/ssl/fullchain.pem
-sudo chmod 710 /etc/nginx/ssl/fullchain.pem
-sudo systemctl restart nginx
-curl --resolve master.dns.ctptech.dev:443:174.53.130.17 'https://master.dns.ctptech.dev/.well-known/acme-challenge/PsJZK_OsWocWzg2rjw6xJVU7Zn8zGjHnUyuZWINyquc'
-sudo chown -R www-data:www-data /etc/nginx/ssl
-sudo systemctl restart nginx
-curl --resolve master.dns.ctptech.dev:443:174.53.130.17 'https://master.dns.ctptech.dev/.well-known/acme-challenge/PsJZK_OsWocWzg2rjw6xJVU7Zn8zGjHnUyuZWINyquc'
-sudo chown -R root:root /etc/nginx/ssl
-sudo chown -R www-data:www-data /etc/nginx/ssl
-chmod -R 777 /etc/nginx/ssl/
-sudo chmod -R 777 /etc/nginx/ssl/
-sudo systemctl restart nginx
-curl --resolve master.dns.ctptech.dev:443:174.53.130.17 'https://master.dns.ctptech.dev/.well-known/acme-challenge/PsJZK_OsWocWzg2rjw6xJVU7Zn8zGjHnUyuZWINyquc'
-sudo chown -R root:root /etc/nginx/ssl
-sudo systemctl restart nginx
-curl --resolve master.dns.ctptech.dev:443:174.53.130.17 'https://master.dns.ctptech.dev/.well-known/acme-challenge/PsJZK_OsWocWzg2rjw6xJVU7Zn8zGjHnUyuZWINyquc'
-sudo chmod -R 710 /etc/nginx/ssl/
-sudo systemctl restart nginx
-curl --resolve master.dns.ctptech.dev:443:174.53.130.17 'https://master.dns.ctptech.dev/.well-known/acme-challenge/PsJZK_OsWocWzg2rjw6xJVU7Zn8zGjHnUyuZWINyquc'
-sudo chmod -R 640 /etc/nginx/ssl/
-sudo chmod -R 644 /etc/nginx/ssl/
-curl --resolve master.dns.ctptech.dev:443:174.53.130.17 'https://master.dns.ctptech.dev/.well-known/acme-challenge/PsJZK_OsWocWzg2rjw6xJVU7Zn8zGjHnUyuZWINyquc'
-sudo chmod -R 666 /etc/nginx/ssl/
-curl --resolve master.dns.ctptech.dev:443:174.53.130.17 'https://master.dns.ctptech.dev/.well-known/acme-challenge/PsJZK_OsWocWzg2rjw6xJVU7Zn8zGjHnUyuZWINyquc'
-sudo chmod -R 755 /etc/nginx/ssl/
-curl --resolve master.dns.ctptech.dev:443:174.53.130.17 'https://master.dns.ctptech.dev/.well-known/acme-challenge/PsJZK_OsWocWzg2rjw6xJVU7Zn8zGjHnUyuZWINyquc'
-sudo chmod -R 744 /etc/nginx/ssl/
-curl --resolve master.dns.ctptech.dev:443:174.53.130.17 'https://master.dns.ctptech.dev/.well-known/acme-challenge/PsJZK_OsWocWzg2rjw6xJVU7Zn8zGjHnUyuZWINyquc'
-sudo chmod -R 555 /etc/nginx/ssl/
-curl --resolve master.dns.ctptech.dev:443:174.53.130.17 'https://master.dns.ctptech.dev/.well-known/acme-challenge/PsJZK_OsWocWzg2rjw6xJVU7Zn8zGjHnUyuZWINyquc'
-sudo chmod -R 655 /etc/nginx/ssl/
-curl --resolve master.dns.ctptech.dev:443:174.53.130.17 'https://master.dns.ctptech.dev/.well-known/acme-challenge/PsJZK_OsWocWzg2rjw6xJVU7Zn8zGjHnUyuZWINyquc'
-sudo chmod -R 650 /etc/nginx/ssl/
-curl --resolve master.dns.ctptech.dev:443:174.53.130.17 'https://master.dns.ctptech.dev/.well-known/acme-challenge/PsJZK_OsWocWzg2rjw6xJVU7Zn8zGjHnUyuZWINyquc'
-sudo chmod -R 655 /etc/nginx/ssl/
-sudo certbot certonly -n         --webroot -w /var/www/html         --staple-ocsp         --elliptic-curve secp256r1         --key-type rsa         --rsa-key-size 2048                --no-redirect         --cert-name $HOST_SERVER         --domain home.ctptech.dev  --domain home.dns.ctptech.dev \
-sudo certbot certonly -n         --webroot -w /var/www/html         --staple-ocsp         --elliptic-curve secp256r1         --key-type rsa         --rsa-key-size 2048                --no-redirect         --cert-name $HOST_SERVER         --domain home.ctptech.dev  --domain home.dns.ctptech.dev  --test-cert --dry-run
-sudo certbot certonly -n         --webroot -w /var/www/html         --staple-ocsp         --elliptic-curve secp256r1         --key-type rsa         --rsa-key-size 2048                --no-redirect         --cert-name $HOST_SERVER         --domain home.ctptech.dev  --domain home.dns.ctptech.dev
-cd Pihole-Slave-Install/
-sudo pihole -t
-clear
-sudo pihole -t
-sudo ./update.sh --master
-sudo pihole -g
-sudo nginx -t
-pihole -t
-systemctl status pihole-FTL.service 
-pihole status
-systemctl status ctp-dns.service 
-systemctl restart ctp-dns.service 
-sudo systemctl restart ctp-dns.service 
-systemctl status ctp-dns.service 
-sudo bash /mnt/HDD/Programs/test_dot.sh --mo
-systemctl status ctp-dns.service 
-systemctl status nginx
-cd Pihole-Slave-Install/
-sudo git pull
-sudo ./update.sh --master
-systemctl status pihole-FTL.service 
-systemctl status ctp-dns.service 
-cd Pihole-Slave-Install/
-sudo nano /mnt/HDD/Programs/set_fail2ban-defaults.sh
-sudo nano /etc/nginx/sites-enabled/home.conf 
-history | grep curl
-ls ~/
-sudo nano /etc/nginx/sites-enabled/home.conf 
-nmap -T4 localhost
-ls
-ls ..
-sudo crontab -e
-ls
-ls phoneinfoga/
-sudo docker ps
-cd phoneinfoga/
-ls
-nano README.md 
-cat .git/config 
-curl 'http://localhost:5000/'
-ls
-nano Dockerfile 
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo nano $sites/doh
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo systemctl restart nginx
-curl 'http://localhost:5000/'
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo systemctl restart nginx
-curl 'http://localhost:5000/'
-sudo docker ps
-sudo docker logs 26105ce1dca6
-sudo docker ps
-sudo docker logs 2ca8f660d921
-sudo docker ps
-sudo docker stop 26105ce1dca6
-sudo docker rm  26105ce1dca6
-curl 'http://localhost:5000/'
-sudo docker ps
-sudo docker logs 2ca8f660d921
-curl 'http://localhost:5000/'
-curl 'http://localhost:5000/numbers'
-curl 'http://localhost:5000/numbers/9523341587/scan/local'
-sudo docker logs 2ca8f660d921
-curl 'http://localhost:5000/numbers/+19523341587/scan/local'
-nano start_osint.sh 
-nano ~/start_stream.sh
-nano ~/ACESTREAM/run.sh 
-sudo nano start_osint.sh 
-./phoneinfoga 
-./phoneinfoga serve -d
-sudo nano start_osint.sh 
-docker run -it          --restart on-failure         -p 5001:80         -d         sundowndev/phoneinfoga serve         --port 80
-sudo docker run -it          --restart on-failure         -p 5001:80         -d         sundowndev/phoneinfoga serve         --port 80
-sudo docker ps
-sudo nano start_osint.sh 
-curl 'http://localhost:5001/'
-sudo nano start_osint.sh 
-sudo docker rm 4b3cd5e9d6b3
-sudo docker stop 4b3cd5e9d6b3
-sudo docker rm 4b3cd5e9d6b3
-curl 'http://localhost:5001/'
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo systemctl restart nginx
-curl 'http://localhost:5000/'
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo systemctl restart nginx
-sudo nginx -t
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo nginx -t
-sudo systemctl restart nginx
-curl 'http://localhost:5000/'
-sudo systemctl restart nginx
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo systemctl restart nginx
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo systemctl restart nginx
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo systemctl restart nginx
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo systemctl restart nginx
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo systemctl restart nginx
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo systemctl restart nginx
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo systemctl restart nginx
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo systemctl restart nginx
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo systemctl restart nginx
-sudo docker ps
-sudo docker logs -f 2ca8f660d921
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo systemctl restart nginx
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo systemctl restart nginx
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo systemctl restart nginx
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo systemctl restart nginx
-sudo docker logs -f 2ca8f660d921
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo docker logs -f 2ca8f660d921
-sudo systemctl restart nginx
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo systemctl restart nginx
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo systemctl restart nginx
-sudo docker logs -f 2ca8f660d921
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo systemctl restart nginx
-sudo docker logs -f 2ca8f660d921
-sudo nano /etc/nginx/sites-enabled/home.conf 
-curl 'http://127.0.0.1:5000/'
-sudo docker logs -f 2ca8f660d921
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo systemctl restart nginx
-sudo nginx -t
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo nginx -t
-sudo systemctl restart nginx
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo systemctl restart nginx
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo systemctl restart nginx
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo systemctl restart nginx
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo systemctl restart nginx
-tail -f /var/log/nginx/home-*.log
-sudo docker logs -f 2ca8f660d921
-tail -f /var/log/nginx/home-*.log
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo systemctl restart nginx
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo systemctl restart nginx
 sudo nano /etc/nginx/sites-enabled/home.conf 
 sudo systemctl restart nginx
 sudo nano /etc/nginx/sites-enabled/home.conf 
@@ -908,3 +696,1540 @@ dig pizzaseo.net
 dig pizzaseo.com
 dns2doh --A pizzaseo.com
 curl --resolve dns.ctptech.dev:443:35.192.105.158 -w '\n' "https://dns.ctptech.dev:4443/dns-query?dns=$(dns2doh --A pizzaseo.com)"  | hexdump -C
+systemctl status ctp-dns.service 
+tail -f /var/log/health-check.log 
+sudo nano /mnt/HDD/Programs/test_doh.sh
+tail -f /var/log/health-check.log 
+cd Pihole-Slave-Install/
+sudo ./update.sh --master
+sudo fail2ban-client  status nginx-auth
+sudo fail2ban-client  status
+sudo fail2ban-client  status nginx-http-auth
+sudo fail2ban-client  unbanip 192.168.44.1
+sudo fail2ban-client  unbanip nginx-http-auth 192.168.44.1
+sudo fail2ban-client unban nginx-http-auth 192.168.44.1
+sudo fail2ban-client ignoreip nginx-http-auth 192.168.44.1
+sudo nano /etc/fail2ban/jail.conf 
+sudo ./update.sh --master --no-restart
+sudo tail -f /var/log/health-check.
+sudo tail -f /var/log/health-check.log
+systemctl status ctp-dns.service 
+systemctl status ctp-dns | grep -oE 'de?activating'`
+systemctl status ctp-dns | grep -oE 'de?activating'
+systemctl status ctp-dns.service 
+systemctl restart ctp-dns.service 
+sudo systemctl restart ctp-dns.service 
+systemctl status ctp-dns | grep -oE 'de?activating'`
+sudo systemctl daemon-reload
+sudo systemctl restart ctp-dns.service 
+htop
+sudo systemctl restart ctp-dns.service 
+systemctl status ctp-dns | grep -oE 'de?activating'`
+systemctl status ctp-dns | grep -oE 'de?activating'
+systemctl status ctp-dns 
+systemctl status ctp-dns | grep -oE 'de?activating'
+systemctl status ctp-dns | grep -oE '(de|)activating'
+systemctl status ctp-dns | grep -oE '(de)activating'
+systemctl status ctp-dns | grep -oE '(de|)activating'
+tail -f /var/log/nginx/home-*.log
+which doh
+systemctl status ctp-dns 
+sudo tail -f /var/log/health-check.log
+sudo git pull
+cp -rf /etc/nginx/sites-enabled/doh.bk $sites/doh
+sudocp -rf /etc/nginx/sites-enabled/doh.bk $sites/doh
+sudo cp -rf /etc/nginx/sites-enabled/doh.bk $sites/doh
+systemctl restart nginx
+sudo systemctl restart nginx
+sudo nano /mnt/HDD/Programs/health-check.sh
+sudo nano /mnt/HDD/Programs/pm.health-check.sh
+git pull
+sudo git pull
+sudo tail -f /var/log/health-check.log
+dig @home.ctptech.dev
+sudo nano /mnt/HDD/Programs/pm.health-check.sh
+sudo tail -f /var/log/health-check.log
+systemctl status doh-server.service 
+systemctl status ctp-dns 
+$PROG/grepify.sh $(bash $PROG/get_ext_ip.sh)
+bash $PROG/get_ext_ip.sh --current-ip
+EXTENRAL_IP=`bash $PROG/get_ext_ip.sh --current-ip`
+HOST=dns.ctptech.dev
+QUERY=www.google.com
+TIMEOUT=5
+TRIES=2
+IP_REGEX="([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})"
+timeout $TIMEOUT doh -rdns.ctptech.dev:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST/dns-query:4443"
+doh_remote_ctp=`timeout $TIMEOUT doh -rdns.ctptech.dev:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST/dns-query:4443"`
+echo "$doh_remote_ctp" | grepip --ipv4 -o | xargs
+echo "$doh_remote_ctp" | grepip --ipv4 -o
+echo "$doh_remote_ctp" | grepip  -o 
+sudo git pull
+systemctl status ctp-dns 
+systemctl status ctp-dns q
+systemctl status ctp-dns 
+sudo nano /mnt/HDD/Programs/pm.health-check.sh
+systemctl status ctp-dns 
+sudo fail2ban-client status pihole-dns-1-block
+sudo fail2ban-client status ctp-dns-1-block
+systemctl status fail2ban.service 
+sudo fail2ban-client start ctp-dns-1-block
+sudo nano /etc/environment
+sudo git pull
+ls config/fail2ban/filter.d/ctp-dns-1-block.conf 
+ls /etc/
+ls /etc/fail2ban/filter.d/ctp-dns-1-block.conf 
+sudo ./update.sh 
+sudo ./copy_config.sh 
+sudo ./update.sh  --master
+sudo nano /etc/environment
+sudo ./update.sh  --master
+sudo nano /etc/environment
+[[ -e $IS_MASTER ]]
+[[ -e $IS_MASTER ]] && true
+[[ -e $IS_MASTER ]] && echo true
+[[ -e IS_MASTER ]] && echo true
+[[  -n $IS_MASTER ]] && echo true
+[[  -v $IS_MASTER ]] && echo true
+sudo ./update.sh  --master
+rm -rf /home/ubuntuserver/Programs/copy_gravity.sh
+cd Pihole-Slave-Install/
+sudo ln -s ~/Pihole-Slave-Install/master/copy_gravity.sh /home/ubuntuserver/Programs/copy_gravity.sh
+sudo ln -s ~/Pihole-Slave-Install/master/*.sh /home/ubuntuserver/Programs/copy_gravity.sh
+sudo ln -s ~/Pihole-Slave-Install/master/copy_master_pihole_config.sh /home/ubuntuserver/Programs/copy_gravity.sh
+sudo ln -s ~/Pihole-Slave-Install/master/copy_master_pihole_config.sh /home/ubuntuserver/Programs/copy_master_pihole_config.sh 
+rm -rf /home/ubuntuserver/Programs/copy_master_pihole_config.sh
+sudo ln -s ~/Pihole-Slave-Install/master/copy_master_pihole_config.sh /home/ubuntuserver/Programs/copy_master_pihole_config.sh 
+sudo ln -s ~/Pihole-Slave-Install/master/nginx_doh_setup.sh /home/ubuntuserver/Programs/nginx_doh_setup.sh
+sudo ./setup/master_config.sh 
+systemctl status ctp-dns 
+systemctl status pihole-FTL.service 
+sudo git pull
+sudo fail2ban-client start ctp-dns-1-block 
+ls /etc/fail2ban/jail.d/ctp-dns-1-block.conf 
+sudo fail2ban-client reload
+sudo nano  /etc/fail2ban/jail.d/ctp-dns-1-block.conf 
+sudo fail2ban-client reload
+sudo nano  /etc/fail2ban/jail.d/ctp-dns-1-block.conf 
+sudo nano  /etc/fail2ban/filter.d/ctp-dns-1-block.conf 
+sudo ./copy_config.sh 
+systemctl status ctp-dns 
+systemctl status ctp-dns.service 
+sudo fail2ban-client status ctp-dns-1-block | grep 54
+sudo fail2ban-client status ctp-dns-1-block | 
+sudo fail2ban-client status ctp-dns-1-block 
+sudo fail2ban-client status pihole-dns
+sudo fail2ban-client status pihole-dns | 192
+sudo fail2ban-client status pihole-dns | grep 192
+sudo fail2ban-client status pihole-dns | grep 174
+sudo fail2ban-client status pihole-dns | grep 54
+sudo fail2ban-client status pihole-dns | grep 20
+sudo fail2ban-client status pihole-dns | grep 20\.
+sudo fail2ban-client status pihole-dns | grep 20
+sudo fail2ban-client status pihole-dns | grep 35
+sudo fail2ban-client status pihole-dns | grep 35.192
+sudo fail2ban-client status pihole-dns | grep 192.35
+sudo fail2ban-client status pihole-dns-1-block
+sudo fail2ban-client status pihole-dns-1-block | grep 192
+sudo fail2ban-client status pihole-dns-1-block | grep 174
+systemctl status ctp-dns.service 
+sudo nano /mnt/HDD/Programs/pm.health-check.sh
+sudo bash /mnt/HDD/Programs/pm.health-check.sh
+systemctl status ctp-dns.service 
+curl --insecure -H 'accept: application/dns-json' -sw '\n' "http://localhost:8053/dns-query?name=www.google.com&type=A"
+systemctl status doh-server.service 
+systemctl restart doh-server.service 
+sudo systemctl restart doh-server.service 
+curl --insecure -H 'accept: application/dns-json' -sw '\n' "http://localhost:8053/dns-query?name=www.google.com&type=A"
+sudo nano /etc/dns-over-https/doh-server.conf
+sudo systemctl restart doh-server.service 
+curl --insecure -H 'accept: application/dns-json' -sw '\n' "http://localhost:8053/dns-query?name=www.google.com&type=A"
+systemctl status doh-server.service 
+sudo nano /etc/dns-over-https/doh-server.conf
+sudo systemctl restart doh-server.service 
+curl --insecure -H 'accept: application/dns-json' -sw '\n' "http://localhost:8053/dns-query?name=www.google.com&type=A"
+sudo tail -f /var/log/health-check.log
+sudo nano /etc/dns-over-https/doh-server.conf
+sudo tail -f /var/log/health-check.log
+sudo systemctl start ctp-dns.service
+sudo tail -f /var/log/health-check.log
+history | grep dig
+ kdig -t RRSIG -d @gcp.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev pizzaseo +dnssec +edns
+systemctl status nginx
+systemctl status ctp-dns.service 
+systemctl status pihole-FTL.service 
+systemctl status ctp-dns.service 
+sudo nano /etc/dns-over-https/doh-server.conf
+systemctl status ctp-dns.service 
+systemctl status pihole-FTL.service 
+systemctl status ctp-dns.service 
+systemctl status nginx
+ kdig -t RRSIG -d @gcp.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev pizzaseo +dnssec +edns
+ kdig -t RRSIG -d @gcp.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev pizzaseo.com +dnssec +edns
+ kdig -t RRSIG -d @gcp.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +dnssec +edns
+tail -f /var/log/nginx/doh-*.log
+sudo ./update.sh --master
+sudo cp -rf /etc/nginx/sites-enabled/doh.bk /etc/nginx/sites-enabled/doh
+git pull
+sudo git pull
+sudo ./update.sh --master --no-restart
+cd Pihole-Slave-Install/
+sudo ./update.sh --master --no-restart
+ls
+pihole -t
+sudo ./apply_config.sh 
+sudo su
+sudo ./apply_config.sh 
+systemctl statusss ctp-dns
+systemctl status ctp-dns
+nano ~/ctp-dns.service 
+sudo nano ~/ctp-dns.service 
+sudo fail2ban-client statuss 
+sudo fail2ban-client status
+sudo fail2ban-client status sshd
+sudo fail2ban-client set sshd unban 192.168.44.29
+sudo fail2ban-client set sshd unbanip 192.168.44.29
+last -l
+last -10
+last -20
+sudo nano /etc/bash.bashrc 
+cd Pihole-Slave-Install/
+ls
+git pull
+sudo ./install.sh --oac
+history | grep dig
+ dig -t RRSIG -d @gcp.ctptech.dev +tcp www.google.com +dnssec +edns
+ dig -t RRSIG  @gcp.ctptech.dev +tcp pizzaseo.com +dnssec +edns
+pihole -t
+cd Pihole-Slave-Install/
+git pull
+sudo git pull
+sudo ./install.sh --oac
+systemctl status ctp-dns.service 
+systemctl status nginx
+sudo nano /etc/nginx/sites-enabled/home.conf 
+dnsproxy --help
+dnsproxy -v
+dnsproxy -V
+dnsproxy --version
+git clone https://github.com/gwen001/pentest-tools
+cd pentest-tools/
+ls
+python domain-finder.py 
+python domain-finder.py  --help
+ls
+pip3 install -r requirements3.txt 
+python domain-finder.py  --help
+python3 domain-finder.py  --help
+python3 domain-finder.py -c google.com
+cd ..
+git clone https://github.com/shadowcodex/domain-finder
+cd domain-finder/
+ls
+python3  domainfinder.py 
+whois
+whois google.com
+python3  domainfinder.py 
+nano domain_log.txt 
+nano domain*
+ls
+gem install fortune-finder
+ssudo gem install fortune-finder
+sudo gem install fortune-finder
+fortune-finder
+fortune-finder --help
+cd ..
+cd Pihole-Slave-Install/
+git pull
+sudo git pull
+./reload_ctp-dns.sh 
+systemctl status ctp-dns
+sudo su
+cd Pihole-Slave-Install/
+ls
+sudo git pull
+sudo ./copy_config.sh 
+sudo bash master/copy_master_pihole_config.sh 
+sudo nano /home/charlieporth1_gmail_com/Programs/heath-check.sh
+mv /tmp/heath-check.sh ~/Programs
+sudo mv /tmp/heath-check.sh ~/Programs
+sudo crontab -e
+ls
+nao prog/health-check.sh 
+nano prog/health-check.sh 
+sudo nano /mnt/HDD/Programs/health-check.sh
+sudo git pull 
+ls
+ls master/
+sudo bash  master/copy_master_pihole_config.sh 
+mv /tmp/start_processes.sh /home/charlieporth1_gmail_com/Programs/start_processes.sh 
+ls /tmp/heath-check.sh 
+sudo nano  /tmp/heath-check.sh 
+sudo nano /tmp/start_processes.sh 
+sudo mv /tmp/start_processes.sh /home/charlieporth1_gmail_com/Programs/start_processes.sh 
+sudo mv /tmp/start_processes.sh /home/charlieporth1_gmail_com/Programs/
+sudo cp -rf /tmp/start_processes.sh /home/charlieporth1_gmail_com/Programs/
+sudo cp -rf /tmp/start_processes.sh $PROG
+sudo cp -rf /tmp/{start_processes.sh,heath-check.sh} $PROG
+sudo git pull
+sudo crontab -e
+sudo ./update.sh 
+sudo nano /etc/dnsmasq.d/88-custom-dns-servers.conf 
+sudo rm -rf /etc/unbound/unbound.conf.d/{03-auth-dns.conf,05*}
+cd Pihole-Slave-Install/
+sudo ./update.sh 
+sudo fail2ban-client status
+sudo fail2ban-client status sshd
+sudo fail2ban-client status sshd | grep 192
+git pull
+sudo fail2ban-client status sshd | grep 192
+sudo ./update.sh 
+htop
+sudo nano $prog/cpu_groups.sh
+cgset
+sudo apt install cgroup-tools
+sudo nano $prog/cpu_groups.sh
+htop
+sudo nano /mnt/HDD/Programs/cpu_group.sh
+sudo nano ACESTREAM/Dockerfile 
+sudo nano ACESTREAM/run.sh 
+sudo nano ~/start_osint.sh 
+htop
+sudo reboot
+sudo 
+pihole -t
+systemctl status pihole-FTL
+systemctl restart pihole-FTL
+sudo systemctl restart pihole-FTL
+mkdir -p /var/cache/dnsmasq/
+sudo mkdir -p /var/cache/dnsmasq/
+sudo nano /mnt/HDD/Programs/start-config.sh
+sudo nano /etc/rc.local
+sudo systemctl restart pihole-FTL
+sudo mkdir -p /var/cache/dnsmasq/
+sudo systemctl restart pihole-FTL
+pihole restartdns
+touch  /var/cache/dnsmasq/dnsmasq_dnssec_timestamp
+sudo touch  /var/cache/dnsmasq/dnsmasq_dnssec_timestamp
+pihole restartdns
+cd Pihole-Slave-Install/
+sudo git pull
+htop
+pihole -g
+pihole -g -r
+sudo bash /mnt/HDD/Programs/copy_gravity.sh 
+sudo nano /mnt/HDD/Programs/copy_gravity.sh 
+ rclone -vvv copy remote:SERVER_DATA/gravity.db /etc/pihole
+sudo  rclone -vvv copy remote:SERVER_DATA/gravity.db /etc/pihole
+ n/#n/
+dig --help
+dig --help all
+dig -h | more
+pihole restartdns
+lolcat
+pihole restartdns
+cd Pihole-Slave-Install/
+pihole restartdns
+sudo nano /etc/dnsmasq.d/01-pihole.conf 
+sudo nano /etc/dnsmasq.d/10-servers.conf 
+pihole restartdns
+htop
+qq
+systemctl stop fail2ban
+sudo nano /etc/logrotate.d/ctp-dns 
+sudo nano /etc/logrotate.conf 
+htop
+killall fail2ban
+sudo killall fail2ban-server
+sudo systemctl stop fail2ban
+htop
+htop
+pihole disable
+pihole status
+pihole enable
+systemctl stop pihole-FTL
+killal pihole-FTL
+killall pihole-FTL
+sudo systemctl stop pihole-FTL
+killall ps
+sudo killall ps
+sudo killall pgrep
+sudo apt purge haproxy
+sudo apt purge haproxy dns2tcpd memcached
+rm -rf /var/lib/dpkg/lock-
+rm -rf /var/lib/dpkg/lock*
+sudo rm -rf /var/lib/dpkg/lock*
+sudo apt purge haproxy dns2tcpd memcached
+killall bash
+sudo killall bash
+sudo killall netdata
+pihole -t
+sudo apt purge haproxy dns2tcpd memcached lxcfs 
+htop
+sudo crontab -e
+killall awk
+sudo killall awk
+sudo killall awk ps grep bash pgrep 
+sudo nano /mnt/HDD/Programs/Hourly.sh 
+sudo nano /etc/nginx/nginx.conf
+systemctl restart nginx
+sudo systemctl restart nginx
+sudo nano /etc/nginx/nginx.conf
+sudo systemctl restart nginx
+killall pm
+killall `pgrep pm`
+sudo killall `pgrep pm`
+sudo killall `pgrep pm | xargs`
+sudo killall `pgrep pm\. | xargs`
+sudo killall `pgrep pm\.hea | xargs`
+sudo killall `pgrep pm.hea | xargs`
+sudo killall `pgrep 'pm.hea' | xargs`
+sudo nano /mnt/HDD/Programs/Hourly.sh 
+htop
+pgrep pm
+pgrep pm.heal
+pgrep pm.hea
+pgrep pm.h
+pgrep pm
+pgrep bash
+sudo nano /mnt/HDD/Programs/Hourly.sh 
+sudo nano /etc/nginx/nginx.conf
+sudo systemctl restart nginx
+sudo ./update.sh 
+htop
+]
+pihole restartdns
+sudo dpkg --configure -a
+sudo apt purge haproxy dns2tcpd memcached lxcfs 
+pihole -t
+sudo nano /etc/dnsmasq.d/10-servers.conf 
+pihole -t
+sudo bash $prog/ctp-dn
+exit
+sudo nano /etc/cron.d/ubuntu-server-fill_cache 
+pihole restartdns
+cd Pihole-Slave-Install/
+systemctl status unbound
+systemctl enable unbound
+sudo systemctl enable unbound
+sudo systemctl unmask unbound
+sudo nano /etc/dnsmasq.d/88-custom-dns-servers.conf 
+sudo nano /etc/dnsmasq.d/10-servers.conf 
+sudo nano /etc/dnsmasq.d/88-custom-dns-servers.conf 
+sudo nano /etc/cron.d/ubuntu-server-fill_cache 
+sudo nano /etc/cron.d/ubuntu-server-load_to_cache 
+pihole -t
+sudo nano /etc/pihole/pihole-FTL.conf 
+sudo nano /etc/pihole/setupVars.conf
+pihole -w stackoverflow.com
+sudo nano /etc/pihole/setupVars.conf
+pihole -w stackoverflow.com
+cd Pihole-Slave-Install/
+sudo git pull
+htop
+sudo nano /mnt/HDD/Programs/Hourly.sh 
+ dig www.ads.com @gcp.ctptech.dev
+ dig www.ads.com @dns.ctptech.dev
+systemctl status ctp-dns
+sudo nano ~/ctp-dns.service 
+sudo crontab -e
+  cp -rf /home/ubuntuserver/ctp-dns.service  /home/ubuntuserver/Programs/ && sudo systemctl daemon-reload
+sudo  cp -rf /home/ubuntuserver/ctp-dns.service  /home/ubuntuserver/Programs/ && sudo systemctl daemon-reload
+systemctl status ctp-dns
+cd Pihole-Slave-Install/
+sudo git pull
+ifconfig
+sudo git pull
+cd Pihole-Slave-Install/
+sudo git pull
+pihole -t
+sudo crontab -e
+gcloud compute instances stop --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521"
+sudo crontab -e
+gcloud compute instances start  --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521"
+systemctl status ctp-dns.service 
+gcloud compute instances start  --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521"
+sudo nano /mnt/HDD/Programs/ctp-dns.service 
+gcloud compute instances stop --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521" &&  && gcloud compute instances start  --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521"
+gcloud compute instances stop --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521"  && gcloud compute instances start  --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521"
+systemctl status ctp-dns.service 
+sudo su
+cd Pihole-Slave-Install/
+sudo git pull
+sud git stash
+sudo git pull
+sudo git stash
+sudo git pull
+rm -rf prog/ctp-dns.service
+sudo git pull
+sudo bash /mnt/HDD/Programs/copy_certs.sh
+ls
+sudo bash setup/dns-route.sh 
+ls 
+ls /home/ubuntuserver/Programs/route-dns/slave-resolvers.toml:
+ls /home/ubuntuserver/Programs/route-dns
+ls prog/route-dns/
+ln -s ~/Pihole-Slave-Install/prog/route-dns/ $PROG/
+ln -s ~/Pihole-Slave-Install/prog/route-dns/* $PROG/
+sudo git pull
+sudo bash setup/dns-route.sh 
+sudo nano /mnt/HDD/Programs/route-dns/slave-listeners.toml 
+sudo git pull
+sudo bash setup/dns-route.sh 
+sudo nano /mnt/HDD/Programs/route-dns/slave-
+sudo nano /mnt/HDD/Programs/route-dns/slave-listeners.toml 
+sudo git stash
+git pull
+sudo git pull
+sudo bash setup/dns-route.sh 
+nano /mnt/HDD/Programs/route-dns/slave-listeners.toml 
+ROUTE=$PROG/route-dns
+ rm -rf $ROUTE/slave-listeners.toml
+sudo git pull
+sudo bash setup/dns-route.sh 
+sudo git pull
+sudo bash setup/dns-route.sh 
+nano /mnt/HDD/Programs/route-dns/slave-resolvers.toml 
+sudo nano /mnt/HDD/Programs/route-dns/slave-resolvers.toml 
+sudo bash setup/dns-route.sh 
+sudo git pull
+sudo nano /mnt/HDD/Programs/route-dns/slave-resolvers.toml 
+sudo bash setup/dns-route.sh 
+sudo nano /mnt/HDD/Programs/route-dns/slave-resolvers.toml 
+sudo git pull
+sudo bash setup/dns-route.sh 
+sudo nano /mnt/HDD/Programs/route-dns/slave-resolvers.toml 
+sudo bash setup/dns-route.sh 
+sudo nano /mnt/HDD/Programs/route-dns/slave-resolvers.toml 
+git stash
+sudo git stash
+sudo git pull
+sudo bash setup/dns-route.sh 
+sudo nano /mnt/HDD/Programs/route-dns/slave-resolvers.toml 
+sudo bash /mnt/HDD/Programs/reload_ctp-dns.sh
+systemctl status ctp-dns
+sudo crontab -e
+systemctl status ctp-dns
+sudo rm -rf /mnt/HDD/Programs/ctp-dns.service 
+cd Pihole-Slave-Install/
+sudo git pull
+sudo bash setup/dns-route.sh 
+sudo bash reload_ctp-dns.sh 
+ls /etc/systemd/system/ctp-dns.service
+sudo rm -rf /etc/systemd/system/ctp-dns.service
+sudo bash reload_ctp-dns.sh 
+sudo bash setup/new_server.sh 
+sudo bash reload_ctp-dns.sh 
+ls $PROG/ctp-dns.service
+ls prog/ctp-dns.service 
+ln -s ~/Pihole-Slave-Install/prog/ctp-dns.service $PROG/
+sudo bash reload_ctp-dns.sh 
+systemctl status ctp-dns
+systemctl restart ctp-dns
+sudo systemctl restart ctp-dns
+tail -f /var/log/ctp-dns/*.log
+sudo su
+sud osu
+sudo su
+cd Pihole-Slave-Install/
+sudo git pull
+sudo systemctl restart ctp-dns
+systemctl status ctp-dns
+tail -f /var/log/ctp-dns/*.log
+touch /var/cache/ctp-dns/b976be1f0298ecec514ac4c879fbadff689928e48af0a49fc2f05ff4e3a9e8ff
+sudo touch /var/cache/ctp-dns/b976be1f0298ecec514ac4c879fbadff689928e48af0a49fc2f05ff4e3a9e8ff
+tail -f /var/log/ctp-dns/*.log
+sudo systemctl restart ctp-dns
+tail -f /var/log/ctp-dns/*.log
+sudo touch /var/cache/ctp-dns/b976be1f0298ecec514ac4c879fbadff689928e48af0a49fc2f05ff4e3a9e8ff
+sudo systemctl restart ctp-dns
+tail -f /var/log/ctp-dns/*.log
+sudo touch /var/cache/ctp-dns/b976be1f0298ecec514ac4c879fbadff689928e48af0a49fc2f05ff4e3a9e8ff
+sudo systemctl restart ctp-dns
+tail -f /var/log/ctp-dns/*.log
+sudo systemctl restart ctp-dns
+tail -f /var/log/ctp-dns/*.log
+systemctl status ctp-dns
+tail -f /var/log/ctp-dns/*.log
+sudo touch /var/cache/ctp-dns/7213abfbe3a861b484d58dbb37852fedad000d42df45d86465442b765a48d25a
+tail -f /var/log/ctp-dns/*.log
+sudo git pull
+tail -f /var/log/ctp-dns/*.log
+systemctl status ctp-dns
+systemctl status ctp-dnsqq
+systemctl status ctp-dnsq
+systemctl status ctp-dns
+journalctl -xe
+systemctl status ctp-dns
+tail -f /var/log/health-check.log 
+cd Pihole-Slave-Install/
+sudo git pull
+tail -f /var/log/health-check.log 
+sudo git pull
+tail -f /var/log/health-check.log 
+sudo git pull
+which grepip
+curl -s -w '\n' "http://localhost/dns-query?name=www.google.com&type=A"
+curl -s -w '\n' "http://localhost:8053/dns-query?name=www.google.com&type=A"
+curl -s -H 'accept: application/dns-message' "https://dns.ctptech.dev/dns-query?dns=q80BAAABAAAAAAAAA3d3dwdleGFtcGxlA2NvbQAAAQAB"
+curl -H 'accept: application/dns-message' "https://dns.ctptech.dev/dns-query?dns=q80BAAABAAAAAAAAA3d3dwdleGFtcGxlA2NvbQAAAQAB"
+curl -H 'accept: application/dns-message' "https://dns.ctptech.dev/dns-query?dns=q80BAAABAAAAAAAAA3d3dwdleGFtcGxlA2NvbQAAAQAB" --ouput -
+curl -H 'accept: application/dns-message' "https://dns.ctptech.dev/dns-query?dns=q80BAAABAAAAAAAAA3d3dwdleGFtcGxlA2NvbQAAAQAB" --output -
+curl -s -w '\n' "http://localhost:8053/dns-query?name=www.google.com&type=A"
+curl  --insecure -s -w '\n' "http://localhost:8053/dns-query?name=www.google.com&type=A"
+sudo git pull
+systemctl status ctp-dns
+sudo nano /mnt/HDD/Programs/route-dns/route-dns.toml 
+tail -f /var/log/health-check.log 
+sudo git pull
+cd Pihole-Slave-Install/
+sudo git pull
+source ~/.bashrc
+sudo git pull
+systemctl status ctp-dns
+sudo systemctl restart ctp-dns
+systemctl status ctp-dns
+ls
+sudo nano /mnt/HDD/Programs/route-dns/route-dns.toml 
+sudo bash /mnt/HDD/Programs/copy_master_pihole_config.sh 
+tail -f /var/log/health-check.log 
+pihole -t
+cd Pihole-Slave-Install/
+ls
+sudo bash /mnt/HDD/Programs/copy_master_pihole_config.sh 
+mv /tmp/heath-check.sh $PROG/
+sudo mv /tmp/heath-check.sh $PROG/
+sudo git pull
+ls
+ifconfig
+sudo nano /etc/pihole/setupVars.conf
+systemctl status unbound
+systemctl enable unbound
+sudo systemctl enable unbound
+sudo systemctl unmask unbound
+ls /etc/unbound
+sudo apt install unbound
+sudo dpkg --configure -a
+sudo rm -rf /var/lib/dpkg/updates/
+sudo dpkg --configure -a
+mkdir /var/lib/dpkg/updates/
+sudo mkdir /var/lib/dpkg/updates/
+sudo dpkg --configure -a
+sudo apt install unbound
+ls $unbound
+ls /etc/unbound/root.hints 
+nano /etc/unbound/root.hints 
+sudo rm -rf  /etc/unbound/unbound.conf.d/*
+sudo nano /mnt/HDD/Programs/Hourly.sh 
+mkdir -p /var/cache/dnsmasq/
+cd Pihole-Slave-Install/
+pihole restartdns
+gi
+sudo git pull
+sudo nano /mnt/HDD/Programs/Hourly.sh 
+ps -aux | grep 'pm.stal\|test_' | awk '{print $2}' | xargs sudo kill -9
+systemctl status ctp-dns
+ps -aux | grep 'pm.stal\|test_' | awk '{print $2}' | xargs sudo kill -9
+killall ps
+sudo killall ps
+sudo nano /mnt/HDD/Programs/Hourly.sh 
+sudo killall awk ps grep pgrep
+sudo nano /mnt/HDD/Programs/Hourly.sh 
+sudo crontab -e
+ps -aux | grep 'pm.stal\|test_' | awk '{print $2}' | xargs sudo kill -9
+ps -aux | grep 'pm.stal\|test_' | awk '{print $2}' | xargs sudo kill -8
+ps -aux | grep 'pm.stal\|test_' | awk '{print $2}' | xargs sudo kill -9
+ps -aux | grep 'pm.stal\|test_\|pm.hea' | awk '{print $2}' | xargs sudo kill -9
+ps -aux | grep 'pm.stal\|test_\|pm.hea' | grep -v 'grep' | awk '{print $2}' | xargs sudo kill -9
+sudo nano /mnt/HDD/Programs/Hourly.sh 
+htop
+sudo crontab -e
+sudo apt purge memcachd
+sudo apt purge lxcfs memcached
+sudo apt purge haproxy privproxy
+sudo apt purge haproxy privoxy postfix dns2tcpd
+htop
+wget https://raw.githubusercontent.com/netdata/netdata/master/packaging/installer/netdata-uninstaller.sh
+chmod +x ./netdata-uninstaller.sh
+sudo apt purge haproxy privoxy postfix dns2tcp
+htop
+rm -rf /var/lib/haproxy/dev
+sudo rm -rf /var/lib/haproxy/
+./netdata-uninstaller.sh --yes --env 
+sudo systemctl stop netdata
+htop
+sudo ./netdata-uninstaller.sh --yes --env 
+systemctl disable netdata
+sudo systemctl disable netdata
+htop
+systemctl status ctp-ds
+systemctl status ctp-dns
+sudo systemctl restart ctp-dns
+systemctl status ctp-dns
+htop
+systemctl status unbound
+sudo systemctl restart unbound
+systemctl status unbound
+dig @127.0.0.1 -p 5053
+ls
+ls $unbconf
+ls /etc/unbound/unbound.conf.d/
+cd Pihole-Slave-Install/
+sudo git pull
+sudo ./copy_config.sh 
+ls
+ls /etc/unbound/unbound.conf.d/
+sudo systemctl restart unbound
+sudo unbound-checkconf 
+sudo nano /etc/unbound/unbound.conf.d/06-infosec.conf
+sudo git pull && sudo ./copy_config.sh 
+sudo git pull
+ping google.com
+sudo nano /etc/resolv.conf
+systemctl disable unbound-resolvconf.service 
+sudo systemctl disable unbound-resolvconf.service 
+sudo git pull
+sudo nano /etc/resolv.conf
+sudo ./copy_config.sh 
+sudo unbound-checkconf 
+sudo nano /etc/unbound/unbound.conf.d/06-infosec.conf
+sudo unbound-checkconf 
+mkdir /etc/unbound/local.d/
+sudo mkdir /etc/unbound/local.d/
+sudo bash /mnt/HDD/Programs/update_ads.sh
+sudo unbound-checkconf 
+nano /etc/unbound/local.d/adblock.conf
+sudo nano /etc/unbound/local.d/adblock.conf
+sudo nano /etc/unbound/unbound.conf.d/adblock.conf
+sudo unbound-checkconf 
+sudo nano /etc/unbound/unbound.conf.d/adblock.conf
+sudo rm -rf /etc/unbound/unbound.conf.d/adblock.conf
+sudo unbound-checkconf 
+sudo rm -rf /etc/unbound/unbound.conf.d/01-auth-rec-server.conf 
+sudo unbound-checkconf 
+sudo bash /mnt/HDD/Programs/update.unbound-config.sh
+sudo git pull
+systemctl mask unbound-resolvconf.service 
+sudo systemctl mask unbound-resolvconf.service 
+sudo nano /etc/resolv.conf
+systemctl status resolvconf
+sudo systemctl status resolvconf
+sudo systemctl start  resolvconf
+sudo systemctl status resolvconf
+sudo unbound-checkconf 
+sudo nano /mnt/HDD/Programs/update.unbound-config.sh
+sudo git pull
+sudo bash /mnt/HDD/Programs/update.unbound-config.sh
+sudo unbound-checkconf 
+ls /var/lib/unbound/
+pihole -t
+wget https://www.internic.net/domain/named.root -qO- | sudo tee /var/lib/unbound/root.hints
+nano /var/lib/unbound/root.hints
+wget https://www.internic.net/domain/named.root -qO-
+curl https://www.internic.net/domain/named.root
+ping www.internic.net
+sudo nano /etc/resolv.conf
+sudo nano /etc/resolvconf/resolv.conf.d/head 
+sudo nano /etc/resolvconf/resolv.conf.d/base 
+sudo nano /etc/resolv.conf
+systemctl restart resolvconf
+sudo systemctl restart resolvconf
+ping www.internic.net
+curl https://www.internic.net/domain/named.root
+wget https://www.internic.net/domain/named.root -qO- | sudo tee /var/lib/unbound/root.hints
+ping www.internic.net
+nano /var/lib/unbound/root.hints
+sudo unbound-checkconf 
+systemctl mask unbound-resolvconf.service 
+sudo systemctl restart unbound.service 
+sudo systemctl status unbound.service 
+ dig @127.0.0.1 -p 5053
+sudo bash /mnt/HDD/Programs/copy_master_pihole_config.sh 
+cd Pihole-Slave-Install/
+sudo git pull
+sudo nano /etc/resolv.conf
+systemctl status resolvconf
+sudo systemctl status resolvconf
+sudo systemctl restart resolvconf
+sudo systemctl status resolvconf
+sudo nano /etc/resolv.conf
+/sbin/resolvconf --enable-updates
+sudo /sbin/resolvconf --enable-updates
+sudo nano /etc/resolv.conf
+/sbin/resolvconf --enable-updates --help
+sudo /sbin/resolvconf --enable-updates 
+nano /lib/systemd/system/resolvconf.service
+systemctl status unbound-resolvconf.service 
+sudo systemctl status resolvconf
+sudo systemctl enable resolvconf
+sudo systemctl status resolvconf
+sudo nano /lib/systemd/system/resolvconf.service
+sudo nano /etc/resolv.conf
+systemd-resolve --status
+sudo systemd-resolve --status
+sudo systemd-resolve 
+sudo systemd-resolve --status
+sudo systemd-resolve restart
+sudo systemd-resolve --help
+sudo nano /etc/resolv.conf
+sudo /sbin/resolvconf --enable-updates
+sudo nano /etc/resolv.conf
+systemctl status resolvconf
+sudo systemctl restart resolvconf
+systemctl status resolvconf
+sudo /sbin/resolvconf --enable-updates 
+sudo nano /etc/resolv.conf
+echo 'nameserver 1.1.1.1' | sudo tee -a /etc/resolv.conf 
+sudo nano $prog/nameservers_update.sh
+sudo crontab -e
+bash /home/ubuntuserver/Programs/nameservers_update.sh
+sudo nano $prog/nameservers_update.sh
+bash /home/ubuntuserver/Programs/nameservers_update.sh
+sudo nano $prog/nameservers_update.sh
+ dig @127.0.0.1 -p 5053
+ls
+sudo bash /mnt/HDD/Programs/copy_master_pihole_config.sh 
+pihole restartdns
+dig @127.0.0.1 -p 5053
+pihole -t
+systemctl status nginx
+pihole -w www.ipdeny.com
+curl -1sLf   'https://dl.cloudsmith.io/public/honeydb/honeydb-agent/setup.deb.sh'   | sudo -E bash
+pihole -t
+pihole restartdns
+systemctl status pihole-FTL.service 
+ls /etc/init.d/pihole-FTL 
+sudo reboot 
+systemctl status pihole-FTL.service 
+pihole restartdns
+sudo chown pihole:pihole /var/cache/dnsmasq/dnsmasq_dnssec_timestamp
+pihole restartdns
+pihole -t
+pihole restartdns
+pihole -t
+systemctl status pihole-FTL.service 
+pihole -t
+pihole restartdns
+pihole -t
+history | grep gcp
+history | grep gc
+nano ~/reverse_ssh.sh 
+     GCLOUD_ZONE="us-central1-a"
+        GCLOUD_INSTANCE="ctp-vpn"
+        GCLOUD_PROJECT="galvanic-pulsar-284521"
+nano ~/reverse_ssh.sh 
+gcloud beta compute ssh                         --zone "$GCLOUD_ZONE" "$GCLOUD_INSTANCE"                         --project "$GCLOUD_PROJECT" \
+ssh gcp.ctptech.dev
+ssh gcp.ctptech.dev -i ~/.ssh/id_rsa 
+ssh gcp.ctptech.dev -i ~/.ssh/google_compute_engine 
+history | grep gc
+ gcloud compute instances stop --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521"  && gcloud compute instances start  --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521"
+cd Pihole-Slave-Install/
+sudo git pull
+sudo git stash
+sudo git pull
+sudo crontab -e
+sudo crontab | tee -a ee
+sudo crontab -e
+sudo git pull
+ gcloud compute instances stop --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521"  && gcloud compute instances start  --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521"
+bash $PROG/get_ext_ip.sh master.dns.ctptech.dev
+sudo nano /etc/environment
+nano /etc/environment
+ gcloud compute instances stop --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521"  && gcloud compute instances start  --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521"
+ gcloud compute instances stop --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521"  && gcloud compute instances start  --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521"
+systemctl status ctp-dns
+sudo systemctl restart ctp-dns
+sudo nano /etc/cron.d/ubuntu-server-health_check 
+sudo ./up
+sudo ./update.sh 
+dig @192.168.44.1
+dig @192.168.44.2
+dig @192.168.44.11
+dig @192.168.44.1
+sudo nano /etc/dnsmasq.d/88-custom-dns-servers.conf 
+sudo nano /etc/dnsmasq.d/11-local-servers.conf 
+sudo rm /etc/dnsmasq.d/11-local-servers.conf 
+sudo rm /etc/dnsmasq.d/05-addint.conf 
+sudo nano /etc/dnsmasq.d/05-addint.conf 
+ifconfig
+sudo nano /etc/dnsmasq.d/05-addint.conf 
+sudo nano /etc/dnsmasq.d/12-records.conf 
+sudo nano /etc/dnsmasq.d/99-custom-settings.conf 
+sudo nano /etc/dnsmasq.d/13-perf.conf 
+systemctl status ctp-dns
+systemctl restart ctp-dns
+sudo systemctl restart ctp-dns
+systemctl restart ctp-dns
+systemctl status ctp-dns
+tail -f /var/log/ctp-dns/*.log
+sud ogit pull
+sudo git pull
+sudo nano /mnt/HDD/Programs/route-dns/slave-resolvers.toml
+sudo git pull && /home/ubuntuserver/Pihole-Slave-Install/setup/dns-route.sh
+sudo git stash && sudo git pull && /home/ubuntuserver/Pihole-Slave-Install/setup/dns-route.sh
+sudo nano /mnt/HDD/Programs/route-dns/slave-resolvers.toml
+systemctl restart ctp-dns
+sudo systemctl restart ctp-dns
+systemctl status ctp-dns
+tail -f /var/log/ctp-dns/*.log
+sudo systemctl restart ctp-dns
+systemctl status ctp-dns
+sudo systemctl restart ctp-dns
+sudo git stash && sudo git pull && /home/ubuntuserver/Pihole-Slave-Install/setup/dns-route.sh
+sudo systemctl restart ctp-dns
+tail -f /var/log/ctp-dns/*.log
+sudo git pull
+sudo git stash && sudo git pull && /home/ubuntuserver/Pihole-Slave-Install/setup/dns-route.sh
+sudo systemctl restart ctp-dns
+sudo nano /mnt/HDD/Programs/route-dns/slave-resolvers.toml
+sudo git stash && sudo git pull && /home/ubuntuserver/Pihole-Slave-Install/setup/dns-route.sh
+sudo systemctl restart ctp-dns
+tail -f /var/log/ctp-dns/*.log
+systemctl status ctp-dns
+ systemctl status ctp-dns
+tail -f /var/log/ctp-dns/*.log
+sudo systemctl restart ctp-dns
+ systemctl status ctp-dns
+tail -f /var/log/pm.health-check.log 
+sudo git stash && sudo git pull && /home/ubuntuserver/Pihole-Slave-Install/setup/dns-route.sh
+sudo bash setup/cron.sh 
+systemctl status ctp-dns
+htop
+systemctl status ctp-dns
+tail -f /var/log/ctp-dns/*.log
+tail -f /var/log/pm.health-check.log 
+sudo git pull
+bash $PROG/get_ext_ip.sh --current-ip
+dig +short myip.opendns.com @resolver1.opendns.com
+tail -f /var/log/pm.health-check.log 
+sudo nano /mnt/HDD/Programs/test_doh.sh
+HOST=dns.ctptech.dev
+QUERY=www.google.com
+doh -r$HOST:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST:4443/dns-query"
+doh_remote_ctp=`timeout $TIMEOUT doh -r$HOST:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST:4443/dns-query"`
+TIMEOUT=8
+TRIES=2
+doh_remote_ctp=`timeout $TIMEOUT doh -r$HOST:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST:4443/dns-query"`
+echo "$doh_remote_ctp" | grepip --ipv4 -o
+doh_remote_ctp=`timeout $TIMEOUT doh -r$HOST:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST:4443/dns-query"`
+echo "$doh_remote_ctp" | grepip --ipv4 -o
+nano /mnt/HDD/Programs/test_doh.sh
+doh_remote_ctp=`timeout $TIMEOUT doh -r$HOST:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST/dns-query"`
+sudo nano /mnt/HDD/Programs/test_doh.sh
+doh_remote_ctp=`timeout $TIMEOUT doh -r$HOST:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST/dns-query"`
+echo "$doh_remote_ctp" | grepip --ipv4 -o
+doh_remote_ctp=`timeout $TIMEOUT doh -r$HOST:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST:4443/dns-query"`
+echo "$doh_remote_ctp" | grepip --ipv4 -o
+doh_remote_ctp=`timeout $TIMEOUT doh -r$HOST:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST:4443/dns-query"`
+doh_remote_ctp=`timeout $TIMEOUT doh -r"$HOST:4443:$EXTENRAL_IP" -tA $QUERY "https://$HOST:4443/dns-query"`
+systemctl status ngin
+systemctl status nginx
+systemctl status ctp-dns
+doh_remote_ctp=`timeout $TIMEOUT doh -r"$HOST:4443:$EXTENRAL_IP" -tA $QUERY "https://$HOST:4443/dns-query"`
+systemctl status ctp-dns
+doh_remote_ctp=`timeout $TIMEOUT doh -r"$HOST:4443:$EXTENRAL_IP" -tA $QUERY "https://$HOST:4443/dns-query"`
+doh --help
+doh_remote_ctp=`timeout $TIMEOUT doh -v -r"$HOST:4443:$EXTENRAL_IP" -tA $QUERY "https://$HOST:4443/dns-query"`
+EXTENRAL_IP=`bash $PROG/get_ext_ip.sh --current-ip`
+doh_remote_ctp=`timeout $TIMEOUT doh -v -r"$HOST:4443:$EXTENRAL_IP" -tA $QUERY "https://$HOST:4443/dns-query"`
+timeout $TIMEOUT doh -v -r"$HOST:4443:$EXTENRAL_IP" -tA $QUERY "https://$HOST:4443/dns-query"
+timeout $TIMEOUT doh -v -r$HOST:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST:4443/dns-query"
+doh
+timeout $TIMEOUT doh -vT -r$HOST:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST:4443/dns-query"
+timeout $TIMEOUT doh -v -T -r$HOST:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST:4443/dns-query"
+timeout $TIMEOUT doh  -T -r$HOST:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST:4443/dns-query"
+timeout $TIMEOUT doh   -r$HOST:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST:4443/dns-query"
+timeout $TIMEOUT doh --help   -r$HOST:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST:4443/dns-query"
+timeout $TIMEOUT doh -4   -r$HOST:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST:4443/dns-query"
+doh --help
+systemctl status ctp-dns
+sudo bash /mnt/HDD/Programs/test_dot.sh --mo
+sudo git pull
+sudo bash /mnt/HDD/Programs/test_dot.sh --mo
+sudo git pull
+sudo git pull -ff
+sudo git stash
+sudo git pull -ff
+sudo bash setup/dns-route.sh
+history | grep git
+sudo git stash && sudo git pull && sudo /home/ubuntuserver/Pihole-Slave-Install/setup/dns-route.sh
+nano /mnt/HDD/Programs/route-dns/route-dns.toml 
+nano /mnt/HDD/Programs/route-dns/slave-resolvers.toml
+bash $PROG/csvify.sh `grep -E "^.resolvers\..*gcp.*" $ROUTE/slave-resolvers.toml | awk -F'.' '{print $2}' | awk -F']' '{print $1}'` --quotes
+ROUTE=$PROG/route-dns
+bash $PROG/csvify.sh `grep -E "^.resolvers\..*gcp.*" $ROUTE/slave-resolvers.toml | awk -F'.' '{print $2}' | awk -F']' '{print $1}'` --quotes
+grep -E "^.resolvers\..*gcp.*" $ROUTE/slave-resolvers.toml | awk -F'.' '{print $2}' | awk -F']' '{print $1}'
+grep -E "^.resolvers\..*gcp.*" $ROUTE/slave-resolvers.toml | awk -F'.' '{print $2}' 
+grep -E ".resolvers\..*gcp.*" $ROUTE/slave-resolvers.toml | awk -F'.' '{print $2}' 
+ls /mnt/HDD/Programs/route-dns
+grep -E ".resolvers\..*gcp.*" /mnt/HDD/Programs/route-dns/slave-resolvers.toml | awk -F'.' '{print $2}' 
+grep -E ".resolvers\..*gcp.*" /mnt/HDD/Programs/route-dns/slave-resolvers.toml 
+grep -E "^.resolvers\..*gcp.*" /mnt/HDD/Programs/route-dns/slave-resolvers.toml 
+nano  /mnt/HDD/Programs/route-dns/slave-resolvers.toml 
+sudo git stash && sudo git pull && sudo /home/ubuntuserver/Pihole-Slave-Install/setup/dns-route.sh
+echo "ctp-dns-master-gcp-tcp","ctp-dns-master-gcp-udp","ctp-dns-master-gcp-dot","ctp-dns-master-gcp-quic","ctp-dns-master-doh-gcp-post","ctp-dns-master-doh-gcp-get","ctp-dns-master-doh-gcp-quic","| rev | cut -d ',' -f 2- | rev 
+echo '"ctp-dns-master-gcp-tcp","ctp-dns-master-gcp-udp","ctp-dns-master-gcp-dot","ctp-dns-master-gcp-quic","ctp-dns-master-doh-gcp-post","ctp-dns-master-doh-gcp-get","ctp-dns-master-doh-gcp-quic","'| rev | cut -d ',' -f 2- | rev 
+sudo git stash && sudo git pull && sudo /home/ubuntuserver/Pihole-Slave-Install/setup/dns-route.sh
+echo ""ctp-dns-local-master-udp", "ctp-dns-master-gcp-tcp","ctp-dns-master-gcp-udp","ctp-dns-master-gcp-dot","ctp-dns-master-gcp-quic","ctp-dns-master-doh-gcp-post","ctp-dns-master-doh-gcp-get","ctp-dns-master-doh-gcp-quic",""
+sudo git stash && sudo git pull && sudo /home/ubuntuserver/Pihole-Slave-Install/setup/dns-route.sh
+echo "'ctp-dns-master-gcp-tcp','ctp-dns-master-gcp-udp','ctp-dns-master-gcp-dot','ctp-dns-master-gcp-quic','ctp-dns-master-doh-gcp-post','ctp-dns-master-doh-gcp-get','ctp-dns-master-doh-gcp-quic','" | rev | cut -d ',' -f 2- | rev 
+echo "'ctp-dns-master-gcp-tcp','ctp-dns-master-gcp-udp','ctp-dns-master-gcp-dot','ctp-dns-master-gcp-quic','ctp-dns-master-doh-gcp-post','ctp-dns-master-doh-gcp-get','ctp-dns-master-doh-gcp-quic','" | rev | cut -d ',' -f 3- | rev 
+echo "'ctp-dns-master-gcp-tcp','ctp-dns-master-gcp-udp','ctp-dns-master-gcp-dot','ctp-dns-master-gcp-quic','ctp-dns-master-doh-gcp-post','ctp-dns-master-doh-gcp-get','ctp-dns-master-doh-gcp-quic','" | rev | cut -d ',' -f 1- | rev 
+echo "'ctp-dns-master-gcp-tcp','ctp-dns-master-gcp-udp','ctp-dns-master-gcp-dot','ctp-dns-master-gcp-quic','ctp-dns-master-doh-gcp-post','ctp-dns-master-doh-gcp-get','ctp-dns-master-doh-gcp-quic','" | rev | cut -d ',' -f 2- | rev 
+echo "'ctp-dns-master-gcp-tcp','ctp-dns-master-gcp-udp','ctp-dns-master-gcp-dot','ctp-dns-master-gcp-quic','ctp-dns-master-doh-gcp-post','ctp-dns-master-doh-gcp-get','ctp-dns-master-doh-gcp-quic','" | rev | cut -d ',' -f 2-1 | rev 
+echo "'ctp-dns-master-gcp-tcp','ctp-dns-master-gcp-udp','ctp-dns-master-gcp-dot','ctp-dns-master-gcp-quic','ctp-dns-master-doh-gcp-post','ctp-dns-master-doh-gcp-get','ctp-dns-master-doh-gcp-quic','" | rev | cut -d ',' -f -2 | rev 
+echo "'ctp-dns-master-gcp-tcp','ctp-dns-master-gcp-udp','ctp-dns-master-gcp-dot','ctp-dns-master-gcp-quic','ctp-dns-master-doh-gcp-post','ctp-dns-master-doh-gcp-get','ctp-dns-master-doh-gcp-quic','" | rev | cut -d ',' -f -1 | rev 
+echo "'ctp-dns-master-gcp-tcp','ctp-dns-master-gcp-udp','ctp-dns-master-gcp-dot','ctp-dns-master-gcp-quic','ctp-dns-master-doh-gcp-post','ctp-dns-master-doh-gcp-get','ctp-dns-master-doh-gcp-quic','" | rev | cut -d ',' -f 1- | rev 
+echo "'ctp-dns-master-gcp-tcp','ctp-dns-master-gcp-udp','ctp-dns-master-gcp-dot','ctp-dns-master-gcp-quic','ctp-dns-master-doh-gcp-post','ctp-dns-master-doh-gcp-get','ctp-dns-master-doh-gcp-quic','" | rev | cut -d ',' -f 2- | rev 
+sudo nano /mnt/HDD/Programs/csvify.sh
+REGEX_EXCLUDE"'ctp-dns-master-gcp-tcp','ctp-dns-master-gcp-udp','ctp-dns-master-gcp-dot','ctp-dns-master-gcp-quic','ctp-dns-master-doh-gcp-post','ctp-dns-master-doh-gcp-get','ctp-dns-master-doh-gcp-quic','"
+REGEX_EXCLUDE="'ctp-dns-master-gcp-tcp','ctp-dns-master-gcp-udp','ctp-dns-master-gcp-dot','ctp-dns-master-gcp-quic','ctp-dns-master-doh-gcp-post','ctp-dns-master-doh-gcp-get','ctp-dns-master-doh-gcp-quic','"
+echo "${REGEX_EXCLUDE}" | rev | cut -d ',' -f 2- | rev 
+REGEX_EXCLUDE="$( echo "${REGEX_EXCLUDE}" | rev | cut -d ',' -f 2- | rev )"
+ REGEX_EXCLUDE="\"${REGEX_EXCLUDE}"
+echo $REGEX_EXCLUDE
+echo "$REGEX_EXCLUDE" | awk -F-- '{print $1}'
+sudo git pull
+sudo git stash && sudo git pull && sudo /home/ubuntuserver/Pihole-Slave-Install/setup/dns-route.sh
+bash $PROG/csvify.sh `grep -E "^.resolvers\..*gcp.*" $ROUTE/slave-resolvers.toml | awk -F'.' '{print $2}' | awk -F']' '{print $1}'` --quotes
+tail -f /var/log/pm.health-check.log 
+cd Pihole-Slave-Install/
+sudo git pull
+sudo git stash && sudo git pull && sudo /home/ubuntuserver/Pihole-Slave-Install/setup/dns-route.sh
+systemctl restart ctp-dns
+sudo systemctl restart ctp-dns
+sudo systemctl statusctp-dns
+sudo systemctl status ctp-dns
+sudo bash /mnt/HDD/Programs/test_dot.sh --mo
+sudo git stash && sudo git pull && sudo /home/ubuntuserver/Pihole-Slave-Install/setup/dns-route.sh
+sudo bash /mnt/HDD/Programs/test_dot.sh --mo
+tail -f /var/log/ctp-dns/*.log
+sudo su
+sudo git stash && sudo git pull && sudo /home/ubuntuserver/Pihole-Slave-Install/setup/dns-route.sh
+sudo systemctl daemon-reload && sudo systemctl restart ctp-dns
+sudo git pull && sudo systemctl daemon-reload && sudo systemctl restart ctp-dns
+systemctl status  ctp-dns
+tail -f /var/log/ctp-dns/*.log
+sudo crontab -e
+which sleep
+sudo git pull && sudo systemctl daemon-reload && sudo systemctl restart ctp-dns
+journalctl -xe
+sudo git pull && sudo systemctl daemon-reload && sudo systemctl restart ctp-dns
+journalctl -xe
+sudo git pull && sudo systemctl daemon-reload && sudo systemctl restart ctp-dns
+journalctl -xe
+sudo git pull && sudo systemctl daemon-reload && sudo systemctl restart ctp-dns
+htop
+ls 
+ls /etc/letsencrypt/live/
+sudo ls /etc/letsencrypt/live/
+sudo ls /etc/letsencrypt/live/
+sudo ls /etc/letsencrypt/live/vpn.ctptech.dev
+sudo bash prog/copy_certs.sh 
+systemct status ctp-dns
+systemctl status ctp-dns
+tail -f /var/log/ctp-dns/*.log
+ls
+cat /mnt/HDD/Programs/route-dns/*.toml | grep master.ctptech.dev
+sudo git stash && sudo git pull && sudo /home/ubuntuserver/Pihole-Slave-Install/setup/dns-route.sh && sudo systemctl daemon-reload && sudo systemctl restart ctp-dns
+tail -f /var/log/ctp-dns/*.log
+sudo nano /mnt/HDD/Programs/route-dns/slave-resolvers.toml
+systemctl status ctp-dns
+sud ogit pull
+sudo git stash && sudo git pull && sudo /home/ubuntuserver/Pihole-Slave-Install/setup/dns-route.sh && sudo systemctl daemon-reload && sudo systemctl restart ctp-dns
+sud ogit stash 
+sudo git stash 
+sudo git stash && sudo git pull && sudo /home/ubuntuserver/Pihole-Slave-Install/setup/dns-route.sh && sudo systemctl daemon-reload && sudo systemctl restart ctp-dns
+git add .
+ls
+rm -rf fullchain.crt 
+rm -rf ee
+sudo nano /mnt/HDD/Programs/route-dns/slave-resolvers.toml
+pihole status
+sudo git stash && sudo git pull && sudo /home/ubuntuserver/Pihole-Slave-Install/setup/dns-route.sh && sudo systemctl daemon-reload && sudo systemctl restart ctp-dns
+systemctl status ctp-dns
+sudo git stash && sudo git pull && sudo /home/ubuntuserver/Pihole-Slave-Install/setup/dns-route.sh && sudo systemctl daemon-reload && sudo systemctl restart ctp-dns
+systemctl status ctp-dns
+sudo bash /mnt/HDD/Programs/test_dot.sh --mo
+systemctl status ctp-dns
+sudo git stash && sudo git pull && sudo /home/ubuntuserver/Pihole-Slave-Install/setup/dns-route.sh && sudo systemctl daemon-reload 
+sudo bash /mnt/HDD/Programs/test_dot.sh --mo
+pihole -w gtq6.sct.sc-prod.net
+pihole -w internal-api.snapkit.com
+tail -f /var/log/ctp-dns/*.log
+tail -f /var/log/pm.health-check.log 
+sudo git stash && sudo git pull && sudo /home/ubuntuserver/Pihole-Slave-Install/setup/dns-route.sh && sudo systemctl daemon-reload && sudo systemctl restart ctp-dns
+tail -f /var/log/pm.health-check.log 
+systemctl status ctp-dns
+sudo git stash && sudo git pull && sudo /home/ubuntuserver/Pihole-Slave-Install/setup/dns-route.sh && sudo systemctl daemon-reload && sudo systemctl restart ctp-dns
+sudo nano /mnt/HDD/Programs/test_dot.sh
+ kdig -d @gcp.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev cf-st.sc-cdn.net +timeout=4 +dnssec +edns
+ kdig -d @dns.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev cf-st.sc-cdn.net +timeout=4 +dnssec +edns
+ kdig -d @home.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev cf-st.sc-cdn.net +timeout=4 +dnssec +edns
+grep block /var/log/ctp-dns/*.log
+grep "matched blocklist" /var/log/ctp-dns/*.log
+sudo git pull
+sudo git stash && sudo git pull && sudo /home/ubuntuserver/Pihole-Slave-Install/setup/dns-route.sh && sudo systemctl daemon-reload && sudo systemctl restart ctp-dns
+ kdig -d @home.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev cf-st.sc-cdn.net +timeout=4 +dnssec +edns
+ kdig -d @home.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev sc-cdn.net +timeout=4 +dnssec +edns
+grep "matched blocklist" /var/log/ctp-dns/*.log
+systemctl status ctp-dns
+sudo git pull
+systemctl status ctp-dns
+sudo systemctl daemon-reload && sudo systemctl restart ctp-dns
+which ln
+sudo nano /etc/environment
+sudo ./update.sh 
+sudo git stash
+sudo ./update.sh 
+git rm --cached prog/route-dns/lists/lists
+sudo git rm --cached prog/route-dns/lists
+sudo git rm -r --cached prog/route-dns/lists
+sudo ./update.sh 
+sudo git pull
+sudo nano /mnt/HDD/Programs/route-dns/route-dns.toml 
+sudo git pull
+sudo  git pull --ff --force    --autostash  --rebase origin master
+sudo git pull
+sudo  git pull --ff --force    --autostash  --rebase origin master 
+| --abort | --skip)
+git rebase --continue 
+sudo git rebase --continue 
+sudo git rebase --continue  origin master 
+sudo git rebase --continue   master 
+sudo git rebase --continue  origin  master 
+sudo git rebase --continue  origin  
+sudo git rebase --continue
+sudo git rebase --continue origin
+sudo git rebase --continue master
+git pull
+sudo git pull
+git rm -rf prog/route-dns/lists/lists
+sudo git rm -rf prog/route-dns/lists/lists
+sudo rm -rf prog/route-dns/lists/lists
+sudo git pull
+sudo ./update.sh 
+sudo nano /etc/environment
+sudo git rebase --continue mastersudo systemctl daemon-reload && sudo systemctl restart ctp-dns
+sudo systemctl daemon-reload && sudo systemctl restart ctp-dns
+systemctl status ctp-dns
+sudo ./update.sh 
+cho ${ROUTE_LIST}
+echo ${ROUTE_LIST}
+sudo nano /etc/environment
+cd Pihole-Slave-Install/
+sudo git pull
+systemctl status ctp-dns
+sudo ./update.sh  --master
+sudo git pull
+sudo systemctl daemon-reload && sudo systemctl restart ctp-dns
+systemctl status ctp-dns
+systemctl status ctp-dnsq
+systemctl status ctp-dns
+tail -f /var/log/pm.health-check.log 
+sudo git pull
+sudo ./update.sh --master
+sudo git pull
+sudo ./copy_config.sh 
+sudo git pull
+EXTENRAL_IP=`bash $PROG/get_ext_ip.sh --current-ip`
+HOST=dns.ctptech.dev
+QUERY=www.google.com
+TIMEOUT=8
+TRIES=2
+EXTENRAL_IP=`bash $PROG/get_ext_ip.sh --current-ip`
+bash $PROG/get_ext_ip.sh --current-ip
+doh -4 -r$HOST:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST:4443/dns-query"
+doh  -r$HOST:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST:4443/dns-query"
+systemtl status ctp-dns
+systemtl  status ctp-dns
+systemctl   status ctp-dns
+doh -4 -r$HOST:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST:4443/dns-query"
+systemctl status ctp-dns | grep -oE '(de|)activating'
+doh -4 -r$HOST:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST:4443/dns-query"
+doh -4 -r$HOST:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST:4443/dns-query" | grepip --ipv4 -o
+timeout $TIMEOUT doh -4 -r$HOST:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST:4443/dns-query" | grepip --ipv4 -o
+doh -4 -r$HOST:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST:4443/dns-query"
+sudo git pull
+doh -4 -r$HOST:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST:4443/dns-query"
+doh -4 -r$HOST:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST:4443/dns-query"`
+doh -4 -r$HOST:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST:4443/dns-query"
+systemctl status ctp-dns | grep -oE '(de|)activating'
+systemctl status ctp-dns 
+tail -f /var/log/pm.health-check.log 
+kdig @ctp-vpn.local $isAuto +tls-host=$HOST $QUERY $DOT_ARGS
+kdig -d @home.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
++timeout
+kdig -d @home.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+sudo git pull
+systemctl status ctp-dns 
+tail -f /var/log/pm.health-check.log 
+sudo ./apply_config.sh 
+tail -f /var/log/pm.health-check.log 
+sudo nginx -t
+sudo nginx -t
+sudo git pull && sudo ./apply_config.sh 
+systemctl status ctp-dns 
+cd Pihole-Slave-Install/
+sudo git pull
+exit
+sudo git pull
+tail -f /var/log/pm.health-check.log 
+htop
+sudo nano /etc/default/grub 
+sudo grub-install 
+sudo update-grub2
+cd Pihole-Slave-Install/
+sudo git pull
+ls /var/log/ctp-dns
+systemctl status ctp-dns
+ grep -i "matched blocklist" /var/log/ctp-dns/*.log
+sudo git pulll
+sudo git pull
+systemctl status ctp-dns
+sudo git pull
+sudo bash setup/cron.sh 
+systemctl status ctp-dns
+sudo bash /home/ubuntuserver/Programs/route-dns/ctp-dns.sh --qbl
+sudo bash /home/ubuntuserver/Programs/route-dns/ctp-dns.sh -qbl
+sudo git pull
+ grep -i "matched blocklist" /var/log/ctp-dns/*.log
+systemctl restart ctp-dns
+sudo systemctl restart ctp-dns
+ grep -i "matched blocklist" /var/log/ctp-dns/*.log
+sudo bash /home/ubuntuserver/Programs/route-dns/ctp-dns.sh -qbl
+sudo git pull
+sudo ln -s $ROUTE/ctp-dns.sh /usr/local/bin
+ grep -i "matched blocklist" /var/log/ctp-dns/*.log
+ctp-dns.sh
+chmod 777 ctp-dns.sh
+sudo git pull
+sudo bash setup/dns-route.sh
+sudo git pull
+sudo bash setup/
+sudo bash setup/dns-route.sh
+sudo git pull && sudo bash setup/dns-route.sh
+systemctl status nginc
+systemctl status nginx
+sudo git pull
+sudo bash setup/cron.sh 
+cgexec -g cpu:cpulimited 
+systemctl status ctp-dns
+sudo systemctl restart ctp-dns
+systemctl status ctp-dns
+cd Pihole-Slave-Install/
+sudo git pull
+tail -f /var/log/pm.health-check.log 
+doh -4 -r$HOST:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST:4443/dns-query"
+HOST=dns.ctptech.dev
+QUERY=www.google.com
+TIMEOUT=15
+TRIES=5
+doh -4 -r$HOST:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST:4443/dns-query"
+sudo git pull
+htop
+doh -4 -r$HOST:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST:4443/dns-query"
+tail -f /var/log/pm.health-check.log 
+sudo git pull
+sudo nano /mnt/HDD/Programs/test_dot.sh 
+kdig -d @home.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+systemctl status ctp-dns
+kdig -d @home.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+systemctl status ctp-dns
+kdig -d @home.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+sudo fail2ban-client status pihole-dns
+sudo fail2ban-client status ctp-dns
+sudo fail2ban-client status pihole-dns-1-block
+sudo fail2ban-client status ctp-dns-1-block
+ls /etc/fail2ban/jail.d/
+ls /etc/fail2ban/filter.d/ctp-dns-1-block.conf 
+sudo fail2ban-client status ctp-dns-1-block
+systemctl status fail2ban.service 
+sudo fail2ban-client status ctp-dns-1-block
+sudo fail2ban-client start ctp-dns-1-block
+sudo fail2ban-client start ctp-dns
+sudo fail2ban-client status ctp-dns-1-block
+kdig -d @home.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+kdig -d @ctp-vpn.local +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+sudo nano /home/ubuntuserver/Programs/route-dns/slave-listeners.toml 
+sudo nano /home/ubuntuserver/Programs/route-dns/slave-resolvers.toml
+systemctl status ctp-dns
+ystemctl status ctp-dns
+htop
+systemctl status ctp-dns
+sudo systemctl enable ctp-dns
+cd Pihole-Slave-Install/
+sudo git pull
+sudo git pull
+systemctl status ctp-dns
+kdig -d @home.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+systemctl status ctp-dns
+kdig -d @home.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+tail -f /var/log/ctp-dns/*.log
+sudo bash setup/dns-route.sh
+tail -f /var/log/ctp-dns/*.log
+which test
+sudo git pull && sudo systemctl daemon-reload  && sudo systemctl restart ctp-dns.service
+tail -f /var/log/ctp-dns/*.log
+sudo git pull && sudo systemctl daemon-reload  && sudo systemctl restart ctp-dns.service
+tail -f /var/log/ctp-dns/*.log
+ls /var/tmp/ctp-dns/lists
+ll /var/tmp/ctp-dns/lists
+rm -rf  /var/tmp/ctp-dns/lists
+sudo rm -rf  /var/tmp/ctp-dns/lists
+tail -f /var/log/ctp-dns/*.log
+sudo git pull && sudo systemctl daemon-reload  && sudo systemctl restart ctp-dns.service
+tail -f /var/log/ctp-dns/*.log
+ls '/var/tmp/ctp-dns/lists
+ls /var/tmp/ctp-dns/lists
+ls $R_LIST 
+ls /var/tmp/ctp-dns/lists
+sudo git pull && sudo systemctl daemon-reload  && sudo systemctl restart ctp-dns.service
+tail -f /var/log/ctp-dns/*.log
+sudo git pull && sudo systemctl daemon-reload  && sudo systemctl restart ctp-dns.service
+tail -f /var/log/ctp-dns/*.log
+ls /var/tmp/ctp-dns/lists
+ls /var/tmp/ctp-dns/
+ls /var/tmp/ctp-dns/lists
+/var/tmp/ctp-dns/lists
+ls /var/tmp/ctp-dns/lists
+cd ..
+cd ~/Pihole-Slave-Install/
+tail -f /var/log/ctp-dns/*.log
+ sudo git pull
+source ~/.bashrc
+cd Pihole-Slave-Install/
+sudo git pull
+sudo git stash
+sudo git pull
+sudo bash /mnt/HDD/Programs/dns-route.sh 
+sudo bash setup/dns-route.sh
+sudo ./copy_config.sh 
+systemctl status ctp-dns
+sudo systemctl daemon-reload
+sudo git pull
+sudo bash setup/dns-route.sh
+sudo git pull
+gut stash
+sudo git stash
+gut stash
+sudo git pull
+sudo bash setup/dns-route.sh
+sudo git pull
+udo systemctl status ctp-dns
+sudo systemctl status ctp-dns
+sudo git pull
+sudo systemctl status ctp-dns
+ping 35.232.120.211
+sudo git pull
+sudo ./apply_config.sh --no-restart
+ls /opt
+sudo nano /opt/phoneone.sh 
+sudo nano /mnt/HDD/SLACK/slack-bash-bot/
+sudo nano /mnt/HDD/SLACK/slack-bash-bot/bot.sh
+sudo nano .gitignore
+ls /mnt/HDD/Programs/phoneone.sh
+nano /mnt/HDD/Programs/phoneone.sh
+sudo nano .gitignore
+git add .
+sudo igt add .
+sudo git add .
+git init
+sudo git push
+git push -ff
+sudo nano .gitignore
+ls
+sudo nano .gitignore
+cd $prog/
+nano ~/.gitignore
+ls
+git add .
+git commit -m "Updated"
+sudo git commit -m "Updated"
+sudo git add .
+df -h
+sudo git init
+sudo git add .
+sudo git rebase
+sudo git rebase --force
+sudo git add .
+ls 4393116
+nano .gitignore 
+sudo git add .
+nano .gitignore 
+sudo git add .
+nano .gitignore 
+sudo git add .
+nano .gitignore 
+sudo git add .
+ls
+sudo git add .
+rm -rf error,
+sudo mv error,/ ~/
+sudo git add .
+nano .gitignore 
+sudo git add .
+nano .gitignore 
+sudo git add .
+unlink iptables/Kali-Linux-on-Ubuntu/
+ls iptables/Kali-Linux-on-Ubuntu/
+ls iptables
+ls iptables/Kali-Linux-on-Ubuntu/
+iptables
+iptables/
+ls
+rm -rf Kali-Linux-on-Ubuntu/
+sudo rm -rf Kali-Linux-on-Ubuntu/
+cd ..
+ls
+rm -rf /mnt/HDD/Programs/GitBSLR\:/GitBSLR\:/
+sudo rm -rf /mnt/HDD/Programs/GitBSLR\:/GitBSLR\:/
+ls
+sudo rm -rf absolute/absolute/
+sudo rm -rf absolute/error,/
+sudo rm -rf 4393116/4393116/
+sudo rm -rf Embedded-Systems---Wifi-scanner/error,/
+sudo rm -rf Embedded-Systems---Wifi-scanner/Embedded-Systems---Wifi-scanner/
+ls
+sudo git add .
+sudo rm -rf iptables/iptables
+sudo git add .
+sudo rm -rf iptables/responceoversms/
+sudo git add .
+sudo rm -rf path/path/
+sudo rm -rf path/
+sudo git add . 
+sudo rm -rf responceoversms/responceoversms/
+sudo git add . 
+sudo rm -rf responceoversms/server/
+sudo git add . 
+sudo rm -rf server/server/
+sudo git add . 
+sudo git server/terminals-are-sexy/
+sudo rm  server/terminals-are-sexy/
+sudo rm -rf  server/terminals-are-sexy/
+sudo git add . 
+sudo rm -rf  unexpected/unexpected/
+sudo git add . 
+sudo git commit -m "Fixed errors"
+git push
+sudo git push -ff
+cd ..
+.
+..
+ls
+cd ~/Pihole-Slave-Install/
+ls
+tail -f /var/log/pm.health-check.log 
+sudo git pull
+ls /mnt/HDD/Programs/dns-route.sh
+sudo bash setup/dns-route.sh
+bash /mnt/HDD/Programs/dns-route.sh
+sudo nano /mnt/HDD/Programs/dns-route.sh
+nano /mnt/HDD/Programs/dns-route.sh
+rm -rf /mnt/HDD/Programs/dns-route.sh
+cd setup/
+SCRIPT_DIR=`realpath .`
+ln -s $SCRIPT_DIR/dns-route.sh $PROG/
+sudo bash setup/dns-route.sh
+bash setup/dns-route.sh
+bash /mnt/HDD/Programs/dns-route.sh
+history | grep start
+gcloud compute instances stop --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521"  && gcloud compute instances start  --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521"
+ping 35.232.120.211 
+sudo nano /usr/local/bin/
+sudo nano /usr/local/bin/cred.sh
+sudo nano setup/dns-route.sh
+sudo nano /usr/local/bin/cred.sh
+sudo nano /usr/local/sbin/cred.sh
+sudo nano /usr/bin/cred.sh 
+sudo git pull
+tail -f /var/log/pm.health-check.log 
+cd ..
+sudo git pull
+sudo bash ./apply_config.sh 
+systemctl unmask unbound
+sudo git pull
+sudo systemctl unmask unbound
+sudo systemctl enable unbound
+sudo systemctl start unbound
+pihole -t
+cd Pihole-Slave-Install/
+sudo git pull && sudo ./apply_config.sh 
+sudo git stash && sudo git pull && sudo ./apply_config.sh 
+sudo ./update.sh 
+systectl enable unbound
+systemctl enable unbound
+pihole restartdns
+pihole -t
+pihole restartdns
+cd Pihole-Slave-Install/
+sudo ./update.sh 
+sudo git pull
+sudo systemctl unmask unbound
+htop
+sudo git pull
+sudo su
+systemctl status ctp-dns.service
+ctp-dns.sh -qbl
+ctp-dns.sh -qal
+sudo git pull
+cd Pihole-Slave-Install/
+sudo git pull
+systemctl status ctp-dns
+sudo git pull
+tail -f /var/log/ctp-dns/*.log
+sudo bash setup/dns-route.sh
+cd Pihole-Slave-Install/[A
+kdig -d @ctp-vpn.local +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+sudo git pull
+tail -f /var/log/ctp-dns/*.log
+systemctl status ctp-dns
+tail -f /var/log/ctp-dns/*.log
+systemctl status ctp-dns
+sudo git pull
+systemctl status ctp-dns
+sudo systemctl restart ctp-dns
+systemctl status ctp-dns
+tail -f /var/log/ctp-dns/*.log
+sudo git pull
+sudo systemctl restart ctp-dns
+tail -f /var/log/ctp-dns/*.log
+sudo systemctl restart ctp-dns
+tail -f /var/log/ctp-dns/*.log
+sudo git pull
+tail -f /var/log/pm.health-check.log 
+ps -aux | grep pm
+killall pm
+tail -f /var/log/pm.health-check.log 
+sudo nano /mnt/HDD/Programs/Hourly.sh 
+sudo git pull
+sudo bash setup/dns-route.sh
+sudo git pull
+sudo systemctl status ctp-dns
+tail -f /var/log/ctp-dns/*.log
+sudo bash setup/dns-route.sh
+g
+sudo git pull
+tail -f /var/log/pm.health-check.log 
+systectl status ctp-dns
+systemctl status ctp-dns
+tail -f /var/log/pm.health-check.log 
+sudo nano /mnt/HDD/Programs/test_doq.sh
+        LATEST_VERSION=`curl --silent "https://api.github.com/repos/natesales/q/tags" | jq -r '.[0].name'`
+        echo $LATEST_VERSION
+        RELEASE=`echo $LATEST_VERSION | awk -Fv '{print $2}'`
+        REST_FILE=_linux_amd64.deb
+        VP=q_$RELEASE$REST_FILE
+#       wget https://github.com/natesales/q/releases/latest/download/$LATEST_VERSION/$VP -O ~/$VP
+        wget https://github.com/natesales/q/releases/latest/download/$VP -O ~/$VP
+        dpkg -i ~/$VP   dpkg -i ~/$VP
+sudo        dpkg -i ~/$VP   dpkg -i ~/$VP
+sudo        dpkg -i ~/$VP   
+systemctl status ctp-dns
+sudo ./update.sh 
+tail -f /var/log/pm.health-check.log 
+htop
+sudo git pull
+htop
