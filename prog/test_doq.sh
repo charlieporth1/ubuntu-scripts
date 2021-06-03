@@ -4,7 +4,6 @@ CONCURRENT
 echo "Running DOQ TEST"
 [[ "$1" == "-a" ]] && isAuto="-o"
 
-IP_REGEX="((([0-9]{1,3})\.){4})"
 
 QUERY=www.google.com
 HOST=dns.ctptech.dev

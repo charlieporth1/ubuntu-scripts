@@ -54,7 +54,7 @@ resolvers = [ "root-router" ]
 
 [groups.ctp-dns-cached]
 type = "cache"
-resolvers = [ "root-router" ]
+resolvers = [ "ctp-dns-yt-block-resolver-blocker" ]
 cache-negative-ttl = 900
 cache-size = 50000 
 cache-answer-shuffle = "round-robin"
@@ -78,7 +78,7 @@ answer = [ " IN A 35.232.120.211 ", " IN A 35.192.105.158 " ]
 rcode  = 3
 
 [groups.ctp-dns-failover]
-resolvers = [ "ctp-dns-group", "ctp-dns-home-dot", "ctp-dns-gcp-dot", "ctp-dns-home-doh-post", "ctp-dns-home-doh-get", "ctp-dns-ip-home-udp", "ctp-dns-ip-home-tcp", "ctp-dns-ip-gcp-2-udp", "ctp-dns-ip-gcp-2-tcp", "ctp-dns-ip-gcp-1-udp", "ctp-dns-ip-gcp-1-tcp", "ctp-dns-home-doh-post-raw", "ctp-dns-home-doh-get-raw", "ctp-dns-home-dot-raw" , "ctp-dns-gcp-dtls", "ctp-dns-home-dtls" ]
+resolvers = [ "ctp-dns-group", "ctp-dns-home-dot", "ctp-dns-gcp-dot", "ctp-dns-home-doh-post", "ctp-dns-home-doh-get", "ctp-dns-ip-home-udp", "ctp-dns-ip-home-tcp", "ctp-dns-ip-gcp-2-udp", "ctp-dns-ip-gcp-2-tcp", "ctp-dns-ip-gcp-1-udp", "ctp-dns-ip-gcp-1-tcp", "ctp-dns-home-doh-post-raw", "ctp-dns-home-doh-get-raw", "ctp-dns-home-dot-raw" , "ctp-dns-gcp-dtls", "ctp-dns-home-dtls", "ctp-dns-failover-backup" ]
 type = "fail-back"
 
 

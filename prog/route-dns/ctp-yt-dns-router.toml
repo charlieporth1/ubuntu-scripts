@@ -1,0 +1,32 @@
+[routers.ctp-yt-blocker-router]
+routes = [
+  { name = '\.youtube\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
+  { name = '\.ytimg\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
+  { name = '\.ggpht\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
+  { name = '\.gvt\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
+  { name = '\.gvt1.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
+  { name = '\.gvt2\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
+  { name = '\.gvt3\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
+  { name = '\.gvt4\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
+  { name = '\.gvt5\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
+  { name = '\.gvt6\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
+  { name = '\.googlevideo\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
+  { name = '\.doubleclick\.net\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
+  { name = '\.googleadservices\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
+  { name = '\.googlesyndication\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
+  { name = '\.imrworldwide\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
+  { name = '\.ytimg.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
+  { name = '\.ytimg.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
+  { name = '\.fwmrm\.net\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
+  { name = '\.youtubei\.googleapis\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
+  { name = '\.app-measurement\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
+  { resolver = "root-router" },             # All other queries are forwarded
+]
+
+
+[groups.ctp-dns-yt-block-resolver-blocker]
+# This should only be GCP
+# "ctp-dns-group"
+#resolvers = [  "ctp-dns-gcp-dtls", "ctp-dns-gcp-dot", "ctp-dns-master-doh-gcp-quic", "ctp-dns-master-gcp-quic", "ctp-dns-master-doh-gcp-post", "ctp-dns-master-doh-gcp-get" ]
+type = "fastest"
+resolvers = [  "ctp-dns-gcp-dtls", "ctp-dns-gcp-dot", "ctp-dns-master-doh-gcp-quic", "ctp-dns-master-gcp-quic", "ctp-dns-master-doh-gcp-post", "ctp-dns-master-doh-gcp-get" ]

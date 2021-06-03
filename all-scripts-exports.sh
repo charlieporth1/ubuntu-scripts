@@ -6,7 +6,6 @@ PIHOLE_LOG=$LOG/pihole.log
 
 FILE_NAME=`echo $SCRIPT | rev | cut -d '.' -f 2  | rev`
 isRunning=`bash $PROG/process_count.sh $FILE_NAME $THIS_PID`
-
 if [[ -z "$ENV" ]] && [[ -z `echo "$ARGS" | grep -Eio '(\-\-|\-)(e|env)'` ]]; then
 	export ENV='PROD'
 
@@ -52,8 +51,15 @@ export THIS_PID=${BASHPID:-$$}
 
 
 
+export IS_GCP=` [[ -n $( timeout 5 facter virtual | grep -o 'gce' ) ]]&& echo true || echo false`
+export IS_GCP_1=` [[ -n $( timeout 5 curl -s metadata.google.internal -i | grep 'Metadata-Flavor: Google' ) ]] && echo true || echo false`
+export IS_AWS=`[[ -n $( timeout 5 curl -s http://169.254.169.254/latest/meta-data/hostname | grep -o 'ec2.internal' ) ]] && echo true || echo false`
+export IS_BARE=`[[ -n $(  timeout 5 facter virtual | grep -o 'physical' ) ]] && echo true || echo false`
+export IS_VM=`timeout 5 facter is_virtual`
+
 [[ "$ENV" == "PROD" ]] && REDIRECT=/dev/null || REDIRECT=/dev/stdout
-export IP_REGEX="([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})"
+
+export IP_REGEX="((([0-9]{1,3})\.?){4})"
 export IP_REGEX_FULL="(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])"
 
 if ! command -v pihole &> /dev/null

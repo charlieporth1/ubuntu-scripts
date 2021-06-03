@@ -1,12 +1,13 @@
-#!/bin/bash
-source $PROG/all-scripts-exports.sh
-CONCURRENT
+.#!/bin/bash
 if [[ -f /tmp/health-checks.stop.lock ]]; then
         echo "LOCK FILE"
+	trap 'LOCK_FILE' ERR
         set -e
         exit 1
         exit 1
 fi
+source $PROG/all-scripts-exports.sh
+CONCURRENT
 echo "Running DOT TEST"
 [[ "$1" == "-a" ]] && isAuto="+short" || isAuto='-d'
 QUERY=www.google.com
@@ -15,7 +16,6 @@ QUERY=www.google.com
 # kdig -d @gcp.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
 # kdig -d @ctp-vpn.local +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
 # kdig -d @aws.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
-IP_REGEX="((([0-9]{1,3})\.){4})"
 
 WAIT_TIME=16.5s #TO RESTART NEXT
 TIMEOUT=32 #DNS
@@ -73,7 +73,7 @@ elif [[ -z "$isSystemInactive" ]]; then
 	dot_external_test=`echo "$dot_external" | grepip --ipv4 -o`
 
 	if [[ -z "$dot_local_test" ]]; then
-		echo "DOT FAILED  dot_local_test :$dot_local_test:"
+		echo "DOT FAILED dot_local_test :$dot_local_test:"
 		if [[ -z "$dns_local_test" ]]; then
 			echo "DNS FAILED NOT DOT"
 			exit 1

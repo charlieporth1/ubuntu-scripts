@@ -11,7 +11,6 @@ TIMEOUT=3 # DNS
 TRIES=2
 HOST=dns.ctptech.dev
 
-IP_REGEX="([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})"
 
 MASTER_DNS_IP=$(bash $PROG/grepify.sh $(bash $PROG/get_ext_ip.sh "master.$HOST"))
 CURRENT_IP=$(bash $PROG/grepify.sh $(bash $PROG/get_ext_ip.sh --current-ip))

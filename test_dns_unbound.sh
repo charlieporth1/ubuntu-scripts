@@ -13,7 +13,6 @@ PORT=5053
 EDNS=174.53.130.17
 
 QUERY=www.google.com
-IP_REGEX="([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})"
 
 DNS_IP=$(bash $PROG/grepify.sh $(bash $PROG/get_ext_ip.sh))
 ROOT_NETWORK=`bash $PROG/get_network_devices_ip_address.sh --grepify`

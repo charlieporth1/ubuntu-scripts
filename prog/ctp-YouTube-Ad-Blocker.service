@@ -1,0 +1,63 @@
+[Unit]
+Description=CTP YouTube Blocker Service
+
+[Service]
+CPUQuota=35%
+AllowedCPUs=0 1
+
+EnvironmentFile=/etc/environment
+Environment=LOG_DIR=/var/log/ctp-youtube-blocker
+Environment=PID_FILE=/var/run/ctp-dns.pid
+Environment=LOG_FILE=/var/log/ctp-youtube-blocker/default.log
+Environment=LOG_FILES={default,access,error}.log
+Environment=ENV=DEV
+
+Nice=-10
+Type=exec
+
+PIDFile=${PID_FILE}
+
+User=root
+Group=root
+
+ExecStartPre=/bin/mkdir -p /var/log/ctp-youtube-blocker/
+ExecStartPre=/bin/bash -c "/bin/touch ${LOG_DIR}/${LOG_FILES}"
+ExecStartPre=/bin/echo ${MAINPID} | /bin/tee ${PID_FILE}
+
+ExecStartPre=/bin/bash -c "[[ $ENV == 'DEV' ]] &&/usr/bin/sudo /bin/systemctl set-environment EXTRA_ARGS='--verbose --debug'"
+
+#ExecStartPre=/usr/bin/bash -c 'PIDS=$( ps -aux | grep "allow-youtube-but-not-youtube-ads.sh" | grep -v "tail\|log\|grep" | awk "{print $2}" ); [[ -n $pids ]] && sudo kill -9 $pids'
+#ExecStartPre=/bin/bash -c 'ps -aux | grep "allow-youtube-but-not-youtube-ads.sh" | grep -v "tail\|log\|grep" | awk '{print $2}' | xargs kill ; exit 0'
+#ExecStartPre=/bin/bash -c "export pids=$( ps -aux | grep 'allow-youtube-but-not-youtube-ads.sh' | grep -v 'tail\|log\|grep' | awk '{print $2}' | xargs ) ;\
+#	 if [[ -n $pids ]]; then echo $pids | xargs sudo kill -9; fi"
+
+#ExecStartPre=/usr/bin/sudo /usr/bin/cgcreate -g cpu:/cpulimited
+#ExecStartPre=/usr/bin/sudo /usr/bin/cgset -r cpu.shares=128 cpulimited
+
+#ExecStart=/usr/bin/sudo /usr/bin/cgexec -g cpu:cpulimited /bin/bash ${PROG}/allow-youtube-but-not-youtube-ads.sh 
+#ExecStart=${PROG}/allow-youtube-but-not-youtube-ads.sh  
+
+ExecStart=/bin/bash ${PROG}/allow-youtube-but-not-youtube-ads.sh ${EXTRA_ARGS} ${ENV} | mbuffer -T /tmp/yt-block.buffer -m 50M | tee -a ${LOG_FILE}
+# >> ${LOG_FILE}'
+
+#ExecStop=/usr/bin/bash -c 'pids=$( ps -aux | grep "allow-youtube-but-not-youtube-ads.sh" | grep -v "tail\|log\|grep" | awk "{print $2}" ); [[ -n $pids ]] && sudo kill -9 $pids || echo NO PIDS'
+ExecStop=/usr/bin/bash -c 'pids=$( ps -aux | grep "allow-youtube-but-not-youtube-ads.sh" | grep -v "tail\|log\|grep" | awk "{print $2}" ); [[ -n $pids ]] && sudo kill -9 $pids || echo NO PIDS; exit 0'
+#KillMode=process
+ExecReload=/bin/kill -USR1 ${MAINPID}
+#RemainAfterExit=true
+
+Restart=on-failure
+RestartSec=15s
+
+#StandardInput=tty
+StandardOutput=append:/var/log/ctp-youtube-blocker/access.log
+StandardError=append:/var/log/ctp-youtube-blocker/error.log
+
+TTYPath=/dev/tty1
+TTYReset=yes
+TTYVHangup=yes
+TimeoutStartSec=1m
+TimeoutStopSec=30s
+
+[Install]
+WantedBy=multi-user.target

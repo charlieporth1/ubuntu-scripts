@@ -1,12 +1,13 @@
 #!/bin/bash
 if [[ -f /tmp/health-checks.stop.lock ]]; then
 	echo "LOCK FILE"
+	trap 'LOCK_FILE' ERR
 	set -e
-	exit 1
 	exit 1
 fi
 source $PROG/all-scripts-exports.sh
 CONCURRENT
+systemctl is-active --quiet ctp-dns.service && echo Service is running
 
 max=7
 SLEEP_T=$(bc <<< "scale=3;  ( 60 / $max )")s
@@ -26,8 +27,12 @@ for ((i=1; i < ( $max - 2); i++))
 do
 	if [[ -f /tmp/health-checks.stop.lock ]]; then
 		echo "LOCK FILE"
+		trap 'LOCK_FILE' ERR
 		set -e
+		set -E
 		exit 1
+		exit 1
+		kill $$
 	fi
 	echo "check #$i dns stail `date`"
 	bash $PROG/dns-stale-restart.sh
@@ -40,4 +45,4 @@ do
 	sleep $SLEEP_T
 done
 set -e
-exit 1
+[ $? == 1 ] && exit 0;

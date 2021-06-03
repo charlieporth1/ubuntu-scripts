@@ -67,4 +67,13 @@ bootstrap-address = "35.192.105.158"
 
 [groups.ctp-dns-group]
 type = "fastest"
-resolvers = [ "ctp-dns-master-home-dot", "ctp-dns-master-home-quic", "ctp-dns-master-doh-home-post", "ctp-dns-master-doh-home-get", "ctp-dns-master-doh-gcp-quic", "ctp-dns-master-doh-gcp-get", "ctp-dns-master-gcp-dot", "ctp-dns-master-gcp-quic", "ctp-dns-master-doh-gcp-post", "ctp-dns-master-gcp-dtls", "ctp-dns-master-home-dtls" ]
+# CTP INSTALL -- DO NOT REMOVE THIS UNLESS YOU PLAN ON REMOVING INSTALL AND REINSTALLING
+resolvers = [ "ctp-dns-local-master-tcp", "ctp-dns-local-master-udp", "ctp-dns-master-gcp-tcp","ctp-dns-master-gcp-udp","ctp-dns-master-gcp-dot","ctp-dns-master-gcp-quic","ctp-dns-master-doh-gcp-post","ctp-dns-master-doh-gcp-get","ctp-dns-master-doh-gcp-quic" ]
+
+[resolvers.ctp-dns-local-master-tcp]
+address = "192.168.44.250:53"
+protocol = "tcp"
+[resolvers.ctp-dns-local-master-udp]
+address = "192.168.44.250:53"
+protocol = "udp"
+

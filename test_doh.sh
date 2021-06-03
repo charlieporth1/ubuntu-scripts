@@ -1,12 +1,13 @@
 #!/bin/bash
-source $PROG/all-scripts-exports.sh
-CONCURRENT
 if [[ -f /tmp/health-checks.stop.lock ]]; then
         echo "LOCK FILE"
+	trap 'LOCK_FILE' ERR
         set -e
         exit 1
         exit 1
 fi
+source $PROG/all-scripts-exports.sh
+CONCURRENT
 echo "Running DOH TEST"
 
 [[ "$1" == "-a" ]] && isAuto="-o"
@@ -14,7 +15,6 @@ HOST=dns.ctptech.dev
 QUERY=www.google.com
 TIMEOUT=90
 TRIES=5
-IP_REGEX="((([0-9]{1,3})\.){4})"
 
 DNS_IP=`$PROG/grepify.sh $(bash $PROG/get_ext_ip.sh)`
 ROOT_NETWORK=`bash $PROG/get_network_devices_ip_address.sh --grepify`

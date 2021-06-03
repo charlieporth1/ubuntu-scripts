@@ -24,17 +24,17 @@ fi
 
 declare -a master_services
 master_services=(
-	pihole-FTL
-	unbound
+pihole-FTL
+unbound
+resolvconf
 )
 
 declare -a SERVICES
 SERVICES=(
-	$( [[ "$IS_MASTER" == true ]] && ${master_services[@]} )
-	resolvconf
-	nginx
-	doh-server
-	fail2ban
+$( [[ "$IS_MASTER" == true ]] && ${master_services[@]} )
+nginx
+doh-server
+fail2ban
 )
 
 for service in "${SERVICES[@]}"
