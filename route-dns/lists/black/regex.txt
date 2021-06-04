@@ -4,6 +4,6 @@
 (^|\.)(amazon-adsystem|device-metrics-([a-z]{2,2})-([0-4])\.amazon)\.com$
 (^|\.)(clicks\.beap\.bc\.yahoo|ads\.yahoo|global\.ard\.yahoo|nfo\.yahoo|qcomgeo2)\.com$
 (^|\.)(izatcloud|webtrekk|doubleclick)\.net$
-(^|\.)(dynamicyield|exacttarget|ads\.a4cdn\.contentabc\|cnzz|clksite|clickability|appnexus|aliyuncs|000webhostapp|adlegend|adsafeprotected|adsame|adsymptotic|adx1)\.com$
+(^|\.)(dynamicyield|exacttarget|ads\.a4cdn\.contentabc\|cnzz|clksite|clickability|appnexus|aliyuncs|000webhostapp|adlegend|adsafeprotected|adsame|adsymptotic|adx1|rubiconproject)\.com$
 [sxmncia]?[\.]?ad[sxmncia]?([k]?mob|track|vert[s]?(|is?[e]?(|er|ing|ement)?)[s]?|im(g|age)|choice|serv|sdk|mobile|ervice|system|tyics|click)[sxmncia]?[0-9]?
 (analytic[s]?|telemer(y|ies|)|measure(|ment|r|ing))

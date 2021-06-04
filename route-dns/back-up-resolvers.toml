@@ -4,11 +4,11 @@ protocol = "doh"
 transport = "quic"
 
 [resolvers.cloudflare-dot-1]
-address = "1.1.1.1:853"
+address = "1.1.1.2:853"
 protocol = "dot"
 
 [resolvers.cloudflare-dot-2]
-address = "1.0.0.1:853"
+address = "1.0.0.2:853"
 protocol = "dot"
 
 [resolvers.google-dot-1]
@@ -37,5 +37,15 @@ protocol = "udp"
 
 
 [groups.ctp-dns-failover-backup]
-resolvers = [ "adguard-dot-1", "adguard-dot-2", "unbound-failover-udp", "unbound-failover-tcp", "google-dot-1", "google-dot-2", "cloudflare-dot-1", "cloudflare-dot-2", "cloudflare-doh-quic" ]
+resolvers = [ 
+	"adguard-dot-1", 
+	"adguard-dot-2", 
+	"cloudflare-dot-1", 
+	"cloudflare-dot-2", 
+	"unbound-failover-udp", 
+	"unbound-failover-tcp", 
+	"google-dot-1", 
+	"google-dot-2", 
+	"cloudflare-doh-quic" 
+]
 type = "fail-back"

@@ -54,7 +54,7 @@ resolvers = [ "root-router" ]
 
 [groups.ctp-dns-cached]
 type = "cache"
-resolvers = [ "ctp-dns-yt-block-resolver-blocker" ]
+resolvers = [ "ctp-yt-blocker-if-fowarder-router" ]
 cache-negative-ttl = 900
 cache-size = 50000 
 cache-answer-shuffle = "round-robin"
@@ -72,13 +72,31 @@ routes = [
 
 [groups.static-servfail]
 type   = "static-responder"
-answer = [ " IN A 35.232.120.211 ", " IN A 35.192.105.158 " ]
+answer = [ "IN A 35.232.120.211", "IN A 35.192.105.158" ]
 # Response code: 0 = NOERROR, 1 = FORMERR, 2 = SERVFAIL, 3 = NXDOMAIN, 5 = REFUSED... 
 # https://datatracker.ietf.org/doc/html/rfc2929#section-2.3
 rcode  = 3
 
 [groups.ctp-dns-failover]
-resolvers = [ "ctp-dns-group", "ctp-dns-home-dot", "ctp-dns-gcp-dot", "ctp-dns-home-doh-post", "ctp-dns-home-doh-get", "ctp-dns-ip-home-udp", "ctp-dns-ip-home-tcp", "ctp-dns-ip-gcp-2-udp", "ctp-dns-ip-gcp-2-tcp", "ctp-dns-ip-gcp-1-udp", "ctp-dns-ip-gcp-1-tcp", "ctp-dns-home-doh-post-raw", "ctp-dns-home-doh-get-raw", "ctp-dns-home-dot-raw" , "ctp-dns-gcp-dtls", "ctp-dns-home-dtls", "ctp-dns-failover-backup" ]
+resolvers = [ 
+	"ctp-dns-group", 
+	"ctp-dns-home-dot", 
+	"ctp-dns-gcp-dot", 
+	"ctp-dns-home-doh-post", 
+	"ctp-dns-home-doh-get", 
+	"ctp-dns-ip-home-udp", 
+	"ctp-dns-ip-home-tcp", 
+	"ctp-dns-ip-gcp-2-udp", 
+	"ctp-dns-ip-gcp-2-tcp", 
+	"ctp-dns-ip-gcp-1-udp", 
+	"ctp-dns-ip-gcp-1-tcp", 
+	"ctp-dns-home-doh-post-raw", 
+	"ctp-dns-home-doh-get-raw", 
+	"ctp-dns-home-dot-raw", 
+	"ctp-dns-gcp-dtls", 
+	"ctp-dns-home-dtls", 
+	"ctp-dns-failover-backup"
+ ]
 type = "fail-back"
 
 

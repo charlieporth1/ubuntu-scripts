@@ -1,25 +1,10 @@
-[routers.ctp-yt-blocker-router]
+[routers.ctp-yt-blocker-if-fowarder-router]
 routes = [
-  { name = '\.youtube\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
-  { name = '\.ytimg\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
-  { name = '\.ggpht\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
-  { name = '\.gvt\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
-  { name = '\.gvt1.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
-  { name = '\.gvt2\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
-  { name = '\.gvt3\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
-  { name = '\.gvt4\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
-  { name = '\.gvt5\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
-  { name = '\.gvt6\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
-  { name = '\.googlevideo\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
-  { name = '\.doubleclick\.net\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
-  { name = '\.googleadservices\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
-  { name = '\.googlesyndication\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
-  { name = '\.imrworldwide\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
-  { name = '\.ytimg.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
-  { name = '\.ytimg.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
-  { name = '\.fwmrm\.net\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
-  { name = '\.youtubei\.googleapis\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
-  { name = '\.app-measurement\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
+  { name = '(^|\.)(youtube|ytimg|ggpht)\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
+  { name = '(^|\.)gvt[0-6]?\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
+  { name = '(^|\.)(googlevideo|app-measurement|youtubei\.googleapis)\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
+  { name = '(^|\.)(doubleclick|fwmrm)\.net\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
+  { name = '(^|\.)(googlesyndication|googleadservices|imrworldwide)\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
   { resolver = "root-router" },             # All other queries are forwarded
 ]
 
@@ -29,4 +14,5 @@ routes = [
 # "ctp-dns-group"
 #resolvers = [  "ctp-dns-gcp-dtls", "ctp-dns-gcp-dot", "ctp-dns-master-doh-gcp-quic", "ctp-dns-master-gcp-quic", "ctp-dns-master-doh-gcp-post", "ctp-dns-master-doh-gcp-get" ]
 type = "fastest"
+# CTP INSTALL -- DO NOT REMOVE THIS UNLESS YOU PLAN ON REMOVING INSTALL AND REINSTALLING
 resolvers = [  "ctp-dns-gcp-dtls", "ctp-dns-gcp-dot", "ctp-dns-master-doh-gcp-quic", "ctp-dns-master-gcp-quic", "ctp-dns-master-doh-gcp-post", "ctp-dns-master-doh-gcp-get" ]
