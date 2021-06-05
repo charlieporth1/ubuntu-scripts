@@ -27,7 +27,7 @@ if [[ "$IS_MASTER" == 'true' ]]; then
 	if [[ `isNotInstalled $ROUTE/slave-resolvers.toml` == 'true' ]]; then
 		LAST_PART_OF_GROUP_END_REPLACE="\"$LOCAL_RESOLVER_NAME-tcp\", \"$LOCAL_RESOLVER_NAME-udp\""
 
-		grep -vE '^resolvers' $ROUTE/slave-resolvers.toml > $ROUTE/slave-resolvers.toml.tmp
+		pcregrep -v -M '^resolvers.*(.|\n)*]' $ROUTE/slave-resolvers.toml > $ROUTE/slave-resolvers.toml.tmp
 		mv $ROUTE/slave-resolvers.toml.tmp $ROUTE/slave-resolvers.toml
 
 		echo "resolvers = [ $LAST_PART_OF_GROUP_END_REPLACE, $GCP_RESOLVERS ]" | sudo tee -a $ROUTE/slave-resolvers.toml
@@ -52,7 +52,7 @@ else
 
 			LAST_PART_OF_GROUP_END_REPLACE="\"$LOCAL_RESOLVER_NAME-tunnel-tcp\", \"$LOCAL_RESOLVER_NAME-tunnel-udp\", \"$LOCAL_RESOLVER_NAME-tunnel-dot\", \"$LOCAL_RESOLVER_NAME-tunnel-dtls\""
 
-			grep -vE '^resolvers' $ROUTE/slave-resolvers.toml > $ROUTE/slave-resolvers.toml.tmp
+			pcregrep -v -M '^resolvers.*(.|\n)*]' $ROUTE/slave-resolvers.toml > $ROUTE/slave-resolvers.toml.tmp
 			mv $ROUTE/slave-resolvers.toml.tmp $ROUTE/slave-resolvers.toml
 
 			echo "resolvers = [ $LAST_PART_OF_GROUP_END_REPLACE, $GCP_RESOLVERS ]" | sudo tee -a $ROUTE/slave-resolvers.toml
@@ -82,8 +82,11 @@ fi
 
 if [[ `isNotInstalled $ROUTE/ctp-yt-dns-router.toml` == 'true' ]]; then
 	yt_resolvers='resolvers = [  "ctp-dns-gcp-dtls", "ctp-dns-gcp-dot", "ctp-dns-master-doh-gcp-quic", "ctp-dns-master-gcp-quic", "ctp-dns-master-doh-gcp-post", "ctp-dns-master-doh-gcp-get" ]'
-	grep -vE '^resolvers' $ROUTE/ctp-yt-dns-router.toml > $ROUTE/ctp-yt-dns-router.toml.tmp
+	pcregrep -v -M '^resolvers.*(.|\n)*]' $ROUTE/ctp-yt-dns-router.toml > $ROUTE/ctp-yt-dns-router.toml.tmp
 	mv $ROUTE/ctp-yt-dns-router.toml.tmp $ROUTE/ctp-yt-dns-router.toml
 	echo "$yt_resolvers" | sudo tee -a $ROUTE/ctp-yt-dns-router.toml
 fi
+
+
+
 

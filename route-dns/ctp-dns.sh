@@ -5,7 +5,7 @@ INSTALL_DIR=/usr/local/bin
 CTP_DNS_LOG_DIR=/var/log/ctp-dns
 
 if ! [[ -f $INSTALL_DIR/h ]]; then
-	curl -s https://github.com/paoloantinori/hhighlighter/blob/master/h.sh | sudo tee $INSTALL_DIR/h
+	curl -s https://raw.githubusercontent.com/paoloantinori/hhighlighter/master/h.sh | sudo tee $INSTALL_DIR/h
 	sudo chmod 777 $INSTALL_DIR/h
 	sudo chown bin:bin $INSTALL_DIR/h
 	source h
