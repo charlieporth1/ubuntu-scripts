@@ -24,24 +24,24 @@ fi
 
 declare -a master_services
 master_services=(
-pihole-FTL
-unbound
-resolvconf
+	'pihole-FTL'
+	'unbound'
+	'resolvconf'
 )
 
 declare -a SERVICES
 SERVICES=(
-$( [[ "$IS_MASTER" == true ]] && ${master_services[@]} )
-nginx
-doh-server
-fail2ban
+	$( [[ "$IS_MASTER" == true ]] && "${master_services[@]}" )
+	'nginx'
+	'doh-server'
+	'fail2ban'
 )
 
 for service in "${SERVICES[@]}"
 do
 	echo "Enabling, restarting and umasking service $service"
-	sudo systemctl unmask $service
-	sudo systemctl enable $service
-	sudo systemctl restart $service
+	sudo systemctl unmask "$service"
+	sudo systemctl enable "$service"
+	sudo systemctl restart "$service"
 	echo "Done enabling, restarting and umasking service $service"
 done
