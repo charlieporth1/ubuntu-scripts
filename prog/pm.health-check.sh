@@ -10,8 +10,8 @@ CONCURRENT
 systemctl is-active --quiet ctp-dns.service && echo Service is running
 
 max=7
-SLEEP_T=$(bc <<< "scale=3;  ( 60 / $max )")s
-SLEEP_RESULT=$(bc <<< "scale=3;  ( ( 60 / $max ) * $max )")s
+SLEEP_T=$( bc <<< "scale=3;  ( 60 / $max )" )s
+SLEEP_RESULT=$( bc <<< "scale=3;  ( ( 60 / $max ) * $max )" )s
 
 printf """
 Script $scriptName

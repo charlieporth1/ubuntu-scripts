@@ -4,7 +4,7 @@
 # sudo systemctl list-units --failed
 systemctl daemon-reload
 ARGS="$@"
-TIMEOUT=16
+TIMEOUT=24
 isAutomation=`echo "$ARGS" | grep -io '\-a'`
 
 FAILURE_STR="fail\|FAILURE\|failed"
@@ -68,10 +68,10 @@ SERVICES=(
 	'snap.certbot.renew.service'
 	'snap.certbot.renew.timer' 'apt-daily-upgrade.service' 'apt-daily-upgrade.timer'
 	'apt-daily.timer' 'apt-daily.service'
-	$( [[ "$IS_GCP" == 'true' ]] && ${GOOGLE_SERVICES[@]} )
+	$( [[ "$IS_GCP" == 'true' ]] && echo ${GOOGLE_SERVICES[@]} )
 )
 
-printf "|| $CYAN%-30s $NC| $CYAN %-10s $NC|$CYAN %-20s $NC|$CYAN %-10s $NC|\n" "SERVICE" "STATUS" "ACTIVE TIME" "TIME"
+printf "|| $CYAN%-40s $NC| $CYAN %-10s $NC|$CYAN %-20s $NC|$CYAN %-10s $NC|\n" "SERVICE" "STATUS" "ACTIVE TIME" "TIME"
 for service in "${SERVICES[@]}"
 do
 	[[ -z `echo $service | grep -o '\.'` ]] && export is_service=true || export is_service=false
@@ -81,7 +81,7 @@ do
 		sleep 0.025s
 		systemctl restart $service
 	fi
-	sys_service_status=`timeout $TIMEOUT systemctl status $service`
+	sys_service_status=`systemctl status $service`
 	active_time=`echo "$sys_service_status" | grep 'Active' | rev | cut -d ';' -f 1 | rev | xargs`
 	status=`echo "$sys_service_status" | grep 'Active' | awk '{print $2}'`
 	status_str=`[[ $status == "active" ]] && printf "$ACTIVE_STR" || printf "$FAILED_STR"`
@@ -90,7 +90,7 @@ do
 	fi
 	[[ "$is_service" == 'true' ]] && export service="$service.service"
 
-	printf "|| %-30s | %-30s | %-20s | %-10s |\n" "$service" "$status_str" "$active_time" "`date +'%H:%M:%S'`"
+	printf "|| %-40s | %-30s | %-20s | %-10s |\n" "$service" "$status_str" "$active_time" "`date +'%H:%M:%S'`"
 done
 
 

@@ -15,6 +15,12 @@ curl -o /tmp/phising_ip_addres.csv  https://openphish.com/samples/ip_feed.csv
 
 declare -a MY_PIHOLE_BAN_IPs
 MY_PIHOLE_BAN_IPs=(
+	125.162.102.215/16
+	51.0.2704.103/16
+	118.144.11.13/16
+	134.209.202.23/16
+	23.95.191.195/16
+	162.142.125.39/16
 	38.123.125.111
 	140.177.226.236
 	140.177.226.236/16
@@ -193,7 +199,6 @@ MY_PIHOLE_BAN_IPs=(
 declare -a PIHOLE_BAN_IPs=(
 	$(curl https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/fail2ban)
 	${MY_PIHOLE_BAN_IPs[@]}
-
 )
 
 PIHOLE_BAN_IPs=( $( filter_ip_address_array "${PIHOLE_BAN_IPs[@]}" ) )

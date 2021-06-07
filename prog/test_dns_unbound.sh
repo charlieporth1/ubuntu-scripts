@@ -6,8 +6,8 @@ echo "Running DNS TEST"
 [[ "$1" == "-a" ]] && isAuto="+short"
 
 WAIT_TIME=2.5s # TO RESTART NEXT
-TIMEOUT=5 # DNS
-TRIES=3
+TIMEOUT=16 # DNS
+TRIES=8
 HOST=localhost
 PORT=5053
 EDNS=174.53.130.17

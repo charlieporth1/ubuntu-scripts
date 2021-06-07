@@ -24,17 +24,17 @@ fi
 
 declare -a master_services
 master_services=(
-	'pihole-FTL'
-	'unbound'
-	'resolvconf'
+	'pihole-FTL.serivce'
+	'unbound.service'
+	'resolvconf.service'
 )
 
 declare -a SERVICES
 SERVICES=(
-	$( [[ "$IS_MASTER" == true ]] && "${master_services[@]}" )
-	'nginx'
-	'doh-server'
-	'fail2ban'
+	$( [[ "$IS_MASTER" == true ]] && echo "${master_services[@]}" )
+	'nginx.service'
+	'doh-server.service'
+	'fail2ban.service'
 )
 
 for service in "${SERVICES[@]}"

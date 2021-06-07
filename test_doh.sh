@@ -13,7 +13,7 @@ echo "Running DOH TEST"
 [[ "$1" == "-a" ]] && isAuto="-o"
 HOST=dns.ctptech.dev
 QUERY=www.google.com
-TIMEOUT=90
+TIMEOUT=180
 TRIES=5
 
 DNS_IP=`$PROG/grepify.sh $(bash $PROG/get_ext_ip.sh)`

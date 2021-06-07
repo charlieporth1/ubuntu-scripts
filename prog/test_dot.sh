@@ -17,8 +17,10 @@ QUERY=www.google.com
 # kdig -d @ctp-vpn.local +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
 # kdig -d @aws.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
 
-WAIT_TIME=16.5s #TO RESTART NEXT
-TIMEOUT=32 #DNS
+# TO RESTART NEXT
+WAIT_TIME=16.5s
+# DNS
+TIMEOUT=32
 TRIES=16
 HOST=dns.ctptech.dev
 

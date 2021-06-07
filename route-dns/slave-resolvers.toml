@@ -1,4 +1,102 @@
-resolvers = [ "ctp-dns-local-master-tcp", "ctp-dns-local-master-udp", " ]
+[resolvers.ctp-dns-master-home-tcp]
+address = "master.dns.ctptech.dev:53"
+protocol = "tcp"
+bootstrap-address = "174.53.130.17"
+[resolvers.ctp-dns-master-home-udp]
+address = "master.dns.ctptech.dev:53"
+protocol = "udp"
+bootstrap-address = "174.53.130.17"
+[resolvers.ctp-dns-master-home-dot]
+address = "master.dns.ctptech.dev:853"
+protocol = "dot"
+bootstrap-address = "174.53.130.17"
+[resolvers.ctp-dns-master-home-quic]
+address = "master.dns.ctptech.dev:784"
+protocol = "doq"
+bootstrap-address = "174.53.130.17"
+[resolvers.ctp-dns-master-doh-home-post]
+address = "https://master.dns.ctptech.dev:4443/dns-query"
+protocol = "doh"
+bootstrap-address = "174.53.130.17"
+[resolvers.ctp-dns-master-doh-home-get]
+address = "https://master.dns.ctptech.dev:4443/dns-query{?dns}"
+protocol = "doh"
+doh = { method = "GET" }
+bootstrap-address = "174.53.130.17"
+
+
+
+[resolvers.ctp-dns-master-gcp-tcp]
+address = "master.dns.ctptech.dev:53"
+protocol = "tcp"
+bootstrap-address = "35.232.120.211"
+[resolvers.ctp-dns-master-gcp-udp]
+address = "master.dns.ctptech.dev:53"
+protocol = "udp"
+bootstrap-address = "35.192.105.158"
+[resolvers.ctp-dns-master-gcp-dot]
+address = "master.dns.ctptech.dev:853"
+protocol = "dot"
+bootstrap-address = "35.192.105.158"
+[resolvers.ctp-dns-master-gcp-quic]
+address = "master.dns.ctptech.dev:784"
+protocol = "doq"
+bootstrap-address = "35.192.105.158"
+[resolvers.ctp-dns-master-doh-gcp-post]
+address = "https://master.dns.ctptech.dev:4443/dns-query"
+protocol = "doh"
+bootstrap-address = "35.232.120.211"
+[resolvers.ctp-dns-master-doh-gcp-get]
+address = "https://master.dns.ctptech.dev:4443/dns-query{?dns}"
+protocol = "doh"
+doh = { method = "GET" }
+bootstrap-address = "35.192.105.158"
+[resolvers.ctp-dns-master-doh-gcp-quic]
+address = "https://master.dns.ctptech.dev:1443/dns-query"
+protocol = "doh"
+transport = "quic"
+bootstrap-address = "35.192.105.158"
+[resolvers.ctp-dns-master-home-dtls]
+address = "master.dns.ctptech.dev:853"
+protocol = "dtls"
+bootstrap-address = "174.53.130.17"
+[resolvers.ctp-dns-master-gcp-dtls]
+address = "master.dns.ctptech.dev:853"
+protocol = "dtls"
+bootstrap-address = "35.192.105.158"
+
+
+[resolvers.ctp-dns-master-doh-quic-home-post]
+address = "https://master.dns.ctptech.dev:4443/dns-query"
+protocol = "doh"
+transport = "quic"
+bootstrap-address = "174.53.130.17"
+[resolvers.ctp-dns-master-doh-quic-home-get]
+address = "https://master.dns.ctptech.dev:4443/dns-query{?dns}"
+protocol = "doh"
+transport = "quic"
+doh = { method = "GET" }
+bootstrap-address = "174.53.130.17"
+
+[resolvers.ctp-dns-master-doh-quic-gcp-post]
+address = "https://master.dns.ctptech.dev:4443/dns-query"
+protocol = "doh"
+transport = "quic"
+bootstrap-address = "35.232.120.211"
+[resolvers.ctp-dns-master-doh-quic-gcp-get]
+address = "https://master.dns.ctptech.dev:4443/dns-query{?dns}"
+protocol = "doh"
+transport = "quic"
+doh = { method = "GET" }
+bootstrap-address = "35.192.105.158"
+
+[groups.ctp-dns-group]
+type = "fastest"
+# CTP INSTALL -- DO NOT REMOVE THIS UNLESS YOU PLAN ON REMOVING INSTALL AND REINSTALLING
+resolvers = [ 
+	"ctp-dns-local-master-tcp",
+	"ctp-dns-local-master-udp"
+, "ctp-dns-master-gcp-tcp","ctp-dns-master-gcp-udp","ctp-dns-master-gcp-dot","ctp-dns-master-gcp-quic","ctp-dns-master-doh-gcp-post","ctp-dns-master-doh-gcp-get","ctp-dns-master-doh-gcp-quic","ctp-dns-master-gcp-dtls","ctp-dns-master-doh-quic-gcp-post" ]
 
 [resolvers.ctp-dns-local-master-tcp]
 address = "192.168.44.250:53"

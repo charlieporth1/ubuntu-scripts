@@ -2233,3 +2233,635 @@ tail -f /var/log/pm.health-check.log
 htop
 sudo git pull
 htop
+cd Pihole-Slave-Install/
+pihole -t
+sudo git pull
+sudo ./update.sh 
+htop
+sudo apt-get install libblas-dev liblapack-dev libatlas-base-dev gfortran
+systemctl stop ctp-dns
+sudo systemctl stop ctp-dns
+sudo systemctl stop docker.socket
+systemctl stop ctp-dns
+htop
+sudo crontab -e
+sudo systemctl stop ctp-dns
+sudo nano /etc/cron.d/ubuntu-server-health_check*
+sudo systemctl stop ctp-dns
+htop
+systemctl stop nginx
+sudo apt-get install libblas-dev liblapack-dev libatlas-base-dev gfortran python3-matplotlib python3-scipy
+sudo systemctl stop nginx
+htop
+sudo systemctl stop ctp-dns
+sudo crontab -e
+ifconfig
+ls
+pip3 install jupyter-notebook
+sudo apt install python3-pip python3-dev
+htop
+killall routedns 
+sudo killall routedns 
+pip3 install jupyterlab
+sudo pip3 install jupyterlab
+sudo crontab -e
+systemctl mask ctp-dns
+sudo systemctl mask ctp-dns
+pip3 install jupyterlab --user
+pip install --force-reinstall virtualenv
+cd Identify_Customer_Segments/
+ls
+pip3 -m virtualenv env/bin/activate
+pip3 install --force-reinstall virtualenv
+'/home/ubuntuserver/.local/bin/virtualenv env/bin/activate
+/home/ubuntuserver/.local/bin/virtualenv env/bin/activate
+pip3 uninstall  launchpadlib
+source env/bin/activate
+source env/bin/activate/
+source env/bin/activate/bin/
+rm -rf env
+/home/ubuntuserver/.local/bin/virtualenv env
+source env/bin/activate
+sudo /home/ubuntuserver/.local/bin/virtualenv env
+sudo python3 -m /home/ubuntuserver/.local/bin/virtualenv env
+sudo python3 -m virtualenv env
+sudo pip3 uninstall  launchpadlib
+virtualenv my_project_env
+htop
+sudo -H pip3 install virtualenv
+killall routedns
+sudo killall routedns
+sudo systemctl mask ctp-dns
+cd Identify_Customer_Segments/
+virtualenv my_project_env
+sudo virtualenv my_project_env
+virtualenv my_project_env
+which virtualenv 
+/usr/local/bin/virtualenv virtualenv 
+/usr/local/bin/virtualenv my_project_env
+sudo apt install python3-virtualenv
+python3 -m venv my_env
+sudo 
+sudo  python3 -m venv my_env
+source my_env/bin/activate
+pip install jupyter
+pip install jupyter --user
+chown $USER:$USER /home/ubuntuserver/Identify_Customer_Segments/
+chown $USER:$USER -R /home/ubuntuserver/Identify_Customer_Segments/
+sudo chown $USER:$USER -R /home/ubuntuserver/Identify_Customer_Segments/
+pip install jupyter
+jupyter notebook
+jupyter notebook  Identify_Customer_Segments.ipynb --ip 192.168.44.250
+killall routedns
+htop
+ps aux | grep toGithub
+ps aux | grep toGithub | awk '{print $2}'
+ps aux | grep toGithub | awk '{print $2}' | xargs sudo kill -9
+sudo apt  install jupyter-core
+jupyter notebook  Identify_Customer_Segments.ipynb --ip 192.168.44.250
+jupyter  Identify_Customer_Segments.ipynb --ip 192.168.44.250
+python3 -m install jupyter
+python3 -m  jupyter
+python3 -m  pip3 install jupyter
+htop
+sudo crontab -e
+python3 -m  pip install jupyter
+systemctl stop nginx
+sudo systemctl stop nginx
+htop
+sudo crontab -e
+htop
+ps -aux | grep Weekly|set_
+ps -aux | grep 'Weekly\|set_'
+ps -aux | grep 'Weekly\|set_|Daily'
+ps -aux | grep 'Weekly\|set_||Daily' 
+ps -aux | grep 'Weekly\|set_\|Daily' 
+ps -aux | grep 'Weekly\|set_\|Daily'  | awk '{print $2}' | xargs sudo kill
+sudo crontab -e
+source my_env/bin/activate
+pandas seaborn pycocotools scipy  scikit-learn==0.19.2  matplotlib
+pip ininstall pandas seaborn pycocotools scipy  scikit-learn==0.19.2  matplotlib
+htop
+systemctl stop fail2ban
+sudo systemctl stop fail2ban
+htop
+journalctl --help
+journalctl  --vacuum-size=100M
+sudo journalctl  --vacuum-size=100M
+sudo journalctl  --vacuum-size=50M
+htop
+pip install pandas seaborn pycocotools scipy  scikit-learn==0.19.2  matplotlib
+pip install wheel
+q
+htop
+sudo git pull
+ \-#\-
+sudo ./copy_config.sh 
+cd Pihole-Slave-Install/
+ls
+ifconfig
+htop
+systemctl stop doh-server.service 
+sudo systemctl stop doh-server.service 
+sudo systemctl stop containerd.service 
+htop
+pihole status
+dig github.com
+htop
+ls /var/tmp
+df -h
+ls
+htop
+sudo git pull
+sudo ./copy_config.sh 
+dig @35.35.35.35
+ping 35.35.35.35
+dig @34.72.149.182
+sudo git pull
+htop
+sudo git pull
+htop
+killall find
+sudo killall find
+htop
+killall updatedb.mlocate 
+sudo killall updatedb.mlocate 
+htop
+sudo git pull
+htop
+pls
+ls
+ls env/
+ls env/lib/
+ls env/lib/python3.8/site-packages/
+ls env/bin
+ls my_env/
+rm -rf env
+ls my_env/bin
+ls my_env/lib
+ls my_env/lib/python3.8/site-packages/
+ls my_env/
+ls my_env/include/
+htop
+a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2a]2000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+ ~0#~0
+a~0a~0a~0a~0a~0a~0a~0a~0a~0a~0a~0a~0a~0a~0a~0a~0a~0a~0a~0
+htop
+ls /usr/local/bin/cred.sh
+ls /usr/local/sbin/cred.sh
+source cred.sh
+htop
+cd Pihole-Slave-Install/
+sudo git pull
+jupyter notebook  Identify_Customer_Segments.ipynb --ip 192.168.44.250
+sudo nano /etc/cron.d/ubuntu-server-health_check*
+systemctl start ctp-dns
+sudo systemctl start ctp-dns nginx doh-server 
+sudo systemctl daemon-reload && sudo systemctl start ctp-dns nginx doh-server 
+systemctl status ctp-dns
+ifconfig
+tail -f /var/log/pm.health-check.log 
+exit
+kdig -d @ctp-vpn.local +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+systemctl status ctp-dns
+sudo systemctl restart ctp-dns
+kdig -d @ctp-vpn.local +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+sudo systemctl restart ctp-dns
+systemctl status ctp-dns
+kdig -d @ctp-vpn.local +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+systemctl status ctp-dns
+tail -f /var/log/ctp-dns/*.log
+cd Pihole-Slave-Install/
+sudo git pull
+sudo apt install mbuffer
+tail -f /var/log/ctp-dns/*.log
+systemctl status ctp-dns
+tail -f /var/log/ctp-dns/*.log
+/bin/bash -c "/root/go/bin/routedns ${ROUTE}/*.toml \
+        --log-level=5 | mbuffer -T /tmp/ctp-dns.buffer -m 50M | tee -a ${LOG_FILE}"
+/bin/bash -c "/root/go/bin/routedns ${ROUTE}/*.toml \
+        --log-level=5 | mbuffer -T /tmp/ctp-dns.buffer -m 50M | tee -a ${LOG_FILE}"
+sudo su
+sudo git pull
+tail -f /var/log/ctp-dns/*.log
+sudo git pull
+tail -f /var/log/ctp-dns/*.log
+sudo git pull
+tail -f /var/log/ctp-dns/*.log
+sudo su
+tail -f /var/log/ctp-dns/*.log
+ystemctl status ctp-dns
+stemctl status ctp-dns
+systemctl status ctp-dns
+cd Pihole-Slave-Install/
+tail -f /var/log/ctp-dns/*.log
+systemctl status ctp-dns
+tail -f /var/log/pm.health-check.
+tail -f /var/log/pm.health-check.log 
+kdig -d @ctp-vpn.local +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+tail -f /var/log/pm.health-check.log 
+systemctl status ctp-dns
+udo su
+sudo su
+tail -f /var/log/ctp-dns/*.log
+htop
+cd Pihole-Slave-Install/
+sudo git pull
+tail -f /var/log/ctp-dns/*.log
+rm -rf /var/log/ctp-dns/{default,error,access}.log 
+rm -rf /var/log/ctp-dns/'{default,error,access}.log'
+sudo rm -rf /var/log/ctp-dns/'{default,error,access}.log'
+tail -f /var/log/ctp-dns/*.log
+cd Pihole-Slave-Install/
+tail -f /var/log/ctp-dns/*.log
+systemctl status ctp-dns
+tail -f /var/log/ctp-dns/*.log
+exit
+cd Pihole-Slave-Install/
+sudo git pull
+tail -f /var/log/ctp-dns/*.log
+systemctl restart  ctp-dns
+sudo systemctl restart  ctp-dns
+systemctl daemon-reload 
+sudo systemctl daemon-reload 
+sudo systemctl restart  ctp-dns
+cd Pihole-Slave-Install/
+sudo git pull
+exit
+cd Pihole-Slave-Install/
+sudo 
+sudo git pull
+sudo systemctl daemon-reload 
+sudo systemctl restart  ctp-dns
+journalctl -xe
+sudo systemctl restart  ctp-dns
+sudo systemctl status  ctp-dns
+which tee
+ls /bin/tee
+exit
+sudo systemctl status  ctp-dns
+cd Pihole-Slave-Install/
+sudo git pull
+sudo systemctl restart  ctp-dns
+sudo systemctl daemon-reload && sudo systemctl restart  ctp-dns
+sudo systemctl status  ctp-dns
+sudo systemctl daemon-reload && sudo systemctl restart  ctp-dns
+sudo systemctl status  ctp-dns
+sudo systemctl daemon-reload && sudo systemctl restart  ctp-dns
+sudo systemctl status  ctp-dns
+tail -f /var/log/ctp-dns/*.log
+sudo systemctl status  ctp-dns
+tail -f /var/log/pm.health-check.log 
+sudo systemctl status  ctp-dns
+sudo nano /mnt/HDD/Programs/ctp-dns.service 
+sudo systemctl status  ctp-dns
+kdig -d @ctp-vpn.local +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+sudo fail2ban-client status ctp-dns
+systemctl start fail2ban
+sudo systemctl start fail2ban
+sudo systemctl status nginx
+sudo fail2ban-client status ctp-dns
+sudo fail2ban-client status ctp-dns-1-block
+sudo fail2ban-client status pihole-dns
+sudo fail2ban-client status pihole-dns-1-block
+kdig -d @ctp-vpn.local +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+systemctl status ctp-dns
+sudo nano /etc/cron.d/ubuntu-server-health_check*
+sudo systemctl restart ctp-dns.service 
+systemctl status ctp-dns
+sudo systemctl restart ctp-dns.service 
+systemctl status ctp-dns
+kdig -d @ctp-vpn.local +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+sudo lsof -i :853
+sudo lsof -i :53
+sudo nano /home/ubuntuserver/Programs/route-dns/slave-resolvers.toml
+sudo nano /home/ubuntuserver/Programs/route-dns/slave-listeners.toml 
+sudo systemctl restart ctp-dns.service 
+kdig -d @ctp-vpn.local +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+sudo nano /home/ubuntuserver/Programs/route-dns/slave-listeners.toml 
+kdig -d @ctp-vpn.local +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+systemctl status ctp-dns
+sudo systemctl restart ctp-dns.service 
+systemctl status ctp-dns
+kdig -d @ctp-vpn.local +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+systemctl status ctp-dns
+sudo systemctl restart ctp-dns.service 
+kdig -d @ctp-vpn.local +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+sudo systemctl restart ctp-dns.service 
+kdig -d @ctp-vpn.local +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+systemctl status ctp-dns
+kdig -d @ctp-vpn.local +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+systemctl status ctp-dns
+sudo systemctl restart ctp-dns.service 
+kdig -d @ctp-vpn.local +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+systemctl status ctp-dns
+kdig -d @ctp-vpn.local +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+systemctl status ctp-dns
+sudo su
+systemctl status ctp-dns
+kdig -d @ctp-vpn.local +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+sudo systemctl restart ctp-dns.service 
+systemctl status ctp-dns
+sudo systemctl restart ctp-dns.service 
+systemctl status ctp-dns
+kdig -d @ctp-vpn.local +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+systemctl status ctp-dns
+kdig -d @ctp-vpn.local +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+sudo su
+sudo systemctl restart ctp-dns.service 
+systemctl status ctp-dns
+exit
+cd Pihole-Slave-Install/
+sudo git pull
+sudo systemctl restart ctp-dns.service 
+sudo systemctl daemon-reload' && sudo systemctl restart ctp-dns.service 
+sudo systemctl daemon-reload && sudo systemctl restart ctp-dns.service 
+systemctl status ctp-dns
+sudo su
+sudo systemctl daemon-reload && sudo systemctl restart ctp-dns.service 
+cd ..
+cd Identify_Customer_Segments/
+git add .
+git commit -m "MMMgit "
+tail -f /var/log/ctp-dns/*.log
+systemctl status ctp-dns
+tail -f /var/log/pm.health-check.log 
+ kdig -d @ctp-vpn.local +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+tail -f /var/log/ctp-dns/*.log
+ kdig -d @ctp-vpn.local +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+ kdig -d @ctp-vpn.local +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns +tcp
+git push
+ kdig -d @ctp-vpn.local +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+cd Pihole-Slave-Install/
+sudo git pull
+ kdig -d @ctp-vpn.local +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns +tcp
+git lfs install
+sudo apt search lts
+sudo apt search lfs
+sudo apt install git-lf
+sudo apt install git-lfs
+git lfs install
+git add .
+git commit -m "MMM"
+git push
+git-lf
+git lfs install
+git rebase
+git lfs track *.csv
+git add .
+git commit -m "Added LFS "
+git push
+git rm --cached *.csv
+git commit -m "Remved lfs"
+git push
+ls
+git push -ff
+git filter-branch --force --index-filter   "git rm --cached --ignore-unmatch path/to/your/large/file"   --prune-empty --tag-name-filter cat -- --all
+git filter-branch --force --index-filter   "git rm --cached --ignore-unmatched *.csv"   --prune-empty --tag-name-filter cat -- --all
+ls
+cp -rf *.csv ../
+git commit -m "MMM"
+git filter-branch --force --index-filter   "git rm --cached --ignore-unmatched *.csv"   --prune-empty --tag-name-filter cat -- --all
+mv *.csv ../
+git filter-branch --force --index-filter   "git rm --cached --ignore-unmatched *.csv"   --prune-empty --tag-name-filter cat -- --all
+git add .
+git commit -m "MMM"
+ls
+mv AZDIAS_Feature_Summary.csv ../
+git add .
+git commit -m "MM"
+git filter-branch --force --index-filter   "git rm --cached --ignore-unmatched *.csv"   --prune-empty --tag-name-filter cat -- --all
+git commit -m "MM"
+git add .
+git commit -m "MM"
+git stash
+git filter-branch --force --index-filter   "git rm --cached --ignore-unmatched *.csv"   --prune-empty --tag-name-filter cat -- --all
+ls
+ls ..
+git filter-branch --force --index-filter   "git rm --cached --ignore-unmatched Udacity_AZDIAS_Subset.csv"   --prune-empty --tag-name-filter cat -- --all
+git push
+git add --all
+git filter-branch --force --index-filter   "git rm --cached --ignore-unmatched Udacity_AZDIAS_Subset.csv"   --prune-empty --tag-name-filter cat -- --all
+git filter-branch --force --index-filter   "git rm --cached --ignore-unmatched Udacity_AZDIAS_Subset.csv"   --prune-empty --tag-name-filter cat -- --all -f HEAD
+git status
+git filter-branch --force --index-filter   "git rm --cached --ignore-unmatched Udacity_AZDIAS_Subset.csv"   --prune-empty --tag-name-filter cat -- --all
+git filter-repo --force --index-filter   "git rm --cached --ignore-unmatched Udacity_AZDIAS_Subset.csv"   --prune-empty --tag-name-filter cat -- --all
+git filter-rop --force --index-filter   "git rm --cached --ignore-unmatched Udacity_AZDIAS_Subset.csv"   --prune-empty --tag-name-filter cat -- --all
+git filter-repo --force --index-filter   "git rm --cached --ignore-unmatched Udacity_AZDIAS_Subset.csv"   --prune-empty --tag-name-filter cat -- --all
+sudo apt install git-filter-repo
+sudo apt search git-filter-repo
+sudo apt install git-filter-repo
+ip3 install git-filter-repo
+pip3 install git-filter-repo
+git filter-repo --force --index-filter   "git rm --cached --ignore-unmatched Udacity_AZDIAS_Subset.csv"   --prune-empty --tag-name-filter cat -- --all
+cp -a git-filter-repo $(git --exec-path)
+cp -rf ~/.local/bin/git-filter-repo $(git --exec-path)
+sudo cp -rf ~/.local/bin/git-filter-repo $(git --exec-path)
+git filter-repo --force --index-filter   "git rm --cached --ignore-unmatched Udacity_AZDIAS_Subset.csv"   --prune-empty --tag-name-filter cat -- --all
+git filter-repo --force --index-filter   "git rm --cached --ignore-unmatched Udacity_AZDIAS_Subset.csv" --tag-name-filter cat -- --all
+git lfs uninstall
+git filter-repo --force --index-filter   "git rm --cached --ignore-unmatched Udacity_AZDIAS_Subset.csv" --tag-name-filter cat -- --all
+git filter-repo --force   "git rm --cached --ignore-unmatched Udacity_AZDIAS_Subset.csv" --tag-name-filter cat -- --all
+  git filter-repo --invert-paths --path *.csv
+  git filter-repo --invert-paths --path *.csv --force
+git push
+git remote add origin https://github.com/charlieporth1/Identify_Customer_Segments
+git push
+ git push --set-upstream origin master
+  git filter-repo --invert-paths --path Udacity_AZDIAS_Subset.csv --force
+git push
+git push --set-upstream origin master
+systemctl status ctp-dns
+sudo nano /mnt/HDD/Programs/test_dot.sh
+sudo git pull
+cd ..
+cd Pihole-Slave-Install/
+sudo git pull
+sudo nano /mnt/HDD/Programs/test_dot.sh
+htop
+sudo git pull
+systemctl status ctp-dns
+kdig -d @ctp-vpn.local +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+sudo nano /etc/cron.d/ubuntu-server-dns_route-fix
+tail -f /var/log/pm.health-check.log 
+sudo git pull
+sudo ./update.sh 
+sudo git pull
+sudo bash /home/ubuntuserver/Pihole-Slave-Install/setup/cron.sh 
+sudo nano /home/ubuntuserver/Programs/route-dns/slave-listeners.toml 
+sudo bash /mnt/HDD/Programs/dns-route.sh
+[[ "$IS_MASTER" == 'true' ]] && echo eh
+sudo nano /home/ubuntuserver/Programs/route-dns/slave-listeners.toml 
+systemctl status ctp-dns
+tail -f /var/log/pm.health-check.log 
+sudo nano /etc/dnsmasq.d/88-custom-dns-servers.conf 
+ls config/dnsmasq.d/88-custom-dns-servers.conf 
+sudo ./update.sh 
+sudo git pull
+sudo ./update.sh 
+sudo nano /etc/dnsmasq.d/88-custom-dns-servers.conf 
+cd Pihole-Slave-Install/
+sudo git pull
+systemctl status ctp-dns.service 
+cd Pihole-Slave-Install/
+sudo git pull
+sudo nano /home/ubuntuserver/Programs/route-dns/ctp-yt-dns-router.toml 
+nano /home/ubuntuserver/Programs/route-dns/ctp-yt-dns-router.toml 
+systemctl status ctp-dns
+pihole -t
+exit
+eit
+exit
+cd Pihole-Slave-Install/
+systemctl status nginx
+sudo git pull
+git stash
+sudo ./update.sh 
+sudo ./update.sh  --master
+sudo nano /home/ubuntuserver/Programs/route-dns/ctp-yt-dns-router.toml 
+nano /home/ubuntuserver/Programs/route-dns/ctp-yt-dns-router.toml 
+sudo git pull
+sudo ./update.sh 
+sudo git pull
+sudo ./update.sh 
+systemctl status ctp-dns
+cd Pihole-Slave-Install/
+sudo git pull && sudo ./install.sh
+cd Pihole-Slave-Install/
+sudo git pull
+sudo ./update.sh 
+cd 
+cd Pihole-Slave-Install/
+sudo git pull
+sudo bash /mnt/HDD/Programs/dns-route.sh
+giy
+ah
+ha
+h
+&
+sudo su
+cd Pihole-Slave-Install/
+sudo git pull
+'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ifconfig
+dig www.ads.com
+dig www.ads.com @dns.ctptech.dev
+dig www.ads.com @home.ctptech.dev
+dig www.ads.com @aws.ctptech.dev
+cd Pihole-Slave-Install/
+sudo git pull
+sudo ./update.sh 
+sudo  
+systemctl status unbound
+sudo iptables -F
+sudo iptables -L
+cd Pihole-Slave-Install/
+sudo git pull
+systemctl status lighttpd
+pihole -t
+systemctl status lighttpd
+systemctl status ctp-dns
+systemctl restart ctp-dns
+sudo systemctl restart ctp-dns
+systemctl status ctp-dns
+sudo su
+cd Pihole-Slave-Install/
+sudo git stash
+sudo ./setup/dns-route.sh
+sudo su
+nano install.sh
+sudo apt install pcregrep
+sudo git stash
+sudo ./setup/dns-route.sh
+sudo nano /home/ubuntuserver/Programs/route-dns/ctp-yt-dns-router.toml 
+systemctl status ctp-dns
+systemctl status lighttpd.service 
+ls /etc/pihole/
+exit
+systemctl status lighttpd.service 
+pihole -t
+cd Pihole-Slave-Install/
+sudo bash /mnt/HDD/Programs/copy_gravity.sh 
+pihole -t
+pihole restartdns
+sudo bash /mnt/HDD/Programs/copy_gravity.sh 
+pihole restartdns
+systemctl status ctp-dns
+htop
+ifconfig
+sudo su
+ifconfig
+systemctl status ctp-dns
+systemctl status unbound
+htop
+sudo git pull
+sudo git stash
+sudo git pull
+sudo bash setup/dns-route.sh
+sudo ./up
+sudo ./update.sh 
+sudo git pull
+systemctl status ctp-dns
+sudo git pull
+systemctl status ctp-dns
+kdig -d @aws.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+kdig -d @home.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+systemctl status ctp-dns
+kdig -d @home.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+systemctl status ctp-dns
+kdig -d @home.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+systemctl status ctp-dns
+kdig -d @home.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+systemctl status ctp-dns
+kdig -d @home.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+sudo git pull
+kdig -d @home.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+systemctl status ctp-dns
+kdig -d @home.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+tail -f /var/log/pm.health-check.log 
+systemctl status ctp-dns
+tail -f /var/log/pm.health-check.log 
+kdig -d @home.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+sudo su
+kdig -d @home.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+sudo su
+systemctl status ctp-dns
+kdig -d @home.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+kdig -d @home.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=10 +dnssec +edns
+sudo git pull
+kdig -d @home.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+systemctl status ctp-dns
+kdig -d @home.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+systemctl status ctp-dns

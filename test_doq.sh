@@ -9,7 +9,7 @@ QUERY=www.google.com
 HOST=dns.ctptech.dev
 TIMEOUT=60
 WAIT_TIME=2.5s
-TRIES=3
+TRIES=8
 # qdig -server dns.ctptech.dev:784 -dnssec -recursion dns.ctptech.dev A
 
 DNS_IP=`$PROG/grepify.sh $(bash $PROG/get_ext_ip.sh)`

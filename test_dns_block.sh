@@ -7,8 +7,8 @@ echo "Running DNS BLOCK TEST"
 QUERY=www.ads.com
 
 WAIT_TIME=2.5s # TO RESTART NEXT
-TIMEOUT=3 # DNS
-TRIES=2
+TIMEOUT=16 # DNS
+TRIES=8
 HOST=dns.ctptech.dev
 
 
