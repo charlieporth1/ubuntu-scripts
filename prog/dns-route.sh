@@ -114,6 +114,13 @@ if [[ `isNotInstalled $ROUTE/ctp-yt-dns-router.toml` == 'true' ]]; then
 	echo "$yt_resolvers" | sudo tee -a $ROUTE/ctp-yt-dns-router.toml
 fi
 
+if [[ `isNotInstalled $ROUTE/ctp-yt-googlevideo-router.toml` == 'true' ]]; then
+	yt_resolvers='resolvers = [  "ctp-dns-gcp-dtls", "ctp-dns-gcp-dot", "ctp-dns-master-doh-gcp-quic", "ctp-dns-master-gcp-quic", "ctp-dns-master-doh-gcp-post", "ctp-dns-master-doh-gcp-get" ]'
+	pcregrep -v -M '^resolvers.*(.|\n)*]' $ROUTE/ctp-yt-googlevideo-router.toml > $ROUTE/ctp-yt-googlevideo-router.toml.tmp
+	mv $ROUTE/ctp-yt-googlevideo-router.toml.tmp $ROUTE/ctp-yt-googlevideo-router.toml
+	echo "$yt_resolvers" | sudo tee -a $ROUTE/ctp-yt-googlevideo-router.toml
+fi
+
 
 
 

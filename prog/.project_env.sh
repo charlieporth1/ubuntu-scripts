@@ -17,9 +17,10 @@ ________________________________________________________________________________
 [[ -n "$SUDO_USER" ]] && export USER="$SUDO_USER" || export USER="$USER"
 export HOME="/home/$USER"
 export PROG="$HOME/Programs"
+export ROUTE="$PROG/route-dns"
 
 export INSTALL_CONFIG_DIR=/etc
-export IP_REGEX="([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})"
+export IP_REGEX="((([0-9]{1,3})((\.)?))"
 
 export CONFIG_DIR=$SCRIPT_DIR/config
 export CONF_PROG_DIR=$SCRIPT_DIR/prog
@@ -29,8 +30,7 @@ export MASTER_DIR=$SCRIPT_DIR/master
 export CONFIG_INSTALLED_STR='# CTP INSTALL -- DO NOT REMOVE THIS UNLESS YOU PLAN ON REMOVING INSTALL AND REINSTALLING'
 
 source $SCRIPT_DIR/bash_rc_sample
-
-for env in $( cat /etc/environment ); do export $(echo $env | sed -e 's/"//g'); done
+for env in $( cat /etc/environment ); do export $(echo $env | sed -e 's/"//g') > /dev/null; done
 
 function isNotInstalled() {
  	local file="$1"
@@ -90,3 +90,4 @@ function is_user_sure() {
 export -f isNotInstalled
 export -f is_user_sure
 export -f check_admin
+echo "DONE"
