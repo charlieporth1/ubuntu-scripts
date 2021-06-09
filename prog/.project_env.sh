@@ -6,6 +6,8 @@ export HOME="/home/$USER"
 [[ "$SCRIPT_DIR" == '.' ]] && export SCRIPT_DIR=$PWD
 [[ -n `which realpath` ]] && export SCRIPT_DIR=`realpath .`
 
+export SCRIPT_NAME=`basename $0`
+
 echo """
 ----------------------------------------------------------------------------------------------------------------
 Make sure the root install dir is a full path and not a short path. This is very important to a correct install!

@@ -9,6 +9,8 @@ if ! [[ -f $INSTALL_DIR/h ]]; then
 	sudo chmod 777 $INSTALL_DIR/h
 	sudo chown bin:bin $INSTALL_DIR/h
 	source h
+	sudo apt install -y ack > /dev/null
+	echo "Finished loading h"
 elif [[ -f $INSTALL_DIR/h.sh ]]; then
 	source h.sh
 elif [[ -f $INSTALL_DIR/h ]]; then

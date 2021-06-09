@@ -1,0 +1,3 @@
+[groups.ctp-dns-yt-block-resolver-blocker-google-video-resolvers]
+type = "fastest"
+resolvers = [ "ctp-dns-gcp-dtls", "ctp-dns-gcp-dot", "ctp-dns-master-doh-gcp-quic", "ctp-dns-master-gcp-quic", "ctp-dns-master-doh-gcp-post", "ctp-dns-master-doh-gcp-get" ]

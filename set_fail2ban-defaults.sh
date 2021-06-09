@@ -209,6 +209,7 @@ if [[ $IS_PIHOLE == 'true' ]]; then
 	sudo fail2ban-client set pihole-dns-1-block banip ${PIHOLE_BAN_IPs[@]}
 fi
 
+
 sudo fail2ban-client set ctp-dns-1-block banip ${PIHOLE_BAN_IPs[@]}
 
 iptables -N BAN-IPS
