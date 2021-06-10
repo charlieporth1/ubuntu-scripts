@@ -1,8 +1,17 @@
-[groups.ctp-dns-yt-block-resolver-blocker-google-video-resolvers]
-type = "fastest"
-# CTP INSTALL -- DO NOT REMOVE THIS UNLESS YOU PLAN ON REMOVING INSTALL AND REINSTALLING
+
+[resolvers.ctp-dns-local-master-tcp]
+address = "192.168.44.250:53"
+protocol = "tcp"
+[resolvers.ctp-dns-local-master-udp]
+address = "192.168.44.250:53"
+protocol = "udp"
+
+
+[groups.ctp-dns-group]
 resolvers = [
-"ctp-dns_gcp-dot-ip-1",
+	"ctp-dns-local-master-tcp",
+"ctp-dns-local-master-udp",
+	"ctp-dns_gcp-dot-ip-1",
 "ctp-dns_gcp-dot-ip-2",
 "ctp-dns_gcp-dtls-ip-1",
 "ctp-dns_gcp-dtls-ip-2",
@@ -16,4 +25,7 @@ resolvers = [
 "ctp-dns_gcp-doh-quic-get-ip-2",
 "ctp-dns_gcp-quic-ip-1",
 "ctp-dns_gcp-quic-ip-2"
+
 ]
+type = "fastest"
+

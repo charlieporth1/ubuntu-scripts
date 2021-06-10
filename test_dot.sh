@@ -42,14 +42,14 @@ then
     curl -Ls 'https://raw.githubusercontent.com/ipinfo/cli/master/grepip/deb.sh' | bash
 fi
 
-DOT_ARGS="+dnssec +edns +subnet=$EDNS +ttl +tls-ca +retry=$TRIES +timeout=$TIMEOUT"
+DOT_ARGS="+dnssec +edns +ttl +tls-hostname=$HOST +retry=$TRIES +timeout=$TIMEOUT +tcp"
 
 EXTENRAL_IP=`bash $PROG/get_ext_ip.sh --current-ip`
 
-dot=`kdig @$HOST $isAuto +tls-host=$HOST $QUERY $DOT_ARGS`
-dot_local=`kdig @ctp-vpn.local $isAuto +tls-host=$HOST $QUERY $DOT_ARGS`
-dot_master=`kdig @master.$HOST $isAuto +tls-host=$HOST $QUERY $DOT_ARGS`
-dot_external=`kdig @$EXTENRAL_IP $isAuto +tls-host=$HOST $QUERY $DOT_ARGS`
+dot=`kdig @$HOST $isAuto $QUERY $DOT_ARGS`
+dot_local=`kdig @ctp-vpn.local $isAuto $QUERY $DOT_ARGS`
+dot_master=`kdig @master.$HOST $isAuto $QUERY $DOT_ARGS`
+dot_external=`kdig @$EXTENRAL_IP $isAuto $QUERY $DOT_ARGS`
 
 
 log_d "NET_IP $NET_IP"

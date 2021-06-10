@@ -1,5 +1,6 @@
 [groups.ctp-dns-yt-block-resolver-blocker-google-video-ttl]
 type = "ttl-modifier"
-resolvers = [ "ctp-dns-group" ]
 ttl-min = 2
 ttl-max = 15
+# CTP INSTALL -- DO NOT REMOVE THIS UNLESS YOU PLAN ON REMOVING INSTALL AND REINSTALLING
+resolvers = [  "ctp-dns-yt-block-resolver-blocker-google-video-resolvers" ]

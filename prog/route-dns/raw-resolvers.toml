@@ -16,4 +16,3 @@ protocol = "tcp"
 [resolvers.ctp-dns-ip-home-udp]
 address = "174.53.130.17:53"
 protocol = "udp"
-

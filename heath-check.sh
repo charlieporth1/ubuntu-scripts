@@ -33,6 +33,9 @@ COUNT_ACTION() {
         echo "$COUNT"
         local max=5
         if [[ $COUNT -ge $max ]] && [[ "$FN" = "$LOCK_FILE" ]] then
+		echo "Removing $LOCK_FILE file because $COUNT -ge $max sleeping 30s"
+		sleep 30s
+		echo "Removing $LOCK_FILE file because $COUNT -ge $max"
 		sudo rm -rf $LOCK_FILE
 	fi
         if [[ $COUNT -ge 3 ]] && [[ $COUNT -lt $max ]]; then

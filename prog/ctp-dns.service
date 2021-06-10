@@ -46,7 +46,7 @@ ExecStart=/bin/bash -c "/root/go/bin/routedns ${ROUTE}/*.toml --log-level=5"
 #ExecStartPost=/bin/bash -c "for ((i=0; i < 3; i++)); do ps -aux | grep 'pm.stal\|test_\|pm.hea' | awk '{print $2}' | xargs sudo kill -9;sleep 10s;done"
 #ExecStartPost=/bin/bash -c '/bin/sleep 30s; [[ -f /tmp/health-checks.stop.lock ]] &&/bin/rm /tmp/health-checks.stop.lock'
 
-ExecStop=/bin/bash -c "if pgrep routedns; then pkill routedns; fi; if pgrep sleep; then pkill sleep; fi; [[ -f ${LOCK_FILE} ]] && /bin/rm ${LOCK_FILE}; exit 0"
+ExecStop=/bin/bash -c "if pgrep routedns; then pkill routedns; fi; if pgrep sleep; then pkill sleep; fi; test -f ${LOCK_FILE} && /bin/rm ${LOCK_FILE}; exit 0"
 ExecReload=/bin/kill -USR1 ${MAINPID}
 
 Restart=on-failure
