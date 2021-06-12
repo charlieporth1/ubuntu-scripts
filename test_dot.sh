@@ -42,7 +42,7 @@ then
     curl -Ls 'https://raw.githubusercontent.com/ipinfo/cli/master/grepip/deb.sh' | bash
 fi
 
-DOT_ARGS="+dnssec +edns +ttl +tls-hostname=$HOST +retry=$TRIES +timeout=$TIMEOUT +tcp"
+DOT_ARGS="+dnssec +edns +ttl +tls-hostname=$HOST +retry=$TRIES +timeout=$TIMEOUT +tcp -4 -t A"
 
 EXTENRAL_IP=`bash $PROG/get_ext_ip.sh --current-ip`
 

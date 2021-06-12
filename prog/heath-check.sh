@@ -63,11 +63,9 @@ if [[ -f $LOCK_FILE ]]; then
         exit 1
 fi
 
-DEFAULT_IFACE="10.128.0.9:$PORT\|192.168.99.9:$PORT"
 
-ftl_port=`netstat -tulpn | grep -o 4711`
+ftl_port=`netstat -tulpn | grep -o ':4711' | xargs`
 dns_out_port=`netstat -tulpn | grep -o ":53"| xargs`
-local_dns_port=`netstat -tulpn | grep -oE '192\.168\.40\.[0-9]:53' | xargs`
 https_prt=`netstat -tulpn | grep -o ":443" | xargs`
 dns_https_proxy=`netstat -tulpn | grep -o '127.0.0.1:8053' | xargs`
 unbound_port=`netstat -tulpn | grep -o '127.0.0.1:5053' | xargs`
@@ -98,6 +96,7 @@ function RESTART_PIHOLE() {
 	chown pihole:pihole -R /var/cache/dnsmasq/
         echo "RESTART_PIHOLE"
         pihole restartdns
+	sleep 5s
         echo "RESTARTING DNS"
 	IF_RESTART
 	IF_RESTART

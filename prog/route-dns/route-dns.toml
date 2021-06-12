@@ -14,7 +14,7 @@ resolvers = [ "root-router" ]
 
 [groups.ctp-dns-cached]
 type = "cache"
-resolvers = [ 	"ctp-yt-blocker-if-fowarder-router" ]
+resolvers = [ "ctp-yt-blocker-if-fowarder-router" ]
 cache-negative-ttl = 900
 cache-size = 50000 
 cache-answer-shuffle = "round-robin"
@@ -26,7 +26,7 @@ answer = ["IN HINFO RFC8482 ANY obsoleted!"]
 [routers.root-router]
 routes = [
   { type = "ANY", resolver="static-rfc8482" }, # Send queries of type ANY to a static responder
-  { resolver = 	"ctp-dns-ecs" },             # All other queries are forwarded
+  { resolver = "ctp-dns-ecs" },             # All other queries are forwarded
 ]
 
 [groups.static-servfail]
@@ -39,38 +39,44 @@ rcode  = 3
 # Order matters
 [groups.ctp-dns-failover]
 resolvers = [ 
-		"ctp-dns-group", 
-		"ctp-dns-fail-rotate",
-		"ctp-dns-failover-backup"
+	"ctp-dns-group", 
+	"ctp-dns-fail-rotate",
+	"ctp-dns-failover-backup"
 ]
 type = "fail-back"
 
 # Order matters
 [groups.ctp-dns-fail-rotate]
-resolvers = [ 
-		"ctp-dns_home-quic",
-		"ctp-dns_home-doh-quic-post-ip",
-		"ctp-dns_home-doh-quic-get-ip",
-		"ctp-dns_home-dot",
-		"ctp-dns_home-dtls",
-		"ctp-dns_home-doh-get",
-		"ctp-dns_home-doh-post",
-		"ctp-dns_home-doh-get-route-dns-raw",
-		"ctp-dns_home-doh-post-route-dns-raw",
-		"ctp-dns-ip-gcp-1-tcp",
-		"ctp-dns-ip-gcp-1-udp",
-		"ctp-dns-ip-gcp-2-tcp",
-		"ctp-dns-ip-gcp-2-udp",
-		"ctp-dns-ip-home-tcp",
-		"ctp-dns-ip-home-udp",
-		"ctp-dns-failover-backup"
+resolvers = [
+	"ctp-dns-local-master-tcp",
+	"ctp-dns-local-master-udp",
+	"ctp-dns_gcp-dot-ip-1",
+	"ctp-dns_gcp-dot-ip-2",
+	"ctp-dns_gcp-dtls-ip-1",
+	"ctp-dns_gcp-dtls-ip-2",
+	"ctp-dns_gcp-doh-post-ip-1",
+	"ctp-dns_gcp-doh-post-ip-2",
+	"ctp-dns_gcp-doh-get-ip-1",
+	"ctp-dns_gcp-doh-get-ip-2",
+	"ctp-dns_gcp-doh-quic-post-ip-1",
+	"ctp-dns_gcp-doh-quic-post-ip-2",
+	"ctp-dns_gcp-doh-quic-get-ip-1",
+	"ctp-dns_gcp-doh-quic-get-ip-2",
+	"ctp-dns_gcp-quic-ip-1",
+	"ctp-dns_gcp-quic-ip-2"
+,"ctp-dns-ip-gcp-1-tcp",
+	"ctp-dns-ip-gcp-1-udp",
+	"ctp-dns-ip-gcp-2-tcp",
+	"ctp-dns-ip-gcp-2-udp",
+	"ctp-dns-ip-home-tcp",
+	"ctp-dns-ip-home-udp"
 ]
 type = "fail-rotate"
 
 
 [groups.ctp-dns-ecs]
 type = "ecs-modifier"
-resolvers = [	"ctp-dns-blocklist"]
+resolvers = ["ctp-dns-blocklist"]
  # "add", "delete", "privacy". Defaults to "" which does nothing.
 ecs-op = "add"
 ecs-prefix4 = 24

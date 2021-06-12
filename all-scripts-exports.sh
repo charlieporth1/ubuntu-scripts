@@ -51,7 +51,7 @@ export THIS_PID=${BASHPID:-$$}
 
 
 
-export IS_GCP=` [[ -n $( timeout 5 facter virtual | grep -o 'gce' ) ]]&& echo true || echo false`
+export IS_GCP=` [[ -n $( timeout 5 facter virtual | grep -o 'gce' ) ]] && echo true || echo false`
 export IS_GCP_1=` [[ -n $( timeout 5 curl -s metadata.google.internal -i | grep 'Metadata-Flavor: Google' ) ]] && echo true || echo false`
 export IS_AWS=`[[ -n $( timeout 5 curl -s http://169.254.169.254/latest/meta-data/hostname | grep -o 'ec2.internal' ) ]] && echo true || echo false`
 export IS_BARE=`[[ -n $(  timeout 5 facter virtual | grep -o 'physical' ) ]] && echo true || echo false`
@@ -189,9 +189,11 @@ function RESTART_PIHOLE() {
         echo "RESTARTING isNotFTL :$isNotFTL:"
         if [[ -n "$isNotFTL" ]]; then
 		log "Restarting DNS"
+		echo "Restarting DNS"
                 pihole restartdns
         else
 		log "Killing FTL"
+		echo "Killing FTL"
                 RESET_FTL
         fi
         sleep 0.250s
@@ -222,7 +224,7 @@ export -f WHAT_FOR_ACTIVE_PROCESS
 function IF_RESTART() {
         local FAILED_STR="fail\|FAILURE\|SIGTERM\|SERVFAIL\|inactive\|config error is REFUSED"
 
-        local is_failed_ftl_status=`systemctl status pihole-FTL.service | grep -io "$FAILED_STR"`
+        local is_failed_ftl_status=`systemctl is-failed pihole-FTL.service | grep -io "$FAILED_STR"`
 	local pihole_status=`pihole status | grep -io 'not\|disabled\|[✗]'`
 
         local logStr=`tail -6 $PIHOLE_LOG`

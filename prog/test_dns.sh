@@ -33,7 +33,7 @@ then
     curl -Ls 'https://raw.githubusercontent.com/ipinfo/cli/master/grepip/deb.sh' | bash
 fi
 
-DNS_ARGS="+tries=$TRIES +dnssec +ttl +edns +timeout=$TIMEOUT"
+DNS_ARGS="+tries=$TRIES +dnssec +ttl +edns +timeout=$TIMEOUT -t A -4 +retry=$TRIES +ttlunits"
 
 dns_global=`dig $QUERY $isAuto @$HOST $DNS_ARGS`
 dns_master=`dig $QUERY $isAuto @master.$HOST $DNS_ARGS`

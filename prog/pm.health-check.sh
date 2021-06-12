@@ -37,7 +37,7 @@ do
 	echo "check #$i dns stail `date`"
 	bash $PROG/dns-stale-restart.sh
 	bash $PROG/test_dns.sh -a
-	bash $PROG/test_dot.sh -a
+	bash $PROG/test_dot.sh -a --debug
 	bash $PROG/test_doh.sh -a
 	bash $PROG/test_doq.sh -a
 	echo "check sleeping $SLEEP_T"
