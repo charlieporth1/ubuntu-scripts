@@ -56,10 +56,9 @@ if [[ -z $isAuto ]]; then
    printf '%s\n' "$doq"
 else
 #	qdig -server $HOST:784 -dnssec -recursion $HOST A
-	isSystemInactive=`systemctl status ctp-dns | grep -oE '(de|)activating'`
 	doq_test=$(echo "$doq" | grep -oE "$IP_REGEX" | xargs)
 	log_d "doq_test :$doq_test:"
-	if  [[ -z "$doq_test" ]] && [[ -z "$isSystemInactive" ]]; then
+	if  [[ -z "$doq_test" ]] && [[ $(systemctl-inbetween-status ctp-dns.service) == false ]]; then
 		echo "DOQ FAILED doq_test :$doq_test:"
 		if [[ -z "$dns_local_test" ]]; then
                         echo "DNS FAILED NOT DOT"

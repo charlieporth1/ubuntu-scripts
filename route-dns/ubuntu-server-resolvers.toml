@@ -25,7 +25,6 @@ resolvers = [
 "ctp-dns_gcp-doh-quic-get-ip-2",
 "ctp-dns_gcp-quic-ip-1",
 "ctp-dns_gcp-quic-ip-2"
-
 ]
 type = "fastest"
 

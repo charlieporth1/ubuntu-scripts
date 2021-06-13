@@ -28,7 +28,7 @@ helpString="""
 
 for i in "$@"; do
     case $i in
-        --help | -h ) shift; echo "$helpString" ; exit 0 ;;
+        --help | -h | --h ) shift; echo "$helpString" ; exit 0 ;;
         -qbl | qbl | --qbl | --query-blocklist-log | --query-blacklist-log ) shift ; grep --color=auto "matched blocklist" $CTP_DNS_LOG_DIR/$LOG_FILE;;
         -qal | -qwl | qwl | qbl | --qwl | --qal | --query-allowlist-log | --query-whitelist-log ) shift ; grep --color=auto "matched allowlist" $CTP_DNS_LOG_DIR/$LOG_FILE;;
         -l | -t | --l | --t | --tail | --log ) shift ; tail -f $CTP_DNS_LOG_DIR/$LOG_FILE | h 'matched blocklist' 'matched allowlist' ;;

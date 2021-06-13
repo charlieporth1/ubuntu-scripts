@@ -21,10 +21,12 @@ ROOT_NETWORK=`bash $PROG/get_network_devices_ip_address.sh --grepify`
 EXCLUDE_IP="$DNS_IP\|0.0.0.0\|$ROOT_NETWORK\|127.0.0.1"
 
 EXTENRAL_IP=`bash $PROG/get_ext_ip.sh --current-ip`
+
 if [[ -z $EXTENRAL_IP ]]; then
 	echo "EXTENRAL_IP :$EXTENRAL_IP: null and exiting"
 	exit 1
 fi
+
 if ! command -v doh &> /dev/null
 then
     echo "COMMAND doh could not be found"
@@ -61,6 +63,10 @@ WAIT_TIME=6
 log_d "$PATH"
 log_d "doh_remote_ctp :$doh_remote_ctp: doh_remote_nginx :$doh_remote_nginx:"
 log_d "doh_remote_json :$doh_remote_json: doh_local :$doh_local:"
+if [[ -z "$dns_local_test" ]]; then
+        echo "DNS FAILED NOT DOH"
+	exit 1
+fi
 if [[ -n "$isAuto" ]]; then
 	dns_local_test=`echo "$dns_local" | grepip --ipv4 -o | xargs`
 
@@ -72,32 +78,20 @@ if [[ -n "$isAuto" ]]; then
 	log_d "dns_local_test :$dns_local_test: doh_remote_json_test :$doh_remote_json_test:"
 	log_d "doh_remote_nginx_test :$doh_remote_nginx_test: doh_remote_ctp_test :$doh_remote_ctp_test:"
 
-	isSystemInactiveDOHProxy=`systemctl status doh-server.service | grep -oE '(de|)activating'`
-	if [[ -z "$doh_proxy_local_test" ]] && [[ -z "$isSystemInactiveDOHProxy" ]]; then
+	if [[ -z "$doh_proxy_local_test" ]] && [[ $(systemctl-inbetween-status doh-server.service) == false ]]; then
 		echo "ALERT DOH doh_proxy_local_test doh-proxy :$doh_proxy_local_test:"
-		if [[ -z "$dns_local_test" ]]; then
-                        echo "DNS FAILED NOT DOH"
-                        exit 1
-                fi
-
 		systemctl restart doh-server.service
 		sleep $WAIT_TIME
 	else
 		echo "Success doh JSON PROXY"
 	fi
 
-	isSystemInactiveNginx=`systemctl status nginx.service | grep -oE '(de|)activating'`
 	if { { [[ -z "$doh_remote_json_test" ]] && [[ -n "$doh_remote_ctp_test" ]]; } ||
-	     { [[ -z "$doh_remote_nginx_test" ]] && [[ -n "$doh_proxy_local_test" ]]; }; } && [[ -z "$isSystemInactiveNginx" ]]
+	     { [[ -z "$doh_remote_nginx_test" ]] && [[ -n "$doh_proxy_local_test" ]]; }; } && [[ $(systemctl-inbetween-status nginx.service) == false ]]
 	then
 		echo "ALERT DOH doh_remote_json_test NGINX doh_remote_nginx_test :$doh_remote_json_test: :$doh_remote_nginx_test:"
 		echo "dns_local_test :$dns_local_test: doh_local_test :$doh_local_test: doh_remote_json_test :$doh_remote_json_test:"
 		echo "doh_remote_ctp_test :$doh_remote_ctp_test: doh_remote_nginx_test :$doh_remote_nginx_test:"
-		if [[ -z "$dns_local_test" ]]; then
-                        echo "DNS FAILED NOT DOH"
-                        exit 1
-                fi
-
 		echo "NGINX failed restarting"
 		if [[ -f /etc/hosts.bk ]]; then
 			sudo cp -rf /etc/hosts.bk /etc/hosts
@@ -110,14 +104,9 @@ if [[ -n "$isAuto" ]]; then
 		echo "Success doh NGNIX"
 	fi
 
-	isSystemInactiveCTP=`systemctl status ctp-dns.service | grep -oE '(de|)activating'`
-	if [[ -z "$doh_remote_ctp_test" ]] && [[ -z "$isSystemInactiveCTP" ]]; then
+	if [[ -z "$doh_remote_ctp_test" ]] && [[ $(systemctl-inbetween-status ctp-dns.service) == false ]]; then
 		echo "TESST REMOTE ALERt DOH doh_remote_ctp_test :$doh_remote_ctp_test:"
 		echo "TESST REMOTE ALERt DOH CTP_DNS doh_remote_ctp_test :$doh_remote_ctp_test:"
-		if [[ -z "$dns_local_test" ]]; then
-                        echo "DNS FAILED NOT DOH"
-                        exit 1
-                fi
 		systemctl daemon-reload
 		systemctl restart ctp-dns
 		sleep $WAIT_TIME

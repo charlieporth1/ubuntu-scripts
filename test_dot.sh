@@ -56,7 +56,6 @@ log_d "NET_IP $NET_IP"
 log_d "IP_REGEX NET_DEVICE_REGEX :$NET_DEVICE_REGEX: :$IP_REGEX:"
 log_d "EXCLUDE_IP ROOT_NETWORK DNS_IP :$EXCLUDE_IP: :$ROOT_NETWORK: :$DNS_IP:"
 
-isSystemInactive=`systemctl status ctp-dns | grep -oE '(de|)activating'`
 if [[ "$isAuto" == "-d"  ]]; then
 	echo -e "EXTERNAL \n$(bash $PROG/lines.sh '*')\n"
 	printf '%s\n' "$dot"
@@ -66,7 +65,7 @@ if [[ "$isAuto" == "-d"  ]]; then
 	printf '%s\n' "$dot_external"
 	echo -e "LOCAL \n$(bash $PROG/lines.sh '*')\n"
 	printf '%s\n' "$dot_local"
-elif [[ -z "$isSystemInactive" ]]; then
+elif [[ $(systemctl-inbetween-status ctp-dns.service) == false ]]; then
 	dns_local=`dig $QUERY @ctp-vpn.local +short +tries=$TRIES +dnssec +timeout=$TIMEOUT`
 	dns_local_test=`echo "$dns_local" | grepip --ipv4 -o`
 

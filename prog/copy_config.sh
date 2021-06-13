@@ -25,12 +25,25 @@ sudo cp -rf $CONFIG_DIR/www/* $WWW/
 sudo ln -s /etc/fail2ban/filter.d/ctp-custom-vars.conf   /etc/fail2ban/filter.d/common.local
 sudo ln -s $ROUTE/ctp-dns.sh /usr/local/bin
 sudo ln -s $SCRIPT_DIR/dns-route.sh $PROG/
-sudo ln -s $SCRIPT_DIR/../prog/route-dns $PROG/
+sudo ln -s $CONF_PROG_DIR/route-dns $PROG/
 sudo ln -s $ROUTE/lists/ $LIST_DIR
+
 
 # Chmod +x
 chmod +x $ROUTE/ctp-dns.sh
 chmod +x /usr/local/bin/ctp-dns.sh
+chmod 777 $ROUTE/ctp-dns.sh
+chmod 777 /usr/local/bin/ctp-dns.sh
 
 #sudo bash $SETUP_DIR/master_config.sh
+
+# Master
+if [[ "$IS_MASTER" == 'true' ]]; then
+	sudo ln -s $MASTER_DIR/ $PROG/
+	sudo ln -s $MASTER_DIR/*.sh $PROG/
+else
+# Slave
+	sudo rm -rf /etc/fail2ban/jai.d/{pihole-dns,pihole-dns-1-block}.conf
+	sudo rm -rf /etc/fail2ban/filter.d/{pihole-dns,pihole-dns-1-block}.conf
+fi
 echo "Done with coping config files"

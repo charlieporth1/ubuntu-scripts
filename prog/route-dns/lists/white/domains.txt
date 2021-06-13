@@ -1,8 +1,8 @@
 .production-public.tubi.io.
-.tech.
-.radio.
-.dev.
-.in.appcenter.ms.
+.tech
+.radio
+.dev
+.in.appcenter.ms
 .hromecast.production-public.tubi.io.
 .f-st.sc-cdn.net.
 .olt-gcdn.sc-cdn.net.

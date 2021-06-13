@@ -63,16 +63,14 @@ else
 	if [[ -z "$dns_local_test" ]]; then
 		pihole_bin=$( [[ -n `which pihole` ]] && which pihole || echo '/usr/local/bin/pihole')
 		echo "Failed restarting pihole_bin :$pihole_bin:"
-		isSystemInactivePiHole=`systemctl status pihole-FTL | grep -oE '(de|)activating'`
-		isSystemInactiveCTP=`systemctl status ctp-dns | grep -oE '(de|)activating'`
-		if [[ -f "$pihole_bin" ]] && [[ -z "$isSystemInactivePiHole" ]]; then
+		if [[ -f "$pihole_bin" ]] && [[ $(systemctl-inbetween-status pihole-FTL.service) == false ]]; then
 			echo "restarting pihole"
 			pihole restartdns
 			IF_RESTART
 			IF_RESTART
 			IF_RESTART
 			sleep $WAIT_TIME
-		elif [[ -z "$isSystemInactiveCTP" ]];  then
+		elif [[ $(systemctl-inbetween-status ctp-dns.service) == false ]];  then
 	                echo "restarting ctp-dns"
 			systemctl daemon-reload
 			systemctl restart ctp-dns

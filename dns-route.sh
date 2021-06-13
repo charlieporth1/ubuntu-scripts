@@ -1,6 +1,7 @@
 #!/bin/bash
 source /etc/environment
 shopt -s expand_aliases
+
 SCRIPT_DIR=`realpath .`
 mkdir -p /etc/letsencrypt/live/vpn.ctptech.dev
 
@@ -51,7 +52,6 @@ GROUP="""
 resolvers = [
 	$LOCAL_RESOLVERS,
 	$GCP_RESOLVERS
-
 ]
 type = \"fastest\"
 """

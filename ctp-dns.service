@@ -1,12 +1,9 @@
 [Unit] 
-Description=CTP DNS
+Description=CTP DNS Service
 After=network.target
 #pihole-FTL.service
 
-#CapabilityBoundingSet=CAP_NET_BIND_SERVICE CAP_NET_RAW CAP_NET_ADMIN
-#AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_NET_RAW CAP_NET_ADMIN
 
-#CacheDirectory=/var/cache/ctp-dns/
 
 [Service]
 EnvironmentFile=/etc/environment
@@ -20,6 +17,7 @@ Environment=LOCK_FILE=/tmp/health-checks.stop.lock
 Environment=SSL_DIR=/etc/letsencrypt/live/vpn.ctptech.dev
 Environment=DNSCRYPT_DIR=/etc/letsencrypt/live/vpn.ctptech.dev/dnscrypt
 Environment=GO111MODULE=on
+CacheDirectory=/var/cache/ctp-dns/
 
 CPUQuota=65%
 
@@ -27,7 +25,8 @@ Nice=19
 Type=exec
 PIDFile=${PID_FILE}
 
-AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE CAP_NET_RAW CAP_NET_ADMIN CAP_SETFCAP
+AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_NET_RAW CAP_NET_ADMIN CAP_SETFCAP
 
 User=root
 Group=root
@@ -40,7 +39,7 @@ ExecStartPre=/bin/bash -c "/usr/bin/touch ${PID_FILE} \
 #ExecStartPre=/snap/bin/go get -v github.com/folbricht/routedns/cmd/routedns
 ExecStartPre=/bin/bash -c "/bin/echo ${MAINPID} | /usr/bin/tee ${PID_FILE}"
 ExecStartPre=/bin/bash -c "( /bin/sleep 90s; [[ -f ${LOCK_FILE} ]] && /bin/rm ${LOCK_FILE} ) &"
-ExecStartPre=/sbin/setcap cap_net_bind_service,cap_net_raw,cap_net_admin=+eip /root/go/bin/routedns
+ExecStartPre=/sbin/setcap cap_net_bind_service,cap_net_raw,cap_setfcap,cap_net_admin=+eip /root/go/bin/routedns
 ExecStart=/bin/bash -c "/root/go/bin/routedns ${ROUTE}/*.toml --log-level=5"
 #	--log-level=5 | mbuffer -T /tmp/ctp-dns.buffer -m 50M | tee -a ${LOG_FILE}"
 #ExecStartPost=/bin/bash -c "for ((i=0; i < 3; i++)); do ps -aux | grep 'pm.stal\|test_\|pm.hea' | awk '{print $2}' | xargs sudo kill -9;sleep 10s;done"
@@ -61,7 +60,7 @@ TTYReset=yes
 TTYVHangup=yes
 
 TimeoutStartSec=3m
-TimeoutStopSec=1m 
+TimeoutStopSec=30s 
 #PermissionsStartOnly=true
 
 [Install]

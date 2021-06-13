@@ -36,7 +36,6 @@ dns_master=`dig $QUERY @master.$HOST $isAuto +timeout=$TIMEOUT +tries=$TRIES +dn
 dns_local_test=`echo "$dns_local" | grep -o "$MASTER_DNS_IP\|192.168.44.250" | xargs`
 dns_master_test=`echo "$dns_master" | grep -o "$MASTER_DNS_IP\|192.168.44.250" | xargs`
 
-isSystemInactiveCTP=`systemctl status ctp-dns | grep -oE '(de|)activating'`
 
 if [[ -z "$isAuto" ]]; then
         echo "MASTER \n$(bash $PROG/lines.sh '*')"

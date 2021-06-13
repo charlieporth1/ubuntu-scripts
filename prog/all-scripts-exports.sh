@@ -249,15 +249,30 @@ export -f IF_RESTART
 
 function systemctl-exists() {
 #  [ $(systemctl list-unit-files "${1}*" | wc -l) -gt 3 ]
-	if [[ -z "${1}" ]]; then
+	local service="${1}"
+	services_list=$(systemctl list-unit-files "${service}*" | wc -l)
+	if [[ -z "${service}" ]]; then
 		echo false
-	elif [[ $(systemctl list-unit-files "${1}*" | wc -l) -gt 3 ]]; then
+	elif [[ ${services_list} -gt 3 ]]; then
 		echo true
 	else
 		echo false
 	fi
 }
 export -f systemctl-exists
+
+function systemctl-inbetween-status() {
+	local service="${1}"
+	inbetween_status=`systemctl status "${service}" | grep -oE '(de|)activating'`
+	if [[ -z "${service}" ]]; then
+		echo false
+	elif [[ -n "${inbetween_status}" ]]; then
+		echo true
+	else
+		echo false
+	fi
+}
+export -f systemctl-inbetween-status
 
 function filter_ip_address_array() {
         INPUT_ARRAY=( "$@" )
