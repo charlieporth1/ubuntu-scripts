@@ -346,6 +346,4 @@ eval "$(rbenv init -)"
 
 #rm -rf /tmp/* &> /dev/null
 echo -e "\a \a \a \a"
-
-[[ -s "/home/ubuntuserver/.gvm/scripts/gvm" ]] && source "/home/ubuntuserver/.gvm/scripts/gvm"
 # CTP INSTALL -- DO NOT REMOVE THIS UNLESS YOU PLAN ON REMOVING INSTALL AND REINSTALLING

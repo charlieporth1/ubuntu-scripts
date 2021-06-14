@@ -15,6 +15,9 @@ sudo systemctl mask unbound-resolvconf.service
 sudo systemctl disable netdata
 sudo systemctl mask netdata
 
+sudo systemctl disable dnsmasq
+sudo systemctl mask dnsmasq
+
 if [[ -z "$IS_MASTER" ]]; then
 	sudo systemctl disable unbound
 	sudo systemctl mask unbound

@@ -43,7 +43,7 @@ COUNT_ACTION() {
                 bash $PROG/alert_user.sh "Failure Alert" "$FN Failed $COUNT times on $HOSTNAME; Service ${SERVICE}"
         elif [[ $COUNT -ge $max ]]; then
                 echo "Reset failure count $COUNT"
-                bash $PROG/alert_user.sh "Failure Alert" "$FN Failed $COUNT times on $HOSTNAME; Service ${SERVICE}"
+                bash $PROG/alert_user.sh "Failure Alert" "$FN Failed $COUNT times on $HOSTNAME; Service ${SERVICE} $HOSTNAME"
                 if [[ -n "$SERVICE" ]]; then
                          systemctl stop $SERVICE
                          systemctl reset-failed $SERVICE
