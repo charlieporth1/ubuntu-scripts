@@ -1,7 +1,9 @@
 #!/bin/bash
 for env in $( cat /etc/environment ); do export $(echo $env | sed -e 's/"//g'); done
 source /etc/environment
+
 echo 1 > /proc/sys/net/ipv4/ip_forward
+echo 3 > /proc/sys/net/ipv4/tcp_fastopen
 
 touch /var/log/unbound.log
 chown -R unbound:unbound /var/log/unbound.log

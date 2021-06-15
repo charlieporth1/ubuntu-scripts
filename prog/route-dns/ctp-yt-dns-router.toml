@@ -1,18 +1,17 @@
 [routers.ctp-yt-blocker-if-fowarder-router] 
 routes = [
-  { name = '(youtube)?(ytimg)?(ggpht)?\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
-  { name = 'gvt[0-6]?\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker-google-video-ttl" },
+  { name = '(youtube|ytimg|ggpht)\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
+  { name = '^(redirector|manifest|r([0-9]{1,2}){.{4,27}})gvt[0-6]?\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker-google-video-ttl" },
   { name = 'googlevideo\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker-google-video-ttl" },
-  { name = '(app-measurement)?(youtubei\.googleapis)?\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
-  { name = '(doubleclick)?(fwmrm)?\.net\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
-  { name = '(googlesyndication)?(googleadservices)?(imrworldwide)?\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
+  { name = '^youtubei\.googleapis\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
+  { name = '(doubleclick|fwmrm)\.net\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
+  { name = '(googlesyndication|googleadservices|imrworldwide)\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
   { resolver = "root-router" },             # All other queries are forwarded
 ]
 [groups.ctp-dns-yt-block-resolver-blocker]
 # This should only be GCP
 # "ctp-dns-group"
 type = "fastest"
-
 # CTP INSTALL -- DO NOT REMOVE THIS UNLESS YOU PLAN ON REMOVING INSTALL AND REINSTALLING
 resolvers = [
 	"ctp-dns_gcp-dot-ip-1",

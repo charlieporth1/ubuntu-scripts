@@ -59,12 +59,12 @@ printf '%s\n' "$GROUP" | sudo tee -a $ROUTE/$HOSTNAME-resolvers.toml
 
 	if [[ `isNotInstalled $ROUTE/route-dns.toml` == 'true' ]]; then
 		replace_str="$replace_str_front$LOCAL_RESOLVERS,\n$GCP_RESOLVERS$replace_str_back"
+		FILE=route-dns.toml
+		pcregrep -v -M "$grep_around_str" $ROUTE/$FILE > $ROUTE/$FILE.tmp
 
-		pcregrep -v -M "$grep_around_str" $ROUTE/route-dns.toml > $ROUTE/route-dns.toml.tmp
-
-		perl -0777 -i -pe "s/$leftover_fail_rotate_str/$replace_str/g" $ROUTE/route-dns.toml.tmp
-		perl -0777 -i -pe 's/^"ctp/\t"ctp/gm' $ROUTE/route-dns.toml.tmp
-		mv $ROUTE/route-dns.toml.tmp $ROUTE/route-dns.toml
+		perl -0777 -i -pe "s/$leftover_fail_rotate_str/$replace_str/g" $ROUTE/$FILE.tmp
+		perl -0777 -i -pe 's/^"ctp/\t"ctp/gm' $ROUTE/$FILE.tmp
+		mv $ROUTE/$FILE.tmp $ROUTE/$FILE.toml
 	fi
 
 else
@@ -101,6 +101,7 @@ protocol = \"doh\"
 transport = \"quic\"
 bootstrap-address = \"$IP\"
 """ | sudo tee $ROUTE/$HOSTNAME-resolvers.toml
+
 	LOCAL_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(grep -E '^.resolvers\..*' $ROUTE/$HOSTNAME-resolvers.toml | awk -F'.' '{print $2}' | awk -F']' '{print $1}') --quotes --space))
 
 GROUP="""
@@ -132,40 +133,33 @@ printf '%s\n' "$GROUP" sudo tee $ROUTE/$HOSTNAME-resolvers.toml
 
 	if [[ `isNotInstalled $ROUTE/route-dns.toml` == 'true' ]]; then
 		replace_str="$replace_str_front$LOCAL_RESOLVERS\n,$GCP_HOME_RESOLVERS$replace_str_back"
-
-		pcregrep -v -M "$grep_around_str" $ROUTE/route-dns.toml > $ROUTE/route-dns.toml.tmp
-		perl -0777 -i -pe "s/$leftover_fail_rotate_str/$replace_str/g" $ROUTE/route-dns.toml.tmp
-		perl -0777 -i -pe 's/^"ctp/\t"ctp/gm' $ROUTE/route-dns.toml.tmp
-		mv $ROUTE/route-dns.toml.tmp $ROUTE/route-dns.toml
+		FILE=route-dns.toml
+		pcregrep -v -M "$grep_around_str" $ROUTE/$FILE > $ROUTE/$FILE.tmp
+		perl -0777 -i -pe "s/$leftover_fail_rotate_str/$replace_str/g" $ROUTE/$FILE.tmp
+		perl -0777 -i -pe 's/^"ctp/\t"ctp/gm' $ROUTE/$FILE.tmp
+		mv $ROUTE/$FILE.tmp $ROUTE/$FILE.toml
 	fi
+
 	sed -i "s/$DEFAULT_IP/$REPLACE_IP/g" $ROUTE/slave-listeners.toml
 fi
 
 replace_str="resolvers = [\n$GCP_RESOLVERS\n]"
 if [[ `isNotInstalled $ROUTE/ctp-yt-dns-router.toml` == 'true' ]]; then
+	FILE=ctp-yt-dns-router.toml
+	pcregrep -v -M '^resolvers.*(.|\n)*]' $ROUTE/$FILE > $ROUTE/$FILE.tmp
 
-	pcregrep -v -M '^resolvers.*(.|\n)*]' $ROUTE/ctp-yt-dns-router.toml > $ROUTE/ctp-yt-dns-router.toml.tmp
-
-	echo -e "$replace_str" | sudo tee -a $ROUTE/ctp-yt-dns-router.toml.tmp
-	perl -0777 -i -pe 's/^"ctp/\t"ctp/gm' $ROUTE/ctp-yt-dns-router.toml.tmp
-	mv $ROUTE/ctp-yt-dns-router.toml.tmp $ROUTE/ctp-yt-dns-router.toml
+	echo -e "$replace_str" | sudo tee -a $ROUTE/$FILE.tmp
+	perl -0777 -i -pe 's/^"ctp/\t"ctp/gm' $ROUTE/$FILE.tmp
+	mv $ROUTE/$FILE.tmp $ROUTE/$FILE
 fi
 
 if [[ `isNotInstalled $ROUTE/ctp-yt-googlevideo-router.toml` == 'true' ]]; then
-	yt_resolvers='resolvers = [  "ctp-dns-yt-block-resolver-blocker-google-video-resolvers" ]'
-	pcregrep -v -M '^resolvers.*(.|\n)*]' $ROUTE/ctp-yt-googlevideo-router.toml > $ROUTE/ctp-yt-googlevideo-router.toml.tmp
-	mv $ROUTE/ctp-yt-googlevideo-router.toml.tmp $ROUTE/ctp-yt-googlevideo-router.toml
-	echo "$yt_resolvers" | sudo tee -a $ROUTE/ctp-yt-googlevideo-router.toml
+	FILE=ctp-yt-googlevideo-tll-modifier.toml
+	pcregrep -v -M '^resolvers.*(.|\n)*]' $ROUTE/$FILE > $ROUTE/$FILE.tmp
+	mv $ROUTE/$FILE.tmp $ROUTE/$FILE
+	echo -e "$replace_str" | sudo tee -a $ROUTE/$FILE
+	perl -0777 -i -pe 's/^"ctp/\t"ctp/gm' $ROUTE/$FILE
 fi
-
-if [[ `isNotInstalled $ROUTE/ctp-yt-googlevideo-root-group.toml` == 'true' ]]; then
-	pcregrep -v -M '^resolvers.*(.|\n)*]' $ROUTE/ctp-yt-googlevideo-root-group.toml > $ROUTE/ctp-yt-googlevideo-root-group.toml.tmp
-	perl -0777 -i -pe 's/^"ctp/\t"ctp/gm' $ROUTE/ctp-yt-googlevideo-root-group.toml.tmp
-	mv $ROUTE/ctp-yt-googlevideo-root-group.toml.tmp $ROUTE/ctp-yt-googlevideo-root-group.toml
-	rm $ROUTE/ctp-yt-googlevideo-router.toml.tmp
-	echo -e "$replace_str" | sudo tee -a $ROUTE/ctp-yt-googlevideo-root-group.toml
-fi
-
 
 
 
