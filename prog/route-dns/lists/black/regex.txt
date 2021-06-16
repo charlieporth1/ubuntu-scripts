@@ -2,7 +2,7 @@
 ^([a-z0-9]+[.])+(ads|captive|cloudservices|logs)\.roku\.com\.$
 (mobile)?[maxmbpni]?(\-|\.|_)?ad[sxnmkac]?[s]?ervice
 [sxmncia]?[\.]?ad[sxmncia]([k]?mob|mobsdk|track|vert[s]?(|is?[e]?(|er|ing|ement)?)[s]?|im(g|age)|choice|serv|sdk|mobile|ervice|system|tyics|click)[sxmncia]?[0-9]?
-(count(er|s|ing)?|beacon[s]?|traff(ic)?|pixel[s]?|banner[s]?|aff(iliat(es|ion)?)?|event[s]?|geo(ip|visite)|marketing|trends|collector)
+(count(er|ing)|beacon[s]?|traff(ic)?|pixel[s]?|banner[s]?|aff(iliat(es|ion)?)?|event[s]?|geo(ip|visite)|marketing|trends|collector)
 (monit(or|oring)|collect(or|ing)?[s]?|telemer[y]?(ies)?|measure(ment|r|ing)?|report(s|ing|er)?)
 (analytic[s]?|apptic[szx]?|tric[szx]?|lytic[sxz]?|device(-|\.)?metric[sxacz]?)
 (moatads|targeting|rubiconproject|smaato|powerlinks|omniture|bluekai|chartbeat|clarium|criteo|crwdcntrl|d[eo]?mdex|gigya|loggly|outbrain|appnexus|sitescout|mediamath|w55c|yieldmanager|mathtag)

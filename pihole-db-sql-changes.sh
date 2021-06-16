@@ -2,11 +2,13 @@
 DB_FILE=$HOLE/gravity.db
 #sudo chmod 664 $DB_FILE
 #sudo chgrp pihole $DB_FILE
+sync
 echo "PRAGMA journal_mode=WAL;" | sudo sqlite3 $DB_FILE
 echo "PRAGMA journal_mode;"  | sudo sqlite3 $DB_FILE
 #echo "PRAGMA schema.wal_checkpoint;"  | sudo sqlite3 $DB_FILE
 echo "PRAGMA wal_autocheckpoint;"  | sudo sqlite3 $DB_FILE
-echo "PRAGMA threads=1;"  | sudo sqlite3 $DB_FILE
+echo "PRAGMA auto_vacuum = FULL;" | sudo sqlite3 $DB_FILE
+echo "PRAGMA threads=2;"  | sudo sqlite3 $DB_FILE
 echo "PRAGMA threads;"  | sudo sqlite3 $DB_FILE
 #echo "PRAGMA temp_store=MEMORY;"  | sudo sqlite3 $DB_FILE
 #echo "PRAGMA temp_store;"  | sudo sqlite3 $DB_FILE
@@ -41,3 +43,4 @@ echo "PRAGMA cache_size;"  | sudo sqlite3 $DB_FILE
 echo "PRAGMA automatic_index;"  | sudo sqlite3 $DB_FILE
 echo "PRAGMA cache_spill=1024;"  | sudo sqlite3 $DB_FILE
 echo "PRAGMA cache_spill;"  | sudo sqlite3 $DB_FILE
+sync

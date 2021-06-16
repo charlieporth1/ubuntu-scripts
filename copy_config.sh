@@ -29,12 +29,6 @@ sudo ln -s $CONF_PROG_DIR/route-dns $PROG/
 sudo ln -s $ROUTE/lists/ $LIST_DIR
 
 
-# Chmod +x
-chmod +x $ROUTE/ctp-dns.sh
-chmod +x /usr/local/bin/ctp-dns.sh
-chmod 777 $ROUTE/ctp-dns.sh
-chmod 777 /usr/local/bin/ctp-dns.sh
-
 #sudo bash $SETUP_DIR/master_config.sh
 
 # Master
@@ -46,4 +40,11 @@ else
 	sudo rm -rf /etc/fail2ban/jai.d/{pihole-dns,pihole-dns-1-block}.conf
 	sudo rm -rf /etc/fail2ban/filter.d/{pihole-dns,pihole-dns-1-block}.conf
 fi
+
+# Chmod +x
+sudo chmod +x $ROUTE/ctp-dns.sh
+sudo chmod +x /usr/local/bin/ctp-dns.sh
+sudo chmod 777 $ROUTE/ctp-dns.sh
+sudo chmod 777 /usr/local/bin/ctp-dns.sh
+
 echo "Done with coping config files"

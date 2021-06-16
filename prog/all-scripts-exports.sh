@@ -277,7 +277,7 @@ export -f systemctl-inbetween-status
 function filter_ip_address_array() {
         INPUT_ARRAY=( "$@" )
         # Sort IPs
-        printf "%s\n" "${INPUT_ARRAY[@]}" | sort -t . -k 3,3n -k 4,4n | uniq
+        printf "%s\n" "${INPUT_ARRAY[@]}" | sort -t . -k 3,3n -k 4,4n | uniq | sort -u
 }
 
 export -f filter_ip_address_array

@@ -1,3 +1,12 @@
+.notifications-pa.googleapis.com.
+.pro-accounts.snapchat.com.
+.updates-http.cdn-apple.com.
+.account.samsung.com.
+.platform.twitter.com.
+.ajax.aspnetcdn.com.
+.firebaseinstallations.googleapis.com.
+.playatoms-pa.googleapis.com. .
+.accounts.google.com.
 .production-public.tubi.io.
 .tech.
 .radio.
