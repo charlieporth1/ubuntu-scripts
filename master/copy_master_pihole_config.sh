@@ -20,6 +20,7 @@ FILES=(
 	"/etc/dnsmasq.d/filter_lists.conf"
 	"/etc/pihole/pihole-FTL.conf"
 	"/etc/pihole/dns-servers.conf"
+	"/etc/pihole/dns-servers.conf.bk"
         "/home/$PERONAL_USR/Programs/cert_manager.sh"
 	"/home/$PERONAL_USR/Programs/pihole-lighttpd-changes.sh"
 	"/home/$PERONAL_USR/Programs/pihole-db-sql-changes.sh"
@@ -49,3 +50,4 @@ do
 	        --scp-flag="-r" --project "$GCLOUD_PROJECT" --zone "$GCLOUD_ZONE"
 
 done
+sudo bash $PROG/files_to_replace.sh

@@ -5,9 +5,10 @@ DB_FILE=$HOLE/gravity.db
 sync
 echo "PRAGMA journal_mode=WAL;" | sudo sqlite3 $DB_FILE
 echo "PRAGMA journal_mode;"  | sudo sqlite3 $DB_FILE
-#echo "PRAGMA schema.wal_checkpoint;"  | sudo sqlite3 $DB_FILE
+echo "PRAGMA wal_checkpoint=2000;"  | sudo sqlite3 $DB_FILE
 echo "PRAGMA wal_autocheckpoint;"  | sudo sqlite3 $DB_FILE
-echo "PRAGMA auto_vacuum = FULL;" | sudo sqlite3 $DB_FILE
+echo "PRAGMA auto_vacuum=FULL;" | sudo sqlite3 $DB_FILE
+echo "PRAGMA automatic_index=true;" | sudo sqlite3 $DB_FILE
 echo "PRAGMA threads=2;"  | sudo sqlite3 $DB_FILE
 echo "PRAGMA threads;"  | sudo sqlite3 $DB_FILE
 #echo "PRAGMA temp_store=MEMORY;"  | sudo sqlite3 $DB_FILE
@@ -34,7 +35,9 @@ echo "PRAGMA mmap_size=19128;"  | sudo sqlite3 $DB_FILE
 echo "PRAGMA mmap_size;"  | sudo sqlite3 $DB_FILE
 #echo "PRAGMA quick_check;"  | sudo sqlite3 $DB_FILE
 echo "PRAGMA max_page_count;"  | sudo sqlite3 $DB_FILE
+echo "PRAGMA journal_size_limit=5000;"  | sudo sqlite3 $DB_FILE
 echo "PRAGMA journal_size_limit;"  | sudo sqlite3 $DB_FILE
+echo "PRAGMA hard_heap_limit=9000;"  | sudo sqlite3 $DB_FILE
 echo "PRAGMA hard_heap_limit;"  | sudo sqlite3 $DB_FILE
 echo "PRAGMA default_cache_size=9000000;"  | sudo sqlite3 $DB_FILE
 echo "PRAGMA default_cache_size;"  | sudo sqlite3 $DB_FILE
@@ -43,4 +46,5 @@ echo "PRAGMA cache_size;"  | sudo sqlite3 $DB_FILE
 echo "PRAGMA automatic_index;"  | sudo sqlite3 $DB_FILE
 echo "PRAGMA cache_spill=1024;"  | sudo sqlite3 $DB_FILE
 echo "PRAGMA cache_spill;"  | sudo sqlite3 $DB_FILE
+echo "PRAGMA optimize;"  | sudo sqlite3 $DB_FILE
 sync

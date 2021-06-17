@@ -28,13 +28,13 @@ sudo ln -s $SCRIPT_DIR/dns-route.sh $PROG/
 sudo ln -s $CONF_PROG_DIR/route-dns $PROG/
 sudo ln -s $ROUTE/lists/ $LIST_DIR
 
-
 #sudo bash $SETUP_DIR/master_config.sh
 
 # Master
 if [[ "$IS_MASTER" == 'true' ]]; then
 	sudo ln -s $MASTER_DIR/ $PROG/
 	sudo ln -s $MASTER_DIR/*.sh $PROG/
+	sudo ln -s $UNB/root.hints /var/lib/unbound/
 else
 # Slave
 	sudo rm -rf /etc/fail2ban/jai.d/{pihole-dns,pihole-dns-1-block}.conf

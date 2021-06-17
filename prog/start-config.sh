@@ -16,6 +16,7 @@ chown -R www-data:www-data /tmp/nginx/
 bash $PROG/copy_certs.sh
 bash $PROG/update.unbound-config.sh
 bash $PROG/add_cache_interfaces.sh
+bash $PROG/pihole-db-sql-changes.sh
 #bash $PROG/doq-and-failover-bootstrap-server.sh
 
 systemctl restart ctp-dns

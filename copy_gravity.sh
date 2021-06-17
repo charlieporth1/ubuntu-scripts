@@ -12,7 +12,9 @@ if [[ -n $ADMIN_USR ]]; then
 fi
 if [[ $AUTOMATIC_INSTALL == 'false' ]] || [[ -z $AUTOMATIC_INSTALL ]]; then
 	echo "Coping gravity.db"
+	sync
 	rclone -vvv copy remote:SERVER_DATA/gravity.db /etc/pihole
-
+	sudo bash $PROG/pihole-db-sql-changes.sh
+	sync
 fi
 #systemctl restart pihole-FTL.service
