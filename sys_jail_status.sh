@@ -33,9 +33,10 @@ printf "|| $CYAN%-20s $NC|$CYAN %-10s $NC|$CYAN %-20s $NC|$CYAN %-10s $NC|$CYAN 
 
 for jail in "${JAILs[@]}"
 do
-	ban_count=`timeout $TIMEOUT sudo fail2ban-client status $jail | sed -n '7p' | awk '{print $4}'`
-	total_failed=`timeout $TIMEOUT sudo fail2ban-client status $jail | grep 'Total failed' | awk -F: '{print $2}'`
-	currently_failed=`timeout $TIMEOUT sudo fail2ban-client status $jail | grep 'Currently failed' | awk -F: '{print $2}'`
+	FAIL2BAN_JAIL=`timeout $TIMEOUT sudo fail2ban-client status $jail`
+	ban_count=`printf '%s\n' "$FAIL2BAN_JAIL" | sed -n '7p' | awk '{print $4}'`
+	total_failed=`printf '%s\n' "$FAIL2BAN_JAIL"| grep 'Total failed' | awk -F: '{print $2}'`
+	currently_failed=`printf '%s\n' "$FAIL2BAN_JAIL" | grep 'Currently failed' | awk -F: '{print $2}'`
 	printf "|| %-20s | %-10s | %-20s | %-10s | %-10s |\n" "$jail" "$ban_count" "$total_failed" "$currently_failed" "`date +'%H:%M:%S'`"
 
 done

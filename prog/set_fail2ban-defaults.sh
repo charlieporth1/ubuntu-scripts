@@ -12,6 +12,10 @@ DEFUALT_FILE=/tmp/$FILE_NAME.txt
 # fail2ban-regex -D --verbosity=4 /var/log/ctp-dns/fail2ban-test.log  /etc/fail2ban/filter.d/ctp-dns-1-block.conf
 # fail2ban-regex -D --verbosity=4 /var/log/ctp-dns/error.log  /etc/fail2ban/filter.d/ctp-dns-1-block.conf
 #$PROG/lookup_ip_address_business.sh --ip=
+if ! [[ -f $DEFUALT_FILE ]]; then
+        bash $PROG/create_ban_ignore_ip_list.sh
+fi
+
 curl -o /tmp/phising_ip_addres.csv  https://openphish.com/samples/ip_feed.csv
 
 declare -a MY_PIHOLE_BAN_IPs

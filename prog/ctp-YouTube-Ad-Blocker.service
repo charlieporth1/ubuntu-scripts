@@ -1,4 +1,4 @@
-[Unit]
+z[Unit]
 Description=CTP YouTube Blocker Service
 
 [Service]
@@ -22,8 +22,8 @@ LogsDirectory=ctp-youtube-blocker
 User=root
 Group=root
 
-ExecStartPre=/bin/mkdir -p ${LOGS_DIRECTORY}
-ExecStartPre=/bin/bash -c "/bin/touch ${LOGS_DIRECTORY}/${LOG_FILES}"
+ExecStartPre=/bin/mkdir -p ${LOGS_DIRECTORY} ${LOG_DIR}
+ExecStartPre=/bin/bash -c "/bin/touch ${LOGS_DIRECTORY}/${LOG_FILES} ${LOG_DIR}/${LOG_FILES}"
 ExecStartPre=/bin/echo ${MAINPID} | /bin/tee ${PID_FILE}
 
 ExecStartPre=/bin/bash -c "[[ $ENV == 'DEV' ]] && /usr/bin/sudo /bin/systemctl set-environment EXTRA_ARGS='--verbose --debug'"
@@ -39,12 +39,12 @@ ExecStartPre=/bin/bash -c "[[ $ENV == 'DEV' ]] && /usr/bin/sudo /bin/systemctl s
 #ExecStart=/usr/bin/sudo /usr/bin/cgexec -g cpu:cpulimited /bin/bash ${PROG}/allow-youtube-but-not-youtube-ads.sh 
 #ExecStart=${PROG}/allow-youtube-but-not-youtube-ads.sh  
 
-ExecStart=/bin/bash -c "bash ${PROG}/allow-youtube-but-not-youtube-ads.sh ${EXTRA_ARGS} ${ENV} | tee -a ${LOGS_DIRECTORY}/default.log"
+ExecStart=/bin/bash -c "bash ${PROG}/allow-youtube-but-not-youtube-ads.sh ${EXTRA_ARGS} ${ENV} | sudo tee -a ${LOG_FILE}"
 #ExecStart=/bin/bash ${PROG}/allow-youtube-but-not-youtube-ads.sh ${EXTRA_ARGS} ${ENV} | mbuffer -T /tmp/yt-block.buffer -m 50M | tee -a ${LOG_FILE}
 # >> ${LOG_FILE}'
 
 #ExecStop=/usr/bin/bash -c 'pids=$( ps -aux | grep "allow-youtube-but-not-youtube-ads.sh" | grep -v "tail\|log\|grep" | awk "{print $2}" ); [[ -n $pids ]] && sudo kill -9 $pids || echo NO PIDS'
-ExecStop=/usr/bin/bash -c 'pids=$( ps -aux | grep "allow-youtube-but-not-youtube-ads.sh" | grep -v "tail\|log\|grep" | awk "{print $2}" ); [[ -n $pids ]] && sudo kill -9 $pids || echo NO PIDS; exit 0'
+ExecStop=/usr/bin/bash -c "pids=$( ps -aux | grep 'allow-youtube-but-not-youtube-ads.sh' | grep -v 'tail\|log\|grep' | awk '{print $2}' ); [[ -n $pids ]] && sudo kill -9 $pids || echo NO PIDS; exit 0"
 #KillMode=process
 ExecReload=/bin/kill -USR1 ${MAINPID}
 #RemainAfterExit=true

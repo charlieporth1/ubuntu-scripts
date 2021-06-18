@@ -1,3 +1,17 @@
+.geomobileservices-pa.googleapis.com.
+.armada.stripe.com.
+.gator.stripe.com.
+.api.stripe.com.
+.checkout.stripe.com.
+.dashboard.stripe.com.
+.files.stripe.com.
+.js.stripe.com.
+.m.stripe.com.
+.m.stripe.network.
+.q.stripe.com.
+.verify.stripe.com.
+.stripe.com.
+.0.client-channel.google.com.
 .notifications-pa.googleapis.com.
 .pro-accounts.snapchat.com.
 .updates-http.cdn-apple.com.
@@ -5,7 +19,7 @@
 .platform.twitter.com.
 .ajax.aspnetcdn.com.
 .firebaseinstallations.googleapis.com.
-.playatoms-pa.googleapis.com. .
+.playatoms-pa.googleapis.com.
 .accounts.google.com.
 .production-public.tubi.io.
 .tech.

@@ -13,10 +13,12 @@ chown -R www-data:www-data /var/cache/nginx/
 mkdir -p /tmp/nginx/
 chown -R www-data:www-data /tmp/nginx/
 
-bash $PROG/copy_certs.sh
-bash $PROG/update.unbound-config.sh
-bash $PROG/add_cache_interfaces.sh
-bash $PROG/pihole-db-sql-changes.sh
+sudo bash $PROG/serveronline.sh
+sudo bash $PROG/cpu_group_all_.sh
+sudo bash $PROG/copy_certs.sh
+sudo bash $PROG/update.unbound-config.sh
+sudo bash $PROG/add_cache_interfaces.sh
+sudo bash $PROG/pihole-db-sql-changes.sh
 #bash $PROG/doq-and-failover-bootstrap-server.sh
 
 systemctl restart ctp-dns
@@ -26,7 +28,6 @@ systemctl restart nginx
 sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=0
 sudo sysctl -w net.ipv6.conf.all.forwarding=1
 sudo sysctl -w net.ipv4.ip_forward=1
-sudo bash $PROG/cpu_group_all_.sh
 #bash $PROG/request-remote-cache.sh
 
 if [[ -f /swapfile ]]; then

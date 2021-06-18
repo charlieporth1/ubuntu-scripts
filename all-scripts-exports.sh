@@ -281,3 +281,98 @@ function filter_ip_address_array() {
 }
 
 export -f filter_ip_address_array
+function round() {
+    printf "%.${2:-0}f" "$1"
+}
+export -f round
+
+function die () { echo "$@" >&2; exit 1; }
+export -f die
+
+#encrypt <file> | Usage encrypt <file>
+function encrypt() {
+        [ -e "$1" ] || return 1
+        openssl des3 -salt -in "$1" -out "$1.$CRYPT_EXT"
+        [ -e "$1.$CRYPT_EXT" ] && shred -u "$1"
+}
+export -f encrypt
+#decrypt <file.> | Usage decrypt <file.>
+function decrypt() {
+        [ -e "$1" ] || return 1
+        [ "${1%.$CRYPT_EXT}" != "$1" ] || return 2
+        openssl des3 -d -salt -in $1 -out ${1%.$CRYPT_EXT}
+        [ -e "${1%.$CRYPT_EXT}" ] && rm -f "$1"
+}
+export -f decrypt
+function validphone () {
+    case ${1//[ -]/} in
+     *[!0-9]* | 0* | ???????????* | \
+     ????????? | ???????? | ??????? | ?????? | ????? | ???? | ??? | ?? | ? | '')
+        return 1 ;;  # Return failure
+     *) return 0 ;;  # Success
+    esac
+}
+export -f validphone
+
+function valid_phone() {
+	validphone $1
+}
+export -f valid_phone
+
+function valid_ip() {
+    local  ip=$1
+    local  stat=1
+
+    if [[ $ip =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
+        OIFS=$IFS
+        IFS='.'
+        ip=($ip)
+        IFS=$OIFS
+        [[ ${ip[0]} -le 255 && ${ip[1]} -le 255 \
+            && ${ip[2]} -le 255 && ${ip[3]} -le 255 ]]
+        stat=$?
+    fi
+    return $stat
+}
+export -f valid_ip
+function extract() {
+   if [ -f $1 ] ; then
+       case $1 in
+           *.tar.bz2)   tar xvjf $1    ;;
+           *.tar.gz)    tar xvzf $1    ;;
+           *.bz2)       bunzip2 $1     ;;
+           *.rar)       unrar x $1       ;;
+           *.gz)        gunzip $1      ;;
+           *.tar)       tar xvf $1     ;;
+           *.tbz2)      tar xvjf $1    ;;
+           *.tgz)       tar xvzf $1    ;;
+           *.zip)       unzip $1       ;;
+           *.Z)         uncompress $1  ;;
+           *.7z)        7z x $1        ;;
+           *)           echo "don't know how to extract '$1'..." ;;
+       esac
+   else
+
+      echo "'$1' is not a valid file!"
+   fi
+}
+export -f extract
+#move and go to dir
+function mvg (){
+  if [ -d "$2" ];then
+    mv $1 $2 && cd $2
+  else
+    mv $1 $2
+  fi
+}
+export -f mvg
+
+#copy and go to dir
+function cpg (){
+  if [ -d "$2" ];then
+    cp $1 $2 && cd $2
+  else
+    cp $1 $2
+  fi
+}
+export -f cpg

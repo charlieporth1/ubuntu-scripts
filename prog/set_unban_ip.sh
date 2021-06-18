@@ -3,7 +3,13 @@ source $PROG/all-scripts-exports.sh
 CONCURRENT
 FILE_NAME='ban_ignore_ip_list'
 DEFUALT_FILE=/tmp/$FILE_NAME.txt
+
+if ! [[ -f $DEFUALT_FILE ]]; then
+        bash $PROG/create_ban_ignore_ip_list.sh
+fi
+
 mapfile -t DNS_IGNORE_IPs < $DEFUALT_FILE
+
 
 declare -a JAIL_PIHOLEs
 JAIL_PIHOLEs=(
