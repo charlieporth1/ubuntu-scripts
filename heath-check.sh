@@ -45,6 +45,7 @@ COUNT_ACTION() {
                 echo "Reset failure count $COUNT"
                 bash $PROG/alert_user.sh "Failure Alert" "$FN Failed $COUNT times on $HOSTNAME; Service ${SERVICE} $HOSTNAME"
                 if [[ -n "$SERVICE" ]]; then
+			 systemctl daemon-reload
                          systemctl stop $SERVICE
                          systemctl reset-failed $SERVICE
                 fi

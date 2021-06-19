@@ -3,6 +3,15 @@ source $PROG/all-scripts-exports.sh
 CONCURRENT
 declare -a UNI_IGNORE_IPs
 UNI_IGNORE_IP=(
+	192.168.127.10/32
+	192.168.127.10
+	172.58.0.0/16
+	35.192.105.0/24
+	35.192.105.158/32
+	35.192.105.158
+	35.232.120.211/24
+	35.232.120.211/32
+	35.232.120.211
 	172.31.12.154
 	172.31.12.154/16
         192.168.44.29/16
@@ -25,6 +34,7 @@ UNI_IGNORE_IP=(
         172.195.69.25
         127.0.0.0/8
         174.53.130.17 # Home
+	174.53.130.17/32
         192.168.0.0/16
         192.168.44.0/24
         192.168.40.0/24
@@ -66,9 +76,9 @@ UNI_IGNORE_IPs=( $( filter_ip_address_array "${UNI_IGNORE_IPs[@]}" ) )
 
 declare -a TMobileIPs
 T_MobileIPs=(
-$(curl https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/mobile.tmobile.list)
-$(curl https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/mobile.tmobileus.list)
-$(curl https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/white.tmobileus.ip.list)
+$(curl -s https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/mobile.tmobile.list)
+$(curl -s https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/mobile.tmobileus.list)
+$(curl -s https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/white.tmobileus.ip.list)
 74.125.42.39
 172.56.0.0/8
 172.100.0.0/16

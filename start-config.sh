@@ -19,7 +19,6 @@ sudo bash $PROG/copy_certs.sh
 sudo bash $PROG/update.unbound-config.sh
 sudo bash $PROG/add_cache_interfaces.sh
 sudo bash $PROG/pihole-db-sql-changes.sh
-#bash $PROG/doq-and-failover-bootstrap-server.sh
 
 systemctl restart ctp-dns
 systemctl restart doh-server
@@ -33,3 +32,12 @@ sudo sysctl -w net.ipv4.ip_forward=1
 if [[ -f /swapfile ]]; then
 	swapon /swapfile
 fi
+(
+        sudo cgexec -g cpu:fourthcpulimied -g memory:512MBRam /bin/bash $PROG/block-china.sh
+        sleep 10s
+        sudo cgexec -g cpu:fourthcpulimied -g memory:512MBRam /bin/bash $PROG/ban_countries.sh
+        sleep 10s
+        # This should always come after because it will unblock
+        sudo cgexec -g cpu:fourthcpulimied -g memory:512MBRam /bin/bash $PROG/set_fail2ban-defaults.sh
+
+)&

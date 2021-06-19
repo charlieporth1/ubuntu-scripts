@@ -1,3 +1,21 @@
+# BLOCK
+#        {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/deugniets/routedns.blocklist.domain.list", cache-dir = "/var/tmp/ctp-dns"},
+#        {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/malicious-dom/routedns.blocklist.gafam.domain.list", cache-dir = "/var/cache/ctp-dns"},
+#        {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/cloak/routedns.blocklist.optimized.domain.list", cache-dir = "/var/cache/ctp-dns"},
+#        {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/cloak/routedns.blocklist.gafam.domain.list", cache-dir = "/var/cache/ctp-dns"},
+#        {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/cloak/routedns.blocklist.top-n.domain.list", cache-dir = "/var/cache/ctp-dns"},
+#        {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/covid/routedns.blocklist.domain.list", cache-dir = "/var/cache/ctp-dns"},
+#        {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/maltrail/routedns.blocklist.domain.list", cache-dir = "/var/cache/ctp-dns"},
+#        {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/nextdns-recommended/routedns.blocklist.domain.list", cache-dir = "/var/cache/ctp-dns"},
+#        {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/nextdns/routedns.blocklist.domain.list", cache-dir = "/var/cache/ctp-dns"},
+#        {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/typosquat/routedns.blocklist.domain.list", cache-dir = "/var/cache/ctp-dns"},
+#        {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/easylist/routedns.blocklist.domain.list", cache-dir = "/var/cache/ctp-dns"},
+#        {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/cloak/routedns.blocklist.domain.list", cache-dir = "/var/cache/ctp-dns"},
+# ALLOW
+#    {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/deugniets/routedns.allowlist.domain.list", cache-dir = "/var/cache/ctp-dns"},
+#    {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/whitelist/routedns.allowlist.domain.list", cache-dir = "/var/cache/ctp-dns"},
+#    {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/whitelist/routedns.allowlist.domain.list", cache-dir = "/var/cache/ctp-dns"},
+#    {format = "domain", source = "/var/tmp/ctp-dns/lists/white/domains.txt", cache-dir = "/var/cache/ctp-dns"}, 
 [groups.ctp-dns-blocklist]
 type = "blocklist-v2"
 blocklist-resolver = "static-servfail"
@@ -6,19 +24,7 @@ resolvers = [ "ctp-dns-failover" ]
 #   {format = "regexp", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/blocklistproject/routedns.blocklist.domain.list"},
 blocklist-source = [
 #       {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/blocklistproject/routedns.blocklist.domain.list", cache-dir = "/var/cache/ctp-dns"},
-        {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/deugniets/routedns.blocklist.domain.list", cache-dir = "/var/tmp/ctp-dns"},
-        {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/easylist/routedns.blocklist.domain.list", cache-dir = "/var/cache/ctp-dns"},
-        {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/cloak/routedns.blocklist.domain.list", cache-dir = "/var/cache/ctp-dns"},
 #       {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/malicious-dom/routedns.blocklist.domain.list", cache-dir = "/var/cache/ctp-dns"},
-        {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/malicious-dom/routedns.blocklist.gafam.domain.list", cache-dir = "/var/cache/ctp-dns"},
-        {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/cloak/routedns.blocklist.optimized.domain.list", cache-dir = "/var/cache/ctp-dns"},
-        {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/cloak/routedns.blocklist.gafam.domain.list", cache-dir = "/var/cache/ctp-dns"},
-        {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/cloak/routedns.blocklist.top-n.domain.list", cache-dir = "/var/cache/ctp-dns"},
-        {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/covid/routedns.blocklist.domain.list", cache-dir = "/var/cache/ctp-dns"},
-        {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/maltrail/routedns.blocklist.domain.list", cache-dir = "/var/cache/ctp-dns"},
-        {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/nextdns-recommended/routedns.blocklist.domain.list", cache-dir = "/var/cache/ctp-dns"},
-        {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/nextdns/routedns.blocklist.domain.list", cache-dir = "/var/cache/ctp-dns"},
-        {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/typosquat/routedns.blocklist.domain.list", cache-dir = "/var/cache/ctp-dns"},
         {format = "domain", source = "/var/tmp/ctp-dns/lists/black/domains.txt", cache-dir = "/var/cache/ctp-dns"},
         {format = "domain", source = "/var/tmp/ctp-dns/lists/black/ads.txt", cache-dir = "/var/cache/ctp-dns"},
         {format = "domain", source = "/var/tmp/ctp-dns/lists/black/malware-typo.txt", cache-dir = "/var/cache/ctp-dns"},
@@ -26,18 +32,20 @@ blocklist-source = [
         {format = "domain", source = "/var/tmp/ctp-dns/lists/black/tracking.txt", cache-dir = "/var/cache/ctp-dns"},
         {format = "domain", source = "/var/tmp/ctp-dns/lists/black/scam.txt", cache-dir = "/var/cache/ctp-dns"},
         {format = "regexp", source = "/var/tmp/ctp-dns/lists/black/regex.txt", cache-dir = "/var/cache/ctp-dns"},
+        {format = "domain", source = "https://gcp.ctptech.dev/txt_lists/accomplist/standard/routedns.blocklist.domain.list", cache-dir = "/var/cache/ctp-dns"}, 
+        {format = "domain", source = "https://gcp.ctptech.dev/txt_lists/accomplist/standard/routedns.blocklist.domain.list", cache-dir = "/var/cache/ctp-dns"}, 
 
 #       {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/oisd/routedns.blocklist.domain.list", cache-dir = "/var/cache/ctp-dns"},
 #       {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/nrd/routedns.blocklist.domain.list", cache-dir = "/var/cache/ctp-dns"},
 #       {format = "domain", source = "", cache-dir = "/var/cache/ctp-dns"},
 ]
-allowlist-refresh = 900
+allowlist-refresh = 3600
 #allowlist-resolver = "ctp-dns-group" 
 allowlist-source = [
-    {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/deugniets/routedns.allowlist.domain.list", cache-dir = "/var/cache/ctp-dns"},
-    {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/whitelist/routedns.allowlist.domain.list", cache-dir = "/var/cache/ctp-dns"},
-    {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/whitelist/routedns.allowlist.domain.list", cache-dir = "/var/cache/ctp-dns"},
-    {format = "domain", source = "/var/tmp/ctp-dns/lists/white/domains.txt", cache-dir = "/var/cache/ctp-dns"}, 
 #    {format = "regexp", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/deugniets/routedns.allowlist.regexp.list", cache-dir = "/var/cache/ctp-dns"},
+        {format = "domain", source = "/var/tmp/ctp-dns/lists/white/domains.txt", cache-dir = "/var/cache/ctp-dns"}, 
+        {format = "domain", source = "https://gcp.ctptech.dev/txt_lists/accomplist/standard/routedns.allowlist.domain.list", cache-dir = "/var/cache/ctp-dns"}, 
+        {format = "regexp", source = "https://gcp.ctptech.dev/txt_lists/accomplist/standard/routedns.allowlist.regexp.list ", cache-dir = "/var/cache/ctp-dns"}, 
+     
 ]
 

@@ -216,7 +216,7 @@ MY_PIHOLE_BAN_IPs=(
 	74.82.47.6/16
 )
 declare -a PIHOLE_BAN_IPs=(
-	$(curl https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/fail2ban)
+	$(curl -s https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/fail2ban)
 	${MY_PIHOLE_BAN_IPs[@]}
 )
 
@@ -236,6 +236,7 @@ do
 	iptables -A BAN-IPS -s $ip -p tcp -j DROP -w
 	iptables -A BAN-IPS -s $ip -p udp -j DROP -w
 done
+
 
 declare -a JAIL_PIHOLEs
 JAIL_PIHOLEs=(

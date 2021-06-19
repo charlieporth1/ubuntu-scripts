@@ -250,7 +250,7 @@ export -f IF_RESTART
 function systemctl-exists() {
 #  [ $(systemctl list-unit-files "${1}*" | wc -l) -gt 3 ]
 	local service="${1}"
-	services_list=$(systemctl list-unit-files "${service}*" | wc -l)
+	local services_list=$(systemctl list-unit-files "${service}*" | wc -l)
 	if [[ -z "${service}" ]]; then
 		echo false
 	elif [[ ${services_list} -gt 3 ]]; then
@@ -263,7 +263,7 @@ export -f systemctl-exists
 
 function systemctl-inbetween-status() {
 	local service="${1}"
-	inbetween_status=`systemctl status "${service}" | grep -oE '(de|)activating'`
+	local inbetween_status=`systemctl is-failed "${service}" | grep -oE '(de|)activating'`
 	if [[ -z "${service}" ]]; then
 		echo false
 	elif [[ -n "${inbetween_status}" ]]; then
@@ -275,7 +275,7 @@ function systemctl-inbetween-status() {
 export -f systemctl-inbetween-status
 
 function filter_ip_address_array() {
-        INPUT_ARRAY=( "$@" )
+        local INPUT_ARRAY=( "$@" )
         # Sort IPs
         printf "%s\n" "${INPUT_ARRAY[@]}" | sort -t . -k 3,3n -k 4,4n | uniq | sort -u
 }
@@ -320,8 +320,8 @@ function valid_phone() {
 export -f valid_phone
 
 function valid_ip() {
-    local  ip=$1
-    local  stat=1
+    local ip=$1
+    local stat=1
 
     if [[ $ip =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
         OIFS=$IFS

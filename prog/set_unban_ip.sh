@@ -19,7 +19,7 @@ JAIL_PIHOLEs=(
 
 declare -a JAILs
 JAILs=(
-        $( [[ -n "$IS_PIHOLE" ]] && ${JAIL_PIHOLEs[@]} )
+        $( [[ -n "$IS_PIHOLE" ]] && echo ${JAIL_PIHOLEs[@]} )
         ctp-dns-1-block
         sshd
         nginx-http-auth

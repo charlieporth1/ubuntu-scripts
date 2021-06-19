@@ -1,16 +1,18 @@
 #!/bin/bash
-sudo cgcreate -g cpu:/cpulimited_small
-sudo cgset -r cpu.shares=64 cpulimited_small
+CPU_CORE_COUNT=`cat /proc/stat | grep cpu | grep -E 'cpu[0-9]+' | wc -l`
+CPU_CORE_COUNT_HALF=$(( $CPU_CORE_COUNT / 2 ))
+
+sudo cgcreate -g cpu:/eightth_cpulimited
+sudo cgset -r cpu.shares=64 eightth_cpulimited
 
 sudo cgcreate -g cpu:/cpulimited
 sudo cgset -r cpu.shares=128 cpulimited
 
+sudo cgcreate -g cpu:/fourthcpulimied
+sudo cgset -r cpu.shares=256 fourthcpulimied
 
-sudo cgcreate -g cpu:/lesscpulimited
-sudo cgset -r cpu.shares=256 lesscpulimited
-
-sudo cgcreate -g cpu:/leastcpulimited
-sudo cgset -r cpu.shares=512 leastcpulimited
+sudo cgcreate -g cpu:/cpulimitedhalf
+sudo cgset -r cpu.shares=512 cpulimitedhalf
 
 sudo cgcreate -g memory:/2GBRam
 sudo cgcreate -g memory:/1GBRam
@@ -41,3 +43,4 @@ echo $(( 64 * 1024 * 1024 )) | sudo tee /sys/fs/cgroup/memory/64MBRam/memory.mem
 #sudo cgexec -g cpu:lesscpulimited fail2ban-server
 #
 #sudo cgexec -g cpu:cpulimited fail2ban-server
+sudo cgexec -g cpu:cpulimited -g memory:128MBRam --sticky fail2ban-server

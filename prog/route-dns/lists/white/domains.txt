@@ -1,3 +1,7 @@
+.9to5google.com.
+.gravatar.com.
+.fun.
+.oldmovies.fun.
 .geomobileservices-pa.googleapis.com.
 .armada.stripe.com.
 .gator.stripe.com.
