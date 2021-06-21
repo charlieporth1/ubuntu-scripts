@@ -498,3 +498,208 @@ ping raspberrypi4
 ping raspberrypi4.local
 ssh aws.ctptech.dev
 exit
+cd Pihole-Slave-Install/
+sudo git stash && sudo git pull && sudo bash setup/dns-route.sh
+ctp-dns.sh -qbl
+chmod 777 /usr/local/bin/ctp-dns.sh 
+sudo chmod 777 /usr/local/bin/ctp-dns.sh 
+ctp-dns.sh -qbl
+sudo git pull
+sudo ./update.sh 
+sudo git stash && sudo git pull && sudo bash setup/dns-route.sh
+sudo nano /home/ubuntuserver/Programs/route-dns/ctp-yt-googlevideo-tll-modifier.toml
+sudo git stash && sudo git pull && sudo bash setup/dns-route.sh
+sudo git stash && sudo git pull && sudo bash setup/dns-route.sh && sudo systemctl restart ctp-dns.service 
+sudo su
+systemctl status ctp-dns.service 
+sudo su
+sudo git stash && sudo git pull && sudo bash setup/dns-route.sh && sudo systemctl restart ctp-dns.service 
+sudo git stash && sudo git pull && sudo bash setup/dns-route.sh 
+sudo nano /etc/nginx/sites-enabled/doh
+sudo nano $hole/pihole-FTL.conf
+ctp-dns.sh -qbl
+chmod +x $ROUTE/ctp-dns.sh
+sudo chmod +x $ROUTE/ctp-dns.sh
+ctp-dns.sh -qbl
+systemctl stop nginx
+sudo systemctl stop nginx
+while true; do sudo systemctl stop nginx;done
+systemctl status nginx
+while true; do sudo systemctl stop nginx;done
+systemctl status nginx
+sudo systemctl restart nginx
+systemctl status nginx
+systemctl status ctp-dns.service 
+sudo git pull
+sudo git stash && sudo git pull && sudo bash setup/dns-route.sh 
+sudo ./update.sh  --install
+systemctl status ctp-dns.service 
+pihole -t
+cd Pihole-Slave-Install/
+sudo git pull
+sudo ./update.sh --apply-config
+sudo git pull
+htop
+sudo git pull
+htop
+systemctl status ctp-dns.service 
+sudo reboot
+cd Pihole-Slave-Install/
+systemctl status ctp-dns.service 
+sudo git pull
+sudo ./update.sh --apply-config
+pihole -t
+cd 
+cd Pihole-Slave-Install/
+sudo ./update.sh  --apply-config
+sudo git pull && sudo ./copy_config.sh 
+sudo git pull
+ls /var/lib/unbound/root.hints
+ls --color=auto  /var/lib/unbound/root.hints
+ll  /var/lib/unbound/root.hints
+sudo git pull
+pihole -q r5.sn-uhvcpax0n5-vgql.googlevideo.com
+sudo nano /etc/dnsmasq.d/88-custom-dns-servers.conf 
+systemctl status ctp-dns.service 
+systemctl status nginx
+systemctl status doh-server.service 
+systemctl status unbound
+sudo ./update.sh 
+sudo ./update.sh  --apply-config
+systemctl status unbound
+sudo unbound-checkconf 
+sudo systemctl restart unbound
+systemctl status unbound
+sudo systemctl restart unbound
+journalctl -xe
+ll  /etc/unbound/root.key.932320-0-55a4606bdee0
+ll  /etc/unbound/root.key
+sudo systemctl restart unbound
+journalctl -xe
+ls /etc/unbound/root.key
+ll /etc/unbound/root.key
+sudo nano /etc/unbound/unbound.conf.d/06-infosec.conf 
+sudo systemctl restart unbound
+systemctl status unbound
+sudo systemctl restart unbound
+journalctl -xe
+sudo  /etc/unbound/
+sudo ll  /etc/unbound/
+ll  /etc/unbound/
+cat root.key
+cat  /etc/unbound/root.key 
+ll /etc/unbound/root.key
+chmod +w /etc/unbound/root.key
+sudo chmod +w /etc/unbound/root.key
+sudo systemctl restart unbound
+systemctl status unbound
+sudo chmod g+w /etc/unbound/root.key
+systemctl status unbound
+ll /etc/unbound/root.key
+sudo chmod u+w /etc/unbound/root.key
+ll /etc/unbound/root.key
+sudo chmod 777 /etc/unbound/root.key
+sudo systemctl restart unbound
+ll /etc/unbound/root.key
+sudo systemctl restart unbound
+systemctl status unbound
+sudo unbound-anchor 
+ll /etc/unbound/root.key
+rm /etc/unbound/root.key
+sudo rm /etc/unbound/root.key
+unbound-anchor --help
+sudo git pull
+ll /etc/unbound/root.key
+sudo bash /mnt/HDD/Programs/update.unbound-config.sh
+systemctl status unbound
+systemctl restart unbound.service 
+sudo systemctl restart unbound.service 
+journalctl -xe
+ls /etc/unbound/root.key
+sudo unbound-anchor -v -f /etc/resolv.conf -F -a  /etc/unbound/root.key
+ls /etc/unbound/root.key
+sudo systemctl restart unbound.service 
+systemctl status unbound
+journalctl -xe
+sudo git pull && sudo ./copy_config.sh && systemctl restart unbound
+sudo git stash && sudo git pull && sudo ./copy_config.sh && systemctl restart unbound
+systemctl status unbound
+sudo systemctl restart unbound
+systemctl status unbound
+dig @aws.ctptech.dev
+\
+cd Pihole-Slave-Install/
+sudo git pull
+sudo git stash
+sudo git pull
+sudo ./update.sh  --apply-config
+cd Pihole-Slave-Install/
+ctp-dns.sh -qbl
+ctp-dns.sh -qal
+sudo ./update.sh --apply-config
+sudo ./update.sh --apply-config --no-restart
+systemctl status ctp-dns.service 
+ctp-dns.sh -qbl
+sudo git pull
+ctp-dns.sh -qbl
+sudo git pull
+sudo git stash 
+sudo git pull
+pihole -q r5.sn-uhvcpax0n5-vgql.googlevideo.com
+sudo bash /mnt/HDD/Programs/copy_gravity.sh 
+pihole -q r5.sn-uhvcpax0n5-vgql.googlevideo.com
+pihole status
+systemctl status ctp-dns.service 
+ctp-dns.sh -qbl
+sudo chmod 777 /usr/local/bin/ctp-dns.sh
+ctp-dns.sh -qbl
+ctp-dns.sh 
+ctp-dns.sh --help
+sudo fail2ban-client status pihole-dns| grep 174.53
+sudo fail2ban-client status pihole-dns| grep 192
+sudo fail2ban-client status pihole-dns| grep 192.168
+sudo fail2ban-client status pihole-dns-1-block | grep 192.168
+sudo fail2ban-client status ctp-dns-1-block | grep 192.168
+sudo fail2ban-client status ctp-dns-1-block | grep 174
+sudo fail2ban-client status ctp-dns-1-block | grep 174.53
+sudo fail2ban-client status ctp-dns-1-block | grep 174
+sudo fail2ban-client status ctp-dns-1-block | grep 192
+sudo fail2ban-client status ctp-dns-1-block | grep -E "(192\.168|174\.53|172.58)"
+sudo fail2ban-client status ctp-dns-1-block | grep -E "(192\.168|174\.53|172\.58)"
+sudo fail2ban-client status ctp-dns-1-block | grep -E "(192\.168|174\.53|172\.58).*"
+sudo fail2ban-client status ctp-dns-1-block | grep -E "(192\.168|174\.53|172\.58)"
+sudo fail2ban-client status ctp-dns-1-block | grep -E "(192\.168|174\.53|172\.58).*"
+sudo fail2ban-client status ctp-dns-1-block | grep "192.168\|174.53\|172.58"
+sudo fail2ban-client status {pihole,ctp}-dns-1-block | grep "192.168\|174.53\|172.58"
+sudo fail2ban-client status {pihole,ctp}-dns-1-block 
+sudo fail2ban-client status pihole | grep "192.168\|174.53\|172.58"
+sudo fail2ban-client status pihole-dns | grep "192.168\|174.53\|172.58"
+sudo fail2ban-client status pihole-dns| grep "174.53\|192.168"
+sudo fail2ban-client status pihole-dns-1-block| grep "174.53\|192.168"
+sudo fail2ban-client status ctp-dns-1-block| grep "174.53\|192.168"
+sudo fail2ban-client status ctp-dns-1-block| grep "174.53\|192.168\|35"
+sudo fail2ban-client status ctp-dns-1-block| grep "174.53\|192.168\|35.192"
+sudo ./update.sh 
+systemctl status ctp-dns.service 
+df -h
+sudo git pull
+systemctl status ctp-dns.service 
+df -h
+systemctl status ctp-dns.service 
+dig aws.ctptech.dev
+sudo git pull
+ctp-dns.sh -qbl
+systemctl status ctp-dns
+sudo git pull
+sudo git pull && sudo systemctl daemon-reload && sudo systemctl restart ctp-dns.service
+sudo git stash && sudo git pull && sudo setup/dns-route.sh&&  sudo systemctl daemon-reload && sudo systemctl restart ctp-dns.service
+systemctl status ctp-dns
+htop
+ _-#_-
+systemctl status ctp-dns
+ ctp-dns.sh -qbl
+chmod 777 /usr/local/bin/ctp-dns.sh 
+sudo chmod 777 /usr/local/bin/ctp-dns.sh 
+ ctp-dns.sh -qbl
+cd Pihole-Slave-Install/
+sudo git pull
