@@ -47,6 +47,7 @@ else
 	[[ "$dns_local_test" != "$dns_master_test" ]]
 	then
                 echo "DNS block test failed: restarting"
+			systemctl daemon-reload
                         systemctl restart ctp-dns
         else
                 echo "Test DNS Block Success"

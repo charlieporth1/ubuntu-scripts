@@ -27,11 +27,14 @@ gcloud components update
 python2 -m pip install --upgrade pip
 python3 -m pip install --upgrade pip
 
+sudo snap install --classic go
+sudo snap refresh --classic go
 gvm get
-
+GO111MODULE=on
 go get github.com/AdguardTeam/dnsproxy
 go get github.com/ameshkov/dnscrypt
 go get -v github.com/folbricht/routedns/cmd/routedns
+sudo /snap/bin/go get -v github.com/folbricht/routedns/cmd/routedns
 go get -v github.com/natesales/q
 VP=q_0.4.1_linux_amd64.deb
 wget https://github.com/natesales/q/releases/download/v0.4.1/$VP -O ~/$VP

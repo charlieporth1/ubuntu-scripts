@@ -49,9 +49,12 @@ resolvers = [
 	"ctp-dns-fail-rotate",
 	"ctp-dns-failover-backup"
 ]
+timeout = 3
 type = "fail-back"
+servfail-failover = true
 
 # Order matters
+
 [groups.ctp-dns-fail-rotate]
 resolvers = [
 	"ctp-dns_home-dot",
@@ -70,8 +73,9 @@ resolvers = [
 	"ctp-dns-ip-home-tcp",
 	"ctp-dns-ip-home-udp"
 ]
+timeout = 3
 type = "fail-rotate"
-
+servfail-failover = true
 
 [groups.ctp-dns-ecs]
 type = "ecs-modifier"
@@ -81,3 +85,4 @@ ecs-op = "add"
 ecs-prefix4 = 24
 ecs-prefix6 = 64
 # CTP INSTALL -- DO NOT REMOVE THIS UNLESS YOU PLAN ON REMOVING INSTALL AND REINSTALLING
+

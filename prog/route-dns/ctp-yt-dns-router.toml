@@ -1,11 +1,10 @@
 [routers.ctp-yt-blocker-if-fowarder-router] 
 routes = [
-  { name = '(youtube|ytimg|ggpht|youtube-ui\.l\.google)\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
-  { name = '^(redirector|manifest|r([0-9]{1,2}){.{4,27}})\.gvt[0-6]?\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker-google-video-ttl" },
-  { name = 'googlevideo\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker-google-video-ttl" },
-  { name = '^youtubei\.googleapis\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
-  { name = '(fwmrm)\.net\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
-  { name = '(googlesyndication|googleadservices|imrworldwide)\.com\.$', resolver="ctp-dns-yt-block-resolver-blocker" },
+  { name = '(youtube|ytimg|ggpht|youtube-ui\.l\.google|youtubei\.googleapis)\.com\.$', resolver="ctp-dns-time-router-yt-gcp" },
+  { name = '^(redirector|manifest|r([0-9]{1,2}){.{4,27}})\.gvt[0-6]?\.com\.$', resolver="ctp-dns-time-router-yt-ttl-gcp" },
+  { name = '(^|\.|^redirector\.|^manifest\.)googlevideo\.com\.$', resolver="ctp-dns-time-router-yt-ttl-gcp" },
+  { name = '(doubleclick|fwmrm)\.net\.$', resolver="ctp-dns-time-router-yt-gcp" },
+  { name = '(googlesyndication|googleadservices|imrworldwide)\.com\.$', resolver="ctp-dns-time-router-yt-gcp" },
   { resolver = "root-router" },             # All other queries are forwarded
 ]
 #doubleclick

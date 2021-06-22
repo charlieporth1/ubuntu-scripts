@@ -5,16 +5,16 @@ shopt -s expand_aliases
 SCRIPT_DIR=`realpath .`
 mkdir -p /etc/letsencrypt/live/vpn.ctptech.dev
 
-go get -v github.com/folbricht/routedns/cmd/routedns
+/snap/bin/go get -v github.com/folbricht/routedns/cmd/routedns
 
-git clone https://github.com/folbricht/routedns.git
-cd routedns
-git stash
-git pull -ff
-git switch master
-git pull -ff
-cd cmd/routedns
-sudo /snap/bin/go install
+#git clone https://github.com/folbricht/routedns.git
+#cd routedns
+#git stash
+#git pull -ff
+#git switch master
+#git pull -ff
+#cd cmd/routedns
+#sudo /snap/bin/go install
 
 source $SCRIPT_DIR/.project_env.sh
 ROUTE=$PROG/route-dns
@@ -52,6 +52,12 @@ GROUP="""
 resolvers = [
 	$LOCAL_RESOLVERS,
 	$GCP_RESOLVERS
+]
+type = \"fastest\"
+
+[groups.ctp-dns-group-local]
+resolvers = [
+	$LOCAL_RESOLVERS,
 ]
 type = \"fastest\"
 """
@@ -112,6 +118,12 @@ resolvers = [
 
 ]
 type = \"fastest\"
+
+[groups.ctp-dns-group-local]
+resolvers = [
+	$LOCAL_RESOLVERS,
+]
+type = \"fastest\"
 """
 printf '%s\n' "$GROUP" | sudo tee -a $ROUTE/$HOSTNAME-resolvers.toml
 
@@ -144,8 +156,8 @@ printf '%s\n' "$GROUP" sudo tee $ROUTE/$HOSTNAME-resolvers.toml
 fi
 
 replace_str="resolvers = [\n$GCP_RESOLVERS\n]"
-if [[ `isNotInstalled $ROUTE/ctp-yt-dns-router.toml` == 'true' ]]; then
-	FILE=ctp-yt-dns-router.toml
+FILE=ctp-yt-dns-router.toml
+if [[ `isNotInstalled $ROUTE/$FILE` == 'true' ]]; then
 	pcregrep -v -M '^resolvers.*(.|\n)*]' $ROUTE/$FILE > $ROUTE/$FILE.tmp
 
 	echo -e "$replace_str" | sudo tee -a $ROUTE/$FILE.tmp
@@ -153,13 +165,22 @@ if [[ `isNotInstalled $ROUTE/ctp-yt-dns-router.toml` == 'true' ]]; then
 	mv $ROUTE/$FILE.tmp $ROUTE/$FILE
 fi
 
-if [[ `isNotInstalled $ROUTE/ctp-yt-googlevideo-router.toml` == 'true' ]]; then
-	FILE=ctp-yt-googlevideo-tll-modifier.toml
+FILE=ctp-yt-googlevideo-tll-modifier.toml
+if [[ `isNotInstalled $ROUTE/$FILE` == 'true' ]]; then
 	pcregrep -v -M '^resolvers.*(.|\n)*]' $ROUTE/$FILE > $ROUTE/$FILE.tmp
 	mv $ROUTE/$FILE.tmp $ROUTE/$FILE
 	echo -e "$replace_str" | sudo tee -a $ROUTE/$FILE
 	perl -0777 -i -pe 's/^"ctp/\t"ctp/gm' $ROUTE/$FILE
 fi
 
+replace_str="resolvers = [ \"ctp-dns-time-router-general-gcp\" ]"
+FILE=dns-lists.toml
+if [[ `isNotInstalled $ROUTE/$FILE` == 'true' ]]; then
+	pcregrep -v -M '^resolvers.*' $ROUTE/$FILE > $ROUTE/$FILE.tmp
+	mv $ROUTE/$FILE.tmp $ROUTE/$FILE
+	echo -e "$replace_str" | sudo tee -a $ROUTE/$FILE
+fi
 
+
+perl -0777 -i -pe 's/^"ctp/\t"ctp/gm' $ROUTE/$HOSTNAME-resolvers.toml
 

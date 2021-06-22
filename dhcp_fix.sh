@@ -8,5 +8,6 @@ sudo ip link set eth0 down
 sudo ip addr flush eth0
 sudo ip link set eth0 up
 sudo dhclient -r
+sleep 5s
 sudo dhclient
 #sudo ifconfig eth0 192.168.44.250 up
