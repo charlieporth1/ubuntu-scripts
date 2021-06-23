@@ -247,6 +247,21 @@ function IF_RESTART() {
 }
 export -f IF_RESTART
 
+function displaytime {
+  local T=$1
+  local D=$((T/60/60/24))
+  local H=$((T/60/60%24))
+  local M=$((T/60%60))
+  local S=$((T%60))
+  (( $D > 0 )) && printf '%d days ' $D
+  (( $H > 0 )) && printf '%d hours ' $H
+  (( $M > 0 )) && printf '%d minutes ' $M
+  (( $D > 0 || $H > 0 || $M > 0 )) && printf 'and '
+  printf '%d seconds\n' $S
+}
+
+export -f displaytime
+
 function systemctl-exists() {
 #  [ $(systemctl list-unit-files "${1}*" | wc -l) -gt 3 ]
 	local service="${1}"
@@ -273,6 +288,29 @@ function systemctl-inbetween-status() {
 	fi
 }
 export -f systemctl-inbetween-status
+
+function systemctl-seconds() {
+	# TIme inbetween 60 secodns
+	local service="${1}"
+	local systemd_process_start_time=`systemctl show "${service}" | grep 'ExecMainStartTimestamp=' | awk -F = '{print $2}'`
+	local systemd_process_start_time_unix_timestamp=`date -d "$systemd_process_start_time" +"%s"`
+	local current_unix_time=`date +"%s"`
+	echo $(( $current_unix_time - $systemd_process_start_time_unix_timestamp ))
+}
+export -f systemctl-seconds
+
+function systemctl-run-time() {
+	local service="${1}"
+	local inbetween_status=`systemctl status "$service" | grep -oE '([0-9]{1,2})s ago'`
+	if [[ -z "${service}" ]]; then
+		echo false
+	elif [[ -n "${inbetween_status}" ]]; then
+		echo true
+	else
+		echo false
+	fi
+}
+export -f systemctl-run-time
 
 function filter_ip_address_array() {
         local INPUT_ARRAY=( "$@" )

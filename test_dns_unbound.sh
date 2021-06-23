@@ -25,6 +25,9 @@ then
     exit
 fi
 
+# Examples
+# dig @127.0.0.1 -p 5053 +tries=3 +dnssec +ttl +edns +timeout=4
+
 if ! command -v grepip &> /dev/null
 then
     echo "COMMAND dig could not be found installing"
@@ -48,7 +51,7 @@ if [[ -z "$isAuto" ]]; then
         echo -e "LOCAL \n$(bash $PROG/lines.sh '*')"
 	printf '%s\n' "$dns_local"
 else
-	if [[ -z "$dns_local_test" ]]; then
+	if [[ -z "$dns_local_test" ]] && [[ `systemctl-seconds unbound` -ge 45 ]]; then
 		systemctl restart unbound.service
 		sleep $WAIT_TIME
 	else

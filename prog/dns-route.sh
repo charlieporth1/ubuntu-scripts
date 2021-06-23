@@ -166,10 +166,11 @@ if [[ `isNotInstalled $ROUTE/$FILE` == 'true' ]]; then
 fi
 
 FILE=ctp-yt-googlevideo-tll-modifier.toml
+replace_str="resolvers = [ \"ctp-dns-yt-block-resolver-blocker\" ]"
 if [[ `isNotInstalled $ROUTE/$FILE` == 'true' ]]; then
-	pcregrep -v -M '^resolvers.*(.|\n)*]' $ROUTE/$FILE > $ROUTE/$FILE.tmp
+	pcregrep -v -M '^resolvers.*' $ROUTE/$FILE > $ROUTE/$FILE.tmp
 	mv $ROUTE/$FILE.tmp $ROUTE/$FILE
-	echo -e "$replace_str" | sudo tee -a $ROUTE/$FILE
+	echo -e "" | sudo tee -a $ROUTE/$FILE
 	perl -0777 -i -pe 's/^"ctp/\t"ctp/gm' $ROUTE/$FILE
 fi
 

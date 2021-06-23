@@ -3,19 +3,4 @@ type = "ttl-modifier"
 ttl-min = 2 
 ttl-max = 20 
 # CTP INSTALL -- DO NOT REMOVE THIS UNLESS YOU PLAN ON REMOVING INSTALL AND REINSTALLING
-resolvers = [
-	"ctp-dns_gcp-dot-ip-1",
-	"ctp-dns_gcp-dot-ip-2",
-	"ctp-dns_gcp-dtls-ip-1",
-	"ctp-dns_gcp-dtls-ip-2",
-	"ctp-dns_gcp-doh-post-ip-1",
-	"ctp-dns_gcp-doh-post-ip-2",
-	"ctp-dns_gcp-doh-get-ip-1",
-	"ctp-dns_gcp-doh-get-ip-2",
-	"ctp-dns_gcp-doh-quic-post-ip-1",
-	"ctp-dns_gcp-doh-quic-post-ip-2",
-	"ctp-dns_gcp-doh-quic-get-ip-1",
-	"ctp-dns_gcp-doh-quic-get-ip-2",
-	"ctp-dns_gcp-quic-ip-1",
-	"ctp-dns_gcp-quic-ip-2"
-]
+
