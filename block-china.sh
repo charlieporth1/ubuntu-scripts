@@ -14,21 +14,21 @@ function create_ip-set() {
 	CONTRY="$1"
 	declare -gx IPSET_BK_NAME=blacklist-$COUNTRY
 	sudo ipset create $IPSET_BK_NAME hash:net hashsize 4096
-	sudo iptables -I INPUT -m set --match-set $IPSET_BK_NAME src -j DROP -w
-	sudo iptables -I FORWARD -m set --match-set $IPSET_BK_NAME src -j DROP -w
+	sudo iptables -I INPUT -m set --match-set $IPSET_BK_NAME src -j DROP -w 10
+	sudo iptables -I FORWARD -m set --match-set $IPSET_BK_NAME src -j DROP -w 10
 
 }
 create_ip-set china
 for i in $(cat /tmp/cn.zone )
 do
 	ipset add $IPSET_BK_NAME $i
-	sleep 1s
+	sleep 0.250s
 done
 create_ip-set russia
 for i in $(cat /tmp/ru.zone )
 do
-	ipset add russia $i
-	sleep 1s
+	ipset add $IPSET_BK_NAME $i
+	sleep 0.250s
 	# --destination-port 22,443,8443,53,853,1443,4443,80,784,1784 
 done
 # Restore iptables

@@ -2,5 +2,4 @@
 type = "ttl-modifier" 
 ttl-min = 2 
 ttl-max = 20 
-# CTP INSTALL -- DO NOT REMOVE THIS UNLESS YOU PLAN ON REMOVING INSTALL AND REINSTALLING
-
+resolvers = [ "ctp-dns-yt-block-resolver-blocker" ]

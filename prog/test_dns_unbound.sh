@@ -51,7 +51,7 @@ if [[ -z "$isAuto" ]]; then
         echo -e "LOCAL \n$(bash $PROG/lines.sh '*')"
 	printf '%s\n' "$dns_local"
 else
-	if [[ -z "$dns_local_test" ]] && [[ `systemctl-seconds unbound` -ge 45 ]]; then
+	if [[ -z "$dns_local_test" ]] && [[ `systemctl-seconds unbound` -ge 180 ]]; then
 		systemctl restart unbound.service
 		sleep $WAIT_TIME
 	else

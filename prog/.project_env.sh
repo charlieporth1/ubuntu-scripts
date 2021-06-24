@@ -1,12 +1,8 @@
 #!/bin/bash
 
-[[ -e $SUDO_USER ]] && export USER="$SUDO_USER" || export USER="$USER"
-export HOME="/home/$USER"
-
+export SCRIPT_NAME=`basename $0`
 [[ "$SCRIPT_DIR" == '.' ]] && export SCRIPT_DIR=$PWD
 [[ -n `which realpath` ]] && export SCRIPT_DIR=`realpath .`
-
-export SCRIPT_NAME=`basename $0`
 
 echo """
 ----------------------------------------------------------------------------------------------------------------
@@ -31,7 +27,7 @@ export MASTER_DIR=$SCRIPT_DIR/master
 
 export CONFIG_INSTALLED_STR='# CTP INSTALL -- DO NOT REMOVE THIS UNLESS YOU PLAN ON REMOVING INSTALL AND REINSTALLING'
 
-source $SCRIPT_DIR/bash_rc_sample
+#source $SCRIPT_DIR/bash_rc_sample
 for env in $( cat /etc/environment ); do export $(echo $env | sed -e 's/"//g') > /dev/null; done
 
 function isNotInstalled() {

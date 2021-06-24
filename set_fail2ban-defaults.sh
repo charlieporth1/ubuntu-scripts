@@ -233,8 +233,8 @@ sudo fail2ban-client set ctp-dns-1-block banip ${PIHOLE_BAN_IPs[@]}
 iptables -N BAN-IPS
 for ip in ${MY_PIHOLE_BAN_IPs[@]}
 do
-	iptables -A BAN-IPS -s $ip -p tcp -j DROP -w
-	iptables -A BAN-IPS -s $ip -p udp -j DROP -w
+	iptables -A BAN-IPS -s $ip -p tcp -j DROP -w 5
+	iptables -A BAN-IPS -s $ip -p udp -j DROP -w 5
 done
 
 

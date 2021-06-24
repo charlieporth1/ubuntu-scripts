@@ -10,6 +10,6 @@ routes = [
 ]
 [routers.ctp-dns-time-router-yt-ttl-gcp]
 routes = [
-  { after = "05:20", before = "01:25", resolver = "ctp-dns-yt-block-resolver-blocker-google-video-ttl" },
+  { after = "05:20", before = "01:25", resolver = "ctp-dns-yt-block-resolver-blocker" },
   { resolver = "ctp-dns-group-local" },
 ]
