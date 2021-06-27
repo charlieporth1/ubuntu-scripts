@@ -16,7 +16,7 @@ if ! [[ -f $DEFUALT_FILE ]]; then
         bash $PROG/create_ban_ignore_ip_list.sh
 fi
 
-curl -o /tmp/phising_ip_addres.csv  https://openphish.com/samples/ip_feed.csv
+#curl -o /tmp/phising_ip_addres.csv  https://openphish.com/samples/ip_feed.csv
 
 declare -a MY_PIHOLE_BAN_IPs
 MY_PIHOLE_BAN_IPs=(

@@ -39,8 +39,8 @@ function create_ip-set() {
         declare -gx IPSET_FILE=$CONFIG_DIR/$IPSET_BK_NAME.ipset
 
         sudo ipset create $IPSET_BK_NAME hash:net hashsize 8192
-        sudo iptables -I INPUT -m set --match-set $IPSET_BK_NAME src -j DROP -w 10
-        sudo iptables -I FORWARD -m set --match-set $IPSET_BK_NAME src -j DROP -w 10
+        sudo iptables -I INPUT -m set --match-set $IPSET_BK_NAME src -j DROP
+        sudo iptables -I FORWARD -m set --match-set $IPSET_BK_NAME src -j DROP
 
         if [[ -f $IPSET_FILE ]]; then
                 ipset restore < $IPSET_FILE

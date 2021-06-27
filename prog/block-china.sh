@@ -14,8 +14,8 @@ function create_ip-set() {
 	CONTRY="$1"
 	declare -gx IPSET_BK_NAME=blacklist-$COUNTRY
 	sudo ipset create $IPSET_BK_NAME hash:net hashsize 4096
-	sudo iptables -I INPUT -m set --match-set $IPSET_BK_NAME src -j DROP -w 10
-	sudo iptables -I FORWARD -m set --match-set $IPSET_BK_NAME src -j DROP -w 10
+	sudo iptables -I INPUT -m set --match-set $IPSET_BK_NAME src -j DROP
+	sudo iptables -I FORWARD -m set --match-set $IPSET_BK_NAME src -j DROP
 
 }
 create_ip-set china

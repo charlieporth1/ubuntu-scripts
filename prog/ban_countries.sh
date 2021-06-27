@@ -8,8 +8,8 @@ function create_ip-set() {
 	declare -gx IPSET_FILE=$CONFIG_DIR/$IPSET_BK_NAME.ipset
 	echo $IPSET_BK_NAME
         sudo ipset create $IPSET_BK_NAME hash:net hashsize 8192
-        sudo iptables -I INPUT -m set --match-set $IPSET_BK_NAME src -j DROP -w 10
-        sudo iptables -I FORWARD -m set --match-set $IPSET_BK_NAME src -j DROP -w 10
+        sudo iptables -I INPUT -m set --match-set $IPSET_BK_NAME src -j DROP
+        sudo iptables -I FORWARD -m set --match-set $IPSET_BK_NAME src -j DROP
 
 	if [[ -f $IPSET_FILE ]]; then
 		ipset restore < $IPSET_FILE
@@ -27,7 +27,6 @@ for ip in  "${ban_ips[@]}"
 do
 	echo $ip
 	ipset add $IPSET_BK_NAME $ip
-	sleep 0.250s
 done
 ipset save $IPSET_BK_NAME > $IPSET_FILE
 
@@ -37,7 +36,7 @@ ban_ips=( $(curl -s https://raw.githubusercontent.com/cbuijs/ipasn/master/countr
 for ip in  "${ban_ips[@]}"
 do
 	ipset add $IPSET_BK_NAME $ip
-	sleep 0.250s
+	
 done
 ipset save $IPSET_BK_NAME > $IPSET_FILE
 
@@ -47,7 +46,7 @@ ban_ips=( $(curl -s https://raw.githubusercontent.com/cbuijs/ipasn/master/countr
 for ip in  "${ban_ips[@]}"
 do
 	ipset add $IPSET_BK_NAME $ip
-	sleep 0.250s
+	
 done
 ipset save $IPSET_BK_NAME > $IPSET_FILE
 
@@ -57,7 +56,7 @@ ban_ips=( $(curl -s https://raw.githubusercontent.com/cbuijs/ipasn/master/countr
 for ip in  "${ban_ips[@]}"
 do
 	ipset add $IPSET_BK_NAME $ip
-	sleep 0.250s
+	
 done
 ipset save $IPSET_BK_NAME > $IPSET_FILE
 
@@ -67,7 +66,7 @@ ban_ips=( $(curl -s https://raw.githubusercontent.com/cbuijs/ipasn/master/countr
 for ip in  "${ban_ips[@]}"
 do
         ipset add $IPSET_BK_NAME $ip
-	sleep 0.250s
+	
 done
 ipset save $IPSET_BK_NAME > $IPSET_FILE
 
@@ -77,7 +76,7 @@ ban_ips=( $(curl -s https://raw.githubusercontent.com/cbuijs/ipasn/master/countr
 for ip in  "${ban_ips[@]}"
 do
         ipset add $IPSET_BK_NAME $ip
-	sleep 0.250s
+	
 done
 ipset save $IPSET_BK_NAME > $IPSET_FILE
 
@@ -87,7 +86,7 @@ ban_ips=( $(curl -s https://raw.githubusercontent.com/cbuijs/ipasn/master/countr
 for ip in  "${ban_ips[@]}"
 do
         ipset add $IPSET_BK_NAME $ip
-	sleep 0.250s
+	
 done
 ipset save $IPSET_BK_NAME > $IPSET_FILE
 
@@ -97,7 +96,7 @@ ban_ips=( $(curl -s https://raw.githubusercontent.com/cbuijs/ipasn/master/countr
 for ip in  "${ban_ips[@]}"
 do
         ipset add $IPSET_BK_NAME $ip
-	sleep 0.250s
+	
 done
 ipset save $IPSET_BK_NAME > $IPSET_FILE
 
@@ -107,7 +106,7 @@ ban_ips=( $(curl -s https://raw.githubusercontent.com/cbuijs/ipasn/master/countr
 for ip in  "${ban_ips[@]}"
 do
         ipset add $IPSET_BK_NAME $ip
-	sleep 0.250s
+	
 done
 ipset save $IPSET_BK_NAME > $IPSET_FILE
 
@@ -117,7 +116,7 @@ ban_ips=( $(curl -s https://raw.githubusercontent.com/cbuijs/ipasn/master/countr
 for ip in  "${ban_ips[@]}"
 do
         ipset add $IPSET_BK_NAME $ip
-	sleep 0.250s
+	
 done
 ipset save $IPSET_BK_NAME > $IPSET_FILE
 
@@ -128,7 +127,7 @@ ban_ips=( $(curl -s https://raw.githubusercontent.com/cbuijs/ipasn/master/countr
 for ip in  "${ban_ips[@]}"
 do
         ipset add $IPSET_BK_NAME $ip
-	sleep 0.250s
+	
 done
 ipset save $IPSET_BK_NAME > $IPSET_FILE
 
@@ -139,7 +138,7 @@ ban_ips=( $(curl -s https://raw.githubusercontent.com/cbuijs/ipasn/master/countr
 for ip in  "${ban_ips[@]}"
 do
         ipset add $IPSET_BK_NAME $ip
-	sleep 0.250s
+	
 done
 ipset save $IPSET_BK_NAME > $IPSET_FILE
 
@@ -150,7 +149,7 @@ ban_ips=( $(curl -s https://raw.githubusercontent.com/cbuijs/ipasn/master/countr
 for ip in  "${ban_ips[@]}"
 do
         ipset add $IPSET_BK_NAME $ip
-	sleep 0.250s
+	
 done
 ipset save $IPSET_BK_NAME > $IPSET_FILE
 
@@ -161,7 +160,7 @@ ban_ips=( $(curl -s https://raw.githubusercontent.com/cbuijs/ipasn/master/countr
 for ip in  "${ban_ips[@]}"
 do
         ipset add $IPSET_BK_NAME $ip
-	sleep 0.250s
+	
 done
 ipset save $IPSET_BK_NAME > $IPSET_FILE
 
@@ -172,7 +171,7 @@ ban_ips=( $(curl -s https://raw.githubusercontent.com/cbuijs/ipasn/master/countr
 for ip in  "${ban_ips[@]}"
 do
         ipset add $IPSET_BK_NAME $ip
-	sleep 0.250s
+	
 done
 ipset save $IPSET_BK_NAME > $IPSET_FILE
 
@@ -182,7 +181,7 @@ ban_ips=( $(curl -s https://raw.githubusercontent.com/cbuijs/ipasn/master/countr
 for ip in  "${ban_ips[@]}"
 do
         ipset add $IPSET_BK_NAME $ip
-	sleep 0.250s
+	
 done
 ipset save $IPSET_BK_NAME > $IPSET_FILE
 
@@ -192,7 +191,7 @@ ban_ips=( $(curl -s https://raw.githubusercontent.com/cbuijs/ipasn/master/countr
 for ip in  "${ban_ips[@]}"
 do
         ipset add $IPSET_BK_NAME $ip
-	sleep 0.250s
+	
 done
 ipset save $IPSET_BK_NAME > $IPSET_FILE
 
@@ -202,7 +201,7 @@ ban_ips=( $(curl -s https://raw.githubusercontent.com/cbuijs/ipasn/master/countr
 for ip in  "${ban_ips[@]}"
 do
         ipset add $IPSET_BK_NAME $ip
-	sleep 0.250s
+	
 done
 ipset save $IPSET_BK_NAME > $IPSET_FILE
 
@@ -212,7 +211,7 @@ ban_ips=( $(curl -s https://raw.githubusercontent.com/cbuijs/ipasn/master/countr
 for ip in  "${ban_ips[@]}"
 do
         ipset add $IPSET_BK_NAME $ip
-	sleep 0.250s
+	
 done
 ipset save $IPSET_BK_NAME > $IPSET_FILE
 
@@ -222,7 +221,7 @@ ban_ips=( $(curl -s https://raw.githubusercontent.com/cbuijs/ipasn/master/countr
 for ip in  "${ban_ips[@]}"
 do
         ipset add $IPSET_BK_NAME $ip
-	sleep 0.250s
+	
 done
 ipset save $IPSET_BK_NAME > $IPSET_FILE
 
@@ -232,7 +231,7 @@ ban_ips=( $(curl -s https://raw.githubusercontent.com/cbuijs/ipasn/master/countr
 for ip in  "${ban_ips[@]}"
 do
         ipset add $IPSET_BK_NAME $ip
-	sleep 0.250s
+	
 done
 ipset save $IPSET_BK_NAME > $IPSET_FILE
 
@@ -242,7 +241,7 @@ ban_ips=( $(curl -s https://raw.githubusercontent.com/cbuijs/ipasn/master/countr
 for ip in  "${ban_ips[@]}"
 do
         ipset add $IPSET_BK_NAME $ip
-	sleep 0.250s
+	
 done
 ipset save $IPSET_BK_NAME > $IPSET_FILE
 
@@ -252,7 +251,7 @@ ban_ips=( $(curl -s https://raw.githubusercontent.com/cbuijs/ipasn/master/countr
 for ip in  "${ban_ips[@]}"
 do
         ipset add $IPSET_BK_NAME $ip
-	sleep 0.250s
+	
 done
 ipset save $IPSET_BK_NAME > $IPSET_FILE
 

@@ -44,7 +44,7 @@ ExecStart=/bin/bash -c "bash ${PROG}/allow-youtube-but-not-youtube-ads.sh ${EXTR
 # >> ${LOG_FILE}'
 
 #ExecStop=/usr/bin/bash -c 'pids=$( ps -aux | grep "allow-youtube-but-not-youtube-ads.sh" | grep -v "tail\|log\|grep" | awk "{print $2}" ); [[ -n $pids ]] && sudo kill -9 $pids || echo NO PIDS'
-ExecStop=/usr/bin/bash -c "pids=$( ps -aux | grep 'allow-youtube-but-not-youtube-ads.sh' | grep -v 'tail\|log\|grep' | awk '{print $2}' ); [[ -n $pids ]] && sudo kill -9 $pids || echo NO PIDS; exit 0"
+ExecStop=/usr/bin/bash -c "pids=$( ps -aux | grep 'allow-youtube-but-not-youtube-ads.sh' | grep -v 'tail\|log\|grep' | awk '{print $2}' ); [[ -n $pids ]] && sudo kill -9 $pids || echo NO PIDS; /bin/kill -9 ${MAINPID}; exit 0"
 #KillMode=process
 ExecReload=/bin/kill -USR1 ${MAINPID}
 #RemainAfterExit=true
