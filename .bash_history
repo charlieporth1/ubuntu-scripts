@@ -703,3 +703,413 @@ sudo chmod 777 /usr/local/bin/ctp-dns.sh
  ctp-dns.sh -qbl
 cd Pihole-Slave-Install/
 sudo git pull
+cd Pihole-Slave-Install/
+sudo git pull
+sudo us
+sudo nano /etc/profile.d/bash-exports-global.sh 
+sudo su
+ sudo git pull
+sudo nano /etc/resolv.conf
+ sudo git pull
+ping www.google.com
+sudo nano /etc/hosts
+systemctl restart unbound
+systemctl status ctp-dns.service 
+systemctl status ctp-dns.service q
+sudo systemctl restart unbound
+sudo reboot -f 
+sudo systemctl restart unbound
+ sudo git pull
+ping www.google.com
+cd Pihole-Slave-Install/
+sudo git pull
+ping www.google.com
+fail2ban-client status pihole-dns
+sudo fail2ban-client status pihole-dns
+sudo fail2ban-client status pihole-dns-1-block
+sudo fail2ban-client status ctp-dns-1-block
+sudo fail2ban-client status sshd
+fail2ban-client status pihole-dns
+sudo fail2ban-client status pihole-dns-1-block
+sudo fail2ban-client status pihole-dns
+ifconfig
+ping www.google.com
+sudo nano /etc/hosts
+ping www.google.com
+sudo nano /etc/resolv.conf
+sudo nano /etc/resolv.conf
+ping www.google.com
+ping www.google.com
+sudo nano /etc/resolv.conf
+sudo nano /etc/hosts*
+systemctl status resolvconf
+systemd-resolve 
+systemd-resolve --status
+systemd-resolve 
+ifconfig
+sudo bash /mnt/HDD/Programs/dhcp_fix.sh 
+ping www.google.com
+sudo nano /etc/rc.local
+systemctl status 
+systemctl status ctp-dns.service 
+systemctl status dnsmasq.service 
+systemctl status pihole-FTL.service 
+ping www.google.com
+sudo iptables -L
+sudo ipset 
+sudo apt install ipset
+sudo nano /etc/resolv.conf
+sudo crontab -e
+cd Pihole-Slave-Install/
+ls
+nano setup/dns-route.sh
+ls
+ls setup/sys.sh 
+nano setup/sys.sh 
+nano setup/networking.sh 
+nano setup/new_server.sh 
+nano setup/dns-route.sh
+nano setup/cron.sh 
+nano $PROG/bk_overwrite_files.sh
+nano setup/cron.sh 
+sudo nano PROG/files_to_replace.sh
+sudo nano $PROG/files_to_replace.sh
+sudo nano PROG/files_to_replace.sh
+ls
+nano install.sh
+ls
+nano copy_config.sh 
+nano apply_config.sh 
+ls
+sudo iptables -L -w
+sudo git pull
+sudo fail2ban-client status ctp-dns-1-block
+ls
+htop
+systemctl status ctp-dns.service 
+fail2ban-client status sshd
+htop
+sudo fail2ban-client status sshd
+ping www.google.com
+sudo nano /etc/hosts
+ls
+sudo nano /etc/resolv.conf
+dig @8.8.8.8
+sudo nano /etc/resolv.conf
+dig @127.0.0.53
+sudo nano /etc/rc.local
+dig www.google.com @127.0.0.53
+dig www.google.com @127.0.0.1 -p 5053
+ping www.google.com
+systemctl stop unbound.service
+sudo systemctl stop unbound.service
+dig www.google.com @127.0.0.1 -p 5053
+dig www.google.com @127.0.0.53
+sudo fail2ban-client status ctp-dns
+dig www.google.com @8.8.8.8
+systemctl status ctp-dns.service 
+dig www.google.com @8.8.4.4
+pihole -t
+systemctl stop fail2ban 
+sudo systemctl stop fail2ban 
+sudo nano prog/start-config.sh 
+ping www.google.com
+sudo nano /etc/resolv.conf
+sudo crontab -e
+sudo nano /etc/resolv.conf
+ping www.google.com
+sudo nano /etc/bash.bashrc 
+ping 192.168.44.1
+sudo bash /mnt/HDD/Programs/dhcp_fix.sh 
+sudo crontab -e
+sudo nano mnt/HDD/Programs/dhcp_fix.s
+sudo nano /mnt/HDD/Programs/dhcp_fix.sh 
+ifconfig
+sudo nano /mnt/HDD/Programs/dhcp_fix.sh 
+sudo nano /etc/netplan/01-static.yaml 
+sudo netplan apply
+sudo nano /etc/netplan/01-static.yaml 
+sudo ip routes
+sudo ip route
+sudo nano /etc/netplan/01-static.yaml 
+sudo netplan apply
+ping 192.168.44.1
+sudo ip route
+sudo ip route del 192.168.44.0/24 dev wlan0 proto dhcp scope link src 192.168.44.36 metric 303
+sudo ip route
+sudo ip route del 192.168.44.0/24 dev eth0 proto dhcp scope link src 192.168.44.250 metric 202 
+sudo ip route del 192.168.44.0/24 dev eth0 
+sudo ip route
+sudo ip route del 192.168.44.0/24 dev eth0 proto dhcp scope link src 192.168.44.250
+sudo ip route del 192.168.44.0/24 dev eth0
+sudo ip route
+sudo ip route flush
+sudo ip route flush all
+sudo ip route
+sudo nano /etc/netplan/01-static.yaml 
+sudo netplan apply
+sudo ip route
+sudo dhcpcd 
+sudo dhcpcd -r
+sudo dhcpd -r
+sudo dhcpd
+sudo nano /mnt/HDD/Programs/dhcp_fix.sh 
+sudo dhclient
+ping 192.168.44.1
+sudo dhclient
+sudo nano /mnt/HDD/Programs/dhcp_fix.sh 
+sudo dhclient -r
+sudo nano /mnt/HDD/Programs/dhcp_fix.sh 
+sudo dhclient -r
+sudo dhclient --help
+sudo nano /etc/dhcpcd.conf 
+sudo nano /etc/dhcp/dhclient.conf 
+sudo nano /etc/dhcp/dhcpd.conf 
+sudo bash /mnt/HDD/Programs/dhcp_fix.sh 
+killall dhcp
+killall dhcpd
+killall dhcpcd
+sudo killall dhcpcd
+sudo nano /mnt/HDD/Programs/dhcp_fix.sh 
+dhclient-script 
+sudo dhclient-script 
+sudo ip route
+sudo ip route default
+sudo ip route list default
+sudo nano /mnt/HDD/Programs/dhcp_fix.sh 
+ifconfig
+sudo route -l
+ls
+ifconfig
+ls
+sudo nano /etc/rc.local
+sudo reboot
+ls
+ping www.google.com
+sudo nano /etc/rc.local
+sudo ip route
+sudo nano /etc/netplan/01-static.yaml 
+sudo neplan generate
+sudo netplan generate && sudo netplan apply
+ifconfig
+sudo ip route
+ping www.google.com
+ping 192.168.44.1
+ping 192.168.44.11
+sudo nano /etc/rc.local
+ls $prog
+sudo ip 
+sudo ip list
+sudo ip show
+sudo ip saddress
+sudo ip route
+ifconfig
+sudo ip
+sudo nano /etc/netplan/01-static.yaml 
+ifconfig
+sudo nano /etc/netplan/01-static.yaml 
+sudo nano /etc/network/interfaces.d/enp2s0.conf 
+sudo nano /etc/network/interfaces.d/enx00227.conf
+sudo nano /etc/network/interfaces.d/wlan0.conf 
+sudo systemctl restart networking
+sudo nano /mnt/HDD/Programs/dhcp_fix.sh 
+ls
+sudo nano /etc/hosts
+systemd-resolve status
+systemd-resolve --status
+systemd-resolve edit
+systemd-resolve --edit
+systemd-resolve --help
+systemd-resolve --service
+systemd-resolve --service --help
+sudio nano /etc/resolv.conf
+sudo nano /etc/resolv.conf
+sudo nano /etc/resolvconf/resolv.conf.d/head 
+sudo nano /etc/resolv.conf
+ping 192.168.44.1
+sudo ip route
+sudo ip route dev eth0 192.168.44.0/24 192.168.44.250
+sudo ip route add 0.0.0.0/0 192.168.44.0/24 dev eth0
+sudo ip route add 0.0.0.0/0 to 192.168.44.0/24 dev eth0
+sudo ip route add 0.0.0.0/0 to 192.168.44.250/24 dev eth0
+sudo ip route add 0.0.0.0/0 to 192.168.44.250 dev eth0
+sudo ip route add 0.0.0.0/0 dev eth0
+sudo ip route add 192.168.44.1 dev eth0
+sudo ip route add 192.168.44.11 dev eth0
+sudo ip route add 192.168.44.11 to  dev eth0
+sudo ip route add 192.168.44.1/32  dev eth0
+sudo ip route add 192.168.44.1/  dev eth0
+sudo ip route add 192.168.44.1  dev eth0
+sudo ip route flush
+sudo ip route flush all
+sudo ip --help
+sudo ip link dev eth0
+sudo ip link eth0
+sudo ip link help
+sudo ip link show eth0
+sudo ip route -l
+sudo ip route show
+sudo ip route flush
+sudo ip route flush eth0
+sudo ip route flush dev eth0
+sudo ip route 
+sudo help
+sudo ip help
+sudo ip link
+sudo iproute
+sudo ip route
+sudo ip route del dev eth0
+sudo ip route del list
+sudo ip route list
+sudo ip route change 192.168.44.0/24 dev eth to 192.168.44.1
+sudo ip route change 192.168.44.0/24 dev eth  192.168.44.1
+sudo ip route change 192.168.44.0/24 dev eth0
+sudo ip route change 192.168.44.0/24 dev eth0 to 192.168.44.1
+sudo ip route change 192.168.44.0/24 dev eth0 to 192.168.44.2
+sudo ip route change 192.168.44.0/24 dev eth0 to 192.168.44.11
+sudo ip route change 192.168.44.0/24 dev eth0 
+sudo ip route change  dev eth0  192.168.44.0/24
+sudo ip route del  dev eth0  192.168.44.0/24
+sudo ip route list
+sudo ip route del  dev eth0  192.168.44.0/24
+sudo ip route del  dev eth0  
+sudo ip route del  dev eth0  --help
+sudo ip route del  -l
+sudo ip route list 
+sudo ip route list  numbers
+sudo ip route list  -l
+sudo ip -l route list  
+sudo ip route list  
+sudo ip route list   del
+sudo ip route del 6
+sudo ip route del 4
+sudo ip route del 192.168.44.0/24 dev eth
+sudo ip route del 192.168.44.0/24 
+sudo ip route list   del
+sudo ip route list   
+ifconfig
+ping 192.168.44.1
+sudo bash /mnt/HDD/Programs/dhcp_fix.sh 
+systemctl status
+systemctl status all
+systemctl status ctp-dns.service 
+sudo iptables -L
+sudo iptables --help
+sudo iptables -X
+sudo iptables -F
+sudo iptables -L
+sudo iptables -L | grep Chain
+sudo iptables -L
+sudo iptables -L RETURN     all  --  anywhere
+sudo iptables -D RETURN     all  --  anywhere
+sudo iptables --help
+sudo iptables -D 
+sudo iptables -h
+sudo iptables --help
+sudo iptables -L
+sudo iptables -Z f2b-ctp-dns-1-block-udp
+sudo iptables -Z f2b-ctp-dns-1-block-tcp
+sudo iptables -L
+sudo iptables --help
+sudo iptables -S
+sudo iptables -D -A f2b-ctp-dns-1-block-udp -j RETURN
+sudo iptables -D  f2b-ctp-dns-1-block-udp -j RETURN
+sudo iptables -D  f2b-ctp-dns-1-block-tcp -j RETURN
+sudo iptables -L
+sudo ipset
+sudo io
+sudo ip
+sudo ip route
+sudo nano /etc/rc.local
+sudo ifconfig
+sudo nano /mnt/HDD/Programs/start-config.sh
+sudo nano /mnt/HDD/Programs/ctp-dns.service 
+ping 192.168.44.1
+sudo ip
+sudo iptables
+sudo iptables --help
+sudo ip
+ping 192.168.44.1
+ping www.google.com
+pihole -t
+cd Pihole-Slave-Install/
+sudo git pull
+sudo nano /home/ubuntuserver/Programs/route-dns/back-up-resolvers.toml 
+sudo nano /home/ubuntuserver/Programs/route-dns/ubuntu-server-resolvers.toml 
+sudo naano /home/ubuntuserver/Programs/route-dns/ctp-yt-dns-router.toml 
+sudo nano /home/ubuntuserver/Programs/route-dns/ctp-yt-dns-router.toml 
+sudo git pull
+sudo git stash && sudo git pull && sudo bash setup/dns-route.sh
+sudo git pull
+pihole 
+cd Pihole-Slave-Install/
+sudo git pull
+sudo git stash && sudo git pull && sudo bash setup/dns-route.sh
+systemctl status ctp-dns
+sudo git stash && sudo git pull && sudo bash setup/dns-route.sh
+systemctl status ctp-dns
+sudo su
+sudo git stash && sudo git pull && sudo bash setup/dns-route.sh
+sudo su
+sudo git stash && sudo git pull && sudo bash setup/dns-route.sh
+sudo git pull
+sudo git stash && sudo git pull && sudo bash setup/dns-route.sh
+systemctl status ctp-dns
+sudo su
+systemctl status ctp-dns
+sudo systemctl restart ctp-dns
+systemctl status ctp-dns
+sudo fail2ban-client status ctp-dns-1-block | grep 174.53 
+sudo fail2ban-client status pihole-dns | grep 174.53 
+sudo fail2ban-client status pihole-dns-1-block | grep 174.53 
+systemctl status ctp-dns
+sudo git pull
+sudo fail2ban-client status ctp-dns-1-block | grep -E '^174'
+sudo fail2ban-client status ctp-dns-1-block | grep -E '^172'
+sudo fail2ban-client status pihole-dns-1-block | grep -E '^172'
+sudo fail2ban-client status pihole | grep -E '^172'
+sudo fail2ban-client status pihole-dns | grep -E '^172'
+sudo fail2ban-client status pihole-dns | grep -E '^174'
+pihole -t
+cd Pihole-Slave-Install/
+ls
+dig @127.0.0.1 -p 5053 www.google.com
+sudo nano  /etc/systemd/resolved.conf
+sudo ./update.sh --apply-config
+systemctl status ctp-dns
+pihole status
+systemctl status pihole-FTL
+sudo fail2ban-client status ctp-dns-1-block | grep -o 172.58.83.158
+sudo fail2ban-client status pihole-dns-1-block | grep -o 172.58
+sudo fail2ban-client status pihole-dns-1-block | grep -o 172.58cd Pihole-Slave-Install/
+cd Pihole-Slave-Install/
+pihole status
+dig @127.0.0.1 -p 5053 www.google.com
+sudo rm -rf /etc/unbound/unbound.conf.d/01-auth-rec-server.conf 
+dig @127.0.0.1 -p 5053 www.google.com
+sudo rm -rf $unbconf/*.conf
+sudo git pull && sudo ./copy_config.sh
+sudo rm -rf $unbconf/*.conf
+sudo git pull && sudo ./copy_config.sh
+dig @127.0.0.1 -p 5053 www.google.com
+sudo systemctl restart unbound
+dig @127.0.0.1 -p 5053 www.google.com
+sudo su
+sudo crontab -e
+gcloud compute instances stop --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521" && gcloud compute instances start  --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521"
+sudo crontab -e
+sudo gitp ull
+sudo git pull
+htop
+ …*#…*
+cd Pihole-Slave-Install/
+gcloud compute instances stop --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521" && gcloud compute instances start  --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521"
+pihole -t
+pihole -tn
+systemctl status ctp-dns
+cd Pihole-Slave-Install/
+sudo git pull
+exit
+cd Pihole-Slave-Install/
+sudo git pull
+sudo ./copy_config.sh 
