@@ -26,9 +26,10 @@ sudo ln -s /etc/fail2ban/filter.d/ctp-custom-vars.conf   /etc/fail2ban/filter.d/
 sudo ln -s $ROUTE/ctp-dns.sh /usr/local/bin
 sudo ln -s $SCRIPT_DIR/dns-route.sh $PROG/
 sudo ln -s $CONF_PROG_DIR/route-dns $PROG/
+sudo ln -s $CONF_PROG_DIR/timeout3 /usr/local/bin
 sudo ln -s $ROUTE/lists/ $LIST_DIR
 
-#sudo bash $SETUP_DIR/master_config.sh
+# sudo bash $SETUP_DIR/master_config.sh
 
 # Master
 if [[ "$IS_MASTER" == 'true' ]]; then
@@ -44,7 +45,9 @@ fi
 # Chmod +x
 sudo chmod +x $ROUTE/ctp-dns.sh
 sudo chmod +x /usr/local/bin/ctp-dns.sh
+sudo chmod +x /usr/local/bin/timeout3
 sudo chmod 777 $ROUTE/ctp-dns.sh
 sudo chmod 777 /usr/local/bin/ctp-dns.sh
+sudo chmod 777 /usr/local/bin/timeout3
 
 echo "Done with coping config files"

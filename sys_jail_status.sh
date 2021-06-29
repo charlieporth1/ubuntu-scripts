@@ -1,5 +1,5 @@
 #!/bin/bash
-TIMEOUT=10
+TIMEOUT=5
 NC="\e[39m"
 RED="\e[31m"
 RED_L="\e[91m"
@@ -33,7 +33,7 @@ printf "|| $CYAN%-20s $NC|$CYAN %-10s $NC|$CYAN %-20s $NC|$CYAN %-10s $NC|$CYAN 
 
 for jail in "${JAILs[@]}"
 do
-	FAIL2BAN_JAIL=`timeout $TIMEOUT sudo fail2ban-client status $jail`
+	FAIL2BAN_JAIL=`timeout3 $TIMEOUT sudo fail2ban-client status $jail`
 	ban_count=`printf '%s\n' "$FAIL2BAN_JAIL" | sed -n '7p' | awk '{print $4}'`
 	total_failed=`printf '%s\n' "$FAIL2BAN_JAIL"| grep 'Total failed' | awk -F: '{print $2}'`
 	currently_failed=`printf '%s\n' "$FAIL2BAN_JAIL" | grep 'Currently failed' | awk -F: '{print $2}'`

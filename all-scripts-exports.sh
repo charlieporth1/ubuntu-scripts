@@ -3,7 +3,6 @@ source /etc/environment
 ARGS="$@"
 source $PROG/populae-log.sh
 PIHOLE_LOG=$LOG/pihole.log
-
 FILE_NAME=`echo $SCRIPT | rev | cut -d '.' -f 2  | rev`
 isRunning=`bash $PROG/process_count.sh $FILE_NAME $THIS_PID`
 if [[ -z "$ENV" ]] && [[ -z `echo "$ARGS" | grep -Eio '(\-\-|\-)(e|env)'` ]]; then
@@ -414,3 +413,23 @@ function cpg (){
   fi
 }
 export -f cpg
+wait_on_command()
+{
+    local timeout=$1; shift
+    local interval=$1; shift
+    $* &
+    local child=$!
+
+    loops=$(bc <<< "($timeout * (1 / $interval)) + 0.5" | sed 's/\..*//g')
+    ((t = loops))
+    while ((t > 0)); do
+        sleep $interval
+        kill -0 $child &>/dev/null || return
+        ((t -= 1))
+    done
+
+    kill $child &>/dev/null || kill -0 $child &>/dev/null || return
+    sleep $interval
+    kill -9 $child &>/dev/null
+    echo Timed out
+}
