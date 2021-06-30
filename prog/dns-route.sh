@@ -7,14 +7,15 @@ mkdir -p /etc/letsencrypt/live/vpn.ctptech.dev
 
 /snap/bin/go get -v github.com/folbricht/routedns/cmd/routedns
 
-#git clone https://github.com/folbricht/routedns.git
-#cd routedns
-#git stash
-#git pull -ff
+git clone https://github.com/folbricht/routedns.git
+cd routedns
+git stash
+git pull -ff
 #git switch master
 #git pull -ff
 #cd cmd/routedns
 #sudo /snap/bin/go install
+cd -
 
 source $SCRIPT_DIR/.project_env.sh
 ROUTE=$PROG/route-dns

@@ -1,4 +1,9 @@
 .gov
+.download.parallels.com
+.downloads.zohocdn.com
+.zohocdn.com
+.pubsub.plex.tv
+.login.live.com
 .go.redirectingat.com
 .www.pcmag.com
 .www.cnet.com

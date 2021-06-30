@@ -23,9 +23,9 @@ sudo cp -rf $CONFIG_DIR/www/* $WWW/
 
 # Sys LNs
 sudo ln -s /etc/fail2ban/filter.d/ctp-custom-vars.conf   /etc/fail2ban/filter.d/common.local
-sudo ln -s $ROUTE/ctp-dns.sh /usr/local/bin
-sudo ln -s $SCRIPT_DIR/dns-route.sh $PROG/
+sudo ln -s $SETUP_DIR/dns-route.sh ${PROG:-$CONF_PROG_DIR}/
 sudo ln -s $CONF_PROG_DIR/route-dns $PROG/
+sudo ln -s $ROUTE/ctp-dns.sh /usr/local/bin
 sudo ln -s $CONF_PROG_DIR/timeout3 /usr/local/bin
 sudo ln -s $ROUTE/lists/ $LIST_DIR
 

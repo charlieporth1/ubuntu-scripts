@@ -1,5 +1,5 @@
 [groups.ctp-dns-yt-block-resolver-blocker-google-video-ttl] 
 type = "ttl-modifier" 
 ttl-min = 2 
-ttl-max = 20 
+ttl-max = 10
 resolvers = [ "ctp-dns-yt-block-resolver-blocker" ]
