@@ -7,7 +7,8 @@ LOCK_FILE=/tmp/health-checks.stop.lock
 echo "Date last ran `date`"
 
 systemctl is-active --quiet ctp-dns.service && echo Service is running
-if [[ ! -f $LOG_FILE ]]; then
+if ! [[ -f $LOG_FILE ]]; then
+	echo "Created log file at $LOG_FILE"
         touch $LOG_FILE
 fi
 
@@ -16,8 +17,7 @@ writeLog() {
   local fcount="${2:-0}"
   local SERVICE="${3:-N_A}"
   local data="$fn,$fcount,$SERVICE,[`date`]"
-  echo $data
-  echo $data >> $LOG_FILE
+  echo $data | sudo tee -a $LOG_FILE
 }
 
 getFailCount() {
@@ -32,7 +32,7 @@ COUNT_ACTION() {
         local SERVICE="$3"
         echo "$COUNT"
         local max=5
-        if [[ $COUNT -ge $max ]] && [[ "$FN" = "$LOCK_FILE" ]] then
+        if [[ $COUNT -ge $max ]] && [[ "$FN" = "$LOCK_FILE" ]]; then
 		echo "Removing $LOCK_FILE file because $COUNT -ge $max sleeping 30s"
 		sleep 30s
 		echo "Removing $LOCK_FILE file because $COUNT -ge $max"
@@ -76,7 +76,7 @@ lighttpd_port=`netstat -tulpn | grep -o ':8443' | xargs`
 wg=`ss -lun 'sport = :54571'`
 
 FAILED_STR="fail\|FAILURE\|failed"
-FULL_FAIL_STR="$FAILED_STR\|stop\|inactive\|dead"
+FULL_FAIL_STR="$FAILED_STR\|stop\|inactive\|dead\|stopped"
 
 doh_proxy_status=`systemctl is-failed doh-server.service | grep -io "$FULL_FAIL_STR"`
 fail_ftl_status=`systemctl is-failed pihole-FTL.service | grep -io "$FAILED_STR"`
@@ -250,6 +250,6 @@ if [[ `systemctl-exists $fn` = 'true' ]]; then
 	        sleep $WAIT_TIME
 	fi
 fi
-
 bash $PROG/test_dnssec.sh -a
 bash $PROG/test_dns.sh -a
+echo "Done running at: `date`"

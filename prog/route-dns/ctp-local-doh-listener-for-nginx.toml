@@ -1,0 +1,6 @@
+[listeners.ctp-doh-local-nginx]
+address = "127.0.0.1:22443"
+protocol = "doh"
+resolver = "ctp-dns-cached"
+server-crt = "/etc/letsencrypt/live/vpn.ctptech.dev/localhost_certs/server.crt"
+server-key = "/etc/letsencrypt/live/vpn.ctptech.dev/localhost_certs/server.key"

@@ -35,7 +35,15 @@ sudo ln -s $ROUTE/lists/ $LIST_DIR
 if [[ "$IS_MASTER" == 'true' ]]; then
 	sudo ln -s $MASTER_DIR/ $PROG/
 	sudo ln -s $MASTER_DIR/*.sh $PROG/
-	sudo ln -s $UNB/root.hints /var/lib/unbound/
+	if [ -d $MASTER_DIR ]; then
+	  for i in $MASTER_DIR/*.sh; do
+	    if [ -r $i ]; then
+	      ln -s $i $PROG/
+	    fi
+	  done
+	  unset i
+	fi
+
 else
 # Slave
 	sudo rm -rf /etc/fail2ban/jai.d/{pihole-dns,pihole-dns-1-block}.conf

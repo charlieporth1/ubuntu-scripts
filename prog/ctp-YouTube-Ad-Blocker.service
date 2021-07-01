@@ -39,12 +39,12 @@ ExecStartPre=/bin/bash -c "[[ $ENV == 'DEV' ]] && /usr/bin/sudo /bin/systemctl s
 #ExecStart=/usr/bin/sudo /usr/bin/cgexec -g cpu:cpulimited /bin/bash ${PROG}/allow-youtube-but-not-youtube-ads.sh 
 #ExecStart=${PROG}/allow-youtube-but-not-youtube-ads.sh  
 
-ExecStart=/bin/bash -c "bash ${PROG}/allow-youtube-but-not-youtube-ads.sh ${EXTRA_ARGS} ${ENV} | sudo tee -a ${LOG_FILE}"
+ExecStart=/bin/bash -c "bash ${PROG}/allow-youtube-but-not-youtube-ads.sh ${EXTRA_ARGS} ${ENV} >> ${LOG_FILE}"
 #ExecStart=/bin/bash ${PROG}/allow-youtube-but-not-youtube-ads.sh ${EXTRA_ARGS} ${ENV} | mbuffer -T /tmp/yt-block.buffer -m 50M | tee -a ${LOG_FILE}
 # >> ${LOG_FILE}'
 
 #ExecStop=/usr/bin/bash -c 'pids=$( ps -aux | grep "allow-youtube-but-not-youtube-ads.sh" | grep -v "tail\|log\|grep" | awk "{print $2}" ); [[ -n $pids ]] && sudo kill -9 $pids || echo NO PIDS'
-ExecStop=/usr/bin/bash -c "pids=$( ps -aux | grep 'allow-youtube-but-not-youtube-ads.sh' | grep -v 'tail\|log\|grep' | awk '{print $2}' ); [[ -n $pids ]] && sudo kill -9 $pids || echo NO PIDS; /bin/kill -9 ${MAINPID}; exit 0"
+#ExecStop=/usr/bin/bash -c "pids=$( ps -aux | grep 'allow-youtube-but-not-youtube-ads.sh' | grep -v 'tail\|log\|grep' | awk '{print $2}' ); [[ -n $pids ]] && sudo kill -9 $pids || echo NO PIDS; /bin/kill -9 ${MAINPID}; exit 0"
 #KillMode=process
 ExecReload=/bin/kill -USR1 ${MAINPID}
 #RemainAfterExit=true

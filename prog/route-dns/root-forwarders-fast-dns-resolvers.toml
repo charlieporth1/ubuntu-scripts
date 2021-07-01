@@ -1,0 +1,106 @@
+# RAW
+[resolvers.google-dns-ip-1-tcp]
+address = "8.8.8.8:53"
+protocol = "tcp"
+[resolvers.google-dns-ip-1-udp]
+address = "8.8.8.8:53"
+protocol = "udp"
+
+[resolvers.google-dns-ip-2-tcp]
+address = "8.8.4.4:53"
+protocol = "tcp"
+[resolvers.google-dns-ip-2-udp]
+address = "8.8.4.4:53"
+protocol = "udp"
+
+
+[resolvers.cloudflare-ip-1-tcp]
+address = "1.1.1.1:53"
+protocol = "tcp"
+[resolvers.cloudflare-ip-1-udp]
+address = "1.1.1.1:53"
+protocol = "udp"
+
+[resolvers.cloudflare-ip-2-tcp]
+address = "1.0.0.1:53"
+protocol = "tcp"
+[resolvers.cloudflare-ip-2-udp]
+address = "1.0.0.1:53"
+protocol = "udp"
+
+
+
+# Other 
+[resolvers.google-dns-gcloud-private-ip-tcp]
+address = "169.254.169.254:53"
+protocol = "tcp"
+[resolvers.google-dns-gcloud-private-ip-udp]
+address = "169.254.169.254:53"
+protocol = "udp"
+
+[resolvers.unbound-failover-tcp]
+address = "127.0.0.1:5053"
+protocol = "tcp"
+[resolvers.unbound-failover-udp]
+address = "127.0.0.1:5053"
+protocol = "udp"
+
+
+
+# Encrypted
+
+[resolvers.cloudflare-doh-quic]
+address = "https://cloudflare-dns.com/dns-query"
+protocol = "doh"
+transport = "quic"
+
+# DoT
+[resolvers.cloudflare-dot-1]
+address = "1.1.1.2:853"
+protocol = "dot"
+
+[resolvers.cloudflare-dot-2]
+address = "1.0.0.2:853"
+protocol = "dot"
+
+[resolvers.google-dot-1]
+address = "8.8.8.8:853"
+protocol = "dot"
+
+[resolvers.google-dot-2]
+address = "8.8.4.4:853"
+protocol = "dot"
+
+[resolvers.adguard-dot-1]
+address = "94.140.14.14:853"
+protocol = "dot"
+
+[resolvers.adguard-dot-2]
+address = "94.140.15.15:853"
+protocol = "dot"
+
+# DTLS
+[resolvers.cloudflare-dtls-1]
+address = "1.1.1.2:853"
+protocol = "dtls"
+
+[resolvers.cloudflare-dtls-2]
+address = "1.0.0.2:853"
+protocol = "dtls"
+
+[resolvers.google-dtls-1]
+address = "8.8.8.8:853"
+protocol = "dtls"
+
+[resolvers.google-dtls-2]
+address = "8.8.4.4:853"
+protocol = "dtls"
+
+[resolvers.adguard-dtls-1]
+address = "94.140.14.14:853"
+protocol = "dtls"
+
+[resolvers.adguard-dtls-2]
+address = "94.140.15.15:853"
+protocol = "dtls"
+

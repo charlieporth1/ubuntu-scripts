@@ -33,4 +33,4 @@ do
         sudo fail2ban-client set $jail addignoreip ${DNS_IGNORE_IPs[@]}
         sudo fail2ban-client set $jail unbanip ${DNS_IGNORE_IPs[@]}
 done
-sudo iptables-save
+save_ip-tables

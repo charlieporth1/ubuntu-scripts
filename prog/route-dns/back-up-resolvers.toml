@@ -1,51 +1,30 @@
-[resolvers.cloudflare-doh-quic]
-address = "https://cloudflare-dns.com/dns-query"
-protocol = "doh"
-transport = "quic"
-
-[resolvers.cloudflare-dot-1]
-address = "1.1.1.2:853"
-protocol = "dot"
-
-[resolvers.cloudflare-dot-2]
-address = "1.0.0.2:853"
-protocol = "dot"
-
-[resolvers.google-dot-1]
-address = "8.8.8.8:853"
-protocol = "dot"
-
-[resolvers.google-dot-2]
-address = "8.8.4.4:853"
-protocol = "dot"
-
-[resolvers.adguard-dot-1]
-address = "94.140.14.14:853"
-protocol = "dot"
-
-[resolvers.adguard-dot-2]
-address = "94.140.15.15:853"
-protocol = "dot"
-
-[resolvers.unbound-failover-tcp]
-address = "127.0.0.1:5053"
-protocol = "tcp"
-
-[resolvers.unbound-failover-udp]
-address = "127.0.0.1:5053"
-protocol = "udp"
-
 
 [groups.ctp-dns-failover-backup]
 resolvers = [ 
-	"adguard-dot-1", 
-	"adguard-dot-2", 
+	"cloudflare-dtls-1",
+	"cloudflare-dtls-2",
+	"adguard-dtls-1",
+	"adguard-dtls-2",
 	"cloudflare-dot-1", 
 	"cloudflare-dot-2", 
+	"adguard-dot-1", 
+	"adguard-dot-2", 
 	"unbound-failover-udp", 
 	"unbound-failover-tcp", 
+	"google-dtls-1",
+	"google-dtls-2",
 	"google-dot-1", 
 	"google-dot-2", 
-	"cloudflare-doh-quic" 
+	"cloudflare-doh-quic",
+	"cloudflare-ip-1-tcp",
+	"cloudflare-ip-1-udp",
+	"google-dns-ip-1-tcp",
+	"google-dns-ip-1-udp",
+	"cloudflare-ip-2-tcp",
+	"cloudflare-ip-2-udp",
+	"google-dns-ip-2-tcp",
+	"google-dns-ip-2-udp",
 ]
+servfail-failover = true 
+timeout = 3
 type = "fail-back"

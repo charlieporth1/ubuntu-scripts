@@ -63,12 +63,12 @@ WAIT_TIME=6
 log_d "$PATH"
 log_d "doh_remote_ctp :$doh_remote_ctp: doh_remote_nginx :$doh_remote_nginx:"
 log_d "doh_remote_json :$doh_remote_json: doh_local :$doh_local:"
-if [[ -z "$dns_local_test" ]]; then
-        echo "DNS FAILED NOT DOH"
-	exit 1
-fi
 if [[ -n "$isAuto" ]]; then
 	dns_local_test=`echo "$dns_local" | grepip --ipv4 -o | xargs`
+	if [[ -z "$dns_local_test" ]]; then
+	        echo "DNS FAILED NOT DOH dns_local_test :$dns_local_test:"
+		exit 1
+	fi
 
  	doh_proxy_local_test=`echo "$doh_proxy_local" | grep -o "$QUERY"`
  	doh_remote_json_test=`echo "$doh_remote_json" | grep -o "$QUERY"`

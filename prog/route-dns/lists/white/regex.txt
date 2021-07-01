@@ -1,5 +1,4 @@
 ^([0-9a-z]{2,10})-dnsotls-ds\.metric\.gstatic\.com$
-([^(beacon[s]?|track(ers|ing)?|telemetry|pixel[s]?|traff(ic)?|target(ing|er)?|analytic[s]?|measure(ment)?|pinpoint)])(.{1,28})\.(amazon(aws)?|gcp|appspot|hubspot|herokuapp)\.com$
 (^|\.|www\.)(nationalguard|military|rackcdn)\.com$
 ^([0-9a-zA-Z_\.-]{4,10})[-]?dnsotls-ds\.metric\.gstatic\.com$
 ^encrypted-tbn[0-9]?\.gstatic\.com$

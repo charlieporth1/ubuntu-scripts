@@ -166,7 +166,7 @@ if [[ `isNotInstalled $ROUTE/$FILE` == 'true' ]]; then
 	mv $ROUTE/$FILE.tmp $ROUTE/$FILE
 fi
 
-FILE=ctp-yt-googlevideo-tll-modifier.toml
+FILE=ctp-yt-googlevideo-ttl-modifier.toml
 #replace_str="resolvers = [ \"ctp-dns-time-router-yt-ttl-gcp\" ]"
 #if [[ `isNotInstalled $ROUTE/$FILE` == 'true' ]]; then
 #	pcregrep -v -M '^resolvers.*' $ROUTE/$FILE > $ROUTE/$FILE.tmp

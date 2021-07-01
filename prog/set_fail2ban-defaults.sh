@@ -1,6 +1,7 @@
-
 #!/bin/bash
+
 source $PROG/all-scripts-exports.sh
+source $PROG/ban_ip_conf.sh
 CONCURRENT
 FILE_NAME='ban_ignore_ip_list'
 DEFUALT_FILE=/tmp/$FILE_NAME.txt
@@ -232,24 +233,19 @@ declare -a PIHOLE_BAN_IPs=(
 	$(curl -s https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/fail2ban)
 	${MY_PIHOLE_BAN_IPs[@]}
 )
-
 PIHOLE_BAN_IPs=( $( filter_ip_address_array "${PIHOLE_BAN_IPs[@]}" ) )
-
-if [[ $IS_PIHOLE == 'true' ]]; then
-	sudo fail2ban-client set pihole-dns banip ${PIHOLE_BAN_IPs[@]}
-	sudo fail2ban-client set pihole-dns-1-block banip ${PIHOLE_BAN_IPs[@]}
-fi
-
 
 sudo fail2ban-client set ctp-dns-1-block banip ${PIHOLE_BAN_IPs[@]}
 
-iptables -N BAN-IPS
-for ip in ${MY_PIHOLE_BAN_IPs[@]}
-do
-	iptables -A BAN-IPS -s $ip -p tcp -j DROP -w 5
-	iptables -A BAN-IPS -s $ip -p udp -j DROP -w 5
-done
+create_ip-set PIHOLE_BAN_IPs pihole-ban
 
+for ip in ${PIHOLE_BAN_IPs[@]}
+do
+#	iptables -A BAN-IPS -s $ip -p tcp -j DROP -w
+#	iptables -A BAN-IPS -s $ip -p udp -j DROP -w
+	ipset add $IPSET_BK_NAME $ip
+done
+save_ip-set $IPSET_BK_NAME $IPSET_FILE_FULL
 
 declare -a JAIL_PIHOLEs
 JAIL_PIHOLEs=(
@@ -268,9 +264,8 @@ JAILs=(
 for jail in "${JAILs[@]}"
 do
 	sudo fail2ban-client $jail start
-	sudo fail2ban-client set $jail banip ${PIHOLE_BAN_IPs[@]}
 done
 
 sudo bash $PROG/set_unban_ip.sh
 
-sudo iptables-save
+save_ip-tables
