@@ -127,4 +127,24 @@ protocol = "doq"
 bootstrap-address = "35.232.120.211"
 
 
+# AWS
+[resolvers.ctp-dns_aws-dot]
+address = "dns.ctptech.dev:853"
+protocol = "dot"
+bootstrap-address = "54.90.63.26"
 
+[resolvers.ctp-dns_aws-dtls]
+address = "dns.ctptech.dev:853"
+protocol = "dtls"
+bootstrap-address = "54.90.63.26"
+
+[resolvers.ctp-dns_aws-quic]
+address = "dns.ctptech.dev:784"
+protocol = "doq"
+bootstrap-address = "54.90.63.26"
+
+[resolvers.ctp-dns_aws-doh-quic]
+address = "https://dns.ctptech.dev:1443/dns-query"
+protocol = "doh"
+transport = "quic"
+bootstrap-address = "54.90.63.26"

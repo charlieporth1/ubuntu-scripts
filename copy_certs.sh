@@ -12,7 +12,7 @@ gcloud compute ssh $MASTER_MACHINE \
 	--project "$GCLOUD_PROJECT" \
 	--zone "$GCLOUD_ZONE" -- "sudo bash /home/$PERONAL_USR/Programs/cert_manager.sh && mkdir -p /tmp/ssl/ && sudo -u root cp -rfvL $CERT_ROOT_DIR/. /tmp/ssl/ && sudo -u root chown -R $PERONAL_USR /tmp/ssl/* && sudo rm -rf /tmp/ssl/{boot,bin}"
 
-sudo -u root chmod 7777 -R $PERONAL_USR /tmp/ssl/*
+#sudo -u root chmod 7777 -R $PERONAL_USR /tmp/ssl/*
 
 if ! [[ -d $HOME/ssl/ ]]; then
 	mkdir -p $HOME/ssl
@@ -29,7 +29,22 @@ gcloud compute scp $MASTER_MACHINE:/tmp/ssl/ ~/ssl/ \
 
 gcloud compute scp $MASTER_MACHINE:/var/cache/nginx/vpn.ctptech.dev.der /var/cache/nginx/ \
 	--scp-flag="-r" --project "$GCLOUD_PROJECT" --zone "$GCLOUD_ZONE"
-sudo rsync -avz --rsh="ssh -p22  -i $HOME/.ssh/google_compute_engine"   charlieporth1_gmail_com@gcp.ctptech.dev:"/tmp/ssl" ~/ssl --rsync-path='sudo rsync' 
+
+sudo rsync \
+	--rsh="ssh -p22 -i $HOME/.ssh/google_compute_engine" \
+	$PERONAL_USR@gcp.ctptech.dev:/tmp/ssl/* ~/ssl \
+	--rsync-path='sudo rsync' \
+	--dirs \
+	--links \
+	--copy-links \
+	--safe-links \
+	--copy-dirlinks \
+	--super \
+	--checksum \
+	--recursive \
+	--verbose \
+	--progress \
+	--human-readable
 
 sudo cp -rf ~/ssl/* $NGINX_SSL/
 sudo cp -rf ~/ssl/* $INSTALL_CONFIG_DIR/unbound/ssl/

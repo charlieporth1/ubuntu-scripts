@@ -16,6 +16,7 @@ resolvers = [
 	"google-dot-1", 
 	"google-dot-2", 
 	"cloudflare-doh-quic",
+	"adguard-doq",
 	"cloudflare-ip-1-tcp",
 	"cloudflare-ip-1-udp",
 	"google-dns-ip-1-tcp",

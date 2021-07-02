@@ -1,4 +1,4 @@
-.#!/bin/bash
+#!/bin/bash
 if [[ -f /tmp/health-checks.stop.lock ]]; then
         echo "LOCK FILE"
 	trap 'LOCK_FILE' ERR

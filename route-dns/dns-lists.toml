@@ -21,7 +21,6 @@
 type = "blocklist-v2"
 blocklist-resolver = "static-servfail"
 blocklist-refresh = 86400
-resolvers = [ "ctp-dns-failover" ]
 #   {format = "regexp", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/blocklistproject/routedns.blocklist.domain.list"},
 blocklist-source = [
 #       {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/accomplist/master/blocklistproject/routedns.blocklist.domain.list", cache-dir = "/var/cache/ctp-dns"},
@@ -52,3 +51,5 @@ allowlist-source = [
      
 ]
 
+# CTP INSTALL -- DO NOT REMOVE THIS UNLESS YOU PLAN ON REMOVING INSTALL AND REINSTALLING
+resolvers = [ "ctp-dns-time-router-general-gcp" ]

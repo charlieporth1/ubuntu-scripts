@@ -15,3 +15,4 @@
 (metadata|adata|([^(remote|log|crash|settings)])firebase|beard|whisk[e]?[y]?|beer|ocsp|scotch|wine|brandy|alcohol|coffee|((download|dl)(s|er|ing)?)|classroom)
 (tea|([a-z]{1,1})data|addr\.arpa|account|[o]?auth(entication)?|captcha)
 (^|\.|www\.)(client-channel\.google|myworkday|goarmy|stackexchange|adafruit|samsungcloud|googleusercontent|paypal|plaid|api\.snapchat|drizly|apkmirror|armytimes|navytimes|airforcetimes)\.com$
+^t[0-9]?\.gstatic\.com$

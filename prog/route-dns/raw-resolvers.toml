@@ -16,3 +16,9 @@ protocol = "tcp"
 [resolvers.ctp-dns-ip-home-udp]
 address = "174.53.130.17:53"
 protocol = "udp"
+[resolvers.ctp-dns-ip-aws-tcp]
+address = "54.90.63.26:53"
+protocol = "tcp"
+[resolvers.ctp-dns-ip-aws-udp]
+address = "54.90.63.26:53"
+protocol = "udp"
