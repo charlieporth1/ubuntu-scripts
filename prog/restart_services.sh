@@ -4,8 +4,9 @@ export SCRIPT_DIR=`realpath .`
 source /etc/environment
 source $SCRIPT_DIR/.install-args-proc.sh
 source $SCRIPT_DIR/.project_env.sh
-
 bash $SCRIPT_DIR/reload_ctp-dns.sh
+
+sudo systemctl daemon-reload
 sudo systemctl stop unbound-resolvconf.service
 sudo systemctl disable unbound-resolvconf.service
 sudo systemctl mask unbound-resolvconf.service

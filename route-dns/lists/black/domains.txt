@@ -1,3 +1,4 @@
+.firebaselogging-pa.googleapis.com
 .ssl.google-analytics.com
 .choices.trustarc.com
 .ad2.netshelter.net

@@ -53,7 +53,7 @@ fi
 # doh -v -rdns.ctptech.dev:443:$EXTENRAL_IP -tA www.google.com "https://dns.ctptech.dev/dns-query:4443"
 dns_local=`dig $QUERY @ctp-vpn.local +tries=$TRIES +dnssec +short +timeout=$TIMEOUT`
 
-doh_proxy_local=`timeout $TIMEOUT curl --insecure -H 'accept: application/dns-json' -sw '\n' "http://localhost:8053/dns-query?name=$QUERY&type=A"`
+doh_proxy_local=`timeout $TIMEOUT curl --insecure -H 'accept: application/dns-json' -sw '\n' "http://localhost:8053/resolve?name=$QUERY&type=A"`
 doh_remote_json=`timeout $TIMEOUT curl --resolve $HOST:443:$EXTENRAL_IP -H 'accept: application/dns-json' -sw '\n' "https://$HOST/resolve?name=$QUERY&type=A"`
 doh_remote_nginx=`timeout $TIMEOUT doh -4 -r$HOST:443:$EXTENRAL_IP -tA $QUERY "https://$HOST/dns-query"`
 doh_remote_ctp=`timeout $TIMEOUT doh -4 -r$HOST:4443:$EXTENRAL_IP -tA $QUERY "https://$HOST:4443/dns-query"`
@@ -80,6 +80,7 @@ if [[ -n "$isAuto" ]]; then
 
 	if [[ -z "$doh_proxy_local_test" ]] && [[ $(systemctl-inbetween-status doh-server.service) == false ]]; then
 		echo "ALERT DOH doh_proxy_local_test doh-proxy :$doh_proxy_local_test:"
+		sudo killall -9 doh-server
 		systemctl restart doh-server.service
 		sleep $WAIT_TIME
 	else
@@ -90,7 +91,7 @@ if [[ -n "$isAuto" ]]; then
 	     { [[ -z "$doh_remote_nginx_test" ]] && [[ -n "$doh_proxy_local_test" ]]; }; } && [[ $(systemctl-inbetween-status nginx.service) == false ]]
 	then
 		echo "ALERT DOH doh_remote_json_test NGINX doh_remote_nginx_test :$doh_remote_json_test: :$doh_remote_nginx_test:"
-		echo "dns_local_test :$dns_local_test: doh_local_test :$doh_local_test: doh_remote_json_test :$doh_remote_json_test:"
+		echo "dns_local_test :$dns_local_test: doh_proxy_local_test :$doh_proxy_local_test: doh_remote_json_test :$doh_remote_json_test:"
 		echo "doh_remote_ctp_test :$doh_remote_ctp_test: doh_remote_nginx_test :$doh_remote_nginx_test:"
 		echo "NGINX failed restarting"
 		if [[ -f /etc/hosts.bk ]]; then
