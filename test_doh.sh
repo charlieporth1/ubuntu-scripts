@@ -117,8 +117,10 @@ if [[ -n "$isAuto" ]]; then
 
 else
 	printf '%s\n' "$dns_local"
-	URL="http://localhost:8053/dns-query?name=$QUERY&type=A"
-	echo -e "$URL\n$(bash $PROG/lines.sh '*')\n"
+	URL="http://localhost:8053/resolve?name=$QUERY&type=A"
+	echo -e "$URL\n"
+	bash $PROG/lines.sh '#'
+	echo -e "\n"
 	curl -H 'accept: application/dns-json' -w \
 		""" \
 		\n\nTesting Website Response Time for: 
@@ -132,7 +134,9 @@ else
 		"$URL"
 
 	URL="https://$HOST/resolve?name=$QUERY&type=A"
-	echo -e "$URL\n$(bash $PROG/lines.sh '*')\n"
+	echo -e "$URL\n"
+	bash $PROG/lines.sh '#'
+	echo -e "\n"
 	curl -H 'accept: application/dns-json' -w \
 		""" \
 		\n\nTesting Website Response Time for: 
@@ -143,17 +147,25 @@ else
 		""" \
 		"$URL"
 
-	echo -e "https://$HOST:4443/dns-query$(bash $PROG/lines.sh '*')\n"
+	echo -e "https://$HOST:4443/dns-query\n"
+	bash $PROG/lines.sh '#'
+	echo -e "\n"
 	curl -H 'accept: application/dns-message' "https://$HOST:4443/dns-query?dns=q80BAAABAAAAAAAAA3d3dwdleGFtcGxlA2NvbQAAAQAB" | hexdump -C
 
-	echo -e "https://$HOST:4443/dns-query\n$(bash $PROG/lines.sh '*')\n"
+	echo -e "https://$HOST:4443/dns-query\n"
+	bash $PROG/lines.sh '#'
+	echo -e "\n"
 	curl -H 'accept: application/dns-message' "https://$HOST:4443/dns-query?dns=q80BAAABAAAAAAAAA3d3dwdleGFtcGxlA2NvbQAAAQAB" --output -
 
-	echo -e "https://$HOST:443/dns-query\n$(bash $PROG/lines.sh '*')\n"
+	echo -e "https://$HOST:443/dns-query\n"
+	bash $PROG/lines.sh '#'
+	echo -e "\n"
 	curl -H 'accept: application/dns-message' "https://$HOST/dns-query?dns=q80BAAABAAAAAAAAA3d3dwdleGFtcGxlA2NvbQAAAQAB" | hexdump -C
 
 	URL="https://$HOST:443/dns-query?dns=q80BAAABAAAAAAAAA3d3dwdleGFtcGxlA2NvbQAAAQAB"
-	echo -e "$(bash $PROG/lines.sh '*')\n"
+	echo -e "$URL\n"
+	bash $PROG/lines.sh '#'
+	echo -e "\n"
 	curl -H 'accept: application/dns-json' -w \
 		""" \
 		\n\nTesting Website Response Time for: 
@@ -165,7 +177,9 @@ else
 		"$URL"
 
 	URL="https://$HOST:4443/dns-query?dns=q80BAAABAAAAAAAAA3d3dwdleGFtcGxlA2NvbQAAAQAB"
-	echo -e "$(bash $PROG/lines.sh '*')\n"
+	echo -e "$URL\n"
+	bash $PROG/lines.sh '#'
+	echo -e "\n"
 	curl -H 'accept: application/dns-json' -w \
 		""" \
 		\n\nTesting Website Response Time for: 
@@ -176,9 +190,11 @@ else
 		""" \
 		"$URL"
 	doh $QUERY https://dns.ctptech.dev/dns-query
-	echo -e "$(bash $PROG/lines.sh '*')\n"
+	bash $PROG/lines.sh '#'
+	echo -e "\n"
 	doh $QUERY https://dns.ctptech.dev/resolve
-	echo -e "$(bash $PROG/lines.sh '*')\n"
+	bash $PROG/lines.sh '#'
+	echo -e "\n"
 fi
 #curl -s -w 'Testing Website Response Time for :%{url_effective}\n\nLookup Time:\t\t%{time_namelookup}\nConnect Time:\t\t%{time_connect}\nPre-transfer Time:\t%{time_pretransfer}\nStart-transfer Time:\t%{time_starttransfer}\n\nTotal Time:\t\t%{time_total}\n' -o /dev/null ADDRESS
 # timeout $TIMEOUT curl \

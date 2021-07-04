@@ -16,7 +16,7 @@ sudo cp -rf $CONFIG_DIR/unbound/* $INSTALL_CONFIG_DIR/unbound/
 sudo cp -rf $CONFIG_DIR/nginx/* $INSTALL_CONFIG_DIR/nginx/
 sudo cp -rf $CONFIG_DIR/profile.d/* $INSTALL_CONFIG_DIR/profile.d/
 sudo cp -rf $CONFIG_DIR/domains/ $INSTALL_CONFIG_DIR/
-sudo cp -rf $CONFIG_DIR/dns-over-https $INSTALL_CONFIG_DIR/dns-over-https/
+sudo cp -rf $CONFIG_DIR/dns-over-https/* $INSTALL_CONFIG_DIR/dns-over-https/
 sudo cp -rf $CONFIG_DIR/* $INSTALL_CONFIG_DIR/
 sudo cp -rf $CONFIG_DIR/bash_rc/* ~/
 sudo cp -rf $CONFIG_DIR/www/* $WWW/
@@ -24,6 +24,7 @@ sudo cp -rf $CONFIG_DIR/www/* $WWW/
 # Sys LNs
 sudo ln -s /etc/fail2ban/filter.d/ctp-custom-vars.conf   /etc/fail2ban/filter.d/common.local
 sudo ln -s $SETUP_DIR/dns-route.sh ${PROG:-$CONF_PROG_DIR}/
+sudo ln -s $SETUP_DIR/doh_proxy_json.sh ${PROG:-$CONF_PROG_DIR}/
 sudo ln -s $CONF_PROG_DIR/route-dns $PROG/
 sudo ln -s $ROUTE/ctp-dns.sh /usr/local/bin
 sudo ln -s $CONF_PROG_DIR/timeout3 /usr/local/bin
@@ -58,4 +59,6 @@ sudo chmod 777 $ROUTE/ctp-dns.sh
 sudo chmod 777 /usr/local/bin/ctp-dns.sh
 sudo chmod 777 /usr/local/bin/timeout3
 
+
+sudo cp -rf $CONFIG_DIR/dns-over-https/* $INSTALL_CONFIG_DIR/dns-over-https/
 echo "Done with coping config files"
