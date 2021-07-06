@@ -46,3 +46,7 @@ tar -xvf /tmp/dnscrypt.tar.gz -C /tmp
 cp -rf /tmp/linux-amd64/dnscrypt /usr/local/bin
 curl -Ls 'https://github.com/ipinfo/cli/releases/download/ipinfo-1.1.0/deb.sh' | bash
 curl -Ls 'https://raw.githubusercontent.com/ipinfo/cli/master/grepip/deb.sh' | bash
+
+if [[ -f /home/charlieporth1_gmail_com/ble.sh/out/ble.sh ]]; then
+	bash /home/charlieporth1_gmail_com/ble.sh/out/ble.sh --update
+fi

@@ -146,8 +146,12 @@ function CONCURRENT() {
 		logger "$SCRIPT Script already running please kill these $isRunning"
 		echo "Date last open `date`"
 	   	echo "$SCRIPT Script already running please kill these $isRunning"
+        	trap "$SCRIPT Script already running please kill these $isRunning" ERR
 		set -e
         	exit 1
+        	exit 1
+        	exit 1
+		kill $$
 	else
 		return 0
 	fi

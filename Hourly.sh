@@ -4,8 +4,10 @@
 #sudo su
 #curl -fsS --retry 3 https://hc-ping.com/f0465043-4644-4a32-8e60-f2d0292bce9d
 #ps -aux | grep 'pm.stal\|test_' | awk '{print $2}' | xargs sudo kill -9 && sudo killall awk ps grep pgrep
+
 ps -aux | grep 'pm.stal\|test_\|pm.hea\|set_fail2ban\|health' | grep -v 'grep' | awk '{print $2}' | xargs sudo kill -9
-killall ps dig go
+sudo killall ps dig go pgrep awk grep
+
 source /mnt/HDD/Programs//memoryClean.sh
 sudo ufw disable
 sudo bash /mnt/HDD/Programs/killMemoryHogs.sh
