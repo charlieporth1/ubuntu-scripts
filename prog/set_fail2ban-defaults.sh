@@ -21,6 +21,7 @@ fi
 
 declare -a MY_PIHOLE_BAN_IPs
 MY_PIHOLE_BAN_IPs=(
+	72.46.5.117/16
 	67.168.226.169/16
 	27.216.192.200/16
 	47.20.110.73/16
@@ -230,19 +231,20 @@ MY_PIHOLE_BAN_IPs=(
 	74.82.47.6/16
 )
 declare -a PIHOLE_BAN_IPs=(
-	$(curl -s https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/fail2ban)
 	${MY_PIHOLE_BAN_IPs[@]}
+	$( curl -s https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/fail2ban )
 )
 PIHOLE_BAN_IPs=( $( filter_ip_address_array "${PIHOLE_BAN_IPs[@]}" ) )
 
-sudo fail2ban-client set ctp-dns-1-block banip ${PIHOLE_BAN_IPs[@]}
+sudo fail2ban-client set ctp-dns-1-block banip ${MY_PIHOLE_BAN_IPs[@]}
+#sudo fail2ban-client set ctp-dns-1-block banip ${PIHOLE_BAN_IPs[@]}
+#sudo fail2ban-client set ctp-dns-1-block banip  $( curl -s https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/fail2ban | xargs )
+# sudo fail2ban-client set ctp-dns-1-block banip  $( curl -s | xargs )
 
-create_ip-set PIHOLE_BAN_IPs pihole-ban
+create_ip-set pihole subnet-block
 
 for ip in ${PIHOLE_BAN_IPs[@]}
 do
-#	iptables -A BAN-IPS -s $ip -p tcp -j DROP -w
-#	iptables -A BAN-IPS -s $ip -p udp -j DROP -w
 	ipset add $IPSET_BK_NAME $ip
 done
 save_ip-set $IPSET_BK_NAME $IPSET_FILE_FULL

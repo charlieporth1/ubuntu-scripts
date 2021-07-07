@@ -10,11 +10,18 @@ if [[ -n $ADMIN_USR ]]; then
 		echo "Rclone  NOT PLEASE FIND config file found"
 	fi
 fi
+
 if [[ $AUTOMATIC_INSTALL == 'false' ]] || [[ -z $AUTOMATIC_INSTALL ]]; then
 	echo "Coping gravity.db"
 	sync
-	rclone -vvv copy remote:SERVER_DATA/gravity.db /etc/pihole
-	sudo bash $PROG/pihole-db-sql-changes.sh
+	rclone -vvv copy remote:SERVER_DATA/gravity.db /tmp/gravity.db
+	db_status=`sqlite3 /etc/pihole/gravity.db "PRAGMA integrity_check" | grep -io 'ok'`
+	if [[ -n "$db_status" ]]; then
+		mv /tmp/gravity.db /etc/pihole/gravity.db
+		sudo bash $PROG/pihole-db-sql-changes.sh
+	else
+		bash $PROG/alert_user.sh "Gravity is croupt please fix asap $HOSTNAME db_status: $db_status"
+	fi
 	sync
 fi
 #systemctl restart pihole-FTL.service

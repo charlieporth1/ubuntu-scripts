@@ -2,6 +2,7 @@
 type = "blocklist-v2"
 blocklist-resolver = "static-servfail"
 blocklist-refresh = 86400
+resolvers = [ "ctp-dns-failover" ]
 blocklist-source = [
         {format = "domain", source = "/var/tmp/ctp-dns/lists/black/ads.txt", cache-dir = "/var/cache/ctp-dns"},
         {format = "domain", source = "/var/tmp/ctp-dns/lists/black/malware-typo.txt", cache-dir = "/var/cache/ctp-dns"},
@@ -26,5 +27,3 @@ allowlist-source = [
      
 ]
 
-# CTP INSTALL -- DO NOT REMOVE THIS UNLESS YOU PLAN ON REMOVING INSTALL AND REINSTALLING
-resolvers = [ "ctp-dns-time-router-general-gcp" ]

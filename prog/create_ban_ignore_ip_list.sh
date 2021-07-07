@@ -209,7 +209,6 @@ DNS_IGNORE_IPs=(
         192.168.99.9    #
         10.128.0.9      # *
         ${UNI_IGNORE_IP[@]}
-        ${T_MobileIPs[@]}
         35.192.105.158
         35.232.120.211
         174.53.130.17
@@ -244,3 +243,6 @@ printf '%s\n' "${DNS_IGNORE_IPs[@]}" > /tmp/$FILE_NAME.txt
 echo "$INGORE_IP_ADRESSES_GREP" > /tmp/$FILE_NAME.grep
 echo "$INGORE_IP_ADRESSES_CSV" > /tmp/$FILE_NAME.csv
 
+
+
+printf '%s\n' ${T_MobileIPs[@]} /tmp/tmobile_ips.txt

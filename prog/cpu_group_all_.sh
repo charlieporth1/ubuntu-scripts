@@ -43,4 +43,4 @@ echo $(( 64 * 1024 * 1024 )) | sudo tee /sys/fs/cgroup/memory/64MBRam/memory.mem
 #sudo cgexec -g cpu:lesscpulimited fail2ban-server
 #
 #sudo cgexec -g cpu:cpulimited fail2ban-server
-sudo cgexec -g cpu:fourthcpulimied -g memory:256MBRam --sticky fail2ban-server
+#sudo cgexec -g cpu:fourthcpulimied -g memory:256MBRam --sticky fail2ban-server

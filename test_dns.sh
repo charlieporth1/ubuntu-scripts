@@ -65,6 +65,7 @@ else
 		echo "Failed restarting pihole_bin :$pihole_bin:"
 		if [[ -f "$pihole_bin" ]] && [[ $(systemctl-inbetween-status pihole-FTL.service) == false ]]; then
 			echo "restarting pihole"
+			sudo chown -R dnsmasq /var/cache/dnsmasq
 			pihole restartdns
 			IF_RESTART
 			IF_RESTART

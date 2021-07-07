@@ -113,6 +113,7 @@ if [[ `systemctl-exists $fn` = 'true' ]]; then
 	        echo "triggers $local_pihole_dns"   "$pihole_status" "$dig_dns_test"  "$dns_out" "$pihole_error_status" "$out_dns_status"
 	        fn="local_pihole_dns"
 	        echo $fn
+		sudo chown -R dnsmasq /var/cache/dnsmasq
 	        writeLog $fn $((1+$(getFailCount $fn)))
 	        COUNT_ACTION $fn $(getFailCount $fn)
 	        RESTART_PIHOLE
@@ -126,6 +127,7 @@ if [[ `systemctl-exists $fn` = 'true' ]]; then
 		echo "systemd process $fn failed restarting"
 	        echo "FTL ftl_status $FTL $ftl_status"
 	        echo $fn
+		sudo chown -R dnsmasq /var/cache/dnsmasq
 	        systemctl restart $fn
 	        writeLog $fn $((1+$(getFailCount $fn))) $fn
 	        COUNT_ACTION $fn $(getFailCount $fn) $fn

@@ -7,11 +7,34 @@ export CONFIG_IP_TABLES_DIR=/etc/iptables
 
 export ROOT_IP_TABLES_FILE=$CONFIG_IP_TABLES_DIR/iptables-defalt.iptables
 
+function create_ip-set-allow() {
+        local LIST_NAME="$1"
+	local LIST_TYPE="${2:-put-type-of-blacklist-here}"
+
+        declare -gx IPSET_BK_NAME=$LIST_TYPE-allowlist-$LIST_NAME
+        declare -gx IPSET_FILE=$IPSET_BK_NAME.ipset
+        declare -gx IPSET_FILE_FULL=$CONFIG_DIR/$IPSET_FILE
+
+        echo $IPSET_BK_NAME $IPSET_FILE
+
+        sudo ipset create $IPSET_BK_NAME hash:net hashsize 8192
+        sudo iptables -I OUTPUT -m set --match-set $IPSET_BK_NAME src -j ALLOW
+        sudo iptables -I INPUT -m set --match-set $IPSET_BK_NAME src -j ALLOW
+        sudo iptables -I FORWARD -m set --match-set $IPSET_BK_NAME src -j ALLOW
+
+        if [[ -f $IPSET_FILE_FULL ]]; then
+                ipset restore < $IPSET_FILE_FULL
+        else
+                touch $IPSET_FILE_FULL
+        fi
+        sleep 1s
+
+}
 function create_ip-set() {
         local LIST_NAME="$1"
 	local LIST_TYPE="${2:-put-type-of-blacklist-here}"
 
-        declare -gx IPSET_BK_NAME=$LIST_TYPE-blacklist-$LIST_NAME
+        declare -gx IPSET_BK_NAME=$LIST_TYPE-bklst-$LIST_NAME
         declare -gx IPSET_FILE=$IPSET_BK_NAME.ipset
         declare -gx IPSET_FILE_FULL=$CONFIG_DIR/$IPSET_FILE
 
@@ -29,7 +52,7 @@ function create_ip-set() {
         sleep 1s
 
 }
-function create_ip-set-net() {
+function create_ip-set-net-block() {
 	create_ip-set "$@"
 }
 export -f create_ip-set

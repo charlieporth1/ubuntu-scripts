@@ -190,6 +190,7 @@ export -f RESET_FTL
 function RESTART_PIHOLE() {
         local isNotFTL="$1"
         echo "RESTARTING isNotFTL :$isNotFTL:"
+	sudo chown -R dnsmasq /var/cache/dnsmasq
         if [[ -n "$isNotFTL" ]]; then
 		log "Restarting DNS"
 		echo "Restarting DNS"
