@@ -39,6 +39,7 @@ for ip in "${TMOBILE_IGNORE_IPs[@]}"
 do
 	ipset add $IPSET_BK_NAME $ip
 done
+
 for jail in "${JAILs[@]}"
 do
         sudo fail2ban-client $jail start
