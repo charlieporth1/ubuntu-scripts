@@ -1,4 +1,3 @@
-
 [groups.ctp-dns-failover-backup]
 resolvers = [ 
 	"cloudflare-dtls-1",

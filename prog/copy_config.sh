@@ -61,4 +61,5 @@ sudo chmod 777 /usr/local/bin/timeout3
 
 
 sudo cp -rf $CONFIG_DIR/dns-over-https/* $INSTALL_CONFIG_DIR/dns-over-https/
+sudo rm -rf /etc/unbound/unbound.conf.d/adblock.conf 
 echo "Done with coping config files"

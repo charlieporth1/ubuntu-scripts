@@ -13,6 +13,7 @@ sudo systemctl mask unbound-resolvconf.service
 
 #sudo systemctl restart netdata
 #sudo systemctl enable netdata
+
 sudo systemctl disable netdata
 sudo systemctl mask netdata
 
@@ -23,12 +24,13 @@ if [[ -z "$IS_MASTER" ]]; then
 	sudo systemctl disable unbound
 	sudo systemctl mask unbound
 else
+	sudo systemctl enable unbound
 	sudo systemctl unmask unbound
 fi
 
 declare -a master_services
 master_services=(
-	'pihole-FTL.serivce'
+	'pihole-FTL.service'
 	'unbound.service'
 	'resolvconf.service'
 )

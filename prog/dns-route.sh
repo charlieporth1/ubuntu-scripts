@@ -5,12 +5,12 @@ shopt -s expand_aliases
 SCRIPT_DIR=`realpath .`
 mkdir -p /etc/letsencrypt/live/vpn.ctptech.dev
 
-/snap/bin/go get -v github.com/folbricht/routedns/cmd/routedns
+#/snap/bin/go get -v github.com/folbricht/routedns/cmd/routedns
 
-git clone https://github.com/folbricht/routedns.git
-cd routedns
-git stash
-git pull -ff
+#git clone https://github.com/folbricht/routedns.git
+#cd routedns
+#git stash
+#git pull -ff
 #git switch master
 #git pull -ff
 #cd cmd/routedns
@@ -32,9 +32,46 @@ LOCAL_RESOLVER_NAME='ctp-dns-local-master'
 
 grep_around_str='^\[groups.ctp-dns-fail-rotate\](.|\n)*\n^\]'
 
-leftover_fail_rotate_str='type = \"fail-rotate\"'
+#leftover_fail_rotate_str='type = \"fail-rotate\"'
+leftover_fail_rotate_str=""
 replace_str_front="\[groups.ctp-dns-fail-rotate\]\nresolvers = \[\n"
 replace_str_back="\n,$RAW_RESOLVERS\n\]\n$leftover_fail_rotate_str"
+
+export IS_AWS=$( [[ `timeout 5 curl -s http://169.254.169.254/latest/meta-data/hostname | grep -o 'ec2.internal'` ]] && echo true || echo false )
+# AWS
+if [[ "$IS_AWS" == 'true' ]]; then
+	DOMAIN='gcp.ctptech.dev'
+	IP='10.128.0.9'
+echo """
+[resolvers.$LOCAL_RESOLVER_NAME-gcp-tunnel-tcp]
+address = \"$IP:53\"
+protocol = \"tcp\"
+[resolvers.$LOCAL_RESOLVER_NAME-gcp-tunnel-udp]
+address = \"$IP:53\"
+protocol = \"udp\"
+[resolvers.$LOCAL_RESOLVER_NAME-gcp-tunnel-dot]
+address = \"$DOMAIN:853\"
+protocol = \"dot\"
+bootstrap-address = \"$IP\"
+[resolvers.$LOCAL_RESOLVER_NAME-gcp-tunnel-dtls]
+address = \"gcp.ctptech.dev:853\"
+protocol = \"dtls\"
+bootstrap-address = \"$IP\"
+[resolvers.$LOCAL_RESOLVER_NAME-gcp-tunnel-doq]
+address = \"gcp.ctptech.dev:784\"
+protocol = \"doq\"
+bootstrap-address = \"$IP\"
+[resolvers.$LOCAL_RESOLVER_NAME-gcp-tunnel-doh-doq]
+address = \"gcp.ctptech.dev:1443\"
+protocol = \"doh\"
+transport = \"quic\"
+bootstrap-address = \"$IP\"
+""" | sudo tee $ROUTE/$HOSTNAME-resolvers.toml
+
+	export LOCAL_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(grep -E '^.resolvers\..*' $ROUTE/$HOSTNAME-resolvers.toml | awk -F'.' '{print $2}' | awk -F']' '{print $1}') --quotes --space))
+fi
+
+# MASTER
 if [[ "$IS_MASTER" == 'true' ]]; then
 	echo "" | sudo tee $ROUTE/slave-listeners.toml
 
@@ -64,73 +101,27 @@ type = \"fastest\"
 """
 printf '%s\n' "$GROUP" | sudo tee -a $ROUTE/$HOSTNAME-resolvers.toml
 
-	if [[ `isNotInstalled $ROUTE/route-dns.toml` == 'true' ]]; then
+	if [[ "$IS_AWS" == 'false' ]]; then
 		replace_str="$replace_str_front$LOCAL_RESOLVERS,\n$GCP_RESOLVERS$replace_str_back"
-		FILE=route-dns.toml
-		pcregrep -v -M "$grep_around_str" $ROUTE/$FILE > $ROUTE/$FILE.tmp
-
-		perl -0777 -i -pe "s/$leftover_fail_rotate_str/$replace_str/g" $ROUTE/$FILE.tmp
-		perl -0777 -i -pe 's/^"ctp/\t"ctp/gm' $ROUTE/$FILE.tmp
-		mv $ROUTE/$FILE.tmp $ROUTE/$FILE.toml
-	fi
-
-else
-#########
-# NON SLAVE
-	export IS_AWS=$( [[ `timeout 5 curl -s http://169.254.169.254/latest/meta-data/hostname | grep -o 'ec2.internal'` ]] && echo true || echo false )
-
-	if [[ "$IS_AWS" == 'true' ]]; then
-
-		DOMAIN='gcp.ctptech.dev'
-		IP='10.128.0.9'
-echo """
-[resolvers.$LOCAL_RESOLVER_NAME-gcp-tunnel-tcp]
-address = \"$IP:53\"
-protocol = \"tcp\"
-[resolvers.$LOCAL_RESOLVER_NAME-gcp-tunnel-udp]
-address = \"$IP:53\"
-protocol = \"udp\"
-[resolvers.$LOCAL_RESOLVER_NAME-gcp-tunnel-dot]
-address = \"$DOMAIN:853\"
-protocol = \"dot\"
-bootstrap-address = \"$IP\"
-[resolvers.$LOCAL_RESOLVER_NAME-gcp-tunnel-dtls]
-address = \"gcp.ctptech.dev:853\"
-protocol = \"dtls\"
-bootstrap-address = \"$IP\"
-[resolvers.$LOCAL_RESOLVER_NAME-gcp-tunnel-doq]
-address = \"gcp.ctptech.dev:784\"
-protocol = \"doq\"
-bootstrap-address = \"$IP\"
-[resolvers.$LOCAL_RESOLVER_NAME-gcp-tunnel-doh-doq]
-address = \"gcp.ctptech.dev:1443\"
-protocol = \"doh\"
-transport = \"quic\"
-bootstrap-address = \"$IP\"
-""" | sudo tee $ROUTE/$HOSTNAME-resolvers.toml
-
-	LOCAL_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(grep -E '^.resolvers\..*' $ROUTE/$HOSTNAME-resolvers.toml | awk -F'.' '{print $2}' | awk -F']' '{print $1}') --quotes --space))
-
-GROUP="""
-[groups.ctp-dns-group]
-resolvers = [
-	$LOCAL_RESOLVERS,
-	$GCP_HOME_RESOLVERS
-
-]
-type = \"fastest\"
-
-[groups.ctp-dns-group-local]
-resolvers = [
-	$LOCAL_RESOLVERS,
-]
-type = \"fastest\"
-"""
-printf '%s\n' "$GROUP" | sudo tee -a $ROUTE/$HOSTNAME-resolvers.toml
-
 	else
+		replace_str="$replace_str_front$LOCAL_RESOLVERS,\n$GCP_HOME_RESOLVERS$replace_str_back"
+	fi
+	if [[ `isNotInstalled $ROUTE/route-dns.toml` == 'true' ]]; then
+
+		FILE=route-dns.toml
+		fail_over_str=`pcregrep -M "$grep_around_str" $ROUTE/$FILE` #> $ROUTE/$FILE.tmp
+
+		fail_over_str="${fail_over_str//[/\\[}"
+		fail_over_str="${fail_over_str//]/\\]}"
+
+		perl -0777 -i -pe "s/$fail_over_str/$replace_str/g" $ROUTE/$FILE
+		perl -0777 -i -pe 's/^"ctp/\t"ctp/gm' $ROUTE/$FILE
+#		mv $ROUTE/$FILE.tmp $ROUTE/$FILE.toml
+	fi
  	########### Non AWS
  	# TODO more of the end of this fi and below
+# ELSE
+else
 GROUP="""
 [groups.ctp-dns-group]
 resolvers = [
@@ -138,19 +129,27 @@ resolvers = [
 ]
 type = \"fastest\"
 """
-printf '%s\n' "$GROUP" sudo tee $ROUTE/$HOSTNAME-resolvers.toml
-
-	fi
+	printf '%s\n' "$GROUP" sudo tee $ROUTE/$HOSTNAME-resolvers.toml
 
 	LOCAL_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(grep -E '^.resolvers\..*' $ROUTE/$HOSTNAME-resolvers.toml | awk -F'.' '{print $2}' | awk -F']' '{print $1}') --quotes --space))
 
 	if [[ `isNotInstalled $ROUTE/route-dns.toml` == 'true' ]]; then
 		replace_str="$replace_str_front$LOCAL_RESOLVERS\n,$GCP_HOME_RESOLVERS$replace_str_back"
 		FILE=route-dns.toml
-		pcregrep -v -M "$grep_around_str" $ROUTE/$FILE > $ROUTE/$FILE.tmp
-		perl -0777 -i -pe "s/$leftover_fail_rotate_str/$replace_str/g" $ROUTE/$FILE.tmp
-		perl -0777 -i -pe 's/^"ctp/\t"ctp/gm' $ROUTE/$FILE.tmp
-		mv $ROUTE/$FILE.tmp $ROUTE/$FILE.toml
+#		pcregrep -v -M "$grep_around_str" $ROUTE/$FILE > $ROUTE/$FILE.tmp
+
+		fail_over_str=`pcregrep -M "$grep_around_str" $ROUTE/$FILE` #> $ROUTE/$FILE.tmp
+
+		fail_over_str="${fail_over_str//[/\\[}"
+		fail_over_str="${fail_over_str//]/\\]}"
+
+		perl -0777 -i -pe "s/$fail_over_str/$replace_str/g" $ROUTE/$FILE
+		perl -0777 -i -pe 's/^"ctp/\t"ctp/gm' $ROUTE/$FILE
+#
+#		perl -0777 -i -pe "s/$fail_over_str/$replace_str/g" $ROUTE/$FILE.tmp
+#		perl -0777 -i -pe "s/$leftover_fail_rotate_str/$replace_str/g" $ROUTE/$FILE.tmp
+#		perl -0777 -i -pe 's/^"ctp/\t"ctp/gm' $ROUTE/$FILE.tmp
+#		mv $ROUTE/$FILE.tmp $ROUTE/$FILE.toml
 	fi
 
 	sed -i "s/$DEFAULT_IP/$REPLACE_IP/g" $ROUTE/slave-listeners.toml

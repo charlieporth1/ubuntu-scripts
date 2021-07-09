@@ -1,0 +1,40 @@
+[groups.tcp-probe-port-443]
+type = "fastest-tcp"
+port = 443
+success-ttl = 3600
+success-ttl-min = 3600
+wait-all = false
+#resolvers = [ "ctp-dns-group-fastest-tcp-probe-in" ]
+resolvers = [ "ctp-dns-ecs" ]
+
+[groups.tcp-probe-port-80]
+type = "fastest-tcp"
+port = 80
+success-ttl = 3600
+success-ttl-min = 3600
+wait-all = false
+#resolvers = [ "ctp-dns-group-fastest-tcp-probe-in" ]
+resolvers = [ "ctp-dns-ecs" ]
+
+[groups.tcp-probe-port-8443]
+type = "fastest-tcp"
+port = 8443
+success-ttl = 3600
+success-ttl-min = 3600
+wait-all = false
+#resolvers = [ "ctp-dns-group-fastest-tcp-probe-in" ]
+resolvers = [ "ctp-dns-ecs" ]
+
+[groups.ctp-dns-group-fastest-tcp-probe-out]
+resolvers = [
+	"tcp-probe-port-443",
+	"tcp-probe-port-80",
+	"tcp-probe-port-8443",
+]
+type = "fastest"
+
+[groups.ctp-dns-group-fastest-tcp-probe-in]
+resolvers = [
+	"ctp-dns-ecs"
+]
+type = "fastest"

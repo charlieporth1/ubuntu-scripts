@@ -21,6 +21,8 @@ FILES=(
 	"/etc/pihole/pihole-FTL.conf"
 	"/etc/pihole/dns-servers.conf"
 	"/etc/pihole/dns-servers.conf.bk"
+	"$HOLE/quick-whitelist.list"
+	"$HOLE/quick-blacklist.list"
         "/home/$PERONAL_USR/Programs/cert_manager.sh"
 	"/home/$PERONAL_USR/Programs/pihole-lighttpd-changes.sh"
 	"/home/$PERONAL_USR/Programs/pihole-db-sql-changes.sh"

@@ -13,7 +13,7 @@ function create_ip-set-allow() {
 
         declare -gx IPSET_BK_NAME=$LIST_TYPE-allowlist-$LIST_NAME
         declare -gx IPSET_FILE=$IPSET_BK_NAME.ipset
-        declare -gx IPSET_FILE_FULL=$CONFIG_DIR/$IPSET_FILE
+        declare -gx IPSET_FILE_FULL=$CONFIG_IP_SET_DIR/$IPSET_FILE
 
         echo $IPSET_BK_NAME $IPSET_FILE
 
@@ -34,9 +34,10 @@ function create_ip-set() {
         local LIST_NAME="$1"
 	local LIST_TYPE="${2:-put-type-of-blacklist-here}"
 
-        declare -gx IPSET_BK_NAME=$LIST_TYPE-bklst-$LIST_NAME
+        declare -gx IPSET_BK_NAME=$LIST_TYPE-allowlist-$LIST_NAME
         declare -gx IPSET_FILE=$IPSET_BK_NAME.ipset
-        declare -gx IPSET_FILE_FULL=$CONFIG_DIR/$IPSET_FILE
+        declare -gx IPSET_FILE_FULL=$CONFIG_IP_SET_DIR/$IPSET_FILE
+
 
         echo $IPSET_BK_NAME $IPSET_FILE
 
