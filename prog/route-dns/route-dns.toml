@@ -57,30 +57,22 @@ servfail-failover = true
 # Order matters
 [groups.ctp-dns-fail-rotate]
 resolvers = [
-	"ctp-dns-local-master-tcp",
-	"ctp-dns-local-master-udp",
-	"ctp-dns_gcp-dot-ip-1",
-	"ctp-dns_gcp-dot-ip-2",
-	"ctp-dns_gcp-dtls-ip-1",
-	"ctp-dns_gcp-dtls-ip-2",
-	"ctp-dns_gcp-doh-post-ip-1",
-	"ctp-dns_gcp-doh-post-ip-2",
-	"ctp-dns_gcp-doh-get-ip-1",
-	"ctp-dns_gcp-doh-get-ip-2",
-	"ctp-dns_gcp-doh-quic-post-ip-1",
-	"ctp-dns_gcp-doh-quic-post-ip-2",
-	"ctp-dns_gcp-doh-quic-get-ip-1",
-	"ctp-dns_gcp-doh-quic-get-ip-2",
-	"ctp-dns_gcp-quic-ip-1",
-	"ctp-dns_gcp-quic-ip-2"
-,"ctp-dns-ip-gcp-1-tcp",
+	"ctp-dns_home-dot",
+	"ctp-dns_home-dtls",
+	"ctp-dns_home-doh-get",
+	"ctp-dns_home-doh-post",
+	"ctp-dns_home-doh-get-route-dns-raw",
+	"ctp-dns_home-doh-post-route-dns-raw",
+	"ctp-dns_home-quic",
+	"ctp-dns_home-doh-quic-post-ip",
+	"ctp-dns_home-doh-quic-get-ip",
+	"ctp-dns-ip-gcp-1-tcp",
 	"ctp-dns-ip-gcp-1-udp",
 	"ctp-dns-ip-gcp-2-tcp",
 	"ctp-dns-ip-gcp-2-udp",
 	"ctp-dns-ip-home-tcp",
 	"ctp-dns-ip-home-udp"
 ]
-
 timeout = 3
 type = "fail-rotate"
 servfail-failover = true
@@ -93,4 +85,3 @@ ecs-op = "add"
 ecs-prefix4 = 24
 ecs-prefix6 = 64
 
-# CTP INSTALL -- DO NOT REMOVE THIS UNLESS YOU PLAN ON REMOVING INSTALL AND REINSTALLING

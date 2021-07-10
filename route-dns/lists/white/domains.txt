@@ -1,4 +1,6 @@
 .gov
+.monorail-edge.shopifysvc.com
+.publicassets.cdn-apple.com
 .assoc-na.associates-amazon.com
 .fls-na.amazon.com
 .widgets.wp.com
@@ -12,8 +14,8 @@
 .t3.gstatic.com
 .t2.gstatic.com
 .t1.gstatic.com
-.t.gstatic.com
 .t0.gstatic.com
+.t.gstatic.com
 .api.facebook.com
 .b-api.facebook.com
 .whatsmyip.com

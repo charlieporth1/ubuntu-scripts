@@ -28,7 +28,12 @@ export MASTER_DIR=$SCRIPT_DIR/master
 export CONFIG_INSTALLED_STR='# CTP INSTALL -- DO NOT REMOVE THIS UNLESS YOU PLAN ON REMOVING INSTALL AND REINSTALLING'
 
 #source $SCRIPT_DIR/bash_rc_sample
-for env in $( cat /etc/environment ); do export $(echo $env | sed -e 's/"//g') > /dev/null; done
+function load_env() {
+	for env in $( cat /etc/environment ); do export $(echo $env | grep -v '#' | sed -e 's/"//g') > /dev/null; done
+	source /etc/environment
+}
+export -f load_env
+load_env
 
 function isNotInstalled() {
  	local file="$1"
