@@ -13,11 +13,12 @@ fi
 
 if [[ $AUTOMATIC_INSTALL == 'false' ]] || [[ -z $AUTOMATIC_INSTALL ]]; then
 	echo "Coping gravity.db"
+	sudo rm -rf /tmp/gravity.db
 	sync
-	rclone -vvv copy remote:SERVER_DATA/gravity.db /tmp/gravity.db
+	rclone -vvv copy remote:SERVER_DATA/gravity.db /tmp/
 	db_status=`sqlite3 /etc/pihole/gravity.db "PRAGMA integrity_check" | grep -io 'ok'`
 	if [[ -n "$db_status" ]]; then
-		mv /tmp/gravity.db /etc/pihole/gravity.db
+		sudo mv /tmp/gravity.db /etc/pihole/gravity.db
 		sudo bash $PROG/pihole-db-sql-changes.sh
 	else
 		bash $PROG/alert_user.sh "Gravity is croupt please fix asap $HOSTNAME db_status: $db_status"

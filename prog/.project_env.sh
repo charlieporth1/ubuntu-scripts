@@ -35,22 +35,26 @@ function load_env() {
 export -f load_env
 load_env
 
-function isNotInstalled() {
+function checkIsNotInstalled() {
  	local file="$1"
 	if ! [[ -f $file ]]; then
 		touch $file
 	fi
 	if [[ -z `grep -o "$CONFIG_INSTALLED_STR" $file` ]]; then
 		echo true
-		(
-			echo "$CONFIG_INSTALLED_STR" | sudo tee -a $file
-		)>/dev/null
 	else
 		echo false
 	fi
-
 }
-
+function isNotInstalled() {
+ 	local file="$1"
+	local result=`checkIsNotInstalled $file`
+	if [[ "$result" == 'true' ]]; then
+		(
+			echo "$CONFIG_INSTALLED_STR" | sudo tee -a $file
+		)>/dev/null
+	fi
+}
 function check_admin() {
 	set -e
 	if [ "$(id -u)" -eq 0 ]
@@ -91,6 +95,8 @@ function is_user_sure() {
 }
 
 export -f isNotInstalled
+export -f checkIsNotInstalled
 export -f is_user_sure
 export -f check_admin
+
 echo "DONE"

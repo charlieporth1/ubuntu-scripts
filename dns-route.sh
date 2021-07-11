@@ -37,8 +37,9 @@ leftover_fail_rotate_str=""
 replace_str_front="\[groups.ctp-dns-fail-rotate\]\nresolvers = \[\n"
 replace_str_back=",\n$RAW_RESOLVERS\n\]\n$leftover_fail_rotate_str"
 
+IS_SOLID_HOST=`checkIsNotInstalled $ROUTE/$HOSTNAME-resolvers.toml`
 # MASTER
-if [[ "$IS_MASTER" == 'true' ]]; then
+if [[ "$IS_MASTER" == 'true' ]] && [[ $IS_SOLID_HOST == 'true' ]]; then
 
 echo """
 [resolvers.$LOCAL_RESOLVER_NAME-tcp]
@@ -49,13 +50,13 @@ address = \"$REPLACE_IP:53\"
 protocol = \"udp\"
 """ | sudo tee $ROUTE/$HOSTNAME-resolvers.toml
 
-else
+elif [[ $IS_SOLID_HOST == 'true' ]]; then
 	echo "" | sudo tee $ROUTE/$HOSTNAME-resolvers.toml
 fi
 
 IS_AWS=$( [[ `timeout 10 curl -s http://169.254.169.254/latest/meta-data/hostname | grep -o 'ec2.internal'` ]] && echo true || echo false )
 # AWS
-if [[ "$IS_AWS" == 'true' ]]; then
+if [[ "$IS_AWS" == 'true' ]] && [[ $IS_SOLID_HOST == 'true' ]];  then
 	DOMAIN='gcp.ctptech.dev'
 	IP='10.128.0.9'
 	TUNNEL_STR='gcp-tunnel'
@@ -115,11 +116,12 @@ if [[ `isNotInstalled $ROUTE/route-dns.toml` == 'true' ]]; then
 fi
 
 # MASTER
-if [[ "$IS_MASTER" == 'true' ]]; then
+if [[ "$IS_MASTER" == 'true' ]] ; then
 
 	[[ "$IS_AWS" == 'true' ]] && BOOLEAN_LOGIC_RESOLVERS="$GCP_HOME_RESOLVERS" || BOOLEAN_LOGIC_RESOLVERS="$GCP_RESOLVERS"
 
 	echo "" | sudo tee $ROUTE/slave-listeners.toml
+	if [[ $IS_SOLID_HOST == 'true' ]]; then
 
 echo """
 [groups.ctp-dns-group]
@@ -135,7 +137,7 @@ resolvers = [
 ]
 type = \"fastest\"
 """ | sudo tee -a $ROUTE/$HOSTNAME-resolvers.toml
-
+fi
 # ELSE
 else
 
@@ -187,3 +189,4 @@ if [[ `isNotInstalled $ROUTE/$HOSTNAME-resolvers.toml` == 'true' ]]; then
 	perl -0777 -i -pe 's/^"ctp/\t"ctp/gm' $ROUTE/$HOSTNAME-resolvers.toml
 	echo "# NO CHANGES" | sudo tee -a $ROUTE/$HOSTNAME-resolvers.toml
 fi
+perl -0777 -i -pe 's/^"ctp/\t"ctp/gm' $ROUTE/$HOSTNAME-resolvers.toml

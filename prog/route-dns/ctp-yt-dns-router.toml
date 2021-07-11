@@ -13,3 +13,4 @@ routes = [
 # "ctp-dns-group"
 type = "fastest"
 resolvers = [ "ctp-dns-group" ] 
+# CTP INSTALL -- DO NOT REMOVE THIS UNLESS YOU PLAN ON REMOVING INSTALL AND REINSTALLING
