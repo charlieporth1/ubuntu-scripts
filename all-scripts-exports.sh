@@ -5,6 +5,7 @@ source $PROG/populae-log.sh
 PIHOLE_LOG=$LOG/pihole.log
 FILE_NAME=`echo $SCRIPT | rev | cut -d '.' -f 2  | rev`
 isRunning=`bash $PROG/process_count.sh $FILE_NAME $THIS_PID`
+
 if [[ -z "$ENV" ]] && [[ -z `echo "$ARGS" | grep -Eio '(\-\-|\-)(e|env)'` ]]; then
 	export ENV='PROD'
 
@@ -25,7 +26,7 @@ fi
 [[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(v|verbose)'` ]] && export VERBOSE=true || export VERBOSE=false
 [[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(t|test)'` ]] && export TEST=true || export TEST=false
 
-[[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(co|mo|concurrent\-overrride|override|manaul|manual\-override|over)'` ]] && export CONCURENT_OVERRIDE=true || export CONCURENT_OVERRIDE=false
+[[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(co|mo|concurrent\-overrride|override|manual|manual\-override|over)'` ]] && export CONCURENT_OVERRIDE=true || export CONCURENT_OVERRIDE=false
 
 shopt -s expand_aliases
 SCRIPT=`basename $0 | rev | cut -d '/' -f 1 | rev`
@@ -233,10 +234,10 @@ function IF_RESTART() {
 
         local logStr=`tail -6 $PIHOLE_LOG`
         local isFailedLogSearch=`echo "$logStr" | grep -io "$FAILED_STR"`
-
+	local isSystemInactive=`systemctl-inbetween-status pihole-FTL.service`
 
 	WHAT_FOR_ACTIVE_PROCESS pihole-FTL.service
-	if [[ -z "$isSystemInactive" ]]; then
+	if [[ "$isSystemInactive" == 'false' ]]; then
         	if [[ -n "$is_failed_ftl_status" ]]; then
                 	log "RESTART_FTL"
                		RESTART_PIHOLE

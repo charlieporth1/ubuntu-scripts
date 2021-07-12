@@ -63,7 +63,7 @@ else
 	if [[ -z "$dns_local_test" ]]; then
 		pihole_bin=$( [[ -n `which pihole` ]] && which pihole || echo '/usr/local/bin/pihole')
 		echo "Failed restarting pihole_bin :$pihole_bin:"
-		if [[ -f "$pihole_bin" ]] && [[ $(systemctl-inbetween-status pihole-FTL.service) == false ]]; then
+		if [[ -f "$pihole_bin" ]] && [[ $(systemctl-inbetween-status pihole-FTL.service) == 'false' ]]; then
 			echo "restarting pihole"
 			sudo chown -R dnsmasq /var/cache/dnsmasq
 			pihole restartdns
@@ -71,7 +71,7 @@ else
 			IF_RESTART
 			IF_RESTART
 			sleep $WAIT_TIME
-		elif [[ $(systemctl-inbetween-status ctp-dns.service) == false ]];  then
+		elif [[ $(systemctl-inbetween-status ctp-dns.service) == 'false' ]];  then
 	                echo "restarting ctp-dns"
 			systemctl daemon-reload
 			systemctl restart ctp-dns

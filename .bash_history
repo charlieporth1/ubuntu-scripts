@@ -1,303 +1,3 @@
-sudo ip route list 
-sudo ip route list  numbers
-sudo ip route list  -l
-sudo ip -l route list  
-sudo ip route list  
-sudo ip route list   del
-sudo ip route del 6
-sudo ip route del 4
-sudo ip route del 192.168.44.0/24 dev eth
-sudo ip route del 192.168.44.0/24 
-sudo ip route list   del
-sudo ip route list   
-ifconfig
-ping 192.168.44.1
-sudo bash /mnt/HDD/Programs/dhcp_fix.sh 
-systemctl status
-systemctl status all
-systemctl status ctp-dns.service 
-sudo iptables -L
-sudo iptables --help
-sudo iptables -X
-sudo iptables -F
-sudo iptables -L
-sudo iptables -L | grep Chain
-sudo iptables -L
-sudo iptables -L RETURN     all  --  anywhere
-sudo iptables -D RETURN     all  --  anywhere
-sudo iptables --help
-sudo iptables -D 
-sudo iptables -h
-sudo iptables --help
-sudo iptables -L
-sudo iptables -Z f2b-ctp-dns-1-block-udp
-sudo iptables -Z f2b-ctp-dns-1-block-tcp
-sudo iptables -L
-sudo iptables --help
-sudo iptables -S
-sudo iptables -D -A f2b-ctp-dns-1-block-udp -j RETURN
-sudo iptables -D  f2b-ctp-dns-1-block-udp -j RETURN
-sudo iptables -D  f2b-ctp-dns-1-block-tcp -j RETURN
-sudo iptables -L
-sudo ipset
-sudo io
-sudo ip
-sudo ip route
-sudo nano /etc/rc.local
-sudo ifconfig
-sudo nano /mnt/HDD/Programs/start-config.sh
-sudo nano /mnt/HDD/Programs/ctp-dns.service 
-ping 192.168.44.1
-sudo ip
-sudo iptables
-sudo iptables --help
-sudo ip
-ping 192.168.44.1
-ping www.google.com
-pihole -t
-cd Pihole-Slave-Install/
-sudo git pull
-sudo nano /home/ubuntuserver/Programs/route-dns/back-up-resolvers.toml 
-sudo nano /home/ubuntuserver/Programs/route-dns/ubuntu-server-resolvers.toml 
-sudo naano /home/ubuntuserver/Programs/route-dns/ctp-yt-dns-router.toml 
-sudo nano /home/ubuntuserver/Programs/route-dns/ctp-yt-dns-router.toml 
-sudo git pull
-sudo git stash && sudo git pull && sudo bash setup/dns-route.sh
-sudo git pull
-pihole 
-cd Pihole-Slave-Install/
-sudo git pull
-sudo git stash && sudo git pull && sudo bash setup/dns-route.sh
-systemctl status ctp-dns
-sudo git stash && sudo git pull && sudo bash setup/dns-route.sh
-systemctl status ctp-dns
-sudo su
-sudo git stash && sudo git pull && sudo bash setup/dns-route.sh
-sudo su
-sudo git stash && sudo git pull && sudo bash setup/dns-route.sh
-sudo git pull
-sudo git stash && sudo git pull && sudo bash setup/dns-route.sh
-systemctl status ctp-dns
-sudo su
-systemctl status ctp-dns
-sudo systemctl restart ctp-dns
-systemctl status ctp-dns
-sudo fail2ban-client status ctp-dns-1-block | grep 174.53 
-sudo fail2ban-client status pihole-dns | grep 174.53 
-sudo fail2ban-client status pihole-dns-1-block | grep 174.53 
-systemctl status ctp-dns
-sudo git pull
-sudo fail2ban-client status ctp-dns-1-block | grep -E '^174'
-sudo fail2ban-client status ctp-dns-1-block | grep -E '^172'
-sudo fail2ban-client status pihole-dns-1-block | grep -E '^172'
-sudo fail2ban-client status pihole | grep -E '^172'
-sudo fail2ban-client status pihole-dns | grep -E '^172'
-sudo fail2ban-client status pihole-dns | grep -E '^174'
-pihole -t
-cd Pihole-Slave-Install/
-ls
-dig @127.0.0.1 -p 5053 www.google.com
-sudo nano  /etc/systemd/resolved.conf
-sudo ./update.sh --apply-config
-systemctl status ctp-dns
-pihole status
-systemctl status pihole-FTL
-sudo fail2ban-client status ctp-dns-1-block | grep -o 172.58.83.158
-sudo fail2ban-client status pihole-dns-1-block | grep -o 172.58
-sudo fail2ban-client status pihole-dns-1-block | grep -o 172.58cd Pihole-Slave-Install/
-cd Pihole-Slave-Install/
-pihole status
-dig @127.0.0.1 -p 5053 www.google.com
-sudo rm -rf /etc/unbound/unbound.conf.d/01-auth-rec-server.conf 
-dig @127.0.0.1 -p 5053 www.google.com
-sudo rm -rf $unbconf/*.conf
-sudo git pull && sudo ./copy_config.sh
-sudo rm -rf $unbconf/*.conf
-sudo git pull && sudo ./copy_config.sh
-dig @127.0.0.1 -p 5053 www.google.com
-sudo systemctl restart unbound
-dig @127.0.0.1 -p 5053 www.google.com
-sudo su
-sudo crontab -e
-gcloud compute instances stop --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521" && gcloud compute instances start  --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521"
-sudo crontab -e
-sudo gitp ull
-sudo git pull
-htop
- …*#…*
-cd Pihole-Slave-Install/
-gcloud compute instances stop --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521" && gcloud compute instances start  --zone "us-central1-a" "ctp-vpn" --project "galvanic-pulsar-284521"
-pihole -t
-pihole -tn
-systemctl status ctp-dns
-cd Pihole-Slave-Install/
-sudo git pull
-exit
-cd Pihole-Slave-Install/
-sudo git pull
-sudo ./copy_config.sh 
-systemctl status ctp-dns
-cd Pihole-Slave-Install/
-sudo git pull
-sudo systemctl restart ctp-dns
-sudo ./copy_config.sh 
-sudo git pull
-sudo systemctl restart ctp-dns
-sudo nano $sites/doh
-sudo nano $sites/doh.bk
-ctp-dns.sh -qbl 
-sudo git pull
-systemctl restart ctp-dns
-sudo systemctl restart ctp-dns
-ctp-dns.sh -qbl 
-pihole -q opfcaptcha-prod.s3.amazonaws.com
-pihole -t
-cd Pihole-Slave-Install/
-sudo git pull
-exit
-ctp-dns.sh -qbl
-exit
-cd Pihole-Slave-Install/
-ctp-dns.sh -qbl
-sudo git pull
-sudo git stash && sudo git pull && sudo bash /home/ubuntuserver/Programs/route-dns.toml 
-sudo git stash && sudo git pull && sudo bash /home/ubuntuserver/Programs/dns-route.sh
-ll $PROG/dns-route.sh
-ls 
-sudo git pull
-pihole -w redirector.googlevideo.com
-sudo nano setup/cron.sh 
-sudo git pull && sudo ./copy_config.sh 
-ll /home/ubuntuserver/Programs/copy_gravity.sh
-/home/ubuntuserver/Programs/copy_gravity.sh
-sudo bash /home/ubuntuserver/Programs/copy_gravity.sh
-pihole -q redirector.googlevideo.com
-dig @home.ctptech.dev redirector.googlevideo.com
-pihole -w redirector.googlevideo.com
-dig @home.ctptech.dev redirector.googlevideo.com
-pihole --regex-white redirector.googlevideo.com
-pihole --wild-white redirector.googlevideo.com
-pihole --white-wild redirector.googlevideo.com
-dig @home.ctptech.dev redirector.googlevideo.com
-sudo git pull
-dig @home.ctptech.dev redirector.googlevideo.com
-ctp-dns.sh 
-ctp-dns.sh -qbl
-dig @home.ctptech.dev redirector.googlevideo.com
-systemctl status nginx
-curl 'https://dns.ctptech.dev/dns-query'
-htop'
-htop
-sudo nano $sites/doh.bk
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo git pull
-sudo tail -f /var/log/nginx/doh-*.log
-sudo git pull
-dig dns.ctptech.dev
-sudo bash /home/ubuntuserver/Programs/copy_certs.sh
-sudo git pull
-sudo git stash && sudo git pull && sudo ./apply_config.sh 
-htop
-sudo git stash && sudo git pull && sudo ./apply_config.sh 
-sudo cgexec -g cpu:fourthcpulimied -g memory:256MBRam --sticky fail2ban-server
-htop
-systemctl status fail2ban.service 
-htop
-sudo nano /lib/systemd/system/fail2ban.service
-sudo systemctl edit  /lib/systemd/system/fail2ban.service
-sudo systemctl edit  /lib/systemd/system/fail2ban.service --force --full
-sudo systemctl edit  fail2ban.service 
-sudo systemctl daemon-reload
-systesudo systemctl restart fail2ban
-htop
-sudo nano $sites/doh.bk
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo systemctl restart nginx
-sudo nginx -t
-sudo nano /etc/nginx/sites-enabled/home.conf 
-sudo nano /etc/nginx/sites-enabled/doh
-sudo nano /etc/nginx/sites-enabled/doh.bk
-sudo nginx -t
-sudo nginx --version
-sudo nginx -version
-sudo nano /etc/nginx/conf.d/99-mod-client-buffers.conf 
-sudo nano /etc/nginx/nginx.conf
-cd Pihole-Slave-Install/
-sudo git pull
-sudo git pull && sudo ./apply_config.sh 
-sudo nano /home/ubuntuserver/Programs/route-dns/*.toml
-pihole -t
-cd Pihole-Slave-Install/
-sudo git pull
-systemctl status ctp-dns.service 
-sudo su
-sudo git pull
-systemctl status ctp-dns.service 
-sudo su
-cd Pihole-Slave-Install/
-sudo git pull
-ll /home/charlieporth1_gmail_com/Programs/route-dns/lists/
-sudo mkdir -p /home/charlieporth1_gmail_com/Programs/route-dns/lists/
-sudo git pull
-cd Pihole-Slave-Install/
-sudo git pull
-sudo git pull && sudo ./apply_config.sh 
-sudo update.sh --aoc
-sudo ./update.sh --aoc
-sudo prog/copy_certs.sh
-ll ~/ssl
-ls ~/ssl
-sudo git pull
-sudo bash prog/copy_certs.sh
-ll /etc/nginx/ssl
-ls -l --color=auto /etc/nginx/ssl
-ls -l --color=auto /etc/nginx/ssl
-ls  --color=auto /etc/nginx/ssl
-ll ~/ss;
-ll ~/ssl
-ls ~/ssl
-nano prog/copy_c
-nano prog/copy_certs.sh
-sudo nano prog/copy_certs.sh
-sudo bash prog/copy_certs.sh
-sudo nano prog/copy_certs.sh
-sudo bash prog/copy_certs.sh
-sudo nano prog/copy_certs.sh
-gcloud compute ssh $MASTER_MACHINE         --project "$GCLOUD_PROJECT"         --zone "$GCLOUD_ZONE" -- "sudo bash /home/$PERONAL_USR/Programs/cert_manager.sh && mkdir /tmp/ssl/ && sudo cp -rfvL $CERT_ROOT_DIR/* /tmp/ssl/ && sudo chown -R $PERONAL_USR:$PERONAL_USR /tmp/ssl  && sudo rm -rf /tmp/ssl/{boot,bin}"
-HOST=vpn.ctptech.dev
-CERT_ROOT_DIR=/etc/letsencrypt/live/$HOST
-MASTER_MACHINE="ctp-vpn"
-GCLOUD_PROJECT="galvanic-pulsar-284521"
-GCLOUD_ZONE="us-central1-a"
-PERONAL_USR=charlieporth1_gmail_com
-gcloud compute ssh $MASTER_MACHINE         --project "$GCLOUD_PROJECT"         --zone "$GCLOUD_ZONE" -- "sudo bash /home/$PERONAL_USR/Programs/cert_manager.sh && mkdir /tmp/ssl/ && sudo cp -rfvL $CERT_ROOT_DIR/* /tmp/ssl/ && sudo chown -R $PERONAL_USR:$PERONAL_USR /tmp/ssl  && sudo rm -rf /tmp/ssl/{boot,bin}"
-gcloud compute ssh $MASTER_MACHINE         --project "$GCLOUD_PROJECT"         --zone "$GCLOUD_ZONE" -- "sudo bash /home/$PERONAL_USR/Programs/cert_manager.sh && mkdir  -p /tmp/ssl/ && sudo cp -rfvL $CERT_ROOT_DIR/* /tmp/ssl/ && sudo chown -R $PERONAL_USR:$PERONAL_USR /tmp/ssl  && sudo rm -rf /tmp/ssl/{boot,bin}"
-ll /etc/letsencrypt/live/vpn.ctp
-gcloud compute ssh $MASTER_MACHINE         --project "$GCLOUD_PROJECT"         --zone "$GCLOUD_ZONE" -- "sudo bash /home/$PERONAL_USR/Programs/cert_manager.sh && mkdir  -p /tmp/ssl/ && sudo cp -rfL $CERT_ROOT_DIR/* /tmp/ssl/ && sudo chown -R $PERONAL_USR:$PERONAL_USR /tmp/ssl  && sudo rm -rf /tmp/ssl/{boot,bin}"
-gcloud compute ssh $MASTER_MACHINE         --project "$GCLOUD_PROJECT"         --zone "$GCLOUD_ZONE" -- "sudo bash /home/$PERONAL_USR/Programs/cert_manager.sh && mkdir  -p /tmp/ssl/ && sudo cp -rfL \"$CERT_ROOT_DIR/*\" /tmp/ssl/ && sudo chown -R $PERONAL_USR:$PERONAL_USR /tmp/ssl  && sudo rm -rf /tmp/ssl/{boot,bin}"
-sudo ll etc/letsencrypt/live/vpn.ctptech.dev/
-gcloud compute ssh $MASTER_MACHINE         --project "$GCLOUD_PROJECT"         --zone "$GCLOUD_ZONE" -- "mkdir  -p /tmp/ssl/ && sudo cp -rfL \"$CERT_ROOT_DIR/" /tmp/ssl/ && sudo chown -R $PERONAL_USR:$PERONAL_USR /tmp/ssl  && sudo rm -rf /tmp/ssl/{boot,bin}"
-gcloud compute ssh $MASTER_MACHINE         --project "$GCLOUD_PROJECT"         --zone "$GCLOUD_ZONE" -- "mkdir  -p /tmp/ssl/ && sudo cp -rfL $CERT_ROOT_DIR/ /tmp/ssl/ && sudo chown -R $PERONAL_USR:$PERONAL_USR /tmp/ssl  && sudo rm -rf /tmp/ssl/{boot,bin}"
-sudo git pull
-sudo git stash && sudo git pull
-sudo bash prog/copy_certs.sh
-systemctl status ctp-dns
-systemctl status ctp-dns
-sudo su
-ll /etc/nginx/ssl
-ls /etc/nginx/ssl
-sudo nano prog/copy_certs.sh
-gcloud compute scp $MASTER_MACHINE:/tmp/ssl/{,localhost_certs,test_data,dnscrypt} ~/ssl/         --scp-flag="-r" --project "$GCLOUD_PROJECT" --zone "$GCLOUD_ZONE"
-sudo nano prog/copy_certs.sh
-gcloud compute scp $MASTER_MACHINE:/tmp/ssl/{,localhost_certs,test_data,dnscrypt} ~/ssl/         --scp-flag="-r" --project "$GCLOUD_PROJECT" --zone "$GCLOUD_ZONE"
-ll ~/ssl
-
-mkdir -p ~/
-mkdir -p ~/ssl
-gcloud compute scp $MASTER_MACHINE:/tmp/ssl/{,localhost_certs,test_data,dnscrypt} ~/ssl/         --scp-flag="-r" --project "$GCLOUD_PROJECT" --zone "$GCLOUD_ZONE"
-gcloud compute scp $MASTER_MACHINE:/tmp/ssl/{,localhost_certs,test_data,dnscrypt} ~/ssl/         --scp-flag="-r" --project "$GCLOUD_PROJECT" --zone "$GCLOUD_ZONE"
-sudo git stash && sudo git pull && sudo $PROG/copy_certs.sh
-ll ~/ssl
 systemctl status ctp-dns
 systemctl status ctp-dns
 systemctl status ctp-dns
@@ -500,3 +200,313 @@ exit
 exit
 sudo nano /etc/ssh/sshd_config
 exit
+exit
+cd Pihole-Slave-Install/
+ls
+sudo nano /etc/cron.d/ubuntu-server-health_check 
+sudo git pull
+ssh-keygen --help
+ssh-keygen -t ed25519
+ssh-copy-id gcp.ctptech.dev.local 
+nano ~/.ssh/config 
+ls ~/.ssh
+nano ~/.ssh/config 
+ssh-copy-id gcp.ctptech.dev.local 
+nano ~/.ssh/config 
+ssh-copy-id gcp.ctptech.dev.local 
+nano ~/.ssh/config 
+host gcp.ctptech.dev.local
+ping gcp.ctptech.dev.local
+host gcp.ctptech.dev.local
+ssh-copy-id gcp.ctptech.dev.local 
+nano ~/.ssh/config 
+ssh-copy-id gcp.ctptech.dev.local 
+sudo ssh-copy-id gcp.ctptech.dev.local 
+sudo cp -rf ~/.ssh/config /root/.ssh
+sudo ssh-copy-id gcp.ctptech.dev.local 
+ssh-copy-id --help
+sudo ssh-copy-id gcp.ctptech.dev.local  -i ~/.ssh/id_ed25519.pub 
+sudo ssh-copy-id -i ~/.ssh/id_ed25519.pub  charlieporth1_gmail_com@gcp.ctptech.dev.local  
+sudo nano /etc/ssh/sshd_config.d/ctp.conf 
+ls
+exit
+exit
+htop
+sudo nano /home/ubuntuserver/Programs/Hourly.sh 
+ps -aux | grep 'pm.stal\|test_\|pm.hea\|set_fail2ban\|health' | grep -v 'grep' | awk '{print $2}' | xargs sudo kill -9
+sudo nano /home/ubuntuserver/Programs/Hourly.sh 
+sudo crontab -e
+sudo nano /home/ubuntuserver/Programs/Hourly.sh 
+sudo crontab -e
+sudo nano /home/ubuntuserver/Programs/Hourly.sh 
+sudo crontab -e
+sudo nano /home/ubuntuserver/Programs/Hourly.sh 
+sudo crontab -e
+sudo nano /home/ubuntuserver/Programs/Hourly.sh 
+sudo crontab -e
+htop
+sudo git pull
+sudo ./update.sh --quick-update
+systemctl status ctp-dns.service 
+htop
+systemctl status nginx
+systemctl status doh-server.service 
+/usr/local/bin/doh-server -conf /etc/dns-over-https/doh-server.conf
+sudo bash /home/ubuntuserver/Programs/doh_proxy_json.sh 
+/usr/local/bin/doh-server -conf /etc/dns-over-https/doh-server.conf
+systemctl status doh-server.service 
+systemctl status nginx
+sudo nginx -t
+sudo nano  /etc/nginx/sites-enabled/default.conf
+sudo ./update.sh --quick-update
+pihole -t
+exit
+cd Pihole-Slave-Install/
+pihole -q www.ads.com
+sudo visudo
+pihole -w
+pihole -w www.ads.com
+pihole -b www.ads.com
+pihole -q www.ads.com
+sudo fail2ban-client set ctp-dns-1-block banip 72.46.5.117
+sudo git pull
+sudo bash /home/ubuntu/Programs/set_fail2ban-defaults.sh
+sudo bash /home/ubuntuserver/Programs/set_fail2ban-defaults.sh
+sudo apt install ipset
+sudo bash /home/ubuntuserver/Programs/set_fail2ban-defaults.sh
+sudo git pull
+sudo bash /home/ubuntuserver/Programs/set_fail2ban-defaults.sh
+sudo fail2ban-client set ctp-dns-1-block banip 72.46.5.117
+htop
+sudo iptables -S
+time sudo fail2ban-client set ctp-dns-1-block banip 72.46.5.117
+sudo apt purge fail2ban
+sudo apt purge fail2ban && sudo apt install -y fail2ban
+sudo apt purge -y fail2ban && sudo apt install -y fail2ban
+sudo git pull
+time sudo fail2ban-client set ctp-dns-1-block banip 72.46.5.117
+sudo fail2ban-client set ctp-dns-1-block banip 72.46.5.117
+sudo apt install fail2ban
+sudo git pull && sudo apt install fail2ban
+sudo git pull
+time sudo fail2ban-client set ctp-dns-1-block banip 72.46.5.117
+dnsmasq-test
+time sudo fail2ban-client set ctp-dns-1-block banip 72.46.5.117
+sudo git pull
+sudo crontab -e
+sudo nano $crond/ubuntu-server-health_check 
+sudo nano $prog/Hourly.sh 
+sudo nano $prog/Hourly.sh 
+ps -aux | grep 'pm.stal\|test_\|pm.hea\|set_fail2ban\|health' | grep -v 'grep' | awk '{print $2}' | sudo xargs kill -9
+ps -aux | grep 'pm.stal\|test_\|pm.hea\|set_fail2ban\|health' | grep -v 'grep' | awk '{print $2}' | sudo xargs kill -9
+ps -aux | grep 'pm.stal\|test_\|pm.hea\|set_fail2ban\|health' | grep -v 'grep' | awk '{print $2}' | sudo xargs kill -9
+sudo nano /etc/ssh/sshd_config.d/ctp.conf 
+sudo nano /etc/ssh/sshd_config.d/ctp.conf 
+sudo nano /etc/ssh/sshd_config.d/ctp.conf 
+sudo nano /etc/ssh/sshd_config
+sudo nano /etc/ssh/sshd_config
+sudo nano /etc/ssh/sshd_config.d/infosec.conf
+sudo nano /etc/ssh/sshd_config.d/01-infosec.conf 
+sudo systemctl restart sshd
+sudo nano /etc/ssh/sshd_config.d/01-infosec.conf 
+sudo nano /etc/ssh/sshd_config.d
+sudo nano /etc/ssh/sshd_config.
+sudo nano /etc/ssh/sshd_config
+ø
+sudo nano /etc/ssh/sshd_config
+sudo nano /etc/ssh/sshd_config.d/01-infosec.conf 
+systemctl restart sshd
+sudo systemctl restart sshd
+sudo nano /etc/ssh/sshd_config.d/01-infosec.conf 
+sudo nano /etc/ssh/sshd_config.d/01-infosec.conf 
+sudo nano /etc/ssh/sshd_config.d/01-infosec.conf 
+systemctl restart sshd
+sudo systemctl restart sshd
+sudo nano /etc/ssh/sshd_config.d/01-infosec.conf 
+sudo reboot 
+cd Pihole-Slave-Install/
+sudo git pull
+time sudo fail2ban-client set sshd banip 72.46.5.117
+sudo git pull
+sudo  git pull
+sudo ./copy_config.sh 
+sudo systemctl restart fail2ban.service 
+sudo systemctl daemon-reload
+sudo systemctl restart fail2ban.service 
+systemctl status nginx
+sudo systemctl restart nginx
+sudo nginx  -t
+sudo ./copy_config.sh 
+sudo nginx  -t
+sudo nano /etc/nginx/sites-enabled/default.conf
+sudo nano $snippets/ssl_auth.conf
+sudo nano /etc/nginx/sites-enabled/default.conf
+sudo nginx  -t
+sudo nano /etc/nginx/sites-enabled/default.conf
+sudo nano $snippets/ssl_auth.conf
+sudo nginx  -t
+sudo git pull && sudo ./copy_config.sh 
+sudo nano /home/ubuntuserver/Programs/updates.sh
+cd Pihole-Slave-Install/
+go get -u -v github.com/folbricht/routedns/cmd/routedns
+sudo su
+sudo ./update.sh --quick-update
+sudo nano /home/ubuntuserver/Programs/route-dns/route-dns.toml 
+sudo rm -rf /etc/systemd/system/fail2ban.service.d/*
+cd Pihole-Slave-Install/
+sudo git pull
+sudo ./update.sh 
+ls
+ls
+ls
+sudo ./update.sh --aoc
+sudo git pull
+ctp-dns.sh -qbl
+sudo git pull
+systemctl status ctp-dns
+systemctl status ctp-dns
+sudo ./update.sh --quick-update
+sudo nano $route/route-dns.toml 
+sudo ./update.sh --aoc
+sudo nginx -t
+sudo ./update.sh --aoc
+sudo ./update.sh --aoc --no-restart
+pihole -t
+cd Pihole-Slave-Install/
+systemctl statud ctp-dns
+systemctl status ctp-dns
+sudo git stash && sudo git pull && sudo setup/dns-route.sh
+sudo nano /home/ubuntuserver/Programs/route-dns/route-dns.toml 
+sudo git stash && sudo git pull && sudo setup/dns-route.sh
+sudo nano /home/ubuntuserver/Programs/route-dns/route-dns.toml 
+sudo git stash && sudo git pull && sudo setup/dns-route.sh
+sudo nano /home/ubuntuserver/Programs/route-dns/route-dns.toml 
+sudo su
+systemctl status ctp-dns
+sudo su
+sudo git stash && sudo git pull && sudo setup/dns-route.sh
+sudo su
+sudo git stash && sudo git pull && sudo setup/dns-route.sh
+sudo su
+sudo systemctl restart ctp-dns
+sudo su
+systemctl status ctp-dns.service 
+ctp-dns.sh -qbl
+sudo fail2ban-client status pihole-dns-1-block
+systemctl status nginx
+cd Pihole-Slave-Install/
+systemctl status ctp-dns
+cd Pihole-Slave-Install/
+systemctl status ctp-dns
+systemctl status doh-server.service 
+sudo ./update.sh --aoc
+sudo ./update.sh --quick-updat
+ctp-dns.sh -qbl
+ctp-dns.sh
+ctp-dns.sh -qbl
+sudo ./update.sh --quick-update
+dig footprints-pa.googleapis.com
+dig userlocation.googleapis.com 
+systemctl status ctp-dns
+ctp-dns.sh -qbl
+ctp-dns.sh -qbl
+cd ..
+htop
+unzip Tinker_Edge_T-Mendel-Day-V2.0.2-20200701.zip
+cd Tinker_Edge_T-Mendel-Day-V2.0.2-20200701/
+ls
+ctp-dns.sh -qbl
+sudo ./flash.sh 
+ctp-dns.qbl
+ctp-dns.sh 
+ctp-dns.sh -qbl
+c
+sudo bash /home/ubuntuserver/Programs/test_dot.sh 
+systemctl status ctp-dns
+sudo su
+cd ..
+cd Pihole-Slave-Install/
+sudo  su
+systemctl status ctp-dns
+sudo su
+sudo nano /home/ubuntuserver/Programs/route-dns/ubuntu-server-resolvers.toml 
+journalctl -xe
+sudo nano /home/ubuntuserver/Programs/route-dns/ubuntu-server-resolvers.toml 
+sudo su
+sudo nano /home/ubuntuserver/Programs/route-dns/ubuntu-server-resolvers.toml 
+sudo su
+sudo ./update.sh --quick-update
+sudo nano /home/ubuntuserver/Programs/route-dns/ubuntu-server-resolvers.toml 
+systemctl status ctp-dns
+sudo su
+sudo ./update.sh --quick-updatr
+pihole restartdns
+sudo ./update.sh --quick-update
+systemctl status ctp-dns
+sudo ./update.sh --quick-update
+sudo su
+sudo ./update.sh --quick-update
+systemctl status nginx
+pihole status 
+pihole restartdns
+htop
+pihole status 
+pihole -t
+cd Pihole-Slave-Install/
+ sudo git stash && sudo git pull && sudo setup/dns-route.sh
+sudo git stash && sudo git pull && sudo setup/dns-route.sh
+sudo git stash -ff
+sudo git stash clear
+sudo nano /home/ubuntuserver/Programs/route-dns/ubuntu-server-resolvers.toml 
+sudo git stash clear
+sudo git stash drop
+sudo git stash push
+sudo nano /home/ubuntuserver/Programs/route-dns/ubuntu-server-resolvers.toml 
+sudo git stash push
+sudo nano /home/ubuntuserver/Programs/route-dns/ubuntu-server-resolvers.toml 
+sudo git stahs apply
+sudo git stash 
+sudo git stash apply
+sudo nano /home/ubuntuserver/Programs/route-dns/ubuntu-server-resolvers.toml 
+sudo git stash apply
+sudo nano /home/ubuntuserver/Programs/route-dns/ubuntu-server-resolvers.toml 
+sudo git stash apply
+sudo nano /home/ubuntuserver/Programs/route-dns/ubuntu-server-resolvers.toml 
+sudo git stash 
+sudo nano /home/ubuntuserver/Programs/route-dns/ubuntu-server-resolvers.toml 
+sudo git stash && sudo git pull && sudo setup/dns-route.sh
+sudo nano /home/ubuntuserver/Programs/route-dns/ubuntu-server-resolvers.toml 
+sudo nano /home/ubuntuserver/Programs/route-dns/ubuntu-server-resolvers.toml 
+systemctl status ctp-dns
+exit
+sudo git pull
+pihole status
+sudo git pull
+sudo bash $prog/test_dns.sh
+sudo bash $prog/test_dns.sh --mo
+htop
+killall cpulimit
+sudo killall cpulimit
+cd Pihole-Slave-Install/
+sudo nano /home/ubuntuserver/Programs/white-regex-yt.sh
+pihole -q r5.sn-uhvcpax0n5-vgql.googlevideo.com
+sudo bash /home/ubuntuserver/Programs/copy_gravity.sh 
+sudo bash /home/ubuntuserver/Programs/copy_gravity.sh
+sudo nano/home/ubuntuserver/Programs/copy_gravity.sh
+sudo nano /home/ubuntuserver/Programs/copy_gravity.sh
+sudo git pull
+sudo bash /home/ubuntuserver/Programs/copy_gravity.sh
+sudo nano /var/cache/ctp-dns/*
+exit
+cd Pihole-Slave-Install/
+systemctl status doh-server.service \
+sudo rm -rf /etc/cron.d/ubuntu-server-*
+sudo tail -f /var/log/nginx/doh*.log
+cd Pihole-Slave-Install/
+sudo git pull
+exit
+pihole -c -j
+sudo bash /home/ubuntuserver/Programs/copy_gravity.sh 
+nano  /home/ubuntuserver/Programs/copy_gravity.sh
+cd Pihole-Slave-Install/
+sudo ./update.sh --aoc
