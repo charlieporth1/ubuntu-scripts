@@ -50,3 +50,4 @@ curl -Ls 'https://raw.githubusercontent.com/ipinfo/cli/master/grepip/deb.sh' | b
 if [[ -f /home/charlieporth1_gmail_com/ble.sh/out/ble.sh ]]; then
 	bash /home/charlieporth1_gmail_com/ble.sh/out/ble.sh --update
 fi
+sudo update-ca-certificates

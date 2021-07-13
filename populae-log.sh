@@ -196,8 +196,8 @@ INTERFACE_COUNT=`ifconfig | grep -o 'lo[0-9]' | grep -o '[0-9]' | sort -r | sed 
 if [[ "$INTERFACE_COUNT" != "8" ]] && [[ -n "$INTERFACE_COUNT" ]]; then
 	echo "INTERFACE_COUNT :: $INTERFACE_COUNT != 8"
 	echo "Interface not counted"
-	set -e
-	exit 1
+#	set -e
+#	exit 1
 fi
 counterForInterfaceCycling=0
 function COUNTER() {

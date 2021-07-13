@@ -38,6 +38,7 @@ COUNT_ACTION() {
 		echo "Removing $LOCK_FILE file because $COUNT -ge $max"
 		sudo rm -rf $LOCK_FILE
 	fi
+
         if [[ $COUNT -ge 3 ]] && [[ $COUNT -lt $max ]]; then
                 echo "SENDING EMAIL COUNT IS GREATE THAN OR EQUAL TO"
                 bash $PROG/alert_user.sh "Failure Alert" "$FN Failed $COUNT times on $HOSTNAME; Service ${SERVICE}"
@@ -62,6 +63,9 @@ if [[ -f $LOCK_FILE ]]; then
 	COUNT_ACTION $fn $(getFailCount $fn)
         echo "LOCK FILE :: COUNT $(getFailCount $fn)"
         exit 1
+else
+        fn="$LOCK_FILE"
+	writeLog $fn 0
 fi
 
 
@@ -176,8 +180,8 @@ fi
 fn='unbound.service'
 if [[ `systemctl-exists $fn` = 'true' ]] && [[ `systemctl-inbetween-status $fn` == 'false' ]]; then
 	echo "systemd process $fn exists"
-	unbound_status=`systemctl status $fn | grep  Active: | grep -io "$FAILED_STR"`
-	if { [[ -z "$unbound_port" ]]; } || [[ -n "$unbound_status" ]] ; then
+	service_status=`systemctl is-failed $fn | grep -io "$FULL_FAIL_STR"`
+	if { [[ -z "$unbound_port" ]]; } || [[ -n "$service_status" ]] ; then
 		echo "systemd process $fn failed restarting"
 	        echo $fn
 	        systemctl restart $fn
