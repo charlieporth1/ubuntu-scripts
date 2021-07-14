@@ -19,6 +19,7 @@ sudo bash $PROG/copy_certs.sh
 sudo bash $PROG/update.unbound-config.sh
 sudo bash $PROG/add_cache_interfaces.sh
 sudo bash $PROG/pihole-db-sql-changes.sh
+sudo bash $PROG/copy_gravity.sh &
 
 systemctl restart ctp-dns
 systemctl restart doh-server

@@ -193,8 +193,8 @@ EXTRA_DOMAINS_LIST=(
 
 INTERFACE_COUNT=`ifconfig | grep -o 'lo[0-9]' | grep -o '[0-9]' | sort -r | sed -n '1p'`
 
-if [[ "$INTERFACE_COUNT" != "8" ]] && [[ -n "$INTERFACE_COUNT" ]]; then
-	echo "INTERFACE_COUNT :: $INTERFACE_COUNT != 8"
+if [[ "$INTERFACE_COUNT" != "9" ]] && [[ -n "$INTERFACE_COUNT" ]]; then
+	echo "INTERFACE_COUNT :: $INTERFACE_COUNT != 9"
 	echo "Interface not counted"
 #	set -e
 #	exit 1

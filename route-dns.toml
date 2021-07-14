@@ -33,7 +33,7 @@ routes = [
 type = "ttl-modifier"
 #resolvers = [ "ctp-dns-ecs" ]
 resolvers = [ "ctp-dns-group-fastest-tcp-probe-out" ]
-ttl-min = 1600
+ttl-min = 3600
 ttl-max = 3024000
 
 [groups.static-servfail]
@@ -50,10 +50,11 @@ resolvers = [
 	"ctp-dns-fail-rotate",
 	"ctp-dns-failover-backup"
 ]
-timeout = 3
+timeout = 30
+reset-after = 30
 type = "fail-back"
-servfail-failover = true
-
+#servfail-failover = true
+servfail-error = false
 # Order matters
 [groups.ctp-dns-fail-rotate]
 resolvers = [
@@ -74,8 +75,9 @@ resolvers = [
 	"ctp-dns-ip-home-udp"
 ]
 timeout = 3
+reset-after = 3
 type = "fail-rotate"
-servfail-failover = true
+servfail-error = false
 
 [groups.ctp-dns-ecs]
 type = "ecs-modifier"

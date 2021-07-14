@@ -1,0 +1,65 @@
+# RAW
+[resolvers.google-dns-ip-1-tcp]
+address = "8.8.8.8:53"
+protocol = "tcp"
+[resolvers.google-dns-ip-1-udp]
+address = "8.8.8.8:53"
+protocol = "udp"
+[resolvers.google-dns-ip-2-tcp]
+address = "8.8.4.4:53"
+protocol = "tcp"
+[resolvers.google-dns-ip-2-udp]
+address = "8.8.4.4:53"
+protocol = "udp"
+
+# OpenDNS plain DNS (resolver1.opendns.com)
+[resolvers.opendns-udp-1]
+address = "208.67.222.222:53"
+protocol = "udp"
+# OpenDNS plain DNS (resolver2.opendns.com)
+[resolvers.opendns-udp-2]
+address = "208.67.222.220:53"
+protocol = "udp"
+# Other 
+[resolvers.google-dns-gcloud-private-ip-tcp]
+address = "169.254.169.254:53"
+protocol = "tcp"
+[resolvers.google-dns-gcloud-private-ip-udp]
+address = "169.254.169.254:53"
+protocol = "udp"
+[resolvers.unbound-failover-tcp]
+address = "127.0.0.1:5053"
+protocol = "tcp"
+[resolvers.unbound-failover-udp]
+address = "127.0.0.1:5053"
+protocol = "udp"
+
+# CLOUDFLARE REG
+[resolvers.cloudflare-ip-1-tcp]
+address = "1.1.1.1:53"
+protocol = "tcp"
+[resolvers.cloudflare-ip-1-udp]
+address = "1.1.1.1:53"
+protocol = "udp"
+
+[resolvers.cloudflare-ip-2-tcp]
+address = "1.0.0.1:53"
+protocol = "tcp"
+[resolvers.cloudflare-ip-2-udp]
+address = "1.0.0.1:53"
+protocol = "udp"
+
+# CLOUDFLARE ADBLOCK
+[resolvers.cloudflare-adblock-ip-1-tcp]
+address = "1.1.1.2:53"
+protocol = "tcp"
+[resolvers.cloudflare-adblock-ip-1-udp]
+address = "1.1.1.2:53"
+protocol = "udp"
+
+[resolvers.cloudflare-adblock-ip-2-tcp]
+address = "1.0.0.2:53"
+protocol = "tcp"
+[resolvers.cloudflare-adblock-ip-2-udp]
+address = "1.0.0.2:53"
+protocol = "udp"

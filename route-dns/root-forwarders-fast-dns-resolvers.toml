@@ -1,82 +1,26 @@
-# RAW
-[resolvers.google-dns-ip-1-tcp]
-address = "8.8.8.8:53"
-protocol = "tcp"
-[resolvers.google-dns-ip-1-udp]
-address = "8.8.8.8:53"
-protocol = "udp"
-
-[resolvers.google-dns-ip-2-tcp]
-address = "8.8.4.4:53"
-protocol = "tcp"
-[resolvers.google-dns-ip-2-udp]
-address = "8.8.4.4:53"
-protocol = "udp"
-
-
-[resolvers.cloudflare-ip-1-tcp]
-address = "1.1.1.1:53"
-protocol = "tcp"
-[resolvers.cloudflare-ip-1-udp]
-address = "1.1.1.1:53"
-protocol = "udp"
-
-[resolvers.cloudflare-ip-2-tcp]
-address = "1.0.0.1:53"
-protocol = "tcp"
-[resolvers.cloudflare-ip-2-udp]
-address = "1.0.0.1:53"
-protocol = "udp"
-
-# OpenDNS plain DNS (resolver1.opendns.com)
-[resolvers.opendns-udp-1]
-address = "208.67.222.222:53"
-protocol = "udp"
-
-# OpenDNS plain DNS (resolver2.opendns.com)
-[resolvers.opendns-udp-2]
-address = "208.67.222.220:53"
-protocol = "udp"
-
-
-# Other 
-[resolvers.google-dns-gcloud-private-ip-tcp]
-address = "169.254.169.254:53"
-protocol = "tcp"
-[resolvers.google-dns-gcloud-private-ip-udp]
-address = "169.254.169.254:53"
-protocol = "udp"
-
-[resolvers.unbound-failover-tcp]
-address = "127.0.0.1:5053"
-protocol = "tcp"
-[resolvers.unbound-failover-udp]
-address = "127.0.0.1:5053"
-protocol = "udp"
-
-
-
 # Encrypted
 # DoQ
 [resolvers.cloudflare-doh-quic]
 address = "https://cloudflare-dns.com/dns-query"
 protocol = "doh"
 transport = "quic"
+bootstrap-address = "1.1.1.1"
 
 # Adguard DNS-over-QUIC
 [resolvers.adguard-doq]
 address = "dns-unfiltered.adguard.com:8853"
 protocol = "doq"
 
-
 # DoT
 [resolvers.cloudflare-dot-1]
-address = "1.1.1.2:853"
+address = "1.1.1.1:853"
 protocol = "dot"
+bootstrap-address = "1.1.1.1"
 
 [resolvers.cloudflare-dot-2]
-address = "1.0.0.2:853"
+address = "1.0.0.1:853"
 protocol = "dot"
+bootstrap-address = "1.0.0.1"
 
 [resolvers.google-dot-1]
 address = "8.8.8.8:853"
@@ -106,11 +50,11 @@ protocol = "dot"
 
 # DTLS
 [resolvers.cloudflare-dtls-1]
-address = "1.1.1.2:853"
+address = "1.1.1.1:853"
 protocol = "dtls"
 
 [resolvers.cloudflare-dtls-2]
-address = "1.0.0.2:853"
+address = "1.0.0.1:853"
 protocol = "dtls"
 
 [resolvers.google-dtls-1]
@@ -135,16 +79,19 @@ protocol = "dtls"
 [resolvers.quad9-doh-post]
 address = "https://9.9.9.9/dns-query{?dns}"
 protocol = "doh"
+
 # Google DNS-over-HTTP using the POST method
 [resolvers.google-doh-post]
 address = "https://dns.google/dns-query"
 protocol = "doh"
+bootstrap-address = "8.8.8.8"
 
 # Google DNS-over-HTTP using the GET method
 [resolvers.google-doh-get]
 address = "https://dns.google/dns-query{?dns}"
 protocol = "doh"
 doh = { method = "GET" }
+bootstrap-address = "8.8.8.8"
 
 # Google DNS-over-HTTP with bootstrapping to avoid initial lookup
 [resolvers.google-doh-post-bootstrap]

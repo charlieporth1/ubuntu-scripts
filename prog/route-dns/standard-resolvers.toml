@@ -13,12 +13,12 @@ protocol = "dtls"
 
 # DoH
 [resolvers.ctp-dns_home-doh-get]
-address = "https://home.ctptech.dev:443/dns-query{?dns}"
+address = "https://home.dns.ctptech.dev:443/dns-query{?dns}"
 protocol = "doh"
 doh = { method = "GET" }
 bootstrap-address = "174.53.130.17"
 [resolvers.ctp-dns_home-doh-post]
-address = "https://home.ctptech.dev:443/dns-query"
+address = "https://home.dns.ctptech.dev:443/dns-query"
 protocol = "doh"
 bootstrap-address = "174.53.130.17"
 [resolvers.ctp-dns_home-doh-get-route-dns-raw]

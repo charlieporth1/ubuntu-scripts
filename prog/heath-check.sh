@@ -98,8 +98,10 @@ WAIT_TIME=8.5s
 function RESTART_PIHOLE() {
 	mkdir -p /var/cache/dnsmasq/
 	touch /var/cache/dnsmasq/dnsmasq_dnssec_timestamp
+	touch /etc/pihole/local.list
+	touch /etc/pihole/custom.list
 	#chown pihole:pihole -R /var/cache/dnsmasq/
-	sudo chown -R dnsmasq:dnsmasq /var/cache/dnsmasq
+	sudo chown -R dnsmasq:pihole /var/cache/dnsmasq
         echo "RESTART_PIHOLE"
         pihole restartdns
 	sleep 5s
@@ -131,7 +133,7 @@ if [[ `systemctl-exists $fn` = 'true' ]] && [[ `systemctl-inbetween-status $fn` 
 		echo "systemd process $fn failed restarting"
 	        echo "FTL ftl_status $FTL $ftl_status"
 	        echo $fn
-		sudo chown -R dnsmasq /var/cache/dnsmasq
+		sudo chown -R dnsmasq:pihole /var/cache/dnsmasq
 	        systemctl restart $fn
 	        writeLog $fn $((1+$(getFailCount $fn))) $fn
 	        COUNT_ACTION $fn $(getFailCount $fn) $fn
