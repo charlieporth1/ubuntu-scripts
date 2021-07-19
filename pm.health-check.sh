@@ -4,6 +4,7 @@ if [[ -f /tmp/health-checks.stop.lock ]]; then
 	trap 'LOCK_FILE' ERR
 	set -e
 	exit 1
+	kill $$
 fi
 source $PROG/all-scripts-exports.sh
 CONCURRENT
@@ -22,6 +23,8 @@ Result SLEEP_RESULT: $SLEEP_RESULT
 Does $SLEEP_T * $max < 60 ~ 1.5 * $max? Check below
 Cron should be setup for 1 minute invtevals.
 """
+
+#bash $PROG/test_dnssec.sh -a
 
 for ((i=1; i < ( $max - 2); i++))
 do

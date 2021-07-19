@@ -5,6 +5,9 @@ Description=CTP YouTube Blocker Service
 CPUQuota=35%
 AllowedCPUs=0 1
 
+LimitNPROC=256
+LimitNOFILE=65536
+
 EnvironmentFile=/etc/environment
 Environment=LOG_DIR=/var/log/ctp-youtube-blocker
 Environment=PID_FILE=/var/run/ctp-dns.pid

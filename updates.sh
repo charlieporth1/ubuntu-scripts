@@ -29,6 +29,7 @@ python3 -m pip install --upgrade pip
 
 sudo snap install --classic go
 sudo snap refresh --classic go
+
 gvm get
 GO111MODULE=on
 go get -v -u github.com/AdguardTeam/dnsproxy

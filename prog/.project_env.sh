@@ -54,6 +54,7 @@ function isNotInstalled() {
 			echo "$CONFIG_INSTALLED_STR" | sudo tee -a $file
 		)>/dev/null
 	fi
+	echo "$result"
 }
 function check_admin() {
 	set -e

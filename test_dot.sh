@@ -66,7 +66,7 @@ if [[ "$isAuto" == "-d"  ]]; then
 	echo -e "LOCAL \n$(bash $PROG/lines.sh '*')\n"
 	printf '%s\n' "$dot_local"
 elif [[ $(systemctl-inbetween-status ctp-dns.service) == false ]]; then
-	dns_local=`dig $QUERY @ctp-vpn.local +short +tries=$TRIES +dnssec +timeout=$TIMEOUT`
+	dns_local=`dig $QUERY @ctp-vpn.local +short +tries=$TRIES +dnssec +timeout=$TIMEOUT +retry=$TRIES`
 	dns_local_test=`echo "$dns_local" | grepip --ipv4 -o`
 
     	dot_test=`echo "$dot" | grepip --ipv4 -o`
@@ -78,6 +78,8 @@ elif [[ $(systemctl-inbetween-status ctp-dns.service) == false ]]; then
 		if [[ -z "$dns_local_test" ]]; then
 			echo "DNS FAILED NOT DOT"
 			exit 1
+			exit 1
+			kill $$
 		fi
 
 		echo "restarting DOT"
@@ -93,7 +95,8 @@ elif [[ $(systemctl-inbetween-status ctp-dns.service) == false ]]; then
                 echo "DOT: extenal failed posiable firewall issue"
                 echo "DOT: extenal failed posiable firewall issue"
                 echo "RUNNING FAIL2BAN SCRIPT"
-                bash $PROG/set_fail2ban-defaults.sh > /dev/null
+		sudo cgexec -g cpu:cpulimited /bin/bash $PROG/set_unban_ip.sh > /dev/null
+		sudo cgexec -g cpu:cpulimited /bin/bash $PROG/search_for_unban_ip.sh > /dev/null
                 echo "DONE FAIL2BAN SCRIPT"
                 echo "DOT: extenal failed posiable firewall issue"
                 echo "DOT: extenal failed posiable firewall issue"

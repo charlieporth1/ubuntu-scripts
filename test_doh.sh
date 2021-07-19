@@ -51,7 +51,7 @@ fi
 # doh -v -rdns.ctptech.dev:443:$EXTENRAL_IP -tA www.theanonymousemail.com "https://dns.ctptech.dev/dns-query:4443
 # doh -v -rdns.ctptech.dev:443:$EXTENRAL_IP -tA www.google.com "https://dns.ctptech.dev/resolve"
 # doh -v -rdns.ctptech.dev:443:$EXTENRAL_IP -tA www.google.com "https://dns.ctptech.dev/dns-query:4443"
-dns_local=`dig $QUERY @ctp-vpn.local +tries=$TRIES +dnssec +short +timeout=$TIMEOUT`
+dns_local=`dig $QUERY @ctp-vpn.local +tries=$TRIES +dnssec +short +timeout=$TIMEOUT +retry=$TRIES`
 
 doh_proxy_local=`timeout $TIMEOUT curl --insecure -H 'accept: application/dns-json' -sw '\n' "http://localhost:8053/resolve?name=$QUERY&type=A"`
 doh_remote_json=`timeout $TIMEOUT curl --resolve $HOST:443:$EXTENRAL_IP -H 'accept: application/dns-json' -sw '\n' "https://$HOST/resolve?name=$QUERY&type=A"`
@@ -68,6 +68,7 @@ if [[ -n "$isAuto" ]]; then
 	if [[ -z "$dns_local_test" ]]; then
 	        echo "DNS FAILED NOT DOH dns_local_test :$dns_local_test:"
 		exit 1
+		kill $$
 	fi
 
  	doh_proxy_local_test=`echo "$doh_proxy_local" | grep -o "$QUERY"`
@@ -90,17 +91,21 @@ if [[ -n "$isAuto" ]]; then
 	if { { [[ -z "$doh_remote_json_test" ]] && [[ -n "$doh_remote_ctp_test" ]]; } ||
 	     { [[ -z "$doh_remote_nginx_test" ]] && [[ -n "$doh_proxy_local_test" ]]; }; } && [[ $(systemctl-inbetween-status nginx.service) == false ]]
 	then
-		echo "ALERT DOH doh_remote_json_test NGINX doh_remote_nginx_test :$doh_remote_json_test: :$doh_remote_nginx_test:"
-		echo "dns_local_test :$dns_local_test: doh_proxy_local_test :$doh_proxy_local_test: doh_remote_json_test :$doh_remote_json_test:"
-		echo "doh_remote_ctp_test :$doh_remote_ctp_test: doh_remote_nginx_test :$doh_remote_nginx_test:"
-		echo "NGINX failed restarting"
-		if [[ -f /etc/hosts.bk ]]; then
-			sudo cp -rf /etc/hosts.bk /etc/hosts
-		fi
+		if [[ -z "$doh_remote_ctp_test" ]] || [[ -z "$doh_proxy_local_test" ]]; then
+			echo "NOT NGINX doh_remote_ctp_test $doh_remote_ctp_test  $doh_proxy_local_test doh_proxy_local_test"
+		else
+			echo "ALERT DOH doh_remote_json_test NGINX doh_remote_nginx_test :$doh_remote_json_test: :$doh_remote_nginx_test:"
+			echo "dns_local_test :$dns_local_test: doh_proxy_local_test :$doh_proxy_local_test: doh_remote_json_test :$doh_remote_json_test:"
+			echo "doh_remote_ctp_test :$doh_remote_ctp_test: doh_remote_nginx_test :$doh_remote_nginx_test:"
+			echo "NGINX failed restarting"
+			if [[ -f /etc/hosts.bk ]]; then
+				sudo cp -rf /etc/hosts.bk /etc/hosts
+			fi
 
-		sudo killall -9 nginx
-		systemctl restart nginx.service
-		sleep $WAIT_TIME
+			sudo killall -9 nginx
+			systemctl restart nginx.service
+			sleep $WAIT_TIME
+		fi
 	else
 		echo "Success doh NGNIX"
 	fi

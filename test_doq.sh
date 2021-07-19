@@ -47,8 +47,8 @@ fi
 exit 0 #TMP GOING TO PARTY WITH KIMBERLY REMOVE LATER 
 #doq=$(timeout $TIMEOUT qdig -server $HOST:784 -dnssec -recursion $QUERY A)
 doq=$( q --server=$HOST --qname=$QUERY @quic://ctp-vpn.local:784 --timeout=$TIMEOUT --dnssec )
-dns_local=`dig $QUERY @ctp-vpn.local  +tries=$TRIES +dnssec`
-dns_local_test=`printf '%s\n' "$dns_local" | grep -v "$EXCLUDE_IP" | grepip --ipv4 -o | xargs`
+dns_local=`dig $QUERY @ctp-vpn.local  +tries=$TRIES +dnssec +retry=$TRIES +short`
+dns_local_test=`printf '%s\n' "$dns_local" | grepip --ipv4 -o | xargs`
 
 
 if [[ -z $isAuto ]]; then
@@ -63,6 +63,7 @@ else
 		if [[ -z "$dns_local_test" ]]; then
                         echo "DNS FAILED NOT DOT"
                         exit 1
+			kill $$
                 fi
 		systemctl daemon-reload
 		systemctl restart ctp-dns

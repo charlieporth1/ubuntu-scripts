@@ -1,6 +1,9 @@
 #!/bin/bash
 export CONFIG_IP_SET_DIR=/etc/ipset
 export CONFIG_IP_TABLES_DIR=/etc/iptables
+FILE_NAME='ban_ignore_ip_list'
+
+BAN_INGRORE_GREP_LIST=/tmp/$FILE_NAME.grep
 
 ! [[ -d $CONFIG_IP_SET_DIR ]] && mkdir -p $CONFIG_IP_SET_DIR
 ! [[ -d $CONFIG_IP_TABLES_DIR ]] && mkdir -p $CONFIG_IP_TABLES_DIR

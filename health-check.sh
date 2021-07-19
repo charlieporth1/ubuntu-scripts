@@ -32,28 +32,71 @@ COUNT_ACTION() {
         local SERVICE="$3"
         echo "$COUNT"
         local max=5
-        if [[ $COUNT -ge $max ]] && [[ "$FN" == "$LOCK_FILE" ]]; then
-		echo "Removing $LOCK_FILE file because $COUNT -ge $max sleeping 30s"
+        if [[ $COUNT -gt $max ]] && [[ "$FN" == "$LOCK_FILE" ]]; then
+		echo "Removing $LOCK_FILE file because $COUNT -gt $max sleeping 30s"
 		sleep 30s
-		echo "Removing $LOCK_FILE file because $COUNT -ge $max"
+		echo "Removing $LOCK_FILE file because $COUNT -gt $max"
+                bash $PROG/alert_user.sh "Failure Alert" "$FN Failed $COUNT times on $HOSTNAME; Service ${SERVICE} $HOSTNAME $COUNT"
 		sudo rm -rf $LOCK_FILE
+		return 1
 	fi
 
-        if [[ $COUNT -ge 3 ]] && [[ $COUNT -lt $max ]]; then
+        if [[ $COUNT -ge 4 ]] && [[ $COUNT -lt $max ]]; then
                 echo "SENDING EMAIL COUNT IS GREATE THAN OR EQUAL TO"
-                bash $PROG/alert_user.sh "Failure Alert" "$FN Failed $COUNT times on $HOSTNAME; Service ${SERVICE}"
+#                bash $PROG/alert_user.sh "Failure Alert" "$FN Failed $COUNT times on $HOSTNAME; Service ${SERVICE} $HOSTNAME $COUNT"
         elif [[ $COUNT -ge $max ]]; then
                 echo "Reset failure count $COUNT"
-                bash $PROG/alert_user.sh "Failure Alert" "$FN Failed $COUNT times on $HOSTNAME; Service ${SERVICE} $HOSTNAME"
+                bash $PROG/alert_user.sh "Failure Alert" "$FN Failed $COUNT times on $HOSTNAME; Service ${SERVICE} $HOSTNAME $COUNT"
                 if [[ -n "$SERVICE" ]]; then
-			 systemctl daemon-reload
-                         systemctl stop $SERVICE
-                         systemctl reset-failed $SERVICE
+			systemctl daemon-reload
+	                systemctl stop $SERVICE
+	                systemctl reset-failed $SERVICE
                 fi
                 writeLog $FN 0 $SERVICE
         else
                 echo "Not sig count $SERVICE"
         fi
+}
+
+health_check_action() {
+	local fn="$1"
+        echo $fn
+	killall -9 $fn
+	systemctl daemon-reload
+	systemctl restart $fn
+	writeLog $fn $((1+$(getFailCount $fn))) $fn
+	COUNT_ACTION $fn $(getFailCount $fn) $fn
+	sleep $WAIT_TIME
+}
+
+service_health_check() {
+	local fn="$1"
+	if [[ `systemctl-exists $fn` = 'true' ]] && [[ `systemctl-inbetween-status $fn` == 'false' ]]; then
+		echo "systemd process $fn exists"
+		service_status=`systemctl is-failed $fn | grep -io "$FULL_FAIL_STR"`
+		if [[ -n "$service_status" ]]; then
+			echo "systemd process $fn failed restarting service_status :$service_status:"
+			health_check_action "$fn"
+		else
+			echo "systemd process $fn is healthly"
+		fi
+	fi
+
+}
+
+service_port_health_check() {
+	local fn="$1"
+	local fn_status="$2"
+	local port_status="$3"
+	if [[ `systemctl-exists $fn` = 'true' ]] && [[ `systemctl-inbetween-status $fn` == 'false' ]]; then
+		echo "systemd process $fn exists"
+		if [[ -z "$port_status" ]] || [[ -n "$fn_status" ]]; then
+			echo "systemd process $fn failed restarting port :$port_status: fn :$fn_status:"
+			health_check_action "$fn"
+		else
+			echo "systemd process $fn is healthly"
+		fi
+	fi
 }
 
 if [[ -f $LOCK_FILE ]]; then
@@ -141,48 +184,10 @@ if [[ `systemctl-exists $fn` = 'true' ]] && [[ `systemctl-inbetween-status $fn` 
 	fi
 fi
 
-fn="doh-server.service"
-if [[ `systemctl-exists $fn` = 'true' ]] && [[ `systemctl-inbetween-status $fn` == 'false' ]]; then
-	if [[ -z "$dns_https_proxy" ]] || [[ -n "$doh_proxy_status" ]]; then
-		echo "systemd process $fn failed restarting"
-	        echo $fn
-	        systemctl restart $fn
-	        writeLog $fn $((1+$(getFailCount $fn))) $fn
-	        COUNT_ACTION $fn $(getFailCount $fn) $fn
-	        sleep $WAIT_TIME
-	fi
-fi
-
-fn="nginx.service"
-if [[ `systemctl-exists $fn` = 'true' ]] && [[ `systemctl-inbetween-status $fn` == 'false' ]]; then
-	if [[ -z "$https_prt" ]] || [[ -n "$nginx_status" ]]; then
-		echo "systemd process $fn failed restarting"
-        	echo $fn
-		killall -9 $fn
-        	systemctl restart $fn
-        	writeLog $fn $((1+$(getFailCount $fn))) $fn
-        	COUNT_ACTION $fn $(getFailCount $fn) $fn
-        	sleep $WAIT_TIME
-	fi
-fi
-
-fn="ctp-dns.service"
-if [[ `systemctl-exists $fn` = 'true' ]] && [[ `systemctl-inbetween-status $fn` == 'false' ]]; then
-	if { [[ -z "$dot_port" ]]; } || [[ -n "$ctp_status" ]] ; then
-		echo "systemd process $fn failed restarting"
-        	echo $fn
-		systemctl daemon-reload
-		systemctl reset-failed $fn
-        	systemctl restart $fn
-        	writeLog $fn $((1+$(getFailCount $fn))) $fn
-        	COUNT_ACTION $fn $(getFailCount $fn) $fn
-        	sleep $WAIT_TIME
-	fi
-fi
 fn='unbound.service'
 if [[ `systemctl-exists $fn` = 'true' ]] && [[ `systemctl-inbetween-status $fn` == 'false' ]]; then
-	echo "systemd process $fn exists"
 	service_status=`systemctl is-failed $fn | grep -io "$FULL_FAIL_STR"`
+	echo "systemd process $fn exists"
 	if { [[ -z "$unbound_port" ]]; } || [[ -n "$service_status" ]] ; then
 		echo "systemd process $fn failed restarting"
 	        echo $fn
@@ -193,77 +198,53 @@ if [[ `systemctl-exists $fn` = 'true' ]] && [[ `systemctl-inbetween-status $fn` 
 	fi
 fi
 
+
+fn="doh-server.service"
+service_port_health_check "$fn" "$doh_proxy_status" "$dns_https_proxy"
+
+fn="nginx.service"
+service_port_health_check "$fn" "$nginx_status" "$https_prt"
+
+fn="ctp-dns.service"
+service_port_health_check "$fn" "$ctp_status" "$dot_port"
+
 fn='ctp-YouTube-Ad-Blocker.service'
-if [[ `systemctl-exists $fn` = 'true' ]] && [[ `systemctl-inbetween-status $fn` == 'false' ]]; then
-	echo "systemd process $fn exists"
-	service_status=`systemctl is-failed $fn | grep -io "$FULL_FAIL_STR"`
-	if [[ -n "$service_status" ]]; then
-		echo "systemd process $fn failed restarting"
-	        echo $fn
-		systemctl daemon-reload
-	        systemctl restart $fn
-	        writeLog $fn $((1+$(getFailCount $fn))) $fn
-	        COUNT_ACTION $fn $(getFailCount $fn) $fn
-	        sleep $WAIT_TIME
-	fi
-fi
+service_health_check "$fn"
 
 fn='ads-catcher.service'
-if [[ `systemctl-exists $fn` = 'true' ]] && [[ `systemctl-inbetween-status $fn` == 'false' ]]; then
-	echo "systemd process $fn exists"
-	service_status=`systemctl is-failed $fn | grep -io "$FULL_FAIL_STR"`
-	if [[ -n "$service_status" ]]; then
-		echo "systemd process $fn failed restarting"
-	        echo $fn
-	        systemctl restart $fn
-	        writeLog $fn $((1+$(getFailCount $fn))) $fn
-	        COUNT_ACTION $fn $(getFailCount $fn) $fn
-	        sleep $WAIT_TIME
-	fi
-fi
+service_health_check "$fn"
 
 fn='wg-quick@wg0.service'
-if [[ `systemctl-exists $fn` = 'true' ]] && [[ `systemctl-inbetween-status $fn` == 'false' ]]; then
-	echo "systemd process $fn exists"
-	service_status=`systemctl is-failed $fn | grep -io "$FULL_FAIL_STR"`
-	if [[ -n "$service_status" ]]; then
-		echo "systemd process $fn failed restarting"
-	        echo $fn
-	        systemctl restart $fn
-	        writeLog $fn $((1+$(getFailCount $fn))) $fn
-	        COUNT_ACTION $fn $(getFailCount $fn) $fn
-	        sleep $WAIT_TIME
-	fi
-fi
+service_health_check "$fn"
 
 fn='lighttpd.service'
-if [[ `systemctl-exists $fn` = 'true' ]] && [[ `systemctl-inbetween-status $fn` == 'false' ]]; then
-	echo "systemd process $fn exists"
-	service_status=`systemctl is-failed $fn | grep -io "$FULL_FAIL_STR"`
-	if [[ -n "$service_status" ]]; then
-		echo "systemd process $fn failed restarting"
-	        echo $fn
-	        systemctl restart $fn
-	        writeLog $fn $((1+$(getFailCount $fn))) $fn
-	        COUNT_ACTION $fn $(getFailCount $fn) $fn
-	        sleep $WAIT_TIME
-	fi
-fi
+service_health_check "$fn"
 
 fn='php7.4-fpm.service'
-if [[ `systemctl-exists $fn` = 'true' ]] && [[ `systemctl-inbetween-status $fn` == 'false' ]]; then
-	echo "systemd process $fn exists"
-	service_status=`systemctl is-failed $fn | grep -io "$FULL_FAIL_STR"`
-	if [[ -n "$service_status" ]]; then
-		echo "systemd process $fn failed restarting"
-	        echo $fn
-	        systemctl restart $fn
-	        writeLog $fn $((1+$(getFailCount $fn))) $fn
-	        COUNT_ACTION $fn $(getFailCount $fn) $fn
-	        sleep $WAIT_TIME
-	fi
-fi
+service_health_check "$fn"
 
-#bash $PROG/test_dnssec.sh -a
-bash $PROG/test_dns.sh -a
+fn='fail2ban.service'
+service_health_check "$fn"
+
+fn='sshd.service'
+service_health_check "$fn"
+
+fn='ssh.service'
+service_health_check "$fn"
+
+fn='resolvconf-pull-resolved.path'
+service_health_check "$fn"
+
+fn='systemd-resolved.service'
+service_health_check "$fn"
+
+fn='systemd-networkd.socket'
+service_health_check "$fn"
+
+fn='systemd-sysctl.service'
+service_health_check "$fn"
+
+fn='systemd-timesyncd.service'
+service_health_check "$fn"
+
 echo "Done running at: `date`"

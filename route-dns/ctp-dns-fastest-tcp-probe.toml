@@ -37,14 +37,15 @@ success-ttl-min = 84600
 wait-all = false
 resolvers = [ "ctp-dns-ecs" ]
 
+#	"tcp-probe-port-8443",
+#	"tcp-probe-port-1935",
+#	"tcp-probe-port-1936",
+
 # GROUPS
 [groups.ctp-dns-group-fastest-tcp-probe-out]
 resolvers = [
-	"tcp-probe-port-443",
 	"tcp-probe-port-80",
-	"tcp-probe-port-8443",
-	"tcp-probe-port-1935",
-	"tcp-probe-port-1936",
+	"tcp-probe-port-443",
 ]
 type = "fastest"
 

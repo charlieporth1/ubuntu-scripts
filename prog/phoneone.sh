@@ -17,7 +17,7 @@ sms="sms"
 email="email"
 
 
-export IP_ADD=$(last -1 --time-format notime |  awk '{print $3}' | grepip -o -x)
+export IP_ADD=$(last -1 --time-format notime |  awk '{print $3}' | grepip -o)
 if [[ -n "$IP_ADD" ]]; then
 	export geoIPCity=`mmdblookup -f /var/lib/GeoIP/GeoLite2-City.mmdb -i $IP_ADD | grep en -A 1 | grep "<utf8_string>" | cut -d "\"" -f 2-2 | xargs`
 	export geoIPASN=`mmdblookup -f /var/lib/GeoIP/GeoLite2-ASN.mmdb -i $IP_ADD | grep en -A 1 | grep "<utf8_string>" | cut -d "\"" -f 2-2| xargs`

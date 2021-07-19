@@ -190,17 +190,20 @@ function RESET_FTL(){
 export -f RESET_FTL
 function RESTART_PIHOLE() {
         local isNotFTL="$1"
+	if [[ "$isSystemInactive" == 'false' ]]; then
         echo "RESTARTING isNotFTL :$isNotFTL:"
-	sudo chown -R dnsmasq /var/cache/dnsmasq
-        if [[ -n "$isNotFTL" ]]; then
-		log "Restarting DNS"
-		echo "Restarting DNS"
-                pihole restartdns
-        else
-		log "Killing FTL"
-		echo "Killing FTL"
-                RESET_FTL
-        fi
+	sudo chown -R dnsmasq:pihole /var/cache/dnsmasq
+	local isSystemInactive=`systemctl-inbetween-status pihole-FTL.service`
+	        if [[ -n "$isNotFTL" ]]; then
+			log "Restarting DNS"
+			echo "Restarting DNS"
+	                pihole restartdns
+	        else
+			log "Killing FTL"
+			echo "Killing FTL"
+	                RESET_FTL
+	        fi
+	fi
         sleep 0.250s
 }
 export -f RESTART_PIHOLE
@@ -232,7 +235,8 @@ function IF_RESTART() {
         local is_failed_ftl_status=`systemctl is-failed pihole-FTL.service | grep -io "$FAILED_STR"`
 	local pihole_status=`pihole status | grep -io 'not\|disabled\|[✗]'`
 
-        local logStr=`tail -6 $PIHOLE_LOG`
+	INIT_POP_TEST
+        local logStr=`tail -2 $PIHOLE_LOG`
         local isFailedLogSearch=`echo "$logStr" | grep -io "$FAILED_STR"`
 	local isSystemInactive=`systemctl-inbetween-status pihole-FTL.service`
 

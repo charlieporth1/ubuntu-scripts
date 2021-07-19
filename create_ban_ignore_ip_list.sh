@@ -3,6 +3,8 @@ source $PROG/all-scripts-exports.sh
 CONCURRENT
 declare -a UNI_IGNORE_IPs
 UNI_IGNORE_IP=(
+	192.168.0.0/16
+	172.58.142.145
 	192.168.127.10/32
 	192.168.127.10
 	172.58.0.0/16
@@ -41,29 +43,32 @@ UNI_IGNORE_IP=(
         169.254.169.254
         10.66.66.1
         10.66.66.0/24
-        $(bash $PROG/get_ext_ip.sh dns.ctptech.dev | grep -o "${IP_REGEX}")
-        $(bash $PROG/get_ext_ip.sh home.ctptech.dev | grep -o "${IP_REGEX}")
-        $(bash $PROG/get_ext_ip.sh gcp.ctptech.dev | grep -o "${IP_REGEX}")
-        $(bash $PROG/get_ext_ip.sh master.dns.ctptech.dev | grep -o "${IP_REGEX}")
-        $(bash $PROG/get_ext_ip.sh --curent-ip | grep -o "${IP_REGEX}")
-        $(bash $PROG/get_network_devices_ip_address.sh --loop --wlan | grep -o "${IP_REGEX}")
-        home.ctptech.dev
+        $(bash $PROG/get_ext_ip.sh dns.ctptech.dev | grepip -o)
+        $(bash $PROG/get_ext_ip.sh home.ctptech.dev | grepip -o)
+        $(bash $PROG/get_ext_ip.sh gcp.ctptech.dev | grepip -o)
+        $(bash $PROG/get_ext_ip.sh master.dns.ctptech.dev | grepip -o)
+        $(bash $PROG/get_ext_ip.sh --curent-ip | grepip -o)
+        $(bash $PROG/get_network_devices_ip_address.sh --loop --wlan | grepip -o)
         azure.ctptech.dev
+        home.ctptech.dev
         aws.ctptech.dev
         gcp.ctptech.dev
         dns.ctptech.dev
+	home.dns.ctptech.dev
         master.dns.ctptech.dev
 )
 UNI_IGNORE_IPs=( $( filter_ip_address_array "${UNI_IGNORE_IPs[@]}" ) )
 
-declare -a DEFAULT_DNS_SERVERS=(
-        1.0.0.1
+declare -a DEFAULT_DNS_SERVERS
+DEFAULT_DNS_SERVERS=(
         1.1.1.1
+        1.0.0.1
         8.8.8.8
         8.8.4.4
         9.9.9.9
         192.168.44.1
         192.168.40.1
+	192.168.1.1
         127.0.0.1
 )
 filter_ip_address_array "${DEFAULT_DNS_SERVERS[@]}"
@@ -74,7 +79,7 @@ declare -a UPTIME_IGNORE_IPs=(
 )
 UNI_IGNORE_IPs=( $( filter_ip_address_array "${UNI_IGNORE_IPs[@]}" ) )
 
-declare -a TMobileIPs
+declare -a T_MobileIPs
 T_MobileIPs=(
 $(curl -s https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/mobile.tmobile.list)
 $(curl -s https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/mobile.tmobileus.list)
@@ -194,7 +199,7 @@ $(curl -s https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/white
 )
 
 
-TMobileIPs=( $( filter_ip_address_array "${TMobileIPs[@]}" ) )
+T_MobileIPs=( $( filter_ip_address_array "${TMobileIPs[@]}" ) )
 
 
 declare -a DNS_IGNORE_IPs
@@ -221,9 +226,12 @@ do
         IP_PRIVATE_2=192.168.43.$i
         IP_PRIVATE_3=192.168.40.$i
         IP_NON=0.0.0.$i
+        IP_NON_1=0.$i.$i
         DNS_IGNORE_IPs=(
                 ${DNS_IGNORE_IPs[@]}
-                $IP_NON $IP_PRIVATE
+                $IP_NON
+		$IP_NON_1
+		$IP_PRIVATE
                 $IP_PRIVATE_1
                 $IP_PRIVATE_2
                 $IP_PRIVATE_3
@@ -245,4 +253,4 @@ echo "$INGORE_IP_ADRESSES_CSV" > /tmp/$FILE_NAME.csv
 
 
 
-printf '%s\n' ${T_MobileIPs[@]} /tmp/tmobile_ips.txt
+printf '%s\n' ${T_MobileIPs[@]}  | sudo tee /tmp/tmobile_ips.txt

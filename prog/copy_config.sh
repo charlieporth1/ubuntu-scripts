@@ -26,6 +26,8 @@ sudo ln -s /etc/fail2ban/filter.d/ctp-custom-vars.conf   /etc/fail2ban/filter.d/
 sudo ln -s $SETUP_DIR/dns-route.sh ${PROG:-$CONF_PROG_DIR}/
 sudo ln -s $SETUP_DIR/doh_proxy_json.sh ${PROG:-$CONF_PROG_DIR}/
 sudo ln -s $CONF_PROG_DIR/route-dns $PROG/
+sudo ln -s $CONF_PROG_DIR/ctp-dns.service $PROG/
+sudo ln -s $CONF_PROG_DIR/route-dns/ctp-dns.sh $ROUTE/
 sudo ln -s $ROUTE/ctp-dns.sh /usr/local/bin
 sudo ln -s $CONF_PROG_DIR/timeout3 /usr/local/bin
 sudo ln -s $ROUTE/lists/ $LIST_DIR

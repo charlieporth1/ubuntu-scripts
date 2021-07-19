@@ -4,6 +4,7 @@ LOG_FILE=error.log
 INSTALL_DIR=/usr/local/bin
 CTP_DNS_LOG_DIR=/var/log/ctp-dns
 
+
 if ! [[ -f $INSTALL_DIR/h ]]; then
 	curl -s https://raw.githubusercontent.com/paoloantinori/hhighlighter/master/h.sh | sudo tee $INSTALL_DIR/h
 	sudo chmod 777 $INSTALL_DIR/h
@@ -43,6 +44,7 @@ function generate_lists_sha() {
 		create_cache_list_sha $output $cache_dir
 	done
 }
+
 function create_cache_list_sha() {
 	sha="$1"
 	cache_dir="${2:-/var/cache/ctp-dns}"
@@ -51,7 +53,10 @@ function create_cache_list_sha() {
 	echo "Created Cache $sha in $cache_dir"
 	echo "File path $cache_dir/$sha"
 }
-
+function create_logs() {
+	! [[ -d $CTP_DNS_LOG_DIR/ ]] && sudo mkdir -p $CTP_DNS_LOG_DIR/
+	sudo touch $CTP_DNS_LOG_DIR/{access,error,default}.log
+}
 str_match="'matched blocklist' 'matched allowlist' 'ctp-dns-time-router-yt-ttl-gcp' 'ctp-dns-time-router-yt-gcp' 'ctp-doh-local-nginx' 'ctp-google-video-master-ttl-modifer-dnsmasq-pass-thru-ip-1-udp' 'ctp-google-video-master-ttl-modifer-dnsmasq-pass-thru-ip-1-tcp' 'ctp-dns-yt-google-video-ttl-modifer' 'ctp-dns-cached-google-video-ttl-cache'"
 for i in "$@"; do
     case $i in
@@ -61,6 +66,7 @@ for i in "$@"; do
         -l | -t | --l | --t | --tail | --log ) shift ; tail -f $CTP_DNS_LOG_DIR/$LOG_FILE | h $str_match ;;
         -q=* | --query=* ) shift ; grep --color=auto "$( echo ${i} | awk -F= '{print $2 }') " $CTP_DNS_LOG_DIR/$LOG_FILE;;
         -gc | --generate-cache ) shift ; generate_lists_sha;;
+        -gl | --generate-log ) shift ; create_logs;;
         * ) shift; echo "$helpString" ; exit 0 ;;
     esac
 done

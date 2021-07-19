@@ -65,7 +65,7 @@ else
 		echo "Failed restarting pihole_bin :$pihole_bin:"
 		if [[ -f "$pihole_bin" ]] && [[ $(systemctl-inbetween-status pihole-FTL.service) == 'false' ]]; then
 			echo "restarting pihole"
-			sudo chown -R dnsmasq /var/cache/dnsmasq
+			sudo chown -R dnsmasq:pihole /var/cache/dnsmasq
 			pihole restartdns
 			IF_RESTART
 			IF_RESTART
@@ -81,7 +81,8 @@ else
 		echo "DNS: extenal failed posiable firewall issue"
 		echo "DNS: extenal failed posiable firewall issue"
 		echo "RUNNING FAIL2BAN SCRIPT"
-		bash $PROG/set_fail2ban-defaults.sh > /dev/null
+                sudo cgexec -g cpu:cpulimited /bin/bash $PROG/set_unban_ip.sh > /dev/null
+                sudo cgexec -g cpu:cpulimited /bin/bash $PROG/search_for_unban_ip.sh > /dev/null
 		echo "DONE FAIL2BAN SCRIPT"
 		echo "DNS: extenal failed posiable firewall issue"
 		echo "DNS: extenal failed posiable firewall issue"

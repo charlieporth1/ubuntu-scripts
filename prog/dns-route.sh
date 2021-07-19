@@ -19,6 +19,16 @@ mkdir -p /etc/letsencrypt/live/vpn.ctptech.dev
 
 source $SCRIPT_DIR/.project_env.sh
 ROUTE=$PROG/route-dns
+ROOT_ROUTE=$CONF_PROG_DIR/route-dns
+sudo ln -s $ROOT_ROUTE $ROUTE
+        if [ -d $ROOT_ROUTE ]; then
+          for i in $ROOT_ROUTE/*.toml; do
+            if [ -r $i ]; then
+              ln -s $i $ROUTE/
+            fi
+          done
+          unset i
+        fi
 
 REPLACE_IP=`bash $PROG/get_network_devices_ip_address.sh`
 DEFAULT_IP='0.0.0.0'
@@ -137,9 +147,10 @@ resolvers = [
 ]
 type = \"fastest\"
 """ | sudo tee -a $ROUTE/$HOSTNAME-resolvers.toml
-fi
-# ELSE
+	fi
+# ELSE . SLAVE
 else
+	if [[ $IS_SOLID_HOST == 'true' ]]; then
 
 echo """
 [groups.ctp-dns-group]
@@ -154,7 +165,7 @@ resolvers = [
 ]
 type = \"fastest\"
 """ | sudo tee -a $ROUTE/$HOSTNAME-resolvers.toml
-
+	fi
 	sed -i "s/$DEFAULT_IP/$REPLACE_IP/g" $ROUTE/slave-listeners.toml
 fi
 

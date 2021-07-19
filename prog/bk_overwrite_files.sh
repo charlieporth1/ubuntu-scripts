@@ -3,7 +3,7 @@ declare -a files
 files=(
 	/etc/hosts
 	$HOLE/dns-servers.conf
-	$SITE/doh
+	$SITES/doh
 )
 
 

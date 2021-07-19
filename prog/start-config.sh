@@ -42,3 +42,5 @@ fi
         sudo cgexec -g cpu:fourthcpulimied -g memory:512MBRam /bin/bash $PROG/set_fail2ban-defaults.sh
 
 )&
+sudo rm -rf $LOG/pihole-FTL.log
+sudo touch $LOG/pihole-FTL.log
