@@ -65,7 +65,7 @@ if [[ "$isAuto" == "-d"  ]]; then
 	printf '%s\n' "$dot_external"
 	echo -e "LOCAL \n$(bash $PROG/lines.sh '*')\n"
 	printf '%s\n' "$dot_local"
-elif [[ $(systemctl-inbetween-status ctp-dns.service) == false ]]; then
+elif [[ $(systemctl-inbetween-status ctp-dns.service) == 'false' ]]; then
 	dns_local=`dig $QUERY @ctp-vpn.local +short +tries=$TRIES +dnssec +timeout=$TIMEOUT +retry=$TRIES`
 	dns_local_test=`echo "$dns_local" | grepip --ipv4 -o`
 
@@ -83,9 +83,10 @@ elif [[ $(systemctl-inbetween-status ctp-dns.service) == false ]]; then
 		fi
 
 		echo "restarting DOT"
+		[[ -f $PROG/dns-route.sh ]] && bash $PROG/dns-route.sh
 		systemctl daemon-reload
 	        systemctl restart ctp-dns
-		sleep $WAIT_TIME
+		#sleep $WAIT_TIME
 
   	elif [[ -z "$dot_external_test" ]]; then
 		if [[ -z "$dns_local_test" ]]; then

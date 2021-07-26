@@ -4,6 +4,11 @@ shopt -s expand_aliases
 
 SCRIPT_DIR=`realpath .`
 mkdir -p /etc/letsencrypt/live/vpn.ctptech.dev
+round() {
+    printf "%.${2:-0}f" "$1"
+}
+CPU_CORE_COUNT=`cat /proc/stat | grep cpu | grep -E 'cpu[0-9]+' | wc -l`
+MEM_COUNT=$(round `grep MemTotal /proc/meminfo | awk '{print $2 / 1024}'` 0)
 
 #/snap/bin/go get -v github.com/folbricht/routedns/cmd/routedns
 
@@ -64,12 +69,21 @@ elif [[ $IS_SOLID_HOST == 'true' ]]; then
 	echo "" | sudo tee $ROUTE/$HOSTNAME-resolvers.toml
 fi
 
-IS_AWS=$( [[ `timeout 10 curl -s http://169.254.169.254/latest/meta-data/hostname | grep -o 'ec2.internal'` ]] && echo true || echo false )
 # AWS
-if [[ "$IS_AWS" == 'true' ]] && [[ $IS_SOLID_HOST == 'true' ]];  then
+second_subnet_master_ip=`ip_exists 192.168.99.9`
+default_subnet_master_ip=`ip_exists 10.128.0.9`
+if { [[ "$second_subnet_master_ip" = 'true' ]] || [[ "$default_subnet_master_ip" = 'true' ]]; } && [[ $IS_SOLID_HOST == 'true' ]];  then
 	DOMAIN='gcp.ctptech.dev'
-	IP='10.128.0.9'
 	TUNNEL_STR='gcp-tunnel'
+	if [[ "$second_subnet_master_ip" = 'true' ]]; then
+		IP='192.168.99.9'
+	elif [[ "$default_subnet_master_ip" = 'true' ]]; then
+		IP='10.128.0.9'
+	else
+		IP='10.128.0.9'
+	fi
+
+	echo "Using IP $IP Tunnel $TUNNEL_STR domain $DOMAIN"
 
 echo """
 [resolvers.$LOCAL_RESOLVER_NAME-$TUNNEL_STR-tcp]
@@ -167,6 +181,14 @@ type = \"fastest\"
 """ | sudo tee -a $ROUTE/$HOSTNAME-resolvers.toml
 	fi
 	sed -i "s/$DEFAULT_IP/$REPLACE_IP/g" $ROUTE/slave-listeners.toml
+
+	if [[ $CPU_CORE_COUNT -le 2 ]] || [[ $MEM_COUNT -le 750 ]] ; then
+		replace_str="resolvers = [ \"ctp-dns-failover\" ]"
+		FILE=dns-lists.toml
+		pcregrep -v -M '^resolvers.*(.|\n)*]' $ROUTE/$FILE > $ROUTE/$FILE.tmp
+		echo -e "$replace_str" | sudo tee -a $ROUTE/$FILE.tmp
+		mv $ROUTE/$FILE.tmp $ROUTE/$FILE
+	fi
 fi
 
 replace_str="resolvers = [\n$GCP_RESOLVERS\n]"

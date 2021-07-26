@@ -16,3 +16,13 @@
 (tea|([a-z]{1,1})data|addr\.arpa|account|[o]?auth(entication)?|captcha)
 (^|\.|www\.)(client-channel\.google|myworkday|goarmy|stackexchange|adafruit|samsungcloud|googleusercontent|paypal|plaid|api\.snapchat|drizly|apkmirror|armytimes|navytimes|airforcetimes)\.com$
 ^t[0-9]?\.gstatic\.com$
+(^|\.|www\.)(peacecorps|usps|sss|nsa|nasa|usa|cia|fbi|fbijobs|defense|army|af|navy|marines|spaceforce|airforce|darpa|hhs|hrsa|cdc|fema|state|benefits|justice|data|irs|gps)\.gov$
+(^|\.|www\.)(edina|minneapolis|hennepin|hennepincounty|county|mn|texas|ca|digital|gsa|nc|dol|fioa|beta\.sam|grants|tn|search|cisa|congress|usajobs|fda|pa|ready|ny|delaware|chicago)\.gov$
+(^|\.|www\.)(nutrition|usda|nv|home\.dotgov|dotgov)\.gov$
+(^|\.|www\.)(fec|e-verify|tsa|commerce|epa|regulations|cio|va|ice|studentaid|secretservice|blm|identitytheft|usaspending|doi|dhs|transportation|bls|sc|us-cert|treasury|home\.treasury)\.gov$
+(^|\.|www\.)(nyc|digitaldashboard|coronavirus|sba|dea|dc|ftc|fcc|vote|census|uspto|house|ssa|nps|nist|treasurydirect|consumerfinance|nih|bia|ed|cbp|ncdhhs|bea|clinicaltrials|cio)\.gov$
+(^|\.|www\.)(fvap|acquisition|uscourts|sec|farmers|airnow|fws|gps|history\.state|state)\.gov$
+(^|\.|www\.)(army|navy|af|sf|spaceforce|usaf|airforce|cybercom|nationalguard)\.mil$
+(^|\.|www\.)(ietf|freebsd|itif|wireshark|dl\.wireshark)\.org$
+(^|\.|www\.)(fs\.fed|fed|to|mn|wi|fws)\.us$
+

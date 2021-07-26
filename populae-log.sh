@@ -5,6 +5,10 @@ TRIES=2
 
 declare -a SMALL_DOMAINS_LIST
 SMALL_DOMAINS_LIST=(
+	gstaticadssl.l.google.com
+	use.fontawesome.com.cdn.cloudflare.net
+	use.fontawesome.com
+	googlezip.net
 	dns.ctptech.dev
 	master.dns.ctptech.dev
 	vpn.ctptech.dev

@@ -1,9 +1,12 @@
 #!/bin/bash
-if [[ `systemctl-exists unbound.service` == false ]]; then
-	exit 1
-fi
 source $PROG/all-scripts-exports.sh
 CONCURRENT
+
+if [[ `systemctl-exists unbound.service` == false ]]; then
+	exit 1
+	kill -9 $$
+fi
+
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/charlieporth1_gmail_com/go/bin:$PATH
 echo "Running DNS Unbound TEST"
 [[ "$1" == "-a" ]] && isAuto="+short"
@@ -17,7 +20,7 @@ EDNS=174.53.130.17
 
 QUERY=www.google.com
 
-EXTENRAL_IP=`bash $PROG/get_ext_ip.sh  --current-ip`
+EXTENRAL_IP=`bash $PROG/get_ext_ip.sh --current-ip`
 
 if ! command -v dig &> /dev/null
 then
@@ -31,7 +34,7 @@ fi
 if ! command -v grepip &> /dev/null
 then
     echo "COMMAND dig could not be found installing"
-    curl -Ls 'https://raw.githubusercontent.com/ipinfo/cli/master/grepip/deb.sh' | bash
+    curl -sSL 'https://raw.githubusercontent.com/ipinfo/cli/master/grepip/deb.sh' | bash
 fi
 
 DNS_ARGS="+tries=$TRIES +dnssec +ttl +edns +timeout=$TIMEOUT"
@@ -53,7 +56,7 @@ if [[ -z "$isAuto" ]]; then
 else
 	if [[ -z "$dns_local_test" ]] && [[ `systemctl-seconds unbound` -ge 180 ]]; then
 		systemctl restart unbound.service
-		sleep $WAIT_TIME
+		#sleep $WAIT_TIME
 	else
 		echo "Test DNS Unbound Success"
 	fi

@@ -1,4 +1,8 @@
+.adguard.dns
 .prod-experimentation.grammarlyaws.com
+.wikimedia.org
+.en.wikipedia.org
+.upload.wikimedia.org
 .irishtimes.com
 .www.military.com
 .military.com

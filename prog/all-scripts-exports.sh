@@ -1,9 +1,15 @@
 #!/bin/bash
 source /etc/environment
 ARGS="$@"
-source $PROG/populae-log.sh
-PIHOLE_LOG=$LOG/pihole.log
-FILE_NAME=`echo $SCRIPT | rev | cut -d '.' -f 2  | rev`
+[[ -f $PROG/populae-log.sh ]] && source $PROG/populae-log.sh
+! [[ -d $PROG ]] && PROG=${CONF_PROG_DIR:-$PROG}
+
+export FILE_NAME=`echo $SCRIPT | rev | cut -d '.' -f 2  | rev`
+
+export FAILED_STR="fail\|FAILURE\|failed"
+export FULL_FAIL_STR="$FAILED_STR\|stop\|inactive\|dead\|stopped"
+export FAILED_STR_LOG="FAILURE\|SIGTERM\|config error is REFUSED"
+
 isRunning=`bash $PROG/process_count.sh $FILE_NAME $THIS_PID`
 
 if [[ -z "$ENV" ]] && [[ -z `echo "$ARGS" | grep -Eio '(\-\-|\-)(e|env)'` ]]; then
@@ -23,17 +29,17 @@ fi
 
 [[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(d|debug)'` ]] && export DEBUG=true || export DEBUG=false
 
-[[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(v|verbose)'` ]] && export VERBOSE=true || export VERBOSE=false
+[[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(v|vvv|verbose)'` ]] && export VERBOSE=true || export VERBOSE=false
 [[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(t|test)'` ]] && export TEST=true || export TEST=false
 
 [[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(co|mo|concurrent\-overrride|override|manual|manual\-override|over)'` ]] && export CONCURENT_OVERRIDE=true || export CONCURENT_OVERRIDE=false
 
 shopt -s expand_aliases
-SCRIPT=`basename $0 | rev | cut -d '/' -f 1 | rev`
+export SCRIPT=`basename $0 | rev | cut -d '/' -f 1 | rev`
 export progName=$SCRIPT
 export scriptName=$SCRIPT
 export script_name=$SCRIPT
-DIR=`realpath . | rev | cut -d '/' -f 1 | rev`
+export DIR=`realpath . | rev | cut -d '/' -f 1 | rev`
 
 alias isFTLRunning='bash $PROG/process_count.sh pihole-FTL'
 export LOG_ROOT=${LOG:-/var/log/}
@@ -49,13 +55,15 @@ export GREEN_L="\e[92m"
 export LIGHT_BLUE='\e[1;34m'
 export THIS_PID=${BASHPID:-$$}
 
+vm_timeout=8
+export IS_GCP=$( [[ -n $( timeout $vm_timeout facter virtual | grep -o 'gce' ) ]] && echo true || echo false)
+export IS_GCP_1=$( [[ -n $( timeout $vm_timeout curl -s metadata.google.internal -i | grep 'Metadata-Flavor: Google' ) ]] && echo true || echo false)
+export IS_AWS=$( [[ -n $( timeout $vm_timeout curl -s http://169.254.169.254/latest/meta-data/hostname | grep -o 'ec2.internal' ) ]] && echo true || echo false)
+export IS_BARE=$( [[ -n $(  timeout $vm_timeout facter virtual | grep -o 'physical' ) ]] && echo true || echo false)
+export IS_VM=$( timeout $vm_timeout facter is_virtual)
 
-
-export IS_GCP=` [[ -n $( timeout 5 facter virtual | grep -o 'gce' ) ]] && echo true || echo false`
-export IS_GCP_1=` [[ -n $( timeout 5 curl -s metadata.google.internal -i | grep 'Metadata-Flavor: Google' ) ]] && echo true || echo false`
-export IS_AWS=`[[ -n $( timeout 5 curl -s http://169.254.169.254/latest/meta-data/hostname | grep -o 'ec2.internal' ) ]] && echo true || echo false`
-export IS_BARE=`[[ -n $(  timeout 5 facter virtual | grep -o 'physical' ) ]] && echo true || echo false`
-export IS_VM=`timeout 5 facter is_virtual`
+ROOT_PID=$$
+BASH_ROOT_PID=$BASHPID
 
 [[ "$ENV" == "PROD" ]] && REDIRECT=/dev/null || REDIRECT=/dev/stdout
 
@@ -64,10 +72,12 @@ export IP_REGEX_FULL="(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0
 
 if ! command -v pihole &> /dev/null
 then
+	export PIHOLE_LOG=$LOG/pihole.log
         export IS_PIHOLE=true
-        export IS_MASTER=true
-        export MASTER=true
-
+        export IS_MASTER=$IS_PIHOLE
+        export MASTER=$IS_PIHOLE
+	export HOLE=/etc/pihole
+	export PIHOLE=$HOLE
 fi
 
 DO=debug_override
@@ -76,6 +86,7 @@ function KILL_FILE() {
 	bash $PROG/process_count.sh $FILE_NAME $THIS_PID pid | sed -n '2p' | cut -d ':' -f 2- | xargs kill -9 2>1 /dev/null
 }
 export -f KILL_FILE
+
 function setupLogger() {
 	! [[ -d $LOG_DIR ]] && mkdir -p $LOG_DIR/
 
@@ -84,7 +95,10 @@ function setupLogger() {
 	! [[ -f $LOG_FILE.debug ]] && touch $LOG_FILE.debug
 }
 export -f setupLogger
-setupLogger
+case $- in
+    *i*) ;;
+      *) setupLogger ;;
+esac
 function logger() {
       	local MSG="$@"
         local PREFIX="LOG; ENV: $ENV; DEBUG: $DEBUG;"
@@ -143,17 +157,31 @@ function CONCURRENT() {
 	logger "PID: $THIS_PID"
 	logger "FILE_NAME $FILE_NAME"
 	logger "isRunning $isRunning"
-	if [[ $isRunning -ge 1 ]] && [[ $CONCURENT_OVERRIDE == false ]]; then
+	if [[ $isRunning -ge 1 ]] && [[ "$CONCURENT_OVERRIDE" == 'false' ]]; then
 		logger "$SCRIPT Script already running please kill these $isRunning"
-		echo "Date last open `date`"
+		echo "Date last open `date` isRunning $isRunning"
 	   	echo "$SCRIPT Script already running please kill these $isRunning"
-        	trap "$SCRIPT Script already running please kill these $isRunning" ERR
 		set -e
+		sub_shells_pids=`pgrep -f $SCRIPT`
+		kill -9 $$ $BASHPID $BASH_SUBSHELL $sub_shells_pids $ROOT_PID $BASH_ROOT_PID $THIS_PID &
+		coproc exit
+		coproc exit 1
+		coproc exit 22
         	exit 1
         	exit 1
-        	exit 1
-		kill $$
+        	exit 0
+        	exit 0
+        	exit 22
+		exit | exit | exit
+		kill $$ $BASHPID $BASH_SUBSHELL $sub_shells_pids
+		kill -10 $$ $BASHPID $BASH_SUBSHELL $sub_shells_pids
+		kill -9 $$ $BASHPID $BASH_SUBSHELL $sub_shells_pids
+		kill -8 $$ $BASHPID $BASH_SUBSHELL $sub_shells_pids
+		kill -7 $$ $BASHPID $BASH_SUBSHELL $sub_shells_pids
+        	trap "$SCRIPT Script already running please kill these $isRunning" ERR
+		return 1
 	else
+		set +e
 		return 0
 	fi
 }
@@ -166,109 +194,25 @@ function log_d() { #debugg log
 }
 export -f log_d
 
-if [[ $TEST == 'true' ]]; then
+if [[ "$TEST" == 'true' ]]; then
 	logger "GLOBAL LOGGING TEST"
 	log "GLOBAL LOGGING TEST"
 	LOG "GLOBAL LOGGING TEST"
 	log_d "GLOBAL LOGGING TEST $DEBUG"
 fi
 
-function RESET_FTL(){
-#		local FTL=alt-pihole-FTL.service
-		if [[ `isFTLRunning` -ge 1 ]]; then
-			sudo killall pihole-FTL
-			[[ `isFTLRunning` -ge 1 ]] && ps -aux | grep pihole-FTL | grep -v 'grep' | awk '{print $2}' | xargs sudo kill -9 > /dev/null 2>1
-		fi
-		local FTL=pihole-FTL.service
-#                systemctl reload $FTL
-                systemctl stop $FTL
-                systemctl reset-failed $FTL
-                systemctl stop $FTL
-                systemctl restart $FTL
-#                systemctl start $FTL
-}
-export -f RESET_FTL
-function RESTART_PIHOLE() {
-        local isNotFTL="$1"
-	if [[ "$isSystemInactive" == 'false' ]]; then
-        echo "RESTARTING isNotFTL :$isNotFTL:"
-	sudo chown -R dnsmasq:pihole /var/cache/dnsmasq
-	local isSystemInactive=`systemctl-inbetween-status pihole-FTL.service`
-	        if [[ -n "$isNotFTL" ]]; then
-			log "Restarting DNS"
-			echo "Restarting DNS"
-	                pihole restartdns
-	        else
-			log "Killing FTL"
-			echo "Killing FTL"
-	                RESET_FTL
-	        fi
-	fi
-        sleep 0.250s
-}
-export -f RESTART_PIHOLE
-function RESTART_TO_MANY() {
-        killall -9 pihole-FTL
-        sleep 0.5s
-        pihole restartdns
-}
-export -f RESTART_TO_MANY
-function WHAT_FOR_ACTIVE_PROCESS() {
-	local process="$1"
-        local isSystemInactive=`systemctl status $process | grep -oE '(de|)activating'`
-        local counter=0
-
-        while [[ -n "$isSystemInactive" ]]
-        do
-                sleep 0.5s
-                #counter=$(($counter+1))
-                counter=$[$counter+1]
-                [[ $counter -ge 12 ]] && break;
-        done
-
-
-}
-export -f WHAT_FOR_ACTIVE_PROCESS
-function IF_RESTART() {
-        local FAILED_STR="fail\|FAILURE\|SIGTERM\|SERVFAIL\|inactive\|config error is REFUSED"
-
-        local is_failed_ftl_status=`systemctl is-failed pihole-FTL.service | grep -io "$FAILED_STR"`
-	local pihole_status=`pihole status | grep -io 'not\|disabled\|[✗]'`
-
-	INIT_POP_TEST
-        local logStr=`tail -2 $PIHOLE_LOG`
-        local isFailedLogSearch=`echo "$logStr" | grep -io "$FAILED_STR"`
-	local isSystemInactive=`systemctl-inbetween-status pihole-FTL.service`
-
-	WHAT_FOR_ACTIVE_PROCESS pihole-FTL.service
-	if [[ "$isSystemInactive" == 'false' ]]; then
-        	if [[ -n "$is_failed_ftl_status" ]]; then
-                	log "RESTART_FTL"
-               		RESTART_PIHOLE
-        	elif [[ -n "$pihole_status" ]]; then
-                	log "RESTART_DNS"
-                	RESTART_PIHOLE DNS
-        	elif [[ -n "$isFailedLogSearch" ]]; then
-                	log "RESTART_DNS"
-                	RESTART_PIHOLE DNS
-        	fi
-	fi
-}
-export -f IF_RESTART
-
 function displaytime {
-  local T=$1
-  local D=$((T/60/60/24))
-  local H=$((T/60/60%24))
-  local M=$((T/60%60))
-  local S=$((T%60))
-  (( $D > 0 )) && printf '%d days ' $D
-  (( $H > 0 )) && printf '%d hours ' $H
-  (( $M > 0 )) && printf '%d minutes ' $M
-  (( $D > 0 || $H > 0 || $M > 0 )) && printf 'and '
-  printf '%d seconds\n' $S
+	local T=$1
+	local D=$((T/60/60/24))
+	local H=$((T/60/60%24))
+	local M=$((T/60%60))
+	local S=$((T%60))
+	(( $D > 0 )) && printf '%d days ' $D
+	(( $H > 0 )) && printf '%d hours ' $H
+	(( $M > 0 )) && printf '%d minutes ' $M
+	(( $D > 0 || $H > 0 || $M > 0 )) && printf 'and '
+	printf '%d seconds\n' $S
 }
-
 export -f displaytime
 
 function systemctl-exists() {
@@ -285,6 +229,8 @@ function systemctl-exists() {
 }
 export -f systemctl-exists
 
+alias systemctl-exist='systemctl-exists'
+
 function systemctl-inbetween-status() {
 	local service="${1}"
 	local inbetween_status=`systemctl is-failed "${service}" | grep -oE '(de|)activating'`
@@ -297,6 +243,8 @@ function systemctl-inbetween-status() {
 	fi
 }
 export -f systemctl-inbetween-status
+alias systemctl-in-status='systemctl-inbetween-status'
+alias systemctl-activating-status='systemctl-inbetween-status'
 
 function systemctl-seconds() {
 	# TIme inbetween 60 secodns
@@ -321,13 +269,124 @@ function systemctl-run-time() {
 }
 export -f systemctl-run-time
 
+
+function RESET_FTL(){
+#		local FTL=alt-pihole-FTL.service
+#		if [[ `isFTLRunning` -ge 1 ]]; then
+#			sudo killall pihole-FTL
+#			[[ `isFTLRunning` -ge 1 ]] && ps -aux | grep pihole-FTL | grep -v 'grep' | awk '{print $2}' | xargs sudo kill -9 > /dev/null 2>1
+#		fi
+		local FTL=pihole-FTL.service
+#                systemctl reload $FTL
+                systemctl stop $FTL
+                systemctl reset-failed $FTL
+                systemctl stop $FTL
+                systemctl restart $FTL
+#                systemctl start $FTL
+}
+export -f RESET_FTL
+
+function PIHOLE_RESTART_PRE() {
+        mkdir -p /var/cache/dnsmasq/
+        touch /var/cache/dnsmasq/dnsmasq_dnssec_timestamp
+        touch /etc/pihole/local.list
+        touch /etc/pihole/custom.list
+        #chown pihole:pihole -R /var/cache/dnsmasq/
+        sudo chown -R dnsmasq:pihole /var/cache/dnsmasq
+
+}
+export -f PIHOLE_RESTART_PRE
+
+function RESTART_PIHOLE() {
+        local isNotFTL="$1"
+	local isSystemInactive=`systemctl-inbetween-status pihole-FTL.service`
+	PIHOLE_RESTART_PRE
+	if [[ "$isSystemInactive" == 'false' ]]; then
+        	echo "RESTARTING isNotFTL :$isNotFTL:"
+	        if [[ -n "$isNotFTL" ]]; then
+			log "Restarting DNS"
+			echo "Restarting DNS"
+	                pihole restartdns
+	        else
+			log "Killing FTL"
+			echo "Killing FTL"
+	                RESET_FTL
+	        fi
+	fi
+        sleep 2.250s
+}
+
+export -f RESTART_PIHOLE
+function RESTART_TO_MANY() {
+        killall -9 pihole-FTL
+        sleep 0.5s
+        pihole restartdns
+}
+export -f RESTART_TO_MANY
+
+function WHAT_FOR_ACTIVE_PROCESS() {
+	local process="$1"
+        local isSystemInactive=`systemctl status $process | grep -oE '(de|)activating'`
+        local counter=0
+
+        while [[ -n "$isSystemInactive" ]]
+        do
+                sleep 0.5s
+                #counter=$(($counter+1))
+                counter=$[$counter+1]
+                [[ $counter -ge 12 ]] && break;
+        done
+
+
+}
+export -f WHAT_FOR_ACTIVE_PROCESS
+
+function IF_RESTART() {
+
+        local is_failed_ftl_status=`systemctl is-failed pihole-FTL.service | grep -io "$FULL_FAIL_STR"`
+	local pihole_status=`pihole status | grep -io 'not\|disabled\|[✗]'`
+
+	INIT_POP_TEST
+        local logStr=`tail -2 $PIHOLE_LOG`
+        local isFailedLogSearch=`echo "$logStr" | grep -io "$FAILED_STR_LOG"`
+	local isSystemInactive=`systemctl-inbetween-status pihole-FTL.service`
+
+#	WHAT_FOR_ACTIVE_PROCESS pihole-FTL.service
+	if [[ "$isSystemInactive" == 'false' ]]; then
+        	if [[ -n "$is_failed_ftl_status" ]]; then
+			echo "restarting FTL is_failed_ftl_status $is_failed_ftl_status"
+                	log "RESTART_FTL"
+               		RESTART_PIHOLE
+        	elif [[ -n "$pihole_status" ]]; then
+			echo "restarting  DNS  pihole_status $pihole_status"
+                	log "RESTART_DNS"
+                	RESTART_PIHOLE DNS
+        	elif [[ -n "$isFailedLogSearch" ]]; then
+			echo "restarting DNS isFailedLogSearch $isFailedLogSearch"
+                	log "RESTART_DNS"
+                	RESTART_PIHOLE DNS
+        	fi
+	fi
+}
+export -f IF_RESTART
+
+function PIHOLE_RESTART_POST() {
+	input_cycle_number="${1:-4}"
+	for (( i=1; i <= $input_cycle_number; i++ ))
+	do
+		IF_RESTART
+		sleep 2.5s
+	done
+}
+export -f PIHOLE_RESTART_POST
+
 function filter_ip_address_array() {
         local INPUT_ARRAY=( "$@" )
         # Sort IPs
         printf "%s\n" "${INPUT_ARRAY[@]}" | sort -t . -k 3,3n -k 4,4n | uniq | sort -u
 }
-
 export -f filter_ip_address_array
+
 function round() {
     printf "%.${2:-0}f" "$1"
 }
@@ -343,6 +402,7 @@ function encrypt() {
         [ -e "$1.$CRYPT_EXT" ] && shred -u "$1"
 }
 export -f encrypt
+
 #decrypt <file.> | Usage decrypt <file.>
 function decrypt() {
         [ -e "$1" ] || return 1
@@ -351,6 +411,7 @@ function decrypt() {
         [ -e "${1%.$CRYPT_EXT}" ] && rm -f "$1"
 }
 export -f decrypt
+
 function validphone () {
     case ${1//[ -]/} in
      *[!0-9]* | 0* | ???????????* | \
@@ -382,6 +443,7 @@ function valid_ip() {
     return $stat
 }
 export -f valid_ip
+
 function extract() {
    if [ -f $1 ] ; then
        case $1 in
@@ -404,6 +466,7 @@ function extract() {
    fi
 }
 export -f extract
+
 #move and go to dir
 function mvg (){
   if [ -d "$2" ];then
@@ -423,6 +486,7 @@ function cpg (){
   fi
 }
 export -f cpg
+
 wait_on_command()
 {
     local timeout=$1; shift
@@ -443,3 +507,31 @@ wait_on_command()
     kill -9 $child &>/dev/null
     echo Timed out
 }
+export -f wait_on_command
+
+function ip_exists() {
+	local ip_address="$1"
+	local ping_exit_status=`ping -c 3 $ip_address > /dev/null; echo $?`
+	if [[ $ping_exit_status -le 1 ]]; then
+		echo "true"
+	else
+		echo "false"
+	fi
+}
+
+alias does_ip_exists='ip_exists'
+alias is_ip_exists='ip_exists'
+alias ip_exist='ip_exists'
+
+function load_env() {
+        for env in $( grep -Ev ^# /etc/environment )
+	do
+		export $(echo $env | grep -v '#' | sed -e 's/"//g') > /dev/null
+	done
+        source /etc/environment
+}
+export -f load_env
+load_env
+
+
+source /etc/environment

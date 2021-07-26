@@ -23,6 +23,8 @@ FILES=(
 	"/etc/pihole/dns-servers.conf.bk"
 	"/etc/pihole/quick-whitelist.list"
 	"/etc/pihole/quick-blacklist.list"
+	"/etc/pihole/vulnerability-blacklist.regex"
+	"/etc/pihole/youtube_regex_urls.txt"
         "/home/$PERONAL_USR/Programs/cert_manager.sh"
 	"/home/$PERONAL_USR/Programs/pihole-lighttpd-changes.sh"
 	"/home/$PERONAL_USR/Programs/pihole-db-sql-changes.sh"
@@ -38,7 +40,7 @@ do
 
 	gcloud compute ssh $MASTER_MACHINE \
 	        --project "$GCLOUD_PROJECT" \
-	        --zone "$GCLOUD_ZONE" -- "mkdir -p /tmp/$dir && sudo cp -rf $file /tmp/$file && sudo chown -R $PERONAL_USR:$PERONAL_USR /tmp/$file"
+	        --zone "$GCLOUD_ZONE" -- "mkdir -p /tmp/cp_master_files/$dir && sudo cp -rf $file /tmp/cp_master_files/$file && sudo chown -R $PERONAL_USR:$PERONAL_USR /tmp/cp_master_files"
 
 	# Copy files
 	if ! [[ -d $dir ]] && ! [[ -f $file ]]; then
@@ -47,8 +49,10 @@ do
 	else
 		export rFile=$file
 	fi
-
-	sudo gcloud compute scp $MASTER_MACHINE:/tmp/$file $rFile \
+	mkdir -p /tmp/cp_master_files
+	sudo gcloud compute scp $MASTER_MACHINE:/tmp/cp_master_files/$file $rFile \
+	        --scp-flag="-r" --project "$GCLOUD_PROJECT" --zone "$GCLOUD_ZONE"
+	sudo gcloud compute scp $MASTER_MACHINE:/tmp/cp_master_files/ /tmp/cp_master_files \
 	        --scp-flag="-r" --project "$GCLOUD_PROJECT" --zone "$GCLOUD_ZONE"
 
 done

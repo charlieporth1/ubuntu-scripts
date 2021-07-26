@@ -21,6 +21,11 @@ fi
 
 declare -a MY_PIHOLE_BAN_IPs
 MY_PIHOLE_BAN_IPs=(
+	172.red-80-25-158.staticip.rima-tde.net
+	47-217-50-170.enidcmta02.res.dyn.suddenlink.net
+	invalid.mannford.ok.mbo.net
+	45.130.83.194/16
+	47.157.216.195/16
 	72.46.5.117/16
 	67.168.226.169/16
 	27.216.192.200/16

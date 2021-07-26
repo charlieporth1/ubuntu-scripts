@@ -65,9 +65,10 @@ else
                         exit 1
 			kill $$
                 fi
+		[[ -f $PROG/dns-route.sh ]] && bash $PROG/dns-route.sh
 		systemctl daemon-reload
 		systemctl restart ctp-dns
-                sleep $WAIT_TIME
+                #sleep $WAIT_TIME
 	else
                 echo "DOQ SUCCESS"
 	fi

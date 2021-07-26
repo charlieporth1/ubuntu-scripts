@@ -67,15 +67,14 @@ else
 			echo "restarting pihole"
 			sudo chown -R dnsmasq:pihole /var/cache/dnsmasq
 			pihole restartdns
-			IF_RESTART
-			IF_RESTART
-			IF_RESTART
-			sleep $WAIT_TIME
+			PIHOLE_RESTART_POST 3
+			#sleep $WAIT_TIME
 		elif [[ $(systemctl-inbetween-status ctp-dns.service) == 'false' ]];  then
 	                echo "restarting ctp-dns"
+			[[ -f $PROG/dns-route.sh ]] && bash $PROG/dns-route.sh
 			systemctl daemon-reload
 			systemctl restart ctp-dns
-			sleep $WAIT_TIME
+			#sleep $WAIT_TIME
 		fi
 	elif [[ -z "$dns_external_test" ]]; then
 		echo "DNS: extenal failed posiable firewall issue"

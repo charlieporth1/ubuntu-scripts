@@ -1,5 +1,5 @@
 #!/bin/bash
-TIMEOUT=5
+TIMEOUT=3
 NC="\e[39m"
 RED="\e[31m"
 RED_L="\e[91m"
@@ -27,16 +27,18 @@ FAIL="$NC[$RED✗$NC]$NC"
 
 declare -a JAILs
 JAILs=(
- `timeout $TIMEOUT sudo fail2ban-client status | grep "Jail list:" | awk -F, 'NR==n && $1=$1' n=1 | cut -d ':' -f 2-`
+	`timeout $TIMEOUT sudo fail2ban-client status | grep "Jail list:" | awk -F, 'NR==n && $1=$1' n=1 | cut -d ':' -f 2-`
 )
 printf "|| $CYAN%-20s $NC|$CYAN %-10s $NC|$CYAN %-20s $NC|$CYAN %-10s $NC|$CYAN %-10s $NC|\n" "JAIL" "BAN COUNT" "TOTAL FAILED" "CURRENTLY FAILED"  "TIME"
 
 for jail in "${JAILs[@]}"
 do
-	FAIL2BAN_JAIL=`timeout3 $TIMEOUT sudo fail2ban-client status $jail`
-	ban_count=`printf '%s\n' "$FAIL2BAN_JAIL" | sed -n '7p' | awk '{print $4}'`
-	total_failed=`printf '%s\n' "$FAIL2BAN_JAIL"| grep 'Total failed' | awk -F: '{print $2}'`
-	currently_failed=`printf '%s\n' "$FAIL2BAN_JAIL" | grep 'Currently failed' | awk -F: '{print $2}'`
-	printf "|| %-20s | %-10s | %-20s | %-10s | %-10s |\n" "$jail" "$ban_count" "$total_failed" "$currently_failed" "`date +'%H:%M:%S'`"
-
+	echo $jail
+	if [[ -n "$jail" ]]; then
+		FAIL2BAN_JAIL=`timeout $TIMEOUT sudo fail2ban-client status $jail`
+		ban_count=`printf '%s\n' "$FAIL2BAN_JAIL" | sed -n '7p' | awk '{print $4}'`
+		total_failed=`printf '%s\n' "$FAIL2BAN_JAIL"| grep 'Total failed' | awk -F: '{print $2}'`
+		currently_failed=`printf '%s\n' "$FAIL2BAN_JAIL" | grep 'Currently failed' | awk -F: '{print $2}'`
+		printf "|| %-20s | %-10s | %-20s | %-10s | %-10s |\n" "$jail" "$ban_count" "$total_failed" "$currently_failed" "`date +'%H:%M:%S'`"
+	fi
 done

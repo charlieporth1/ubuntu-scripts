@@ -14,12 +14,11 @@ ARHIVE_DIR=$ROOT_KEY_DIR/archive/$HOST_SERVER
 # rsa ecdsa
 # ed25519 secp256r1 secp521r1
 certbot renew -n \
-	--nginx \
+        --webroot -w /var/www/html \
 	--staple-ocsp \
 	--elliptic-curve secp256r1 \
 	--key-type rsa \
 	--rsa-key-size 2048 \
-        --nginx-sleep-seconds 12 \
         --no-redirect \
         --cert-name $HOST_SERVER
 # --webroot -w /var/www/html 
@@ -27,12 +26,11 @@ certbot renew -n \
 # --test-cert --dry-run
 #	--webroot -w /var/www/html \
 certbot certonly -n \
-	--nginx \
+        --webroot -w /var/www/html \
 	--staple-ocsp \
 	--elliptic-curve secp256r1 \
 	--key-type rsa \
 	--rsa-key-size 2048 \
-        --nginx-sleep-seconds 12 \
         --no-redirect \
         --cert-name $HOST_SERVER \
 	--domain dns.ctptech.dev \

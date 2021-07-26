@@ -2,14 +2,14 @@
 # sudo systemctl list-units | grep -i failed
 # sudo systemctl list-units --state failed
 # sudo systemctl list-units --failed
-systemctl daemon-reload
+sudo systemctl daemon-reload
 ARGS="$@"
 TIMEOUT=24
 isAutomation=`echo "$ARGS" | grep -io '\-a'`
 FAILURE_STR="fail\|FAILURE\|failed"
 FULL_FAIL_STR="$FAILED_STR\|deactivating\|stop\|inactive\|dead"
 
-PROG=/home/charlieporth1_gmail_com/Programs/
+source /etc/environment
 source $PROG/all-scripts-exports.sh
 
 # prints colored text
@@ -47,10 +47,10 @@ GOOGLE_SERVICES=(
 	'google-oslogin-cache.timer'
 	'google-startup-scripts.service'
 	'google-shutdown-scripts.service'
-	'google-instance-setup.service'
-	'google-network-daemon.service'
-	'google-accounts-daemon.service'
-	'google-clock-skew-daemon.service'
+#	'google-instance-setup.service'
+#	'google-network-daemon.service'
+#	'google-accounts-daemon.service'
+#	'google-clock-skew-daemon.service'
 )
 declare -a SERVICES
 #	'netdata'
@@ -79,6 +79,7 @@ SERVICES=(
 	'ssh.service'
 	'iptables.service'
 	'resolvconf-pull-resolved.service'
+	'resolvconf-pull-resolved.pull'
 	'network.target'
 	'logrotate.timer'
 	'logrotate.service'
@@ -89,13 +90,13 @@ SERVICES=(
 	'apt-daily-upgrade.timer'
 	'apt-daily.timer'
 	'apt-daily.service'
-	'systemd-timesyncd.service'
+	'systemd-timesyncd'
 	'systemd-networkd.socket'
 	'systemd-networkd.service'
 	'system-getty.slice'
-	'systemd-timesyncd.service'
-	'systemd-sysctl.service'
-	'systemd-hostnamed.service'
+	'systemd-timesyncd'
+	'systemd-sysctl'
+	'systemd-hostnamed'
 	$( [[ "$IS_GCP" == 'true' ]] && echo ${GOOGLE_SERVICES[@]} )
 )
 

@@ -1,5 +1,5 @@
 #!/bin/bash
-
+git config --global credential.helper 'store --file ~/.git-credentials'
 export SCRIPT_NAME=`basename $0`
 [[ "$SCRIPT_DIR" == '.' ]] && export SCRIPT_DIR=$PWD
 [[ -n `which realpath` ]] && export SCRIPT_DIR=`realpath .`
@@ -17,6 +17,7 @@ export HOME="/home/$USER"
 export PROG="$HOME/Programs"
 export ROUTE="$PROG/route-dns"
 
+
 export INSTALL_CONFIG_DIR=/etc
 export IP_REGEX="((([0-9]{1,3})((\.)?))"
 
@@ -27,9 +28,11 @@ export MASTER_DIR=$SCRIPT_DIR/master
 
 export CONFIG_INSTALLED_STR='# CTP INSTALL -- DO NOT REMOVE THIS UNLESS YOU PLAN ON REMOVING INSTALL AND REINSTALLING'
 
+source $CONF_PROG_DIR/all-scripts-exports.sh > /dev/null
+
 #source $SCRIPT_DIR/bash_rc_sample
 function load_env() {
-	for env in $( cat /etc/environment ); do export $(echo $env | grep -v '#' | sed -e 's/"//g') > /dev/null; done
+	for env in $( grep -Ev ^# /etc/environment ); do export $(echo $env | grep -v '#' | sed -e 's/"//g') > /dev/null; done
 	source /etc/environment
 }
 export -f load_env

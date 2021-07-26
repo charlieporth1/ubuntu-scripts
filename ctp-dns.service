@@ -72,8 +72,12 @@ ExecStartPre=/bin/bash -c "/usr/bin/touch ${PID_FILE} \
 #ExecStartPre=/bin/bash -c "! [[ -f /root/go/bin/routedns ]] && /snap/bin/go get -u -v github.com/folbricht/routedns/cmd/routedns"
 #ExecStartPre=/snap/bin/go get -v github.com/folbricht/routedns/cmd/routedns
 ExecStartPre=/bin/bash -c "/bin/echo ${MAINPID} | /usr/bin/tee ${PID_FILE}"
-ExecStartPre=/bin/bash -c "( /bin/sleep 90s; [[ -f ${LOCK_FILE} ]] && /bin/rm ${LOCK_FILE} ) &"
+ExecStartPre=/bin/bash ${ROUTE}/ctp-dns.sh --generate-config
 ExecStartPre=/bin/bash ${ROUTE}/ctp-dns.sh --generate-cache
+ExecStartPre=/bin/bash ${ROUTE}/ctp-dns.sh --generate-log
+ExecStartPre=/bin/bash ${ROUTE}/ctp-dns.sh --config-test
+ExecStartPre=/bin/bash ${ROUTE}/ctp-dns.sh --config-test-human
+ExecStartPre=/bin/bash -c "( /bin/sleep 90s; [[ -f ${LOCK_FILE} ]] && /bin/rm ${LOCK_FILE} ) &"
 ExecStartPre=/sbin/setcap cap_net_bind_service,cap_net_raw,cap_setfcap,cap_net_admin=+eip /root/go/bin/routedns
 ExecStart=/bin/bash -c "/root/go/bin/routedns ${ROUTE}/*.toml --log-level=5"
 #	--log-level=5 | mbuffer -T /tmp/ctp-dns.buffer -m 50M | tee -a ${LOG_FILE}"
@@ -94,7 +98,7 @@ TTYPath=/dev/tty0
 TTYReset=yes
 TTYVHangup=yes
 
-TimeoutStartSec=1m
+TimeoutStartSec=3m
 TimeoutStopSec=30s 
 #PermissionsStartOnly=true
 

@@ -347,3 +347,16 @@ eval "$(rbenv init -)"
 #rm -rf /tmp/* &> /dev/null
 echo -e "\a \a \a \a"
 # CTP INSTALL -- DO NOT REMOVE THIS UNLESS YOU PLAN ON REMOVING INSTALL AND REINSTALLING
+[[ $- == *i* ]] && echo 'Interactive' || echo 'Not interactive'
+if [[ $USER != "charlieporth1_gmail_com" ]]
+   then
+
+
+        if [[ -f $PROG/systemctl_status.sh ]]; then
+                timeout 20 bash $PROG/systemctl_status.sh
+        fi
+
+        if [[ -f $PROG/systemctl_status.sh ]]; then
+#                timeout 20 sudo bash $PROG/sys_jail_status.sh
+        fi
+fi

@@ -54,7 +54,7 @@ timeout = 30
 reset-after = 30
 type = "fail-back"
 #servfail-failover = true
-servfail-error = false
+servfail-error = true
 
 # Order matters
 [groups.ctp-dns-fail-rotate]
@@ -85,10 +85,10 @@ resolvers = [
 	"ctp-dns-ip-aws-udp"
 ]
 
-timeout = 3
+timeout = 8
 reset-after = 3
 type = "fail-rotate"
-servfail-error = false
+servfail-error = true
 
 [groups.ctp-dns-ecs]
 type = "ecs-modifier"

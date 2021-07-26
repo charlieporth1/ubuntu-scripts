@@ -5,7 +5,8 @@
 [[ "$ENV" == "PROD" ]] && REDIRECT=/dev/null || REDIRECT=/dev/stdout
 (
 	source /etc/profile.d/bash-exports-global.sh
-	bash $PROG/dblock.sh
+
+	[[ -f $PROG/dblock.sh ]] && bash $PROG/dblock.sh
 	cat $HOLE/youtube_regex_urls.txt | parallel --lb --xargs -j1 -m pihole --white-regex
 #	bash $PROG/make_redirect_shorter.sh "REMOVE"
 	pihole --white-regex "^i(|[0-6])\.ytimg\.com$" "^yt(|[0-6])\.ggpht\.com$"

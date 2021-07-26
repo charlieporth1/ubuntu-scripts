@@ -81,9 +81,10 @@ if [[ -n "$isAuto" ]]; then
 
 	if [[ -z "$doh_proxy_local_test" ]] && [[ $(systemctl-inbetween-status doh-server.service) == false ]]; then
 		echo "ALERT DOH doh_proxy_local_test doh-proxy :$doh_proxy_local_test:"
+		[[ -f $PROG/doh_proxy_json.sh ]] && bash $PROG/doh_proxy_json.sh
 		sudo killall -9 doh-server
 		systemctl restart doh-server.service
-		sleep $WAIT_TIME
+		#sleep $WAIT_TIME
 	else
 		echo "Success doh JSON PROXY"
 	fi
@@ -104,7 +105,7 @@ if [[ -n "$isAuto" ]]; then
 
 			sudo killall -9 nginx
 			systemctl restart nginx.service
-			sleep $WAIT_TIME
+			#sleep $WAIT_TIME
 		fi
 	else
 		echo "Success doh NGNIX"
@@ -113,9 +114,10 @@ if [[ -n "$isAuto" ]]; then
 	if [[ -z "$doh_remote_ctp_test" ]] && [[ $(systemctl-inbetween-status ctp-dns.service) == false ]]; then
 		echo "TESST REMOTE ALERt DOH doh_remote_ctp_test :$doh_remote_ctp_test:"
 		echo "TESST REMOTE ALERt DOH CTP_DNS doh_remote_ctp_test :$doh_remote_ctp_test:"
+		[[ -f $PROG/dns-route.sh ]] && bash $PROG/dns-route.sh
 		systemctl daemon-reload
 		systemctl restart ctp-dns
-		sleep $WAIT_TIME
+		#sleep $WAIT_TIME
 	else
 		echo "Success doh CTP/RFC"
 	fi

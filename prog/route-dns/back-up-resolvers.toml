@@ -29,6 +29,6 @@ resolvers = [
 	"google-dns-ip-2-tcp",
 	"google-dns-ip-2-udp",
 ]
-servfail-failover = true 
-timeout = 3
+servfail-error = false
+timeout = 15
 type = "fail-back"

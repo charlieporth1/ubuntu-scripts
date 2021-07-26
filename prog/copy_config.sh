@@ -22,6 +22,7 @@ sudo cp -rf $CONFIG_DIR/bash_rc/* ~/
 sudo cp -rf $CONFIG_DIR/www/* $WWW/
 
 # Sys LNs
+sudo ln -s $CONF_PROG_DIR/ $PROG/
 sudo ln -s /etc/fail2ban/filter.d/ctp-custom-vars.conf   /etc/fail2ban/filter.d/common.local
 sudo ln -s $SETUP_DIR/dns-route.sh ${PROG:-$CONF_PROG_DIR}/
 sudo ln -s $SETUP_DIR/doh_proxy_json.sh ${PROG:-$CONF_PROG_DIR}/
@@ -37,7 +38,6 @@ sudo ln -s $ROUTE/lists/ $LIST_DIR
 # Master
 if [[ "$IS_MASTER" == 'true' ]]; then
 	sudo ln -s $MASTER_DIR/ $PROG/
-	sudo ln -s $MASTER_DIR/*.sh $PROG/
 	if [ -d $MASTER_DIR ]; then
 	  for i in $MASTER_DIR/*.sh; do
 	    if [ -r $i ]; then
@@ -51,6 +51,16 @@ else
 # Slave
 	sudo rm -rf /etc/fail2ban/jai.d/{pihole-dns,pihole-dns-1-block}.conf
 	sudo rm -rf /etc/fail2ban/filter.d/{pihole-dns,pihole-dns-1-block}.conf
+fi
+
+if [[ -d $PROG ]]; then
+	for i in $CONF_PROG_DIR/*.{sh,service,bash,txt,list,regex}; do
+  		if [ -r $i ]; then
+       			ln -s $i $PROG
+    		fi
+	done
+	unset i
+ #	ln -s $CONF_PROG_DIR/*.sh $PROG
 fi
 
 # Chmod +x
