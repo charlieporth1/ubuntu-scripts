@@ -1,6 +1,15 @@
 #!/bin/bash
 source $PROG/all-scripts-exports.sh
+source ctp-dns.sh --source
 CONCURRENT
+
+if [[ -f $CTP_DNS_LOCK_FILE ]]; then
+        echo "LOCK FILE"
+        trap 'LOCK_FILE' ERR
+        set -e
+        exit 1
+        exit 1
+fi
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/charlieporth1_gmail_com/go/bin:$PATH
 echo "Running DNS TEST"
 [[ "$1" == "-a" ]] && isAuto="+short"
@@ -24,13 +33,15 @@ EXTENRAL_IP=`bash $PROG/get_ext_ip.sh  --current-ip`
 if ! command -v dig &> /dev/null
 then
     echo "COMMAND dig could not be found"
-    exit
+    sudo apt install dnsutils
+    exit 1
 fi
 
 if ! command -v grepip &> /dev/null
 then
     echo "COMMAND grepip could not be found installing"
     curl -Ls 'https://raw.githubusercontent.com/ipinfo/cli/master/grepip/deb.sh' | bash
+    exit 1
 fi
 
 DNS_ARGS="+tries=$TRIES +dnssec +ttl +edns +timeout=$TIMEOUT -t A -4 +retry=$TRIES +ttlunits"
@@ -61,20 +72,26 @@ if [[ -z "$isAuto" ]]; then
 	printf '%s\n' "$dns_local"
 else
 	if [[ -z "$dns_local_test" ]]; then
-		pihole_bin=$( [[ -n `which pihole` ]] && which pihole || echo '/usr/local/bin/pihole')
-		echo "Failed restarting pihole_bin :$pihole_bin:"
-		if [[ -f "$pihole_bin" ]] && [[ $(systemctl-inbetween-status pihole-FTL.service) == 'false' ]]; then
-			echo "restarting pihole"
-			sudo chown -R dnsmasq:pihole /var/cache/dnsmasq
-			pihole restartdns
-			PIHOLE_RESTART_POST 3
-			#sleep $WAIT_TIME
+		echo "DNS Failed"
+		pihole_bin=$( which pihole || echo '/usr/local/bin/pihole' )
+		service=pihole-FTL.service
+		if [[ -f "$pihole_bin" ]] || [[ `systemctl-exists $service` ]]; then
+			if [[ $(systemctl-inbetween-status $service) == 'false' ]] && [[ `systemctl-seconds $service` -gt 30 ]]; then
+				echo "DNS Failed restarting pihole_bin :$pihole_bin:"
+				echo "restarting pihole"
+				PIHOLE_RESTART_PRE
+				pihole restartdns
+				PIHOLE_RESTART_POST 3
+				#sleep $WAIT_TIME
+			fi
 		elif [[ $(systemctl-inbetween-status ctp-dns.service) == 'false' ]];  then
-	                echo "restarting ctp-dns"
-			[[ -f $PROG/dns-route.sh ]] && bash $PROG/dns-route.sh
-			systemctl daemon-reload
-			systemctl restart ctp-dns
-			#sleep $WAIT_TIME
+			if [[ `systemctl-seconds ctp-dns.service` -gt 30 ]]; then
+		                echo "restarting ctp-dns"
+				ctp-dns.sh --generate-config
+				systemctl daemon-reload
+				systemctl restart ctp-dns
+				#sleep $WAIT_TIME
+			fi
 		fi
 	elif [[ -z "$dns_external_test" ]]; then
 		echo "DNS: extenal failed posiable firewall issue"

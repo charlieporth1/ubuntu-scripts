@@ -25,7 +25,8 @@ wget --user=ftp --password=ftp ftp://ftp.rs.internic.net/domain/db.cache -O /etc
 sudo unbound-anchor -v -F -R \
 	-a /var/lib/unbound/root.key \
 	-f /etc/resolv.conf \
-	-r /etc/unbound/root.hints
+ 	-r /var/lib/unbound/root.hints
+#	-r /etc/unbound/root.hints
 
 #	-c $UNBOUND/icannbundle.pem \
 #	-x root-anchors/root-anchors.xml \

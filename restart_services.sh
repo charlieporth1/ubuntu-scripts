@@ -41,6 +41,8 @@ SERVICES=(
 	'nginx.service'
 	'doh-server.service'
 	'fail2ban.service'
+	'nginx-dns-rfc.service'
+	'tailscaled.service'
 )
 
 for service in "${SERVICES[@]}"
@@ -48,6 +50,6 @@ do
 	echo "Enabling, restarting and umasking service $service"
 	sudo systemctl unmask "$service"
 	sudo systemctl enable "$service"
-	sudo systemctl restart "$service"
+	sudo systemctl reload-or-restart "$service"
 	echo "Done enabling, restarting and umasking service $service"
 done

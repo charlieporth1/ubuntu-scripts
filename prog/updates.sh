@@ -1,4 +1,5 @@
 #!/bin/bash
+source $PROG/all-scripts-exports.sh
 # REMOVE APT LOCK
 if [[ -f /var/lib/dpkg/lock ]]; then
         rm /var/lib/apt/lists/lock
@@ -30,7 +31,6 @@ python3 -m pip install --upgrade pip
 sudo snap install --classic go
 sudo snap refresh --classic go
 
-gvm get
 GO111MODULE=on
 go get -v -u github.com/AdguardTeam/dnsproxy
 go get -v -u github.com/ameshkov/dnscrypt
@@ -45,10 +45,23 @@ dpkg -i ~/$VP
 wget -O /tmp/dnscrypt.tar.gz  https://github.com/ameshkov/dnscrypt/releases/latest/download/dnscrypt-linux-amd64-` curl --silent "https://api.github.com/repos/ameshkov/dnscrypt/tags" | jq -r '.[0].name'`.tar.gz
 tar -xvf /tmp/dnscrypt.tar.gz -C /tmp
 cp -rf /tmp/linux-amd64/dnscrypt /usr/local/bin
-curl -Ls 'https://github.com/ipinfo/cli/releases/download/ipinfo-1.1.0/deb.sh' | bash
-curl -Ls 'https://raw.githubusercontent.com/ipinfo/cli/master/grepip/deb.sh' | bash
-
+curl -sSL 'https://github.com/ipinfo/cli/releases/download/ipinfo-1.1.0/deb.sh' | bash
+curl -sSL 'https://raw.githubusercontent.com/ipinfo/cli/master/grepip/deb.sh' | bash
+curl -sSL "https://raw.githubusercontent.com/ipinfo/cli/master/ipinfo/deb.sh" | bash
+curl -sSL "https://raw.githubusercontent.com/ipinfo/cli/master/range2cidr/deb.sh" | bash
+curl -sSL "https://raw.githubusercontent.com/ipinfo/cli/master/cidr2range/deb.sh" | bash
+curl -sSL https://raw.githubusercontent.com/ahnick/encpass.sh/master/encpass.sh  | sudo tee /usr/local/bin/encpass.sh &
+& sudo chmod 777 /usr/local/bin/encpass.sh
 if [[ -f /home/charlieporth1_gmail_com/ble.sh/out/ble.sh ]]; then
 	bash /home/charlieporth1_gmail_com/ble.sh/out/ble.sh --update
 fi
 sudo update-ca-certificates
+wget https://raw.githubusercontent.com/yubiuser/pihole_adlist_tool/master/pihole_adlist_tool -O /usr/local/bin/pihole_adlist_tool
+
+if [[ "$IS_GCP" == 'true' ]]; then
+	sudo apt install -y linux-tools-gcp-edge linux-image-gcp-edge linux-headers-gcp-edge
+elif [[ "$IS_AWS" == 'true' ]]; then
+	sudo apt install -y linux-tools-aws-edge linux-image-aws-edge linux-headers-aws-edge
+else
+	sudo apt install -y linux-tools-edge linux-image-edge linux-headers-edge
+fi

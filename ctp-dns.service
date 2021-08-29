@@ -1,7 +1,13 @@
 [Unit] 
 Description=CTP DNS Service
+Wants=network.target
+Wants=network-online.target
 After=network.target
-#pihole-FTL.service
+After=pihole-FTL.service
+After=nginx.service
+After=network-online.target
+Requires=network.target
+Requires=network-online.target
 
 
 [Service]
@@ -51,9 +57,9 @@ CacheDirectory=ctp-dns
 LogsDirectory=ctp-dns
 #RuntimeDirectory=
 
-CPUQuota=65%
+CPUQuota=50%
 
-Nice=19
+Nice=10
 Type=exec
 PIDFile=${PID_FILE}
 
@@ -72,22 +78,24 @@ ExecStartPre=/bin/bash -c "/usr/bin/touch ${PID_FILE} \
 #ExecStartPre=/bin/bash -c "! [[ -f /root/go/bin/routedns ]] && /snap/bin/go get -u -v github.com/folbricht/routedns/cmd/routedns"
 #ExecStartPre=/snap/bin/go get -v github.com/folbricht/routedns/cmd/routedns
 ExecStartPre=/bin/bash -c "/bin/echo ${MAINPID} | /usr/bin/tee ${PID_FILE}"
-ExecStartPre=/bin/bash ${ROUTE}/ctp-dns.sh --generate-config
+ExecStartPre=/bin/bash ${ROUTE}/ctp-dns.sh --config-test-human
 ExecStartPre=/bin/bash ${ROUTE}/ctp-dns.sh --generate-cache
+ExecStartPre=/bin/bash ${ROUTE}/ctp-dns.sh --generate-config
 ExecStartPre=/bin/bash ${ROUTE}/ctp-dns.sh --generate-log
 ExecStartPre=/bin/bash ${ROUTE}/ctp-dns.sh --config-test
 ExecStartPre=/bin/bash ${ROUTE}/ctp-dns.sh --config-test-human
-ExecStartPre=/bin/bash -c "( /bin/sleep 90s; [[ -f ${LOCK_FILE} ]] && /bin/rm ${LOCK_FILE} ) &"
+ExecStartPre=/bin/bash ${ROUTE}/ctp-dns.sh --manage-lock-file
 ExecStartPre=/sbin/setcap cap_net_bind_service,cap_net_raw,cap_setfcap,cap_net_admin=+eip /root/go/bin/routedns
 ExecStart=/bin/bash -c "/root/go/bin/routedns ${ROUTE}/*.toml --log-level=5"
 #	--log-level=5 | mbuffer -T /tmp/ctp-dns.buffer -m 50M | tee -a ${LOG_FILE}"
 #ExecStartPost=/bin/bash -c "for ((i=0; i < 3; i++)); do ps -aux | grep 'pm.stal\|test_\|pm.hea' | awk '{print $2}' | xargs sudo kill -9;sleep 10s;done"
 #ExecStartPost=/bin/bash -c '/bin/sleep 30s; [[ -f /tmp/health-checks.stop.lock ]] &&/bin/rm /tmp/health-checks.stop.lock'
 
-ExecStop=/bin/bash -c "/bin/kill -USR1 ${MAINPID}; if pgrep routedns; then pkill routedns; fi; if pgrep sleep; then pkill sleep; fi; test -f ${LOCK_FILE} && /bin/rm ${LOCK_FILE}; exit 0"
+ExecStop=/bin/bash -c "/bin/kill -USR1 ${MAINPID}; if pgrep sleep; then pkill sleep; fi; test -f ${LOCK_FILE} && /bin/rm ${LOCK_FILE}; exit 0"
 ExecReload=/bin/kill -USR1 ${MAINPID}
 
-Restart=on-failure
+Restart=always
+#Restart=on-failure
 RestartSec=5s
 
 #StandardInput=tty
@@ -98,7 +106,7 @@ TTYPath=/dev/tty0
 TTYReset=yes
 TTYVHangup=yes
 
-TimeoutStartSec=3m
+TimeoutStartSec=6m
 TimeoutStopSec=30s 
 #PermissionsStartOnly=true
 

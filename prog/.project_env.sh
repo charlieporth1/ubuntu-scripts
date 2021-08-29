@@ -16,6 +16,11 @@ ________________________________________________________________________________
 export HOME="/home/$USER"
 export PROG="$HOME/Programs"
 export ROUTE="$PROG/route-dns"
+round() {
+    printf "%.${2:-0}f" "$1"
+}
+export CPU_CORE_COUNT=`cat /proc/stat | grep cpu | grep -E 'cpu[0-9]+' | wc -l`
+export MEM_COUNT=$(round `grep MemTotal /proc/meminfo | awk '{print $2 / 1024}'` 0)
 
 
 export INSTALL_CONFIG_DIR=/etc
@@ -25,6 +30,7 @@ export CONFIG_DIR=$SCRIPT_DIR/config
 export CONF_PROG_DIR=$SCRIPT_DIR/prog
 export SETUP_DIR=$SCRIPT_DIR/setup
 export MASTER_DIR=$SCRIPT_DIR/master
+export BIN_DIR=$SCRIPT_DIR/local/bin
 
 export CONFIG_INSTALLED_STR='# CTP INSTALL -- DO NOT REMOVE THIS UNLESS YOU PLAN ON REMOVING INSTALL AND REINSTALLING'
 
@@ -43,10 +49,11 @@ function checkIsNotInstalled() {
 	if ! [[ -f $file ]]; then
 		touch $file
 	fi
+
 	if [[ -z `grep -o "$CONFIG_INSTALLED_STR" $file` ]]; then
-		echo true
+		echo "true"
 	else
-		echo false
+		echo "false"
 	fi
 }
 function isNotInstalled() {

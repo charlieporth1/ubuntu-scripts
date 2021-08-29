@@ -4,6 +4,8 @@ files=(
 	/etc/hosts
 	$HOLE/dns-servers.conf
 	$SITES/doh
+	$NGINX/nginx.conf
+
 )
 
 

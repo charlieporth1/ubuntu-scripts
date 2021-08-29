@@ -5,6 +5,8 @@ source $PROG/ban_ip_conf.sh
 CONCURRENT
 FILE_NAME='ban_ignore_ip_list'
 DEFUALT_FILE=/tmp/$FILE_NAME.txt
+UNI_FILE=/tmp/$FILE_NAME-uni.txt
+DEFUALT_FILE=/tmp/$FILE_NAME.txt
 # regex test
 
 # fail2ban-regex /var/log/pihole.log /etc/fail2ban/filter.d/pihole-dns-1-block.conf
@@ -254,25 +256,43 @@ do
 done
 save_ip-set $IPSET_BK_NAME $IPSET_FILE_FULL
 
-declare -a JAIL_PIHOLEs
-JAIL_PIHOLEs=(
-	pihole-dns-1-block
-	pihole-dns
-)
+
+save_ip-tables
+
+mapfile -t UNI_IGNORE_IP < $UNI_FILE
+mapfile -t DNS_IGNORE_IPs < $DEFUALT_FILE
 
 declare -a JAILs
 JAILs=(
-	$( [[ -n "$IS_PIHOLE" ]] && ${JAIL_PIHOLEs[@]} )
-	ctp-dns-1-block
-	sshd
-	nginx-http-auth
+        `timeout $TIMEOUT sudo fail2ban-client status | grep "Jail list:" | awk -F, 'NR==n && $1=$1' n=1 | cut -d ':' -f 2-`
+)
+
+declare -a master_services
+pihole_services=(
+        "pihole-dns-1-block"
+        "pihole-dns"
+)
+
+declare -a dns_jails=(
+        $( [[ "$IS_MASTER" == true ]] && echo "${pihole_services[@]}" )
+	"ctp-dns-1-block"
+	"nginx-limit-req"
 )
 
 for jail in "${JAILs[@]}"
 do
-	sudo fail2ban-client $jail start
+        echo "Enabling, restarting and umasking service $jail"
+        sudo fail2ban-client add $jail
+        sudo fail2ban-client start $jail
+	sudo fail2ban-client set $jail addignoreip ${UNI_IGNORE_IP[@]}
+	sudo fail2ban-client set $jail unbanip ${UNI_IGNORE_IP[@]}
 done
 
-sudo bash $PROG/set_unban_ip.sh
+for jail in "${dns_jails[@]}"
+do
+	sudo fail2ban-client set $jail addignoreip ${DNS_IGNORE_IPs[@]}
+	sudo fail2ban-client set $jail unbanip ${DNS_IGNORE_IPs[@]}
+done
 
-save_ip-tables
+
+sudo bash $PROG/set_unban_ip.sh

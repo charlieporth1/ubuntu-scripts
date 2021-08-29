@@ -1,0 +1,4 @@
+[groups.ctp-dns-udp-retry-raw]
+type = "truncate-retry"
+resolvers = [ "ctp-dns-udp" ]
+retry-resolver = "ctp-dns-tcp"

@@ -1,0 +1,228 @@
+
+###################
+###### FASTEST ####
+###################
+[groups.ctp-dns_group-fastest-gcp-external]
+resolvers = [
+	"ctp-dns_gcp-dot-ip-1",
+	"ctp-dns_gcp-dot-ip-2",
+	"ctp-dns_gcp-dtls-ip-1",
+	"ctp-dns_gcp-dtls-ip-2",
+	"ctp-dns_gcp-doh-post-ip-1",
+	"ctp-dns_gcp-doh-post-ip-2",
+	"ctp-dns_gcp-doh-get-ip-1",
+	"ctp-dns_gcp-doh-get-ip-2",
+	"ctp-dns_gcp-doh-quic-post-ip-1",
+	"ctp-dns_gcp-doh-quic-post-ip-2",
+	"ctp-dns_gcp-doh-quic-get-ip-1",
+	"ctp-dns_gcp-doh-quic-get-ip-2",
+	"ctp-dns_gcp-quic-ip-1",
+	"ctp-dns_gcp-quic-ip-2"
+]
+type = "fastest"
+
+[groups.ctp-dns_group-fastest-gcp_home-external]
+resolvers = [
+	"ctp-dns_home-dot",
+	"ctp-dns_home-dtls",
+	"ctp-dns_home-doh-get",
+	"ctp-dns_home-doh-post",
+	"ctp-dns_home-doh-get-route-dns-raw",
+	"ctp-dns_home-doh-post-route-dns-raw",
+	"ctp-dns_home-quic",
+	"ctp-dns_home-doh-quic-post-ip",
+	"ctp-dns_home-doh-quic-get-ip",
+	"ctp-dns_gcp-dot-ip-1",
+	"ctp-dns_gcp-dot-ip-2",
+	"ctp-dns_gcp-dtls-ip-1",
+	"ctp-dns_gcp-dtls-ip-2",
+	"ctp-dns_gcp-doh-post-ip-1",
+	"ctp-dns_gcp-doh-post-ip-2",
+	"ctp-dns_gcp-doh-get-ip-1",
+	"ctp-dns_gcp-doh-get-ip-2",
+	"ctp-dns_gcp-doh-quic-post-ip-1",
+	"ctp-dns_gcp-doh-quic-post-ip-2",
+	"ctp-dns_gcp-doh-quic-get-ip-1",
+	"ctp-dns_gcp-doh-quic-get-ip-2",
+	"ctp-dns_gcp-quic-ip-1",
+	"ctp-dns_gcp-quic-ip-2"
+]
+type = "fastest"
+
+[groups.ctp-dns_group-fastest-masters]
+resolvers = [
+	"ctp-dns_home-dot",
+	"ctp-dns_home-dtls",
+	"ctp-dns_home-doh-get",
+	"ctp-dns_home-doh-post",
+	"ctp-dns_home-doh-get-route-dns-raw",
+	"ctp-dns_home-doh-post-route-dns-raw",
+	"ctp-dns_home-quic",
+	"ctp-dns_home-doh-quic-post-ip",
+	"ctp-dns_home-doh-quic-get-ip",
+	"ctp-dns_gcp-dot-ip-1",
+	"ctp-dns_gcp-dot-ip-2",
+	"ctp-dns_gcp-dtls-ip-1",
+	"ctp-dns_gcp-dtls-ip-2",
+	"ctp-dns_gcp-doh-post-ip-1",
+	"ctp-dns_gcp-doh-post-ip-2",
+	"ctp-dns_gcp-doh-get-ip-1",
+	"ctp-dns_gcp-doh-get-ip-2",
+	"ctp-dns_gcp-doh-quic-post-ip-1",
+	"ctp-dns_gcp-doh-quic-post-ip-2",
+	"ctp-dns_gcp-doh-quic-get-ip-1",
+	"ctp-dns_gcp-doh-quic-get-ip-2",
+	"ctp-dns_gcp-quic-ip-1",
+	"ctp-dns_gcp-quic-ip-2",
+	"ctp-dns_aws-dot",
+	"ctp-dns_aws-dtls",
+	"ctp-dns_aws-quic",
+	"ctp-dns_aws-doh-quic"
+]
+type = "fastest"
+
+[groups.ctp-dns_group-fastest-raw]
+resolvers = [
+	"ctp-dns-ip-gcp-1-tcp",
+	"ctp-dns-ip-gcp-1-udp",
+	"ctp-dns-ip-gcp-2-tcp",
+	"ctp-dns-ip-gcp-2-udp",
+	"ctp-dns-ip-home-tcp",
+	"ctp-dns-ip-home-udp",
+	"ctp-dns-ip-aws-tcp",
+	"ctp-dns-ip-aws-udp"
+]
+type = "fastest"
+
+
+#####################
+### FAIL BACK #######
+#####################
+[groups.ctp-dns_group-fail-back-masters]
+resolvers = [
+	"ctp-dns_home-dot",
+	"ctp-dns_home-dtls",
+	"ctp-dns_home-doh-get",
+	"ctp-dns_home-doh-post",
+	"ctp-dns_home-doh-get-route-dns-raw",
+	"ctp-dns_home-doh-post-route-dns-raw",
+	"ctp-dns_home-quic",
+	"ctp-dns_home-doh-quic-post-ip",
+	"ctp-dns_home-doh-quic-get-ip",
+	"ctp-dns_gcp-dot-ip-1",
+	"ctp-dns_gcp-dot-ip-2",
+	"ctp-dns_gcp-dtls-ip-1",
+	"ctp-dns_gcp-dtls-ip-2",
+	"ctp-dns_gcp-doh-post-ip-1",
+	"ctp-dns_gcp-doh-post-ip-2",
+	"ctp-dns_gcp-doh-get-ip-1",
+	"ctp-dns_gcp-doh-get-ip-2",
+	"ctp-dns_gcp-doh-quic-post-ip-1",
+	"ctp-dns_gcp-doh-quic-post-ip-2",
+	"ctp-dns_gcp-doh-quic-get-ip-1",
+	"ctp-dns_gcp-doh-quic-get-ip-2",
+	"ctp-dns_gcp-quic-ip-1",
+	"ctp-dns_gcp-quic-ip-2",
+	"ctp-dns_aws-dot",
+	"ctp-dns_aws-dtls",
+	"ctp-dns_aws-quic",
+	"ctp-dns_aws-doh-quic"
+]
+type = "fail-back"
+timeout = 30
+reset-after = 30
+servfail-error = true
+
+[groups.ctp-dns_group-fail-back-gcp]
+resolvers = [
+	"ctp-dns_gcp-dot-ip-1",
+	"ctp-dns_gcp-dot-ip-2",
+	"ctp-dns_gcp-dtls-ip-1",
+	"ctp-dns_gcp-dtls-ip-2",
+	"ctp-dns_gcp-doh-post-ip-1",
+	"ctp-dns_gcp-doh-post-ip-2",
+	"ctp-dns_gcp-doh-get-ip-1",
+	"ctp-dns_gcp-doh-get-ip-2",
+	"ctp-dns_gcp-doh-quic-post-ip-1",
+	"ctp-dns_gcp-doh-quic-post-ip-2",
+	"ctp-dns_gcp-doh-quic-get-ip-1",
+	"ctp-dns_gcp-doh-quic-get-ip-2",
+	"ctp-dns_gcp-quic-ip-1",
+	"ctp-dns_gcp-quic-ip-2"
+]
+type = "fail-back"
+timeout = 30
+reset-after = 30
+servfail-error = true
+
+[groups.ctp-dns_group-fail-back-raw]
+resolvers = [
+	"ctp-dns-ip-gcp-1-tcp",
+	"ctp-dns-ip-gcp-1-udp",
+	"ctp-dns-ip-gcp-2-tcp",
+	"ctp-dns-ip-gcp-2-udp",
+	"ctp-dns-ip-home-tcp",
+	"ctp-dns-ip-home-udp",
+	"ctp-dns-ip-aws-tcp",
+	"ctp-dns-ip-aws-udp"
+]
+type = "fail-back"
+timeout = 8
+reset-after = 8
+servfail-error = true
+
+
+#####################
+### FAIL Rotate #####
+#####################
+[groups.ctp-dns_group-fail-rotate-masters]
+resolvers = [
+	"ctp-dns_home-dot",
+	"ctp-dns_home-dtls",
+	"ctp-dns_home-doh-get",
+	"ctp-dns_home-doh-post",
+	"ctp-dns_home-doh-get-route-dns-raw",
+	"ctp-dns_home-doh-post-route-dns-raw",
+	"ctp-dns_home-quic",
+	"ctp-dns_home-doh-quic-post-ip",
+	"ctp-dns_home-doh-quic-get-ip",
+	"ctp-dns_gcp-dot-ip-1",
+	"ctp-dns_gcp-dot-ip-2",
+	"ctp-dns_gcp-dtls-ip-1",
+	"ctp-dns_gcp-dtls-ip-2",
+	"ctp-dns_gcp-doh-post-ip-1",
+	"ctp-dns_gcp-doh-post-ip-2",
+	"ctp-dns_gcp-doh-get-ip-1",
+	"ctp-dns_gcp-doh-get-ip-2",
+	"ctp-dns_gcp-doh-quic-post-ip-1",
+	"ctp-dns_gcp-doh-quic-post-ip-2",
+	"ctp-dns_gcp-doh-quic-get-ip-1",
+	"ctp-dns_gcp-doh-quic-get-ip-2",
+	"ctp-dns_gcp-quic-ip-1",
+	"ctp-dns_gcp-quic-ip-2",
+	"ctp-dns_aws-dot",
+	"ctp-dns_aws-dtls",
+	"ctp-dns_aws-quic",
+	"ctp-dns_aws-doh-quic"
+]
+type = "fail-rotate"
+timeout = 30
+reset-after = 30
+servfail-error = true
+
+[groups.ctp-dns_group-fail-rotate-raw]
+resolvers = [
+	"ctp-dns-ip-gcp-1-tcp",
+	"ctp-dns-ip-gcp-1-udp",
+	"ctp-dns-ip-gcp-2-tcp",
+	"ctp-dns-ip-gcp-2-udp",
+	"ctp-dns-ip-home-tcp",
+	"ctp-dns-ip-home-udp",
+	"ctp-dns-ip-aws-tcp",
+	"ctp-dns-ip-aws-udp"
+]
+type = "fail-rotate"
+timeout = 8
+reset-after = 8
+servfail-error = true
+

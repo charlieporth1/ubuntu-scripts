@@ -14,19 +14,47 @@ resolvers = [ "root-router" ]
 
 [groups.ctp-dns-cached]
 type = "cache"
-resolvers = [ "ctp-yt-blocker-if-fowarder-router" ]
+resolvers = [ "ctp-dns-min-ttl" ]
 cache-negative-ttl = 3600
 cache-size = 50000
 cache-answer-shuffle = "round-robin"
 
+[groups.ctp-dns-cached-front]
+type = "cache"
+resolvers = [ "root-router" ]
+cache-negative-ttl = 3600
+cache-size = 5000
+cache-answer-shuffle = "round-robin"
+
 [groups.static-rfc8482]
 type   = "static-responder"
-answer = ["IN HINFO RFC8482 ANY obsoleted!"]
+answer = [ 
+	"IN HINFO RFC8482 ANY obsoleted!", 
+	"IN A 0.0.0.0",
+	"IN AAAA ::",
+	"IN AAAA ::0",
+]
+rcode  = 5
+
+[groups.static-refuse]
+type = "static-responder"
+answer = [ 
+	"IN A 0.0.0.0", 
+	"IN AAAA ::",
+	"IN AAAA ::0",
+]
+rcode = 5
 
 [routers.root-router]
 routes = [
-  { type = "ANY", resolver="static-rfc8482" }, # Send queries of type ANY to a static responder
-  { resolver = "ctp-dns-min-ttl" },             # All other queries are forwarded
+  { class = "ANY", resolver = "static-rfc8482" }, # Send queries of type ANY to a static responder
+  { types = [ "RRSIG", "ANY", "SOA", "TXT", "PTR" ], resolver = "static-refuse" }, # Send queries of type RRSIG to a static responder
+  { name = '(^|\.)(doubleclick)\.net\.$', resolver = "static-badalg" },
+  { name = '(^|\.)(youtube|ytimg|ggpht|youtube-ui\.l\.google|youtubei\.googleapis)\.com\.$', resolver = "ctp-yt-blocker-if-fowarder-router" },
+  { name = '(^|\.)(gvt[0-6]?|googlevideo)\.com\.$', resolver = "ctp-yt-blocker-if-fowarder-router" },
+  { name = '(^|\.)(fwmrm)\.net\.$', resolver = "ctp-yt-blocker-if-fowarder-router" },
+  { name = '(^|\.)(googlesyndication|googleadservices|imrworldwide|adservices\.google)\.com\.$', resolver = "ctp-yt-blocker-if-fowarder-router" },
+  { resolver = "ctp-dns-cached" },             # All other queries are forwarded
 ]
 
 [groups.ctp-dns-min-ttl]
@@ -38,20 +66,30 @@ ttl-max = 3024000
 
 [groups.static-servfail]
 type   = "static-responder"
-answer = [ "IN A 35.232.120.211", "IN A 35.192.105.158" ]
-# Response code: 0 = NOERROR, 1 = FORMERR, 2 = SERVFAIL, 3 = NXDOMAIN, 5 = REFUSED... 
+answer = [ 
+	"IN A 35.232.120.211", 
+	"IN A 35.192.105.158",  
+	"IN AAAA ::",
+	"IN AAAA ::0",
+	"IN SRV 0 0 3000 gcp.ctptech.dev.",
+]
+
+
+[groups.static-badalg]
+type   = "static-responder"
+ # Response code: 0 = NOERROR, 1 = FORMERR, 2 = SERVFAIL, 3 = NXDOMAIN, 5 = REFUSED... 
 # https://datatracker.ietf.org/doc/html/rfc2929#section-2.3
-rcode  = 3
+rcode  = 21
 
 # Order matters
 [groups.ctp-dns-failover]
 resolvers = [ 
 	"ctp-dns-group", 
 	"ctp-dns-fail-rotate",
+	"ctp-dns_nginx-back-up-group-fail-back",
 	"ctp-dns-failover-backup"
 ]
-timeout = 30
-reset-after = 30
+reset-after = 45
 type = "fail-back"
 #servfail-failover = true
 servfail-error = true
@@ -61,32 +99,21 @@ servfail-error = true
 resolvers = [
 	"ctp-dns-local-master-tcp",
 	"ctp-dns-local-master-udp",
-	"ctp-dns_gcp-dot-ip-1",
-	"ctp-dns_gcp-dot-ip-2",
-	"ctp-dns_gcp-dtls-ip-1",
-	"ctp-dns_gcp-dtls-ip-2",
-	"ctp-dns_gcp-doh-post-ip-1",
-	"ctp-dns_gcp-doh-post-ip-2",
-	"ctp-dns_gcp-doh-get-ip-1",
-	"ctp-dns_gcp-doh-get-ip-2",
-	"ctp-dns_gcp-doh-quic-post-ip-1",
-	"ctp-dns_gcp-doh-quic-post-ip-2",
-	"ctp-dns_gcp-doh-quic-get-ip-1",
-	"ctp-dns_gcp-doh-quic-get-ip-2",
-	"ctp-dns_gcp-quic-ip-1",
-	"ctp-dns_gcp-quic-ip-2",
-	"ctp-dns-ip-gcp-1-tcp",
-	"ctp-dns-ip-gcp-1-udp",
-	"ctp-dns-ip-gcp-2-tcp",
-	"ctp-dns-ip-gcp-2-udp",
-	"ctp-dns-ip-home-tcp",
-	"ctp-dns-ip-home-udp",
-	"ctp-dns-ip-aws-tcp",
-	"ctp-dns-ip-aws-udp"
+	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-tcp",
+	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-udp",
+	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-dot",
+	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-dot-nginx",
+	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-dtls",
+	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-doq",
+	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-doh-doq",
+	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-doh-get",
+	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-doh-post",
+	"ctp-dns_nginx-back-up-group-fail-back",
+
+
 ]
 
-timeout = 8
-reset-after = 3
+reset-after = 30
 type = "fail-rotate"
 servfail-error = true
 

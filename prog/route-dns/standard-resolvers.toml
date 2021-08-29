@@ -10,6 +10,8 @@ bootstrap-address = "174.53.130.17"
 [resolvers.ctp-dns_home-dtls]
 address = "master.dns.ctptech.dev:853"
 protocol = "dtls"
+bootstrap-address = "174.53.130.17"
+edns0-udp-size = 1460
 
 # DoH
 [resolvers.ctp-dns_home-doh-get]
@@ -66,11 +68,12 @@ bootstrap-address = "35.232.120.211"
 address = "gcp.ctptech.dev:853"
 protocol = "dtls"
 bootstrap-address = "35.192.105.158"
+edns0-udp-size = 1460
 [resolvers.ctp-dns_gcp-dtls-ip-2]
 address = "gcp.ctptech.dev:853"
 protocol = "dtls"
 bootstrap-address = "35.232.120.211"
-
+edns0-udp-size = 1460
 ## DoH
 # Post
 [resolvers.ctp-dns_gcp-doh-post-ip-1]
@@ -139,6 +142,7 @@ bootstrap-address = "54.90.63.26"
 address = "dns.ctptech.dev:853"
 protocol = "dtls"
 bootstrap-address = "54.90.63.26"
+edns0-udp-size = 1460
 
 [resolvers.ctp-dns_aws-quic]
 address = "dns.ctptech.dev:784"

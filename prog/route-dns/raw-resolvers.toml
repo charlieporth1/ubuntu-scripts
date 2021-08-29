@@ -4,21 +4,28 @@ protocol = "tcp"
 [resolvers.ctp-dns-ip-gcp-1-udp]
 address = "35.192.105.158:53"
 protocol = "udp"
+edns0-udp-size = 1460
+
 [resolvers.ctp-dns-ip-gcp-2-tcp]
 address = "35.232.120.211:53"
 protocol = "tcp"
 [resolvers.ctp-dns-ip-gcp-2-udp]
 address = "35.232.120.211:53"
 protocol = "udp"
+edns0-udp-size = 1460
+
 [resolvers.ctp-dns-ip-home-tcp]
 address = "174.53.130.17:53"
 protocol = "tcp"
 [resolvers.ctp-dns-ip-home-udp]
 address = "174.53.130.17:53"
 protocol = "udp"
+edns0-udp-size = 1460
+
 [resolvers.ctp-dns-ip-aws-tcp]
 address = "54.90.63.26:53"
 protocol = "tcp"
 [resolvers.ctp-dns-ip-aws-udp]
 address = "54.90.63.26:53"
 protocol = "udp"
+edns0-udp-size = 1460

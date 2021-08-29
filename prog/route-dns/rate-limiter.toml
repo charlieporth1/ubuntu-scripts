@@ -1,0 +1,18 @@
+# 300000 / 60 = 5000 RPS (Request Per Seconds)
+# 150000 / 60 = 2500 RPS (Request Per Seconds)
+# 90000 / 60 = 1500 RPS (Request Per Seconds)
+# 60000 / 60 = 1000 RPS (Request Per Seconds)
+# 30000 / 60 = 500 RPS (Request Per Seconds)
+[groups.client-listener-rrl-standard]
+type = "rate-limiter"
+#resolvers = [ "root-router" ]
+resolvers = [ "ctp-dns-cached-front" ]
+limit-resolver = "static-refused"
+requests = 60000
+window = 60
+prefix4 = 24
+prefix6 = 56
+
+[groups.static-refused]
+type  = "static-responder"
+rcode = 5 # REFUSED

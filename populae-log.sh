@@ -197,12 +197,13 @@ EXTRA_DOMAINS_LIST=(
 
 INTERFACE_COUNT=`ifconfig | grep -o 'lo[0-9]' | grep -o '[0-9]' | sort -r | sed -n '1p'`
 
-if [[ "$INTERFACE_COUNT" != "9" ]] && [[ -n "$INTERFACE_COUNT" ]]; then
-	echo "INTERFACE_COUNT :: $INTERFACE_COUNT != 9"
-	echo "Interface not counted"
+#if [[ "$INTERFACE_COUNT" != "9" ]] && [[ -n "$INTERFACE_COUNT" ]]; then
+#	echo "INTERFACE_COUNT :: $INTERFACE_COUNT != 9"
+#	echo "Interface not counted"
 #	set -e
 #	exit 1
-fi
+#fi
+
 counterForInterfaceCycling=0
 function COUNTER() {
 	declare -g counterForInterfaceCycling=$(( $counterForInterfaceCycling + 1 ))
@@ -219,6 +220,7 @@ function INIT_POP_TEST_FULL() {
 		${SMALL_DOMAINS_LIST[@]}
 		$WITH_LIST1
 	)
+	DOMAINS=( $(echo ${DOMAINS[@]} | sort -u ))
 	echo ${#SMALL_DOMAINS_LIST[@]}
 	echo ${#EXTRA_DOMAINS_LIST[@]}
 	echo ${#DOMAINS[@]}

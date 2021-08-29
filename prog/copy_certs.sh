@@ -1,8 +1,10 @@
 #!/bin/bash
 export SCRIPT_DIR=`dirname $0`
 source $SCRIPT_DIR/.project_env.sh
+
 HOST=vpn.ctptech.dev
 CERT_ROOT_DIR=/etc/letsencrypt/live/$HOST
+
 MASTER_MACHINE="ctp-vpn"
 GCLOUD_PROJECT="galvanic-pulsar-284521"
 GCLOUD_ZONE="us-central1-a"
@@ -24,27 +26,8 @@ fi
 
 NGINX_SSL=$INSTALL_CONFIG_DIR/nginx/ssl/
 # Copy files
-gcloud compute scp $MASTER_MACHINE:/tmp/ssl/ ~/ssl/ \
-	--scp-flag="-r" --project "$GCLOUD_PROJECT" --zone "$GCLOUD_ZONE"
-
-gcloud compute scp $MASTER_MACHINE:/var/cache/nginx/vpn.ctptech.dev.der /var/cache/nginx/ \
-	--scp-flag="-r" --project "$GCLOUD_PROJECT" --zone "$GCLOUD_ZONE"
-
-sudo rsync \
-	--rsh="ssh -p22 -i $HOME/.ssh/google_compute_engine" \
-	$PERONAL_USR@gcp.ctptech.dev:/tmp/ssl/* ~/ssl \
-	--rsync-path='sudo rsync' \
-	--dirs \
-	--links \
-	--copy-links \
-	--safe-links \
-	--copy-dirlinks \
-	--super \
-	--checksum \
-	--recursive \
-	--verbose \
-	--progress \
-	--human-readable
+bash $PROG/master_copy.sh '/tmp/ssl/*' "~/ssl/"
+bash $PROG/master_copy.sh "/var/cache/nginx/vpn.ctptech.dev.der" "/var/cache/nginx/"
 
 sudo cp -rf ~/ssl/* $NGINX_SSL/
 sudo cp -rf ~/ssl/* $INSTALL_CONFIG_DIR/unbound/ssl/
@@ -66,3 +49,4 @@ rm -rf ~/ssl
 gcloud compute ssh $MASTER_MACHINE \
         --project "$GCLOUD_PROJECT" \
         --zone "$GCLOUD_ZONE" -- "sudo rm -rf /tmp/ssl/"
+

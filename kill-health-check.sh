@@ -1,7 +1,6 @@
 #!/bin/bash
 declare -a items
 items=(
-	'ban'
 	'dns-st'
 	'hea'
 	'dns-stale'
@@ -11,10 +10,10 @@ items=(
 	'test_'
 	'pm.stal'
 )
-grep_v='grep\|fail2ban\|nano\|tail\|routedns\|vi\|vim\|cat\|dnsmasq\|kill-health-check.sh'
+grep_v="grep\|fail2ban\|nano\|tail\|routedns\|vi\|vim\|cat\|dnsmasq\|kill-health-check.sh\|pgrep\|$0"
 for i in "${items[@]}"
 do
-	proc_count=`bash $PROG/process_count.sh $i`
+	proc_count=`ps -aux | grep "${i}" | grep -v "${grep_v}"  | awk '{print $2}' | grep -cE '[0-9]+'`
 	if [[ $proc_count -gt 2 ]]; then
 		echo "More killing $proc_count $i"
 #		items_to_kill=`bash $PROG/grepify.sh "${items[@]}"`

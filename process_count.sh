@@ -1,6 +1,7 @@
 #!/bin/bash
 SCRIPT=`basename $0 | rev | cut -d '/' -f 1 | rev`
 R_PROGRAM="${1:-$SCRIPT}"
+FILE_NAME=`echo "$R_PROGRAM" | rev | cut -d '.' -f 2 | rev`
 
 INPUT_PID=`echo "$@" | grep -E '[0-9]'`
 LOCAL_PID="$$"
@@ -21,7 +22,7 @@ if [[ -n "$THIS_PID" ]]; then
 	G_CHILD_PIDS=${CHILD_PIDS/\ //\\|}
 fi
 
-OTHER_EXCLUDED_PIDS=`ps -aux | grep "$R_PROGRAM" | grep "grep\|nano\|vi\|vim\|tail\|$0" | awk '{print $2}' | xargs`
+OTHER_EXCLUDED_PIDS=`ps -aux | grep "$R_PROGRAM\|$FILE_NAME" | grep -E "(grep|nano|vi|vim|tail|$0)" | awk '{print $2}' | xargs`
 OE_PIDS="${OTHER_EXCLUDED_PIDS//\ /\\|}"
 
 TO_EXCLUDE $INPUT_PID
@@ -30,15 +31,14 @@ TO_EXCLUDE $BASHPID
 TO_EXCLUDE $G_CHILD_PIDS
 TO_EXCLUDE $OE_PIDS
 TO_EXCLUDE $START_PID
-TO_EXCLUDE grep
 TO_EXCLUDE $0
 
 PROGS=`ps -aux | grep "$R_PROGRAM" | grep -v "$EXCLUDE_PIDS"`
-PROG_PIDS=`printf "$PROGS" | awk '{print $2}' | grep -v "$EXCLUDE_PIDS" | sort | uniq -c | sort -nr | awk '{print $2}'`
-PID_COUNT=`printf "$PROG_PIDS" | grep -c '[0-9]'`
+PROG_PIDS=`printf '%s\n' "$PROGS" | awk '{print $2}' | grep -v "$EXCLUDE_PIDS" | sort | uniq -c | sort -nr | awk '{print $2}'`
+PID_COUNT=`printf '%s\n'  "$PROG_PIDS" | grep -c '[0-9]'`
 PROGS_PIDS_PG=`pgrep --newest --full $R_PROGRAM`
 PROGS_PIDS_PG_COUNT=`pgrep --newest --full --count $R_PROGRAM`
-PROG_COUNT_WITHOUT_MAIN=`printf $PROGS_PIDS_PG | grep -v "$EXCLUDE_PIDS" | grep -c '[0-9]'`
+PROG_COUNT_WITHOUT_MAIN=`printf '%s\n' "$PROGS_PIDS_PG" | grep -v "$EXCLUDE_PIDS" | grep -c '[0-9]'`
 PROG_COUNT=$(( $PROG_COUNT_WITHOUT_MAIN ))
 
 { [[ $PROG_COUNT == 0 ]] && [[ $PID_COUNT > 0 ]]; } && PROG_COUNT=$PID_COUNT

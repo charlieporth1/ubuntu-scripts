@@ -20,27 +20,7 @@ certbot renew -n \
 	--key-type rsa \
 	--rsa-key-size 2048 \
         --no-redirect \
-        --cert-name $HOST_SERVER
-# --webroot -w /var/www/html 
-# --nginx
-# --test-cert --dry-run
-#	--webroot -w /var/www/html \
-certbot certonly -n \
-        --webroot -w /var/www/html \
-	--staple-ocsp \
-	--elliptic-curve secp256r1 \
-	--key-type rsa \
-	--rsa-key-size 2048 \
-        --no-redirect \
-        --cert-name $HOST_SERVER \
-	--domain dns.ctptech.dev \
-	--domain gcp.ctptech.dev \
-	--domain vpn.ctptech.dev \
-	--domain master.dns.ctptech.dev \
-	--domain day.dns.ctptech.dev \
-	--domain ns.ctptech.dev \
-	--domain aws.ctptech.dev \
-	--domain azure.ctptech.dev \
+        --cert-name $HOST_SERVER 
 
 # --test-cert --dry-run
 
@@ -57,8 +37,6 @@ fi
 openssl x509 -outform der -in $LIVE_KEY_DIR/fullchain.pem -out fullchain.crt
 openssl rsa -in $LIVE_KEY_DIR/combined.pem -out $LIVE_KEY_DIR/nopassword.key
 
-cp -rfL $LIVE_KEY_DIR/nopassword.key /etc/unbound/ssl
-cp -rfL $LIVE_KEY_DIR/*.pem /etc/unbound/ssl
 
 certbot-ocsp-fetcher --output-dir=/var/cache/nginx/
 certbot-ocsp-fetcher #/etc/letsen
@@ -69,6 +47,5 @@ certbot-ocsp-fetcher #/etc/letsen
 #openssl req -new -out $LIVE_KEY_DIR/fullchain-ED25519.csr -key $LIVE_KEY_DIR/ED25519.key -config $LIVE_KEY_DIR/openssl-25519.cnf
 #openssl x509 -req -days 60 -in $LIVE_KEY_DIR/fullchain.csr -signkey $LIVE_KEY_DIR/ED25519.key -out $LIVE_KEY_DIR/combined.crt
 
-bash $PROG/generate_dnscrypt.sh
 
 echo "Cert Mananger done"

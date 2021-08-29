@@ -13,7 +13,7 @@ echo "Running DNS Unbound TEST"
 
 WAIT_TIME=2.5s # TO RESTART NEXT
 TIMEOUT=16 # DNS
-TRIES=8
+TRIES=3
 HOST=localhost
 PORT=5053
 EDNS=174.53.130.17
@@ -35,9 +35,10 @@ if ! command -v grepip &> /dev/null
 then
     echo "COMMAND dig could not be found installing"
     curl -sSL 'https://raw.githubusercontent.com/ipinfo/cli/master/grepip/deb.sh' | bash
+    exit 1
 fi
 
-DNS_ARGS="+tries=$TRIES +dnssec +ttl +edns +timeout=$TIMEOUT"
+DNS_ARGS="+tries=$TRIES +dnssec +ttl +edns +timeout=$TIMEOUT -t A -4"
 
 dns_unbound_local=`dig $QUERY -p $PORT $isAuto @$HOST $DNS_ARGS`
 
@@ -54,7 +55,7 @@ if [[ -z "$isAuto" ]]; then
         echo -e "LOCAL \n$(bash $PROG/lines.sh '*')"
 	printf '%s\n' "$dns_local"
 else
-	if [[ -z "$dns_local_test" ]] && [[ `systemctl-seconds unbound` -ge 180 ]]; then
+	if [[ -z "$dns_local_test" ]] && [[ `systemctl-seconds unbound` -ge 30 ]]; then
 		systemctl restart unbound.service
 		#sleep $WAIT_TIME
 	else

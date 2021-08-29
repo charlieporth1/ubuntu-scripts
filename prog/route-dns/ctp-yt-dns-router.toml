@@ -1,31 +1,18 @@
-[routers.ctp-yt-blocker-if-fowarder-router] 
+[routers.ctp-yt-blocker-if-fowarder-router]
 routes = [
-  { name = '(youtube|ytimg|ggpht|youtube-ui\.l\.google|youtubei\.googleapis)\.com\.$', resolver="ctp-dns-time-router-yt-gcp" },
-  { name = '^(redirector|manifest|r([0-9]{1,2}){.{4,27}})\.gvt[0-6]?\.com\.$', resolver="ctp-dns-time-router-yt-ttl-gcp" },
-  { name = 'googlevideo\.com\.$', resolver="ctp-dns-time-router-yt-ttl-gcp" },
-  { name = '(doubleclick|fwmrm)\.net\.$', resolver="ctp-dns-time-router-yt-gcp" },
-  { name = '(googlesyndication|googleadservices|imrworldwide|adservices\.google)\.com\.$', resolver="ctp-dns-time-router-yt-gcp" },
-  { resolver = "root-router" },             # All other queries are forwarded
+  { name = '(^|\.)(youtube|ytimg|ggpht|youtube-ui\.l\.google|youtubei\.googleapis)\.com\.$', resolver = "ctp-dns-time-router-yt-gcp", before = "05:30", after = "01:30" },
+  { name = '^(redirector|manifest|r([0-9]{1,2}){.{4,27}})\.gvt[0-6]?\.com\.$', resolver = "ctp-dns-time-router-yt-ttl-gcp", before = "05:30", after = "01:30" },
+  { name = '(^|\.)googlevideo\.com\.$', resolver = "ctp-dns-time-router-yt-ttl-gcp", before = "05:30", after = "01:30" },
+  { name = '(^|\.)(doubleclick|fwmrm)\.net\.$', resolver = "ctp-dns-time-router-yt-gcp", before = "05:30", after = "01:30" },
+  { name = '(^|\.)(googlesyndication|googleadservices|imrworldwide|adservices\.google)\.com\.$', resolver = "ctp-dns-time-router-yt-gcp", before = "05:30", after = "01:30" },
+  { resolver = "ctp-dns-cached" },             # All other queries are forwarded
 ]
 #doubleclick
 [groups.ctp-dns-yt-block-resolver-blocker]
 # This should only be GCP
 # "ctp-dns-group"
 type = "fastest"
-# CTP INSTALL -- DO NOT REMOVE THIS UNLESS YOU PLAN ON REMOVING INSTALL AND REINSTALLING
 resolvers = [
-	"ctp-dns_gcp-dot-ip-1",
-	"ctp-dns_gcp-dot-ip-2",
-	"ctp-dns_gcp-dtls-ip-1",
-	"ctp-dns_gcp-dtls-ip-2",
-	"ctp-dns_gcp-doh-post-ip-1",
-	"ctp-dns_gcp-doh-post-ip-2",
-	"ctp-dns_gcp-doh-get-ip-1",
-	"ctp-dns_gcp-doh-get-ip-2",
-	"ctp-dns_gcp-doh-quic-post-ip-1",
-	"ctp-dns_gcp-doh-quic-post-ip-2",
-	"ctp-dns_gcp-doh-quic-get-ip-1",
-	"ctp-dns_gcp-doh-quic-get-ip-2",
-	"ctp-dns_gcp-quic-ip-1",
-	"ctp-dns_gcp-quic-ip-2"
+
 ]
+# CTP INSTALL -- DO NOT REMOVE THIS UNLESS YOU PLAN ON REMOVING INSTALL AND REINSTALLING

@@ -1,31 +1,16 @@
 #!/bin/bash
 source $PROG/all-scripts-exports.sh
+dig www.robtex.com uptimerobot.com www.ipqualityscore.com > /dev/null
 CONCURRENT
+#curl -H "Authorization: Bearer 29b6b3b552a343" ipinfo.io/AS21928
 declare -a UNI_IGNORE_IPs
 UNI_IGNORE_IP=(
 	192.168.0.0/16
 	172.58.142.145
 	192.168.127.10/32
 	192.168.127.10
-	172.58.0.0/16
-	35.192.105.0/24
-	35.192.105.158/32
-	35.192.105.158
-	35.232.120.211/24
-	35.232.120.211/32
-	35.232.120.211
-	172.31.12.154
-	172.31.12.154/16
-        192.168.44.29/16
-        102.168.44.250
-        192.168.44.29
-        17.130.53.174
-        158.105.192.35
-        9.123.168.192
 	108.73.128.11
 	108.73.128.11 # AUNT SUE
-        8.123.168.192
-        51.44.168.192
         250.44.168.192
         192.168.127.10
         192.168.44.1
@@ -37,30 +22,33 @@ UNI_IGNORE_IP=(
         127.0.0.0/8
         174.53.130.17 # Home
 	174.53.130.17/32
-        192.168.0.0/16
-        192.168.44.0/24
-        192.168.40.0/24
         169.254.169.254
         10.66.66.1
         10.66.66.0/24
         $(bash $PROG/get_ext_ip.sh dns.ctptech.dev | grepip -o)
         $(bash $PROG/get_ext_ip.sh home.ctptech.dev | grepip -o)
         $(bash $PROG/get_ext_ip.sh gcp.ctptech.dev | grepip -o)
+        $(bash $PROG/get_ext_ip.sh aws.ctptech.dev | grepip -o)
+        $(bash $PROG/get_ext_ip.sh gcp1.ctptech.dev | grepip -o)
         $(bash $PROG/get_ext_ip.sh master.dns.ctptech.dev | grepip -o)
         $(bash $PROG/get_ext_ip.sh --curent-ip | grepip -o)
-        $(bash $PROG/get_network_devices_ip_address.sh --loop --wlan | grepip -o)
+        $(bash $PROG/get_network_devices_ip_address.sh --all)
+        $(sudo ip route | grepip -o | sort -u)
         azure.ctptech.dev
         home.ctptech.dev
         aws.ctptech.dev
         gcp.ctptech.dev
+        gcp1.ctptech.dev
         dns.ctptech.dev
 	home.dns.ctptech.dev
         master.dns.ctptech.dev
 )
-UNI_IGNORE_IPs=( $( filter_ip_address_array "${UNI_IGNORE_IPs[@]}" ) )
+#UNI_IGNORE_IPs=( $( filter_ip_address_array "${UNI_IGNORE_IPs[@]}" ) )
 
 declare -a DEFAULT_DNS_SERVERS
 DEFAULT_DNS_SERVERS=(
+	1.0.0.2
+	1.1.1.2
         1.1.1.1
         1.0.0.1
         8.8.8.8
@@ -68,22 +56,56 @@ DEFAULT_DNS_SERVERS=(
         9.9.9.9
         192.168.44.1
         192.168.40.1
+        192.168.40.0/24
 	192.168.1.1
         127.0.0.1
 )
-filter_ip_address_array "${DEFAULT_DNS_SERVERS[@]}"
+#filter_ip_address_array "${DEFAULT_DNS_SERVERS[@]}"
 
 declare -a UPTIME_IGNORE_IPs=(
         122.248.234.23/24
         63.143.42.248/24
+	$(curl -sSL 'https://uptimerobot.com/help/locations/' | grep -oE "${IPV4_REGEX_SUBNET}")
+	$(curl -sSL "https://uptimerobot.com/inc/files/ips/IPv4andIPv6.txt" | grep -oE "${IPV4_REGEX_SUBNET}")
 )
 UNI_IGNORE_IPs=( $( filter_ip_address_array "${UNI_IGNORE_IPs[@]}" ) )
 
+declare -a T_MobileIPs_SPRINT
+T_MobileIPs_SPRINT=(
+	$(curl -sL https://www.robtex.com/as/AS3651.html | grep -oE "${IPV4_REGEX_SUBNET}")
+	$(curl -sL https://www.robtex.com/as/AS36517.html | grep -oE "${IPV4_REGEX_SUBNET}")
+	$(curl -sL https://www.robtex.com/as/AS10507.html | grep -oE "${IPV4_REGEX_SUBNET}")
+	$(curl -sL https://www.robtex.com/as/AS19290.html | grep -oE "${IPV4_REGEX_SUBNET}")
+	$(curl -sL https://www.robtex.com/as/AS10507.html | grep -oE "${IPV4_REGEX_SUBNET}")
+	$(curl -sL https://www.robtex.com/as/AS19290.html | grep -oE "${IPV4_REGEX_SUBNET}")
+	$(curl -sL https://www.robtex.com/as/AS27021.html | grep -oE "${IPV4_REGEX_SUBNET}")
+	$(curl -sL https://www.robtex.com/as/AS5112.html | grep -oE "${IPV4_REGEX_SUBNET}")
+	$(curl -sL https://www.robtex.com/as/AS32068.html | grep -oE "${IPV4_REGEX_SUBNET}")
+	$(curl -sL https://www.robtex.com/as/AS19.html | grep -oE "${IPV4_REGEX_SUBNET}")
+	$(curl -sL https://www.robtex.com/as/AS138667.html | grep -oE "${IPV4_REGEX_SUBNET}")
+	$(curl -sL https://www.robtex.com/as/AS36134.html | grep -oE "${IPV4_REGEX_SUBNET}")
+	$(curl -sL https://www.robtex.com/as/AS19292.html | grep -oE "${IPV4_REGEX_SUBNET}")
+	$(curl -sL https://www.robtex.com/as/AS10507.html | grep -oE "${IPV4_REGEX_SUBNET}")
+	$(curl -sL https://www.robtex.com/as/AS10507.html | grep -oE "${IPV4_REGEX_SUBNET}")
+	$(curl -sL https://www.robtex.com/as/AS10507.html | grep -oE "${IPV4_REGEX_SUBNET}")
+	$(curl -sL https://www.robtex.com/as/AS10507.html | grep -oE "${IPV4_REGEX_SUBNET}")
+)
 declare -a T_MobileIPs
 T_MobileIPs=(
-$(curl -s https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/mobile.tmobile.list)
-$(curl -s https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/mobile.tmobileus.list)
-$(curl -s https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/white.tmobileus.ip.list)
+${T_MobileIPs_SPRINT[@]}
+$(curl -sL https://www.robtex.com/as/AS21928.html | grep -oE "${IPV4_REGEX_SUBNET}")
+$(curl -sL https://www.robtex.com/as/AS21928.html | grep -oE "${IPV4_REGEX_SUBNET}")
+$(curl -sL https://www.robtex.com/as/AS10507.html | grep -oE "${IPV4_REGEX_SUBNET}")
+$(curl -sL https://www.robtex.com/as/AS3651.html | grep -oE "${IPV4_REGEX_SUBNET}")
+$(curl -sL https://www.robtex.com/as/AS16586.html | grep -oE "${IPV4_REGEX_SUBNET}")
+$(curl -sL https://www.robtex.com/as/AS393494.html | grep -oE "${IPV4_REGEX_SUBNET}")
+$(curl -sL https://www.robtex.com/as/AS5079.html | grep -oE "${IPV4_REGEX_SUBNET}")
+$(curl -sL https://www.robtex.com/as/AS22140.html | grep -oE "${IPV4_REGEX_SUBNET}")
+$(curl -sL 'https://www.ipqualityscore.com/asn-details/AS21928/t-mobile-usa-inc' | grep -oE "${IPV4_REGEX_SUBNET}")
+$(curl -sL https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/mobile.tmobile.list)
+$(curl -sL https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/mobile.tmobileus.list)
+$(curl -sL https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/white.tmobileus.ip.list)
+$(curl -sL 'https://www.ipqualityscore.com/asn-details/AS21928/t-mobile-usa-inc' | grep -oE "${IPV4_REGEX_SUBNET}")
 74.125.42.39
 172.56.0.0/8
 172.100.0.0/16
@@ -199,13 +221,19 @@ $(curl -s https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/white
 )
 
 
-T_MobileIPs=( $( filter_ip_address_array "${TMobileIPs[@]}" ) )
+#T_MobileIPs=( $( filter_ip_address_array "${TMobileIPs[@]}" ) )
 
-
+declare -a local_ignore_ips
+local_ignore_ips=(
+	$(curl -s 'https://en.wikipedia.org/wiki/Reserved_IP_addresses' | grep -oE "${IPV4_REGEX_SUBNET}")
+	$(curl -s 'https://en.wikipedia.org/wiki/Reserved_IP_addresses' | grep -oE "${IPV6_REGEX_SUBNET}")
+)
 declare -a DNS_IGNORE_IPs
 DNS_IGNORE_IPs=(
+	${T_MobileIPs[@]}
         ${UPTIME_IGNORE_IPs[@]}
         ${DEFAULT_DNS_SERVERS[@]}
+	${local_ignore_ips[@]}
         0.0.0.0
         172.53.0.0/16
         172.58.0.0/16
@@ -219,38 +247,31 @@ DNS_IGNORE_IPs=(
         174.53.130.17
 )
 
-for i in {0..255}
-do
-        IP_PRIVATE=192.168.1.$i
-        IP_PRIVATE_1=192.168.44.$i
-        IP_PRIVATE_2=192.168.43.$i
-        IP_PRIVATE_3=192.168.40.$i
-        IP_NON=0.0.0.$i
-        IP_NON_1=0.$i.$i
-        DNS_IGNORE_IPs=(
-                ${DNS_IGNORE_IPs[@]}
-                $IP_NON
-		$IP_NON_1
-		$IP_PRIVATE
-                $IP_PRIVATE_1
-                $IP_PRIVATE_2
-                $IP_PRIVATE_3
-        )
-done
 
 
-DNS_IGNORE_IPs=( $( filter_ip_address_array "${DNS_IGNORE_IPs[@]}" ) )
+#DNS_IGNORE_IPs=( $( filter_ip_address_array "${DNS_IGNORE_IPs[@]}" ) )
 
-IP_REGEX="((([0-9]{1,3})\.){4})"
-FILE_NAME='ban_ignore_ip_list'
+export FILE_NAME='ban_ignore_ip_list'
+export INGNORE_IP_FILE_NAME="$FILE_NAME"
+export INGNORE_IP="$FILE_NAME"
+export INGNORE_IP_TXT=/tmp/$FILE_NAME.txt
+export INGNORE_IP_LOCAL_TXT=/tmp/$FILE_NAME-local-address.txt
+export INGNORE_IP_CSV=/tmp/$FILE_NAME.csv
+export INGNORE_IP_GREP=/tmp/$FILE_NAME.grep
+export INGNORE_IP_UNI=/tmp/$FILE_NAME-uni.txt
+export INGNORE_IP_TMOBILE=/tmp/$FILE_NAME-t-mobile.txt
 
-INGORE_IP_ADRESSES_GREP=$( bash $PROG/grepify.sh $( echo "${DNS_IGNORE_IPs[@]}" ) )
-INGORE_IP_ADRESSES_CSV=$( bash $PROG/csvify.sh $( echo "${DNS_IGNORE_IPs[@]}" ) )
-
-printf '%s\n' "${DNS_IGNORE_IPs[@]}" > /tmp/$FILE_NAME.txt
-echo "$INGORE_IP_ADRESSES_GREP" > /tmp/$FILE_NAME.grep
-echo "$INGORE_IP_ADRESSES_CSV" > /tmp/$FILE_NAME.csv
+INGORE_IP_ADRESSES_GREP=$( bash $PROG/grepify.sh $( printf '%s\n' "${DNS_IGNORE_IPs[@]}" | ip-sort ) )
+INGORE_IP_ADRESSES_CSV=$( bash $PROG/csvify.sh $( printf '%s\n' "${DNS_IGNORE_IPs[@]}" | ip-sort ) )
 
 
+if [ "$0" == "$BASH_SOURCE" ]; then
+	printf '%s\n' "${DNS_IGNORE_IPs[@]}" | ip-sort | sudo tee $INGNORE_IP_TXT
+	printf "%s\n" "${UNI_IGNORE_IP[@]}" | ip-sort | sudo tee $INGNORE_IP_UNI
+	echo "$INGORE_IP_ADRESSES_GREP" | sudo tee $INGNORE_IP_GREP
+	echo "$INGORE_IP_ADRESSES_CSV" | sudo tee $INGNORE_IP_CSV
 
-printf '%s\n' ${T_MobileIPs[@]}  | sudo tee /tmp/tmobile_ips.txt
+
+	printf '%s\n' "${T_MobileIPs[@]}" | sudo tee $INGNORE_IP_TMOBILE
+	printf '%s\n' "${local_ignore_ips[@]}" | sudo tee $INGNORE_IP_LOCAL_TXT
+fi

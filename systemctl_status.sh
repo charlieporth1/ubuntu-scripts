@@ -58,15 +58,17 @@ declare -a SERVICES
 SERVICES=(
 	'pihole-FTL'
 	'ctp-dns'
+	'ctp-yt-ttl-dns'
+	'ctp-YouTube-Ad-Blocker'
+	'nginx-dns-rfc'
+	'nginx'
 	'lighttpd'
+	'php7.4-fpm'
+	'doh-server'
+	'unbound'
 	'wg-quick@wg0.service'
 	'ads-catcher'
-	'nginx'
-	'doh-server'
-	'php7.4-fpm'
-	'unbound'
 	'resolvconf'
-	'ctp-YouTube-Ad-Blocker'
 	'netfilter-persistent'
 	'fail2ban'
 	'ipsec'
@@ -91,19 +93,19 @@ SERVICES=(
 	'apt-daily.timer'
 	'apt-daily.service'
 	'systemd-timesyncd'
-	'systemd-networkd.socket'
 	'systemd-networkd.service'
 	'system-getty.slice'
 	'systemd-timesyncd'
 	'systemd-sysctl'
 	'systemd-hostnamed'
+	'unattended-upgrades.service'
 	$( [[ "$IS_GCP" == 'true' ]] && echo ${GOOGLE_SERVICES[@]} )
 )
 
 printf "|| $CYAN%-40s $NC| $CYAN %-10s $NC|$CYAN %-20s $NC|$CYAN %-10s $NC|\n" "SERVICE" "STATUS" "ACTIVE TIME" "TIME"
 for service in "${SERVICES[@]}"
 do
-	if [[ `systemctl-exists "$service"` ]]; then
+	if [[ `systemctl-exists "$service"` == 'true' ]]; then
 		[[ -z `echo "$service" | grep -o '\.'` ]] && export is_service=true || export is_service=false
 		if [[ -n "$isAutomation" ]] && [[ -z `echo "$service" | grep -o "$( bash $PROG/grepify.sh ${GOOGLE_SERVICES[@]} )"` ]] && [[ "$is_service" == 'true' ]]; then
 			systemctl stop $service

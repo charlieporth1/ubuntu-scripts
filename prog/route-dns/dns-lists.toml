@@ -1,7 +1,9 @@
+# 3600 * 3 = 10800
 [groups.ctp-dns-blocklist]
 type = "blocklist-v2"
 blocklist-resolver = "static-servfail"
 blocklist-refresh = 86400
+resolvers = [ "ctp-dns-blocklist-local" ]
 blocklist-source = [
 	{format = "domain", source = "/var/tmp/ctp-dns/lists/black/domains.txt", cache-dir = "/var/cache/ctp-dns"},
         {format = "regexp", source = "/var/tmp/ctp-dns/lists/black/regex.txt", cache-dir = "/var/cache/ctp-dns"},
@@ -11,20 +13,22 @@ blocklist-source = [
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/google-blacklist.list", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "regexp", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/google-blacklist.regex", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "regexp", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/vulnerability-blacklist.regex", cache-dir = "/var/cache/ctp-dns"},
+        {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/samsung-blacklist.list", cache-dir = "/var/cache/ctp-dns"}, 
 #       {format = "domain", source = "", cache-dir = "/var/cache/ctp-dns"},
 ]
-allowlist-refresh = 3600
-#allowlist-resolver = "ctp-dns-group" 
+allowlist-refresh = 10800
+allowlist-resolver = "ctp-dns-failover" 
 allowlist-source = [
         {format = "domain", source = "/var/tmp/ctp-dns/lists/white/domains.txt", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "regexp", source = "/var/tmp/ctp-dns/lists/white/regex.txt", cache-dir = "/var/cache/ctp-dns"}, 
+        {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/my-allowlist/master/routedns.allow.list", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/accomplist/standard/routedns.allowlist.domain.list", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/accomplist/standard/routedns.allowlist.justdomain.list", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "regexp", source = "https://gcp.pihole.ctptech.dev/txt_lists/accomplist/standard/routedns.allowlist.regexp.list", cache-dir = "/var/cache/ctp-dns"}, 
+        {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/amazon-whitelist.list", cache-dir = "/var/cache/ctp-dns"}, 
+        {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/samsung-whitelist.list", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/google-whitelist.list", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "regexp", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/google-whitelist.regex", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/goverment-whitelist.list", cache-dir = "/var/cache/ctp-dns"}, 
 ]
 
-# CTP INSTALL -- DO NOT REMOVE THIS UNLESS YOU PLAN ON REMOVING INSTALL AND REINSTALLING
-resolvers = [ "ctp-dns-time-router-general-gcp" ]

@@ -1,6 +1,6 @@
 #!/bin/bash
 if [ "$#" -eq 0 ]; then
-  ARUGMENT_ARRAY=(  )
+  ARUGMENT_ARRAY=( $( cat  /dev/stdin ) )
 else
   ARUGMENT_ARRAY=( "$@" )
 fi

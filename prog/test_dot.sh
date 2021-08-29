@@ -1,13 +1,15 @@
 #!/bin/bash
-if [[ -f /tmp/health-checks.stop.lock ]]; then
+source $PROG/all-scripts-exports.sh
+source ctp-dns.sh --source
+CONCURRENT
+
+if [[ -f $CTP_DNS_LOCK_FILE ]]; then
         echo "LOCK FILE"
 	trap 'LOCK_FILE' ERR
         set -e
         exit 1
         exit 1
 fi
-source $PROG/all-scripts-exports.sh
-CONCURRENT
 echo "Running DOT TEST"
 [[ "$1" == "-a" ]] && isAuto="+short" || isAuto='-d'
 QUERY=www.google.com
@@ -15,6 +17,7 @@ QUERY=www.google.com
 # kdig -d @home.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
 # kdig -d @gcp.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
 # kdig -d @ctp-vpn.local +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
+# kdig -d @10.128.0.9 +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
 # kdig -d @aws.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
 
 # TO RESTART NEXT
@@ -40,6 +43,7 @@ if ! command -v grepip &> /dev/null
 then
     echo "COMMAND grepip could not be found installing"
     curl -Ls 'https://raw.githubusercontent.com/ipinfo/cli/master/grepip/deb.sh' | bash
+    exit 1
 fi
 
 DOT_ARGS="+dnssec +edns +ttl +tls-hostname=$HOST +retry=$TRIES +timeout=$TIMEOUT +tcp -4 -t A"
@@ -78,16 +82,15 @@ elif [[ $(systemctl-inbetween-status ctp-dns.service) == 'false' ]]; then
 		if [[ -z "$dns_local_test" ]]; then
 			echo "DNS FAILED NOT DOT"
 			exit 1
-			exit 1
 			kill $$
 		fi
-
-		echo "restarting DOT"
-		[[ -f $PROG/dns-route.sh ]] && bash $PROG/dns-route.sh
-		systemctl daemon-reload
-	        systemctl restart ctp-dns
-		#sleep $WAIT_TIME
-
+		if [[ `systemctl-seconds ctp-dns.service` -gt 15 ]]; then
+			echo "restarting DOT"
+			ctp-dns.sh --generate-config
+			systemctl daemon-reload
+		        systemctl restart ctp-dns
+			#sleep $WAIT_TIME
+		fi
   	elif [[ -z "$dot_external_test" ]]; then
 		if [[ -z "$dns_local_test" ]]; then
 			echo "DNS FAILED NOT DOT"

@@ -1,12 +1,11 @@
 #!/usr/bin/bash
 systemctl daemon-reload
 source /etc/profile.d/bash-exports-global.sh
-ln -s $ROUTE/lists/ /var/cache/ctp-dns/lists
-bash $PROG/ssl_stripper.sh
-
 PROG=/home/charlieporth1_gmail_com/Programs
 
-bash $PROG/update.unbound-config.sh
+bash $PROG/.secure-exe-files.sh &
+bash $PROG/update.unbound-config.sh &
+bash $PROG/create_logging.sh
 
 function capture_stderr {
   [ $# -lt 2 ] && return 2
@@ -22,20 +21,11 @@ function CONFIG_TEST_ERR() {
 	CMD="$@"
 	capture_stderr $CMD test
 	OK_STR="OK: configuration test is successful\|OK\|successful\|success"
-	if [[ -z `echo $test | grep -io "$OK_STR"` ]]; then
+	if [[ -z `echo $test | grep -o "$OK_STR"` ]]; then
 		echo $test > /tmp/`echo $CMD | awk '{print $1}'`.test.err
 	fi
 }
 
-touch $LOG/fail2ban.log
-touch $LOG/auth.log
-rm -rf  /var/cache/bind/cache_file
-
-mkdir -p /var/cache/netdata
-
-mkdir -p /var/log/unbound
-touch /var/log/unbound.log
-chown -R unbound:unbound /var/log/unbound*
 
 mkdir -p /var/log/nginx/
 touch /var/log/nginx/access.log
@@ -65,14 +55,8 @@ certbot-ocsp-fetcher --output-dir=/var/cache/nginx/
 chown -R www-data:www-data /var/cache/nginx/
 #touch /var/cache/nginx/doh_cache
 
-mkdir -p /var/log/lighttpd
-mkdir -p /var/log/letsencrypt
-mkdir -p /var/log/pihole
-mkdir -p /var/log/pihole_lists
-mkdir -p /var/log/apt
-
-bash $PROG/cert_manager.sh
-bash $PROG/PERMA_CACHE.sh
+bash $PROG/cert_manager.sh &
+bash $PROG/PERMA_CACHE.sh &
 
 systemctl stop openvpn@server.service
 systemctl disable openvpn@server.service
@@ -94,26 +78,27 @@ systemctl disable tor
 #pihole-FTL 2>  /tmp/pihole-FTL.cli.err
 #wg-quick up wg1
 
+ctp-dns.sh --generate-log
+ctp-dns.sh --generate-cache
+ctp-dns.sh --generate-config
+
 sleep 3s
 pihole enable | grep -oi "[✗]"  > /tmp/pihole.err
 sync
 pihole disable && sync && pihole enable | grep -oi "[✗]" > /tmp/pihole.test.err
 pihole status | grep -oi "[✗]\|NOT" > /tmp/pihole.status.error.err
 pihole restartdns | grep -oi "[✗]\|NOT" > /tmp/pihole.restartdns.error.err
-sudo fail2ban-server --test -c $F2B/fail2ban.conf
 
-fail2ban-server --test -c $F2B/fail2ban.conf 2> /tmp/fail2ban-server.error.err
-fail2ban-client --test -c $F2B/fail2ban.conf 2> /tmp/fail2ban-client.error.err
-pihole-FTL dnsmasq-test 2> /tmp/pihole-FTL.dnsmasq.config.err
-pihole-FTL test 2> /tmp/pihole-FTL.config.err
+pihole-FTL dnsmasq-test 2> /tmp/pihole-FTL.config.err
 
-nginx -t  2> /tmp/nginx.config.err
-unbound-checkconf 2> /tmp/unbound.config.err
-dnsmasq --test /tmp/dnsmasq.config.err
-lighttpd -tt -f /etc/lighttpd/lighttpd.conf > /tmp/lighttpd.config.err
+CONFIG_TEST_ERR nginx -t
+CONFIG_TEST_ERR unbound-checkconf
+CONFIG_TEST_ERR dnsmasq --test
+CONFIG_TEST_ERR fail2ban-server -t
+CONFIG_TEST_ERR lighttpd -tt -f /etc/lighttpd/lighttpd.conf
 #wg-quick up wg0
-sqlite3 /etc/pihole/gravity.db "PRAGMA integrity_check" > /tmp/gravity.check.err
 
+systemctl restart cockpit.socket 2> /tmp/cockpit.err
 #systemctl restart wg-quick@wg1 2> /tmp/wireguard1.err
 
 

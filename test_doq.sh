@@ -41,6 +41,7 @@ if ! command -v grepip &> /dev/null
 then
     echo "COMMAND grepip could not be found installing"
     curl -Ls 'https://raw.githubusercontent.com/ipinfo/cli/master/grepip/deb.sh' | bash
+    exit 1
 fi
 #  q --server=dns.ctptech.dev --qname=www.google.com @quic://dns.ctptech.dev:784
 #  q --server=dns.ctptech.dev --qname=www.google.com @quic://dns.ctptech.dev:784 --timeout=60 --dnsses

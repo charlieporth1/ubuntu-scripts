@@ -1,0 +1,32 @@
+[listeners.ctp-doh-local-alt-nginx]
+address = "127.0.0.1:11443"
+protocol = "doh"
+resolver = "ctp-dns-alt-cached"
+server-crt = "/etc/letsencrypt/live/vpn.ctptech.dev/localhost_certs/server.crt"
+server-key = "/etc/letsencrypt/live/vpn.ctptech.dev/localhost_certs/server.key"
+bootstrap-address = "127.0.0.1"
+
+[groups.ctp-dns-alt-cached]
+type = "cache"
+resolvers = [ "ctp-dns-min-ttl-alt" ]
+cache-negative-ttl = 3600
+cache-size = 50000
+cache-answer-shuffle = "round-robin"
+
+[groups.ctp-dns-min-ttl-alt]
+type = "ttl-modifier"
+resolvers = [ "ctp-dns-group-alt" ]
+ttl-min = 3600
+ttl-max = 3024000
+
+
+# Order matters
+[groups.ctp-dns-group-alt]
+resolvers = [
+	"ctp-dns-group",
+	"ctp-dns_group-fail-rotate-masters",
+	"ctp-dns_group-fail-back-masters",
+]
+reset-after = 15
+type = "fail-back"
+servfail-error = true

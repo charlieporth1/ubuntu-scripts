@@ -1,9 +1,11 @@
 #!/bin/bash
 source $PROG/all-scripts-exports.sh
+source ctp-dns.sh --source
 bash $PROG/dns-stale-restart.sh
+bash $PROG/test_dns.sh -a
 CONCURRENT
 
-if [[ -f /tmp/health-checks.stop.lock ]]; then
+if [[ -f $CTP_DNS_LOCK_FILE ]]; then
 	echo "LOCK FILE"
 	set -e
 	kill -9 $$
@@ -29,23 +31,20 @@ Cron should be setup for 1 minute invtevals.
 
 for ((i=1; i < ( $max ); i++))
 do
-	if [[ -f /tmp/health-checks.stop.lock ]]; then
+	echo "Check #$i DNS `date`"
+	if [[ -f $CTP_DNS_LOCK_FILE ]]; then
 		echo "LOCK FILE"
-		trap 'LOCK_FILE' ERR
-		set -e
-		kill -9 $$
-		exit 1
+		bash $PROG/dns-stale-restart.sh
+		bash $PROG/test_dns.sh -a
+	else
+		bash $PROG/dns-stale-restart.sh
+		bash $PROG/test_dns.sh -a
+		bash $PROG/test_dns_unbound.sh -a
+		bash $PROG/test_dot.sh -a
+		bash $PROG/test_doh.sh -a
+		bash $PROG/test_doq.sh -a
 	fi
-	echo "check #$i dns stail `date`"
-	bash $PROG/dns-stale-restart.sh
-	bash $PROG/test_dns_unbound.sh -a
-	bash $PROG/test_dns.sh -a
-	bash $PROG/test_dot.sh -a
-	bash $PROG/test_doh.sh -a
-	bash $PROG/test_doq.sh -a
 	echo "check sleeping $SLEEP_T"
 	echo "$SLEEP_T `date`"
 	sleep $SLEEP_T
 done
-set -e
-[ $? == 1 ] && exit 0 || exit 0;
