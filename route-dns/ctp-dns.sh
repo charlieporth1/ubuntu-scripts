@@ -2,18 +2,28 @@
 source /etc/environment
 shopt -s extglob
 SERVICE=ctp-dns.service
+
 ARGS="$@"
+
 LOG_FILE=error.log
 INSTALL_DIR=/usr/local/bin
 CONFIG_DIR=${ROUTE}
+
 export CTP_DNS_LOG_DIR=/var/log/ctp-dns
 export CTP_DNS_CACHE_DIR=/var/cache/ctp-dns
 export CTP_DNS_LOCK_FILE=/tmp/health-checks.stop.lock
 
-str_match="'matched blocklist' 'matched allowlist' 'ctp-dns-time-router-yt-ttl-gcp' 'ctp-dns-time-router-yt-gcp' 'ctp-doh-local-nginx' 'ctp-google-video-master-ttl-modifer-dnsmasq-pass-thru-ip-1-udp' 'ctp-google-video-master-ttl-modifer-dnsmasq-pass-thru-ip-1-tcp' 'ctp-dns-yt-google-video-ttl-modifer' 'ctp-dns-cached-google-video-ttl-cache'"
+export FLUSH_CACHE_QUERY_SUFEX='dns.ctptech.dev.flush.cache.'
+KDIG_OPTIONS="+tls-ca +tls-host=dns.ctptech.dev +timeout=4 +dnssec +edns"
+
+str_match=".*matched\sblocklist.* .*matched\sallowlist.* .*ctp-dns-time-router-yt-ttl-gcp.* .*ctp-dns-time-router-yt-gcp.* .*ctp-doh-local-nginx.* .*sending\stcp\sprobe.* .*tcp\sprobe\sfinished.* .*tcp\sprobe\sfailed.* .*cache-hit.*"
+#.*ctp-google-video-master-ttl-modifer-dnsmasq-pass-thru-ip-1-udp.*
+#.*ctp-google-video-master-ttl-modifer-dnsmasq-pass-thru-ip-1-tcp.* .*ctp-dns-yt-google-video-ttl-modifer.* .*ctp-dns-cached-google-video-ttl-cache.*"
+#'.*matched blocklist.*' '.*matched allowlist.*'
 
 function get_http_lists() {
-	local file="${1:-dns-lists.toml}"
+	local file_input="$1"
+	local file="${file_input:=dns-lists.toml}"
 	declare -gx http_lists=`grep http $CONFIG_DIR/$file | awk -F, '{print $2}' | awk -F'"' '{print $2}'`
 	declare -gx last_list_http=$(printf '%s\n' "$http_lists" | tail -1)
 	printf '%s\n' "$http_lists"
@@ -21,7 +31,8 @@ function get_http_lists() {
 export -f get_http_lists
 
 function get_local_lists() {
-	local file="${1:-dns-lists.toml}"
+	local file_input="$1"
+	local file="${file_input:=dns-lists.toml}"
 	declare -gx local_lists=`grep / $CONFIG_DIR/$file | awk -F, '{print $2}' | awk -F'"' '{print $2}' | grep -E ^/`
 	declare -gx last_list_local=$(printf '%s\n' "$local_lists" | tail -1)
 	printf '%s\n' "$local_lists"
@@ -153,6 +164,7 @@ export -f create_logs
 function clear_cache() {
 	sudo rm -rf $CTP_DNS_CACHE_DIR/*
 	[[ -f $PROG/generarte_vulnerability-blacklist.sh ]] && sudo bash $PROG/generarte_vulnerability-blacklist.sh
+	generate_lists_sha_all_files
 	config_test_human
 	sudo systemctl restart ctp-dns.service
 }
@@ -184,6 +196,12 @@ function config_test() {
 }
 export -f config_test
 
+function test_result() {
+		sudo timeout 5 sudo /root/go/bin/routedns $CONFIG_DIR/*.toml --log-level=6
+		echo "$?"
+		return $?
+}
+export -f test_result
 
 function config_test_human() {
 	local config_test_dir="${1}"
@@ -193,7 +211,7 @@ function config_test_human() {
 	else
 		echo "Route DNS / CTP DNS config is not ok: ERROR"
 		echo "RUN for more details /root/go/bin/routedns ${ROUTE}/*.toml --log-level=6"
-		sudo timeout 5 sudo /root/go/bin/routedns $CONFIG_DIR/*.toml --log-level=6
+		test_result
 		echo "$?"
 		return $?
 	fi
@@ -232,6 +250,41 @@ function manage_lock_file() {
 }
 export -f manage_lock_file
 
+function flush_cache() {
+	local query="$1"
+	local host="${2:-ctp-vpn.local}"
+	local full_query="$FLUSH_CACHE_QUERY_SUFEX$query"
+	kdig -d @$host $KDIG_OPTIONS $full_query 2>&1 > /dev/null
+	[[ $? -le 0 ]] && echo "Flushing cache Success: Query $full_query; Host: $host" || "Flushing cache Failed: Query $full_query; Host: $host"
+}
+export -f flush_cache
+
+function flush_cache_local() {
+	flush_cache 'root'
+	flush_cache 'front'
+}
+export -f flush_cache_local
+
+function flush_cache_all() {
+	flush_cache 'root' 'dns.ctptech.dev'
+	flush_cache 'front' 'dns.ctptech.dev'
+}
+export -f flush_cache_all
+
+function reload_systemd_service() {
+	sudo systemctl daemon-reload
+	sudo systemctl reset-failed $SERVICE
+	sudo systemctl reload-or-restart $SERVICE
+	ctp_dns_status
+}
+export -f reload_systemd_service
+
+function restart_systemd_service() {
+	sudo systemctl restart $SERVICE
+	ctp_dns_status
+}
+export -f restart_systemd_service
+
 helpString="""
    -h --help
    -qbl --query-blocklist-log
@@ -239,26 +292,35 @@ helpString="""
    -t -l --tail --log
    -q=* --query=* --query-log=*
    -ql=* --query-list=*
+   -qc=* --query-config=*
+   -qr=* --query-resolvers=*
    -gc --generate-cache
    -gl --generate-log
    -gconf --generate-config
    -ct --config-test
    -cth --config-test-human
+   -ctid=* --config-test-in-dir=*
+   -cthid=* --config-test-human-in-dir=*
    -cc --clear-cache
+   -clc --clear-list-cache
    -cl -f --clear-logs --flush
    -mlf --manage-lock-file
    -rlf	--rm-lock-file
    --reset-host-configuration
+   --restart
+   --reload
+   --status
    --source
    --update
 """
+
 #################### CMD START CTP_DNS_START
 if [ "$0" == "$BASH_SOURCE" ]; then
 for i in "$@"; do
     case $i in
         --help | -h | --h | h | help ) shift; echo "$helpString" ; exit 0 ;;
-        -l | -t |  --tail | --log ) shift ; setup_tail_logs; tail -f $CTP_DNS_LOG_DIR/$LOG_FILE | h $str_match ;;
-        -q=* | --query=* | --query-log?(s)=* ) shift ; setup_tail_logs ; QUERY="${i#*=}"; grep --color=auto "$QUERY" $CTP_DNS_LOG_DIR/$LOG_FILE | h $str_match ;;
+        -l | -t |  --tail | --log | *tail ) shift ; setup_tail_logs; tail -f $CTP_DNS_LOG_DIR/$LOG_FILE | h $str_match ;;
+        -q=* | --query=* | --query-log?(s)=* ) shift ; setup_tail_logs ; QUERY="${i#*=}"; grep --color=auto "$QUERY" $CTP_DNS_LOG_DIR/$LOG_FILE | h -i $str_match ;;
         *ql=* | --query-list?(s)=* ) shift ; setup_tail_logs ; QUERY="${i#*=}"; query_lists "$QUERY";;
         *qr=* | *qc=*| --query-@(resolver|conf?(ig))?(s)=* ) shift ; QUERY="${i#*=}"; grep --color=auto "$QUERY" $CONFIG_DIR/*.toml;;
         *qbl | --query-@(block|black)?(list)-log?(s) ) shift ;
@@ -269,10 +331,10 @@ for i in "$@"; do
 		setup_tail_logs
 		grep --color=auto "matched allowlist" $CTP_DNS_LOG_DIR/$LOG_FILE
 	;;
-        *status ) shift; ctp_dns_status ;;
         *gc | --generate-cache ) shift ; generate_lists_sha_all_files;;
         *gl | *gls | --generate-log?(s) ) shift ; create_logs;;
         *gconf | --generate-conf?(ig) ) shift ; generate_config;;
+        --test-result | *tr | *test-result ) shift ; test_result;;
         *ct | --config-test ) shift ; config_test;;
         *cth | *cht | --config-test-human ) shift ; config_test_human;;
         *cthi?(n)?(d) | *chti?(n)?(d) | --config-test-human-in?(-dir)=* ) shift ;
@@ -283,12 +345,17 @@ for i in "$@"; do
 		config_dir="${i#*=}"
 		config_test $config_dir
 	;;
-        *cc | --clear-cache ) shift ; clear_cache;;
-        *cl | *f | --clear-log?(s) | --flush ) shift ; clear_logs;;
+        *clc | --clear-list-cache ) shift ; clear_cache;;
+        *cl | *f | *fl | --clear-log?(s) | --flush?(-log?(s)) ) shift ; clear_logs;;
+        *cc | *fc | *fcl | *ccl | --clear-cache?(-local) | --flush-cache?(-local) ) shift ; flush_cache_local;;
+        *fca | *cca | --clear-cache?(-all) | --flush-cache?(-all) ) shift ; flush_cache_all;;
         *ml | *mlf | --manage-lock?(-file) ) shift ; manage_lock_file;;
         *@(r|c)l | *@(r|c)lf | --@(rm|clear)-lock?(-file) ) shift ; rm_lock_file;;
-        --source?(d) ) shift ; echo "ctp-dns.sh sourced";;
-        --update?(s) ) shift ; update_route_dns;;
+        --restart | *restart | *restartdns ) shift ; restart_systemd_service;;
+        --reload | *reload ) shift ; reload_systemd_service;;
+        --status | *status ) shift; ctp_dns_status ;;
+        --source?(d) | *source ) shift ; echo "ctp-dns.sh sourced";;
+        --update?(s) | *update ) shift ; update_route_dns;;
         --@(reset|rm|clear)-host?(s)-conf?(ig)?(uration) ) shift ;
 		sudo mkdir -p $CONFIG_DIR/.host_old_reset/
 		sudo mv $CONFIG_DIR/$HOSTNAME*.toml $CONFIG_DIR/.host_old_reset/

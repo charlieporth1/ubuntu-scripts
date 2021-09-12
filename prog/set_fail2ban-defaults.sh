@@ -23,6 +23,18 @@ fi
 
 declare -a MY_PIHOLE_BAN_IPs
 MY_PIHOLE_BAN_IPs=(
+	1.193.219.1
+	1.193.219.1/16
+	67.80.4.215/16
+	67.80.4.215
+	143.198.4.69
+	143.198.4.69/16
+	172.78.34.205/24
+	172.78.34.205/16
+	35.133.200.76/24
+	172.78.34.205
+	35.133.200.76/16
+	35.133.200.76
 	172.red-80-25-158.staticip.rima-tde.net
 	47-217-50-170.enidcmta02.res.dyn.suddenlink.net
 	invalid.mannford.ok.mbo.net
@@ -239,11 +251,10 @@ MY_PIHOLE_BAN_IPs=(
 )
 declare -a PIHOLE_BAN_IPs=(
 	${MY_PIHOLE_BAN_IPs[@]}
-	$( curl -s https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/fail2ban )
 )
 PIHOLE_BAN_IPs=( $( filter_ip_address_array "${PIHOLE_BAN_IPs[@]}" ) )
 
-sudo fail2ban-client set ctp-dns-1-block banip ${MY_PIHOLE_BAN_IPs[@]}
+#sudo fail2ban-client set ctp-dns-1-block banip ${MY_PIHOLE_BAN_IPs[@]}
 #sudo fail2ban-client set ctp-dns-1-block banip ${PIHOLE_BAN_IPs[@]}
 #sudo fail2ban-client set ctp-dns-1-block banip  $( curl -s https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/fail2ban | xargs )
 # sudo fail2ban-client set ctp-dns-1-block banip  $( curl -s | xargs )
@@ -257,6 +268,11 @@ done
 save_ip-set $IPSET_BK_NAME $IPSET_FILE_FULL
 
 
+create_ip-set fail2ban subnet-block
+url=https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/fail2ban
+run_ip-set-block "$url"
+
+
 save_ip-tables
 
 mapfile -t UNI_IGNORE_IP < $UNI_FILE
@@ -267,7 +283,7 @@ JAILs=(
         `timeout $TIMEOUT sudo fail2ban-client status | grep "Jail list:" | awk -F, 'NR==n && $1=$1' n=1 | cut -d ':' -f 2-`
 )
 
-declare -a master_services
+declare -a pihole_services
 pihole_services=(
         "pihole-dns-1-block"
         "pihole-dns"

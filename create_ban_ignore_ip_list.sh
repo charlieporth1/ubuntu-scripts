@@ -16,6 +16,7 @@ UNI_IGNORE_IP=(
         192.168.44.1
         192.168.40.1
         0.0.0.0
+	0.0.0.0/8
         172.58.87.88    #
         172.58.156.197  # *
         172.195.69.25
@@ -33,7 +34,7 @@ UNI_IGNORE_IP=(
         $(bash $PROG/get_ext_ip.sh master.dns.ctptech.dev | grepip -o)
         $(bash $PROG/get_ext_ip.sh --curent-ip | grepip -o)
         $(bash $PROG/get_network_devices_ip_address.sh --all)
-        $(sudo ip route | grepip -o | sort -u)
+        $(sudo ip route list | grepip -o | sort -u | grepip -o)
         azure.ctptech.dev
         home.ctptech.dev
         aws.ctptech.dev
@@ -59,6 +60,7 @@ DEFAULT_DNS_SERVERS=(
         192.168.40.0/24
 	192.168.1.1
         127.0.0.1
+	100.100.100.100
 )
 #filter_ip_address_array "${DEFAULT_DNS_SERVERS[@]}"
 

@@ -35,11 +35,12 @@ do
 	if [[ -f $CTP_DNS_LOCK_FILE ]]; then
 		echo "LOCK FILE"
 		bash $PROG/dns-stale-restart.sh
+		bash $PROG/test_dns_unbound.sh -a
 		bash $PROG/test_dns.sh -a
 	else
 		bash $PROG/dns-stale-restart.sh
-		bash $PROG/test_dns.sh -a
 		bash $PROG/test_dns_unbound.sh -a
+		bash $PROG/test_dns.sh -a
 		bash $PROG/test_dot.sh -a
 		bash $PROG/test_doh.sh -a
 		bash $PROG/test_doq.sh -a

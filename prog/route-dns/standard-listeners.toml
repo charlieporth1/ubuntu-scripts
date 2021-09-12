@@ -2,64 +2,63 @@
 address = ":4443"
 protocol = "doh"
 resolver = "client-listener-rrl-standard"
-server-crt = "/etc/letsencrypt/live/vpn.ctptech.dev/fullchain.pem"
-server-key = "/etc/letsencrypt/live/vpn.ctptech.dev/nopassword.key"
-
+server-crt = "/etc/letsencrypt/live/ctptech.dev/fullchain.pem"
+server-key = "/etc/letsencrypt/live/ctptech.dev/nopassword.key"
 
 [listeners.ctp-doh-quic]
 address = ":1443"
 protocol = "doh"
 transport = "quic"
 resolver = "client-listener-rrl-standard"
-server-crt = "/etc/letsencrypt/live/vpn.ctptech.dev/fullchain.pem"
-server-key = "/etc/letsencrypt/live/vpn.ctptech.dev/nopassword.key"
+server-crt = "/etc/letsencrypt/live/ctptech.dev/fullchain.pem"
+server-key = "/etc/letsencrypt/live/ctptech.dev/nopassword.key"
 
 [listeners.ctp-dtls]
 address = ":853"
 protocol = "dtls"
 resolver = "client-listener-rrl-standard"
-server-crt = "/etc/letsencrypt/live/vpn.ctptech.dev/fullchain.pem"
-server-key = "/etc/letsencrypt/live/vpn.ctptech.dev/nopassword.key"
+server-crt = "/etc/letsencrypt/live/ctptech.dev/fullchain.pem"
+server-key = "/etc/letsencrypt/live/ctptech.dev/nopassword.key"
 edns0-udp-size = 1460 
 
 [listeners.ctp-dot]
 address = ":853"
 protocol = "dot"
 resolver = "client-listener-rrl-standard"
-server-crt = "/etc/letsencrypt/live/vpn.ctptech.dev/fullchain.pem"
-server-key = "/etc/letsencrypt/live/vpn.ctptech.dev/nopassword.key"
+server-crt = "/etc/letsencrypt/live/ctptech.dev/fullchain.pem"
+server-key = "/etc/letsencrypt/live/ctptech.dev/nopassword.key"
 
 [listeners.ctp-dtls-non-standard]
 address = ":1853"
 protocol = "dtls"
 resolver = "client-listener-rrl-standard"
-server-crt = "/etc/letsencrypt/live/vpn.ctptech.dev/fullchain.pem"
-server-key = "/etc/letsencrypt/live/vpn.ctptech.dev/nopassword.key"
+server-crt = "/etc/letsencrypt/live/ctptech.dev/fullchain.pem"
+server-key = "/etc/letsencrypt/live/ctptech.dev/nopassword.key"
 
 [listeners.ctp-dot-non-standard]
 address = ":1853"
 protocol = "dot"
 resolver = "client-listener-rrl-standard"
-server-crt = "/etc/letsencrypt/live/vpn.ctptech.dev/fullchain.pem"
-server-key = "/etc/letsencrypt/live/vpn.ctptech.dev/nopassword.key"
+server-crt = "/etc/letsencrypt/live/ctptech.dev/fullchain.pem"
+server-key = "/etc/letsencrypt/live/ctptech.dev/nopassword.key"
 
 [listeners.ctp-doq]
 address = ":1784"
 protocol = "doq"
 resolver = "client-listener-rrl-standard"
-server-crt = "/etc/letsencrypt/live/vpn.ctptech.dev/fullchain.pem"
-server-key = "/etc/letsencrypt/live/vpn.ctptech.dev/nopassword.key"
+server-crt = "/etc/letsencrypt/live/ctptech.dev/fullchain.pem"
+server-key = "/etc/letsencrypt/live/ctptech.dev/nopassword.key"
 
 [listeners.ctp-doq-standard-port]
 address = ":8853"
 protocol = "doq"
 resolver = "client-listener-rrl-standard"
-server-crt = "/etc/letsencrypt/live/vpn.ctptech.dev/fullchain.pem"
-server-key = "/etc/letsencrypt/live/vpn.ctptech.dev/nopassword.key"
+server-crt = "/etc/letsencrypt/live/ctptech.dev/fullchain.pem"
+server-key = "/etc/letsencrypt/live/ctptech.dev/nopassword.key"
 
 [listeners.ctp-doq-draft-port]
 address = ":784"
 protocol = "doq"
 resolver = "client-listener-rrl-standard"
-server-crt = "/etc/letsencrypt/live/vpn.ctptech.dev/fullchain.pem"
-server-key = "/etc/letsencrypt/live/vpn.ctptech.dev/nopassword.key"
+server-crt = "/etc/letsencrypt/live/ctptech.dev/fullchain.pem"
+server-key = "/etc/letsencrypt/live/ctptech.dev/nopassword.key"

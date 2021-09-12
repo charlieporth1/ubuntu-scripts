@@ -4,6 +4,7 @@ OUT_FILE=$ROUTE/ctp-dns-back-up-resolvers.toml
 
 export RESOLVER_START='ctp-dns_nginx-back-up'
 export RESOLVER_START_GROUP="$RESOLVER_START-group"
+
 DOMAIN=master.dns.ctptech.dev
 IP_ADDRESSES=`bash $PROG/get_ext_ip.sh $DOMAIN`
 
@@ -27,34 +28,18 @@ address = \"$DOMAIN:11853\"
 protocol = \"dot\"
 bootstrap-address = \"$ip\"
 # DTLS
-[resolvers.$dtls]
-address = \"$DOMAIN:11853\"
-protocol = \"dtls\"
-bootstrap-address = \"$ip\"
-edns0-udp-size = 1460
-
-[groups.$RESOLVER_START-$ip_title-truncate-retry]
-type = \"truncate-retry\"
-resolvers = [ \"$dtls\" ]
-retry-resolver = \"$dot\"
-
-[groups.$RESOLVER_START-$ip_title]
-type = \"truncate-retry\"
-resolvers = [ \"$dtls\" ]
-retry-resolver = \"$dot\"
 
 """ | sudo tee -a $OUT_FILE
 done
 
 
 export BACKUP_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(grep -E "^.resolvers\..*$RESOLVER_START.*" $OUT_FILE | awk -F. '{print $2}' | awk -F] '{print $1}') --quotes --space))
-export BACKUP_RESOLVERS_GROUP=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(grep -E "^.groups\..*$RESOLVER_START.*-truncate-retry.*" $OUT_FILE | awk -F. '{print $2}' | awk -F] '{print $1}') --quotes --space))
 
 echo """
 # FALLBACK
 [groups.$RESOLVER_START_GROUP-fail-back]
 resolvers = [
-        $BACKUP_RESOLVERS_GROUP
+        $BACKUP_RESOLVERS
 ]
 type = \"fail-back\"
 reset-after = 15
@@ -63,7 +48,7 @@ servfail-error = true
 # FASTEST
 [groups.$RESOLVER_START_GROUP-fastest]
 resolvers = [
-	$BACKUP_RESOLVERS_GROUP
+	$BACKUP_RESOLVERS
 ]
 type = \"fastest\"
 reset-after = 15

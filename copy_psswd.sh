@@ -1,10 +1,13 @@
 #!/bin/bash
 SCRIPT_DIR=`realpath .`
 shopt -s expand_aliases
-export ENCPASS_HOME_DIR=/opt/config/.ctp/.encpass
+ROOT_DIR=/opt/config/.ctp
+export ENCPASS_HOME_DIR=$ROOT_DIR/.encpass
+
 mkdir -p -m 755 $ENCPASS_HOME_DIR 2>/dev/null
 chown -R $ADMIN_USR:nogroup $ROOT_DIR 2> /dev/null
 chmod -R 755 $ROOT_DIR 2> /dev/null
+
 MASTER_MACHINE="ctp-vpn"
 GCLOUD_PROJECT="galvanic-pulsar-284521"
 GCLOUD_ZONE="us-central1-a"
@@ -22,7 +25,8 @@ alias grep-tar-file="$grep_tar_file"
 
 function expect_import() {
         local spawn_cmd="$4"
-        local usr="${3:-$USER}"
+	local user_input="$3"
+        local usr="${user_input:=$USER}"
         local exported_full_path_file="$1"
         local passwd="$2"
 	export ENCPASS_HOME_DIR="${ENCPASS_HOME_DIR:-$HOME/.encpass}"
@@ -62,7 +66,8 @@ function run_import() {
 
 	local exported_full_path_file="$1"
 	local passwd="$2"
-	local usr="${3:-$USER}"
+	local user_input="$3"
+        local usr="${user_input:=$USER}"
 	local spawn_cmd="bash -c \"export ENCPASS_HOME_DIR=$ENCPASS_HOME_DIR && encpass.sh import -o -p $exported_full_path_file\""
 	expect_import "$exported_full_path_file" "$passwd" "$usr" "$spawn_cmd"
 
@@ -96,7 +101,8 @@ function transfer_ssh() {
 }
 
 function transfer_local_user() {
-	local usr="${1:-$USER}"
+	local user_input="$1"
+        local usr="${user_input:=$USER}"
 	local exported_file=$(sudo -u $ADMIN_USR yes "$passwd" | encpass.sh export -k alert_user.sh | grep-tar-file)
 
 	local exported_file=$(echo $exported_file | grep-tar-file)

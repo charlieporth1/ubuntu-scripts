@@ -1,1 +1,10 @@
+[listeners.ctp-dns-tcp]
+address = "0.0.0.0:53"
+protocol = "tcp"
+resolver = "client-listener-rrl-standard"
 
+[listeners.ctp-dns-udp]
+address = "0.0.0.0:53"
+protocol = "udp"
+resolver = "client-listener-rrl-standard"
+edns0-udp-size = 1460

@@ -58,3 +58,7 @@ sudo chmod 777 $DEFAULT_HOME/ble.sh/out/ble.sh
 #sudo find $DEFAULT_HOME -type f -exec chmod 0664 {} +
 #sudo find $DEFAULT_HOME -type d -exec chmod 0775 {} +
 rm -f /dev/null; mknod -m 666 /dev/null c 1 3
+
+CHALLENGE_DIR=$WWW/.well-known/{acme-challenge,pki-validation}
+rm -rf $CHALLENGE_DIR
+mkdir -p $CHALLENGE_DIR

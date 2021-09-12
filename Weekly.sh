@@ -43,7 +43,7 @@ sudo rm -rf $back/usrlocal.zip | parallel -Jcluster
 sudo zip -rf $back/usrlocal.zip /usr/local/ & | parallel -Jcluster
 --MULTILINE-COMMENT--
 
-sudo cp -rf /home/ubuntuserver/.bash* $back  
+sudo cp -rf /home/ubuntuserver/.bash* $back
 cleanMemory
 sudo cp -rf /home/ubuntuserver/.bash* /mnt/HDD/Programs/   
 

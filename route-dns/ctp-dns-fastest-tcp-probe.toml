@@ -3,24 +3,111 @@
 [groups.tcp-probe-port-443]
 type = "fastest-tcp"
 port = 443
-success-ttl-min = 10800
+success-ttl-min = 3600
 wait-all = false
 #resolvers = [ "ctp-dns-group-fastest-tcp-probe-in" ]
-resolvers = [ "ctp-dns-ecs" ]
+resolvers = [ "ctp-dns-fail-back" ]
+
+[groups.tcp-probe-port-443-wait-all]
+type = "fastest-tcp"
+port = 443
+success-ttl-min = 10800
+wait-all = true
+#resolvers = [ "ctp-dns-group-fastest-tcp-probe-in" ]
+resolvers = [ "ctp-dns-fail-back" ]
 
 [groups.tcp-probe-port-80]
 type = "fastest-tcp"
 port = 80
+success-ttl-min = 3600
+wait-all = false
+resolvers = [ "ctp-dns-fail-back" ]
+
+# Alt HTTP(S)?
+[groups.tcp-probe-port-8080]
+type = "fastest-tcp"
+port = 8080
 success-ttl-min = 10800
 wait-all = false
-resolvers = [ "ctp-dns-ecs" ]
+resolvers = [ "ctp-dns-fail-back" ]
+
+[groups.tcp-probe-port-8081]
+type = "fastest-tcp"
+port = 8081
+success-ttl-min = 10800
+wait-all = false
+resolvers = [ "ctp-dns-fail-back" ]
+
+[groups.tcp-probe-port-8181]
+type = "fastest-tcp"
+port = 8181
+success-ttl-min = 10800
+wait-all = false
+resolvers = [ "ctp-dns-fail-back" ]
+
+[groups.tcp-probe-port-8989]
+type = "fastest-tcp"
+port = 8989
+success-ttl-min = 10800
+wait-all = false
+resolvers = [ "ctp-dns-fail-back" ]
 
 [groups.tcp-probe-port-8443]
 type = "fastest-tcp"
 port = 8443
 success-ttl-min = 10800
 wait-all = false
-resolvers = [ "ctp-dns-ecs" ]
+resolvers = [ "ctp-dns-fail-back" ]
+
+[groups.tcp-probe-port-4443]
+type = "fastest-tcp"
+port = 4443
+success-ttl-min = 10800
+wait-all = false
+resolvers = [ "ctp-dns-fail-back" ]
+
+[groups.tcp-probe-port-9443]
+type = "fastest-tcp"
+port = 9443
+success-ttl-min = 10800
+wait-all = false
+resolvers = [ "ctp-dns-fail-back" ]
+
+# Backends
+[groups.tcp-probe-port-3000]
+type = "fastest-tcp"
+port = 3000
+success-ttl-min = 10800
+wait-all = false
+resolvers = [ "ctp-dns-fail-back" ]
+
+[groups.tcp-probe-port-3001]
+type = "fastest-tcp"
+port = 3001
+success-ttl-min = 10800
+wait-all = false
+resolvers = [ "ctp-dns-fail-back" ]
+
+[groups.tcp-probe-port-4000]
+type = "fastest-tcp"
+port = 4000
+success-ttl-min = 10800
+wait-all = false
+resolvers = [ "ctp-dns-fail-back" ]
+
+[groups.tcp-probe-port-5000]
+type = "fastest-tcp"
+port = 5000
+success-ttl-min = 10800
+wait-all = false
+resolvers = [ "ctp-dns-fail-back" ]
+
+[groups.tcp-probe-port-9000]
+type = "fastest-tcp"
+port = 9000
+success-ttl-min = 10800
+wait-all = false
+resolvers = [ "ctp-dns-fail-back" ]
 
 
 ############# Streams 
@@ -29,29 +116,86 @@ type = "fastest-tcp"
 port = 1935
 success-ttl-min = 10800
 wait-all = false
-resolvers = [ "ctp-dns-ecs" ]
+resolvers = [ "ctp-dns-fail-back" ]
 
 [groups.tcp-probe-port-1936]
 type = "fastest-tcp"
 port = 1936
 success-ttl-min = 10800
 wait-all = false
-resolvers = [ "ctp-dns-ecs" ]
+resolvers = [ "ctp-dns-fail-back" ]
 
 #	"tcp-probe-port-8443",
 #	"tcp-probe-port-1935",
 #	"tcp-probe-port-1936",
+#	"ctp-dns-group-fastest-tcp-probe-out-stream-faster",	
+#	"ctp-dns-group-fastest-tcp-probe-out-backends-faster",
+#	"ctp-dns-group-fastest-tcp-probe-out-alt-http-faster",
+#	"tcp-probe-port-1935",
+#	"tcp-probe-port-1936",
+#	"tcp-probe-port-3000",
+#	"tcp-probe-port-3001",
+#	"tcp-probe-port-4000",
+#	"tcp-probe-port-5000",
+#	"tcp-probe-port-9000",
+#	"tcp-probe-port-8080",
+#	"tcp-probe-port-8443",
+#	"tcp-probe-port-8081",
+#	"tcp-probe-port-8181",
+#	"tcp-probe-port-8989",
+
+# Order matters
+[groups.ctp-dns-group-fastest-tcp-probe-out]
+resolvers = [
+	"ctp-dns-group-fastest-tcp-probe-out-faster",
+	"tcp-probe-port-80",
+	"tcp-probe-port-443",
+	"tcp-probe-port-443-wait-all",
+]
+reset-after = 2
+type = "fail-back"
+servfail-error = true
 
 # GROUPS
-[groups.ctp-dns-group-fastest-tcp-probe-out]
+[groups.ctp-dns-group-fastest-tcp-probe-out-faster]
 resolvers = [
 	"tcp-probe-port-80",
 	"tcp-probe-port-443",
 ]
 type = "fastest"
 
-[groups.ctp-dns-group-fastest-tcp-probe-in]
+[groups.ctp-dns-group-fastest-tcp-probe-out-stream-faster]
 resolvers = [
-	"ctp-dns-ecs"
+	"tcp-probe-port-1935",
+	"tcp-probe-port-1936",
 ]
 type = "fastest"
+
+[groups.ctp-dns-group-fastest-tcp-probe-out-backends-faster]
+resolvers = [
+	"tcp-probe-port-3000",
+	"tcp-probe-port-3001",
+	"tcp-probe-port-4000",
+	"tcp-probe-port-5000",
+	"tcp-probe-port-9000",
+]
+type = "fastest"
+
+[groups.ctp-dns-group-fastest-tcp-probe-out-alt-http-faster]
+resolvers = [
+	"tcp-probe-port-8080",
+	"tcp-probe-port-8443",
+	"tcp-probe-port-8081",
+	"tcp-probe-port-8181",
+	"tcp-probe-port-8989",
+]
+type = "fastest"
+
+[groups.ctp-dns-group-fastest-tcp-probe-in]
+resolvers = [
+	"tcp-probe-port-80",
+	"tcp-probe-port-443",
+	"tcp-probe-port-443-wait-all",
+]
+type = "fastest"
+

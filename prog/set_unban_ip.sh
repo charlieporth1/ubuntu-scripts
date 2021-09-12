@@ -10,7 +10,7 @@ if ! [[ -f $DEFUALT_FILE ]]; then
 fi
 
 mapfile -t DNS_IGNORE_IPs < $DEFUALT_FILE
-mapfile -t TMOBILE_IGNORE_IPs < /tmp/tmobile_ips.txt
+mapfile -t TMOBILE_IGNORE_IPs < $INGNORE_IP_TMOBILE
 
 
 declare -a JAIL_PIHOLEs
@@ -44,10 +44,10 @@ for jail in "${JAILs[@]}"
 do
         sudo fail2ban-client $jail start
 
-        sudo fail2ban-client set $jail addignoreip ${DNS_IGNORE_IPs[@]}
-        sudo fail2ban-client set $jail unbanip ${DNS_IGNORE_IPs[@]}
+        echo ${DNS_IGNORE_IPs[@]} | xargs sudo fail2ban-client set $jail addignoreip
+	echo ${DNS_IGNORE_IPs[@]} | xargs sudo fail2ban-client set $jail unbanip
 
-        sudo fail2ban-client set $jail addignoreip ${TMOBILE_IGNORE_IPs[@]}
-        sudo fail2ban-client set $jail unbanip ${TMOBILE_IGNORE_IPs[@]}
+        echo ${TMOBILE_IGNORE_IPs[@]} | xargs sudo fail2ban-client set $jail addignoreip
+	echo ${TMOBILE_IGNORE_IPs[@]} | xargs sudo fail2ban-client set $jail unbanip
 done
 save_ip-tables

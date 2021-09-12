@@ -9,14 +9,18 @@ FILES=(
 	/etc/fail2ban/filter.d/pihole-dns.conf
 	/etc/fail2ban/filter.d/pihole-dns-1-block.conf
 	/etc/dnsmasq.d/99-custom-settings.conf
+	/etc/dnsmasq.d/14-InfoSec-vulnerability-blacklist.conf
 	/etc/dnsmasq.d/14-InfoSec.conf
 	/etc/dnsmasq.d/13-perf.conf
 	/etc/dnsmasq.d/12-records.conf
 	/etc/dnsmasq.d/10-servers.conf
+	/etc/dnsmasq.d/10-servers-ipv6.conf
 	/etc/dnsmasq.d/10-servers-generated.conf
+	/etc/dnsmasq.d/10-servers-generated-for-cache-interface-and-freq-queries.conf
 	/etc/dnsmasq.d/05-addint-standard.conf
 	/etc/dnsmasq.d/07-customredirect.conf
 	/etc/dnsmasq.d/02-pihole.conf
+	/etc/dnsmasq.d/02-pihole-custom-records.conf
 	/etc/dnsmasq.d/filter_lists.conf
 	/etc/pihole/pihole-FTL.conf
 	/etc/pihole/custom-dns-servers.conf
@@ -42,13 +46,15 @@ gcloud compute ssh $MASTER_MACHINE \
         --project "$GCLOUD_PROJECT" \
         --zone "$GCLOUD_ZONE" -- "mkdir -p $TRANSFER_DIR"
 
+bash $PROG/master_copy.sh "${FILES[@]}" "/" --rsync-only
+
 for file in "${FILES[@]}"
 do
         dir=`echo $file | rev | cut -d '/' -f 2- | rev`
 
         gcloud compute ssh $MASTER_MACHINE \
                 --project "$GCLOUD_PROJECT" \
-                --zone "$GCLOUD_ZONE" -- "sudo cp -rf $file $TRANSFER_DIR/ && sudo chown -R $PERONAL_USR:$PERONAL_USR $TRANSFER_DIR/"
+                --zone "$GCLOUD_ZONE" -- "sudo cp -rf --parents $file $TRANSFER_DIR/ && sudo chown -R $PERONAL_USR:$PERONAL_USR $TRANSFER_DIR/"
 
         # Copy files
 	if ! [[ -d $dir ]] && [[ -z `echo $file | grep -o "$PERONAL_USR"` ]]; then

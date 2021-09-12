@@ -72,7 +72,6 @@ GOOGLE=(
 	chrome.google.com
 	sb.l.google.com
 	clients.l.google.com
-	instantmessaging-pa.googleapis.com
 	android.l.google.com
 	docs.google.com
 	calendar.google.com
@@ -82,6 +81,7 @@ GOOGLE=(
 )
 declare -a GOOGLEAPIS
 GOOGLEAPIS=(
+	instantmessaging-pa.googleapis.com
 	www.googleapis.com
 	play.googleapis.com
 	android.googleapis.com

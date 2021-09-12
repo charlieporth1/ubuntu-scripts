@@ -1,5 +1,6 @@
 #!/bin/bash
 source $PROG/all-scripts-exports.sh
+system_information
 source $PROG/create_ban_ignore_ip_list.sh
 echo $IS_GCP
 

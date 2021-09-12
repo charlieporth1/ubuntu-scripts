@@ -21,7 +21,6 @@ if [[ "$IS_MASTER" == 'true' ]]; then
 	bash $PROG/pihole-db-sql-changes.sh
 	bash $PROG/update.unbound-config.sh
 	bash $PROG/start_processes.sh
-	bash $PROG/copy_gravity.sh &
 
 fi
 
@@ -33,6 +32,12 @@ fi
 (
         if [[ $MEM_COUNT -ge 750 ]]; then
 		sudo bash $PROG/iptables-load.sh
+		sleep 2m
+		if [[ "$IS_MASTER" == 'true' ]]; then
+			echo "1111"
+#			bash $PROG/copy_gravity.sh --health-check-gravity &
+			bash $PROG/pihole-db-sql-changes.sh
+		fi
 	else
 	        sleep 10
 	        # This should always come after because it will unblock

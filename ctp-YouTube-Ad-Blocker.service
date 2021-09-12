@@ -1,12 +1,8 @@
 [Unit]
 Description=CTP YouTube Blocker Service
-Wants=network.target
-Wants=network-online.target
-After=network.target
-After=network-online.target
-After=pihole-FTL.service
-Requires=network.target
-Requires=network-online.target
+Wants=network.target network-online.target
+After=network.target network-online.target pihole-FTL.service
+Requires=network.target network-online.target
 
 [Service]
 CPUQuota=35%

@@ -1,16 +1,11 @@
 #!/bin/bash
 source /etc/environment
 shopt -s expand_aliases
+source $PROG/all-scripts-exports.sh
+system_information
 
 SCRIPT_DIR=`realpath .`
 mkdir -p /etc/letsencrypt/live/vpn.ctptech.dev
-
-round() {
-    printf "%.${2:-0}f" "$1"
-}
-
-CPU_CORE_COUNT=`cat /proc/stat | grep cpu | grep -E 'cpu[0-9]+' | wc -l`
-MEM_COUNT=$(round `grep MemTotal /proc/meminfo | awk '{print $2 / 1024}'` 0)
 
 #/snap/bin/go get -v github.com/folbricht/routedns/cmd/routedns
 
@@ -72,22 +67,22 @@ elif [[ "`$IS_SOLID_HOST`" == 'true' ]]; then
 fi
 
 current_ip=`sudo ip addr show tailscale0 | grepip -4o`
-declare -a ip_list
-ip_list=(
-	'100.86.69.129'
-	'100.71.239.28'
-	'100.120.180.109'
-	'192.168.99.9'
-	'10.128.0.9'
-)
 if [[ "`$IS_SOLID_HOST`" == 'true' ]]; then
+	declare -a ip_list
+#		'100.86.69.129'
+#		'100.71.239.28'
+#		'100.120.180.109'
+	ip_list=(
+		'192.168.99.9'
+		'10.128.0.9'
+	)
 	for ip in "${ip_list[@]}"
 	do
 
 		local_ip_exists=`ip_exists $ip`
 		if [[ "$local_ip_exists" == 'true' ]] && [[ "`$IS_SOLID_HOST`" == 'true' ]] && [[ "$current_ip" != "$ip" ]] ; then
 			ip_title="${ip//\./-}"
-			DOMAIN='master.dns.ctptech.dev'
+			DOMAIN='dns.ctptech.dev'
 			TUNNEL_STR='gcp-or-vpn-tunnel'
 			IP="$ip"
 			service_name_str="$TUNNEL_STR-$ip_title"
@@ -134,22 +129,6 @@ edns0-udp-size = 1460
 address = \"$DOMAIN:784\"
 protocol = \"doq\"
 bootstrap-address = \"$IP\"
-[resolvers.$service_name_str-doh-doq]
-address = \"$DOMAIN:1443\"
-protocol = \"doh\"
-transport = \"quic\"
-bootstrap-address = \"$IP\"
-
-# DoH
-[resolvers.$service_name_str-doh-get]
-address = \"$DOMAIN:4443\"
-protocol = \"doh\"
-doh = { method = \"GET\" }
-bootstrap-address = \"$IP\"
-[resolvers.$service_name_str-doh-post]
-address = \"$DOMAIN:4443\"
-protocol = \"doh\"
-bootstrap-address = \"$IP\"
 
 # GROUPS
 [groups.$service_name_str-truncate-retry-raw]
@@ -172,17 +151,17 @@ LOCAL_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(grep -E "^.r
 	 --quotes --space))
 
 leftover_fail_rotate_str=""
-replace_str_front="\[groups.ctp-dns-fail-rotate\]\nresolvers = \[\n"
-replace_str_back=",\n$RAW_RESOLVERS\n\]\n$leftover_fail_rotate_str"
-
 NGINX_fail_back_group=",\n\"$RESOLVER_START_GROUP-fail-back\",\n"
+replace_str_front="\[groups.ctp-dns-fail-rotate\]\nresolvers = \[\n"
+replace_str_back="\n$LOCAL_RESOLVERS$NGINX_fail_back_group\"ctp-dns_group-fail-rotate-raw\",\n\]\n$leftover_fail_rotate_str"
+
 
 if [[ "$HOSTNAME" = "ip-172-31-12-154" ]]; then
-	replace_str="$replace_str_front$LOCAL_RESOLVERS$NGINX_fail_back_group$GCP_HOME_RESOLVERS$replace_str_back"
+	replace_str="$replace_str_front\"ctp-dns_group-fastest-gcp-external\",\n\"ctp-dns_group-fastest-home-external\",\n\"ctp-dns_group-fail-back-gcp\",\n\"ctp-dns_group-fail-back-home\",$replace_str_back"
 elif [[ "$HOSTNAME" = "ubuntu-server" ]]; then
-	replace_str="$replace_str_front$LOCAL_RESOLVERS$NGINX_fail_back_group$GCP_AWS_RESOLVERS$replace_str_back"
+	replace_str="$replace_str_front\"ctp-dns_group-fastest-gcp-external\",\n\"ctp-dns_group-fastest-aws-external\",\n\"ctp-dns_group-fail-back-gcp\",\n\"ctp-dns_group-fail-back-aws\",$replace_str_back"
 else
-	replace_str="$replace_str_front$GCP_HOME_AWS_RESOLVERS$NGINX_fail_back_group$replace_str_back"
+	replace_str="$replace_str_front\"ctp-dns_group-fastest-masters\",\n\"ctp-dns_group-rotate-masters\",$replace_str_back"
 fi
 
 ############### Replace failover
@@ -203,7 +182,7 @@ fi
 # MASTER
 if [[ "$IS_MASTER" == 'true' ]] ; then
 
-	[[ "$IS_AWS" == 'true' ]] && BOOLEAN_LOGIC_RESOLVERS="$GCP_HOME_RESOLVERS" || BOOLEAN_LOGIC_RESOLVERS="$GCP_RESOLVERS"
+	[[ "$IS_AWS" == 'true' ]] && BOOLEAN_LOGIC_RESOLVERS="$GCP_RESOLVERS,$HOME_RESOLVERS" || BOOLEAN_LOGIC_RESOLVERS="$GCP_RESOLVERS"
 
 	echo "" | sudo tee $ROUTE/slave-listeners.toml
 
@@ -213,7 +192,7 @@ echo """
 [groups.ctp-dns-group]
 resolvers = [
 	$LOCAL_RESOLVERS,
-	$BOOLEAN_LOGIC_RESOLVERS,
+	$GCP_RESOLVERS,
 ]
 type = \"fastest\"
 
@@ -233,7 +212,7 @@ else
 echo """
 [groups.ctp-dns-group]
 resolvers = [
-	$GCP_HOME_AWS_RESOLVERS,
+	$ALL_RESOLVERS,
 	\"ctp-dns_nginx-back-up-group-fastest\",
 	$RAW_RESOLVERS,
 ]
@@ -253,7 +232,7 @@ type = \"fastest\"
 	if [[ $CPU_CORE_COUNT -lt 2 ]] || [[ $MEM_COUNT -lt 750 ]] ; then
 		FILE=dns-lists.toml
 
-		replace_str="resolvers = [ \"ctp-dns-failover\" ]"
+		replace_str="resolvers = [ \"ctp-dns-group-fastest-tcp-probe-out\" ]"
 		str_to_replace=`pcregrep -M '^resolvers.*' $ROUTE/$FILE`
 		str_to_replace=${str_to_replace//]/\\]}
 		str_to_replace=${str_to_replace//[/\\[}

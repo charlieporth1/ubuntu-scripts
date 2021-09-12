@@ -30,7 +30,8 @@ pihole --regex -d "google" "-" "\-" "up" "\.co$" "\.com$" "\.io$" "\.go$" \
 "\.mil$" '\.tv$' '\.tw$' '\.py$' '\.qa$' '\.ss$' '\.mu$' '\.ms$' '\.nc$' '\.mo$' '\.mm$' '\.cat$' \
 '\.na$' '\.pw$' '\.ps$' '\.pt$' '\.rw$' '\.kn$' '\.kp$' '\.it$' '^static\.' \
 '(((\w*)\.)*((\w+[^you](?=tube))|\w*[^you]tube([-,_,a-z,1-9]*))\.((([-,_,a-z,1-9]*)\.)*)(([a-z]*)))' \
-'(.+|\.|)doubleclick\.net$' '(^|\.)samsungelectronics\.com$' '(^|\.)samsungcloudsolution\.net$' '(^|\.)samsungcloudsolution\.com$' '(^|\.)samsungcloudcdn\.com$' '(\.|^)()\.com'
+'(.+|\.|)doubleclick\.net$' '(^|\.)samsungelectronics\.com$' '(^|\.)samsungcloudsolution\.net$' '(^|\.)samsungcloudsolution\.com$' '(^|\.)samsungcloudcdn\.com$' '(\.|^)()\.com' \
+'\.' '^\.$' '$' '^[a-z].([0-9]+|ad[^d]|click|coun(t|ter)|tra[ck](k|ker|king))'
 
 sleep 1.5s
 

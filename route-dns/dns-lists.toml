@@ -3,32 +3,73 @@
 type = "blocklist-v2"
 blocklist-resolver = "static-servfail"
 blocklist-refresh = 86400
-resolvers = [ "ctp-dns-blocklist-local" ]
+blocklist-format = "domain" 
+resolvers = [ "ctp-dns-blocklist-others" ]
 blocklist-source = [
 	{format = "domain", source = "/var/tmp/ctp-dns/lists/black/domains.txt", cache-dir = "/var/cache/ctp-dns"},
-        {format = "regexp", source = "/var/tmp/ctp-dns/lists/black/regex.txt", cache-dir = "/var/cache/ctp-dns"},
-        {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/accomplist/standard/routedns.blocklist.domain.list", cache-dir = "/var/cache/ctp-dns"}, 
-        {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/accomplist/standard/routedns.blocklist.justdomain.list", cache-dir = "/var/cache/ctp-dns"}, 
-        {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/accomplist/standard/routedns.blocklist.top-n.domain.list", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/google-blacklist.list", cache-dir = "/var/cache/ctp-dns"}, 
-        {format = "regexp", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/google-blacklist.regex", cache-dir = "/var/cache/ctp-dns"}, 
-        {format = "regexp", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/vulnerability-blacklist.regex", cache-dir = "/var/cache/ctp-dns"},
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/samsung-blacklist.list", cache-dir = "/var/cache/ctp-dns"}, 
-#       {format = "domain", source = "", cache-dir = "/var/cache/ctp-dns"},
+        {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/amazon-blacklist.list", cache-dir = "/var/cache/ctp-dns"}, 
+        {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/snapchat-blacklist.list", cache-dir = "/var/cache/ctp-dns"}, 
+        {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/facebook-blacklist.list", cache-dir = "/var/cache/ctp-dns"}, 
+#        {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists", cache-dir = "/var/cache/ctp-dns"},
+#        {format = "domain", source = "", cache-dir = "/var/cache/ctp-dns"},
 ]
-allowlist-refresh = 10800
-allowlist-resolver = "ctp-dns-failover" 
+allowlist-refresh = 1800
+allowlist-resolver = "ctp-dns-group-fastest-tcp-probe-out" 
 allowlist-source = [
         {format = "domain", source = "/var/tmp/ctp-dns/lists/white/domains.txt", cache-dir = "/var/cache/ctp-dns"}, 
-        {format = "regexp", source = "/var/tmp/ctp-dns/lists/white/regex.txt", cache-dir = "/var/cache/ctp-dns"}, 
-        {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/my-allowlist/master/routedns.allow.list", cache-dir = "/var/cache/ctp-dns"}, 
-        {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/accomplist/standard/routedns.allowlist.domain.list", cache-dir = "/var/cache/ctp-dns"}, 
-        {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/accomplist/standard/routedns.allowlist.justdomain.list", cache-dir = "/var/cache/ctp-dns"}, 
-        {format = "regexp", source = "https://gcp.pihole.ctptech.dev/txt_lists/accomplist/standard/routedns.allowlist.regexp.list", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/amazon-whitelist.list", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/samsung-whitelist.list", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/google-whitelist.list", cache-dir = "/var/cache/ctp-dns"}, 
-        {format = "regexp", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/google-whitelist.regex", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/goverment-whitelist.list", cache-dir = "/var/cache/ctp-dns"}, 
+        {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/hubspot-whitelist.list", cache-dir = "/var/cache/ctp-dns"}, 
+        {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/reddit-whitelist.list", cache-dir = "/var/cache/ctp-dns"}, 
+        {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/snapchat-whitelist.list", cache-dir = "/var/cache/ctp-dns"}, 
+        {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/instagram-whitelist.list", cache-dir = "/var/cache/ctp-dns"}, 
+        {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/onedrive-whitelist.list", cache-dir = "/var/cache/ctp-dns"}, 
+        {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/facebook-whitelist.list", cache-dir = "/var/cache/ctp-dns"}, 
 ]
 
+[groups.ctp-dns-blocklist-others]
+type = "blocklist-v2"
+blocklist-resolver = "static-servfail"
+blocklist-refresh = 86400
+blocklist-format = "domain" 
+resolvers = [ "ctp-dns-blocklist-regex" ]
+blocklist-source = [
+        {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/accomplist/standard/routedns.blocklist.domain.list", cache-dir = "/var/cache/ctp-dns"}, 
+        {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/accomplist/standard/routedns.blocklist.justdomain.list", cache-dir = "/var/cache/ctp-dns"}, 
+        {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/accomplist/standard/routedns.blocklist.top-n.domain.list", cache-dir = "/var/cache/ctp-dns"}, 
+        {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/custom-mobile-trackers-blacklist.list", cache-dir = "/var/cache/ctp-dns"}, 
+]
+allowlist-refresh = 1800
+allowlist-resolver = "ctp-dns-group-fastest-tcp-probe-out" 
+allowlist-source = [
+        {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/my-allowlist/master/routedns.allow.list", cache-dir = "/var/cache/ctp-dns"}, 
+        {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/accomplist/standard/routedns.allowlist.domain.list", cache-dir = "/var/cache/ctp-dns"}, 
+        {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/accomplist/standard/routedns.allowlist.justdomain.list", cache-dir = "/var/cache/ctp-dns"}, 
+]
+
+
+[groups.ctp-dns-blocklist-regex]
+type = "blocklist-v2"
+blocklist-resolver = "static-servfail"
+blocklist-refresh = 86400
+blocklist-format = "regexp" 
+resolvers = [ "ctp-dns-blocklist-local" ]
+blocklist-source = [
+        {format = "regexp", source = "/var/tmp/ctp-dns/lists/black/regex.txt", cache-dir = "/var/cache/ctp-dns"},
+        {format = "regexp", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/google-blacklist.regex", cache-dir = "/var/cache/ctp-dns"}, 
+        {format = "regexp", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/vulnerability-blacklist.regex", cache-dir = "/var/cache/ctp-dns"},
+        {format = "regexp", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/snapchat-blacklist.regex", cache-dir = "/var/cache/ctp-dns"}, 
+#        {format = "regexp", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/", cache-dir = "/var/cache/ctp-dns"},
+]
+allowlist-refresh = 1800
+allowlist-resolver = "ctp-dns-group-fastest-tcp-probe-out" 
+allowlist-source = [
+        {format = "regexp", source = "/var/tmp/ctp-dns/lists/white/regex.txt", cache-dir = "/var/cache/ctp-dns"}, 
+        {format = "regexp", source = "https://gcp.pihole.ctptech.dev/txt_lists/accomplist/standard/routedns.allowlist.regexp.list", cache-dir = "/var/cache/ctp-dns"}, 
+        {format = "regexp", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/google-whitelist.regex", cache-dir = "/var/cache/ctp-dns"}, 
+        {format = "regexp", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/snapchat-whitelist.regex", cache-dir = "/var/cache/ctp-dns"}, 
+]

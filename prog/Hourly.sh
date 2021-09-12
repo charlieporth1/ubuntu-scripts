@@ -7,14 +7,7 @@ sync; echo 2 > /proc/sys/vm/drop_caches
 sync; echo 3 > /proc/sys/vm/drop_caches
 
 
-
 bash $ROUTE/ctp-dns-version-mananger.sh
-
-bash $PROG/copy_files.sh
-bash $PROG/copy_to_root.sh
-bash $PROG/copy_psswd.sh
-bash $PROG/copy_psswd.sh --root
-
 
 bash $PROG/doh_proxy_json.sh
 bash $PROG/kill-health-check.sh
@@ -35,6 +28,7 @@ if [[ "$IS_MASTER" == 'true' ]]; then
 	bash $PROG/pihole-db-sql-changes.sh
 	bash $PROG/generate_dnmasq-servers.sh
 	bash $PROG/generate_vulnerability-blacklist.sh
+	bash $PROG/pihole-lighttpd-changes.sh
 	pihole-FTL regex-test ''
 fi
 

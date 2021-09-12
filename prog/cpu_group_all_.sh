@@ -14,6 +14,9 @@ sudo cgset -r cpu.shares=256 fourthcpulimied
 sudo cgcreate -g cpu:/14thcpulimied
 sudo cgset -r cpu.shares=256 14thcpulimied
 
+sudo cgcreate -g cpu:/38thspulimied
+sudo cgset -r cpu.shares=384 38thspulimied
+
 sudo cgcreate -g cpu:/cpulimitedhalf
 sudo cgset -r cpu.shares=512 cpulimitedhalf
 
@@ -24,6 +27,7 @@ sudo cgcreate -g memory:/2GBRam
 sudo cgcreate -g memory:/1GBRam
 sudo cgcreate -g memory:/750MBRam
 sudo cgcreate -g memory:/512MBRam
+sudo cgcreate -g memory:/384MBRam
 sudo cgcreate -g memory:/256MBRam
 sudo cgcreate -g memory:/128MBRam
 sudo cgcreate -g memory:/64MBRam
@@ -42,6 +46,9 @@ echo $(( 512 * 1024 * 1024 )) | sudo tee /sys/fs/cgroup/memory/512MBRam/memory.m
 
 echo $(( 256 * 1024 * 1024 )) | sudo tee /sys/fs/cgroup/memory/256MBRam/memory.limit_in_bytes #2 GB RAM
 echo $(( 256 * 1024 * 1024 )) | sudo tee /sys/fs/cgroup/memory/256MBRam/memory.memsw.limit_in_bytes #2GB swap, only works if you have swap
+
+echo $(( 384 * 1024 * 1024 )) | sudo tee /sys/fs/cgroup/memory/384MBRam/memory.limit_in_bytes #2 GB RAM
+echo $(( 384 * 1024 * 1024 )) | sudo tee /sys/fs/cgroup/memory/384MBRam/memory.memsw.limit_in_bytes #2GB swap, only works if you have swap
 
 echo $(( 128 * 1024 * 1024 )) | sudo tee /sys/fs/cgroup/memory/128MBRam/memory.limit_in_bytes #2 GB RAM
 echo $(( 128 * 1024 * 1024 )) | sudo tee /sys/fs/cgroup/memory/128MBRam/memory.memsw.limit_in_bytes #2GB swap, only works if you have swap

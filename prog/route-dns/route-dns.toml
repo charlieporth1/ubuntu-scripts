@@ -15,35 +15,19 @@ resolvers = [ "root-router" ]
 [groups.ctp-dns-cached]
 type = "cache"
 resolvers = [ "ctp-dns-min-ttl" ]
+cache-flush-query = "dns.ctptech.dev.flush.cache.root."
 cache-negative-ttl = 3600
 cache-size = 50000
 cache-answer-shuffle = "round-robin"
 
+############# TODO add flush to yt scrupt
 [groups.ctp-dns-cached-front]
 type = "cache"
+cache-flush-query = "dns.ctptech.dev.flush.cache.front."
 resolvers = [ "root-router" ]
-cache-negative-ttl = 3600
+cache-negative-ttl = 900
 cache-size = 5000
 cache-answer-shuffle = "round-robin"
-
-[groups.static-rfc8482]
-type   = "static-responder"
-answer = [ 
-	"IN HINFO RFC8482 ANY obsoleted!", 
-	"IN A 0.0.0.0",
-	"IN AAAA ::",
-	"IN AAAA ::0",
-]
-rcode  = 5
-
-[groups.static-refuse]
-type = "static-responder"
-answer = [ 
-	"IN A 0.0.0.0", 
-	"IN AAAA ::",
-	"IN AAAA ::0",
-]
-rcode = 5
 
 [routers.root-router]
 routes = [
@@ -59,70 +43,40 @@ routes = [
 
 [groups.ctp-dns-min-ttl]
 type = "ttl-modifier"
-#resolvers = [ "ctp-dns-ecs" ]
-resolvers = [ "ctp-dns-group-fastest-tcp-probe-out" ]
+resolvers = [ "ctp-dns-ecs" ]
+#resolvers = [ "ctp-dns-group-fastest-tcp-probe-out" ]
 ttl-min = 3600
 ttl-max = 3024000
 
-[groups.static-servfail]
-type   = "static-responder"
-answer = [ 
-	"IN A 35.232.120.211", 
-	"IN A 35.192.105.158",  
-	"IN AAAA ::",
-	"IN AAAA ::0",
-	"IN SRV 0 0 3000 gcp.ctptech.dev.",
-]
-
-
-[groups.static-badalg]
-type   = "static-responder"
- # Response code: 0 = NOERROR, 1 = FORMERR, 2 = SERVFAIL, 3 = NXDOMAIN, 5 = REFUSED... 
-# https://datatracker.ietf.org/doc/html/rfc2929#section-2.3
-rcode  = 21
-
-# Order matters
-[groups.ctp-dns-failover]
-resolvers = [ 
-	"ctp-dns-group", 
-	"ctp-dns-fail-rotate",
-	"ctp-dns_nginx-back-up-group-fail-back",
-	"ctp-dns-failover-backup"
-]
-reset-after = 45
-type = "fail-back"
-#servfail-failover = true
-servfail-error = true
-
-# Order matters
-[groups.ctp-dns-fail-rotate]
-resolvers = [
-	"ctp-dns-local-master-tcp",
-	"ctp-dns-local-master-udp",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-tcp",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-udp",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-dot",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-dot-nginx",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-dtls",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-doq",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-doh-doq",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-doh-get",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-doh-post",
-	"ctp-dns_nginx-back-up-group-fail-back",
-
-
-]
-
-reset-after = 30
-type = "fail-rotate"
-servfail-error = true
 
 [groups.ctp-dns-ecs]
 type = "ecs-modifier"
 resolvers = [ "ctp-dns-blocklist" ]
  # "add", "delete", "privacy". Defaults to "" which does nothing.
 ecs-op = "add"
-ecs-prefix4 = 24
-ecs-prefix6 = 64
+ecs-prefix4 = 16
+ecs-prefix6 = 32
 
-# CTP INSTALL -- DO NOT REMOVE THIS UNLESS YOU PLAN ON REMOVING INSTALL AND REINSTALLING
+
+# Order matters
+[groups.ctp-dns-fail-back]
+resolvers = [ 
+	"ctp-dns-group", 
+	"ctp-dns-fail-rotate",
+	"ctp-dns_nginx-back-up-group-fail-back",
+	"ctp-dns-failover-backup"
+]
+reset-after = 30
+type = "fail-back"
+servfail-error = true
+
+[groups.ctp-dns-fail-rotate]
+resolvers = [ 
+	"ctp-dns_group-fastest-home-external",
+	"ctp-dns_group-fastest-aws-external",
+	"ctp-dns_group-fail-back-home",
+	"ctp-dns_group-fail-back-aws",
+]
+type = "fail-rotate"
+servfail-error = true
+

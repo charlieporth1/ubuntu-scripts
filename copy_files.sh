@@ -28,7 +28,7 @@ do
 
         gcloud compute ssh $MASTER_MACHINE \
                 --project "$GCLOUD_PROJECT" \
-                --zone "$GCLOUD_ZONE" -- "sudo cp -rf $file $TRANSFER_DIR/ && sudo chown -R $PERONAL_USR:$PERONAL_USR $TRANSFER_DIR/"
+                --zone "$GCLOUD_ZONE" -- "sudo cp -rf --parents $file $TRANSFER_DIR/ && sudo chown -R $PERONAL_USR:$PERONAL_USR $TRANSFER_DIR/"
 
         # Copy files
         if ! [[ -d $dir ]] && [[ -z `echo $file | grep -o "$PERONAL_USR"` ]]; then

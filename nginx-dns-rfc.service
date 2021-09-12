@@ -1,8 +1,7 @@
 [Unit] 
 Description=NGINX CTP DNS RFC Service
 Wants=network.target
-After=network.target
-After=pihole-FTL.service
+After=network.target pihole-FTL.service
 Requires=network.target
 
 
@@ -13,7 +12,7 @@ Environment=LOG_FILES={default,access,error}.log
 Environment=TMP_DIR=/var/tmp/nginx-dns-rfc
 Environment=LOG_DIR=/var/log/nginx-dns-rfc
 Environment=PID_FILE=/run/ctp-dns.pid
-Environment=SSL_DIR=/etc/letsencrypt/live/vpn.ctptech.dev
+Environment=SSL_DIR=/etc/letsencrypt/live/ctptech.dev
 Environment=GO111MODULE=on
 
 # Directive        ulimit equivalent     Unit
@@ -51,7 +50,7 @@ CacheDirectory=nginx-dns-rfc
 LogsDirectory=nginx-dns-rfc
 #RuntimeDirectory=
 
-CPUQuota=35%
+CPUQuota=15%
 
 Nice=10
 Type=exec
@@ -72,7 +71,7 @@ ExecStartPre=/bin/bash -c "/usr/bin/touch ${PID_FILE} \
 #ExecStartPre=/snap/bin/go get -v github.com/folbricht/routedns/cmd/routedns
 ExecStartPre=/bin/bash -c "/bin/echo ${MAINPID} | /usr/bin/tee ${PID_FILE}"
 ExecStartPre=/sbin/setcap cap_net_bind_service,cap_net_raw,cap_setfcap,cap_net_admin=+eip /root/go/bin/routedns
-ExecStart=/bin/bash -c "/root/go/bin/routedns ${ALT_ROUTE}/*.toml --log-level=5"
+ExecStart=/bin/bash -c "/root/go/bin/routedns ${ALT_ROUTE}/*.toml --log-level=4"
 #	--log-level=5 | mbuffer -T /tmp/ctp-dns.buffer -m 50M | tee -a ${LOG_FILE}"
 #ExecStartPost=/bin/bash -c "for ((i=0; i < 3; i++)); do ps -aux | grep 'pm.stal\|test_\|pm.hea' | awk '{print $2}' | xargs sudo kill -9;sleep 10s;done"
 #ExecStartPost=/bin/bash -c '/bin/sleep 30s; [[ -f /tmp/health-checks.stop.lock ]] &&/bin/rm /tmp/health-checks.stop.lock'

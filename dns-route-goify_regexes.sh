@@ -10,17 +10,19 @@ files=(
 	$CTP_LIST/google-blacklist.list
 	$CTP_LIST/google-whitelist.list
 	$CTP_LIST/goverment-whitelist.list
+	$CTP_LIST/*.list
 	`new_linify.sh $(get_local_lists dns-lists.toml) | grep -v 'regex'`
 	`new_linify.sh $(get_local_lists dns-lists-local.toml) | grep -v 'regex'`
 )
 for file in "${files[@]}"
 do
 	if [[ -f $file ]]; then
-		perl -0777 -i -pe " s/^(\.)?/./gm " $file
+		#perl -0777 -i -pe " s/^(\.)?/./gm " $file
 
 		perl -0777 -i -pe " s/(\.)?$//gm " $file
 
 		perl -0777 -i -ne 'print if ! $x{$_}++' $file
+		bash $PROG/sort-lists.sh $file
 	fi
 done
 #perl -pe " s/(\$)?$/.\$/ " $R_LIST/black/regex.txt > $R_LIST/black/regex.txt.tmp

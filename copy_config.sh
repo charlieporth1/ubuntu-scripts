@@ -16,7 +16,7 @@ LIST_DIR=/var/{cache,tmp}/ctp-dns
 mkdir -p $LIST_DIR
 
 bash $PROG/doh_proxy_json.sh
-DEFAULT_PROG=${PROG:-$CONF_PROG_DIR}
+DEFAULT_PROG=${PROG:=$CONF_PROG_DIR}
 # CPs
 sudo cp -rf $CONFIG_DIR/unbound/* $INSTALL_CONFIG_DIR/unbound/
 sudo cp -rf $CONFIG_DIR/nginx/* $INSTALL_CONFIG_DIR/nginx/
@@ -31,19 +31,13 @@ sudo cp -rf $BIN_DIR/* /usr/local/bin
 sudo ln -s $CONF_PROG_DIR/ $PROG/
 sudo ln -s $CONFIG_ROUTE $PROG
 sudo ln -s $CONFIG_ALT_ROUTE $PROG/
-sudo ln -s /etc/fail2ban/filter.d/ctp-custom-vars.conf   /etc/fail2ban/filter.d/common.local
-sudo ln -s $SETUP_DIR/{copy_files,dns-route,doh_proxy_json}.sh $DEFAULT_PROG
-sudo ln -s $CONF_PROG_DIR/{cat_comments,regexify,grepify,new_linify,csvify}.sh /usr/local/bin
-sudo ln -s $CONF_PROG_DIR/cat_comments.sh /usr/local/bin/{cat_comments,ccat}
-sudo ln -s $CONF_PROG_DIR/cat_comments.sh /usr/local/bin/ccat.sh
+sudo ln -s $SETUP_DIR/{copy_files,dns-route,doh_proxy_json,univeral_system_links}.sh $DEFAULT_PROG/
 sudo ln -s $CONF_PROG_DIR/ctp-dns.service $DEFAULT_PROG
 sudo ln -s $CONF_PROG_DIR/nginx-dns-rfc.service $DEFAULT_PROG
 sudo ln -s $CONF_PROG_DIR/route-dns/ctp-dns.sh $ROUTE/
-sudo ln -s $ROUTE/ctp-dns.sh /usr/local/bin/ctp-dns
-sudo ln -s $ROUTE/ctp-dns.sh /usr/local/bin/
-sudo ln -s $CONF_PROG_DIR/timeout3 /usr/local/bin
 sudo ln -s $ROUTE/lists/ $LIST_DIR
 
+bash $SETUP_DIR/univeral_system_links.sh
 # sudo bash $SETUP_DIR/master_config.sh
 for i in $CONFIG_DIR/bash_rc/{.,}*
 do
@@ -100,10 +94,8 @@ sudo ln -s $CONF_PROG_DIR/nginx-dns-rfc.service /etc/systemd/system/
 
 # Chmod +x
 sudo chmod 777 $ROUTE/ctp-dns.sh
-sudo chmod 777 /usr/local/bin/ctp-dns{,.sh}
-sudo chmod 777 /usr/local/bin/{ccat,cat_comments,regexify,grepify,new_linify,csvify}.sh
-sudo chmod 777 /usr/local/bin/timeout3
-
+sudo chmod 777 $CONF_PROG_DIR/cat_comments.sh
+sudo chmod 777 $CONF_PROG_DIR/timeout3
 
 bash $PROG/doh_proxy_json.sh
 bash $PROG/bk_overwrite_files.sh

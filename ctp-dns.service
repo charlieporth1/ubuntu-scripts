@@ -1,13 +1,8 @@
 [Unit] 
 Description=CTP DNS Service
-Wants=network.target
-Wants=network-online.target
-After=network.target
-After=pihole-FTL.service
-After=nginx.service
-After=network-online.target
-Requires=network.target
-Requires=network-online.target
+Wants=network.target network-online.target
+After=network.target pihole-FTL.service nginx.service network-online.target 
+Requires=network.target network-online.target
 
 
 [Service]
@@ -18,8 +13,8 @@ Environment=TMP_DIR=/var/tmp/ctp-dns
 Environment=LOG_DIR=/var/log/ctp-dns
 Environment=PID_FILE=/run/ctp-dns.pid
 Environment=LOCK_FILE=/tmp/health-checks.stop.lock
-Environment=SSL_DIR=/etc/letsencrypt/live/vpn.ctptech.dev
-Environment=DNSCRYPT_DIR=/etc/letsencrypt/live/vpn.ctptech.dev/dnscrypt
+Environment=SSL_DIR=/etc/letsencrypt/live/ctptech.dev
+Environment=DNSCRYPT_DIR=/etc/letsencrypt/live/ctptech.dev/dnscrypt
 Environment=GO111MODULE=on
 
 # Directive        ulimit equivalent     Unit
@@ -57,7 +52,7 @@ CacheDirectory=ctp-dns
 LogsDirectory=ctp-dns
 #RuntimeDirectory=
 
-CPUQuota=50%
+CPUQuota=45%
 
 Nice=10
 Type=exec
@@ -78,7 +73,7 @@ ExecStartPre=/bin/bash -c "/usr/bin/touch ${PID_FILE} \
 #ExecStartPre=/bin/bash -c "! [[ -f /root/go/bin/routedns ]] && /snap/bin/go get -u -v github.com/folbricht/routedns/cmd/routedns"
 #ExecStartPre=/snap/bin/go get -v github.com/folbricht/routedns/cmd/routedns
 ExecStartPre=/bin/bash -c "/bin/echo ${MAINPID} | /usr/bin/tee ${PID_FILE}"
-ExecStartPre=/bin/bash ${ROUTE}/ctp-dns.sh --config-test-human
+ExecStartPre=/bin/bash ${ROUTE}/ctp-list-manager.sh
 ExecStartPre=/bin/bash ${ROUTE}/ctp-dns.sh --generate-cache
 ExecStartPre=/bin/bash ${ROUTE}/ctp-dns.sh --generate-config
 ExecStartPre=/bin/bash ${ROUTE}/ctp-dns.sh --generate-log

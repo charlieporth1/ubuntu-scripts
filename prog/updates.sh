@@ -1,5 +1,6 @@
 #!/bin/bash
 source $PROG/all-scripts-exports.sh
+what_system
 # REMOVE APT LOCK
 if [[ -f /var/lib/dpkg/lock ]]; then
         rm /var/lib/apt/lists/lock

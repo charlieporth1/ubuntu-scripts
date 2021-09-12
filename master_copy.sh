@@ -2,30 +2,42 @@
 source $PROG/all-scripts-exports.sh
 src="$1"
 dest="$2"
+type="$3"
 
 private_key=$HOME/.ssh/google_compute_engine
-
-MASTER_MACHINE="ctp-vpn"
-GCLOUD_PROJECT="galvanic-pulsar-284521"
-GCLOUD_ZONE="us-central1-a"
 PERONAL_USR=charlieporth1_gmail_com
 
-if [[ `ip_exists 10.128.0.9` == 'true' ]]; then
+GCP_SUBNET_1=`ip_exists 10.128.0.9`
+GCP_SUBNET_2=`ip_exists 192.168.99.9`
+
+if [[ "$GCP_SUBNET_2" == 'true' ]]; then
         internal_ip='--internal-ip'
         HOST=10.128.0.9
-elif [[ `ip_exists 192.168.99.9` == 'true' ]]; then
+	ssh_encryption="aes128-gcm@openssh.com"
+elif [[ "$GCP_SUBNET_2" == 'true' ]]; then
         internal_ip='--internal-ip'
         HOST=192.168.99.9
+	ssh_encryption="aes128-gcm@openssh.com"
 else
         HOST=gcp.ctptech.dev
+	ssh_encryption="aes256-gcm@openssh.com"
 fi
+ssh_encryption="aes128-gcm@openssh.com"
 
 if [[ `command -v rsync` ]] && [[ -f $private_key ]]; then
 	sudo rsync \
-		--rsh="ssh -p22 -i $private_key" \
+		--rsh="ssh -p22 -i $private_key -o Compression=no -T -x -c $ssh_encryption" \
 		$PERONAL_USR@$HOST:$src $dest \
+		--archive \
+		--no-whole-file \
+		--inplace \
+		--numeric-ids \
+		--partial \
+		--progress \
+		--sparse \
 		--rsync-path='sudo rsync' \
 		--dirs \
+		--no-compress \
 		--links \
 		--copy-links \
 		--safe-links \
@@ -34,9 +46,10 @@ if [[ `command -v rsync` ]] && [[ -f $private_key ]]; then
 		--checksum \
 		--recursive \
 		--verbose \
-		--progress \
 		--human-readable
 else
-	sudo gcloud compute scp $MASTER_MACHINE:$src $dest \
-		--scp-flag="-r" --project "$GCLOUD_PROJECT" --zone "$GCLOUD_ZONE" $internal_ip
+	if [[ "$type" != '--rsync-only' ]]; then
+		sudo gcloud compute scp $MASTER_MACHINE:$src $dest \
+			--scp-flag="-r -c $ssh_encryption -o Compression=no" --project "$GCLOUD_PROJECT" --zone "$GCLOUD_ZONE" $internal_ip
+	fi
 fi

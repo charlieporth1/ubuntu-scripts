@@ -15,8 +15,8 @@ echo "Running DNS TEST"
 [[ "$1" == "-a" ]] && isAuto="+short"
 
 WAIT_TIME=16.5s # TO RESTART NEXT
-TIMEOUT=24 # DNS
-TRIES=8
+TIMEOUT=16 # DNS
+TRIES=4
 HOST=dns.ctptech.dev
 
 EDNS=174.53.130.17

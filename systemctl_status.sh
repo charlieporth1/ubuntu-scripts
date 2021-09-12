@@ -2,7 +2,7 @@
 # sudo systemctl list-units | grep -i failed
 # sudo systemctl list-units --state failed
 # sudo systemctl list-units --failed
-sudo systemctl daemon-reload
+#sudo systemctl daemon-reload
 ARGS="$@"
 TIMEOUT=24
 isAutomation=`echo "$ARGS" | grep -io '\-a'`
@@ -11,6 +11,7 @@ FULL_FAIL_STR="$FAILED_STR\|deactivating\|stop\|inactive\|dead"
 
 source /etc/environment
 source $PROG/all-scripts-exports.sh
+system_information
 
 # prints colored text
 NC="\e[39m"
@@ -102,7 +103,18 @@ SERVICES=(
 	$( [[ "$IS_GCP" == 'true' ]] && echo ${GOOGLE_SERVICES[@]} )
 )
 
-printf "|| $CYAN%-40s $NC| $CYAN %-10s $NC|$CYAN %-20s $NC|$CYAN %-10s $NC|\n" "SERVICE" "STATUS" "ACTIVE TIME" "TIME"
+printf "|| $CYAN%-40s $NC| $CYAN %-10s $NC|$CYAN %-20s $NC|$CYAN %-20s $NC|$CYAN %-10s $NC|\n" "SERVICE" "STATUS HUMAN" "STATUS REAL" "ACTIVE TIME" "TIME"
+
+function print_service() {
+	local service="$1"
+	local sys_service_status=`systemctl status $service`
+	local active_time=`echo "$sys_service_status" | grep 'Active' | rev | cut -d ';' -f 1 | rev | xargs`
+	local status_real=`echo "$sys_service_status" | grep 'Active' | awk '{print $2}'`
+	declare -gx status_human_str=`[[ "$status_real" == "active" ]] && printf "$ACTIVE_STR" || printf "$FAILED_STR"`
+	printf "|| %-40s | %-30s | %-30s | %-20s | %-10s |\n" "$service" "$status_human_str" "$status_real" "$active_time" "`date +'%H:%M:%S'`"
+
+}
+
 for service in "${SERVICES[@]}"
 do
 	if [[ `systemctl-exists "$service"` == 'true' ]]; then
@@ -112,22 +124,22 @@ do
 	       	        systemctl reset-failed $service
 			sleep 0.025s
 			systemctl restart $service
-			sleep 5.000s
+			sleep 2.000s
 		fi
-		sys_service_status=`systemctl status $service`
-		active_time=`echo "$sys_service_status" | grep 'Active' | rev | cut -d ';' -f 1 | rev | xargs`
-		status=`echo "$sys_service_status" | grep 'Active' | awk '{print $2}'`
-		status_str=`[[ "$status" == "active" ]] && printf "$ACTIVE_STR" || printf "$FAILED_STR"`
-		if [[ "$status_str" == "$FAILED_STR" ]] && [[ -n "$isAutomation" ]]; then
+		print_service "$service"
+		if [[ "$status_human_str" == "$FAILED_STR" ]] && [[ -n "$isAutomation" ]]; then
 			echo "Service $service has failed to restart sucessfully at `date` in automation process" > /tmp/$service.err
 			bash $PROG/alert_user.sh "Starting process error Service: $service; Error: `cat /tmp/$service.err`;"
 		fi
 		[[ "$is_service" == 'true' ]] && export service="$service.service"
 
-		printf "|| %-40s | %-30s | %-20s | %-10s |\n" "$service" "$status_str" "$active_time" "`date +'%H:%M:%S'`"
+	elif [[ `systemctl-sockets-exists "$service"` == 'true' ]]; then
+		print_service "$service"
+	elif [[ `systemctl-timer-exists "$service"` == 'true' ]]; then
+		print_service "$service"
 	fi
 done
 
 
 
-exit $?
+exit 0

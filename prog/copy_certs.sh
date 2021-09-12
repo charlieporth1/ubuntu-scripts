@@ -2,7 +2,7 @@
 export SCRIPT_DIR=`dirname $0`
 source $SCRIPT_DIR/.project_env.sh
 
-HOST=vpn.ctptech.dev
+HOST=ctptech.dev
 CERT_ROOT_DIR=/etc/letsencrypt/live/$HOST
 
 MASTER_MACHINE="ctp-vpn"

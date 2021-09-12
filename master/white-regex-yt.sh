@@ -26,7 +26,8 @@
 	pihole --white-regex -d '^r([0-9]{1,2})---sn-([a-z0-9\-_\.]{4,22})(|-[a-z0-9]{2,6})\.googlevideo\.com$' \
        		'^r([0-9]{1,2})\.sn-([a-z0-9\-_\.]{4,22})(|-[a-z0-9]{2,6})\.googlevideo\.com$' \
         	'^r([0-9]{1,2})\.sn-([a-za-z0-9\.-]{4,28})\.googlevideo\.com$' \
-        	'^r([0-9]{1,2})---sn-([a-za-z0-9\.-]{4,28})\.googlevideo\.com$'
+        	'^r([0-9]{1,2})---sn-([a-za-z0-9\.-]{4,28})\.googlevideo\.com$' \
+		'^r([0-9]{1,2})(.|---)sn-([a-z0-9]{4,15})(|(-[a-z0-9]{2,6})).([a-z0-9.]{1,3}).googlevideo.com$'
 
 #	 (pihole restartdns reload-lists)&
 )&>$REDIRECT

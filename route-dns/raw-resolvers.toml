@@ -14,18 +14,18 @@ address = "35.232.120.211:53"
 protocol = "udp"
 edns0-udp-size = 1460
 
-[resolvers.ctp-dns-ip-home-tcp]
+[resolvers.ctp-dns-home-tcp]
 address = "174.53.130.17:53"
 protocol = "tcp"
-[resolvers.ctp-dns-ip-home-udp]
+[resolvers.ctp-dns-home-udp]
 address = "174.53.130.17:53"
 protocol = "udp"
 edns0-udp-size = 1460
 
-[resolvers.ctp-dns-ip-aws-tcp]
+[resolvers.ctp-dns-aws-tcp]
 address = "54.90.63.26:53"
 protocol = "tcp"
-[resolvers.ctp-dns-ip-aws-udp]
+[resolvers.ctp-dns-aws-udp]
 address = "54.90.63.26:53"
 protocol = "udp"
 edns0-udp-size = 1460

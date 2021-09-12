@@ -46,6 +46,7 @@ COUNT_ACTION() {
 
         if [[ $COUNT -ge 4 ]] && [[ $COUNT -lt $max ]]; then
                 echo "SENDING EMAIL COUNT IS GREATE THAN OR EQUAL TO"
+		bash $PROG/create_logging.sh
 		systemctl daemon-reload
 		systemctl restart $fn
 		systemctl is-active --quiet $fn && "echo $fn Service is running now" || echo "${error_str}"
@@ -135,15 +136,17 @@ service_health_check() {
 
 service_port_health_check() {
 	local fn="$1"
-	local port="$2"
+	local port_and_or_ip="$2"
+	local port=$(echo $port_and_or_ip | cut -f 2- -d ':')
 	local fn_bin="$3"
 	local fn_alias="$fn--$5"
 
 	if [[ `systemctl-exists $fn` = 'true' ]] && [[ `systemctl-inbetween-status $fn` == 'false' ]]; then
 		echo "systemd process $fn exists"
-		local port_status=`sudo netstat -tulpn | grep -o "$port" | sort -u`
+#		local port_status=`sudo netstat -tulpn | grep -o "$port" | sort -u`
+		local port_status=`ss -alunt "sport = :$port" | grep -o "$port_and_or_ip" | sort -u`
 		if [[ -z "$port_status" ]]; then
-			echo "systemd process $fn failed restarting port :$port_status: fn :$fn_status: fn_alias :$fn_alias:"
+			echo "systemd process $fn failed restarting port, $port_and_or_ip $port :$port_status: fn :$fn_status: fn_alias :$fn_alias:"
 			health_check_action "$fn" "$fn_bin"
 		else
 			service_check "$fn" "$fn_bin"
@@ -262,12 +265,17 @@ service_health_check "$fn"
 fn='tailscaled.service'
 service_health_check "$fn"
 
+if ! ifconfig | grep -o tailscale0
+then
+        systemctl restart "$fn"
+fi
+
 if [[ "$IS_MASTER" == 'true' ]]; then
 	fn="nginx.service"
 	service_port_health_check "$fn" ":11853" "nginx" "http_nginx"
 else
 	fn="ctp-dns.service"
-	service_port_health_check "$fn" ":53" "" "ctp-dns-dns"
+	service_port_health_check "$fn" ":53" "" "ctp-dns-dns-53"
 fi
 
 if [[ -f $PROG/wireguard-health-check.sh ]]; then

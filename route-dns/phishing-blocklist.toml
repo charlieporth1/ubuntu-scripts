@@ -1,0 +1,12 @@
+# 
+# https://raw.githubusercontent.com/maravento/blackweb/master/bwupdate/lst/blockurls.txt
+[groups.ctp-dns-blocklist-phishing]
+type = "blocklist-v2"
+blocklist-resolver = "static-servfail"
+blocklist-refresh = 86400
+blocklist-format = "domain"
+resolvers = [ "ctp-dns-blocklist-others" ]
+blocklist-source = [
+        {format = "domain", source = "https://raw.githubusercontent.com/maravento/blackweb/master/bwupdate/lst/blockurls.txt", cache-dir = "/var/cache/ctp-dns" }
+#        {format = "domain", source = "", cache-dir = "/var/cache/ctp-dns"},
+]

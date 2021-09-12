@@ -38,16 +38,18 @@ fi
 
 shopt -s expand_aliases
 
-[[ $0 != -bash ]] &&  export SCRIPT=`realpath $0 | rev | cut -d '/' -f 1 | rev`
+[[ $0 != -bash ]] && export SCRIPT=`realpath $0 | rev | cut -d '/' -f 1 | rev`
+
 export FILE_NAME=`echo $SCRIPT | rev | cut -d '.' -f 2 | rev`
 export progName=$SCRIPT
 export scriptName=$SCRIPT
 export script_name=$SCRIPT
 export DIR=`realpath . | rev | cut -d '/' -f 1 | rev`
+export THIS_PID=${BASHPID:-$$}
+
 export MASTER_MACHINE="ctp-vpn"
 export GCLOUD_PROJECT="galvanic-pulsar-284521"
 export GCLOUD_ZONE="us-central1-a"
-export THIS_PID=${BASHPID:-$$}
 
 alias isFTLRunning='bash $PROG/process_count.sh pihole-FTL'
 alias ip-sort='sort -t . -k 3,3n -k 4,4n | uniq | sort -u'
@@ -70,28 +72,8 @@ export X="$NC[$RED_L✗$NC]$NC"
 
 ROOT_PID=$$
 BASH_ROOT_PID=$BASHPID
-vm_timeout=8
 isRunning_str="bash $PROG/process_count.sh $THIS_PID"
 isRunning="`$isRunning_str`"
-
-export IS_VM=$( timeout $vm_timeout facter is_virtual )
-export IS_BARE=$( [[ -n $(  timeout $vm_timeout facter virtual | grep -o 'physical' ) ]] && echo true || echo false)
-if [[ "$IS_VM" == 'true' ]]; then
-	if [[ -n $( timeout $vm_timeout curl -s metadata.google.internal -i | grep 'Metadata-Flavor: Google' ) ]]; then
-		export IS_GCP=true
-	else
-		if [[ -n $( timeout $vm_timeout facter virtual | grep -o 'gce' ) ]]; then
-			export IS_GCP=true
-		else
-			if [[ -n $( timeout $vm_timeout curl -s http://169.254.169.254/latest/meta-data/hostname | grep -o 'ec2.internal' ) ]]; then
-				export IS_AWS=true
-			else
-				export IS_AWS=false
-			fi
-		fi
-	fi
-fi
-
 
 [[ "$ENV" == "PROD" ]] && REDIRECT=/dev/null || REDIRECT=/dev/stdout
 PORT_REGEX="([0-9]{1,6})"
@@ -127,8 +109,6 @@ round() {
     printf "%.${2:-0}f" "$1"
 }
 
-export CPU_CORE_COUNT=`cat /proc/stat | grep cpu | grep -E 'cpu[0-9]+' | wc -l`
-export MEM_COUNT=$(round `grep MemTotal /proc/meminfo | awk '{print $2 / 1024}'` 0)
 
 if command -v pihole &> /dev/null
 then
@@ -150,6 +130,39 @@ fi
 
 DO=debug_override
 
+function what_system() {
+	local vm_timeout=4
+	declare -gx IS_VM=$( timeout $vm_timeout facter is_virtual )
+
+	if [[ "$IS_VM" == 'true' ]]; then
+	        if [[ -n $( timeout $vm_timeout curl -s metadata.google.internal -i | grep 'Metadata-Flavor: Google' ) ]]; then
+	                declare -gx IS_GCP=true
+	        else
+	                if [[ -n $( timeout $vm_timeout facter virtual | grep -o 'gce' ) ]]; then
+	                        declare -gx IS_GCP=true
+	                else
+	                        if [[ -n $( timeout $vm_timeout curl -s http://169.254.169.254/latest/meta-data/hostname | grep -o 'ec2.internal' ) ]]; then
+	                                declare -gx IS_AWS=true
+	                        else
+	                                declare -gx IS_AWS=false
+	                        fi
+	                fi
+	        fi
+	else
+		declare -gx IS_BARE=$( [[ -n $( timeout $vm_timeout facter virtual | grep -o 'physical' ) ]] && echo true || echo false)
+	fi
+
+}
+export -f what_system
+
+function system_information() {
+	declare -gx ROOT_PID=$$
+	declare -gx CPU_CORE_COUNT=`cat /proc/stat | grep cpu | grep -E 'cpu[0-9]+' | wc -l`
+	declare -gx MEM_COUNT=$(round `grep MemTotal /proc/meminfo | awk '{print $2 / 1024}'` 0)
+	what_system
+}
+export -f system_information
+
 function KILL_FILE() {
 	bash $PROG/process_count.sh $FILE_NAME $THIS_PID pid | sed -n '2p' | cut -d ':' -f 2- | xargs kill -9 2> /dev/null
 }
@@ -165,7 +178,9 @@ function setupLogger() {
 export -f setupLogger
 
 if [[ "$NO_LOG" == 'false' ]] && [[ $- != *i* ]] && [[ `shopt -q login_shell; echo $?` -gt 0 ]]; then
-      setupLogger
+	if [[ $0 != -bash ]]; then
+      		setupLogger
+	fi
 fi
 
 function get_function_location() {
@@ -268,6 +283,16 @@ function log_d() { #debugg log
 }
 export -f log_d
 
+function debug_logger()
+{
+	echo "Debuggger: Log message: $1" >&2
+}
+alias debug_log='debug_logger'
+alias debug_logging='debug_logger'
+alias debugger_log='debug_logger'
+alias debugger_logger='debug_logger'
+alias debugger_logging='debug_logger'
+
 if [[ "$TEST" == 'true' ]]; then
 	logger "GLOBAL LOGGING TEST"
 	log "GLOBAL LOGGING TEST"
@@ -343,6 +368,7 @@ function systemctl-timer-exists() {
 	fi
 }
 export -f systemctl-timer-exists
+
 function systemctl-inbetween-status() {
 	local service="${1}"
 	local inbetween_status=`systemctl is-failed "${service}" | grep -oE '((de)?)activating'`
@@ -655,17 +681,16 @@ alias wait-on-command='wait_on_command'
 
 function ip_exists() {
 	local ip_address="$1"
-	local ping_return_status=`ping -c 3 $ip_address > /dev/null; echo $?`
+	[[ -z "$ping_return_status" ]] && declare -gx ping_return_status=`timeout 4 ping -c 3 $ip_address > /dev/null; echo $?`
+
 	if [[ $ping_return_status = 0 ]]; then
 		echo "true"
 		return 0
-
 	else
 		echo "false"
-		return $?
+		return $ping_return_status
 	fi
 }
-
 alias does_ip_exists='ip_exists'
 alias is_ip_exists='ip_exists'
 alias ip_exist='ip_exists'
