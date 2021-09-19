@@ -11,17 +11,19 @@ if [[ -f $CTP_DNS UDP_LOCK_FILE ]]; then
         exit 1
 fi
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/charlieporth1_gmail_com/go/bin:$PATH
-echo "Running DNS UDP TEST"
 [[ "$1" == "-a" ]] && isAuto="+short"
 
 WAIT_TIME=16.5s # TO RESTART NEXT
 TIMEOUT=16 # DNS UDP
 TRIES=4
 HOST=DNS UDP.ctptech.dev
-
 EDNS UDP=174.53.130.17
 
-QUERY=www.google.com
+local_interface=ctp-vpn.local
+server_input=${2}
+server=${server_input:=$local_interface}
+QUERY=${3:-www.google.com}
+
 
 DNS UDP_IP=$(bash $PROG/grepify.sh $(bash $PROG/get_ext_ip.sh))
 ROOT_NETWORK=`bash $PROG/get_network_devices_ip_address.sh --grepify`
@@ -48,12 +50,15 @@ DNS UDP_ARGS="+tries=$TRIES +DNS UDPsec +ttl +eDNS UDP +timeout=$TIMEOUT -t A -4
 
 DNS UDP_global=`dig $QUERY $isAuto @$HOST $DNS UDP_ARGS`
 DNS UDP_master=`dig $QUERY $isAuto @master.$HOST $DNS UDP_ARGS`
-DNS UDP_local=`dig $QUERY $isAuto @ctp-vpn.local $DNS UDP_ARGS`
+DNS UDP_local=`dig $QUERY $isAuto @$server $DNS UDP_ARGS`
 DNS UDP_external=`dig $QUERY $isAuto @$EXTENRAL_IP $DNS UDP_ARGS`
 
 DNS UDP_local_test=`echo "$DNS UDP_local" | grepip --ipv4 -o | xargs`
 DNS UDP_external_test=`echo "$DNS UDP_external" | grepip --ipv4 -o | xargs`
 
+if [[ $server == $local_interface ]] || [[ '-a' != $1 ]]; then
+	echo "Running DNS UDP TEST"
+fi
 
 log_d "NET_IP $NET_IP"
 log_d "IP_REGEX NET_DEVICE_REGEX :$NET_DEVICE_REGEX: :$IP_REGEX:"
@@ -72,26 +77,30 @@ if [[ -z "$isAuto" ]]; then
 	printf '%s\n' "$DNS UDP_local"
 else
 	if [[ -z "$DNS UDP_local_test" ]]; then
-		echo "DNS UDP Failed"
-		pihole_bin=$( which pihole || echo '/usr/local/bin/pihole' )
-		service=pihole-FTL.service
-		if [[ -f "$pihole_bin" ]] || [[ `systemctl-exists $service` ]]; then
-			if [[ $(systemctl-inbetween-status $service) == 'false' ]] && [[ `systemctl-seconds $service` -gt 30 ]]; then
-				echo "DNS UDP Failed restarting pihole_bin :$pihole_bin:"
-				echo "restarting pihole"
-				PIHOLE_RESTART_PRE
-				pihole restartDNS UDP
-				PIHOLE_RESTART_POST 3
-				#sleep $WAIT_TIME
+		if [[ $server == $local_interface ]]; then
+			echo "DNS UDP Failed"
+			pihole_bin=$( which pihole || echo '/usr/local/bin/pihole' )
+			service=pihole-FTL.service
+			if [[ -f "$pihole_bin" ]] || [[ `systemctl-exists $service` ]]; then
+				if [[ $(systemctl-inbetween-status $service) == 'false' ]]; then
+					echo "DNS UDP Failed restarting pihole_bin :$pihole_bin:"
+					echo "restarting pihole"
+					PIHOLE_RESTART_PRE
+					pihole restartDNS UDP
+					PIHOLE_RESTART_POST 3
+					#sleep $WAIT_TIME
+				fi
+			elif [[ $(systemctl-inbetween-status ctp-DNS UDP.service) == 'false' ]]; then
+				if [[ `systemctl-seconds ctp-DNS UDP.service` -gt 30 ]]; then
+			                echo "restarting ctp-DNS UDP"
+					ctp-DNS UDP.sh --generate-config
+					systemctl daemon-reload
+					systemctl restart ctp-DNS UDP
+					#sleep $WAIT_TIME
+				fi
 			fi
-		elif [[ $(systemctl-inbetween-status ctp-DNS UDP.service) == 'false' ]];  then
-			if [[ `systemctl-seconds ctp-DNS UDP.service` -gt 30 ]]; then
-		                echo "restarting ctp-DNS UDP"
-				ctp-DNS UDP.sh --generate-config
-				systemctl daemon-reload
-				systemctl restart ctp-DNS UDP
-				#sleep $WAIT_TIME
-			fi
+		else
+	                echo "false"
 		fi
 	elif [[ -z "$DNS UDP_external_test" ]]; then
 		echo "DNS UDP: extenal failed posiable firewall issue"

@@ -1,12 +1,15 @@
-#     Git: git clone https://github.com/ShadowWhisperer/BlockLists.git
-#    Wget: wget --show-progress https://codeload.github.com/ShadowWhisperer/BlockLists/zip/master
-# Creator: ShadowWhisperer  (Sean H.)
+#
+(12:25
+(Fake
+(Sean
+-
+--show-progress
 .#
-.#    File: Scam   (Fake / Misleading Sites - Not directly malware)
-.# Updated: 9/22/2020  00:25 (12:25 AM CST)
+/
 0-google.com
 000relationships.com
 007-dvd.com
+00:25
 0nekey.com
 0x0000001a.com
 0x0049.cloud
@@ -79,8 +82,22 @@
 548support.com.au
 5bestantivirus.com
 72option.com
+9/22/2020
 99beautydeals.com
 99numbers.com
+AM
+CST)
+Creator:
+File:
+Git:
+H.)
+Misleading
+Not
+Scam
+ShadowWhisperer
+Sites
+Updated:
+Wget:
 aadvocatecloudsupport.com
 aarenclaudetta.ru
 abbeclarinda.ru
@@ -461,6 +478,7 @@ clarettaberta.ru
 clarissawinona.ru
 click.cr-brands.net
 clocarlynn.ru
+clone
 clorispattieflo.ru
 cnndaily.net
 codegenerator.info
@@ -585,6 +603,7 @@ dianemariecarlen.ru
 diankatalin.ru
 dianmorgan.ru
 dianneariella.ru
+directly
 directtrade24.com
 discountsalepro.com
 ditaberget.ru
@@ -829,6 +848,7 @@ giginadeen.ru
 gilbertinejoletta.ru
 ginevraynes.ru
 gingeraloisia.ru
+git
 giustinanadiya.ru
 giveaways-sg.com
 glowforgeprodiscount.com
@@ -910,6 +930,8 @@ hpprintertechnicalsupport.com
 hpsupportphonenumbers.com
 hptechnicalhelpnumber.com
 hptechnicalsupportphonenumber.com
+https://codeload.github.com/ShadowWhisperer/BlockLists/zip/master
+https://github.com/ShadowWhisperer/BlockLists.git
 humorbooks.net
 hyacinthajessakay.ru
 hyvee-get-limited.todayoonly.uk.com
@@ -1113,6 +1135,7 @@ madelyninessa.ru
 magdastaci.ru
 maighdilnbarbaraanne.ru
 mailcontactnumbers.net
+malware)
 malwarebytesactivation.com
 malwarebytessupportnumber.com
 manonsacha.ru
@@ -1702,6 +1725,7 @@ webzone51.tk
 wellbeingremedy.com
 wellzdravs.com
 wenonahaudy.ru
+wget
 whateveryouneedbuz.com
 whatsyourflower.com
 wiliecelesta.ru

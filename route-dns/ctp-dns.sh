@@ -150,8 +150,9 @@ function query_lists() {
 export -f query_lists
 
 function update_route_dns() {
-	go get -u -v github.com/folbricht/routedns/cmd/routedns
+	/snap/bin/go get -u -v github.com/folbricht/routedns/cmd/routedns
 	sudo /snap/bin/go get -v -u github.com/folbricht/routedns/cmd/routedns
+	sudo -u root sudo /snap/bin/go get -v -u github.com/folbricht/routedns/cmd/routedns
 }
 export -f update_route_dns
 
@@ -280,6 +281,7 @@ function reload_systemd_service() {
 export -f reload_systemd_service
 
 function restart_systemd_service() {
+	sudo systemctl daemon-reload
 	sudo systemctl restart $SERVICE
 	ctp_dns_status
 }

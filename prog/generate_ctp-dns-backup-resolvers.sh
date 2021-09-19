@@ -42,7 +42,7 @@ resolvers = [
         $BACKUP_RESOLVERS
 ]
 type = \"fail-back\"
-reset-after = 15
+reset-after = 16
 servfail-error = true
 
 # FASTEST
@@ -51,9 +51,6 @@ resolvers = [
 	$BACKUP_RESOLVERS
 ]
 type = \"fastest\"
-reset-after = 15
-servfail-error = true
-
 """ | sudo tee -a $OUT_FILE
 
 perl -0777 -i -pe 's/^"ctp/\t"ctp/gm' $OUT_FILE

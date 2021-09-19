@@ -1,5 +1,5 @@
 #fail2ban-client set YOURJAILNAMEHERE unbanip IPADDRESSHERE sudo iptables -L -n
-fail2ban-client status 
+fail2ban-client status
 fail2ban-client set sshd unbanip 192.168.1.250
 fail2ban-client set sshd unbanip 127.0.0.1
 fail2ban-client set sshd unbanip 192.168.1.200
@@ -32,5 +32,3 @@ sudo iptables -D INPUT -s 192.168.1.91 -j DROP
 sudo iptables -D INPUT -s 192.168.1.200 -j DROP
 #sudo service iptables save
 
- #sudo service networking reload
-exit 0

@@ -25,7 +25,7 @@ cache-answer-shuffle = "round-robin"
 type = "cache"
 cache-flush-query = "dns.ctptech.dev.flush.cache.front."
 resolvers = [ "root-router" ]
-cache-negative-ttl = 900
+cache-negative-ttl = 3600
 cache-size = 5000
 cache-answer-shuffle = "round-robin"
 
@@ -33,7 +33,7 @@ cache-answer-shuffle = "round-robin"
 routes = [
   { class = "ANY", resolver = "static-rfc8482" }, # Send queries of type ANY to a static responder
   { types = [ "RRSIG", "ANY", "SOA", "TXT", "PTR" ], resolver = "static-refuse" }, # Send queries of type RRSIG to a static responder
-  { name = '(^|\.)(doubleclick)\.net\.$', resolver = "static-badalg" },
+  { name = '(^|\.)(doubleclick)\.net\.$', resolver = "static-refuse" },
   { name = '(^|\.)(youtube|ytimg|ggpht|youtube-ui\.l\.google|youtubei\.googleapis)\.com\.$', resolver = "ctp-yt-blocker-if-fowarder-router" },
   { name = '(^|\.)(gvt[0-6]?|googlevideo)\.com\.$', resolver = "ctp-yt-blocker-if-fowarder-router" },
   { name = '(^|\.)(fwmrm)\.net\.$', resolver = "ctp-yt-blocker-if-fowarder-router" },
@@ -48,7 +48,6 @@ resolvers = [ "ctp-dns-ecs" ]
 ttl-min = 3600
 ttl-max = 3024000
 
-
 [groups.ctp-dns-ecs]
 type = "ecs-modifier"
 resolvers = [ "ctp-dns-blocklist" ]
@@ -57,25 +56,28 @@ ecs-op = "add"
 ecs-prefix4 = 16
 ecs-prefix6 = 32
 
-
 # Order matters
 [groups.ctp-dns-fail-back]
-resolvers = [ 
+resolvers = [
 	"ctp-dns-group", 
 	"ctp-dns-fail-rotate",
 	"ctp-dns_nginx-back-up-group-fail-back",
-	"ctp-dns-failover-backup"
+	"ctp-dns-failover-backup",
 ]
-reset-after = 30
+reset-after = 48
 type = "fail-back"
 servfail-error = true
 
 [groups.ctp-dns-fail-rotate]
 resolvers = [ 
+	"ctp-dns_nginx-back-up-group-fail-back",
 	"ctp-dns_group-fastest-home-external",
 	"ctp-dns_group-fastest-aws-external",
+	"ctp-dns_group-fail-rotate-home",
+	"ctp-dns_group-fail-rotate-aws",
 	"ctp-dns_group-fail-back-home",
 	"ctp-dns_group-fail-back-aws",
+	"ctp-dns-failover-backup",
 ]
 type = "fail-rotate"
 servfail-error = true

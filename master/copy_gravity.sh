@@ -18,7 +18,9 @@ if [[ -n $ADMIN_USR ]]; then
 		cp -rf $ADMIN_HOME/$CLONE_FILE ~/$CLONE_DIR/
 	fi
 fi
-
+function remote_size_test() {
+	rclone size remote:SERVER_DATA/$GRAVITY --json | jq '.bytes'
+}
 function copy_gravity() {
 #                        --buffer-size 256M \
 #                        --transfers 6 \
@@ -45,12 +47,12 @@ function health_gravity_update() {
 
 }
 if [[ $AUTOMATIC_INSTALL == 'false' ]] || [[ -z $AUTOMATIC_INSTALL ]]; then
-	echo "Coping gravity.db"
-	if [[ "$input" == '--health-check-gravity' ]] && [[ -f $health_gravity_update ]]; then
+	echo "Coping $GRAVITY from "
+	if [[ "$input" == '--health-check-gravity' ]] && [[ -f $TMP_GRAVITY_FILE ]]; then
 		if [[ "`is_gravity_ok $DB_FILE --quick-check`" == 'false' ]]; then
 		      bash $PROG/replace_gravity.sh $TMP_GRAVITY_FILE --no-check
 		fi
-	else
+	elif [[ -z "$input" ]]; then
 		copy_gravity
 		sleep 10s
 		health_gravity_update

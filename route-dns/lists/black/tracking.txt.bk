@@ -1,9 +1,9 @@
-#     Git: git clone https://github.com/ShadowWhisperer/BlockLists.git
-#    Wget: wget --show-progress https://codeload.github.com/ShadowWhisperer/BlockLists/zip/master
-# Creator: ShadowWhisperer  (Sean H.)
+#
+(3:32
+(Analytics,
+(Sean
+--show-progress
 .#
-.#    File: Tracking   (Analytics, Diagnostics, Location, Metrics, Puplic IP)
-.# Updated: 9/25/2020  15:32 (3:32 PM CST)
 0.datacollector.coin.scribol.com
 00.pixel.parsely.com
 001.free-counters.co.uk
@@ -380,6 +380,7 @@
 159126.engine.mobileapptracking.com
 159668.measurementapi.com
 159692.measurementapi.com
+15:32
 15ae475e-f469-48dc-b127-16bd18c27e12.nuid.imrworldwide.com
 15five.pathfactory.com
 15minadlt.hit.gemius.pl
@@ -2468,6 +2469,7 @@
 8zytexpyhevjxbicsoohkbpg5ryjc1504901441.nuid.imrworldwide.com
 9.bronto.com
 9.revsci.net
+9/25/2020
 9004.engine.mobileapptracking.com
 9016329.ulink.adjust.com
 903-j.tlnk.io
@@ -2605,6 +2607,21 @@
 9t3wrjy32izrxdebifp94ddqbww2u1516326442.nuid.imrworldwide.com
 9xdvje2hryzds9qkomvzoftdppirf1513879602.nuid.imrworldwide.com
 9xy-g.tlnk.io
+CST)
+Creator:
+Diagnostics,
+File:
+Git:
+H.)
+IP)
+Location,
+Metrics,
+PM
+Puplic
+ShadowWhisperer
+Tracking
+Updated:
+Wget:
 a-1.admetric.io
 a-10.admetric.io
 a-11.admetric.io
@@ -17758,6 +17775,7 @@ clk.xn--90aipe.xn--p1ai
 clk2sell.rpxnow.com
 clock.whenu.com
 clockmaker.onelink.me
+clone
 clorox.us-east-1.stinger-ad.bidr.io
 closeio.clearbit.com
 cloud-emea.analytics-egain.com
@@ -26084,6 +26102,7 @@ gingerboy.click.org
 gionee.analytics.glance.inmobi.com
 girlceo.iljmp.com
 gis.sisense.com
+git
 git.corp.mparticle.com
 git.dev.kochava.com
 git.petametrics.com
@@ -27804,6 +27823,8 @@ httpeurex01.webtrekk.net
 httpimagicnetin.moengage.com
 httprepublicrisecom.moengage.com
 https.edge.ru4.com
+https://codeload.github.com/ShadowWhisperer/BlockLists/zip/master
+https://github.com/ShadowWhisperer/BlockLists.git
 httptrack.com
 htttracker.marinsm.com
 hu-gmtdmp.mookie1.com
@@ -77875,6 +77896,7 @@ wfxtriggers.com
 wfyss.visualwebsiteoptimizer.com
 wgc1.acecounter.com
 wgdemo.webgains.com
+wget
 wgi.fitanalytics.com
 wgm.mmstat.com
 wgo.mmstat.com

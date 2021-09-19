@@ -1,8 +1,9 @@
 #!/bin/bash
 shopt -s expand_aliases
+export IP_REGEX="($IP_REGEX((#[0-9]{1,5})?))"
 
-export TIMEOUT=5
-export TRIES=4
+export TIMEOUT=4
+export TRIES=2
 export NUMBER_AND_DECSAML_REGEX="([0-9\.]{1,6})"
 
 export SECONDS_REGEX='s(ec)?'

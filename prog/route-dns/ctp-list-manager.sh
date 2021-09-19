@@ -6,9 +6,10 @@ if [[ -d $CTP_LIST ]] && [[ "$HOSTNAME" == 'ctp-vpn' ]]; then
 	domain_lists=(
 		$HOLE/goverment-whitelist.list
 		$HOLE/custom-mobile-trackers-blacklist.list
+		$HOLE/ticwatch-blacklist.list
 		$HOLE/vulnerability-blacklist.regex
-
-		$HOLE/{hubspot,onedrive,instagram,reddit,speedtests}-whitelist.list
+		$HOLE/gstatic-metric-whitelist.list
+		$HOLE/{hubspot,onedrive,instagram,reddit,speedtest{s,}}-whitelist.list
 		$HOLE/{samsung,apple,amazon,facebook}-{white,black}list.list
 
 		$HOLE/{snapchat,google}-{white,black}list.{regex,list}
@@ -29,6 +30,22 @@ if [[ -d $CTP_LIST ]] && [[ "$HOSTNAME" == 'ctp-vpn' ]]; then
                 --no-compress \
 		"${domain_lists[@]}" \
 		$CTP_LIST/
+
+	sudo rsync \
+		--archive \
+		--no-whole-file \
+		--dirs \
+		--links \
+                --copy-links \
+                --safe-links \
+                --copy-dirlinks \
+                --super \
+		--verbose \
+                --checksum \
+                --recursive \
+                --no-compress \
+		$CTP_LIST/* \
+		$HOLE
 
 	chmod 755 ${domain_lists[@]}
 

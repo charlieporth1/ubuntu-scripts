@@ -19,7 +19,7 @@ SLEEP_RESULT=$( bc <<< "scale=3;  ( ( $T_TIME / $max ) * $max )" )s
 
 printf """
 Script $scriptName
-Health check starting up
+Per min Health check starting up
 Running $max times.
 Sleeping $SLEEP_T invtevals.
 Result SLEEP_RESULT: $SLEEP_RESULT
@@ -31,9 +31,13 @@ Cron should be setup for 1 minute invtevals.
 
 for ((i=1; i < ( $max ); i++))
 do
+#	if [[ "$HOSTNAME" == 'ctp-vpn' ]]; then
+#		rm -f /dev/null; mknod -m 666 /dev/null c 1 3
+#	fi
+
 	echo "Check #$i DNS `date`"
 	if [[ -f $CTP_DNS_LOCK_FILE ]]; then
-		echo "LOCK FILE"
+		echo "LOCK FILE $CTP_DNS_LOCK_FILE"
 		bash $PROG/dns-stale-restart.sh
 		bash $PROG/test_dns_unbound.sh -a
 		bash $PROG/test_dns.sh -a

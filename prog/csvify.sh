@@ -1,6 +1,6 @@
 #!/bin/bash
 ARGS="$@"
-
+file="$1"
 SPACE_ARG_REGEX='\-\-(space)'
 QUOTES_ARGS_REGEX='\-\-quotes'
 
@@ -10,7 +10,11 @@ QUOTES_ARGS_REGEX='\-\-quotes'
 if [ "$#" -eq 0 ]; then
   ARUGMENT_ARRAY=(  )
 else
-  ARUGMENT_ARRAY=( "$ARGS" )
+	if [[ -f $file ]] && [ "$#" -eq 1 ]; then
+                ARUGMENT_ARRAY=( $( cat $file ) )
+        else
+		ARUGMENT_ARRAY=( "$ARGS" )
+        fi
 fi
 #if [[ "$QUOTES" == 'true' ]] || [[ "$SPACE" == 'true' ]]; then
 REGEX_EXCLUDE="${ARUGMENT_ARRAY[@]//%/\,\ }"

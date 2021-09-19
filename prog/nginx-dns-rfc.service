@@ -2,6 +2,7 @@
 Description=NGINX CTP DNS RFC Service
 Wants=network.target
 After=network.target pihole-FTL.service
+Before=nginx.service
 Requires=network.target
 
 
@@ -11,7 +12,7 @@ Environment=LOG_FILE=/var/log/nginx-dns-rfc/default.log
 Environment=LOG_FILES={default,access,error}.log
 Environment=TMP_DIR=/var/tmp/nginx-dns-rfc
 Environment=LOG_DIR=/var/log/nginx-dns-rfc
-Environment=PID_FILE=/run/ctp-dns.pid
+Environment=PID_FILE=/run/ctp-dns-nginx-dns-rfc.pid
 Environment=SSL_DIR=/etc/letsencrypt/live/ctptech.dev
 Environment=GO111MODULE=on
 
@@ -54,9 +55,9 @@ CPUQuota=15%
 
 Nice=10
 Type=exec
-PIDFile=${PID_FILE}
+PIDFile=/run/ctp-dns-nginx-dns-rfc.pid
 
-AmbientCapabilities=CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_NET_ADMIN=+eip CAP_NET_RAW CAP_SETFCAP
 
 #CapabilityBoundingSet=CAP_NET_BIND_SERVICE CAP_NET_RAW CAP_NET_ADMIN CAP_SETFCAP
 #AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_NET_RAW CAP_NET_ADMIN CAP_SETFCAP
@@ -90,7 +91,7 @@ TTYPath=/dev/tty0
 TTYReset=yes
 TTYVHangup=yes
 
-TimeoutStartSec=2m
+TimeoutStartSec=1m
 TimeoutStopSec=30s 
 #PermissionsStartOnly=true
 

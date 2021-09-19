@@ -39,11 +39,13 @@ pihole -b -d appspot.com sc-cdn.net developers.google.com suggestqueries.google.
 sleep 1.5s
 pihole -w googlevideo.com appspot.com gvt1.com gvt2.com suggestqueries.google.com www.google.com google.com developers.google.com
 sleep 0.5s
-pihole -w -d device-metrics-us-2.amazon.com device-metrics-us.amazon.com mads.amazon-adsystem.com s.amazon-adsystem.com app-measurement.com \
-aax-us-east.amazon-adsystem.com ssl.google-analytics.com
+pihole -w -d ssl.google-analytics.com app-measurement.com static.doubleclick.net ad.doubleclick.net
+#pihole -w -d device-metrics-us-2.amazon.com device-metrics-us.amazon.com mads.amazon-adsystem.com s.amazon-adsystem.com app-measurement.com \
+#aax-us-east.amazon-adsystem.com ssl.google-analytics.com
 sleep 0.5s
-pihole -b aan.amazon-adsystem.com aax-us-pdx.amazon-adsystem.com aax.amazon-adsystem.com app-measurement.com device-metrics-us-2.amazon.com device-metrics-us.amazon.com \
-mads.amazon-adsystem.com s.amazon-adsystem.com aax-us-east.amazon-adsystem.com ssl.google-analytics.com
+#pihole -b aan.amazon-adsystem.com aax-us-pdx.amazon-adsystem.com aax.amazon-adsystem.com app-measurement.com device-metrics-us-2.amazon.com device-metrics-us.amazon.com \
+#mads.amazon-adsystem.com s.amazon-adsystem.com aax-us-east.amazon-adsystem.com ssl.google-analytics.com
+pihole -b ssl.google-analytics.com app-measurement.com static.doubleclick.net ad.doubleclick.net
 sleep 1.5s
 echo "starting remove blacklist"
 pihole -b -l | grep --line-buffer "rate-limited-proxy\|googlevideo\|cache.google.com" | awk '{print $2}' | parallel -P 1 -j4 --xargs -m -m --lb --no-run-if-empty pihole -b -d && sleep 0.10s

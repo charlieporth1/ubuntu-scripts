@@ -32,6 +32,8 @@ if [[ "$IS_MASTER" == 'true' ]]; then
 	pihole-FTL regex-test ''
 fi
 
+sudo chmod 777 $PROG/timeout3
+
 rm -rf /tmp/health-checks.stop.lock
 
 ctp-dns.sh --generate-log

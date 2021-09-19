@@ -10,6 +10,7 @@ declare -a files=(
 	.encpass/*
 	.config/*
 	.config/gcloud/*
+	.boto
 )
 
 for file in "${files[@]}"

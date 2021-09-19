@@ -2,7 +2,6 @@
 source $PROG/all-scripts-exports.sh
 source ctp-dns.sh --source
 CONCURRENT
-
 if [[ -f $CTP_DNS_LOCK_FILE ]]; then
         echo "LOCK FILE"
 	trap 'LOCK_FILE' ERR
@@ -10,9 +9,7 @@ if [[ -f $CTP_DNS_LOCK_FILE ]]; then
         exit 1
         exit 1
 fi
-echo "Running DTLS TEST"
 [[ "$1" == "-a" ]] && isAuto="+short" || isAuto='-d'
-QUERY=www.google.com
 # kdig -d @dns.google +tls-ca +tls-host=dns.google www.google.com +timeout=4 +dnssec +edns
 # kdig -d @home.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
 # kdig -d @gcp.ctptech.dev +tls-ca +tls-host=dns.ctptech.dev www.google.com +timeout=4 +dnssec +edns
@@ -26,6 +23,11 @@ WAIT_TIME=16.5s
 TIMEOUT=16
 TRIES=4
 HOST=dns.ctptech.dev
+
+local_interface=ctp-vpn.local
+server_input=${2}
+server=${server_input:=$local_interface}
+QUERY=${3:-www.google.com}
 
 EDNS=174.53.130.17
 
@@ -47,11 +49,14 @@ then
 fi
 
 DTLS_ARGS="+dnssec +edns +ttl +tls-hostname=$HOST +retry=$TRIES +timeout=$TIMEOUT +tcp -4 -t A +notcp"
+if [[ $server == $local_interface ]] || [[ '-a' != $1 ]]; then
+        echo "Running DNS TEST"
+fi
 
 EXTENRAL_IP=`bash $PROG/get_ext_ip.sh --current-ip`
 
 DTLS=`kdig @$HOST $isAuto $QUERY $DTLS_ARGS`
-DTLS_local=`kdig @ctp-vpn.local $isAuto $QUERY $DTLS_ARGS`
+DTLS_local=`kdig @$server $isAuto $QUERY $DTLS_ARGS`
 DTLS_master=`kdig @master.$HOST $isAuto $QUERY $DTLS_ARGS`
 DTLS_external=`kdig @$EXTENRAL_IP $isAuto $QUERY $DTLS_ARGS`
 
@@ -78,22 +83,26 @@ elif [[ $(systemctl-inbetween-status ctp-dns.service) == 'false' ]]; then
 	DTLS_external_test=`echo "$DTLS_external" | grepip --ipv4 -o`
 
 	if [[ -z "$DTLS_local_test" ]]; then
-		echo "DTLS FAILED DTLS_local_test :$DTLS_local_test:"
-		if [[ -z "$dns_local_test" ]]; then
-			echo "DNS FAILED NOT DTLS"
-			exit 1
-			kill $$
-		fi
-		if [[ `systemctl-seconds ctp-dns.service` -gt 15 ]]; then
-			echo "restarting DTLS"
-			ctp-dns.sh --generate-config
-			systemctl daemon-reload
-		        systemctl restart ctp-dns
-			#sleep $WAIT_TIME
+		if [[ $server == $local_interface ]]; then
+			echo "DTLS FAILED DTLS_local_test :$DTLS_local_test:"
+			if [[ -z "$dns_local_test" ]]; then
+				echo "DNS FAILED NOT DTLS"
+				exit 1
+				kill $$
+			fi
+			if [[ `systemctl-seconds ctp-dns.service` -gt 15 ]]; then
+				echo "restarting DTLS"
+				ctp-dns.sh --generate-config
+				systemctl daemon-reload
+			        systemctl restart ctp-dns
+				#sleep $WAIT_TIME
+			fi
+		else
+			echo "false"
 		fi
   	elif [[ -z "$DTLS_external_test" ]]; then
 		if [[ -z "$dns_local_test" ]]; then
-			echo "DNS FAILED NOT DTLS"
+			debug_log "DNS FAILED NOT DTLS"
 			exit 1
 		fi
                 echo "DTLS: extenal failed posiable firewall issue"

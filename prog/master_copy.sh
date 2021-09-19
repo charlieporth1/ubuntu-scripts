@@ -22,12 +22,17 @@ else
         HOST=gcp.ctptech.dev
 	ssh_encryption="aes256-gcm@openssh.com"
 fi
-ssh_encryption="aes128-gcm@openssh.com"
 
-if [[ `command -v rsync` ]] && [[ -f $private_key ]]; then
+ssh_encryption="aes128-gcm@openssh.com"
+default_ssh_opt="-x -T -c $ssh_encryption -o Compression=no -o ControlMaster=auto -o 'ControlPath=~/.ssh/control-%r@%h:%p' -o ControlPersist=30m"
+default_ssh_opt_w_key="-i $private_key $default_ssh_opt"
+# tar cf - . | pv | (cd /dst; tar xf -)
+# tar zcf - bigfile.m4p | mbuffer -s 1K -m 512 | ssh otherhost "tar zxf -"
+if [[ `command -v rsync` ]] && [[ -f $private_key ]] || [[ "$type" == '--rsync-only' ]]; then
 	sudo rsync \
-		--rsh="ssh -p22 -i $private_key -o Compression=no -T -x -c $ssh_encryption" \
+		--rsh="ssh -p22 $default_ssh_opt_w_key" \
 		$PERONAL_USR@$HOST:$src $dest \
+		--info=progress2 \
 		--archive \
 		--no-whole-file \
 		--inplace \
@@ -47,9 +52,17 @@ if [[ `command -v rsync` ]] && [[ -f $private_key ]]; then
 		--recursive \
 		--verbose \
 		--human-readable
+elif [[ `command -v mbuffer` ]] && [[ -f $private_key ]] || [[ "$type" == '--mbuffer-only' ]]; then
+	ssh $default_ssh_opt_w_key $PERONAL_USR@$HOST tar zcf - $src | mbuffer -s 1K -m 512 | "tar zxf -"
+
+	if [[ -d $dest ]]; then
+		cd $dest
+	else
+		cd $(dirname $dest)
+	fi
 else
 	if [[ "$type" != '--rsync-only' ]]; then
 		sudo gcloud compute scp $MASTER_MACHINE:$src $dest \
-			--scp-flag="-r -c $ssh_encryption -o Compression=no" --project "$GCLOUD_PROJECT" --zone "$GCLOUD_ZONE" $internal_ip
+			--scp-flag="-r $default_ssh_opt" --project "$GCLOUD_PROJECT" --zone "$GCLOUD_ZONE" $internal_ip
 	fi
 fi

@@ -3,8 +3,22 @@ type   = "static-responder"
 answer = [
         "IN A 35.232.120.211",
         "IN A 35.192.105.158",
+]
+[groups.static-servfail-a]
+type   = "static-responder"
+answer = [
+        "IN A 35.232.120.211",
+        "IN A 35.192.105.158",
+]
+[groups.static-servfail-aaaa]
+type   = "static-responder"
+answer = [
         "IN AAAA ::",
         "IN AAAA ::0",
+]
+[groups.static-servfail-srv]
+type   = "static-responder"
+answer = [
         "IN SRV 0 0 3000 gcp.ctptech.dev.",
 ]
 

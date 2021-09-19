@@ -11,17 +11,19 @@ if [[ -f $CTP_DNS_LOCK_FILE ]]; then
         exit 1
 fi
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/charlieporth1_gmail_com/go/bin:$PATH
-echo "Running DNS TEST"
 [[ "$1" == "-a" ]] && isAuto="+short"
 
 WAIT_TIME=16.5s # TO RESTART NEXT
 TIMEOUT=16 # DNS
 TRIES=4
 HOST=dns.ctptech.dev
-
 EDNS=174.53.130.17
 
-QUERY=www.google.com
+local_interface=ctp-vpn.local
+server_input=${2}
+server=${server_input:=$local_interface}
+QUERY=${3:-www.google.com}
+
 
 DNS_IP=$(bash $PROG/grepify.sh $(bash $PROG/get_ext_ip.sh))
 ROOT_NETWORK=`bash $PROG/get_network_devices_ip_address.sh --grepify`
@@ -48,12 +50,15 @@ DNS_ARGS="+tries=$TRIES +dnssec +ttl +edns +timeout=$TIMEOUT -t A -4 +retry=$TRI
 
 dns_global=`dig $QUERY $isAuto @$HOST $DNS_ARGS`
 dns_master=`dig $QUERY $isAuto @master.$HOST $DNS_ARGS`
-dns_local=`dig $QUERY $isAuto @ctp-vpn.local $DNS_ARGS`
+dns_local=`dig $QUERY $isAuto @$server $DNS_ARGS`
 dns_external=`dig $QUERY $isAuto @$EXTENRAL_IP $DNS_ARGS`
 
 dns_local_test=`echo "$dns_local" | grepip --ipv4 -o | xargs`
 dns_external_test=`echo "$dns_external" | grepip --ipv4 -o | xargs`
 
+if [[ $server == $local_interface ]] || [[ '-a' != $1 ]]; then
+	echo "Running DNS TEST"
+fi
 
 log_d "NET_IP $NET_IP"
 log_d "IP_REGEX NET_DEVICE_REGEX :$NET_DEVICE_REGEX: :$IP_REGEX:"
@@ -72,26 +77,30 @@ if [[ -z "$isAuto" ]]; then
 	printf '%s\n' "$dns_local"
 else
 	if [[ -z "$dns_local_test" ]]; then
-		echo "DNS Failed"
-		pihole_bin=$( which pihole || echo '/usr/local/bin/pihole' )
-		service=pihole-FTL.service
-		if [[ -f "$pihole_bin" ]] || [[ `systemctl-exists $service` ]]; then
-			if [[ $(systemctl-inbetween-status $service) == 'false' ]] && [[ `systemctl-seconds $service` -gt 30 ]]; then
-				echo "DNS Failed restarting pihole_bin :$pihole_bin:"
-				echo "restarting pihole"
-				PIHOLE_RESTART_PRE
-				pihole restartdns
-				PIHOLE_RESTART_POST 3
-				#sleep $WAIT_TIME
+		if [[ $server == $local_interface ]]; then
+			echo "DNS Failed"
+			pihole_bin=$( which pihole || echo '/usr/local/bin/pihole' )
+			service=pihole-FTL.service
+			if [[ -f "$pihole_bin" ]] || [[ `systemctl-exists $service` ]]; then
+				if [[ $(systemctl-inbetween-status $service) == 'false' ]]; then
+					echo "DNS Failed restarting pihole_bin :$pihole_bin:"
+					echo "restarting pihole"
+					PIHOLE_RESTART_PRE
+					pihole restartdns
+					PIHOLE_RESTART_POST 3
+					#sleep $WAIT_TIME
+				fi
+			elif [[ $(systemctl-inbetween-status ctp-dns.service) == 'false' ]]; then
+				if [[ `systemctl-seconds ctp-dns.service` -gt 30 ]]; then
+			                echo "restarting ctp-dns"
+					ctp-dns.sh --generate-config
+					systemctl daemon-reload
+					systemctl restart ctp-dns
+					#sleep $WAIT_TIME
+				fi
 			fi
-		elif [[ $(systemctl-inbetween-status ctp-dns.service) == 'false' ]];  then
-			if [[ `systemctl-seconds ctp-dns.service` -gt 30 ]]; then
-		                echo "restarting ctp-dns"
-				ctp-dns.sh --generate-config
-				systemctl daemon-reload
-				systemctl restart ctp-dns
-				#sleep $WAIT_TIME
-			fi
+		else
+	                echo "false"
 		fi
 	elif [[ -z "$dns_external_test" ]]; then
 		echo "DNS: extenal failed posiable firewall issue"

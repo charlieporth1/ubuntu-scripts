@@ -36,7 +36,7 @@ sudo unbound-anchor -v -F -R \
 
 #sudo ln -s /etc/unbound/root.key /var/lib/unbound/root.key
 #sudo ln -s /etc/unbound/root.key /var/unbound/etc/root.key
-sudo rm -rf /var/unbound/etc/root.key
+#sudo rm -rf /var/unbound/etc/root.key
 sudo cp -rf /etc/unbound/root.key /var/unbound/etc/root.key
 #sudo chown -R unbound:unbound {/var/lib/unbound/,/var/unbound/etc/,/etc/unbound/}
 

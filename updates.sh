@@ -66,3 +66,5 @@ elif [[ "$IS_AWS" == 'true' ]]; then
 else
 	sudo apt install -y linux-tools-edge linux-image-edge linux-headers-edge
 fi
+go get -v -u github.com/gonejack/hsize
+sudo go get -v -u github.com/gonejack/hsize

@@ -77,10 +77,12 @@ restart_service() {
 	local fn="${1}"
 	local fn_bin="${2}"
         echo "$fn"
-	[[ -n "$fn_bin" ]] && killall -9 "$fn_bin"
 
-	local error_str="Unable to kill process $fn_bin something went wrong within status checks maybe process was activating?"
+	local error_str="Unable to kill process $fn_bin or $fn something went wrong within status checks maybe process was activating? Result: `systemctl is-active $fn`"
 	if [[ `systemctl-exists $fn` == 'true' ]] && [[ `systemctl-seconds $fn` -ge 15 ]] && [[ `systemctl-inbetween-status $fn` == 'false' ]]; then
+		if [[ -n "$fn_bin" ]]; then
+			killall -9 "$fn_bin"
+		fi
 		systemctl daemon-reload
 		systemctl reload-or-restart $fn
 		systemctl is-active --quiet $fn && "echo $fn Service is running now" || echo "${error_str}"
@@ -90,23 +92,40 @@ restart_service() {
 
 }
 
-health_check_action() {
-	local fn="${1}"
-	local fn_bin="${2}"
-
-	case "$fn_bin" in
-		"RESTART_PIHOLE" | "PIHOLE_STATUS" )
-			RESTART_PIHOLE
-			local fn="$fn_bin"
-		;;
-		*)
-			restart_service "$fn" "$fn_bin"
-		;;
-	esac
-
+record_action() {
+	local fn="$1"
 	writeLog $fn $((1+$(getFailCount $fn))) $fn
 	COUNT_ACTION $fn $(getFailCount $fn) $fn
 	sleep $WAIT_TIME
+}
+
+health_check_action() {
+	local fn="${1}"
+	local fn_bin="${2}"
+	local case_bin="${fn_bin:=$fn}"
+
+	case "$case_bin" in
+		"RESTART_PIHOLE" | "PIHOLE_STATUS" )
+			RESTART_PIHOLE
+			local fn="$fn_bin"
+			record_action "$fn"
+		;;
+		"nginx" | "nginx.service" )
+			certbot-ocsp-fetcher --output-dir=/var/cache/nginx/
+			restart_service "$fn" "$fn_bin"
+			record_action "$fn"
+		"ctp-dns" | "ctp-dns.service" )
+			if ! [[ -f $LOCK_FILE ]]; then
+				restart_service "$fn" "$fn_bin"
+				record_action "$fn"
+			fi
+		;;
+		* )
+			restart_service "$fn" "$fn_bin"
+			record_action "$fn"
+		;;
+	esac
+
 }
 
 service_check() {
@@ -191,9 +210,6 @@ service_port_health_check "$fn" ":4711" "pihole-FTL" "FTL"
 service_port_health_check "$fn" ":53" "RESTART_PIHOLE" "RESTART_PIHOLE-DNS"
 service_port_health_check "$fn" ":4711" "RESTART_PIHOLE" "RESTART_PIHOLE-FTL"
 
-fn='unbound.service'
-service_port_health_check "$fn" "127.0.0.1:5053" "unbound"
-
 fn="doh-server.service"
 service_port_health_check "$fn" "127.0.0.1:8053" "doh-server"
 
@@ -250,8 +266,8 @@ service_health_check "$fn"
 fn='resolvconf-pull-resolved.path'
 service_health_check "$fn"
 
-#fn='systemd-resolved.service'
-#service_health_check "$fn"
+fn='systemd-resolved.service'
+service_health_check "$fn"
 
 #fn='systemd-networkd.socket'
 #service_health_check "$fn"
@@ -265,17 +281,39 @@ service_health_check "$fn"
 fn='tailscaled.service'
 service_health_check "$fn"
 
-if ! ifconfig | grep -o tailscale0
+if ! ifconfig | grep -o tailscale0 > /dev/null
 then
+	echo "Tailscale interface isn't ready/healthly"
+
+	ADDITONAL_ROUTES=""
+#	"192.168.99.0/24"
+	if [[ "$HOSTNAME" =~ (ctp-vpn|) ]]; then
+		ADDITONAL_ROUTES="10.128.0.0/16,172.31.0.0/16"
+	elif [[ "$HOSTNAME" = "ubuntu-server" ]]; then
+		ADDITONAL_ROUTES="192.168.44.0/24"
+	fi
+
+	if [[ -n "$ADDITONAL_ROUTES" ]]; then
+		echo "Starting TailScale adding ROUTES $ADDITONAL_ROUTES"
+		sudo tailscale up --advertise-routes=$ADDITONAL_ROUTES
+	else
+		sudo tailscale up
+	fi
+
         systemctl restart "$fn"
 fi
 
-if [[ "$IS_MASTER" == 'true' ]]; then
+if [[ "$IS_MASTER" == 'true' ]] || [[ "$HOSTNAME" == "ctp-vpn" ]]; then
 	fn="nginx.service"
 	service_port_health_check "$fn" ":11853" "nginx" "http_nginx"
+
+	fn='unbound.service'
+	service_port_health_check "$fn" "127.0.0.1:5053" "unbound"
+
 else
 	fn="ctp-dns.service"
 	service_port_health_check "$fn" ":53" "" "ctp-dns-dns-53"
+
 fi
 
 if [[ -f $PROG/wireguard-health-check.sh ]]; then

@@ -30,5 +30,5 @@ resolvers = [
 	"google-dns-ip-2-udp",
 ]
 servfail-error = false
-timeout = 15
+reset-after = 15
 type = "fail-back"

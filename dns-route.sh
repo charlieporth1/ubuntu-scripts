@@ -7,7 +7,7 @@ system_information
 SCRIPT_DIR=`realpath .`
 mkdir -p /etc/letsencrypt/live/vpn.ctptech.dev
 
-#/snap/bin/go get -v github.com/folbricht/routedns/cmd/routedns
+#/snap/bin/go get -v github.com/folbricht/eroutedns/cmd/routedns
 
 #git clone https://github.com/folbricht/routedns.git
 #cd routedns
@@ -157,11 +157,11 @@ replace_str_back="\n$LOCAL_RESOLVERS$NGINX_fail_back_group\"ctp-dns_group-fail-r
 
 
 if [[ "$HOSTNAME" = "ip-172-31-12-154" ]]; then
-	replace_str="$replace_str_front\"ctp-dns_group-fastest-gcp-external\",\n\"ctp-dns_group-fastest-home-external\",\n\"ctp-dns_group-fail-back-gcp\",\n\"ctp-dns_group-fail-back-home\",$replace_str_back"
+	replace_str="$replace_str_front\"ctp-dns_group-fastest-gcp-external\",\n\"ctp-dns_group-fastest-home-external\",\n\"ctp-dns_group-fail-rotate-gcp\",\n\"ctp-dns_group-fail-rotate-home\",\n\"ctp-dns_group-fail-back-gcp\",\n\"ctp-dns_group-fail-back-home\",$replace_str_back"
 elif [[ "$HOSTNAME" = "ubuntu-server" ]]; then
-	replace_str="$replace_str_front\"ctp-dns_group-fastest-gcp-external\",\n\"ctp-dns_group-fastest-aws-external\",\n\"ctp-dns_group-fail-back-gcp\",\n\"ctp-dns_group-fail-back-aws\",$replace_str_back"
+	replace_str="$replace_str_front\"ctp-dns_group-fastest-gcp-external\",\n\"ctp-dns_group-fastest-aws-external\",\n\"ctp-dns_group-fail-rotate-gcp\",\n\"ctp-dns_group-fail-rotate-aws\",\n\"ctp-dns_group-fail-back-gcp\",\n\"ctp-dns_group-fail-back-aws\",$replace_str_back"
 else
-	replace_str="$replace_str_front\"ctp-dns_group-fastest-masters\",\n\"ctp-dns_group-rotate-masters\",$replace_str_back"
+	replace_str="$replace_str_front\"ctp-dns_group-fastest-masters\",\n\"ctp-dns_group-rotate-masters\"\n\"ctp-dns_group-fail-back-masters,$replace_str_back"
 fi
 
 ############### Replace failover
@@ -287,3 +287,6 @@ perl -0777 -i -pe 's/^"ctp/\t"ctp/gm' $ROUTE/*.toml
 perl -0777 -i -pe 's/^(,|\.)$//gm' $ROUTE/*.toml
 
 cp -rf $ROUTE/{standard-group-resolvers,$HOSTNAME-resolvers,standard-resolvers,raw-resolvers}.toml $ALT_ROUTE/
+
+sudo chmod 777 /usr/local/bin/ctp-dns{,.sh}
+ctp-dns --config-test-human

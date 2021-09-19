@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 export GCP_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(grep -E "^.resolvers\..*gcp.*" $ROUTE/standard-resolvers.toml | awk -F. '{print $2}' | awk -F] '{print $1}') --quotes --space))
 export HOME_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(grep -E "^.resolvers\..*home.*" $ROUTE/standard-resolvers.toml | awk -F. '{print $2}' | awk -F] '{print $1}') --quotes --space))
 export AWS_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(grep -E "^.resolvers\..*aws.*" $ROUTE/standard-resolvers.toml | awk -F. '{print $2}' | awk -F] '{print $1}') --quotes --space))
@@ -115,25 +114,29 @@ type = \"fastest\"
 #####################
 [groups.$GROUP_TITLE-fail-back-masters]
 resolvers = [
+	$( printf '%s\n' $GCP_RESOLVERS | grep -v 'doh' | grep 'quic'  ),
+	$( printf '%s\n' $GCP_RESOLVERS | grep '(doh-quic|quic-doh)'  )
 	\"$TRUCATE_GROUP_E-gcp-ip-1\",
 	\"$TRUCATE_GROUP_E-gcp-ip-2\",
 	\"$TRUCATE_GROUP_E-home\",
 	\"$TRUCATE_GROUP_E-aws\",
-	$( printf '%s\n' $ALL_RESOLVERS | grep 'quic\|doh' ),
+	$( printf '%s\n' $GCP_RESOLVERS | grep -v 'quic' | grep 'doh' )
 	\"$TRUCATE_GROUP-gcp-ip-1\",
 	\"$TRUCATE_GROUP-gcp-ip-2\",
 	\"$TRUCATE_GROUP-home\",
 	\"$TRUCATE_GROUP-aws\",
 ]
 type = \"fail-back\"
-reset-after = 16
+reset-after = 32
 servfail-error = true
 
 [groups.$GROUP_TITLE-fail-back-gcp]
 resolvers = [
+	$( printf '%s\n' $GCP_RESOLVERS | grep -v 'doh' | grep 'quic'  ),
+	$( printf '%s\n' $GCP_RESOLVERS | grep '(doh-quic|quic-doh)'  )
 	\"$TRUCATE_GROUP_E-gcp-ip-1\",
 	\"$TRUCATE_GROUP_E-gcp-ip-2\",
-	$( printf '%s\n' $GCP_RESOLVERS | grep 'quic\|doh' ),
+	$( printf '%s\n' $GCP_RESOLVERS | grep -v 'quic' | grep 'doh' )
 	\"$TRUCATE_GROUP-gcp-ip-1\",
 	\"$TRUCATE_GROUP-gcp-ip-2\",
 ]
@@ -143,8 +146,10 @@ servfail-error = true
 
 [groups.$GROUP_TITLE-fail-back-home]
 resolvers = [
+	$( printf '%s\n' $GCP_RESOLVERS | grep -v 'doh' | grep 'quic'  ),
+	$( printf '%s\n' $GCP_RESOLVERS | grep '(doh-quic|quic-doh)'  )
 	\"$TRUCATE_GROUP_E-home\",
-	$( printf '%s\n' $HOME_RESOLVERS | grep 'quic\|doh' ),
+	$( printf '%s\n' $GCP_RESOLVERS | grep -v 'quic' | grep 'doh' )
 	\"$TRUCATE_GROUP-home\",
 ]
 type = \"fail-back\"
@@ -153,8 +158,10 @@ servfail-error = true
 
 [groups.$GROUP_TITLE-fail-back-aws]
 resolvers = [
+	$( printf '%s\n' $GCP_RESOLVERS | grep -v 'doh' | grep 'quic'  ),
+	$( printf '%s\n' $GCP_RESOLVERS | grep '(doh-quic|quic-doh)'  )
 	\"$TRUCATE_GROUP_E-aws\",
-	$( printf '%s\n' $AWS_RESOLVERS | grep 'quic\|doh' ),
+	$( printf '%s\n' $GCP_RESOLVERS | grep -v 'quic' | grep 'doh' )
 	\"$TRUCATE_GROUP-aws\",
 ]
 type = \"fail-back\"
@@ -170,7 +177,7 @@ resolvers = [
 	$RAW_RESOLVERS
 ]
 type = \"fail-back\"
-reset-after = 4
+reset-after = 8
 servfail-error = true
 
 
@@ -180,11 +187,13 @@ servfail-error = true
 
 [groups.$GROUP_TITLE-fail-rotate-masters]
 resolvers = [
+	$( printf '%s\n' $GCP_RESOLVERS | grep -v 'doh' | grep 'quic'  ),
+	$( printf '%s\n' $GCP_RESOLVERS | grep '(doh-quic|quic-doh)'  )
 	\"$TRUCATE_GROUP_E-gcp-ip-1\",
 	\"$TRUCATE_GROUP_E-gcp-ip-2\",
 	\"$TRUCATE_GROUP_E-home\",
 	\"$TRUCATE_GROUP_E-aws\",
-	$( printf '%s\n' $ALL_RESOLVERS | grep 'quic\|doh' ),
+	$( printf '%s\n' $GCP_RESOLVERS | grep -v 'quic' | grep 'doh' )
 	\"$TRUCATE_GROUP-gcp-ip-1\",
 	\"$TRUCATE_GROUP-gcp-ip-2\",
 	\"$TRUCATE_GROUP-home\",
@@ -195,9 +204,11 @@ servfail-error = true
 
 [groups.$GROUP_TITLE-fail-rotate-gcp]
 resolvers = [
+	$( printf '%s\n' $GCP_RESOLVERS | grep -v 'doh' | grep 'quic'  ),
+	$( printf '%s\n' $GCP_RESOLVERS | grep '(doh-quic|quic-doh)'  )
 	\"$TRUCATE_GROUP_E-gcp-ip-1\",
 	\"$TRUCATE_GROUP_E-gcp-ip-2\",
-	$( printf '%s\n' $GCP_RESOLVERS | grep 'quic\|doh' ),
+	$( printf '%s\n' $GCP_RESOLVERS | grep -v 'quic' | grep 'doh' )
 	\"$TRUCATE_GROUP-gcp-ip-1\",
 	\"$TRUCATE_GROUP-gcp-ip-2\",
 ]
@@ -206,8 +217,10 @@ servfail-error = true
 
 [groups.$GROUP_TITLE-fail-rotate-home]
 resolvers = [
+	$( printf '%s\n' $GCP_RESOLVERS | grep -v 'doh' | grep 'quic'  ),
+	$( printf '%s\n' $GCP_RESOLVERS | grep '(doh-quic|quic-doh)'  )
 	\"$TRUCATE_GROUP_E-home\",
-	$( printf '%s\n' $HOME_RESOLVERS | grep 'quic\|doh' ),
+	$( printf '%s\n' $GCP_RESOLVERS | grep -v 'quic' | grep 'doh' )
 	\"$TRUCATE_GROUP-home\",
 ]
 type = \"fail-rotate\"
@@ -216,8 +229,10 @@ servfail-error = true
 
 [groups.$GROUP_TITLE-fail-rotate-aws]
 resolvers = [
+	$( printf '%s\n' $GCP_RESOLVERS | grep -v 'doh' | grep 'quic'  ),
+	$( printf '%s\n' $GCP_RESOLVERS | grep '(doh-quic|quic-doh)'  )
 	\"$TRUCATE_GROUP_E-aws\",
-	$( printf '%s\n' $AWS_RESOLVERS | grep 'quic\|doh' ),
+	$( printf '%s\n' $GCP_RESOLVERS | grep -v 'quic' | grep 'doh' )
 	\"$TRUCATE_GROUP-aws\",
 ]
 type = \"fail-rotate\"

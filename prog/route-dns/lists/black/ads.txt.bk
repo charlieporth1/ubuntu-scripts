@@ -1,9 +1,10 @@
-#     Git: git clone https://github.com/ShadowWhisperer/BlockLists.git
-#    Wget: wget --show-progress https://codeload.github.com/ShadowWhisperer/BlockLists/zip/master
-# Creator: ShadowWhisperer  (Sean H.)
+#
+&
+(3:32
+(Advertisements,
+(Sean
+--show-progress
 .#
-.#    File: Ads   (Advertisements, Banners, Widgets & Push Notifications)
-.# Updated: 9/25/2020  15:32 (3:32 PM CST)
 002865.voodoo.com
 007adbannerexchange.freeworldz.net
 009.bapi.adsafeprotected.com
@@ -375,6 +376,7 @@
 155631-4902.link.iwanttodeliver.com
 1560.bitterstrawberry.com
 157ita684j.com
+15:32
 15minlt.adocean.pl
 161.adsina.allyes.com
 16248314.adventori.com
@@ -1177,6 +1179,7 @@
 8xvh5dzspx.mentalist.kameleoon.com
 9.bapi.adsafeprotected.com
 9.continular.com
+9/25/2020
 9010-214803.link.iwanttodeliver.com
 9010-214807.link.iwanttodeliver.com
 9010-214841.link.iwanttodeliver.com
@@ -1258,6 +1261,20 @@
 9to5mac-tagan.adlightning.com
 9utwbj08.top
 9zcxhvrukx.eu-west-1.elasticbeanstalk.com
+Ads
+Banners,
+CST)
+Creator:
+File:
+Git:
+H.)
+Notifications)
+PM
+Push
+ShadowWhisperer
+Updated:
+Wget:
+Widgets
 _thums.ero-advertising.com
 a-aaaa-h2-att-firstnet-att.insnw.net
 a-aaaa-h2-instartops-001.insnw.net
@@ -26440,6 +26457,7 @@ clockskew.alphonso.tv
 clofferap.com
 cloisteredcord.com
 cloisteredhydrant.com
+clone
 clothingshoponline.pxf.io
 cloud-graphql-live.us-east-1.elasticbeanstalk.com
 cloud-sync-service.stage.showheroes.com
@@ -33718,6 +33736,7 @@ giqrykqsdr.mentalist.kameleoon.com
 giraffepiano.com
 girl-web-cam.nelweb.net
 girsex.tsx.org
+git
 git-pages.adotmob.com
 git.blueseed.tv
 github.tinypass.com
@@ -35046,6 +35065,8 @@ httpoolcr.nuggad.net
 httpoolro.nuggad.net
 httpoolsr.nuggad.net
 httprequestmirror.eu-central-1.elasticbeanstalk.com
+https://codeload.github.com/ShadowWhisperer/BlockLists/zip/master
+https://github.com/ShadowWhisperer/BlockLists.git
 httpshi.hellobar.com
 httpssync-eu.exe.bid
 httpstag.placelocal.com
@@ -59364,6 +59385,7 @@ wfp.webspectator.com
 wfpcreatives.webspectator.com
 wfpscripts.webspectator.com
 wfx-psrm-ivr-api.us-east-1.elasticbeanstalk.com
+wget
 wgplayer.com
 wgygn2aebv.eu-west-1.elasticbeanstalk.com
 whale.adways.com

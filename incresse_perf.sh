@@ -27,6 +27,7 @@ echo madvise | sudo tee /sys/kernel/mm/transparent_hugepage/enabled
 echo 2 > /sys/module/tcp_cubic/parameters/hystart_detect
 echo 1 > /proc/sys/net/ipv4/ip_forward
 echo 10000 > /proc/sys/net/ipv4/tcp_comp_sack_delay_ns
+echo 25 > /proc/sys/kernel/watchdog_thresh
 #echo 1 > /proc/sys/kernel/sysrq
 #echo x > /proc/sysrq-trigger
 
@@ -77,6 +78,14 @@ sysctl -w net.ipv4.tcp_reordering=3
 #sysctl -w
 
 swapon /swapfile
+if [[ -f /swapfile1 ]]; then
+         swapon /swapfile1
+fi
+
+if [[ -f /mnt/HDD/swapfile ]]; then
+         swapon /mnt/HDD/swapfile
+fi
+
 if [[ -f /mnt/cache/swapfile ]]; then
          swapon /mnt/sdb/swapfile
 fi

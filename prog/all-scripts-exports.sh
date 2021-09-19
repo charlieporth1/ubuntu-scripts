@@ -45,7 +45,6 @@ export progName=$SCRIPT
 export scriptName=$SCRIPT
 export script_name=$SCRIPT
 export DIR=`realpath . | rev | cut -d '/' -f 1 | rev`
-export THIS_PID=${BASHPID:-$$}
 
 export MASTER_MACHINE="ctp-vpn"
 export GCLOUD_PROJECT="galvanic-pulsar-284521"
@@ -54,6 +53,11 @@ export GCLOUD_ZONE="us-central1-a"
 alias isFTLRunning='bash $PROG/process_count.sh pihole-FTL'
 alias ip-sort='sort -t . -k 3,3n -k 4,4n | uniq | sort -u'
 alias sort-uniq='sort -u | uniq'
+
+# DO NOT CHANGE ORDER
+export THIS_PID=${BASHPID:-$$}
+export isRunning_str="bash $PROG/process_count.sh $THIS_PID"
+export isRunning="`$isRunning_str`"
 alias isRunning="$isRunning_str"
 
 export LOG_ROOT=${LOG:-/var/log}
@@ -70,10 +74,11 @@ export TICK="$NC[\e[32m✔\e[0m]$NC"
 export CHECK="$TICK"
 export X="$NC[$RED_L✗$NC]$NC"
 
+export TRIES=4
+export TIMEOUT=16
+
 ROOT_PID=$$
 BASH_ROOT_PID=$BASHPID
-isRunning_str="bash $PROG/process_count.sh $THIS_PID"
-isRunning="`$isRunning_str`"
 
 [[ "$ENV" == "PROD" ]] && REDIRECT=/dev/null || REDIRECT=/dev/stdout
 PORT_REGEX="([0-9]{1,6})"
@@ -108,7 +113,9 @@ export IPV6_FULL_REGEX_SUBNET="[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4
 round() {
     printf "%.${2:-0}f" "$1"
 }
-
+function bytes_to_gb() {
+	 numfmt --to iec --format "%8.4f" 5104726016
+}
 
 if command -v pihole &> /dev/null
 then
@@ -714,5 +721,25 @@ export -f run_decode_file
 alias edoced="run_decode_file"
 load_env
 
+function health_check_remote_port_1() {
+	local host="$1"
+	local port="$2"
+	nc -zvw10 $host $port
+}
+export -f health_check_remote_port_1
+
+function health_check_remote_port_tcp() {
+	local host="$1"
+	local port="$2"
+	echo > /dev/tcp/$host/$port && echo "true" || echo "false"
+}
+export -f health_check_remote_port_tcp
+
+function health_check_remote_port_udp() {
+	local host="$1"
+	local port="$2"
+	echo > /dev/udp/$host/$port && echo "true" || echo "false"
+}
+export -f health_check_remote_port_udp
 
 source /etc/environment
