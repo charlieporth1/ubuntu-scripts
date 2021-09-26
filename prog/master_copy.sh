@@ -24,11 +24,13 @@ else
 fi
 
 ssh_encryption="aes128-gcm@openssh.com"
-default_ssh_opt="-x -T -c $ssh_encryption -o Compression=no -o ControlMaster=auto -o 'ControlPath=~/.ssh/control-%r@%h:%p' -o ControlPersist=30m"
+default_scp_opt="-T -c $ssh_encryption -o Compression=no -o ControlMaster=auto -o 'ControlPath=~/.ssh/control-%r@%h:%p' -o ControlPersist=30m"
+default_scp_opt_w_key="-i $private_key $default_scp_opt"
+default_ssh_opt="-x $default_scp_opt"
 default_ssh_opt_w_key="-i $private_key $default_ssh_opt"
 # tar cf - . | pv | (cd /dst; tar xf -)
 # tar zcf - bigfile.m4p | mbuffer -s 1K -m 512 | ssh otherhost "tar zxf -"
-if [[ `command -v rsync` ]] && [[ -f $private_key ]] || [[ "$type" == '--rsync-only' ]]; then
+if [[ "$type" != '--scp-only' ]] && [[ `command -v rsync` ]] && [[ -f $private_key ]] || [[ "$type" == '--rsync-only' ]]; then
 	sudo rsync \
 		--rsh="ssh -p22 $default_ssh_opt_w_key" \
 		$PERONAL_USR@$HOST:$src $dest \
@@ -52,7 +54,12 @@ if [[ `command -v rsync` ]] && [[ -f $private_key ]] || [[ "$type" == '--rsync-o
 		--recursive \
 		--verbose \
 		--human-readable
-elif [[ `command -v mbuffer` ]] && [[ -f $private_key ]] || [[ "$type" == '--mbuffer-only' ]]; then
+
+	if [[ "$type" == '--important' ]] || [[ "$type" == '--scp-too' ]]; then
+		sudo gcloud compute scp $MASTER_MACHINE:$src $dest \
+			--scp-flag="-r $default_scp_opt" --project "$GCLOUD_PROJECT" --zone "$GCLOUD_ZONE" $internal_ip
+	fi
+elif [[ "$type" != '--scp-only' ]] && [[ `command -v mbuffer` ]] && [[ -f $private_key ]] || [[ "$type" == '--mbuffer-only' ]]; then
 	ssh $default_ssh_opt_w_key $PERONAL_USR@$HOST tar zcf - $src | mbuffer -s 1K -m 512 | "tar zxf -"
 
 	if [[ -d $dest ]]; then
@@ -63,6 +70,7 @@ elif [[ `command -v mbuffer` ]] && [[ -f $private_key ]] || [[ "$type" == '--mbu
 else
 	if [[ "$type" != '--rsync-only' ]]; then
 		sudo gcloud compute scp $MASTER_MACHINE:$src $dest \
-			--scp-flag="-r $default_ssh_opt" --project "$GCLOUD_PROJECT" --zone "$GCLOUD_ZONE" $internal_ip
+			--scp-flag="-r $default_scp_opt" --project "$GCLOUD_PROJECT" --zone "$GCLOUD_ZONE" $internal_ip
 	fi
 fi
+

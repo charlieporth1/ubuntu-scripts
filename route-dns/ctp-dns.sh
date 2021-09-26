@@ -2,7 +2,7 @@
 source /etc/environment
 shopt -s extglob
 SERVICE=ctp-dns.service
-
+CONFIG_TEST_TIMEOUT=3
 ARGS="$@"
 
 LOG_FILE=error.log
@@ -180,7 +180,7 @@ export -f clear_logs
 
 function config_test_exit_code() {
 	local config_test_dir="${1:-$CONFIG_DIR}"
-	sudo timeout 5 sudo /root/go/bin/routedns $config_test_dir/*.toml --log-level=0 2>  /dev/null
+	sudo timeout $CONFIG_TEST_TIMEOUT sudo /root/go/bin/routedns $config_test_dir/*.toml --log-level=0 2>  /dev/null
 	echo $?
 }
 export -f config_test_exit_code
@@ -198,9 +198,10 @@ function config_test() {
 export -f config_test
 
 function test_result() {
-		sudo timeout 5 sudo /root/go/bin/routedns $CONFIG_DIR/*.toml --log-level=6
-		echo "$?"
-		return $?
+	local config_test_dir="${1:-$CONFIG_DIR}"
+	sudo timeout $CONFIG_TEST_TIMEOUT sudo /root/go/bin/routedns $config_test_dir/*.toml --log-level=6
+	echo "$?"
+	return $?
 }
 export -f test_result
 
@@ -212,7 +213,7 @@ function config_test_human() {
 	else
 		echo "Route DNS / CTP DNS config is not ok: ERROR"
 		echo "RUN for more details /root/go/bin/routedns ${ROUTE}/*.toml --log-level=6"
-		test_result
+		test_result $config_test_dir
 		echo "$?"
 		return $?
 	fi
@@ -234,7 +235,7 @@ function generate_config() {
 		[[ -f $PROG/generarte_vulnerability-blacklist.sh ]] && bash $PROG/generarte_vulnerability-blacklist.sh &
 		[[ -f $PROG/dns-route.sh ]] && bash $PROG/dns-route.sh
 	fi
-	config_test_human
+	config_test_human &
 }
 export -f generate_config
 

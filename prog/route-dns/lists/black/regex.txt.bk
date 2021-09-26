@@ -29,6 +29,7 @@
 (^|\.)(amazon-adsystem|device-metrics-[a-z]{2}-[0-4]?\.amazon)\.com$
 (^|\.)(atdmt|beget|bango|casalemedia|clickbank|extreme[-]*dm|flurry|krxd|liveadvert|moatads|mookie[1-9]?|msadcenter|nuggad|omtrdc|p2l|quant(count|s[e]?rv[e]?)|onestat|onthe|pop(cash|check|test|under|up)|revsci|scorecardresearch|sitestat|tacoda|tynt)
 (^|\.)(clicks\.beap\.bc\.yahoo|ads\.yahoo|global\.ard\.yahoo|nfo\.yahoo|qcomgeo2)\.com$
+(^|\.)(dwonxiazai|dynatrace|ero-advertising|fc2|force|go2affise|haenudolarblue|inclk|kameleoon|kargo|marketo|marketgid|measurementapi|mktoresp|mobileapptracking)\.com$
 (^|\.)(dynamicyield|exacttarget|ads\.a4cdn\.contentabc\|cnzz|clksite|clickability|appnexus|aliyuncs|000webhostapp|adlegend|adsafeprotected|adsame|adsymptotic|adx1)\.com$
 (^|\.)(go2cloud\|no-ip\|zapto|duckdns|altervista)\.org$
 (^|\.)(hit(box|tail)|hotjar|imrworldwide|intellitxt|lijit|mixpanel|ms[-]?adcenter|netklix|outbrain|petrovka|pixel|syndicat(e|ion)|rubiconproject|sellerdashboard|sitemeter|skimresource[s]?|smaato|smartadserver|(fast|stat)counter|suprnova|taboola|tradedouble[r]?|xiti|usergrid|visualrevenue|volumetrk|webcindario)
@@ -36,14 +37,13 @@
 (^|\.)(mktoresp|multiscreensite|ohghaiqpic|omniture|pubmatic|puserving|qualtrics|servedbyopenx|sextracer|parsely|sexybabesx|stickyadstv|supersonicads|tistory|touchcommerce|tubemogul)\.com$
 (^|\.)(o0bc|2mdn|2o7|302br|51yes|adtech([-]?[a-z]+)?|amazon[-]?adsystem|atwola|bkrtx|bluekai|chartbeat|crwdcntrl|d(e|o)mdex|effectivemeasure|falkag|fwmrm|gemius)
 (^|\.)(unbounce|kargo|kameleoon|inclk|haenudolarbluehaenudolarblue|go2affise|geovisite|adlegend|000webhostapp|lgsmartad|ngfts\.lge|lgtvonline\.lge|collector\.newrelic|newrelic)\.com$
-(^|\.)(unityads(|\.co)|unity(|3d)|treasuredata|redshell|bugsnag|buffpanel|samsungads|etargetnet|experience\.tinypass|yovoads|t\.eloqua)\.com$
-(^|\.)(|dwonxiazai|dynatrace|ero-advertising|fc2|force|go2affise|haenudolarblue|inclk|kameleoon|kargo|marketo|marketgid|measurementapi|mktoresp|mobileapptracking)\.com$
+(^|\.)(unityads(\.co)?|unity(3d)?|treasuredata|redshell|bugsnag|buffpanel|samsungads|etargetnet|experience\.tinypass|yovoads|t\.eloqua)\.com$
 (^|\.)adocean\.pl$
 (^|\.|[\.\-])?(telemetr[iy]|(evil[s]?)tra[ck](k|king|ker)|[s]?trk|utm|video[-]?stat)[sz]?[0-9]?[\.\-]?
 (^|\.|[\.\-])?[0-9]?(click|php|preroll|text|web|[mwxy])?ad[sxz]?[0-9]?[\.-]
 (^|\.|[\.\-])?ad([v]?server[a-z]?|shuffle|sl|sy(s|stem)|test|(v|ve(r|rt|rtis(e|er|ing)))|trac(k|ker|king[-]?[a-z]?|ker)|wise|word|yield)[sxz]?[0-9]?[\.\-]?
-(^|\.|[\.\-])?ad(aly[sz]er|am|banner|bureau|click|dynamo|farm|hese|im[a]?g[e]?|info|ition|just|k2|load|log([^(in|out)])(ger|ging|ing|-|_)?|media|ma(n|nager|x)|ne(t[a-z]+|xus)|nxs|ocean|renaline|revolver|rotat(e|or)|science|script|sense|spirit|[v\-]?s[e]?r(v|ve|ver|vi(ce|ng))|stat|stream)[sxz]?[0-9]?[\.\-]
-(^|\.|www\.)yandex\.(ru|net|com|org)$
+(^|\.|[\.\-])?ad(aly[sz]er|am|banner|bureau|click|dynamo|farm|hese|im[a]?g[e]?|info|ition|just|k2|load|log([^(in|out)])(ger|ing)|media|ma(n|nager|x)|ne(t[a-z]+|xus)|nxs|ocean|renaline|revolver|rotat(e|or)|science|script|sense|spirit|[v\-]?s[e]?r(v|ve|ver|vi(ce|ng))|stat|stream)[sxz]?[0-9]?[\.\-]
+(^|\.|www\.)(yandex|qq|tencent)\.(cn|ru|net|com|org)$
 (^|\.|www\.|static\.|ssl\.)(doubleclick|izatcloud|webtrekk)\.net$
 (analytic[s]?|apptic[szx]?|tric[szx]?|lytic[sxz]?|device(-|\.)?metric[sxacz]?)
 (chinese|china|qq|cctv|tencent)

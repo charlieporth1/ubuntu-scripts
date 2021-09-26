@@ -5,6 +5,7 @@ source ctp-dns.sh --source
 CONCURRENT
 WAIT_TIME=5.5s
 
+max=5
 LOG_FILE=$LOG/health_check.log
 LOCK_FILE=$CTP_DNS_LOCK_FILE
 
@@ -28,21 +29,10 @@ getFailCount() {
         local count=`tail -25 $LOG_FILE | grep "$fn" | tail -1 | awk -F , '{print $2}'`
         echo "${count:-0}"
 }
-
-COUNT_ACTION() {
+DEFAULT_COUNT_ACTION() {
         local FN="$1"
         local COUNT="${2:-0}"
         local SERVICE="$3"
-        echo "$COUNT"
-        local max=5
-        if [[ $COUNT -gt $(( $max + 3 )) ]] && [[ "$FN" == "$LOCK_FILE" ]]; then
-		echo "Removing $LOCK_FILE file because $COUNT -gt $max sleeping 30s"
-		echo "Removing $LOCK_FILE file because $COUNT -gt $max"
-                bash $PROG/alert_user.sh "Failure Alert" "$FN Failed $COUNT times on $HOSTNAME; Service ${SERVICE} $HOSTNAME $COUNT"
-		sudo rm -rf $LOCK_FILE
-                writeLog $FN 0 $SERVICE
-		return 1
-	fi
 
         if [[ $COUNT -ge 4 ]] && [[ $COUNT -lt $max ]]; then
                 echo "SENDING EMAIL COUNT IS GREATE THAN OR EQUAL TO"
@@ -50,6 +40,7 @@ COUNT_ACTION() {
 		systemctl daemon-reload
 		systemctl restart $fn
 		systemctl is-active --quiet $fn && "echo $fn Service is running now" || echo "${error_str}"
+		record_action "$fn"
         elif [[ $COUNT -ge $max ]]; then
                 echo "Reset failure count $COUNT"
                 bash $PROG/alert_user.sh "Failure Alert" "$FN Failed $COUNT times on $HOSTNAME; Service ${SERVICE} $HOSTNAME $COUNT"
@@ -57,14 +48,50 @@ COUNT_ACTION() {
 			systemctl reset-failed $SERVICE
 			restart_service "$SERVICE"
                 fi
-                writeLog $FN 0 $SERVICE
+                writeLog "$FN" 0 "$SERVICE"
         else
+		record_action "$fn"
                 echo "Not sig count $SERVICE"
         fi
+
+}
+
+COUNT_ACTION() {
+        local FN="$1"
+        local COUNT="${2:-0}"
+        local SERVICE="$3"
+
+        echo "$COUNT"
+	case "$FN" in
+	"$LOCK_FILE" )
+		if [[ $COUNT -gt $(( $max + 3 )) ]]; then
+			echo "Removing $LOCK_FILE file because $COUNT -gt $max sleeping 30s"
+			echo "Removing $LOCK_FILE file because $COUNT -gt $max"
+        	        bash $PROG/alert_user.sh "Failure Alert" "$FN Failed $COUNT times on $HOSTNAME; Service ${SERVICE} $HOSTNAME $COUNT"
+			sudo rm -rf $LOCK_FILE
+        	        writeLog "$FN" 0 "$SERVICE"
+			return 1
+		else
+			record_action "$fn"
+		fi
+	;;
+	"RESTART_PIHOLE" )
+		if [[ $COUNT -gt $(( $max * 2 )) ]]; then
+			pihole enable
+        	        writeLog "$FN" 0 "$SERVICE"
+		else
+			record_action "$FN" "$SERVICE"
+		fi
+	;;
+	* )
+		DEFAULT_COUNT_ACTION "$FN" "$COUNT" "$SERVICE"
+	;;
+	esac
 }
 
 function RESTART_PIHOLE() {
         echo "RESTART_PIHOLE"
+	double_block_pihole_err_fix
 	PIHOLE_RESTART_PRE
         pihole restartdns
 	sleep 5s
@@ -72,6 +99,16 @@ function RESTART_PIHOLE() {
         echo "RESTARTING DNS"
         sleep $WAIT_TIME
 }
+
+double_block_pihole_err_fix() {
+	local file=$HOLE/setupVars.conf
+	local setupVarsConf=`cat $file | sort -u`
+	cp -rf $file $file.bk
+	if [[ `printf '%s\n' "$setupVarsConf" | grep -c BLOCKING_ENABLED` -gt 1 ]]; then
+		printf '%s\n' "$setupVarsConf" | grep -v 'BLOCKING_ENABLED=false' > $file
+	fi
+}
+
 
 restart_service() {
 	local fn="${1}"
@@ -94,8 +131,8 @@ restart_service() {
 
 record_action() {
 	local fn="$1"
-	writeLog $fn $((1+$(getFailCount $fn))) $fn
-	COUNT_ACTION $fn $(getFailCount $fn) $fn
+	writeLog $fn $(( 1 + $( getFailCount $fn ) )) $fn
+	COUNT_ACTION $fn $( getFailCount $fn ) $fn
 	sleep $WAIT_TIME
 }
 
@@ -113,16 +150,14 @@ health_check_action() {
 		"nginx" | "nginx.service" )
 			certbot-ocsp-fetcher --output-dir=/var/cache/nginx/
 			restart_service "$fn" "$fn_bin"
-			record_action "$fn"
+		;;
 		"ctp-dns" | "ctp-dns.service" )
 			if ! [[ -f $LOCK_FILE ]]; then
 				restart_service "$fn" "$fn_bin"
-				record_action "$fn"
 			fi
 		;;
 		* )
 			restart_service "$fn" "$fn_bin"
-			record_action "$fn"
 		;;
 	esac
 
@@ -192,16 +227,19 @@ elif [[ -f $LOCK_FILE ]]; then
 fi
 
 fn='pihole-FTL.service'
-if [[ "$IS_MASTER" == 'true' ]] || [[ `systemctl-exists $fn` = 'true' ]] && [[ `systemctl-inbetween-status $fn` == 'false' ]]; then
-	pihole_status_web=`pihole status web`
-	pihole_status=`pihole status | grep -io 'not\|[✗]'`
-	ftl_status=`pidof pihole-FTL`
-	wg=`ss -lun 'sport = :54571'`
+if [[ "$IS_MASTER" == 'true' ]] || [[ `systemctl-exists $fn` = 'true' ]]; then
+	if [[ `systemctl-inbetween-status $fn` == 'false' ]]; then
 
-	if [[ -n "$pihole_status" ]]; then
-		health_check_action "$fn" "PIHOLE_STATUS"
-	elif [[ -z "$ftl_status" ]]; then
-		health_check_action "$fn" "FTL_STATUS"
+		pihole_status_web=`pihole status web`
+		pihole_status=`pihole status | grep -iv "$pihole_blocking_disabled_grep_around" | grep -io 'not\|[✗]'`
+		ftl_status=`pidof pihole-FTL`
+		wg=`ss -lun 'sport = :54571'`
+
+		if [[ -n "$pihole_status" ]]; then
+			health_check_action "$fn" "PIHOLE_STATUS"
+		elif [[ -z "$ftl_status" ]]; then
+			health_check_action "$fn" "FTL_STATUS"
+		fi
 	fi
 fi
 
@@ -254,6 +292,9 @@ service_health_check "$fn"
 fn='php7.4-fpm.service'
 service_health_check "$fn"
 
+fn='php7.1-fpm.service'
+service_health_check "$fn"
+
 fn='fail2ban.service'
 service_health_check "$fn"
 
@@ -284,22 +325,7 @@ service_health_check "$fn"
 if ! ifconfig | grep -o tailscale0 > /dev/null
 then
 	echo "Tailscale interface isn't ready/healthly"
-
-	ADDITONAL_ROUTES=""
-#	"192.168.99.0/24"
-	if [[ "$HOSTNAME" =~ (ctp-vpn|) ]]; then
-		ADDITONAL_ROUTES="10.128.0.0/16,172.31.0.0/16"
-	elif [[ "$HOSTNAME" = "ubuntu-server" ]]; then
-		ADDITONAL_ROUTES="192.168.44.0/24"
-	fi
-
-	if [[ -n "$ADDITONAL_ROUTES" ]]; then
-		echo "Starting TailScale adding ROUTES $ADDITONAL_ROUTES"
-		sudo tailscale up --advertise-routes=$ADDITONAL_ROUTES
-	else
-		sudo tailscale up
-	fi
-
+	bash $PROG/start_tailscale.sh
         systemctl restart "$fn"
 fi
 
@@ -319,6 +345,8 @@ fi
 if [[ -f $PROG/wireguard-health-check.sh ]]; then
 	bash $PROG/wireguard-health-check.sh
 fi
+
 echo "Done running at: `date`"
+
 [ $? == 1 ] && exit 0 || exit 0;
 kill $$

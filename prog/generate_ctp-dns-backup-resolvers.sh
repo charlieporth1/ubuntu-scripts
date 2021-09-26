@@ -34,7 +34,7 @@ done
 
 
 export BACKUP_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(grep -E "^.resolvers\..*$RESOLVER_START.*" $OUT_FILE | awk -F. '{print $2}' | awk -F] '{print $1}') --quotes --space))
-
+timeout=12
 echo """
 # FALLBACK
 [groups.$RESOLVER_START_GROUP-fail-back]
@@ -42,7 +42,7 @@ resolvers = [
         $BACKUP_RESOLVERS
 ]
 type = \"fail-back\"
-reset-after = 16
+reset-after = $timeout
 servfail-error = true
 
 # FASTEST

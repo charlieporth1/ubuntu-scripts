@@ -1,47 +1,19 @@
 #!/bin/bash
-source $PROG/all-scripts-exports.sh
-source ctp-dns.sh --source
-if [[ -f $CTP_DNS_LOCK_FILE ]]; then
-        echo "LOCK FILE"
-	trap 'LOCK_FILE' ERR
-        set -e
-        exit 1
-        exit 1
-fi
+source $PROG/test_dns_args.sh
 CONCURRENT
-echo "Running DOH TEST"
+dns_logger "Running DoH TEST"
 
 [[ "$1" == "-a" ]] && isAuto="-o"
 [[ "$1" == "-t" ]] && is_test="true"
 [[ "$1" == "-m" ]] && is_metric="true"
 [[ "$1" == "-tm" ]] && is_tm="true"
 [[ "$1" == "-mt" ]] && is_tm="true"
-HOST=dns.ctptech.dev
-QUERY=www.google.com
-TIMEOUT=64
-TRIES=5
 
-DNS_IP=`$PROG/grepify.sh $(bash $PROG/get_ext_ip.sh)`
-ROOT_NETWORK=`bash $PROG/get_network_devices_ip_address.sh --grepify`
-EXCLUDE_IP="$DNS_IP\|0.0.0.0\|$ROOT_NETWORK\|127.0.0.1"
-
-EXTENRAL_IP=`bash $PROG/get_ext_ip.sh --current-ip`
-
-if [[ -z $EXTENRAL_IP ]]; then
-	echo "EXTENRAL_IP :$EXTENRAL_IP: null and exiting"
-	exit 1
-fi
+TIMEOUT=32
 
 if ! command -v doh &> /dev/null
 then
     echo "COMMAND doh could not be found"
-    exit 1
-fi
-
-if ! command -v grepip &> /dev/null
-then
-    echo "COMMAND grepip could not be found installing"
-    curl -Ls 'https://raw.githubusercontent.com/ipinfo/cli/master/grepip/deb.sh' | bash
     exit 1
 fi
 
@@ -67,19 +39,11 @@ doh_remote_ctp=`timeout $TIMEOUT doh -4 -r$HOST:4443:$EXTENRAL_IP -tA $QUERY "ht
 doh_local_ctp=`timeout $TIMEOUT doh -k -4 -r$HOST:22443:127.0.0.1 -tA $QUERY "https://$HOST:22443/dns-query"`
 doh_local_nginx_rfc=`timeout $TIMEOUT doh -k -4 -r$HOST:11443:127.0.0.1 -tA $QUERY "https://$HOST:11443/dns-query"`
 
-WAIT_TIME=6
-
 log_d "$PATH"
 log_d "doh_remote_ctp :$doh_remote_ctp: doh_remote_nginx :$doh_remote_nginx:"
 log_d "doh_remote_json :$doh_remote_json: doh_local :$doh_local:"
 if [[ -n "$isAuto" ]]; then
-	dns_local_test=`echo "$dns_local" | grepip --ipv4 -o | xargs`
-	if [[ -z "$dns_local_test" ]]; then
-	        echo "DNS FAILED NOT DOH dns_local_test :$dns_local_test:"
-		exit 1
-		kill $$
-	fi
-
+	if_plain_dns_fail
  	doh_proxy_local_test=`echo "$doh_proxy_local" | grep -o "$QUERY"`
  	doh_remote_json_test=`echo "$doh_remote_json" | grep -o "$QUERY"`
  	doh_remote_nginx_test=`echo "$doh_remote_nginx" | grepip --ipv4 -o`
@@ -91,13 +55,13 @@ if [[ -n "$isAuto" ]]; then
 	log_d "doh_remote_nginx_test :$doh_remote_nginx_test: doh_remote_ctp_test :$doh_remote_ctp_test:"
 
 	if [[ -z "$doh_proxy_local_test" ]] && [[ $(systemctl-inbetween-status doh-server.service) == false ]]; then
-		echo "ALERT DOH doh_proxy_local_test doh-proxy :$doh_proxy_local_test:"
+		dns_logger "ALERT DOH doh_proxy_local_test doh-proxy :$doh_proxy_local_test:"
 		[[ -f $PROG/doh_proxy_json.sh ]] && bash $PROG/doh_proxy_json.sh
 		sudo killall -9 doh-server
 		systemctl restart doh-server.service
 		#sleep $WAIT_TIME
 	else
-		echo "Success DoH JSON PROXY"
+		dns_logger "Success DoH JSON PROXY"
 	fi
 
 	if { { [[ -z "$doh_remote_json_test" ]] && [[ -n "$doh_remote_ctp_test" ]]; } || \
@@ -105,12 +69,12 @@ if [[ -n "$isAuto" ]]; then
 	       [[ $(systemctl-inbetween-status nginx.service) == false ]]
 	then
 		if [[ -z "$doh_remote_ctp_test" ]] || [[ -z "$doh_proxy_local_test" ]]; then
-			echo "NOT NGINX doh_remote_ctp_test $doh_remote_ctp_test  $doh_proxy_local_test doh_proxy_local_test"
+			dns_logger "NOT NGINX doh_remote_ctp_test $doh_remote_ctp_test  $doh_proxy_local_test doh_proxy_local_test"
 		else
-			echo "ALERT DOH doh_remote_json_test NGINX doh_remote_nginx_test :$doh_remote_json_test: :$doh_remote_nginx_test:"
-			echo "dns_local_test :$dns_local_test: doh_proxy_local_test :$doh_proxy_local_test: doh_remote_json_test :$doh_remote_json_test:"
-			echo "doh_remote_ctp_test :$doh_remote_ctp_test: doh_remote_nginx_test :$doh_remote_nginx_test:"
-			echo "NGINX failed restarting"
+			dns_logger "ALERT DOH doh_remote_json_test NGINX doh_remote_nginx_test :$doh_remote_json_test: :$doh_remote_nginx_test:"
+			dns_logger "dns_local_test :$dns_local_test: doh_proxy_local_test :$doh_proxy_local_test: doh_remote_json_test :$doh_remote_json_test:"
+			dns_logger "doh_remote_ctp_test :$doh_remote_ctp_test: doh_remote_nginx_test :$doh_remote_nginx_test:"
+			dns_logger "NGINX failed restarting"
 			if [[ -f /etc/hosts.bk ]]; then
 				sudo cp -rf /etc/hosts.bk /etc/hosts
 			fi
@@ -119,8 +83,9 @@ if [[ -n "$isAuto" ]]; then
 			systemctl restart nginx.service
 			#sleep $WAIT_TIME
 		fi
+		run_fail_automation_action
 	else
-		echo "Success DoH NGNIX"
+		dns_logger "Success DoH NGNIX"
 	fi
 
 	fn="ctp-dns.service"

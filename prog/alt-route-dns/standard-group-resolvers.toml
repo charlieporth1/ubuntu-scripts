@@ -156,7 +156,7 @@ resolvers = [
 	"ctp-dns_group-truncate-retry-raw-aws",
 ]
 type = "fail-back"
-reset-after = 32
+reset-after = 24
 servfail-error = true
 
 [groups.ctp-dns_group-fail-back-gcp]
@@ -174,7 +174,7 @@ resolvers = [
 	"ctp-dns_group-truncate-retry-raw-gcp-ip-2",
 ]
 type = "fail-back"
-reset-after = 16
+reset-after = 12
 servfail-error = true
 
 [groups.ctp-dns_group-fail-back-home]
@@ -190,7 +190,7 @@ resolvers = [
 	"ctp-dns_group-truncate-retry-raw-home",
 ]
 type = "fail-back"
-reset-after = 16
+reset-after = 12
 servfail-error = true
 
 [groups.ctp-dns_group-fail-back-aws]
@@ -206,7 +206,7 @@ resolvers = [
 	"ctp-dns_group-truncate-retry-raw-aws",
 ]
 type = "fail-back"
-reset-after = 16
+reset-after = 12
 servfail-error = true
 
 [groups.ctp-dns_group-fail-back-raw]
@@ -225,7 +225,7 @@ resolvers = [
 	"ctp-dns-aws-udp"
 ]
 type = "fail-back"
-reset-after = 8
+reset-after = 6
 servfail-error = true
 
 

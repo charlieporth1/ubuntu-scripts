@@ -16,7 +16,7 @@ blocklist-source = [
 #        {format = "domain", source = "", cache-dir = "/var/cache/ctp-dns"},
 ]
 allowlist-refresh = 1800
-allowlist-resolver = "ctp-dns-group-fastest-tcp-probe-out" 
+allowlist-resolver = "ctp-dns-fail-back"
 allowlist-source = [
         {format = "domain", source = "/var/tmp/ctp-dns/lists/white/domains.txt", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/amazon-whitelist.list", cache-dir = "/var/cache/ctp-dns"}, 
@@ -44,7 +44,7 @@ blocklist-source = [
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/custom-mobile-trackers-blacklist.list", cache-dir = "/var/cache/ctp-dns"}, 
 ]
 allowlist-refresh = 1800
-allowlist-resolver = "ctp-dns-group-fastest-tcp-probe-out" 
+allowlist-resolver = "ctp-dns-fail-back"
 allowlist-source = [
         {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/my-allowlist/master/routedns.allow.list", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/accomplist/standard/routedns.allowlist.domain.list", cache-dir = "/var/cache/ctp-dns"}, 
@@ -66,7 +66,7 @@ blocklist-source = [
 #        {format = "regexp", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/", cache-dir = "/var/cache/ctp-dns"},
 ]
 allowlist-refresh = 1800
-allowlist-resolver = "ctp-dns-group-fastest-tcp-probe-out" 
+allowlist-resolver = "ctp-dns-fail-back"
 allowlist-source = [
         {format = "regexp", source = "/var/tmp/ctp-dns/lists/white/regex.txt", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "regexp", source = "https://gcp.pihole.ctptech.dev/txt_lists/accomplist/standard/routedns.allowlist.regexp.list", cache-dir = "/var/cache/ctp-dns"}, 

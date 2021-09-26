@@ -64,7 +64,7 @@ resolvers = [
 	"ctp-dns_nginx-back-up-group-fail-back",
 	"ctp-dns-failover-backup",
 ]
-reset-after = 48
+reset-after = 32
 type = "fail-back"
 servfail-error = true
 
@@ -77,7 +77,6 @@ resolvers = [
 	"ctp-dns_group-fail-rotate-aws",
 	"ctp-dns_group-fail-back-home",
 	"ctp-dns_group-fail-back-aws",
-	"ctp-dns-failover-backup",
 ]
 type = "fail-rotate"
 servfail-error = true

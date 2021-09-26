@@ -13,6 +13,7 @@ export GROUP_FILE=$ROUTE/standard-group-resolvers.toml
 export GROUP_TITLE="ctp-dns_group"
 export TRUCATE_GROUP=$GROUP_TITLE-truncate-retry-raw
 export TRUCATE_GROUP_E=$GROUP_TITLE-truncate-retry-encrypted
+timeout=12
 
 echo """
 ##########################
@@ -127,7 +128,7 @@ resolvers = [
 	\"$TRUCATE_GROUP-aws\",
 ]
 type = \"fail-back\"
-reset-after = 32
+reset-after = $(( $timeout * 2 ))
 servfail-error = true
 
 [groups.$GROUP_TITLE-fail-back-gcp]
@@ -141,7 +142,7 @@ resolvers = [
 	\"$TRUCATE_GROUP-gcp-ip-2\",
 ]
 type = \"fail-back\"
-reset-after = 16
+reset-after = $timeout
 servfail-error = true
 
 [groups.$GROUP_TITLE-fail-back-home]
@@ -153,7 +154,7 @@ resolvers = [
 	\"$TRUCATE_GROUP-home\",
 ]
 type = \"fail-back\"
-reset-after = 16
+reset-after = $timeout
 servfail-error = true
 
 [groups.$GROUP_TITLE-fail-back-aws]
@@ -165,7 +166,7 @@ resolvers = [
 	\"$TRUCATE_GROUP-aws\",
 ]
 type = \"fail-back\"
-reset-after = 16
+reset-after = $timeout
 servfail-error = true
 
 [groups.$GROUP_TITLE-fail-back-raw]
@@ -177,7 +178,7 @@ resolvers = [
 	$RAW_RESOLVERS
 ]
 type = \"fail-back\"
-reset-after = 8
+reset-after = $(( $timeout / 2))
 servfail-error = true
 
 

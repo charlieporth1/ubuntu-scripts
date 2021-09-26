@@ -1,33 +1,21 @@
 #!/bin/bash
-source $PROG/all-scripts-exports.sh
+source $PROG/test_dns_args.sh
 CONCURRENT
-echo "Running DNS BLOCK TEST"
-[[ "$1" == "-a" ]] && isAuto="+short"
+
+dns_logger "Running DNS BLOCK TEST"
 
 QUERY=www.ads.com
 
 WAIT_TIME=2.5s # TO RESTART NEXT
-TIMEOUT=16 # DNS
-TRIES=8
 HOST=dns.ctptech.dev
 
 
 MASTER_DNS_IP=$(bash $PROG/grepify.sh $(bash $PROG/get_ext_ip.sh "master.$HOST"))
-CURRENT_IP=$(bash $PROG/grepify.sh $(bash $PROG/get_ext_ip.sh --current-ip))
 
-ROOT_NETWORK=`bash $PROG/get_network_devices_ip_address.sh --grepify`
-
-EXCLUDE_IP="$ROOT_NETWORK\|$CURRENT_IP\|0.0.0.0"
 if ! command -v dig &> /dev/null
 then
     echo "COMMAND could not be found"
     exit
-fi
-
-if ! command -v grepip &> /dev/null
-then
-    echo "COMMAND dig could not be found installing"
-    curl -Ls 'https://raw.githubusercontent.com/ipinfo/cli/master/grepip/deb.sh' | bash
 fi
 
 dns_local=`dig $QUERY @ctp-vpn.local $isAuto +timeout=$TIMEOUT +tries=$TRIES +dnssec +short`
@@ -46,10 +34,11 @@ else
         if [[ -z "$dns_local_test" ]] && [[ -n "$dns_master_test" ]] && \
 	[[ "$dns_local_test" != "$dns_master_test" ]]
 	then
-                echo "DNS block test failed: restarting"
+		if_plain_dns_fail
+                dns_logger "DNS block test failed: restarting"
 			systemctl daemon-reload
                         systemctl restart ctp-dns
         else
-                echo "Test DNS Block Success"
+                dns_logger "Test DNS Block Success"
         fi
 fi

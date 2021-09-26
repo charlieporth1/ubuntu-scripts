@@ -31,7 +31,7 @@ pihole --regex -d "google" "-" "\-" "up" "\.co$" "\.com$" "\.io$" "\.go$" \
 '\.na$' '\.pw$' '\.ps$' '\.pt$' '\.rw$' '\.kn$' '\.kp$' '\.it$' '^static\.' \
 '(((\w*)\.)*((\w+[^you](?=tube))|\w*[^you]tube([-,_,a-z,1-9]*))\.((([-,_,a-z,1-9]*)\.)*)(([a-z]*)))' \
 '(.+|\.|)doubleclick\.net$' '(^|\.)samsungelectronics\.com$' '(^|\.)samsungcloudsolution\.net$' '(^|\.)samsungcloudsolution\.com$' '(^|\.)samsungcloudcdn\.com$' '(\.|^)()\.com' \
-'\.' '^\.$' '$' '^[a-z].([0-9]+|ad[^d]|click|coun(t|ter)|tra[ck](k|ker|king))'
+'\.' '^\.$' '$' '^[a-z].([0-9]+|ad[^d]|click|coun(t|ter)|tra[ck](k|ker|king))' '(^|.)((yandex|qq|tencent).(net|com|org|dev|io|sh|cn|ru)|qq|local|localhost|query|sl|(^.$))'
 
 sleep 1.5s
 

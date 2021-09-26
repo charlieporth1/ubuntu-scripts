@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 systemctl daemon-reload
 source /etc/profile.d/bash-exports-global.sh
-PROG=/home/charlieporth1_gmail_com/Programs
+source /etc/environment
 
 bash $PROG/.secure-exe-files.sh &
 bash $PROG/update.unbound-config.sh &

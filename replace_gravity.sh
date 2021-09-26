@@ -16,6 +16,30 @@ shopt -s expand_aliases
 [[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(full-update|full|full-after)'` ]] && export FULL_AFTER=true || export FULL_AFTER=false
 [[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(nc|no-check(-|_|\.)?(error|db|database)?)'` ]] && export NO_CHECK=true || export NO_CHECK=false
 
+function pihole_json_test() {
+        local db_file_input="$1"
+        local db_file="${db_file_input:=$DB_FILE}"
+        local domain_being_blocked_count=`pihole -c -j | jq '.domains_being_blocked' || echo 0`
+        if [[ -f $db_file ]]; then
+                if cmp --silent $db_file $DB_FILE ; then
+                        if [[ $domain_being_blocked_count -le 0 ]] || [[ -z $domain_being_blocked_count ]]; then
+                                echo "false"
+                                return 1
+                        else
+                                echo "true"
+                                return 0
+                        fi
+                else
+                        echo "false"
+                        return 1
+                fi
+        else
+                echo "false"
+                return 1
+        fi
+}
+export -f pihole_json_test
+
 function pihole_cmd_test() {
 	local pihole_args="${2:--q}"
 	local db_file_input="$1"
@@ -36,7 +60,6 @@ function pihole_cmd_test() {
 	 	if cmp --silent $db_file $DB_FILE ; then
 			debug_logger "Files match using query test"
 			local db_status_query=`pihole $pihole_args $query_str 2> $error_query_file`
-
 			if [[ $pihole_args =~ (\-|\-\-)((white-)?(regex|wild)|b(lack)?|w(hite)?) ]]; then
 				pihole $pihole_args -d $query_str  > /dev/null
 			fi
@@ -88,7 +111,7 @@ function integrity_test_quick() {
         local db_file="${db_file_input:=$DB_FILE}"
 
 	if [[ -f $db_file ]]; then
-		debug_logger "$db_file exists moving quick_check"
+		debug_logger "$db_file exists moving quick_check integrity_test_quick"
 		local db_status=`sudo sqlite3 $db_file "PRAGMA quick_check"`
 		local result=`echo "$db_status" | grep -io "$status_str"`
 		debug_logger "quick_check test result db_status_quick_light $db_status result $result"
@@ -191,24 +214,37 @@ function replace_vacuum_update_gravity_root() {
 }
 export -f replace_vacuum_update_gravity_root
 
+function run_sqlite_check() {
+        local arguments="$2"
+        local db_file="$1"
 
-function is_gravity_ok() {
-	local arguments="$2"
+        if [[ "$arguments" == '--quick-check' ]]; then
+                local result=`integrity_test_quick $db_file`
+                echo "$result"
+                return $?
+        else
+                local result=`integrity_test $db_file`
+                echo "$result"
+                return $?
+        fi
+
+}
+
+function quick_test() {
 	local db_file_input="$1"
         local db_file="${db_file_input:=$DB_FILE}"
 	if cmp --silent $db_file $DB_FILE; then
-		debug_logger "$db_file exists moving to compare files for query test"
-		if [[ `query_test $db_file` == 'true' ]]; then
-			debug_logger "$db_file moving to block test"
-			if [[ `block_test $db_file` == 'true' ]]; then
-				if [[ "$arguments" == '--quick-check' ]]; then
-					local result=`integrity_test_quick $db_file`
-					echo "$result"
-					return $?
+		debug_logger "$db_file exists moving to compare files for pihole_json_test test `pihole_json_test`"
+                if [[ `pihole_json_test $db_file` == 'true' ]]; then
+			debug_logger "$db_file exists moving to compare files for query test"
+			if [[ `query_test $db_file` == 'true' ]]; then
+				debug_logger "$db_file moving to block test"
+				if [[ `block_test $db_file` == 'true' ]]; then
+					echo "true"
+					return 0
 				else
-					local result=`integrity_test $db_file`
-					echo "$result"
-					return $?
+					echo "false"
+					return 1
 				fi
 			else
 				echo "false"
@@ -219,19 +255,33 @@ function is_gravity_ok() {
 			return 1
 		fi
 	else
-		if [[ "$arguments" == '--quick-check' ]]; then
-			local result=`integrity_test_quick $db_file`
-			echo "$result"
-			return $?
+		echo "false"
+		return 1
+	fi
+
+}
+export -f quick_test
+
+function is_gravity_ok() {
+	local arguments="$2"
+	local db_file_input="$1"
+        local db_file="${db_file_input:=$DB_FILE}"
+	if cmp --silent $db_file $DB_FILE; then
+		debug_logger "$db_file exists moving to compare files for quick_test"
+                if [[ `quick_test $db_file` == 'true' ]]; then
+			run_sqlite_check "$db_file" "$arguments"
 		else
-			local result=`integrity_test $db_file`
-			echo "$result"
-			return $?
+			echo "false"
+			return 1
 		fi
+	else
+		run_sqlite_check "$db_file" "$arguments"
 	fi
 }
 export -f is_gravity_ok
+alias is-gravity-ok='is_gravity_ok'
 alias gravity_ok='is_gravity_ok'
+alias gravity-ok='is_gravity_ok'
 
 function after_transfer_gravity_extra() {
 	bash $PROG/pihole-db-sql-changes.sh
@@ -305,7 +355,7 @@ if [[ -n "$COPY_FILE" ]] && [ "$0" == "$BASH_SOURCE" ]; then
 	if [[ "$NO_CHECK" == 'true' ]] || [[ `is_gravity_ok $COPY_FILE` == 'true' ]] || [[ `is_gravity_ok $DB_FILE` == 'false' ]]
 	then
 		echo "Gravity is ok Replacing"
-		pihole disable 3m
+		pihole disable 5m
 		sync
 		sudo cp -vrf $COPY_FILE $DB_FILE && pihole enable
 #		tar cf - $COPY_FILE | pv | (cd $DB_FILE; tar xf -)

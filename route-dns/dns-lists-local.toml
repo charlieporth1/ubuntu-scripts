@@ -3,7 +3,7 @@ type = "blocklist-v2"
 blocklist-resolver = "static-servfail"
 blocklist-refresh = 86400
 blocklist-format = "domain"
-resolvers = [ "ctp-dns-group-fastest-tcp-probe-out" ]
+resolvers = [ "ctp-dns-fail-back" ]
 blocklist-source = [
         {format = "domain", source = "/var/tmp/ctp-dns/lists/black/ads.txt", cache-dir = "/var/cache/ctp-dns"},
         {format = "domain", source = "/var/tmp/ctp-dns/lists/black/malware-typo.txt", cache-dir = "/var/cache/ctp-dns"},

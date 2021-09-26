@@ -52,7 +52,7 @@ function query_domains_tester() {
 }
 BLACK_DOMAINS=`query_domains_tester '!' "${DOMAINS_TO_TEST_BLACK[@]}"`
 WHITE_DOMAINS=`query_domains_tester "${DOMAINS_TO_TEST_WHITE[@]}"`
-pihole --regex -d '$' '^[a-z].([0-9]+|ad[^d]|click|coun(t|ter)|tra[ck](k|ker|king))' ' ^[a-z].([0-9]+|ad[^d]|click|coun(t|ter)|tra[ck](k|ker|king))'
+pihole --regex -d '$' '^[a-z].([0-9]+|ad[^d]|click|coun(t|ter)|tra[ck](k|ker|king))' ' ^[a-z].([0-9]+|ad[^d]|click|coun(t|ter)|tra[ck](k|ker|king))' ''
 
 if [[ -n "$BLACK_DOMAINS" ]]; then
 	echo "Blacklisting $BLACK_DOMAINS"

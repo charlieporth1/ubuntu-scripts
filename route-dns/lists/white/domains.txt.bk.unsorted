@@ -3,15 +3,19 @@
 .cache
 .dev
 .dns
+.fm
 .fun
 .g
 .gov
+.in
+.info
 .me
 .news
 .radio
 .rest
 .root
 .tech
+.top
 .us
 0.gravatar.com
 1.gravatar.com
@@ -49,6 +53,7 @@ cdn.polyfill.io
 checkout.stripe.com
 chromecast.production-public.tubi.io
 chromeunboxed.com
+cloudfront-us-east-1.images.arcpublishing.com
 cs.sc-cdn.net
 dashboard.stripe.com
 dns.ctptech.dev.flush.cache.root
@@ -59,12 +64,14 @@ downloads.zohocdn.com
 edge-041.usmin.icloud-content.com
 en.wikipedia.org
 eng.snap.com
+epg.51zmt.top
 epg.streamstv.me
 epl.paypal-communication.com
 f-st.sc-cdn.net
 facebook.net
 files.stripe.com
 fls-na.amazon.com
+funroads.tv
 gateway.icloud.com
 gator.stripe.com
 github.com
@@ -84,6 +91,7 @@ journalnow.com
 js.stripe.com
 login.live.com
 login.tailscale.com
+logoschannel.com
 m.media-amazon.com
 m.stripe.com
 m.stripe.network
@@ -102,6 +110,7 @@ oldmovies.fun
 omtrdc.net
 onecupreport.com
 opfcaptcha-prod.s3.amazonaws.com
+pdst.fm
 platform.twitter.com
 playatoms-pa.googleapis.com
 pocketnow.com
@@ -125,6 +134,7 @@ s0.wp.com
 s1.wp.com
 s2.wp.com
 s3.wp.com
+s4.torrentstream.info
 sc-cdn.net
 seal.godaddy.com
 secure.gravatar.com
@@ -135,6 +145,7 @@ sia.tech
 sleep.urbandroid.org
 srsran.com
 ssl.wire.com
+static.abplive.in
 stripe.com
 support.grammarly.com
 tailscale.com
@@ -163,6 +174,7 @@ www.getmiles.com
 www.gravatar.com
 www.grouponaffiliate.com
 www.ipqualityscore.com
+www.laphroaig.com
 www.military.com
 www.nicehash.com
 www.pcmag.com

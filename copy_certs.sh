@@ -12,7 +12,7 @@ PERONAL_USR=charlieporth1_gmail_com
 # Configure Master server to get files
 gcloud compute ssh $MASTER_MACHINE \
 	--project "$GCLOUD_PROJECT" \
-	--zone "$GCLOUD_ZONE" -- "sudo bash /home/$PERONAL_USR/Programs/cert_manager.sh && mkdir -p /tmp/ssl/ && sudo -u root cp -rfvL $CERT_ROOT_DIR/. /tmp/ssl/ && sudo -u root chown -R $PERONAL_USR /tmp/ssl/* && sudo rm -rf /tmp/ssl/{boot,bin}"
+	--zone "$GCLOUD_ZONE" -- "sudo bash /home/$PERONAL_USR/Programs/cert_manager.sh && mkdir -p /tmp/ssl/ && sudo -u root cp -rfvL $CERT_ROOT_DIR/. /tmp/ssl/ && sudo -u root chown -R $PERONAL_USR:$PERONAL_USR /tmp/ssl/ && sudo rm -rf /tmp/ssl/{boot,bin}"
 
 #sudo -u root chmod 7777 -R $PERONAL_USR /tmp/ssl/*
 
@@ -26,7 +26,7 @@ fi
 
 NGINX_SSL=$INSTALL_CONFIG_DIR/nginx/ssl/
 # Copy files
-bash $PROG/master_copy.sh '/tmp/ssl/*' "~/ssl/"
+bash $PROG/master_copy.sh '/tmp/ssl/*' "$HOME/ssl/" --important
 bash $PROG/master_copy.sh "/var/cache/nginx/vpn.ctptech.dev.der" "/var/cache/nginx/"
 
 sudo cp -rf ~/ssl/* $NGINX_SSL/

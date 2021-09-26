@@ -10,7 +10,7 @@ FAILURE_STR="fail\|FAILURE\|failed"
 FULL_FAIL_STR="$FAILED_STR\|deactivating\|stop\|inactive\|dead"
 
 source /etc/environment
-source $PROG/all-scripts-exports.sh
+source $PROG/all-scripts-exports.sh --no-log
 system_information
 
 # prints colored text

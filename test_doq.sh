@@ -1,20 +1,9 @@
 #!/bin/bash
-source $PROG/all-scripts-exports.sh
+source $PROG/test_dns_args.sh
 CONCURRENT
-echo "Running DOQ TEST"
-[[ "$1" == "-a" ]] && isAuto="-o"
+dns_logger "Running DoQ TEST"
 
-
-QUERY=www.google.com
-HOST=dns.ctptech.dev
-TIMEOUT=18
-WAIT_TIME=2.5s
-TRIES=4
 # qdig -server dns.ctptech.dev:784 -dnssec -recursion dns.ctptech.dev A
-
-DNS_IP=`$PROG/grepify.sh $(bash $PROG/get_ext_ip.sh)`
-ROOT_NETWORK=`bash $PROG/get_network_devices_ip_address.sh --grepify`
-EXCLUDE_IP="$DNS_IP\|0.0.0.0\|$ROOT_NETWORK"
 
 if ! command -v qdig &> /dev/null
 then
@@ -36,21 +25,11 @@ then
 	sudo dpkg -i ~/$VP
 	exit
 fi
-
-if ! command -v grepip &> /dev/null
-then
-    echo "COMMAND grepip could not be found installing"
-    curl -Ls 'https://raw.githubusercontent.com/ipinfo/cli/master/grepip/deb.sh' | bash
-    exit 1
-fi
 #  q --server=dns.ctptech.dev --qname=www.google.com @quic://dns.ctptech.dev:784
 #  q --server=dns.ctptech.dev --qname=www.google.com @quic://dns.ctptech.dev:784 --timeout=60 --dnsses
-exit 0 #TMP GOING TO PARTY WITH KIMBERLY REMOVE LATER 
+exit 0 #TMP GOING TO PARTY WITH KIMBERLY REMOVE LATER
 #doq=$(timeout $TIMEOUT qdig -server $HOST:784 -dnssec -recursion $QUERY A)
 doq=$( q --server=$HOST --qname=$QUERY @quic://ctp-vpn.local:784 --timeout=$TIMEOUT --dnssec )
-dns_local=`dig $QUERY @ctp-vpn.local  +tries=$TRIES +dnssec +retry=$TRIES +short`
-dns_local_test=`printf '%s\n' "$dns_local" | grepip --ipv4 -o | xargs`
-
 
 if [[ -z $isAuto ]]; then
    echo -e "LOCAL\n$(bash $PROG/lines.sh '*')\n"
@@ -60,17 +39,13 @@ else
 	doq_test=$(echo "$doq" | grep -oE "$IP_REGEX" | xargs)
 	log_d "doq_test :$doq_test:"
 	if  [[ -z "$doq_test" ]] && [[ $(systemctl-inbetween-status ctp-dns.service) == false ]]; then
-		echo "DOQ FAILED doq_test :$doq_test:"
-		if [[ -z "$dns_local_test" ]]; then
-                        echo "DNS FAILED NOT DOT"
-                        exit 1
-			kill $$
-                fi
+		if_plain_dns_fail
+		dns_logger "DOQ FAILED doq_test :$doq_test:"
 		[[ -f $PROG/dns-route.sh ]] && bash $PROG/dns-route.sh
 		systemctl daemon-reload
 		systemctl restart ctp-dns
                 #sleep $WAIT_TIME
 	else
-                echo "DOQ SUCCESS"
+                dns_logger "DOQ SUCCESS"
 	fi
 fi

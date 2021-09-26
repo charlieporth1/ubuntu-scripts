@@ -10,7 +10,7 @@ sudo mount -t ext4 /dev/sdc /mnt/swap/
 export hddnum=($(sudo ls /dev/sd*)) 
 
 for ((a=0; a <= ${#hddnum[@]}; a++))
-do 
+do
         sudo hdparm -B255 /dev/${hddnum[$a]}
         hdparm -a256 /dev/${hddnum[$a]}
         hdparm -a512 /dev/${hddnum[$a]}

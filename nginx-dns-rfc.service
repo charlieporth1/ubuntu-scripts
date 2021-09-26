@@ -51,7 +51,7 @@ CacheDirectory=nginx-dns-rfc
 LogsDirectory=nginx-dns-rfc
 #RuntimeDirectory=
 
-CPUQuota=15%
+CPUQuota=25%
 
 Nice=10
 Type=exec
@@ -65,19 +65,16 @@ AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_NET_ADMIN=+eip CAP_NET_RAW CAP_SETF
 User=root
 Group=root
 ExecStartPre=/bin/mkdir -p ${LOGS_DIRECTORY}/ ${CACHE_DIRECTORY}/ ${TMP_DIR}/
-ExecStartPre=/bin/bash -c "! [[ -L ${TMP_DIR}/lists && -d ${TMP_DIR}/lists ]] && /bin/ln -s ${ROUTE_LIST}/ ${TMP_DIR}/; exit 0"
 ExecStartPre=/bin/bash -c "/usr/bin/touch ${PID_FILE} \
 	${LOGS_DIRECTORY}/${LOG_FILES}"
 #ExecStartPre=/bin/bash -c "! [[ -f /root/go/bin/routedns ]] && /snap/bin/go get -u -v github.com/folbricht/routedns/cmd/routedns"
 #ExecStartPre=/snap/bin/go get -v github.com/folbricht/routedns/cmd/routedns
 ExecStartPre=/bin/bash -c "/bin/echo ${MAINPID} | /usr/bin/tee ${PID_FILE}"
 ExecStartPre=/sbin/setcap cap_net_bind_service,cap_net_raw,cap_setfcap,cap_net_admin=+eip /root/go/bin/routedns
-ExecStart=/bin/bash -c "/root/go/bin/routedns ${ALT_ROUTE}/*.toml --log-level=4"
-#	--log-level=5 | mbuffer -T /tmp/ctp-dns.buffer -m 50M | tee -a ${LOG_FILE}"
-#ExecStartPost=/bin/bash -c "for ((i=0; i < 3; i++)); do ps -aux | grep 'pm.stal\|test_\|pm.hea' | awk '{print $2}' | xargs sudo kill -9;sleep 10s;done"
-#ExecStartPost=/bin/bash -c '/bin/sleep 30s; [[ -f /tmp/health-checks.stop.lock ]] &&/bin/rm /tmp/health-checks.stop.lock'
 
-ExecStop=/bin/bash -c "/bin/kill -USR1 ${MAINPID}; if pgrep sleep; then pkill sleep; fi; exit 0"
+ExecStart=/bin/bash -c "/root/go/bin/routedns ${ALT_ROUTE}/*.toml --log-level=4 2> >( mbuffer -m 64M --append -o ${LOG_FILE} )"
+
+ExecStop=/bin/bash -c "/bin/kill -USR1 ${MAINPID}; if pgrep sleep; then pkill sleep; killall sleep; fi; exit 0"
 ExecReload=/bin/kill -USR1 ${MAINPID}
 
 Restart=always

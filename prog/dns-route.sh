@@ -112,10 +112,6 @@ edns0-udp-size = 1460
 address = \"$DOMAIN:853\"
 protocol = \"dot\"
 bootstrap-address = \"$IP\"
-[resolvers.$service_name_str-dot-nginx]
-address = \"$DOMAIN:11853\"
-protocol = \"dot\"
-bootstrap-address = \"$IP\"
 
 # DTLS
 [resolvers.$service_name_str-dtls]
@@ -124,14 +120,14 @@ protocol = \"dtls\"
 bootstrap-address = \"$IP\"
 edns0-udp-size = 1460
 
-# QUIC
-[resolvers.$service_name_str-doq]
-address = \"$DOMAIN:784\"
-protocol = \"doq\"
-bootstrap-address = \"$IP\"
 
 # GROUPS
 [groups.$service_name_str-truncate-retry-raw]
+type = \"truncate-retry\"
+resolvers = [ \"$service_name_str-udp\" ]
+retry-resolver = \"$service_name_str-tcp\"
+
+[groups.$LOCAL_RESOLVER_NAME-$service_name_str-truncate-retry-raw]
 type = \"truncate-retry\"
 resolvers = [ \"$service_name_str-udp\" ]
 retry-resolver = \"$service_name_str-tcp\"
@@ -232,7 +228,7 @@ type = \"fastest\"
 	if [[ $CPU_CORE_COUNT -lt 2 ]] || [[ $MEM_COUNT -lt 750 ]] ; then
 		FILE=dns-lists.toml
 
-		replace_str="resolvers = [ \"ctp-dns-group-fastest-tcp-probe-out\" ]"
+		replace_str="resolvers = [ \"ctp-dns-fail-back\" ]"
 		str_to_replace=`pcregrep -M '^resolvers.*' $ROUTE/$FILE`
 		str_to_replace=${str_to_replace//]/\\]}
 		str_to_replace=${str_to_replace//[/\\[}

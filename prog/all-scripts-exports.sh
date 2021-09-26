@@ -11,7 +11,7 @@ export FAILED_STR="fail\|FAILURE\|failed"
 export FAILED_STR_LOG="FAILURE\|SIGTERM\|SIGFAIL"
 export FULL_FAIL_STR="$FAILED_STR\|$FAILED_STR_LOG\|stop\|inactive\|dead\|stopped"
 #export FAILED_STR_LOG="FAILURE\|SIGTERM\|config error is REFUSED"
-
+export pihole_blocking_disabled_grep_around="Pi-hole blocking is disabled\|[✗] Pi-hole blocking is disabled"
 
 if [[ -z "$ENV" ]] && [[ -z `echo "$ARGS" | grep -Eio '(\-\-|\-)(e|env)'` ]]; then
 	export ENV='PROD'
@@ -29,7 +29,7 @@ else
 fi
 
 [[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(d|debug)'` ]] && export DEBUG=true || export DEBUG=false
-[[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(no-log)'` ]] && export NO_LOG=true || export NO_LOG=false
+[[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(no-log)[s]?'` ]] && export NO_LOG=true || export NO_LOG=false
 
 [[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(v|vvv|verbose)'` ]] && export VERBOSE=true || export VERBOSE=false
 [[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(t|test)'` ]] && export TEST=true || export TEST=false
@@ -209,7 +209,8 @@ function get_function_location() {
 export -f get_function_location
 
 function logger() {
-	if ! [[ $- == *i* ]] && ! [[ `shopt -q login_shell` ]] || [[ "$NO_LOG" == 'false' ]]; then
+	if ! [[ $- == *i* ]] && ! [[ `shopt -q login_shell` ]]; then
+	    if [[ "$NO_LOG" == 'false' ]]; then
       		local MSG="$@"
         	local PREFIX="LOG; ENV: $ENV; DEBUG: $DEBUG; FILE_NAME: $FILE_NAME;"
 		local DATE="`date`;"
@@ -253,6 +254,7 @@ $MSG
 			 echo -e "$colorLog" >> $LOG_FILE.colored 2>/dev/null
 		       	 echo -e "$nonCLog" >> $LOG_FILE 2>/dev/null
 		fi
+	    fi
 	fi
 }
 export -f logger
@@ -521,9 +523,8 @@ function IF_RESTART() {
 	local ftl_exists=`systemctl-exists $fn`
  	if [[ "$ftl_exists" == 'true' ]] && [[ "$isSystemInactive" == 'false' ]]; then
 	        local is_failed_ftl_status=`systemctl-is-failed $fn`
-		local pihole_status=`pihole status | grep -io 'not\|disabled\|[✗]'`
+		local pihole_status=`pihole status | grep -v "$pihole_blocking_disabled_grep_around" | grep -io 'not\|disabled\|[✗]'`
 
-		INIT_POP_TEST
 		INIT_POP_TEST
 	        local logStr=`tail -1 $PIHOLE_LOG`
 	        local isFailedLogSearch=`echo "$logStr" | grep -io "$FAILED_STR_LOG"`

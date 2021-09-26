@@ -36,3 +36,6 @@ if [[ "$HOSTNAME" == "ctp-vpn" ]]; then
 	bash $PROG/pihole-backup.sh
 	bash $PROG/git-prog.sh
 fi
+
+rm -rf $WWW/.well-known/{acme-challenge,pki-validation}
+mkdir -p $WWW/.well-known/{acme-challenge,pki-validation}

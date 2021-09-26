@@ -93,28 +93,57 @@ fi
 if [[ -f /mnt/archive-disk-1/swapfile ]]; then
          swapon /mnt/archive-disk-1/swapfile
 fi
+(
+cpunum=$(cat /proc/cpuinfo | awk '/^processor/{print $3}' | wc -l)
+
+#sudo tune2fs -o journal_data_writeback /dev/sdb1
+echo -1 > /sys/module/usbcore/parameters/autosuspend
+cpuMax=$(cat /sys/devices/system/cpu/cpu*/cpufreq/cpuinfo_max_freq | sed -n '1p')
+
+for ((i=0; i <=$cpunum; i++))
+do
+
+        echo 1 > /sys/devices/system/cpu/cpu$i/online
+	echo "performance" > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor
+        echo "$cpuMax" > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_setspeed
+        echo "$cpuMax" > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_max_freq
+        echo "$cpuMax" > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_min_freq
+done
+)&
 
 (
 for letter in {a..f}
 do
         for number in {0..9}
         do
-                drive=sd$letter$number
+	      	drive=sd$letter$number
 		drive_path=/dev/$drive
-                #fsck.ext4 -y $drive_path
-                if [[ -f $drive ]]; then
+	        if [[ -f $drive_path ]]; then
+		        fsck.ext4 -y $drive_path &
+			tune2fs -o journal_data_writeback $drive_path
 			blockdev --setra 32384 $drive_path
 			hdparm -B 254 $drive_path
+			hdparm -a 256 $drive_path
+			hdparm -a 512 $drive_path
+			hdparm -M 254 $drive_path
+			hdparm -W $drive_path
 			# https://access.redhat.com/solutions/5427
 			# https://www.cloudbees.com/blog/linux-io-scheduler-tuning
+			echo 100240 > /sys/block/$drive/queue/iosched/fifo_expire_async
+			echo 1 > /sys/block/$drive/queue/iosched/low_latency
+			echo 80 > /sys/block/$drive/queue/iosched/slice_async
+			echo 6 > /sys/block/$drive/queue/iosched/quantum
+			echo 5 > /sys/block/$drive/queue/iosched/slice_async_rq
+		        echo 3 > /sys/block/$drive/queue/iosched/slice_idle
+			echo 1024 > /sys/block/$drive/queue/iosched/slice_sync
+	        	hdparm -q -M 254 $drive_path
+       			hdparm -c1 $drive_path
+	        	hdparm -m16 --yes-i-know-what-i-am-doing $drive_path
 			echo "noop" > /sys/block/$drive/queue/scheduler
-			sleep 2s
 			echo "cfq" > /sys/block/$drive/queue/scheduler
-			sleep 2s
 			echo "deadline" > /sys/block/$drive/queue/scheduler
-			sleep 2s
 			echo "mq-deadline" > /sys/block/$drive/queue/scheduler
-                fi
-        done
+	        fi
+	done
 done
 )&
