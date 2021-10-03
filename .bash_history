@@ -1,106 +1,3 @@
-htop
-sudo nano /home/ubuntuserver/Programs/start-config.sh 
-htop
-ls
-ls /
-sudo rm -rf /swapfile1
-ls
-curl -s https://gist.githubusercontent.com/charlieporth1/cd255cf30fa7a414b59bddbce2ee8ae6/raw/32a6f0e5fce8cc3941ea13e7d5217948c3a273de/AdjustableCreateSwapFile | bash -s -- 8192 /mnt/HDD/swapfile1
-curl -s https://gist.githubusercontent.com/charlieporth1/cd255cf30fa7a414b59bddbce2ee8ae6/raw/46fe519d697aa78c2d909b25e7060a10f0f2ca69/AdjustableCreateSwapFile | bash -s -- 8192 /mnt/HDD/swapfile1
-df -h
-ls
-htop
-sudo bash /home/ubuntuserver/Programs/pihole-db-sql-changes.sh 
-    echo "PRAGMA default_cache_size=25000;"  | sudo sqlite3 $DB_FILE
-sudo nano /home/ubuntuserver/Programs/pihole-
-    echo "PRAGMA default_cache_size=25000;"  | sudo sqlite3 $DB_FILE
-    echo "PRAGMA default_cache_size;"  | sudo sqlite3 $DB_FILE
-echo "PRAGMA cache_size;"  | sudo sqlite3 $DB_FILE
-        echo "PRAGMA default_cache_size=25000;"  | sudo sqlite3 $DB_FILE
-        echo "PRAGMA cache_size=25000;"  | sudo sqlite3 $DB_FILE
-echo "PRAGMA cache_size;"  | sudo sqlite3 $DB_FILE
-        echo "PRAGMA cache_size=-25000;"  | sudo sqlite3 $DB_FILE
-echo "PRAGMA cache_size;"  | sudo sqlite3 $DB_FILE
-        echo "PRAGMA cache_size=-25000;"  | sudo sqlite3 $DB_FILE
-echo "PRAGMA cache_size;"  | sudo sqlite3 $DB_FILE
-        echo "PRAGMA default_cache_size=-512;"  | sudo sqlite3 $DB_FILE
-echo "PRAGMA cache_size;"  | sudo sqlite3 $DB_FILE
-        echo "PRAGMA cache_size=-512;"  | sudo sqlite3 $DB_FILE
-echo "PRAGMA cache_size;"  | sudo sqlite3 $DB_FILE
-htop
-echo "PRAGMA cache_size;"  | sudo sqlite3 $DB_FILE
-| sudo sqlite3 $DB_FILE  "PRAGMA cache_size=-512;" 
-| sudo sqlite3  "PRAGMA cache_size=-512;"  $DB_FILE 
-| sudo sqlite3  $DB_FILE   "PRAGMA cache_size=-512;" 
-| sudo sqlite3  $DB_FILE   "PRAGMA cache_size=512;" 
-| sudo sqlite3  $DB_FILE   "PRAGMA cache_size=-512;" 
-sudo sqlite3   "PRAGMA cache_size=-512;" $DB_FILE
-| sudo sqlite3  $DB_FILE   "PRAGMA cache_size=-512;" 
-sudo sqlite3  $DB_FILE   "PRAGMA cache_size=-512;" 
-sudo sqlite3   "PRAGMA cache_size=-512;"  $DB_FILE 
-sudo sqlite3"PRAGMA cache_size=-512;" 
-sudo sqlite3 "PRAGMA cache_size=-512;"  $DB
-echo $DB_FILE
-DB_FILE=$HOLE/gravity.db
-sudo sqlite3 "PRAGMA cache_size=-512;"  $DB_FILE 
-sudo sqlite3   $DB_FILE  "PRAGMA cache_size=-512;"
-sudo sqlite3   "PRAGMA cache_size" $DB_FILE
-sudo sqlite3   $DB_FILE  "PRAGMA cache_size"
-sudo sqlite3   $DB_FILE  "PRAGMA cache_size=7500;"
-sudo sqlite3   "PRAGMA cache_size" $DB_FILE
-sudo sqlite3   $DB_FILE  "PRAGMA cache_size"
-sudo sqlite3   $DB_FILE   "PRAGMA default_cache_size=7500;"
-sudo sqlite3   $DB_FILE  "PRAGMA cache_size"
-cd Pihole-Slave-Install/
-sudo bash /home/ubuntuserver/Programs/pihole-db-sql-changes.sh 
-echo "PRAGMA default_cache_size;"  | sudo sqlite3 $DB_FILE
-echo "PRAGMA cache_size;"  | sudo sqlite3 $DB_FILE
-echo  | sudo sqlite3 $DB_FILE "PRAGMA cache_size;" 
-sudo sqlite3 $DB_FILE "PRAGMA cache_size;" 
-DB_FILE=$HOLE/gravity.db
-sudo sqlite3 $DB_FILE "PRAGMA cache_size;" 
-DB_FILE=$HOLE/gravity.db
-sudo sqlite3 $DB_FILE "PRAGMA cache_size;" 
-sudo nano /home/ubuntuserver/Programs/Hourly.sh
- bash $PROG/pihole-lighttpd-changes.sh
-sudo  bash $PROG/pihole-lighttpd-changes.sh
-sudo nano /home/ubuntuserver/Programs/Hourly.sh
-sudo bash $PROG/pihole-db-sql-changes.sh
-sudo nano /home/ubuntuserver/Programs/Hourly.sh
-    echo "PRAGMA default_cache_size=25000;"  | sudo sqlite3 $DB_FILE
-        sudo sqlite3 $DB_FILE "PRAGMA default_cache_size=25000;"
-sudo sqlite3 $DB_FILE "PRAGMA cache_size;" 
-        echo "PRAGMA default_cache_size=25000;"  | sudo sqlite3 $DB_FILE
-        sudo sqlite3 $DB_FILE "PRAGMA default_cache_size=25000;"
-echo "PRAGMA default_cache_size;"  | sudo sqlite3 $DB_FILE
-echo "PRAGMA cache_size;"  | sudo sqlite3 $DB_FILE
-sudo sqlite3 $DB_FILE "PRAGMA default_cache_size;"
-sudo sqlite3 $DB_FILE "PRAGMA cache_size;"
-sudo git stash && sudo git pull
-htop
-sudo crontab -e
-htop
-echo "PRAGMA default_cache_size;"  | sudo sqlite3 $DB_FILE
-echo "PRAGMA cache_size;"  | sudo sqlite3 $DB_FILE
-sudo sqlite3 $DB_FILE "PRAGMA default_cache_size;"
-DB_FILE=$HOLE/gravity.db
-echo "PRAGMA default_cache_size;"  | sudo sqlite3 $DB_FILE
-echo "PRAGMA cache_size;"  | sudo sqlite3 $DB_FILE
-sudo sqlite3 $DB_FILE "PRAGMA default_cache_size;"
-sudo sqlite3 $DB_FILE "PRAGMA cache_size;"
-source /home/ubuntuserver/Programs/all-scripts-exports.sh
-system_information 
-if [[ $MEM_COUNT -ge 4096 ]]; then         echo "PRAGMA default_cache_size=50000;"  | sudo sqlite3 $DB_FILE;         sudo sqlite3 $DB_FILE "PRAGMA default_cache_size=50000;"; elif [[ $MEM_COUNT -ge 2048 ]]; then         echo "PRAGMA default_cache_size=25000;"  | sudo sqlite3 $DB_FILE;         sudo sqlite3 $DB_FILE "PRAGMA default_cache_size=25000;"; else         echo "PRAGMA default_cache_size=7500;"  | sudo sqlite3 $DB_FILE;         sudo sqlite3 $DB_FILE "PRAGMA default_cache_size=7500;"; fi
-sudo sqlite3 $DB_FILE "PRAGMA cache_size;"
-cd Pihole-Slave-Install/
-sudo git stash && sudo git pull && sudo ./setup/cron.sh 
-sudo sqlite3 $DB_FILE "PRAGMA cache_size;"
-htop
-sudo crontab -e
-htop
-uname -r
-sudo nano /etc/fstab
-ls
 sudo swapoff /swapfile
 curl -s https://gist.githubusercontent.com/charlieporth1/cd255cf30fa7a414b59bddbce2ee8ae6/raw/46fe519d697aa78c2d909b25e7060a10f0f2ca69/AdjustableCreateSwapFile | bash -s -- 8192 /swapfile
 cd Pihole-Slave-Install/
@@ -498,3 +395,112 @@ aws  ec2 help
 aws help
 aws  --debug ec2 reboot-instances --instance-ids i-026c86754b14d7e09
 sudo nano /home/ubuntuserver/Programs/Daily.sh
+cd Pihole-Slave-Install/
+sudo bash /home/ubuntuserver/Programs/copy_certs.sh 
+sudo systemctl restart ctp-dns
+pihole -t
+sudo git stash && sudo git pull
+systemctl status ctp-dns
+systemctl status nginx-dns-rfc.service 
+systemctl status ctp-dns
+pihole -t
+cd Pihole-Slave-Install/
+sudo git stash && sudo git pull
+ping 192.168.44.96
+ping 192.168.1.4
+ping -a 192.168.44.247
+pihole - wwww.opm.gov
+pihole -w wwww.opm.gov
+pihole -w www.opm.gov
+pihole -t
+systmctl status ctp-dns
+systemctl status ctp-dns
+ctp-dns --config-test-human
+cd  Pihole-Slave-Install/
+sudo git stash && sudo git pull
+ctp-dns --config-test-human
+chmod 777  /usr/local/bin/ctp-dns
+sudo chmod 777  /usr/local/bin/ctp-dns
+ctp-dns --config-test-human
+systemctl status ctp-dns
+dig @gcp.ctptech.de
+dig @gcp.ctptech.dev
+ping gcp.ctptech.dev
+dig @gcp.ctptech.dev www.google.com
+pihole -t
+dig @ctp-vpn.local 11khsn-dnsotls-ds.metric.gstatic.com
+dig @gcp.ctptech.dev 11khsn-dnsotls-ds.metric.gstatic.com
+pihole -t
+ctp-dns -t
+echo "" | sudo tee $ROUTE/slave-listeners{,-udp-retry-resolvers}.toml
+ctp-dns -t
+ctp-dns restartdns
+sudo nano /home/ubuntuserver/Programs/route-dns/standard-resolvers.toml 
+sudo ctp-dns -u
+sudo ctp-dns --update
+ctp-dns --update
+sudo su
+dig -p 5053 @localhost www.google.com +tcp
+dig -p 5053 @localhost www.google.com
+systemctl status ctp-dns
+systemctl status unbound
+ls $LOG/unbound.log
+sudo nano /etc/apparmor.d/usr.sbin.unbound
+systemctl status ctp-dns
+apparmor_parser apply
+sudo apparmor_parser apply
+sudo apparmor_parser 
+dig -p 5053 @localhost www.google.com
+dig -p 5053 @127.0.0.1 www.google.com
+ls $UBCONF
+ls $UNBCONF
+dig -p 5053 @localhost www.google.com
+sudo lsof -i :5053
+dig -p 5053 @127.0.0.1 www.google.com
+sudo lsof -i :5053
+dig -p 5053 @localhost www.google.com
+cd Pihole-Slave-Install/
+sudo git stash && sudo git pull
+htop
+sudo nano /etc/pihole/setupVars.conf
+ifconfg
+ifconfig
+sudo nano /etc/pihole/setupVars.conf
+pihole restartdns
+pihole -t
+pihole -w ipv6-test.com
+pihole -q whatismyipaddress.com
+pihole --regex -d    ([a-z0-9.]{0,4})(.)ad
+   ([a-z0-9.]{0,4})(.)ad([a-z0-9.]{0,4})[0-9]?
+   [a-z0-9](.)?ad[a-z0-9.][0-9]?
+  ad([a-z0-9.]{0,4})
+pihole --regex -d "google" "-" "\-" "up" "\.co$" "\.com$" "\.io$" "\.go$"  "cdn[a-z,1-9]*\.[a-z,1-9]*\.(com|de|net|org|eu)$"  "\#" "\.mn$" "\.ws" "\.nm$"  "\.ga$" ".ak$" "\.ka$" "\.us$" "\.ma$" "\.tx$" "\.ca$" "\.ar$" "\.mi$" "\.cu$" "\.de$" "\.to$" "\.la$"  "\.pr$" "\.nz$" "\.cd$" "\.fl$" "\.dc$" "\.jp$" "\.uk$" "\.nh" "\.vm$" "\.al$" "\.bk$" "\.fr$" "\.ma" "\.nv$"  "\.gr$" "\.or$" "\.wa$"  "\.nb$" "\.hi$" "\.hw$" "\.sw$" "\.kr$" "\.mk$"  "\.sh$" "\.bh$" "\.mx$" "\.us$" "\.hr$" "\.fm$" "\.id$" "\.kw$" "net$" "gov$" "com$" "org$" "\.cc$" "^static\." "gov$" "mil$" "(^(((([-,_,a-z,1-9]*)\.)*)partner(s?)(\w?((net(z(werk)))*|(prog(gram(m)))*|(link(s))*))([-,_,a-z,1-9]*)\.)((([-,_,a-z,1-9]*)\.)*)(([a-z]*))$)"  "(^(((([-,_,a-z,1-9]*)\.)*)ad([-,_,a-z,1-9]*)\.)((([-,_,a-z,1-9]*)\.)*)(([a-z]*))$)" "\.it$" "\.in$" "\.sh$" "^(.+[_.-])?amp(project)?\." "\.nato$" "^static\." "suggestqueries.google.com" "^shop((ping)*)\." "\.gov$" "\.me$" 'cdn[a-z,1-9]*\.[a-z,1-9]*\.(com|de|net|org|eu)$' '\.gl$' '\.cz$' "(^|\.)youtubei\.googleapis\.com$"  "(^|.)geo[-.]?" "^(ad)[a-z,1-9]*\." "media-amazon\.com" "^[a-z]{7,15}$" "\.mil$" '\.tv$' '\.tw$' '\.py$' '\.qa$' '\.ss$' '\.mu$' '\.ms$' '\.nc$' '\.mo$' '\.mm$' '\.cat$' '\.na$' '\.pw$' '\.ps$' '\.pt$' '\.rw$' '\.kn$' '\.kp$' '\.it$' '^static\.' '(((\w*)\.)*((\w+[^you](?=tube))|\w*[^you]tube([-,_,a-z,1-9]*))\.((([-,_,a-z,1-9]*)\.)*)(([a-z]*)))' '(.+|\.|)doubleclick\.net$' '(^|\.)samsungelectronics\.com$' '(^|\.)samsungcloudsolution\.net$' '(^|\.)samsungcloudsolution\.com$' '(^|\.)samsungcloudcdn\.com$' '(\.|^)()\.com' '\.' '^\.$' '$' '^[a-z].([0-9]+|ad[^d]|click|coun(t|ter)|tra[ck](k|ker|king))' '(^|.)((yandex|qq|tencent).(net|com|org|dev|io|sh|cn|ru)|qq|local|localhost|query|sl|(^.$))' '([a-z0-9.]{0,4})(.)ad' '([a-z0-9.]{0,4})(.)ad([a-z0-9.]{0,4})[0-9]?' '[a-z0-9](.)?ad[a-z0-9.][0-9]?' 'ad([a-z0-9.]{0,4})'
+pihole -q whatismyipaddress.com
+ip -6 addr
+ip -6 route get <probe_addr>/128 >/dev/null 2>&1 
+ip -6 route get 2001:4860:4860:0:0:0:0:8888/128 >/dev/null 2>&1 
+ip -6 route get 2001:4860:4860:0:0:0:0:8888/128 
+sudo sudo ip -6 route get 2001:4860:4860:0:0:0:0:8888/128 
+sudo ip -6 route get 2001:4860:4860:0:0:0:0:8888/128 
+ifconfig
+ping6 2600:1f18:12f6:4eee:e116:f1be:7914:a99f
+pihole -t
+ sudo bash $prog/copy_certs.sh 
+df -h
+dpkg-query --show --showformat='${Installed-Size}\t${Package}\n' | sort -rh | head -25 | awk '{print $1/1024, $2}'
+sudo apt autoremove
+sudo apt autoclean
+cd Pihole-Slave-Install/
+sudo git stash && sudo git pull
+sudo ./copy_config.sh 
+hc-log
+sudo crontab -e
+ bash $PROG/server-online-check.sh gcp.ctptech.dev 
+ssh gcp.ctptech.dev
+nano /home/ubuntuserver/Programs/server-online-check.sh 
+sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
+cd Pihole-Slave-Install/
+sudo git stash && sudo git pull
+ssh 192.168.44.247
+ssh pi@192.168.44.247
+sudo git stash && sudo git pull

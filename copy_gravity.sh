@@ -33,7 +33,7 @@ function copy_gravity() {
 	local byte_size=$(( 1024 * 1024 * 1024 ))
 	local min_gravity_size=$(( $byte_size * 16 ))
 
-	if [[ `remote_size_test` -ge $min_gravity_size ]]; then
+	if [[ `remote_size_test` -le $min_gravity_size ]]; then
 		sync
 		sudo rclone copy -vvv remote:SERVER_DATA/$GRAVITY /tmp/ \
                         --copy-links \

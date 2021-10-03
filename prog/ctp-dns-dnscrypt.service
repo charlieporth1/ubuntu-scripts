@@ -1,0 +1,103 @@
+[Unit]
+Description=CTP DNS Service 
+Wants=network.target network-online.target 
+After=network.target pihole-FTL.service nginx.service network-online.target
+Requires=network.target network-online.target
+
+
+[Service]
+EnvironmentFile=/etc/environment
+Environment=LOG_FILE=/var/log/ctp-dns-dnscrypt/default.log
+Environment=LOG_FILES={default,access,error}.log
+Environment=TMP_DIR=/var/tmp/ctp-dns-dnscrypt
+Environment=LOG_DIR=/var/log/ctp-dns-dnscrypt
+Environment=PID_FILE=/run/ctp-dns-dnscrypt.pid
+Environment=LOCK_FILE=/tmp/health-checks.stop.lock
+Environment=SSL_DIR=/etc/letsencrypt/live/ctptech.dev
+Environment=DNSCRYPT_DIR=/etc/letsencrypt/live/ctptech.dev/dnscrypt
+Environment=GO111MODULE=on
+
+# Directive        ulimit equivalent     Unit
+# LimitCPU=        ulimit -t             Seconds      
+# LimitFSIZE=      ulimit -f             Bytes
+# LimitDATA=       ulimit -d             Bytes
+# LimitSTACK=      ulimit -s             Bytes
+# LimitCORE=       ulimit -c             Bytes
+# LimitRSS=        ulimit -m             Bytes
+# LimitNOFILE=     ulimit -n             Number of File Descriptors 
+# LimitAS=         ulimit -v             Bytes
+# LimitNPROC=      ulimit -u             Number of Processes 
+# LimitMEMLOCK=    ulimit -l             Bytes
+# LimitLOCKS=      ulimit -x             Number of Locks 
+# LimitSIGPENDING= ulimit -i             Number of Queued Signals 
+# LimitMSGQUEUE=   ulimit -q             Bytes
+# LimitNICE=       ulimit -e             Nice Level 
+# LimitRTPRIO=     ulimit -r             Realtime Priority  
+# LimitRTTIME=     No equivalent
+
+
+# 2gb in byte 2147483648 
+#LimitCPU=nfinity
+#LimitCORE=infinity
+#LimitRSS=infinity
+#LimitFSIZE=2147483648 
+#LimitDATA=2147483648 
+#LimitNOFILE=32768
+LimitSTACK=2147483648
+LimitNPROC=327680
+LimitNOFILE=65555360
+LimitMSGQUEUE=65555360
+
+CacheDirectory=ctp-dns-dnscrypt
+LogsDirectory=ctp-dns-dnscrypt
+#RuntimeDirectory=
+
+CPUQuota=15%
+
+Nice=-10
+
+Type=exec
+#Type=forking
+##Type=oneshot
+TimeoutSec=5min
+IgnoreSIGPIPE=no
+KillMode=process
+GuessMainPID=no
+RemainAfterExit=yes
+SuccessExitStatus=203 126
+
+PIDFile=/run/ctp-dns-dnscrypt.pid
+
+AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_NET_ADMIN=+eip CAP_NET_RAW CAP_SETFCAP
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE CAP_NET_ADMIN=+eip CAP_NET_RAW CAP_SETFCAP
+
+User=root
+Group=root
+
+ExecStartPre=/bin/mkdir -p ${LOGS_DIRECTORY}/ ${CACHE_DIRECTORY}/ ${TMP_DIR}/
+ExecStartPre=/bin/bash -c "/usr/bin/touch ${PID_FILE} \
+	${LOGS_DIRECTORY}/${LOG_FILES}"
+ExecStartPre=/sbin/setcap cap_net_bind_service,cap_net_raw,cap_setfcap,cap_net_admin=+eip /usr/bin/encrypted-dns
+#ExecStart=/bin/bash -c "/usr/bin/encrypted-dns --config ${CTP_DNS_DNSCRYPT}/encrypted-dns.toml   --import-from-dnscrypt-wrapper ${CTP_DNS_DNSCRYPT}/secret.key "
+ExecStart=/usr/bin/encrypted-dns --config ${CTP_DNS_DNSCRYPT}/encrypted-dns.toml   --import-from-dnscrypt-wrapper ${CTP_DNS_DNSCRYPT}/secret.key
+
+ExecStop=/bin/bash -c "/bin/kill -USR1 ${MAINPID}; exit 0"
+ExecReload=/bin/kill -USR1 ${MAINPID}
+
+Restart=always
+RestartSec=5s
+
+#StandardInput=tty
+StandardOutput=append:/var/log/ctp-dns-dnscrypt/access.log
+StandardError=append:/var/log/ctp-dns-dnscrypt/error.log
+
+TTYPath=/dev/tty0
+TTYReset=yes
+TTYVHangup=yes
+
+TimeoutStartSec=2m
+TimeoutStopSec=30s 
+#PermissionsStartOnly=true
+
+[Install]
+WantedBy=multi-user.target

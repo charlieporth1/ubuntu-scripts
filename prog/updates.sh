@@ -29,6 +29,7 @@ gcloud components update
 python2 -m pip install --upgrade pip
 python3 -m pip install --upgrade pip
 
+sudo snap refresh
 sudo snap install --classic go
 sudo snap refresh --classic go
 
@@ -36,6 +37,7 @@ GO111MODULE=on
 go get -v -u github.com/AdguardTeam/dnsproxy
 go get -v -u github.com/ameshkov/dnscrypt
 go get -u -v github.com/folbricht/routedns/cmd/routedns
+go get -u -v github.com/DNSCrypt/dnscrypt-proxy/dnscrypt-proxy
 sudo /snap/bin/go get -v -u github.com/folbricht/routedns/cmd/routedns
 go get -u -v github.com/natesales/q
 VP=q_0.4.1_linux_amd64.deb
@@ -44,6 +46,8 @@ dpkg -i ~/$VP
 #bfg_release=`curl --silent "https://api.github.com/repos/rtyley/bfg-repo-cleaner/tags" | jq -r '.[0].name'`
 #wget -O /tmp/bfg.jar https://repo1.maven.org/maven2/com/madgag/bfg/$bfg_release/bfg-$bfg_release.jar
 wget -O /tmp/dnscrypt.tar.gz  https://github.com/ameshkov/dnscrypt/releases/latest/download/dnscrypt-linux-amd64-` curl --silent "https://api.github.com/repos/ameshkov/dnscrypt/tags" | jq -r '.[0].name'`.tar.gz
+wget https://github.com/DNSCrypt/encrypted-dns-server/releases/download/0.9.1/encrypted-dns_0.9.1_amd64.deb
+sudo dpkg -i encrypted-dns_0.9.1_amd64.deb 
 tar -xvf /tmp/dnscrypt.tar.gz -C /tmp
 cp -rf /tmp/linux-amd64/dnscrypt /usr/local/bin
 curl -sSL 'https://github.com/ipinfo/cli/releases/download/ipinfo-1.1.0/deb.sh' | bash

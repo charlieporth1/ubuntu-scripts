@@ -1,6 +1,6 @@
 #!/bin/bash
-echo "Date last open `date`"
 source $PROG/all-scripts-exports.sh
+echo "Date last open `date` $scriptName"
 source ctp-dns.sh --source
 CONCURRENT
 WAIT_TIME=5.5s
@@ -16,82 +16,8 @@ if ! [[ -f $LOG_FILE ]]; then
         touch $LOG_FILE
 fi
 
-writeLog() {
-	local fn="$1"
- 	local fcount="${2:-0}"
-	local SERVICE="${3:-N_A}"
-	local data="$fn,$fcount,$SERVICE,[`date`]"
-	echo $data | sudo tee -a $LOG_FILE
-}
-
-getFailCount() {
-        local fn="$1"
-        local count=`tail -25 $LOG_FILE | grep "$fn" | tail -1 | awk -F , '{print $2}'`
-        echo "${count:-0}"
-}
-DEFAULT_COUNT_ACTION() {
-        local FN="$1"
-        local COUNT="${2:-0}"
-        local SERVICE="$3"
-
-        if [[ $COUNT -ge 4 ]] && [[ $COUNT -lt $max ]]; then
-                echo "SENDING EMAIL COUNT IS GREATE THAN OR EQUAL TO"
-		bash $PROG/create_logging.sh
-		systemctl daemon-reload
-		systemctl restart $fn
-		systemctl is-active --quiet $fn && "echo $fn Service is running now" || echo "${error_str}"
-		record_action "$fn"
-        elif [[ $COUNT -ge $max ]]; then
-                echo "Reset failure count $COUNT"
-                bash $PROG/alert_user.sh "Failure Alert" "$FN Failed $COUNT times on $HOSTNAME; Service ${SERVICE} $HOSTNAME $COUNT"
-                if [[ -n "$SERVICE" ]]; then
-			systemctl reset-failed $SERVICE
-			restart_service "$SERVICE"
-                fi
-                writeLog "$FN" 0 "$SERVICE"
-        else
-		record_action "$fn"
-                echo "Not sig count $SERVICE"
-        fi
-
-}
-
-COUNT_ACTION() {
-        local FN="$1"
-        local COUNT="${2:-0}"
-        local SERVICE="$3"
-
-        echo "$COUNT"
-	case "$FN" in
-	"$LOCK_FILE" )
-		if [[ $COUNT -gt $(( $max + 3 )) ]]; then
-			echo "Removing $LOCK_FILE file because $COUNT -gt $max sleeping 30s"
-			echo "Removing $LOCK_FILE file because $COUNT -gt $max"
-        	        bash $PROG/alert_user.sh "Failure Alert" "$FN Failed $COUNT times on $HOSTNAME; Service ${SERVICE} $HOSTNAME $COUNT"
-			sudo rm -rf $LOCK_FILE
-        	        writeLog "$FN" 0 "$SERVICE"
-			return 1
-		else
-			record_action "$fn"
-		fi
-	;;
-	"RESTART_PIHOLE" )
-		if [[ $COUNT -gt $(( $max * 2 )) ]]; then
-			pihole enable
-        	        writeLog "$FN" 0 "$SERVICE"
-		else
-			record_action "$FN" "$SERVICE"
-		fi
-	;;
-	* )
-		DEFAULT_COUNT_ACTION "$FN" "$COUNT" "$SERVICE"
-	;;
-	esac
-}
-
 function RESTART_PIHOLE() {
         echo "RESTART_PIHOLE"
-	double_block_pihole_err_fix
 	PIHOLE_RESTART_PRE
         pihole restartdns
 	sleep 5s
@@ -109,6 +35,88 @@ double_block_pihole_err_fix() {
 	fi
 }
 
+
+writeLog() {
+	local fn="$1"
+ 	local fcount="${2:-0}"
+	local SERVICE="${3:-N_A}"
+	local data="$fn,$fcount,$SERVICE,[`date`]"
+	echo "$data" | sudo tee -a $LOG_FILE
+}
+
+getFailCount() {
+        local fn="$1"
+        local count=`tail -25 $LOG_FILE | grep "$fn" | tail -1 | awk -F , '{print $2}'`
+        echo "${count:-0}"
+}
+
+DEFAULT_COUNT_ACTION() {
+        local FN="$1"
+        local COUNT="${2:-0}"
+        local SERVICE="$3"
+        local FN_BIN="$4"
+
+        if [[ $COUNT -ge 4 ]] && [[ $COUNT -lt $max ]]; then
+                echo "SENDING EMAIL COUNT IS GREATE THAN OR EQUAL TO"
+		bash $PROG/create_logging.sh
+		systemctl daemon-reload
+		systemctl restart $fn
+		systemctl is-active --quiet $fn && "echo $fn Service is running now" || echo "${error_str}"
+        elif [[ $COUNT -ge $max ]]; then
+                echo "Reset failure count $COUNT"
+                bash $PROG/alert_user.sh "Failure Alert" "$FN Failed $COUNT times on $HOSTNAME; Service ${SERVICE} $HOSTNAME $COUNT"
+                if [[ -n "$SERVICE" ]]; then
+			systemctl reset-failed $SERVICE
+			restart_service "$SERVICE" "$FN_BIN"
+                fi
+                writeLog "$FN" 0 "$SERVICE" "$FN_BIN"
+        else
+                echo "Not sig count $SERVICE $FN_BIN $FN"
+        fi
+
+}
+
+COUNT_ACTION() {
+        local FN="$1"
+        local COUNT="${2:-0}"
+        local SERVICE="$3"
+        local FN_BIN="$4"
+
+        echo "$COUNT"
+	case "$FN" in
+	"$LOCK_FILE" )
+		if [[ $COUNT -gt $(( $max + 3 )) ]]; then
+			echo "Removing $LOCK_FILE file because $COUNT -gt $max sleeping 30s"
+			echo "Removing $LOCK_FILE file because $COUNT -gt $max"
+        	        bash $PROG/alert_user.sh "Failure Alert" "$FN Failed $COUNT times on $HOSTNAME; Service ${SERVICE} $HOSTNAME $COUNT"
+			sudo rm -rf $LOCK_FILE
+        	        writeLog "$FN" 0 "$SERVICE"
+			return 1
+		fi
+	;;
+	"RESTART_PIHOLE" | "PIHOLE_STATUS" )
+		if [[ $COUNT -gt $(( $max + 3 )) ]]; then
+			pihole enable
+        	        writeLog "$FN" 0 "$SERVICE"
+		elif [[ $COUNT -gt $max ]] && [[ $COUNT -le $(( $max + 2 )) ]]; then
+			double_block_pihole_err_fix
+		else
+			RESTART_PIHOLE
+		fi
+	"nginx" | "nginx.service" )
+		certbot-ocsp-fetcher --output-dir=/var/cache/nginx/
+		restart_service "$FN" "$FN_BIN"
+	;;
+	"ctp-dns" | "ctp-dns.service" )
+		if ! [[ -f $LOCK_FILE ]]; then
+			restart_service "$FN" "$FN_BIN"
+		fi
+	;;
+	* )
+		DEFAULT_COUNT_ACTION "$FN" "$COUNT" "$SERVICE" "$FN_BIN"
+	;;
+	esac
+}
 
 restart_service() {
 	local fn="${1}"
@@ -131,8 +139,9 @@ restart_service() {
 
 record_action() {
 	local fn="$1"
+	local fn_bin="${2}"
 	writeLog $fn $(( 1 + $( getFailCount $fn ) )) $fn
-	COUNT_ACTION $fn $( getFailCount $fn ) $fn
+	COUNT_ACTION "$fn" "$( getFailCount $fn )" "$fn" "$fn_bin"
 	sleep $WAIT_TIME
 }
 
@@ -140,24 +149,13 @@ health_check_action() {
 	local fn="${1}"
 	local fn_bin="${2}"
 	local case_bin="${fn_bin:=$fn}"
-
 	case "$case_bin" in
 		"RESTART_PIHOLE" | "PIHOLE_STATUS" )
-			RESTART_PIHOLE
 			local fn="$fn_bin"
-			record_action "$fn"
-		;;
-		"nginx" | "nginx.service" )
-			certbot-ocsp-fetcher --output-dir=/var/cache/nginx/
-			restart_service "$fn" "$fn_bin"
-		;;
-		"ctp-dns" | "ctp-dns.service" )
-			if ! [[ -f $LOCK_FILE ]]; then
-				restart_service "$fn" "$fn_bin"
-			fi
+			record_action "$fn" "$fn_bin"
 		;;
 		* )
-			restart_service "$fn" "$fn_bin"
+			record_action "$fn" "$fn_bin"
 		;;
 	esac
 
@@ -230,13 +228,18 @@ fn='pihole-FTL.service'
 if [[ "$IS_MASTER" == 'true' ]] || [[ `systemctl-exists $fn` = 'true' ]]; then
 	if [[ `systemctl-inbetween-status $fn` == 'false' ]]; then
 
-		pihole_status_web=`pihole status web`
 		pihole_status=`pihole status | grep -iv "$pihole_blocking_disabled_grep_around" | grep -io 'not\|[✗]'`
+		pihole_status_enable_test=`pihole status | grep -i "$pihole_blocking_disabled_grep_around"`
 		ftl_status=`pidof pihole-FTL`
+
+		pihole_status_web=`pihole status web`
 		wg=`ss -lun 'sport = :54571'`
 
 		if [[ -n "$pihole_status" ]]; then
 			health_check_action "$fn" "PIHOLE_STATUS"
+		elif [[ -n "$pihole_status_enable_test" ]]; then
+			health_check_action "$fn" "pihole_status_enable_test"
+			double_block_pihole_err_fix
 		elif [[ -z "$ftl_status" ]]; then
 			health_check_action "$fn" "FTL_STATUS"
 		fi
@@ -264,9 +267,12 @@ service_port_health_check "$fn" ":784" "" "doq_port"
 service_port_health_check "$fn" ":1784" "" "doq_port_1"
 service_port_health_check "$fn" ":8853" "" "doq_port_2"
 
+fn="ctp-dns-dnscrypt.service"
+service_port_health_check "$fn" ":7443" ""
+
 fn="ctp-yt-ttl-dns.service"
-service_port_health_check "$fn" "192.168.40.7:53" "" "IP-1"
-service_port_health_check "$fn" "192.168.40.8:53" "" "IP-2"
+service_port_health_check "$fn" "192.168.40.7:5053" "" "IP-1"
+service_port_health_check "$fn" "192.168.40.8:5053" "" "IP-2"
 
 fn="nginx-dns-rfc.service"
 service_port_health_check "$fn" "127.0.0.1:11443"

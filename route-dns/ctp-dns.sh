@@ -16,7 +16,7 @@ export CTP_DNS_LOCK_FILE=/tmp/health-checks.stop.lock
 export FLUSH_CACHE_QUERY_SUFEX='dns.ctptech.dev.flush.cache.'
 KDIG_OPTIONS="+tls-ca +tls-host=dns.ctptech.dev +timeout=4 +dnssec +edns"
 
-str_match=".*matched\sblocklist.* .*matched\sallowlist.* .*ctp-dns-time-router-yt-ttl-gcp.* .*ctp-dns-time-router-yt-gcp.* .*ctp-doh-local-nginx.* .*sending\stcp\sprobe.* .*tcp\sprobe\sfinished.* .*tcp\sprobe\sfailed.* .*cache-hit.*"
+str_match=".*matched\sblocklist.* .*matched\sallowlist.* .*ctp-dns-time-router-yt-ttl-gcp.* .*ctp-dns-time-router-yt-gcp.* .*ctp-doh-local-nginx.* .*sending\stcp\sprobe.* .*tcp\sprobe\sfinished.* .*tcp\sprobe\sfailed.* .*cache-hit.* .*resolver\sreturned\sfailure.*"
 #.*ctp-google-video-master-ttl-modifer-dnsmasq-pass-thru-ip-1-udp.*
 #.*ctp-google-video-master-ttl-modifer-dnsmasq-pass-thru-ip-1-tcp.* .*ctp-dns-yt-google-video-ttl-modifer.* .*ctp-dns-cached-google-video-ttl-cache.*"
 #'.*matched blocklist.*' '.*matched allowlist.*'
@@ -150,6 +150,8 @@ function query_lists() {
 export -f query_lists
 
 function update_route_dns() {
+	mkdir -p $HOME/go/bin/src
+	mkdir -p /root/go/bin/src
 	/snap/bin/go get -u -v github.com/folbricht/routedns/cmd/routedns
 	sudo /snap/bin/go get -v -u github.com/folbricht/routedns/cmd/routedns
 	sudo -u root sudo /snap/bin/go get -v -u github.com/folbricht/routedns/cmd/routedns
@@ -232,8 +234,20 @@ export -f ctp_dns_status
 
 function generate_config() {
 	if [[ `config_test` == 'false' ]]; then
-		[[ -f $PROG/generarte_vulnerability-blacklist.sh ]] && bash $PROG/generarte_vulnerability-blacklist.sh &
-		[[ -f $PROG/dns-route.sh ]] && bash $PROG/dns-route.sh
+		source $PROG/generate_ctp-dns-envs.sh
+
+		local RUN_FILE=$PROG/generarte_vulnerability-blacklist.sh
+		[[ -f $RUN_FILE ]] && $RUN_FILE &
+		local RUN_FILE=$PROG/generate_ctp-dns-groups.sh
+		[[ -f $RUN_FILE ]] && bash $RUN_FILE &
+		local RUN_FILE=$PROG/generate_ctp-dns-well-known-retry-groups.sh
+		[[ -f $RUN_FILE ]] && bash $RUN_FILE &
+		local RUN_FILE=$PROG/generate_ctp-dns-well-known-fail-backup-groups.sh
+		[[ -f $RUN_FILE ]] && bash $RUN_FILE
+		local RUN_FILE=$PROG/generate_ctp-dns-backup-resolvers.sh
+		[[ -f $RUN_FILE ]] && bash $RUN_FILE
+		local RUN_FILE=$PROG/dns-route.sh
+		[[ -f $RUN_FILE ]] && bash $RUN_FILE
 	fi
 	config_test_human &
 }
@@ -241,6 +255,10 @@ export -f generate_config
 
 function rm_lock_file() {
 	[[ -f ${CTP_DNS_LOCK_FILE} ]] && /bin/rm ${CTP_DNS_LOCK_FILE}
+}
+function create_lock_file() {
+	touch ${CTP_DNS_LOCK_FILE}
+	manage_lock_file
 }
 export -f rm_lock_file
 
@@ -308,6 +326,7 @@ helpString="""
    -clc --clear-list-cache
    -cl -f --clear-logs --flush
    -mlf --manage-lock-file
+   -clf --create-lock-file
    -rlf	--rm-lock-file
    --reset-host-configuration
    --restart
@@ -353,6 +372,7 @@ for i in "$@"; do
         *cc | *fc | *fcl | *ccl | --clear-cache?(-local) | --flush-cache?(-local) ) shift ; flush_cache_local;;
         *fca | *cca | --clear-cache?(-all) | --flush-cache?(-all) ) shift ; flush_cache_all;;
         *ml | *mlf | --manage-lock?(-file) ) shift ; manage_lock_file;;
+        *clf | --create-lock?(-file) ) shift ; create_lock_file;;
         *@(r|c)l | *@(r|c)lf | --@(rm|clear)-lock?(-file) ) shift ; rm_lock_file;;
         --restart | *restart | *restartdns ) shift ; restart_systemd_service;;
         --reload | *reload ) shift ; reload_systemd_service;;

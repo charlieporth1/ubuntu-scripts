@@ -37,6 +37,7 @@ fi
 [[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(co|mo|concurrent\-overrride|override|manual|manual\-override|over)'` ]] && export CONCURENT_OVERRIDE=true || export CONCURENT_OVERRIDE=false
 
 shopt -s expand_aliases
+shopt -s extglob
 
 [[ $0 != -bash ]] && export SCRIPT=`realpath $0 | rev | cut -d '/' -f 1 | rev`
 
@@ -742,5 +743,39 @@ function health_check_remote_port_udp() {
 	echo > /dev/udp/$host/$port && echo "true" || echo "false"
 }
 export -f health_check_remote_port_udp
+
+function trimmed() {
+	shopt -s extglob
+	local text="$@"
+
+	local trimmed=$text
+	local trimmed=${trimmed##+( )} #Remove longest matching series of spaces from the front
+	local trimmed=${trimmed%%+( )} #Remove longest matching series of spaces from the back
+
+	echo "$trimmed"
+
+}
+export -f trimmed
+
+function ltrim() {
+    sed -E 's/^[[:space:]]+//'
+}
+export -f ltrim
+
+function rtrim() {
+    sed -E 's/[[:space:]]+$//'
+}
+export -f rtrim
+
+function trim() {
+    ltrim | rtrim
+}
+
+export -f trim
+
+function trim1() {
+        awk '{$1=$1;print}'
+}
+export -f trim1
 
 source /etc/environment

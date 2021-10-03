@@ -1,7 +1,7 @@
 #!/bin/bash
 source /etc/environment
 shopt -s expand_aliases
-source $PROG/all-scripts-exports.sh
+source $PROG/generate_ctp-dns-envs.sh
 system_information
 
 SCRIPT_DIR=`realpath .`
@@ -35,8 +35,6 @@ sudo ln -s $ROOT_ROUTE $ROUTE
 REPLACE_IP=`bash $PROG/get_network_devices_ip_address.sh`
 DEFAULT_IP='0.0.0.0'
 
-source $PROG/generarte_route-dns_groups.sh
-source $PROG/generate_ctp-dns-backup-resolvers.sh
 
 IS_SOLID_HOST="checkIsNotInstalled $ROUTE/$HOSTNAME-resolvers.toml"
 
@@ -279,10 +277,10 @@ if [[ `isNotInstalled $ROUTE/$HOSTNAME-resolvers.toml` == 'true' ]]; then
 	perl -0777 -i -pe 's/^"ctp/\t"ctp/gm' $ROUTE/$HOSTNAME-resolvers.toml
 	echo "# NO CHANGES" | sudo tee -a $ROUTE/$HOSTNAME-resolvers.toml
 fi
-perl -0777 -i -pe 's/^"ctp/\t"ctp/gm' $ROUTE/*.toml
-perl -0777 -i -pe 's/^(,|\.)$//gm' $ROUTE/*.toml
 
 cp -rf $ROUTE/{standard-group-resolvers,$HOSTNAME-resolvers,standard-resolvers,raw-resolvers}.toml $ALT_ROUTE/
 
 sudo chmod 777 /usr/local/bin/ctp-dns{,.sh}
 ctp-dns --config-test-human
+
+format_file $ROUTE/*.toml

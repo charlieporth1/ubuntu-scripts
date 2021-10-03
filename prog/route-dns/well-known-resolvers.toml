@@ -1,0 +1,273 @@
+
+# Encrypted
+# DoQ
+[resolvers.cloudflare-doh-quic]
+address = "https://cloudflare-dns.com/dns-query"
+protocol = "doh"
+transport = "quic"
+bootstrap-address = "1.1.1.1"
+
+# Adguard DNS-over-QUIC
+[resolvers.adguard-doq]
+address = "dns-unfiltered.adguard.com:8853"
+protocol = "doq"
+
+[resolvers.cloudflare-doq-1]
+address = "cloudflare-dns.com:8853"
+protocol = "doq"
+bootstrap-address = "1.1.1.1"
+
+[resolvers.cloudflare-doq-2]
+address = "cloudflare-dns.com:8853"
+protocol = "doq"
+bootstrap-address = "1.0.0.1"
+
+[resolvers.cloudflare-malware-doq-1]
+address = "cloudflare-dns.com:8853"
+protocol = "doq"
+bootstrap-address = "1.1.1.2"
+
+[resolvers.cloudflare-malware-doq-2]
+address = "cloudflare-dns.com:8853"
+protocol = "doq"
+bootstrap-address = "1.0.0.2"
+
+[resolvers.google-doq-1]
+address = "cloudflare-dns.com:8853"
+protocol = "doq"
+bootstrap-address = "8.8.8.8"
+
+[resolvers.google-doq-2]
+address = "cloudflare-dns.com:8853"
+protocol = "doq"
+bootstrap-address = "8.8.4.4"
+
+# DoT
+[resolvers.cloudflare-dot-1]
+address = "1.1.1.1:853"
+protocol = "dot"
+bootstrap-address = "1.1.1.1"
+
+[resolvers.cloudflare-dot-2]
+address = "1.0.0.1:853"
+protocol = "dot"
+bootstrap-address = "1.0.0.1"
+
+# DoT
+[resolvers.cloudflare-malware-dot-1]
+address = "1.1.1.2:853"
+protocol = "dot"
+bootstrap-address = "1.1.1.2"
+
+[resolvers.cloudflare-malware-dot-2]
+address = "1.0.0.2:853"
+protocol = "dot"
+bootstrap-address = "1.0.0.2"
+
+[resolvers.google-dot-1]
+address = "dns.google:853"
+protocol = "dot"
+bootstrap-address = "8.8.8.8"
+
+[resolvers.google-dot-2]
+address = "dns.google:853"
+protocol = "dot"
+bootstrap-address = "8.8.4.4"
+
+[resolvers.adguard-dot-1]
+address = "94.140.14.14:853"
+protocol = "dot"
+
+[resolvers.adguard-dot-2]
+address = "94.140.15.15:853"
+protocol = "dot"
+
+# Quad9 DNS-over-TLS
+[resolvers.quad9-dot]
+address = "9.9.9.9:853"
+protocol = "dot"
+
+# CleanBrowsing DoT resolver
+[resolvers.cleanbrowsing-dot]
+address = "family-filter-dns.cleanbrowsing.org:853"
+protocol = "dot"
+
+# DTLS
+[resolvers.cloudflare-dtls-1]
+address = "1.1.1.1:853"
+protocol = "dtls"
+
+[resolvers.cloudflare-dtls-2]
+address = "1.0.0.1:853"
+protocol = "dtls"
+
+# DTLS
+[resolvers.cloudflare-malware-dtls-1]
+address = "1.1.1.2:853"
+protocol = "dtls"
+
+[resolvers.cloudflare-malware-dtls-2]
+address = "1.0.0.2:853"
+protocol = "dtls"
+
+[resolvers.google-dtls-1]
+address = "dns.google:853"
+protocol = "dtls"
+bootstrap-address = "8.8.8.8"
+
+[resolvers.google-dtls-2]
+address = "dns.google:853"
+protocol = "dtls"
+bootstrap-address = "8.8.4.4"
+
+[resolvers.adguard-dtls-1]
+address = "94.140.14.14:853"
+protocol = "dtls"
+
+[resolvers.adguard-dtls-2]
+address = "94.140.15.15:853"
+protocol = "dtls"
+
+
+# DoH
+# Quad9 DNS-over-HTTP using the POST method
+[resolvers.quad9-doh-post]
+address = "https://9.9.9.9/dns-query{?dns}"
+protocol = "doh"
+
+# Google DNS-over-HTTP using the POST method
+[resolvers.google-doh-post-ip-1]
+address = "https://dns.google/dns-query"
+protocol = "doh"
+bootstrap-address = "8.8.8.8"
+
+# Google DNS-over-HTTP using the GET method
+[resolvers.google-doh-get-ip-1]
+address = "https://dns.google/dns-query{?dns}"
+protocol = "doh"
+doh = { method = "GET" }
+bootstrap-address = "8.8.8.8"
+
+# Google DNS-over-HTTP using the GET method
+[resolvers.google-doh-get-ip-2]
+address = "https://dns.google/dns-query{?dns}"
+protocol = "doh"
+doh = { method = "GET" }
+bootstrap-address = "8.8.4.4"
+
+# Google DNS-over-HTTP using the POST method
+[resolvers.google-doh-post-ip-2]
+address = "https://dns.google/dns-query"
+protocol = "doh"
+bootstrap-address = "8.8.4.4"
+
+
+# Google DNS-over-HTTP with bootstrapping to avoid initial lookup
+[resolvers.google-doh-post-bootstrap]
+address = "https://dns.google/dns-query"
+protocol = "doh"
+bootstrap-address = "8.8.8.8"
+
+
+# dnscrypt.ca server-1, DoH-GET
+[resolvers.dnscrypt-1-doh-get]
+address = "https://dns1.dnscrypt.ca:453/dns-query{?dns}"
+protocol = "doh"
+doh = { method = "GET" }
+
+# dnscrypt.ca server-2, DoH-GET
+[resolvers.dnscrypt-2-doh-get]
+address = "https://dns2.dnscrypt.ca:453/dns-query{?dns}"
+protocol = "doh"
+doh = { method = "GET" }
+
+# dnscrypt.ca server-1, DoH-POST
+[resolvers.dnscrypt-1-doh-post]
+address = "https://dns1.dnscrypt.ca:453/dns-query"
+protocol = "doh"
+
+# dnscrypt.ca server-2, DoH-POST
+[resolvers.dnscrypt-2-doh-post]
+address = "https://dns2.dnscrypt.ca:453/dns-query"
+protocol = "doh"
+
+# Cloudflare DNS-over-HTTPS using the POST method
+[resolvers.cloudflare-doh-1-1-1-1-post]
+address = "https://cloudflare-dns.com/dns-query"
+protocol = "doh"
+bootstrap-address = "1.1.1.1"
+
+[resolvers.cloudflare-doh-1-0-0-1-post]
+address = "https://cloudflare-dns.com/dns-query"
+protocol = "doh"
+bootstrap-address = "1.0.0.1"
+
+# Cloudflare DNS-over-HTTPS using the GET method
+[resolvers.cloudflare-doh-1-1-1-1-get]
+address = "https://cloudflare-dns.com/dns-query{?dns}"
+protocol = "doh"
+doh = { method = "GET" }
+bootstrap-address = "1.1.1.1"
+
+[resolvers.cloudflare-doh-1-0-0-1-get]
+address = "https://cloudflare-dns.com/dns-query{?dns}"
+protocol = "doh"
+doh = { method = "GET" }
+bootstrap-address = "1.0.0.1"
+
+
+# Cloudflare DNS-over-HTTPS using the POST method
+[resolvers.cloudflare-doh-quic-1-1-1-1-post]
+address = "https://cloudflare-dns.com/dns-query"
+transport = "quic"
+protocol = "doh"
+bootstrap-address = "1.1.1.1"
+
+[resolvers.cloudflare-doh-quic-1-0-0-1-post]
+address = "https://cloudflare-dns.com/dns-query"
+transport = "quic"
+protocol = "doh"
+bootstrap-address = "1.0.0.1"
+
+# Cloudflare DNS-over-HTTPS using the GET method
+[resolvers.cloudflare-doh-quic-1-1-1-1-get]
+address = "https://cloudflare-dns.com/dns-query{?dns}"
+protocol = "doh"
+transport = "quic"
+doh = { method = "GET" }
+bootstrap-address = "1.1.1.1"
+
+[resolvers.cloudflare-doh-quic-1-0-0-1-get]
+address = "https://cloudflare-dns.com/dns-query{?dns}"
+protocol = "doh"
+transport = "quic"
+doh = { method = "GET" }
+bootstrap-address = "1.0.0.1"
+
+[resolvers.google-quic-doh-get-ip-1]
+address = "https://dns.google/dns-query{?dns}"
+protocol = "doh"
+transport = "quic"
+doh = { method = "GET" }
+bootstrap-address = "8.8.8.8"
+
+[resolvers.google-quic-doh-get-ip-2]
+address = "https://dns.google/dns-query{?dns}"
+protocol = "doh"
+transport = "quic"
+doh = { method = "GET" }
+bootstrap-address = "8.8.4.4"
+
+
+[resolvers.google-quic-doh-post-ip-1]
+address = "https://dns.google/dns-query{?dns}"
+protocol = "doh"
+transport = "quic"
+bootstrap-address = "8.8.8.8"
+
+[resolvers.google-quic-doh-post-ip-2]
+address = "https://dns.google/dns-query{?dns}"
+protocol = "doh"
+transport = "quic"
+bootstrap-address = "8.8.4.4"
+

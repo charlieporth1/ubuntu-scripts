@@ -59,12 +59,14 @@ declare -a SERVICES
 SERVICES=(
 	'pihole-FTL'
 	'ctp-dns'
+	'ctp-dns-dnscrypt'
+	'ctp-fail-over-dns'
 	'ctp-yt-ttl-dns'
 	'ctp-YouTube-Ad-Blocker'
 	'nginx-dns-rfc'
 	'nginx'
 	'lighttpd'
-	'php7.4-fpm'
+	'php7.4-fpm.service'
 	'doh-server'
 	'unbound'
 	'wg-quick@wg0.service'
@@ -103,7 +105,7 @@ SERVICES=(
 	$( [[ "$IS_GCP" == 'true' ]] && echo ${GOOGLE_SERVICES[@]} )
 )
 
-printf "|| $CYAN%-40s $NC| $CYAN %-10s $NC|$CYAN %-20s $NC|$CYAN %-20s $NC|$CYAN %-10s $NC|\n" "SERVICE" "STATUS HUMAN" "STATUS REAL" "ACTIVE TIME" "TIME"
+printf "|| $CYAN%-40s $NC| $CYAN %-10s $NC|$CYAN %-13s $NC|$CYAN %-30s $NC|$CYAN %-10s $NC|\n" "SERVICE" "STATUS HUMAN" "STATUS REAL" "ACTIVE TIME" "TIME"
 
 function print_service() {
 	local service="$1"
@@ -111,14 +113,15 @@ function print_service() {
 	local active_time=`echo "$sys_service_status" | grep 'Active' | rev | cut -d ';' -f 1 | rev | xargs`
 	local status_real=`echo "$sys_service_status" | grep 'Active' | awk '{print $2}'`
 	declare -gx status_human_str=`[[ "$status_real" == "active" ]] && printf "$ACTIVE_STR" || printf "$FAILED_STR"`
-	printf "|| %-40s | %-30s | %-30s | %-20s | %-10s |\n" "$service" "$status_human_str" "$status_real" "$active_time" "`date +'%H:%M:%S'`"
+	printf "|| %-40s | %-30s | %-15s | %-30s | %-10s |\n" "$service" "$status_human_str" "$status_real" "$active_time" "`date +'%H:%M:%S'`"
 
 }
 
 for service in "${SERVICES[@]}"
 do
+	[[ -z `echo "$service" | grep -o '\.'` ]] && is_service=true || is_service=false
+	[[ "$is_service" == 'true' ]] && export service="$service.service"
 	if [[ `systemctl-exists "$service"` == 'true' ]]; then
-		[[ -z `echo "$service" | grep -o '\.'` ]] && export is_service=true || export is_service=false
 		if [[ -n "$isAutomation" ]] && [[ -z `echo "$service" | grep -o "$( bash $PROG/grepify.sh ${GOOGLE_SERVICES[@]} )"` ]] && [[ "$is_service" == 'true' ]]; then
 			systemctl stop $service
 	       	        systemctl reset-failed $service
@@ -126,12 +129,11 @@ do
 			systemctl restart $service
 			sleep 2.000s
 		fi
-		print_service "$service"
 		if [[ "$status_human_str" == "$FAILED_STR" ]] && [[ -n "$isAutomation" ]]; then
 			echo "Service $service has failed to restart sucessfully at `date` in automation process" > /tmp/$service.err
 			bash $PROG/alert_user.sh "Starting process error Service: $service; Error: `cat /tmp/$service.err`;"
 		fi
-		[[ "$is_service" == 'true' ]] && export service="$service.service"
+		print_service "$service"
 
 	elif [[ `systemctl-sockets-exists "$service"` == 'true' ]]; then
 		print_service "$service"

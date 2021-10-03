@@ -31,6 +31,7 @@ bash $PROG/master_copy.sh "/var/cache/nginx/vpn.ctptech.dev.der" "/var/cache/ngi
 
 sudo cp -rf ~/ssl/* $NGINX_SSL/
 sudo cp -rf ~/ssl/* $INSTALL_CONFIG_DIR/unbound/ssl/
+sudo chown -R unbound:unbound $UNBOUND/ssl
 
 
 mkdir -p $CERT_ROOT_DIR

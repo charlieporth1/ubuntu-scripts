@@ -1,0 +1,67 @@
+# The bootstrap-resolver is loaded first and used for endpoint lookups as well as blocklist addresses. If the bootstrap-resolver itself uses a hostname, it's possible to configure a 
+# bootstrap-address for it.
+[bootstrap-resolver]
+address = "1.1.1.1:853"
+protocol = "dot"
+
+[groups.minimize]
+type = "response-minimize"
+resolvers = [ "root-router" ]
+
+[groups.collapse]
+type = "response-collapse"
+resolvers = [ "root-router" ]
+
+[groups.ctp-dns-cached]
+type = "cache"
+resolvers = [ "ctp-dns-min-ttl" ]
+cache-flush-query = "dns.ctptech.dev.flush.cache.root."
+cache-negative-ttl = 3600
+cache-size = 50000
+cache-answer-shuffle = "round-robin"
+
+############# TODO add flush to yt scrupt
+[groups.ctp-dns-cached-front]
+type = "cache"
+cache-flush-query = "dns.ctptech.dev.flush.cache.front."
+resolvers = [ "root-router" ]
+cache-negative-ttl = 3600
+cache-size = 5000
+cache-answer-shuffle = "round-robin"
+
+[routers.root-router]
+routes = [
+  { class = "ANY", resolver = "static-rfc8482" }, # Send queries of type ANY to a static responder
+  { types = [ "RRSIG", "ANY", "SOA", "TXT", "PTR" ], resolver = "static-refuse" }, # Send queries of type RRSIG to a static responder
+  { name = '(^|\.)(doubleclick)\.net\.$', resolver = "static-refuse" },
+  { name = '(^|\.)(youtube|ytimg|ggpht|youtube-ui\.l\.google|youtubei\.googleapis)\.com\.$', resolver = "ctp-yt-blocker-if-fowarder-router" },
+  { name = '(^|\.)(gvt[0-6]?|googlevideo)\.com\.$', resolver = "ctp-yt-blocker-if-fowarder-router" },
+  { name = '(^|\.)(fwmrm)\.net\.$', resolver = "ctp-yt-blocker-if-fowarder-router" },
+  { name = '(^|\.)(googlesyndication|googleadservices|imrworldwide|adservices\.google)\.com\.$', resolver = "ctp-yt-blocker-if-fowarder-router" },
+  { resolver = "ctp-dns-cached" },             # All other queries are forwarded
+]
+
+[groups.ctp-dns-min-ttl]
+type = "ttl-modifier"
+resolvers = [ "ctp-dns-ecs" ]
+#resolvers = [ "ctp-dns-group-fastest-tcp-probe-out" ]
+ttl-min = 3600
+ttl-max = 3024000
+
+[groups.ctp-dns-ecs]
+type = "ecs-modifier"
+resolvers = [ "ctp-dns-blocklist" ]
+# "add", "delete", "privacy". Defaults to "" which does nothing.
+ecs-op = "add"
+ecs-prefix4 = 16
+ecs-prefix6 = 32
+
+# Order matters
+[groups.ctp-dns-fail-back]
+resolvers = [
+	"ctp-dns-group", 
+	"ctp-dns-failover-backup",
+]
+reset-after = 64
+type = "fail-back"
+servfail-error = true

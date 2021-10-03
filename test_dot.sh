@@ -16,7 +16,7 @@ then
     exit
 fi
 
-DOT_ARGS="+dnssec +edns +ttl +tls-hostname=$HOST +retry=$TRIES +timeout=$TIMEOUT +tcp -4 -t $qtype"
+DOT_ARGS="+dnssec +edns +ttl +tls +tls-hostname=$HOST +tls-ca +retry=$TRIES +timeout=$TIMEOUT +tcp -4 -t $qtype"
 
 dns_logger "Running DoT TEST"
 

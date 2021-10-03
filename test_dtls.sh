@@ -16,7 +16,7 @@ then
     exit
 fi
 
-DTLS_ARGS="+dnssec +edns +ttl +tls-hostname=$HOST +retry=$TRIES +timeout=$TIMEOUT +tcp -4 -t $qtype +notcp"
+DTLS_ARGS="+dnssec +edns +ttl +tls +tls-hostname=$HOST +tls-ca +retry=$TRIES +timeout=$TIMEOUT  -4 -t $qtype +notcp"
 
 dns_logger "Running DTLS TEST"
 

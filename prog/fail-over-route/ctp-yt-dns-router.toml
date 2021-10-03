@@ -1,0 +1,21 @@
+[routers.ctp-yt-blocker-if-fowarder-router]
+routes = [
+  { name = '(^|\.)(youtube|ytimg|ggpht|youtube-ui\.l\.google|youtubei\.googleapis)\.com\.$', resolver = "ctp-dns-gcp-time-router" },
+  { name = '^(redirector|manifest|r([0-9]{1,2}){.{4,27}})\.gvt[0-6]?\.com\.$', resolver = "ctp-dns-gcp-time-router" },
+  { name = '(^|\.)googlevideo\.com\.$', resolver = "ctp-dns-gcp-time-router"  },
+  { name = '(^|\.)(doubleclick|fwmrm)\.net\.$', resolver = "ctp-dns-gcp-time-router" },
+  { name = '(^|\.)(googlesyndication|googleadservices|imrworldwide|adservices\.google)\.com\.$', resolver = "ctp-dns-gcp-time-router" },
+  { resolver = "ctp-dns-cached" },             # All other queries are forwarded
+]
+
+[routers.ctp-dns-gcp-time-router]
+routes = [
+  { before = "01:25", after = "05:20", resolver = "ctp-dns-yt-block-resolver-blocker" },
+  { resolver = "ctp-dns-group-local" },
+]
+
+[groups.ctp-dns-yt-block-resolver-blocker]
+# This should only be GCP
+# "ctp-dns-group"
+type = "fastest"
+resolvers = [ "ctp-dns-group" ] 

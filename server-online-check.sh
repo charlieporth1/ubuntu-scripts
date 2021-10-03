@@ -5,7 +5,7 @@ server="$1"
 function server-health-check() {
 	local server="${1:-aws.ctptech.dev}"
 	local port="${2:-22}"
-	if [[ `ip_exists "$server"` = 'false' ]] && [[ `health_check_remote_port_tcp "$server" "$port"` == 'false' ]]; then
+	if [[ `ip_exists "$server"` = 'false' ]] || [[ `health_check_remote_port_tcp "$server" "$port"` == 'false' ]] ; then
 		if [[ `reboot_timer $server` == 'true' ]]; then
 			echo "false"
 			debug_log "Server $server is unhealthy rebooting"
@@ -56,7 +56,7 @@ function gcp_restart() {
 if [[ `server-health-check 1.1.1.1 53` = 'true' ]] && [[ `server-health-check one.one.one.one 53` = 'true' ]]; then
 
 	if [[ "$server" = "gcp.ctptech.dev" ]]; then
-		if [[ `server-health-check $server` = 'false' ]]; then
+		if [[ `server-health-check $server` = 'false' ]] || [[ `server-health-check $server 853` = 'false' ]]; then
 			echo "Server $server is unhealthy rebooting"
 			gcp_restart
 		else
@@ -64,14 +64,14 @@ if [[ `server-health-check 1.1.1.1 53` = 'true' ]] && [[ `server-health-check on
 		fi
 
 	elif [[ "$server" = "home.ctptech.dev" ]]; then
-		if [[ `server-health-check $server 22222` = 'false' ]]; then
+		if [[ `server-health-check $server 22222` = 'false' ]] || [[ `server-health-check $server 853` = 'false' ]]; then
 			echo "Server $server is unhealthy rebooting"
 			sudo reboot -f
 		else
 			echo "Server $server is healthly"
 		fi
 	elif [[ "$server" = "aws.ctptech.dev" ]]; then
-		if [[ `server-health-check $server` = 'false' ]]; then
+		if [[ `server-health-check $server` = 'false' ]] || [[ `server-health-check $server 853` = 'false' ]]; then
 			echo "Server $server is unhealthy rebooting"
 			aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
 		else

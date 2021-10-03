@@ -13,7 +13,9 @@ bash $PROG/cleanup.sh
 bash $PROG/univeral_system_links.sh
 
 bash $PROG/generate_udp_tests.sh
-bash $PROG/generate_route-dns_groups.sh
+bash $PROG/generate_ctp-dns-groups.sh
+bash $PROG/generate_ctp-dns-well-known-retry-groups.sh
+bash $PROG/generate_ctp-dns-well-known-fail-backup-groups.sh
 bash $PROG/generate_ctp-dns-backup-resolvers.sh
 
 if [[ "$HOSTNAME" == "ctp-vpn" ]] || [[ "$IS_MASTER" = 'true' ]];then

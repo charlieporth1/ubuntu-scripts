@@ -1,11 +1,10 @@
 #!/bin/bash
 systemctl daemon-reload
-
+source $PROG/generate_ctp-dns-envs.sh
 
 sync; echo 1 > /proc/sys/vm/drop_caches
 sync; echo 2 > /proc/sys/vm/drop_caches
 sync; echo 3 > /proc/sys/vm/drop_caches
-
 
 bash $ROUTE/ctp-dns-version-mananger.sh
 
@@ -31,6 +30,10 @@ if [[ "$IS_MASTER" == 'true' ]]; then
 	bash $PROG/pihole-lighttpd-changes.sh
 	pihole-FTL regex-test ''
 fi
+
+format_file $ROUTE/*.toml
+format_file $FAIL_ROUTE/*.toml
+format_file $ALT_ROUTE/*.toml
 
 sudo chmod 777 $PROG/timeout3
 

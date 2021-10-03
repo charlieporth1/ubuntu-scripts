@@ -13,13 +13,22 @@ address = "8.8.4.4:53"
 protocol = "udp"
 
 # OpenDNS plain DNS (resolver1.opendns.com)
-[resolvers.opendns-udp-1]
+[resolvers.opendns-1-udp]
 address = "208.67.222.222:53"
 protocol = "udp"
 # OpenDNS plain DNS (resolver2.opendns.com)
-[resolvers.opendns-udp-2]
+[resolvers.opendns-2-udp]
 address = "208.67.222.220:53"
 protocol = "udp"
+# Other 
+
+[resolvers.opendns-1-tcp]
+address = "208.67.222.222:53"
+protocol = "tcp"
+# OpenDNS plain DNS (resolver2.opendns.com)
+[resolvers.opendns-2-tcp]
+address = "208.67.222.220:53"
+protocol = "tcp"
 # Other 
 [resolvers.google-dns-gcloud-private-ip-tcp]
 address = "169.254.169.254:53"
@@ -63,3 +72,4 @@ protocol = "tcp"
 [resolvers.cloudflare-adblock-ip-2-udp]
 address = "1.0.0.2:53"
 protocol = "udp"
+

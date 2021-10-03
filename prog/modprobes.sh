@@ -1,4 +1,6 @@
 #!/bin/bash
+# NET
+modprobe tcp_bbr htcp cubic tcp_htcp tcp_cubic
 #CRIPTO
 #SHA
 modprobe sha1-ssse3 sha256-ssse3 sha512-ssse3

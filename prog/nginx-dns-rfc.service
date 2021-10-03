@@ -70,11 +70,12 @@ ExecStartPre=/bin/bash -c "/usr/bin/touch ${PID_FILE} \
 #ExecStartPre=/bin/bash -c "! [[ -f /root/go/bin/routedns ]] && /snap/bin/go get -u -v github.com/folbricht/routedns/cmd/routedns"
 #ExecStartPre=/snap/bin/go get -v github.com/folbricht/routedns/cmd/routedns
 ExecStartPre=/bin/bash -c "/bin/echo ${MAINPID} | /usr/bin/tee ${PID_FILE}"
+ExecStartPre=/bin/bash ${ROUTE}/ctp-dns-version-mananger.sh
 ExecStartPre=/sbin/setcap cap_net_bind_service,cap_net_raw,cap_setfcap,cap_net_admin=+eip /root/go/bin/routedns
 
-ExecStart=/bin/bash -c "/root/go/bin/routedns ${ALT_ROUTE}/*.toml --log-level=4 2> >( mbuffer -m 64M --append -o ${LOG_FILE} )"
+ExecStart=/bin/bash -c "/root/go/bin/routedns ${ALT_ROUTE}/*.toml --log-level=4 2> >( mbuffer -m 4M -a 10 -P 90% --append -o ${LOG_FILE} )"
 
-ExecStop=/bin/bash -c "/bin/kill -USR1 ${MAINPID}; if pgrep sleep; then pkill sleep; killall sleep; fi; exit 0"
+ExecStop=/bin/bash -c "/bin/kill -USR1 ${MAINPID}; netpid '127.0.0.1:22443'; exit 0"
 ExecReload=/bin/kill -USR1 ${MAINPID}
 
 Restart=always

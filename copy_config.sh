@@ -106,4 +106,6 @@ sudo cp -rf $ROUTE/{standard-group-resolvers,$HOSTNAME-resolvers,standard-resolv
 sudo rm -rf /etc/unbound/unbound.conf.d/adblock.conf
 sudo rm -rf $PROG/*.sh*.sh
 
+sudo apparmor_parser -r /etc/apparmor.d/usr.sbin.unbound
+
 echo "Done with coping config files"

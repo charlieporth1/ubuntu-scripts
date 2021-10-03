@@ -22,8 +22,8 @@ elif [[ "$HOSTNAME" = "ubuntu-server" ]]; then
 fi
 if [[ -n "$ADDITONAL_ROUTES" ]]; then
 	echo "Starting TailScale adding ROUTES $ADDITONAL_ROUTES"
-	sudo tailscale up --advertise-routes=$ADDITONAL_ROUTES --accept-routes
+	sudo tailscale up --advertise-routes=$ADDITONAL_ROUTES --accept-routes --advertise-exit-node
 else
-	sudo tailscale up --accept-routes
+	sudo tailscale up --accept-routes --advertise-exit-node
 fi
 

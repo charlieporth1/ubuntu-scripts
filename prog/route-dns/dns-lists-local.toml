@@ -5,9 +5,9 @@ blocklist-refresh = 86400
 blocklist-format = "domain"
 resolvers = [ "ctp-dns-fail-back" ]
 blocklist-source = [
-        {format = "domain", source = "/var/tmp/ctp-dns/lists/black/ads.txt", cache-dir = "/var/cache/ctp-dns"},
-        {format = "domain", source = "/var/tmp/ctp-dns/lists/black/malware-typo.txt", cache-dir = "/var/cache/ctp-dns"},
-        {format = "domain", source = "/var/tmp/ctp-dns/lists/black/malware.txt", cache-dir = "/var/cache/ctp-dns"},
-        {format = "domain", source = "/var/tmp/ctp-dns/lists/black/tracking.txt", cache-dir = "/var/cache/ctp-dns"},
-        {format = "domain", source = "/var/tmp/ctp-dns/lists/black/scam.txt", cache-dir = "/var/cache/ctp-dns"},
+        {format = "domain", source = "/var/tmp/ctp-dns/lists/black/ads.txt"},
+        {format = "domain", source = "/var/tmp/ctp-dns/lists/black/malware-typo.txt"},
+        {format = "domain", source = "/var/tmp/ctp-dns/lists/black/malware.txt"},
+        {format = "domain", source = "/var/tmp/ctp-dns/lists/black/tracking.txt"},
+        {format = "domain", source = "/var/tmp/ctp-dns/lists/black/scam.txt"},
 ]

@@ -1,0 +1,344 @@
+
+##########################
+###### truncate-retry ####
+##########################
+# Try UDP first, if truncated use the alernative (TCP)
+# ecrypted
+[groups.ctp-dns_group-truncate-retry-encrypted-gcp-ip-1]
+type = "truncate-retry"
+resolvers = [ "ctp-dns_gcp-dtls-ip-1" ]
+retry-resolver = "ctp-dns_gcp-dot-ip-1"
+
+[groups.ctp-dns_group-truncate-retry-encrypted-gcp-ip-2]
+type = "truncate-retry"
+resolvers = [ "ctp-dns_gcp-dtls-ip-2" ]
+retry-resolver = "ctp-dns_gcp-dot-ip-2"
+
+[groups.ctp-dns_group-truncate-retry-encrypted-home]
+type = "truncate-retry"
+resolvers = [ "ctp-dns_home-dtls" ]
+retry-resolver = "ctp-dns_home-dot"
+
+[groups.ctp-dns_group-truncate-retry-encrypted-aws]
+type = "truncate-retry"
+resolvers = [ "ctp-dns_aws-dtls" ]
+retry-resolver = "ctp-dns_aws-dot"
+
+# RAW
+[groups.ctp-dns_group-truncate-retry-raw-gcp-ip-1]
+type = "truncate-retry"
+resolvers = [ "ctp-dns-ip-gcp-1-udp" ]
+retry-resolver = "ctp-dns-ip-gcp-1-tcp"
+
+[groups.ctp-dns_group-truncate-retry-raw-gcp-ip-2]
+type = "truncate-retry"
+resolvers = [ "ctp-dns-ip-gcp-2-udp" ]
+retry-resolver = "ctp-dns-ip-gcp-2-tcp"
+
+[groups.ctp-dns_group-truncate-retry-raw-home]
+type = "truncate-retry"
+resolvers = [ "ctp-dns-home-udp" ]
+retry-resolver = "ctp-dns-home-tcp"
+
+[groups.ctp-dns_group-truncate-retry-raw-aws]
+type = "truncate-retry"
+resolvers = [ "ctp-dns-aws-udp" ]
+retry-resolver = "ctp-dns-aws-tcp"
+
+
+
+###################
+###### FASTEST ####
+###################
+[groups.ctp-dns_group-fastest-masters]
+resolvers = [
+	"ctp-dns_group-truncate-retry-encrypted-gcp-ip-1",
+	"ctp-dns_group-truncate-retry-encrypted-gcp-ip-2",
+	"ctp-dns_group-truncate-retry-encrypted-home",
+	"ctp-dns_group-truncate-retry-encrypted-aws",
+	"ctp-dns_home-doh-get",
+	"ctp-dns_home-doh-post",
+	"ctp-dns_home-doh-get-route-dns-raw",
+	"ctp-dns_home-doh-post-route-dns-raw",
+	"ctp-dns_home-quic",
+	"ctp-dns_home-doh-quic-post-ip",
+	"ctp-dns_home-doh-quic-get-ip",
+	"ctp-dns_gcp-doh-post-ip-1",
+	"ctp-dns_gcp-doh-post-ip-2",
+	"ctp-dns_gcp-doh-get-ip-1",
+	"ctp-dns_gcp-doh-get-ip-2",
+	"ctp-dns_gcp-doh-quic-post-ip-1",
+	"ctp-dns_gcp-doh-quic-post-ip-2",
+	"ctp-dns_gcp-doh-quic-get-ip-1",
+	"ctp-dns_gcp-doh-quic-get-ip-2",
+	"ctp-dns_gcp-quic-ip-1",
+	"ctp-dns_gcp-quic-ip-2",
+	"ctp-dns_aws-quic",
+	"ctp-dns_aws-doh-quic",
+]
+type = "fastest"
+
+[groups.ctp-dns_group-fastest-gcp-external]
+resolvers = [
+	"ctp-dns_group-truncate-retry-encrypted-gcp-ip-1",
+	"ctp-dns_group-truncate-retry-encrypted-gcp-ip-2",
+	"ctp-dns_gcp-doh-post-ip-1",
+	"ctp-dns_gcp-doh-post-ip-2",
+	"ctp-dns_gcp-doh-get-ip-1",
+	"ctp-dns_gcp-doh-get-ip-2",
+	"ctp-dns_gcp-doh-quic-post-ip-1",
+	"ctp-dns_gcp-doh-quic-post-ip-2",
+	"ctp-dns_gcp-doh-quic-get-ip-1",
+	"ctp-dns_gcp-doh-quic-get-ip-2",
+	"ctp-dns_gcp-quic-ip-1",
+	"ctp-dns_gcp-quic-ip-2",
+]
+type = "fastest"
+
+[groups.ctp-dns_group-fastest-home-external]
+resolvers = [
+	"ctp-dns_group-truncate-retry-encrypted-home",
+	"ctp-dns_home-doh-get",
+	"ctp-dns_home-doh-post",
+	"ctp-dns_home-doh-get-route-dns-raw",
+	"ctp-dns_home-doh-post-route-dns-raw",
+	"ctp-dns_home-quic",
+	"ctp-dns_home-doh-quic-post-ip",
+	"ctp-dns_home-doh-quic-get-ip",
+]
+type = "fastest"
+
+[groups.ctp-dns_group-fastest-aws-external]
+resolvers = [
+	"ctp-dns_group-truncate-retry-encrypted-aws",
+	"ctp-dns_aws-quic",
+	"ctp-dns_aws-doh-quic",
+]
+type = "fastest"
+
+[groups.ctp-dns_group-fastest-raw]
+resolvers = [
+	"ctp-dns_group-truncate-retry-raw-gcp-ip-1",
+	"ctp-dns_group-truncate-retry-raw-gcp-ip-2",
+	"ctp-dns_group-truncate-retry-raw-home",
+	"ctp-dns_group-truncate-retry-raw-aws",
+	"ctp-dns-ip-gcp-1-tcp",
+	"ctp-dns-ip-gcp-1-udp",
+	"ctp-dns-ip-gcp-2-tcp",
+	"ctp-dns-ip-gcp-2-udp",
+	"ctp-dns-home-tcp",
+	"ctp-dns-home-udp",
+	"ctp-dns-aws-tcp",
+	"ctp-dns-aws-udp"
+]
+type = "fastest"
+
+
+#####################
+### FAIL BACK #######
+#####################
+[groups.ctp-dns_group-fail-back-masters]
+resolvers = [
+	"ctp-dns_home-quic",
+	"ctp-dns_gcp-quic-ip-1",
+	"ctp-dns_gcp-quic-ip-2",
+	"ctp-dns_aws-quic",
+	"ctp-dns_home-doh-quic-post-ip",
+	"ctp-dns_home-doh-quic-get-ip",
+	"ctp-dns_gcp-doh-quic-post-ip-1",
+	"ctp-dns_gcp-doh-quic-post-ip-2",
+	"ctp-dns_gcp-doh-quic-get-ip-1",
+	"ctp-dns_gcp-doh-quic-get-ip-2",
+	"ctp-dns_aws-doh-quic",
+	"ctp-dns_group-truncate-retry-encrypted-gcp-ip-1",
+	"ctp-dns_group-truncate-retry-encrypted-gcp-ip-2",
+	"ctp-dns_group-truncate-retry-encrypted-home",
+	"ctp-dns_group-truncate-retry-encrypted-aws",
+	"ctp-dns_home-doh-get",
+	"ctp-dns_home-doh-post",
+	"ctp-dns_home-doh-get-route-dns-raw",
+	"ctp-dns_home-doh-post-route-dns-raw",
+	"ctp-dns_gcp-doh-post-ip-1",
+	"ctp-dns_gcp-doh-post-ip-2",
+	"ctp-dns_gcp-doh-get-ip-1",
+	"ctp-dns_gcp-doh-get-ip-2",
+	"ctp-dns_group-truncate-retry-raw-gcp-ip-1",
+	"ctp-dns_group-truncate-retry-raw-gcp-ip-2",
+	"ctp-dns_group-truncate-retry-raw-home",
+	"ctp-dns_group-truncate-retry-raw-aws",
+]
+type = "fail-back"
+reset-after = 24
+servfail-error = true
+
+[groups.ctp-dns_group-fail-back-gcp]
+resolvers = [
+	"ctp-dns_gcp-quic-ip-1",
+	"ctp-dns_gcp-quic-ip-2",
+	"ctp-dns_gcp-doh-quic-post-ip-1",
+	"ctp-dns_gcp-doh-quic-post-ip-2",
+	"ctp-dns_gcp-doh-quic-get-ip-1",
+	"ctp-dns_gcp-doh-quic-get-ip-2",
+	"ctp-dns_group-truncate-retry-encrypted-gcp-ip-1",
+	"ctp-dns_group-truncate-retry-encrypted-gcp-ip-2",
+	"ctp-dns_gcp-doh-post-ip-1",
+	"ctp-dns_gcp-doh-post-ip-2",
+	"ctp-dns_gcp-doh-get-ip-1",
+	"ctp-dns_gcp-doh-get-ip-2",
+	"ctp-dns_group-truncate-retry-raw-gcp-ip-1",
+	"ctp-dns_group-truncate-retry-raw-gcp-ip-2",
+]
+type = "fail-back"
+reset-after = 12
+servfail-error = true
+
+[groups.ctp-dns_group-fail-back-home]
+resolvers = [
+	"ctp-dns_home-quic",
+	"ctp-dns_home-doh-quic-post-ip",
+	"ctp-dns_home-doh-quic-get-ip",
+	"ctp-dns_group-truncate-retry-encrypted-home",
+	"ctp-dns_home-doh-get",
+	"ctp-dns_home-doh-post",
+	"ctp-dns_home-doh-get-route-dns-raw",
+	"ctp-dns_home-doh-post-route-dns-raw",
+	"ctp-dns_group-truncate-retry-raw-home",
+]
+type = "fail-back"
+reset-after = 12
+servfail-error = true
+
+[groups.ctp-dns_group-fail-back-aws]
+resolvers = [
+	"ctp-dns_aws-quic",
+	"ctp-dns_aws-doh-quic",
+	"ctp-dns_group-truncate-retry-encrypted-aws",
+	
+	"ctp-dns_group-truncate-retry-raw-aws",
+]
+type = "fail-back"
+reset-after = 12
+servfail-error = true
+
+[groups.ctp-dns_group-fail-back-raw]
+resolvers = [
+	"ctp-dns_group-truncate-retry-raw-gcp-ip-1",
+	"ctp-dns_group-truncate-retry-raw-gcp-ip-2",
+	"ctp-dns_group-truncate-retry-raw-home",
+	"ctp-dns_group-truncate-retry-raw-aws",
+	"ctp-dns-ip-gcp-1-tcp",
+	"ctp-dns-ip-gcp-1-udp",
+	"ctp-dns-ip-gcp-2-tcp",
+	"ctp-dns-ip-gcp-2-udp",
+	"ctp-dns-home-tcp",
+	"ctp-dns-home-udp",
+	"ctp-dns-aws-tcp",
+	"ctp-dns-aws-udp"
+]
+type = "fail-back"
+reset-after = 6
+servfail-error = true
+
+
+#####################
+### FAIL ROTATE #####
+#####################
+
+[groups.ctp-dns_group-fail-rotate-masters]
+resolvers = [
+	"ctp-dns_home-quic",
+	"ctp-dns_gcp-quic-ip-1",
+	"ctp-dns_gcp-quic-ip-2",
+	"ctp-dns_aws-quic",
+	"ctp-dns_home-doh-quic-post-ip",
+	"ctp-dns_home-doh-quic-get-ip",
+	"ctp-dns_gcp-doh-quic-post-ip-1",
+	"ctp-dns_gcp-doh-quic-post-ip-2",
+	"ctp-dns_gcp-doh-quic-get-ip-1",
+	"ctp-dns_gcp-doh-quic-get-ip-2",
+	"ctp-dns_aws-doh-quic",
+	"ctp-dns_group-truncate-retry-encrypted-gcp-ip-1",
+	"ctp-dns_group-truncate-retry-encrypted-gcp-ip-2",
+	"ctp-dns_group-truncate-retry-encrypted-home",
+	"ctp-dns_group-truncate-retry-encrypted-aws",
+	"ctp-dns_home-doh-get",
+	"ctp-dns_home-doh-post",
+	"ctp-dns_home-doh-get-route-dns-raw",
+	"ctp-dns_home-doh-post-route-dns-raw",
+	"ctp-dns_gcp-doh-post-ip-1",
+	"ctp-dns_gcp-doh-post-ip-2",
+	"ctp-dns_gcp-doh-get-ip-1",
+	"ctp-dns_gcp-doh-get-ip-2",
+	"ctp-dns_group-truncate-retry-raw-gcp-ip-1",
+	"ctp-dns_group-truncate-retry-raw-gcp-ip-2",
+	"ctp-dns_group-truncate-retry-raw-home",
+	"ctp-dns_group-truncate-retry-raw-aws",
+]
+type = "fail-rotate"
+servfail-error = true
+
+[groups.ctp-dns_group-fail-rotate-gcp]
+resolvers = [
+	"ctp-dns_gcp-quic-ip-1",
+	"ctp-dns_gcp-quic-ip-2",
+	"ctp-dns_gcp-doh-quic-post-ip-1",
+	"ctp-dns_gcp-doh-quic-post-ip-2",
+	"ctp-dns_gcp-doh-quic-get-ip-1",
+	"ctp-dns_gcp-doh-quic-get-ip-2",
+	"ctp-dns_group-truncate-retry-encrypted-gcp-ip-1",
+	"ctp-dns_group-truncate-retry-encrypted-gcp-ip-2",
+	"ctp-dns_gcp-doh-post-ip-1",
+	"ctp-dns_gcp-doh-post-ip-2",
+	"ctp-dns_gcp-doh-get-ip-1",
+	"ctp-dns_gcp-doh-get-ip-2",
+	"ctp-dns_group-truncate-retry-raw-gcp-ip-1",
+	"ctp-dns_group-truncate-retry-raw-gcp-ip-2",
+]
+type = "fail-rotate"
+servfail-error = true
+
+[groups.ctp-dns_group-fail-rotate-home]
+resolvers = [
+	"ctp-dns_home-quic",
+	"ctp-dns_home-doh-quic-post-ip",
+	"ctp-dns_home-doh-quic-get-ip",
+	"ctp-dns_group-truncate-retry-encrypted-home",
+	"ctp-dns_home-doh-get",
+	"ctp-dns_home-doh-post",
+	"ctp-dns_home-doh-get-route-dns-raw",
+	"ctp-dns_home-doh-post-route-dns-raw",
+	"ctp-dns_group-truncate-retry-raw-home",
+]
+type = "fail-rotate"
+servfail-error = true
+
+
+[groups.ctp-dns_group-fail-rotate-aws]
+resolvers = [
+	"ctp-dns_aws-quic",
+	"ctp-dns_aws-doh-quic",
+	"ctp-dns_group-truncate-retry-encrypted-aws",
+	
+	"ctp-dns_group-truncate-retry-raw-aws",
+]
+type = "fail-rotate"
+servfail-error = true
+
+[groups.ctp-dns_group-fail-rotate-raw]
+resolvers = [
+	"ctp-dns_group-truncate-retry-raw-gcp-ip-1",
+	"ctp-dns_group-truncate-retry-raw-gcp-ip-2",
+	"ctp-dns_group-truncate-retry-raw-home",
+	"ctp-dns_group-truncate-retry-raw-aws",
+	"ctp-dns-ip-gcp-1-tcp",
+	"ctp-dns-ip-gcp-1-udp",
+	"ctp-dns-ip-gcp-2-tcp",
+	"ctp-dns-ip-gcp-2-udp",
+	"ctp-dns-home-tcp",
+	"ctp-dns-home-udp",
+	"ctp-dns-aws-tcp",
+	"ctp-dns-aws-udp"
+]
+type = "fail-rotate"
+servfail-error = true
+

@@ -6,9 +6,7 @@ source ctp-dns.sh --source
 if [[ "$CONCURENT_OVERRIDE" == 'false' ]] && [[ -n "$isAuto" ]]; then
 	if [[ -f $CTP_DNS_LOCK_FILE ]]; then
 	        echo "LOCK FILE"
-	        set -e
-	        exit 1
-	        exit 1
+		kill -9 $$
 	fi
 fi
 

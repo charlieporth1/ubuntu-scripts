@@ -3,6 +3,7 @@ source $PROG/all-scripts-exports.sh
 source ctp-dns.sh --source
 bash $PROG/dns-stale-restart.sh
 bash $PROG/test_dns.sh -a
+echo "Date last open `date` $scriptName"
 CONCURRENT
 
 if [[ -f $CTP_DNS_LOCK_FILE ]]; then

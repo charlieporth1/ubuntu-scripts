@@ -1,6 +1,7 @@
 .auction
 .be
 .cache
+.co
 .dev
 .dns
 .fm
@@ -14,6 +15,7 @@
 .radio
 .rest
 .root
+.shop
 .tech
 .top
 .us
@@ -148,6 +150,7 @@ ssl.wire.com
 static.abplive.in
 stripe.com
 support.grammarly.com
+tailscale.ccom
 tailscale.com
 thesoldiersproject.org
 threatpost.com
@@ -166,10 +169,12 @@ whois.uanic.name
 widgets.wp.com
 wikimedia.org
 wire.com
+wordpress.com
 wp.com
 ws-signin-website-assets.s3.amazonaws.com
 www.bgplookingglass.com
 www.cnet.com
+www.digicert.com
 www.getmiles.com
 www.gravatar.com
 www.grouponaffiliate.com

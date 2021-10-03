@@ -16,7 +16,7 @@ parallel -j4 --lb echo "{}" :::: \
 #	for arg in `pihole --white-regex -l | grep  --line-buffer "$item" | awk "{print $2}" `; do pihole --white-regex -d "$arg";done
 #	for arg in `pihole --regex -l | grep  --line-buffer "$item" | awk "{print $2}" `; do pihole --regex -d "$arg";done
 sleep 1.5s
-pihole --regex -d "google" "-" "\-" "up" "\.co$" "\.com$" "\.io$" "\.go$" \
+pihole --regex -d "google" "-" "\-" "up" "\.co$" "\.com$" "\.io$" "\.go$" '(.*;querytype=any|.*;querytype=ptr|.*;querytype=rsig|.*;querytype=ds)' \
  "cdn[a-z,1-9]*\.[a-z,1-9]*\.(com|de|net|org|eu)$"  "\#" "\.mn$" "\.ws" "\.nm$"  \
 "\.ga$" ".ak$" "\.ka$" "\.us$" "\.ma$" "\.tx$" "\.ca$" "\.ar$" "\.mi$" "\.cu$" "\.de$" "\.to$" "\.la$"  \
 "\.pr$" "\.nz$" "\.cd$" "\.fl$" "\.dc$" "\.jp$" "\.uk$" "\.nh" "\.vm$" "\.al$" "\.bk$" "\.fr$" "\.ma" "\.nv$"  \
@@ -25,13 +25,14 @@ pihole --regex -d "google" "-" "\-" "up" "\.co$" "\.com$" "\.io$" "\.go$" \
 "(^(((([-,_,a-z,1-9]*)\.)*)partner(s?)(\w?((net(z(werk)))*|(prog(gram(m)))*|(link(s))*))([-,_,a-z,1-9]*)\.)((([-,_,a-z,1-9]*)\.)*)(([a-z]*))$)"  \
 "(^(((([-,_,a-z,1-9]*)\.)*)ad([-,_,a-z,1-9]*)\.)((([-,_,a-z,1-9]*)\.)*)(([a-z]*))$)" "\.it$" "\.in$" "\.sh$" \
 "^(.+[_.-])?amp(project)?\." "\.nato$" "^static\." "suggestqueries.google.com" "^shop((ping)*)\." "\.gov$" "\.me$" \
-'cdn[a-z,1-9]*\.[a-z,1-9]*\.(com|de|net|org|eu)$' '\.gl$' '\.cz$' \
+'cdn[a-z,1-9]*\.[a-z,1-9]*\.(com|de|net|org|eu)$' '\.gl$' '\.cz$' '^([a-z0-9.]+(ads|captive|cloudservices|logs).roku.com$' \
 "(^|\.)youtubei\.googleapis\.com$"  "(^|.)geo[-.]?" "^(ad)[a-z,1-9]*\." "media-amazon\.com" "^[a-z]{7,15}$" \
 "\.mil$" '\.tv$' '\.tw$' '\.py$' '\.qa$' '\.ss$' '\.mu$' '\.ms$' '\.nc$' '\.mo$' '\.mm$' '\.cat$' \
-'\.na$' '\.pw$' '\.ps$' '\.pt$' '\.rw$' '\.kn$' '\.kp$' '\.it$' '^static\.' \
+'\.na$' '\.pw$' '\.ps$' '\.pt$' '\.rw$' '\.kn$' '\.kp$' '\.it$' '^static\.' '(.*;querytype=any|.*;querytype=ptr|.*;querytype=rsig|.*;querytype=ds)' \
 '(((\w*)\.)*((\w+[^you](?=tube))|\w*[^you]tube([-,_,a-z,1-9]*))\.((([-,_,a-z,1-9]*)\.)*)(([a-z]*)))' \
 '(.+|\.|)doubleclick\.net$' '(^|\.)samsungelectronics\.com$' '(^|\.)samsungcloudsolution\.net$' '(^|\.)samsungcloudsolution\.com$' '(^|\.)samsungcloudcdn\.com$' '(\.|^)()\.com' \
-'\.' '^\.$' '$' '^[a-z].([0-9]+|ad[^d]|click|coun(t|ter)|tra[ck](k|ker|king))' '(^|.)((yandex|qq|tencent).(net|com|org|dev|io|sh|cn|ru)|qq|local|localhost|query|sl|(^.$))'
+'\.' '^\.$' '$' '^[a-z].([0-9]+|ad[^d]|click|coun(t|ter)|tra[ck](k|ker|king))' '(^|.)((yandex|qq|tencent).(net|com|org|dev|io|sh|cn|ru)|qq|local|localhost|query|sl|(^.$))' \
+'([a-z0-9.]{0,4})(.)ad' '([a-z0-9.]{0,4})(.)ad([a-z0-9.]{0,4})[0-9]?' '[a-z0-9](.)?ad[a-z0-9.][0-9]?' 'ad([a-z0-9.]{0,4})'
 
 sleep 1.5s
 
