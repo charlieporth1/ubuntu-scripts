@@ -1,15 +1,21 @@
 #!/bin/bash
 source /etc/environment
 source $PROG/all-scripts-exports.sh
+CONCURRENT
 ARGS="$@"
 COPY_FILE="$1"
-GRAVITY=gravity.db
-DB_FILE=$HOLE/$GRAVITY
+export GRAVITY=gravity.db
+export DB_FILE=$HOLE/$GRAVITY
+export OTHER_FILES_BLOB={,-{wal,shm}}
+export OTHER_DB_FILE=$DB_FILE$OTHER_FILES_BLOB
+export OTHER_DB_FILES=$OTHER_DB_FILE
+
 OK_STR='ok'
 term_str="Terminated"
 status_str="$OK_STR\|$term_str"
 query_str="$(uuidgen)--salty"
-
+export byte_size=$(( 1024 * 1024 * 1024 ))
+export min_gravity_size=$(( $byte_size * 16 ))
 
 shopt -s expand_aliases
 
@@ -88,6 +94,18 @@ function pihole_cmd_test() {
 
 	fi
 }
+function size_test() {
+	local db_file_input="$1"
+        local db_file="${db_file_input:=$DB_FILE}"
+	local size_in_bytes=`ls -s $db_file | awk '{print $1}'`
+	if [[ $min_gravity_size < $size_in_bytes ]]; then
+		echo "true"
+	else
+		echo "false"
+	fi
+}
+export -f size_test
+
 function query_test() {
 	local db_file_input="$1"
 	pihole_cmd_test "$db_file_input" '-q'
@@ -111,6 +129,7 @@ function integrity_test_quick() {
         local db_file="${db_file_input:=$DB_FILE}"
 
 	if [[ -f $db_file ]]; then
+	    if [[ `size_test $db_file` == true ]]; then
 		debug_logger "$db_file exists moving quick_check integrity_test_quick"
 		local db_status=`sudo sqlite3 $db_file "PRAGMA quick_check"`
 		local result=`echo "$db_status" | grep -io "$status_str"`
@@ -125,6 +144,10 @@ function integrity_test_quick() {
 	               	echo "false"
 			return 1
 		fi
+	    else
+               	echo "false"
+		return 1
+	    fi
         else
                	echo "false"
 		return 1
@@ -139,6 +162,7 @@ function integrity_test() {
         local db_file="${db_file_input:=$DB_FILE}"
 
 	if [[ -f $db_file ]]; then
+	    if [[ `size_test $db_file` == true ]]; then
 		local quick_result=`integrity_test_quick $db_file`
 		if [[ "$quick_result" == 'true' ]]; then
 			debug_logger "$db_file quick_check sucess moving to integrity_check"
@@ -159,6 +183,10 @@ function integrity_test() {
 	               	echo "false"
 			return 1
 		fi
+            else
+                echo "false"
+                return 1
+            fi
         else
                	echo "false"
 		return 1
@@ -234,8 +262,9 @@ function quick_test() {
 	local db_file_input="$1"
         local db_file="${db_file_input:=$DB_FILE}"
 	if cmp --silent $db_file $DB_FILE; then
+	    if [[ `size_test $db_file` == true ]]; then
 		debug_logger "$db_file exists moving to compare files for pihole_json_test test `pihole_json_test`"
-                if [[ `pihole_json_test $db_file` == 'true' ]]; then
+	        if [[ `pihole_json_test $db_file` == 'true' ]]; then
 			debug_logger "$db_file exists moving to compare files for query test"
 			if [[ `query_test $db_file` == 'true' ]]; then
 				debug_logger "$db_file moving to block test"
@@ -254,6 +283,10 @@ function quick_test() {
 			echo "false"
 			return 1
 		fi
+            else
+                echo "false"
+                return 1
+            fi
 	else
 		echo "false"
 		return 1
@@ -267,13 +300,17 @@ function is_gravity_ok() {
 	local db_file_input="$1"
         local db_file="${db_file_input:=$DB_FILE}"
 	if cmp --silent $db_file $DB_FILE; then
-		debug_logger "$db_file exists moving to compare files for quick_test"
-                if [[ `quick_test $db_file` == 'true' ]]; then
+	    if [[ `size_test $db_file` == true ]]; then
+		if [[ `quick_test $db_file` == 'true' ]]; then
 			run_sqlite_check "$db_file" "$arguments"
 		else
 			echo "false"
 			return 1
 		fi
+            else
+                echo "false"
+                return 1
+            fi
 	else
 		run_sqlite_check "$db_file" "$arguments"
 	fi
@@ -286,22 +323,19 @@ alias gravity-ok='is_gravity_ok'
 function after_transfer_gravity_extra() {
 	bash $PROG/pihole-db-sql-changes.sh
 	flush_db
-	sleep 5s
-	local RUN_FILE=$PROG/regex.sh
-	[[ -f $RUN_FILE ]] && sudo bash $RUN_FILE --no-remove-common
-	sleep 5s
+	local sleep_time=2s
+	sleep $sleep_time
+
 	local RUN_FILE=$PROG/update-blacklist.sh
 	[[ -f $RUN_FILE ]] && sudo bash $RUN_FILE
-	sleep 5s
+	sleep $sleep_time
+
 	local RUN_FILE=$PROG/update-whitelist.sh
 	[[ -f $RUN_FILE ]] && sudo bash $RUN_FILE
-	sleep 5s
-	local RUN_FILE=$PROG/pihole-company-lists-update.sh
-	[[ -f $RUN_FILE ]] && sudo bash $RUN_FILE
-	sleep 5s
-	local RUN_FILE=$PROG/remove_common.sh
-	[[ -f $RUN_FILE ]] && sudo bash $RUN_FILE
+	sleep $sleep_time
 	flush_db
+	pihole --regex -d '(^|.)((yandex|qq|tencent).(net|com|org|dev|io|sh|cn|ru)|qq|local|localhost|query|sl|(^.$))' \
+        '(^|.)(jujxeeerdcnm.intranet|w|aolrlgqh.intranet|((.)?)intranet)' '(^|.)(jujxeeerdcnm.ntranet|w|aolrlgqh.ntranet|((.)?)intranet)'
 }
 export -f after_transfer_gravity_extra
 
@@ -319,25 +353,34 @@ function after_transfer_gravity() {
 	sync
 	flush_db
         bash $PROG/pihole-db-sql-changes.sh
-	sleep 5s
+	chown -R pihole:pihole $OTHER_DB_FILES
+	chmod -R gu+rw $OTHER_DB_FILES
+
+	local sleep_time=2s
+	sleep $sleep_time
 	local RUN_FILE=$PROG/regex.sh
 	[[ -f $RUN_FILE ]] && sudo bash $RUN_FILE --no-remove-common
-	sleep 5s
+	sleep $sleep_time
+
 	local RUN_FILE=$PROG/pihole-company-lists-update.sh
 	[[ -f $RUN_FILE ]] && sudo bash $RUN_FILE
-	sleep 5s
+	sleep $sleep_time
+
 	local RUN_FILE=$PROG/generate_vulnerability-blacklist.sh
 	[[ -f $RUN_FILE ]] && sudo bash $RUN_FILE
-	sleep 5s
+	sleep $sleep_time
+
 	local RUN_FILE=$PROG/white-regex-yt.sh
 	[[ -f $RUN_FILE ]] && sudo bash $RUN_FILE
-	sleep 5s
+	sleep $sleep_time
+
 	local RUN_FILE=$PROG/quick-whitelist.sh
 	[[ -f $RUN_FILE ]] && sudo bash $RUN_FILE
-	sleep 5s
+	sleep $sleep_time
+
 	local RUN_FILE=$PROG/remove_common.sh
 	[[ -f $RUN_FILE ]] && sudo bash $RUN_FILE
-	sleep 5s
+	sleep $sleep_time
 	flush_transactions_db
 	return $?
 }

@@ -16,25 +16,27 @@ gcloud compute ssh $MASTER_MACHINE \
 
 #sudo -u root chmod 7777 -R $PERONAL_USR /tmp/ssl/*
 
-if ! [[ -d $HOME/ssl/ ]]; then
-	mkdir -p $HOME/ssl
-fi
 
-if ! [[ -d /var/cache/nginx/ ]]; then
-	mkdir -p /var/cache/nginx
-fi
+NGINX_SSL=/etc/nginx/ssl/
+UNBOUND_SSL=/etc/unbound/ssl/
 
-NGINX_SSL=$INSTALL_CONFIG_DIR/nginx/ssl/
+! [[ -d $HOME/ssl/ ]] && mkdir -p $HOME/ssl
+! [[ -d /var/cache/nginx/ ]] && mkdir -p /var/cache/nginx
+! [[ -d $NGINX_SSL ]] && mkdir -p $NGINX_SSL
+! [[ -d $UNBOUND_SSL ]] && mkdir -p $UNBOUND_SSL
+! [[ -d $CERT_ROOT_DIR ]] && mkdir -p $CERT_ROOT_DIR
+
 # Copy files
 bash $PROG/master_copy.sh '/tmp/ssl/*' "$HOME/ssl/" --important
-bash $PROG/master_copy.sh "/var/cache/nginx/vpn.ctptech.dev.der" "/var/cache/nginx/"
+bash $PROG/master_copy.sh "/var/cache/nginx/ctptech.dev.der" "/var/cache/nginx/"
 
-sudo cp -rf ~/ssl/* $NGINX_SSL/
-sudo cp -rf ~/ssl/* $INSTALL_CONFIG_DIR/unbound/ssl/
-sudo chown -R unbound:unbound $UNBOUND/ssl
+sudo -H cp -rf ~/ssl/* $NGINX_SSL/
+sudo -H cp -rf ~/ssl/* $UNBOUND_SSL
+sudo -H cp -rf ~/ssl/* $CERT_ROOT_DIR
 
+sudo chown -R unbound:unbound $UNBOUND_SSL
+sudo chown -R root:root $CERT_ROOT_DIR
 
-mkdir -p $CERT_ROOT_DIR
 if [[ -d $NGINX_SSL ]]; then
   for i in $NGINX_SSL/*; do
     if [ -r $i ]; then
@@ -42,11 +44,11 @@ if [[ -d $NGINX_SSL ]]; then
     fi
   done
   unset i
-  ln -s $NGINX_SSL/* $CERT_ROOT_DIR
 fi
 
-sleep 20s
-rm -rf ~/ssl
+sleep 4m
+
+sudo -H rm -rf $HOME/ssl
 gcloud compute ssh $MASTER_MACHINE \
         --project "$GCLOUD_PROJECT" \
         --zone "$GCLOUD_ZONE" -- "sudo rm -rf /tmp/ssl/"

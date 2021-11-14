@@ -1,5 +1,5 @@
 #!/bin/bash
-source $PROG/test_dns_args.sh
+source $PROG/test_dns_args.sh $@
 CONCURRENT
 
 if ! command -v dig &> /dev/null

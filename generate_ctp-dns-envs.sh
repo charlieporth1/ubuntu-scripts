@@ -1,6 +1,12 @@
 #!/bin/bash
-source $PROG/all-scripts-exports.sh
+ARGS="$@"
+if [[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(pl|pre(-)?load(ed)?)'` ]]; then
+	echo "Preloading not reloading"
+	exit 0
+fi
 
+if [[ -z `echo "$ARGS" | grep -Eio '(\-\-|\-)(nv|no-var(s)?)'` ]]; then
+source $PROG/all-scripts-exports.sh
 # FILE NAMES
 export GROUP_FILE_NAME=$ROUTE/standard-group-resolvers
 export STD_RESOLVER_FILE_NAME=$ROUTE/standard-resolvers
@@ -46,37 +52,50 @@ export WELL_KN_TRUCATE_GROUP_E=$WELL_KN_GROUP_TITLE-$trancate_name-encrypted
 
 export NGINX_RESOLVER_GROUP=$NGINX_RESOLVER-group
 
+
 # RESOLVERS LIST
-export GCP_RESOLVERS_LIST=$(grep -E "^.resolvers\..*gcp.*" $RESOLVER_FILE | awk -F. '{print $2}' | awk -F] '{print $1}')
-export HOME_RESOLVERS_LIST=$(grep -E "^.resolvers\..*home.*" $RESOLVER_FILE | awk -F. '{print $2}' | awk -F] '{print $1}')
-export AWS_RESOLVERS_LIST=$(grep -E "^.resolvers\..*aws.*" $RESOLVER_FILE | awk -F. '{print $2}' | awk -F] '{print $1}')
+if [[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(dwk|do-well-known(s)?)'` ]]; then
+	echo "Using well knowns resolvers"
+	# Well known resolvers
+	export WELL_KNOWN_RESOLVERS_LIST=$(grep -E "^.resolvers\..*" $WELL_KN_FILE | awk -F. '{print $2}' | awk -F] '{print $1}')
+	export WELL_KNOWN_RESOLVERS_RAW_LIST=$(grep -E "^.resolvers\..*" $WELL_KN_RAW_FILE | awk -F. '{print $2}' | awk -F] '{print $1}')
 
-export ALL_RESOLVERS_LIST=$(grep -E "^.resolvers\..*(gcp|home|aws).*" $RESOLVER_FILE | awk -F. '{print $2}' | awk -F] '{print $1}')
-export RAW_RESOLVERS_LIST=$(grep -E "^.resolvers\..*(gcp|home|aws).*" $RAW_RESOLVER_FILE | awk -F. '{print $2}' | awk -F] '{print $1}')
-export BACKUP_RESOLVERS_LIST=$(grep -E "^.resolvers\..*$NGINX_RESOLVER.*" $BACKUP_RESOVLERS_FILE | awk -F. '{print $2}' | awk -F] '{print $1}')
+	if [[ -f $WELL_KN_RESOVLERS_RT_GROUPS_FILE ]]; then
+		export WELL_KNOWN_RT_RESOLVERS_LIST=$(grep -E "^.groups\..*$WELL_KN_TRUCATE_GROUP_E.*" $WELL_KN_RESOVLERS_RT_GROUPS_FILE | awk -F. '{print $2}' | awk -F] '{print $1}')
+		export WELL_KNOWN_RT_RESOLVERS_RAW_LIST=$(grep -E "^.groups\..*$WELL_KN_TRUCATE_GROUP.*" $WELL_KN_RESOVLERS_RT_RAW_GROUPS_FILE | awk -F. '{print $2}' | awk -F] '{print $1}')
+	fi
+else
+	echo "Using ctp-dns resolvers"
+	# CTP-DNS resolvers
+	export GCP_RESOLVERS_LIST=$(grep -E "^.resolvers\..*gcp.*" $RESOLVER_FILE | awk -F. '{print $2}' | awk -F] '{print $1}')
+	export HOME_RESOLVERS_LIST=$(grep -E "^.resolvers\..*home.*" $RESOLVER_FILE | awk -F. '{print $2}' | awk -F] '{print $1}')
+	export AWS_RESOLVERS_LIST=$(grep -E "^.resolvers\..*aws.*" $RESOLVER_FILE | awk -F. '{print $2}' | awk -F] '{print $1}')
 
-export WELL_KNOWN_RESOLVERS_LIST=$(grep -E "^.resolvers\..*" $WELL_KN_FILE | awk -F. '{print $2}' | awk -F] '{print $1}')
-export WELL_KNOWN_RESOLVERS_RAW_LIST=$(grep -E "^.resolvers\..*" $WELL_KN_RAW_FILE | awk -F. '{print $2}' | awk -F] '{print $1}')
-
-if [[ -f $WELL_KN_RESOVLERS_RT_GROUPS_FILE ]]; then
-	export WELL_KNOWN_RT_RESOLVERS_LIST=$(grep -E "^.groups\..*$WELL_KN_TRUCATE_GROUP_E.*" $WELL_KN_RESOVLERS_RT_GROUPS_FILE | awk -F. '{print $2}' | awk -F] '{print $1}')
-	export WELL_KNOWN_RT_RESOLVERS_RAW_LIST=$(grep -E "^.groups\..*$WELL_KN_TRUCATE_GROUP.*" $WELL_KN_RESOVLERS_RT_RAW_GROUPS_FILE | awk -F. '{print $2}' | awk -F] '{print $1}')
+	export ALL_RESOLVERS_LIST=$(grep -E "^.resolvers\..*(gcp|home|aws).*" $RESOLVER_FILE | awk -F. '{print $2}' | awk -F] '{print $1}')
+	export RAW_RESOLVERS_LIST=$(grep -E "^.resolvers\..*(gcp|home|aws).*" $RAW_RESOLVER_FILE | awk -F. '{print $2}' | awk -F] '{print $1}')
+	export BACKUP_RESOLVERS_LIST=$(grep -E "^.resolvers\..*$NGINX_RESOLVER.*" $BACKUP_RESOVLERS_FILE | awk -F. '{print $2}' | awk -F] '{print $1}')
 fi
 
 # RESOLVERS
-export GCP_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$GCP_RESOLVERS_LIST" ) --quotes --space))
-export HOME_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$HOME_RESOLVERS_LIST" ) --quotes --space))
-export AWS_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$AWS_RESOLVERS_LIST" ) --quotes --space))
+if [[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(dwk|do-well-known(s)?)'` ]]; then
+	echo "Using well knowns resolvers"
+	# Well known resolvers
+	export WELL_KNOWN_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$WELL_KNOWN_RESOLVERS_LIST" ) --quotes --space ))
+	export WELL_KNOWN_RESOLVERS_RAW=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$WELL_KNOWN_RESOLVERS_RAW_LIST" ) --quotes --space ))
 
-export ALL_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$ALL_RESOLVERS_LIST" ) --quotes --space))
-export RAW_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$RAW_RESOLVERS_LIST" ) --quotes --space))
-export BACKUP_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$BACKUP_RESOLVERS_LIST" ) --quotes --space))
+	export WELL_KNOWN_RT_GROUPS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$WELL_KNOWN_RT_RESOLVERS_LIST" ) --quotes --space ))
+	export WELL_KNOWN_RT_GROUPS_RAW=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$WELL_KNOWN_RT_RESOLVERS_RAW_LIST" ) --quotes --space ))
+else
+	echo "Using ctp-dns resolvers"
+	# CTP-DNS resolvers
+	export GCP_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$GCP_RESOLVERS_LIST" ) --quotes --space ))
+	export HOME_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$HOME_RESOLVERS_LIST" ) --quotes --space ))
+	export AWS_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$AWS_RESOLVERS_LIST" ) --quotes --space ))
 
-export WELL_KNOWN_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$WELL_KNOWN_RESOLVERS_LIST" ) --quotes --space))
-export WELL_KNOWN_RESOLVERS_RAW=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$WELL_KNOWN_RESOLVERS_RAW_LIST" ) --quotes --space))
-
-export WELL_KNOWN_RT_GROUPS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$WELL_KNOWN_RT_RESOLVERS_LIST" ) --quotes --space))
-export WELL_KNOWN_RT_GROUPS_RAW=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$WELL_KNOWN_RT_RESOLVERS_RAW_LIST" ) --quotes --space))
+	export ALL_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$ALL_RESOLVERS_LIST" ) --quotes --space ))
+	export RAW_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$RAW_RESOLVERS_LIST" ) --quotes --space ))
+	export BACKUP_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$BACKUP_RESOLVERS_LIST" ) --quotes --space ))
+fi
 
 # MISC
 export DEFAULT_DOMAIN=dns.ctptech.dev
@@ -86,18 +105,16 @@ export DOMAIN=$DEFAULT_DOMAIN
 export IP_ADDRESSES=`bash $PROG/get_ext_ip.sh $MASTER_DOMAIN`
 
 export timeout=12
-
+else
+	shopt -s expand_aliases
+	echo "Using no-vars"
+fi
 
 function format_file() {
-	local file="$1"
-
-	perl -0777 -i -pe 's/^((\t|\ )?)('\''|"|\.|,)(,|\.)?$//gm' $file
-	perl -0777 -i -pe 's/""//gm' $file
-	perl -0777 -i -pe 's/^"ctp-dns/\t"ctp-dns/gm' $file
-	perl -0777 -i -pe 's/^"well-known/\t"well-known/gm' $file
-	perl -0777 -i -pe 's/^"/\t"/gm' $file
-	echo "Done formating $file"
+	local args=$@
+	bash $ROUTE/route-format.sh $args
 }
+export format_file_export=$(declare -f format_file)
 
 quic_str="(doq|quic)"
 alias doq-n-doh-filter=" grep -E \"($quic_str|doh)\""

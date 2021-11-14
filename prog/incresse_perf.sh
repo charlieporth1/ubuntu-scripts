@@ -1,5 +1,6 @@
 #!/bin/bash
 bash $PROG/modprobes.sh
+modprobe tcp_bbr
 
 if [[ ! -d /mnt/cache ]];then
         mkdir /mnt/cache
@@ -21,33 +22,65 @@ if [[ "$HOSTNAME" == 'ctp-vpn' ]]; then
 	mount -t ext4 /dev/disk/by-id/google-ctp-vpn-cache-and-tmp-and-ramdisk /mnt/cache
 fi
 fstrim -av &
-
 #PERFEROFMACE
 echo madvise | sudo tee /sys/kernel/mm/transparent_hugepage/enabled
 echo 2 > /sys/module/tcp_cubic/parameters/hystart_detect
 echo 1 > /proc/sys/net/ipv4/ip_forward
 echo 10000 > /proc/sys/net/ipv4/tcp_comp_sack_delay_ns
-echo 25 > /proc/sys/kernel/watchdog_thresh
+echo 30 > /proc/sys/kernel/watchdog_thresh
 #echo 1 > /proc/sys/kernel/sysrq
 #echo x > /proc/sysrq-trigger
 
 
 sysctl -w net.ipv6.conf.all.disable_ipv6=0
 sysctl -w net.ipv6.conf.lo.disable_ipv6=0
-if [[ `ifconfig ens4 | grep -o ens4` ]]; then
-	sysctl -w net.ipv6.conf.ens4.disable_ipv6=0
-	sysctl -w net.ipv4.conf.wg0.send_redirects=0
-	sysctl -w net.ipv4.conf.wg0.rp_filter=0
+sysctl -w net.ipv6.conf.all.accept_ra=2
+sysclt -w net.ipv6.conf.all.forwarding=1
+function configure_iface() {
+	local iface=$1
+	sysctl -w net.ipv6.conf.$iface.accept_ra=2
+	sysctl -w net.ipv6.conf.$iface.disable_ipv6=0
+	sysctl -w net.ipv4.conf.$iface.send_redirects=0
+	sysctl -w net.ipv4.conf.$iface.rp_filter=0
+
+	ifconfig $iface txqueuelen 90000
+	ifconfig $iface keepalive 600
+	ifconfig $iface multicast
+}
+
+iface=ens4
+if ifconfig $iface | grep -o $iface; then
+	configure_iface $iface
 fi
-if [[ `ifconfig ens5 | grep -o ens5` ]]; then
-	sysctl -w net.ipv6.conf.ens5.disable_ipv6=0
-	sysctl -w net.ipv4.conf.wg0.send_redirects=0
-	sysctl -w net.ipv4.conf.wg0.rp_filter=0
+
+iface=ens5
+if ifconfig $iface | grep -o $iface; then
+	configure_iface $iface
 fi
-if [[ `ifconfig wg0 | grep -o wg0` ]]; then
-	sysctl -w net.ipv6.conf.wg0.disable_ipv6=0
-	sysctl -w net.ipv4.conf.wg0.send_redirects=0
-	sysctl -w net.ipv4.conf.wg0.rp_filter=0
+
+iface=eth0
+if ifconfig $iface | grep -o $iface; then
+	configure_iface $iface
+fi
+
+iface=eth1
+if ifconfig $iface | grep -o $iface; then
+	configure_iface $iface
+fi
+
+iface=wlan0
+if ifconfig $iface | grep -o $iface; then
+	configure_iface $iface
+fi
+
+iface=tailscale0
+if ifconfig $iface | grep -o $iface; then
+	configure_iface $iface
+fi
+
+iface=wg0
+if ifconfig $iface | grep -o $iface; then
+	configure_iface $iface
 fi
 
 sysctl -w net.ipv6.conf.all.forwarding=1
@@ -58,21 +91,21 @@ sysctl -w net.ipv4.tcp_congestion_control=bbr
 sysctl -w net.ipv4.tcp_notsent_lowat=16384
 sysctl -w net.ipv4.tcp_fastopen=3
 sysctl -w net.ipv4.tcp_window_scaling=1
-sysctl -w net.ipv4.tcp_max_orphans=16384
-sysctl -w net.ipv4.tcp_orphan_retries=4
+sysctl -w net.ipv4.tcp_max_orphans=65535
+sysctl -w net.ipv4.tcp_orphan_retries=16
 sysctl -w net.ipv4.tcp_tw_recycle=0
 sysctl -w net.ipv4.tcp_tw_reuse=1
 sysctl -w net.core.default_qdisc=fq
 
 sysctl -w net.ipv4.ip_nonlocal_bind=1
 sysctl -w net.ipv4.tcp_rfc1337=1
-sysctl -w net.ipv4.tcp_fin_timeout=15
-sysctl -w net.ipv4.tcp_keepalive_time = 300
-sysctl -w net.ipv4.tcp_keepalive_probes = 5
-sysctl -w net.ipv4.tcp_keepalive_intvl = 15
+#sysctl -w net.ipv4.tcp_fin_timeout=15
+#sysctl -w net.ipv4.tcp_keepalive_time = 300
+#sysctl -w net.ipv4.tcp_keepalive_probes = 5
+#sysctl -w net.ipv4.tcp_keepalive_intvl = 15
 sysctl -w net.ipv4.tcp_low_latency=1
 sysctl -w net.ipv4.tcp_sack=1
-sysctl -w net.ipv4.tcp_timestamps=0
+sysctl -w net.ipv4.tcp_timestamps=1
 sysctl -w net.ipv4.tcp_mtu_probing=1
 sysctl -w net.ipv4.tcp_reordering=3
 #sysctl -w
@@ -110,40 +143,58 @@ do
         echo "$cpuMax" > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_min_freq
 done
 )&
+function increase_drive_perf() {
+	local letter="$1"
+	local number="$2"
+	drive=sd$letter$number
+	drive_path=/dev/$drive
+	if [[ -a $drive_path ]]; then
+		fsck.ext4 -y $drive_path &
+		tune2fs -o journal_data_writeback $drive_path
+		blockdev --setra 32384 $drive_path
+		# HDD & SSD SATA
+		hdparm -B 254 $drive_path
+		hdparm -a 256 $drive_path
+		hdparm -a 512 $drive_path
+		hdparm -p 0 $drive_path
+		hdparm -Z 0 $drive_path
+		hdparm -m 32 $drive_path
+		hdparm -P 32 $drive_path
+		hdparm -M 254 $drive_path
+		hdparm -d 1 $drive_path
+		hdparm -D 1 $drive_path
+		hdparm -A 1 $drive_path
+		hdparm -W 1 $drive_path
+	        hdparm -q -M 254 $drive_path
+      		hdparm -c1 $drive_path
+        	hdparm -m16 --yes-i-know-what-i-am-doing $drive_path
+		# HDD & SSD SICS
+		sdparm --set=WCE $drive_path
+		sdparm –s WCE –S $drive_path
+		# https://access.redhat.com/solutions/5427
+		# https://www.cloudbees.com/blog/linux-io-scheduler-tuning
+		echo 100240 > /sys/block/$drive/queue/iosched/fifo_expire_async
+		echo 8 > /sys/block/$drive/queue/iosched/fifo_batch
+		echo 1 > /sys/block/$drive/queue/iosched/low_latency
+		echo 80 > /sys/block/$drive/queue/iosched/slice_async
+		echo 6 > /sys/block/$drive/queue/iosched/quantum
+		echo 5 > /sys/block/$drive/queue/iosched/slice_async_rq
+		echo 3 > /sys/block/$drive/queue/iosched/slice_idle
+		echo 1024 > /sys/block/$drive/queue/iosched/slice_sync
+		echo "noop" > /sys/block/$drive/queue/scheduler
+		echo "cfq" > /sys/block/$drive/queue/scheduler
+		echo "deadline" > /sys/block/$drive/queue/scheduler
+		echo "mq-deadline" > /sys/block/$drive/queue/scheduler
+       fi
 
+}
 (
 for letter in {a..f}
 do
+	increase_drive_perf $letter
         for number in {0..9}
         do
-	      	drive=sd$letter$number
-		drive_path=/dev/$drive
-	        if [[ -f $drive_path ]]; then
-		        fsck.ext4 -y $drive_path &
-			tune2fs -o journal_data_writeback $drive_path
-			blockdev --setra 32384 $drive_path
-			hdparm -B 254 $drive_path
-			hdparm -a 256 $drive_path
-			hdparm -a 512 $drive_path
-			hdparm -M 254 $drive_path
-			hdparm -W $drive_path
-			# https://access.redhat.com/solutions/5427
-			# https://www.cloudbees.com/blog/linux-io-scheduler-tuning
-			echo 100240 > /sys/block/$drive/queue/iosched/fifo_expire_async
-			echo 1 > /sys/block/$drive/queue/iosched/low_latency
-			echo 80 > /sys/block/$drive/queue/iosched/slice_async
-			echo 6 > /sys/block/$drive/queue/iosched/quantum
-			echo 5 > /sys/block/$drive/queue/iosched/slice_async_rq
-		        echo 3 > /sys/block/$drive/queue/iosched/slice_idle
-			echo 1024 > /sys/block/$drive/queue/iosched/slice_sync
-	        	hdparm -q -M 254 $drive_path
-       			hdparm -c1 $drive_path
-	        	hdparm -m16 --yes-i-know-what-i-am-doing $drive_path
-			echo "noop" > /sys/block/$drive/queue/scheduler
-			echo "cfq" > /sys/block/$drive/queue/scheduler
-			echo "deadline" > /sys/block/$drive/queue/scheduler
-			echo "mq-deadline" > /sys/block/$drive/queue/scheduler
-	        fi
+		increase_drive_perf $letter $number
 	done
 done
 )&

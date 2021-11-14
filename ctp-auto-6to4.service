@@ -1,0 +1,105 @@
+[Unit]
+Description=CTP 6to4 Service 
+Wants=network.target network-online.target 
+After=network.target 
+Requires=network.target network-online.target
+
+
+[Service]
+EnvironmentFile=/etc/environment
+Environment=LOG_FILE=/var/log/ctp-auto-6to4/default.log
+Environment=LOG_FILES={default,access,error}.log
+Environment=TMP_DIR=/var/tmp/ctp-auto-6to4
+Environment=LOG_DIR=/var/log/ctp-auto-6to4
+Environment=PID_FILE=/run/ctp-auto-6to4.pid
+
+# Directive        ulimit equivalent     Unit
+# LimitCPU=        ulimit -t             Seconds      
+# LimitFSIZE=      ulimit -f             Bytes
+# LimitDATA=       ulimit -d             Bytes
+# LimitSTACK=      ulimit -s             Bytes
+# LimitCORE=       ulimit -c             Bytes
+# LimitRSS=        ulimit -m             Bytes
+# LimitNOFILE=     ulimit -n             Number of File Descriptors 
+# LimitAS=         ulimit -v             Bytes
+# LimitNPROC=      ulimit -u             Number of Processes 
+# LimitMEMLOCK=    ulimit -l             Bytes
+# LimitLOCKS=      ulimit -x             Number of Locks 
+# LimitSIGPENDING= ulimit -i             Number of Queued Signals 
+# LimitMSGQUEUE=   ulimit -q             Bytes
+# LimitNICE=       ulimit -e             Nice Level 
+# LimitRTPRIO=     ulimit -r             Realtime Priority  
+# LimitRTTIME=     No equivalent
+
+
+# 2gb in byte 2147483648 
+#LimitCPU=nfinity
+#LimitCORE=infinity
+#LimitRSS=infinity
+#LimitFSIZE=2147483648 
+#LimitDATA=2147483648 
+#LimitNOFILE=32768
+LimitSTACK=2147483648
+LimitNPROC=327680
+LimitNOFILE=65555360
+LimitMSGQUEUE=65555360
+
+CacheDirectory=ctp-auto-6to4 
+LogsDirectory=ctp-auto-6to4 
+#RuntimeDirectory=
+
+CPUQuota=25%
+IOSchedulingPriority=5
+
+Nice=19
+Type=forking
+PIDFile=/run/ctp-auto-6to4.pid
+
+AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_NET_ADMIN=+eip CAP_NET_RAW CAP_SETFCAP CAP_BPF CAP_SYS_ADMIN CAP_NET_BROADCAST
+#CapabilityBoundingSet=CAP_NET_BIND_SERVICE CAP_NET_ADMIN=+eip CAP_NET_RAW CAP_SETFCAP CAP_BPF CAP_SYS_ADMIN CAP_NET_BROADCAST
+
+#CapabilityBoundingSet=CAP_NET_BIND_SERVICE CAP_NET_RAW CAP_NET_ADMIN CAP_SETFCAP
+#AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_NET_RAW CAP_NET_ADMIN CAP_SETFCAP
+
+User=root
+Group=root
+
+ExecStartPre=/bin/mkdir -p ${LOGS_DIRECTORY}/ ${CACHE_DIRECTORY}/ ${TMP_DIR}/
+ExecStartPre=/bin/bash -c "! [[ -L ${TMP_DIR}/lists && -d ${TMP_DIR}/lists ]] && /bin/ln -s ${ROUTE_LIST}/ ${TMP_DIR}/; exit 0"
+ExecStartPre=/bin/bash -c "/usr/bin/touch ${PID_FILE} \
+	${LOGS_DIRECTORY}/${LOG_FILES}"
+#ExecStartPre=/bin/bash -c "! [[ -f /root/go/bin/routedns ]] && /snap/bin/go get -u -v github.com/folbricht/routedns/cmd/routedns"
+#ExecStartPre=/snap/bin/go get -v github.com/folbricht/routedns/cmd/routedns
+ExecStartPre=/bin/bash -c "/bin/echo ${MAINPID} | /usr/bin/tee ${PID_FILE}"
+ExecStartPre=/bin/bash -c '/usr/bin/sudo /bin/systemctl set-environment EXT_IP=$(dig +short myip.opendns.com @resolver1.opendns.com)'
+
+ExecStartPre=/sbin/setcap cap_net_bind_service,cap_net_raw,cap_setfcap,cap_net_admin=+eip /usr/local/sbin/auto6to4
+
+ExecStart=/usr/local/sbin/auto6to4 -d -r -i ${EXT_IP} start
+#	--log-level=5 | mbuffer -T /tmp/ctp-dns.buffer -m 50M | tee -a ${LOG_FILE}"
+#ExecStartPost=/bin/bash -c "for ((i=0; i < 3; i++)); do ps -aux | grep 'pm.stal\|test_\|pm.hea' | awk '{print $2}' | xargs sudo kill -9;sleep 10s;done"
+#ExecStartPost=/bin/bash -c '/bin/sleep 30s; [[ -f /tmp/health-checks.stop.lock ]] &&/bin/rm /tmp/health-checks.stop.lock'
+
+ExecStop=/usr/local/sbin/auto6to4 -d -r -i ${EXT_IP} stop
+ExecStopPost=/sbin/ip link delete tun6in4
+
+ExecReload=/usr/local/sbin/auto6to4 -d -r -i ${EXT_IP} reload
+
+#Restart=always
+#Restart=on-failure
+RestartSec=30s
+
+#StandardInput=tty
+StandardOutput=append:/var/log/ctp-auto-6to4/access.log
+StandardError=append:/var/log/ctp-auto-6to4/error.log
+
+TTYPath=/dev/tty0
+TTYReset=yes
+TTYVHangup=yes
+
+TimeoutStartSec=6m
+TimeoutStopSec=30s 
+#PermissionsStartOnly=true
+
+[Install]
+WantedBy=multi-user.target

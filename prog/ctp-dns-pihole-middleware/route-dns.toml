@@ -1,0 +1,56 @@
+
+[bootstrap-resolver]
+address = "1.1.1.1:853"
+protocol = "dot"
+
+[groups.ctp-dns-cached]
+type = "cache"
+resolvers = [ "ctp-dns-root-unbound" ]
+cache-flush-query = "dns.ctptech.pihole.flush.cache.root."
+cache-negative-ttl = 3600
+cache-size = 20000
+cache-answer-shuffle = "round-robin"
+
+# Order matters
+[groups.ctp-dns-root]
+resolvers = [
+	"well_known-group-main-fastest",
+	"well_known-group-group-0-fastest",
+"well_known-group-group-1-fastest",
+"well_known-group-group-2-fastest",
+"well_known-group-group-3-fastest",
+"well_known-group-group-4-fastest",
+"well_known-group-group-5-fastest",
+"well_known-group-group-6-fastest",
+"well_known-group-group-7-fastest",
+",
+	"well_known-group-main-fail-rotate",
+]
+reset-after = 64
+type = "fail-back"
+servfail-error = true
+
+[groups.ctp-dns-root-unbound]
+resolvers = [
+	"well_known-group-truncate-retry-127-0-0-1",
+	"well_known-127-0-0-1-udp",
+	"well_known-127-0-0-1-tcp",
+	"well_known-group-truncate-retry-1-0-0-1",
+"well_known-group-truncate-retry-1-0-0-2",
+"well_known-group-truncate-retry-1-1-1-1",
+"well_known-group-truncate-retry-1-1-1-2",
+"well_known-group-truncate-retry-149-112-112-112",
+"well_known-group-truncate-retry-208-67-220-220",
+"well_known-group-truncate-retry-208-67-222-222",
+"well_known-group-truncate-retry-75-75-75-75",
+"well_known-group-truncate-retry-75-75-76-76",
+"well_known-group-truncate-retry-8-8-4-4",
+"well_known-group-truncate-retry-8-8-8-8",
+"well_known-group-truncate-retry-9-9-9-9",
+
+]
+reset-after = 64
+type = "fail-back"
+servfail-error = true
+
+

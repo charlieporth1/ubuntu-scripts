@@ -1,3 +1,5 @@
+
+
 # 300000 / 60 = 5000 RPS (Request Per Seconds)
 # 150000 / 60 = 2500 RPS (Request Per Seconds)
 # 90000 / 60 = 1500 RPS (Request Per Seconds)
@@ -9,11 +11,10 @@ type = "rate-limiter"
 #resolvers = [ "root-router" ]
 resolvers = [ "ctp-dns-cached-front" ]
 limit-resolver = "drop-all"
-#limit-resolver = "static-refused"
 requests = 5000
-window = 60
-prefix4 = 24
-prefix6 = 56
+window = 15
+prefix4 = 32
+prefix6 = 64
 
 [groups.drop-all]
 type = "drop"

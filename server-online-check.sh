@@ -2,17 +2,13 @@
 source $PROG/all-scripts-exports.sh
 echo "Running: `date`"
 server="$1"
+
 function server-health-check() {
 	local server="${1:-aws.ctptech.dev}"
 	local port="${2:-22}"
-	if [[ `ip_exists "$server"` = 'false' ]] || [[ `health_check_remote_port_tcp "$server" "$port"` == 'false' ]] ; then
-		if [[ `reboot_timer $server` == 'true' ]]; then
-			echo "false"
-			debug_log "Server $server is unhealthy rebooting"
-		else
-			debug_log "Server $server is unhealthy but not rebooting because of timer"
-			echo "true"
-		fi
+	if [[ `ip_exists "$server" eth0` = 'false' ]] || [[ `health_check_remote_port_tcp "$server" "$port"` == 'false' ]] ; then
+		debug_log "Server $server is unhealthy rebooting"
+		echo "false"
 	else
 		echo "true"
 		debug_log "Server $server is healthly"
@@ -26,8 +22,8 @@ function reboot_timer() {
 		declare -gx rebooted_server_timeout=$server
 		echo "true"
 		(
-			debug_log "Server reboot timer has started 8m $rebooted_server_timeout"
-			sleep 8m
+			debug_log "Server reboot timer has started 2m $rebooted_server_timeout"
+			sleep 2m
 			debug_log "Server reboot timer has finished $rebooted_server_timeout"
 			declare -gx rebooted_server_timeout=''
 		)&
@@ -38,7 +34,6 @@ function reboot_timer() {
 }
 
 function gcp_restart() {
-	if [[ `reboot_timer gcp.ctptech.dev` == 'true' ]]; then
 		HOSTNAME="ctp-vpn"
 		PROJECT="galvanic-pulsar-284521"
 		ZONE="us-central1-a"
@@ -50,10 +45,9 @@ function gcp_restart() {
 		gcloud compute instances start "$HOSTNAME" \
 			--zone "$ZONE" \
 			--project "$PROJECT"
-	fi
 }
 
-if [[ `server-health-check 1.1.1.1 53` = 'true' ]] && [[ `server-health-check one.one.one.one 53` = 'true' ]]; then
+if [[ `server-health-check 1.1.1.1 53` = 'true' ]] && [[ `server-health-check one.one.one.one 853` = 'true' ]]; then
 
 	if [[ "$server" = "gcp.ctptech.dev" ]]; then
 		if [[ `server-health-check $server` = 'false' ]] || [[ `server-health-check $server 853` = 'false' ]]; then
@@ -62,9 +56,8 @@ if [[ `server-health-check 1.1.1.1 53` = 'true' ]] && [[ `server-health-check on
 		else
 			echo "Server $server is healthly"
 		fi
-
 	elif [[ "$server" = "home.ctptech.dev" ]]; then
-		if [[ `server-health-check $server 22222` = 'false' ]] || [[ `server-health-check $server 853` = 'false' ]]; then
+		if [[ `server-health-check $server 22222` = 'false' ]]; then
 			echo "Server $server is unhealthy rebooting"
 			sudo reboot -f
 		else
@@ -74,6 +67,7 @@ if [[ `server-health-check 1.1.1.1 53` = 'true' ]] && [[ `server-health-check on
 		if [[ `server-health-check $server` = 'false' ]] || [[ `server-health-check $server 853` = 'false' ]]; then
 			echo "Server $server is unhealthy rebooting"
 			aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+			aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
 		else
 			dot_result=`bash $PROG/test_dot.sh -a $server`
 			dns_result=`bash $PROG/test_dns.sh -a $server`
@@ -81,12 +75,14 @@ if [[ `server-health-check 1.1.1.1 53` = 'true' ]] && [[ `server-health-check on
 				if [[ $dot_result = 'false' ]] && [[ $dns_result = 'false' ]]; then
 					echo "Server $server is unhealthy rebooting dig dug"
 					aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-				else
+					aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+			else
 					echo "Server $server is healthly"
 				fi
 			else
 				echo "Server $server is unhealthy rebooting"
 				echo "Error $server: 11"
+				aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
 				aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
 			fi
 		fi

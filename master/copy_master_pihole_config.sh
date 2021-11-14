@@ -24,7 +24,7 @@ FILES=(
 	/etc/dnsmasq.d/filter_lists.conf
 	/etc/pihole/pihole-FTL.conf
 	/etc/pihole/custom-dns-servers.conf
-	/etc/pihole/dns-servers.conf{,bk}
+	/etc/pihole/dns-servers.conf{,.bk}
 	/etc/pihole/quick-{black,white}list.list
 	/etc/pihole/google-{white,black}list.{list,regex}
 	/etc/pihole/vulnerability-blacklist.regex
@@ -46,15 +46,15 @@ gcloud compute ssh $MASTER_MACHINE \
         --project "$GCLOUD_PROJECT" \
         --zone "$GCLOUD_ZONE" -- "mkdir -p $TRANSFER_DIR"
 
-bash $PROG/master_copy.sh "${FILES[@]}" "/" --rsync-only
+sudo bash $PROG/master_copy.sh "${FILES[@]}" "/" --rsync-only
 
 for file in "${FILES[@]}"
 do
         dir=`echo $file | rev | cut -d '/' -f 2- | rev`
-
+	(
         gcloud compute ssh $MASTER_MACHINE \
                 --project "$GCLOUD_PROJECT" \
-                --zone "$GCLOUD_ZONE" -- "sudo cp -rf --parents $file $TRANSFER_DIR/ && sudo chown -R $PERONAL_USR:$PERONAL_USR $TRANSFER_DIR/"
+                --zone "$GCLOUD_ZONE" -- "sudo mkdir -p $dir && sudo cp -rf --parents $file $TRANSFER_DIR/ && sudo chown -R $PERONAL_USR:$PERONAL_USR $TRANSFER_DIR/"
 
         # Copy files
 	if ! [[ -d $dir ]] && [[ -z `echo $file | grep -o "$PERONAL_USR"` ]]; then
@@ -68,6 +68,7 @@ do
         fi
 
 	bash $PROG/master_copy.sh "$TRANSFER_DIR/$file" "$rFile"
+	)&
 done
 
 sudo rm -rf $TRANSFER_DIR

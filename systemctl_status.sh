@@ -60,35 +60,38 @@ SERVICES=(
 	'pihole-FTL'
 	'ctp-dns'
 	'ctp-dns-dnscrypt'
-	'ctp-fail-over-dns'
 	'ctp-yt-ttl-dns'
 	'ctp-YouTube-Ad-Blocker'
+	'ctp-auto-6to4'
+	'ctp-fail-over-dns'
+	'pihole-loadbalancer-ctp-dns'
 	'nginx-dns-rfc'
 	'nginx'
+	'doh-server'
 	'lighttpd'
 	'php7.4-fpm.service'
-	'doh-server'
 	'unbound'
 	'wg-quick@wg0.service'
 	'ads-catcher'
+	'zerotier-one'
 	'resolvconf'
 	'netfilter-persistent'
 	'fail2ban'
 	'ipsec'
 	'xl2tpd'
-	'systemd-sysctl.service'
+	'modprobe@drm.service'
 	'cron.service'
 	'pihole-updatelists.service'
 	'pihole-updatelists.timer'
 	'sshd.service'
 	'ssh.service'
 	'iptables.service'
+	'load-iptables-rules'
 	'resolvconf-pull-resolved.service'
 	'resolvconf-pull-resolved.pull'
 	'network.target'
 	'logrotate.timer'
 	'logrotate.service'
-	'load-iptables-rules'
 	'snap.certbot.renew.service'
 	'snap.certbot.renew.timer'
 	'apt-daily-upgrade.service'
@@ -97,10 +100,10 @@ SERVICES=(
 	'apt-daily.service'
 	'systemd-timesyncd'
 	'systemd-networkd.service'
-	'system-getty.slice'
 	'systemd-timesyncd'
 	'systemd-sysctl'
 	'systemd-hostnamed'
+	'system-getty.slice'
 	'unattended-upgrades.service'
 	$( [[ "$IS_GCP" == 'true' ]] && echo ${GOOGLE_SERVICES[@]} )
 )
@@ -110,28 +113,31 @@ printf "|| $CYAN%-40s $NC| $CYAN %-10s $NC|$CYAN %-13s $NC|$CYAN %-30s $NC|$CYAN
 function print_service() {
 	local service="$1"
 	local sys_service_status=`systemctl status $service`
-	local active_time=`echo "$sys_service_status" | grep 'Active' | rev | cut -d ';' -f 1 | rev | xargs`
-	local status_real=`echo "$sys_service_status" | grep 'Active' | awk '{print $2}'`
+	local active_str=`echo "$sys_service_status" | grep 'Active'`
+	local active_time=`echo "$active_str" | rev | cut -d ';' -f 1 | rev | xargs`
+	local status_real=`echo "$active_str" | awk '{print $2}'`
 	declare -gx status_human_str=`[[ "$status_real" == "active" ]] && printf "$ACTIVE_STR" || printf "$FAILED_STR"`
 	printf "|| %-40s | %-30s | %-15s | %-30s | %-10s |\n" "$service" "$status_human_str" "$status_real" "$active_time" "`date +'%H:%M:%S'`"
-
 }
+GOOGLE_SERVICES_GREPIFY=$( bash $PROG/grepify.sh ${GOOGLE_SERVICES[@]} )
 
 for service in "${SERVICES[@]}"
 do
 	[[ -z `echo "$service" | grep -o '\.'` ]] && is_service=true || is_service=false
 	[[ "$is_service" == 'true' ]] && export service="$service.service"
 	if [[ `systemctl-exists "$service"` == 'true' ]]; then
-		if [[ -n "$isAutomation" ]] && [[ -z `echo "$service" | grep -o "$( bash $PROG/grepify.sh ${GOOGLE_SERVICES[@]} )"` ]] && [[ "$is_service" == 'true' ]]; then
-			systemctl stop $service
-	       	        systemctl reset-failed $service
-			sleep 0.025s
-			systemctl restart $service
-			sleep 2.000s
-		fi
-		if [[ "$status_human_str" == "$FAILED_STR" ]] && [[ -n "$isAutomation" ]]; then
-			echo "Service $service has failed to restart sucessfully at `date` in automation process" > /tmp/$service.err
-			bash $PROG/alert_user.sh "Starting process error Service: $service; Error: `cat /tmp/$service.err`;"
+		if [[ -n "$isAutomation" ]]; then
+			if [[ -z `echo "$service" | grep -o "$GOOGLE_SERVICES_GREPIFY"` ]] && [[ "$is_service" == 'true' ]]; then
+				systemctl stop $service
+	       	        	systemctl reset-failed $service
+				sleep 0.025s
+				systemctl restart $service
+				sleep 2.000s
+				if [[ "$status_human_str" == "$FAILED_STR" ]]; then
+					echo "Service $service has failed to restart sucessfully at `date` in automation process" > /tmp/$service.err
+					bash $PROG/alert_user.sh "Starting process error Service: $service; Error: `cat /tmp/$service.err`;"
+				fi
+			fi
 		fi
 		print_service "$service"
 

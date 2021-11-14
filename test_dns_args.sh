@@ -1,15 +1,12 @@
 #!/bin/bash
-source $PROG/all-scripts-exports.sh --no-log
+ARGS="$@"
 source ctp-dns.sh --source
+[[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(p|preload)'` ]] && export PRELOAD=true || export PRELOAD=false
 [[ "$1" == "-a" ]] && export isAuto="+short"
 
-if [[ "$CONCURENT_OVERRIDE" == 'false' ]] && [[ -n "$isAuto" ]]; then
-	if [[ -f $CTP_DNS_LOCK_FILE ]]; then
-	        echo "LOCK FILE"
-		kill -9 $$
-	fi
-fi
-
+if [[ "$PRELOAD" == 'false' ]]; then
+source $PROG/all-scripts-exports.sh --no-log
+CONCURRENT
 
 export WAIT_TIME=5.5s # TO RESTART NEXT
 export TIMEOUT=16 # DNS
@@ -25,10 +22,10 @@ export Q_PORT=8853
 export QH_PORT=1443
 
 export DNS_IP=$(bash $PROG/grepify.sh $(bash $PROG/get_ext_ip.sh))
-export ROOT_NETWORK=`bash $PROG/get_network_devices_ip_address.sh --grepify`
-export EXCLUDE_IP="$DNS_IP\|0.0.0.0\|$ROOT_NETWORK"
-
 export EXTENRAL_IP=`bash $PROG/get_ext_ip.sh  --current-ip`
+#export ROOT_NETWORK=`bash $PROG/get_network_devices_ip_address.sh --grepify`
+#export EXCLUDE_IP="$DNS_IP\|0.0.0.0\|$ROOT_NETWORK"
+
 
 export local_interface=ctp-vpn.local
 export server_input=${2}
@@ -36,6 +33,8 @@ export server=${server_input:=$local_interface}
 export qname=${3:-www.google.com}
 export qtype=${4:-A}
 export QUERY=$qname
+
+export DEFAULT_DNS_ARGS="+tries=$TRIES +dnssec +ttl +edns +timeout=$TIMEOUT -t $qtype -4 +retry=$TRIES +ttlunits"
 
 if ! command -v grepip &> /dev/null
 then
@@ -56,8 +55,6 @@ if [[ -z $EXTENRAL_IP ]]; then
         exit 1
 fi
 
-dns_local=`dig $QUERY @ctp-vpn.local +tries=$TRIES +dnssec +short +timeout=$TIMEOUT +retry=$TRIES -t A`
-dns_local_test=`echo "$dns_local" | grepip --ipv4 -o | xargs`
 
 dns_logger() {
 	local argments="$@"
@@ -78,3 +75,14 @@ function if_plain_dns_fail() {
 		exit 1
 	fi
 }
+fi
+
+dns_local=`dig $QUERY @ctp-vpn.local +tries=$TRIES +dnssec +short +timeout=$TIMEOUT +retry=$TRIES -t A`
+dns_local_test=`echo "$dns_local" | grepip --ipv4 -o | xargs`
+
+if [[ "$CONCURENT_OVERRIDE" == 'false' ]] && [[ -n "$isAuto" ]]; then
+	if [[ -f $CTP_DNS_LOCK_FILE ]]; then
+	        echo "LOCK FILE"
+		kill -9 $$
+	fi
+fi

@@ -1,506 +1,500 @@
-sudo swapoff /swapfile
-curl -s https://gist.githubusercontent.com/charlieporth1/cd255cf30fa7a414b59bddbce2ee8ae6/raw/46fe519d697aa78c2d909b25e7060a10f0f2ca69/AdjustableCreateSwapFile | bash -s -- 8192 /swapfile
+dig -6 TXT +short o-o.myaddr.l.google.com @ns1.google.com
+dig -t aaaa +short myip.opendns.com @resolver1.opendns.com
+  ssh -6 sshmyip.com
+ping 2607:fb90:9894:8589:92b:f0e4:0:2a2
+curl -6 https://ifconfig.co
+curl https://api64.ipify.org
+ip -6 addr show scope global 
+sudo ip -6 addr show scope global 
+ping 2607:fb90:9894:8589:92b:f0e4:0:c2d
+ping -6 dns.google
+sudo nano /etc/resolv.conf
+sudo nano /etc/resolvconf/resolv.conf.d/base 
+ping dns.google
+sudo ifconfig
+ifconfig eth1
+ping dns.google -i eth1
+ping dns.google -I eth1
+ifconfig eth1
+ifconfig eth0
+ping 2001:470:1f10:5ba::2
+pihole -w www.anrdoezrs.net
 cd Pihole-Slave-Install/
-htop
-sudo nano /etc/rc.local
-sudo nano $PROG/configure_hdd.sh
-sudo nano /etc/rc.local
-sudo nano $PROG/configure_cpu.sh
-sudo nano /etc/rc.local
-sudo crontab -e
-crontab -e
-sudo nano /etc/rc.local
-htop
-sudo nano /etc/fstab
-htop
-sudo nano /etc/rc.local
-sudo nano $PROG/DDNSUPDATE1ctp.sh 
-sudo nano /etc/rc.local
-sudo nano $PROG/jaildefaultunban.sh 
-sudo nano /etc/rc.local
-sudo nano  /home/ubuntuserver/Programs/start-config.sh
-htop
-killall find
-sudo killall find
-sudo nano /etc/rc.local
-htop
-sudo nano /home/ubuntuserver/Programs/copy_gravity.sh 
-sudo nano /home/ubuntuserver/Programs/replace_gravity.sh 
-htop
-sudo nano /home/ubuntuserver/Programs/replace_gravity.sh 
-sudo nano /home/ubuntuserver/Programs/pihole-db-sql-changes.sh 
-sudo git stash && sudo git pull
-sudo rm /home/ubuntuserver/Programs/pihole-db-sql-changes.sh 
-sudo crontab -e
-sudo git stash && sudo git pull && sudo ./copy_config.sh 
-bash $PROG/server-online-check.sh gcp.ctptech.dev
-sudo nano /home/ubuntuserver/Programs/pihole-db-sql-changes.sh 
-sudo bash /home/ubuntuserver/Programs/pihole-db-sql-changes.sh 
-sudo nano $PROG/server-online-check.sh
-sudo bash /home/ubuntuserver/Programs/pihole-db-sql-changes.sh 
-htop
-bash $PROG/server-online-check.sh gcp.ctptech.dev
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
-sudo nano $PROG/server-online-check.sh
-sudo nano /etc/dnsmasq.d/01-pihole.conf 
-cd Pihole-Slave-Install/
-sudo git stash && sudo git pull
-sudo git stash && sudo git pull && sudo ./copy_config.sh 
-htop
-killall
-htop
-killall dig
-sudo killall -9 dig
-htop
-sudo killall -9 sudo
-htop
-ping -6 2600:9000:2177:8a00:11:f728:3040:93a1
-ping -6 1.1.1.
-ping  1.1.1.1
-ping www.google.com
-sudo crontab -e
-sudo nano ~/dynamic_gcloud_instance_route.sh 
-sudo git stash && sudo git pull
-kdig @gcp.ctptech.dev mobile.surveymonkey.com
-kdig @gcp.ctptech.dev mobile.surveymonkey.com +tcp
-kdig @gcp.ctptech.dev mobile.surveymonkey.com 
-sudo git stash && sudo git pull
-htop
-sudo bash /home/ubuntuserver/Programs/kill-health-check.sh 
-ps -aux
-exit
-htop
-nc -zvw10 192.168.0.1 22
-nc -zvw10 aws.ctptech.dev 22
-nmap 192.168.0.2 -p 22
-systemctl status unbound
-sudo unbound-check-conf
-sudo unbound-checkconf
-sudo bash /home/ubuntuserver/Programs/update.unbound-config.sh 
-sudo nano /home/ubuntuserver/Programs/update.unbound-config.sh 
-wget --user=ftp --password=ftp ftp://ftp.rs.internic.net/domain/named.root -O /etc/unbound/root.hints
-sudo wget --user=ftp --password=ftp ftp://ftp.rs.internic.net/domain/named.root -O /etc/unbound/root.hints
-sudo nano /home/ubuntuserver/Programs/update.unbound-config.sh 
- sudo cp -rf /etc/unbound/root.hints /var/lib/unbound/root.hints
-sudo unbound-checkconf
-sudo rm -rf /var/lib/unbound/root.key
-sudo nano /home/ubuntuserver/Programs/update.unbound-config.sh 
-sudo unbound-anchor -v -F -R         -a /var/lib/unbound/root.key         -f /etc/resolv.conf         -r /var/lib/unbound/root.hints
-sudo unbound-checkconf
-systemctl status ctp-dns
-htop
-systemctl status systemd-sysctl
-sudo nano /etc/sysctl.d/99-sysctl.conf
-cd Pihole-Slave-Install/
-sudo git stash && sudo git pull 
-sudo ./copy_config.sh 
-pihole -t
-systemctl status unbound
-unbound-checkconf 
-sudo unbound-checkconf 
-hc-log
-ping 192.168.44.1
-ping www.google.com
-hc-log
-ps -aux | grep health
-sudo bash /home/ubuntuserver/Programs/kill-health-check.sh 
-ps -aux
-pihole -t
-exit
-pihole -t
-sudo crontab -e
-hc-log
-ps -uax
-ps -aux
-ps -aux | grep health
-cd Pihole-Slave-Install/
-sudo nano /home/ubuntuserver/Programs/all-scripts-exports.sh 
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
-sudo crontab -
-sudo crontab -e
-hc-log
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
-ping one.one.one.one
-hc-log
-sudo crontab -e
-tail -f $LOG/server-health-check.log
-hc-log
-sudo nano /home/ubuntuserver/Programs/all-scripts-exports.sh 
-sudo git stash && sudo git pull
-hc-log
-sudo bash /home/ubuntuserver/Programs/kill-health-check.sh 
-hc-log
-sudo git stash && sudo git pull
-hc-log
-source /home/ubuntuserver/Programs/all-scripts-exports.sh 
-health_check_remote_port_udp aws.ctptech.dev 53
-dig @aws.ctptech.dev
-health_check_remote_port_udp aws.ctptech.dev 853
-sudo nnao /home/ubuntuserver/Programs/server-online-check.sh 
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
-sudo git stash && sudo git pull
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
-bash /home/ubuntuserver/Programs/test_dot.sh 
-sudo git stash && sudo git pull
-ls
- sudo rm -rf PRAGMA\ cache_size*
-rm -rf {1,2}
-rm -rf *.log*
-sudo git stash && sudo git pull
-bash /home/ubuntuserver/Programs/test_dot.sh 
-bash /home/ubuntuserver/Programs/test_dot.sh -a aws.ctptech.dev
-bash /home/ubuntuserver/Programs/test_dot.sh -a aws.ctptech.dev --mo
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
-hc-log
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
-sudo crontab- e
-sudo crontab -e
-tail -f $LOG/server-health-check.log
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
-tail -f $LOG/server-health-check.log
-sudo crontab -e
-tail -f $LOG/server-health-check.log
-sudo git stash && sudo git pull
-tail -f $LOG/server-health-check.log
-sudo crontab -e
-bash $PROG/server-online-check.sh aws.ctptech.dev 
-tail -f $LOG/server-health-check.log
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
-sudo crontab -e
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
-sudo crontab -e
-tail -f $LOG/server-health-check.log
-bash $PROG/server-online-check.sh aws.ctptech.dev 
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
-bash $PROG/server-online-check.sh aws.ctptech.dev 
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
-sudo git stash && sudo git pull 
-tail -f $LOG/server-health-check.log
-exit
-tail -f $LOG/server-health-check.log
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
-tail -f $LOG/server-health-check.log
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
-exit
- aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-htop
-pihole -c -j
-exit
-tail -f $LOG/server-health-check.log
-htop
-gcloud cloud-shell ssh
-htop
-sudo docker ps
-sudo docker stop 689a23245681
-sudo nano /etc/rc.local
-sudo nano  /home/ubuntuserver/phoneinfoga/start_osint.sh
-sudo crontab -e
-sudo systemd-analyze blame
-sudo apt purge fwupd
-sudo apt purge python3-scipy
-sudo apt purge php7.1-fpm
-sudo apt purge man-db
-sudo apt purge x11vnc
-sudo apt purge x11*
-sudo nano /etc/rc.local
-ps -aux
-htop
-bash /home/ubuntuserver/Programs/kill-health-check.sh 
-sudo systemd-analyze blame
-sudo apt-get autopurge ubuntu-advantage-tools
-sudo apt list --installed | grep "xserver\|x11\|gnome\|cupsd\|cups-browsed\|avahi-daemon\|accountsservice\|man-db\|ubuntu-advantage-tools" | awk -F/ '{print $1}' | xargs sudo apt remove -y
-sudo apt list --installed | grep "xserver\|x11\|gnome\|cupsd\|cups-browsed\|avahi-daemon\|accountsservice\|man-db\|ubuntu-advantage-tools\|lxde\|xauth\|lightdm\|chromium" | awk -F/ '{print $1}' | xargs sudo apt remove -y
-htop
-sudo git stash && sudo git pull
-pihole -t
+ifconfig
+ping -6 dns.google
+sudo nano /home/ubuntuserver/Programs/ip-tunnel-ubuntu-server.sh 
+sudo nano /etc/netplan/01-static.yaml 
+sudo netplan generate 
+sudo nano /etc/netplan/01-static.yaml 
+sudo netplan generate 
+sudo nano /etc/netplan/01-static.yaml 
+sudo netplan generate 
+sudo nano /etc/netplan/01-static.yaml 
+sudo netplan generate 
+sudo netplan apply
+ifconfig
 sudo nano /etc/dhcpcd.conf 
-ping led-raspberrypi3.local
-ping 192.168.44.96
-ping 192.168.44.1
-ping 192.168.44.96
-ping 192.168.44.46
-ping 192.168.44.96
-ping 192.168.44.96
-ping 192.168.44.{96.46}
-ping 192.168.44.{96,46}
-ping 192.168.44.96
+sudo systemctl restart dhcpcd.service 
+udo systemctl restart dhcpcd.service 
 ifconfig
+sudo nano /home/ubuntuserver/Programs/dhcp_fix.sh
+sudo crontab -e
+ifconfig
+ping -6 dns.google
+sudo nano $prog/bridge_tmobile_route.sh
+ip route add 192.168.12.0/24 via 192.168.44.250
+sudo ip route add 192.168.12.0/24 via 192.168.44.250
+sudo ip route add 192.168.44.0/24 via 192.168.12.244
+sudo ip 
+sudo ip route
+sudo ip route del 192.168.44.0/24 dev eth1 proto kernel scope link src 192.168.44.53 
+sudo ip route add 192.168.44.0/24 via 192.168.12.244
+sudo ip
+sudo ip route
+sudo ip
+sudo ip route
+sudo ip del 192.168.44.0/24 dev eth1 proto kernel scope link src 192.168.44.244 
+sudo ip route del 192.168.44.0/24 dev eth1 proto kernel scope link src 192.168.44.244 
+sudo nano /home/ubuntuserver/Programs/start_tailscale.sh 
+sudo nano /etc/network/interfaces.d/eth0.conf 
+sudo git stash && sudo git pull
+sudo bash /home/ubuntuserver/Programs/star
+sudo bash /home/ubuntuserver/Programs/start_tailscale.sh 
+sudo nano/home/ubuntuserver/Programs/start_tailscale.sh 
+sudo nano /home/ubuntuserver/Programs/start_tailscale.sh 
+sudo bash /home/ubuntuserver/Programs/start_tailscale.sh 
+sudo crontab -e
+ping 192.168.44.77
+ping 192.168.44.12
+ping 192.168.44.66
+ssh 192.168.44.161
+sudo nano /etc/network/interfaces.d/wlan0.conf 
+sudo nano /etc/network/interfaces.d/eth0.conf 
+sudo ip add
+sudo ip route del 192.168.44.244/24
+sudo ip add del 192.168.44.244/24 dev eth1
+sudo nano /etc/network/interfaces
+sudo nano /etc/network/interfaces.d/wlan0.conf 
+sudo nano /etc/network/interfaces.d/eth1.conf 
+sudo nano /etc/network/interfaces.d/wlan0.conf 
+sudo nano /home/ubuntuserver/Programs/dhcp_fix.sh
+ifconfig
+nmap -T4 2607:fb90:9894:8589:92b:f0e4:0:c2d
+nmap -6 -T4 2607:fb90:9894:8589:92b:f0e4:0:c2d
+nmap -T4 2600:1f18:12f6:4eee:e116:f1be:7914:a99f
+nmap -6 -T4 2600:1f18:12f6:4eee:e116:f1be:7914:a99f
+dig @2600:1f18:12f6:4eee:e116:f1be:7914:a99f
+sudo apt install ddclient
+sudo dpkg --configure -a
+sudo apt install ddclient
+sudo nano /etc/ddclient.conf 
+htop
+sudo nano /home/ubuntuserver/Programs/dhcp_fix.sh
+ifconfig
+ifconfig eth1
+ping -6 dns.google
+ifconfig eth0
+sudo nano /home/ubuntuserver/Programs/ip-tunnel-ubuntu-server.sh 
+sudo bash /home/ubuntuserver/Programs/ip-tunnel-ubuntu-server.sh 
+sudo nano /home/ubuntuserver/Programs/ip-tunnel-ubuntu-server.sh 
+ifconfig 
+ifconfig eth0
+ifconfig he-ipv6
+ping google.com
+ping -6 google.com
+ping -6 google.com -I he-ipv6
+cd Pihole-Slave-Install/
+sudo git stash && sudo git pull
+ping -6 google.com -I he-ipv6
+sudo bash /home/ubuntuserver/Programs/ip-tunnel-ubuntu-server.sh 
+sudo nano /home/ubuntuserver/Programs/ip-tunnel-ubuntu-server.sh 
+sudo bash /home/ubuntuserver/Programs/ip-tunnel-ubuntu-server.sh 
+ping -6 google.com -I he-ipv6
+ping -6 google.com
+ping -6 google.com -I he-ipv6
+sudo nano /home/ubuntuserver/Programs/ip-tunnel-ubuntu-server.sh 
+uname -r
+sudo nano /home/ubuntuserver/Programs/ip-tunnel-ubuntu-server.sh 
+sudo bash /home/ubuntuserver/Programs/ip-tunnel-ubuntu-server.sh 
+ping -6 google.com -I he-ipv6
+ping -6 google.com -I eth0
+ping -6 google.com -I he-ipv6
+sudo ifconfig sit0
+sudo git stash && sudo git pull
+sudo ifconfig sit0
+sudo nano /etc/rc.local
+ifconfig
+ping -6 dns.google -I he-ipv6
+sudo nano /etc/resolvconf/resolv.conf.d/head 
+dig ctptech.dev
+dig dns.ctptech.dev
+dig dns.ctptech.dev @1.1.1.1
+dig dns.ctptech.dev @1.1.1.1 +trace
+pihole -w scotthelme.co.uk
+tailscale ip
+dig dns.ctptech.dev @1.1.1.1 +trace
+sudo bash $prog/generate_vulnerability-blacklist.s
+sudo bash $prog/generate_vulnerability-blacklist.sh
+exit
+ifconfig
+ping 192.168.44.1
+ping 192.168.44.25-
+ping 192.168.44.250
+sudo ip route
+ifconfig eth0
+sudo ip add
+sudo ip add show dev eth0
+ping 192.168.44.245
+ping 192.168.44.249
+ifconfig
+ssh 192.168.44.239
+ssh 192.168.44.247
+sudo bash /home/ubuntuserver/Programs/dhcp_fix.sh
+ping 192.168.44.239
+ping 192.168.44.1
+ping 192.168.12.1
+ping 192.168.44.1
+sudo ip route
+ifconfig
+ping -6 dns.google -I he-ipv66
+ping -6 dns.google -I he-ipv6
+sudo ip tunnel del he-ipv6
+ping 192.168.44.1
+sudo modprobe -r sit
+sudo ip tunnel del he-ipv6
+ifconfig
+sudo ip add
+ping 192.168.12.1
+ping 192.168.44.1
+sudo ip route
+ping 192.168.44.249
+htop
+ifconfig
+sysctl net.ipv6.conf.all.disable_ipv6
+sudo nano /etc/netplan/01-static.yaml 
+sudo netplan generate
+sudo netplan try
+sudo nano /etc/netplan/01-static.yaml 
+sudo netplan try
+sudo nano /etc/netplan/01-static.yaml 
+sudo netplan try
+sudo nano /etc/netplan/01-static.yaml 
+netplan try --state /etc/netplan
+sudo netplan try --state /etc/netplan
+ifconfig
+ping 192.168.44.249
+ping 192.168.44.1
+sudo ip route
+sudo tailscale netcheck
+sudo nano  /etc/rsyslog.conf
+sudo nano  /etc/rsyslog.d/ctp-dns-perf.conf
+sudo nano  /etc/rsyslog.conf
+ls $PORG/*.ify.sh
+ls $PRPG/*.ify.sh
+ls $PROG/*.ify.sh
+ls $PROG/*ify.sh
+sudo ip route
+sudo tailscale ip
+sid
+ls /etc/environment
+htop
+ls /dev/
+ls /dev/sd*
+tailscale netcheck
+tailscale 
+tailscale ping 
+tailscale up --help
+tailscale?
+tailscale 
+tailscale ip 
+tailscale ip --help
+tailscale netcheck --help
+tailscale cert --help
+tailscaled --help
 ping www.google.com
 htop
-ifconfig
-systemctl status status rc-local.service 
-sudo bash /etc/rc.local
+sudo nano /etc/dns-over-https/doh-server.conf
 cd Pihole-Slave-Install/
 sudo git stash && sudo git pull
-systemctl status ctp-dns
-systemctl  status rc-local.service 
-systemctl restart rc-local.service 
-sudo systemctl restart rc-local.service 
-sudo git stash && sudo git pull
-telnet rpc.acronis.com 443
-sudo git stash && sudo git pull
-ping 100.76.91.30
-ping 100.101.102.103
-htop
-ping 100.101.102.103
-ADDITONAL_ROUTES="10.128.0.0/16,172.31.0.0/16"
-sudo tailscale up --advertise-routes=$ADDITONAL_ROUTES
- ping 10.128.0.9
-sudo tailscale up --accept-routes
-declare -xg ADDITONAL_ROUTES=""
-GCP_AWS_ROUTE="10.128.0.0/16,172.31.0.0/16"
-GCP_ROUTE="10.128.0.0/16,192.168.99.0/24" 
-HOME_ROUTE="192.168.44.0/24"
-function add_routes() {         local route="$1";         if [[ -z $ADDITONAL_ROUTES ]]; then                 ADDITONAL_ROUTES="$route";         else                 ADDITONAL_ROUTES="$ADDITONAL_ROUTES,$route";         fi; }
-if [[ "$HOSTNAME" =~ (ctp-vpn|ip-172-31-12-154) ]]; then         add_routes "$GCP_AWS_ROUTE"
-elif [[ "$HOSTNAME" = "ubuntu-server" ]]; then         add_routes "$HOME_ROUTE"; fi
-if [[ -n "$ADDITONAL_ROUTES" ]]; then         echo "Starting TailScale adding ROUTES $ADDITONAL_ROUTES";         sudo tailscale up --advertise-routes=$ADDITONAL_ROUTES; else         add_routes "$GCP_AWS_ROUTE";         add_routes "$HOME_ROUTE";         sudo tailscale up --accept-routes --advertise-routes=$ADDITONAL_ROUTES; fi
-ping 10.128.0.9
-ssh 10.128.0.9
-sudo tailscale up --accept-routes
-tailscale up --accept-routes --advertise-routes=192.168.44.0/24
-sudo tailscale up --accept-routes --advertise-routes=192.168.44.0/24
-ssh 100.76.91.30
-ssh pi@100.76.91.30
-ping 10.128.0.9
-htop
-sudo git stash && sudo git pull
-sudo ./copy_config.sh 
-sudo git stash && sudo git pull
-htop
-systemctl status ctp-dns
-systemctl status unbound
-sudo tailscale status
-ssh 100.76.91.30
-sudo git stash && sudo git pull
-ping 192.168.44.87
-ifconfig
-ping 192.168.44.91
-ping 192.168.44.36
-systemctl status ctp-dns
-ping 192.168.44.91
-dig @34.136.31.172
 cd Pihole-Slave-Install/
+sudo nano /etc/rc.local
+cd Pihole-Slave-Install/
+htop
+#M0
+sudo apt purge squid
+sudp apt purge ufw
+sudo apt purge ufw
+htop
+sudo nano /etc/dns-over-https/doh-server.conf
+cd Pihole-Slave-Install/
+sudo nano /etc/cron.d/ubuntu-server-interval-ops 
+sudo bash setup/doh_proxy_json.sh 
+sudo nano /etc/dns-over-https/doh-server.conf
+sudo bash setup/doh_proxy_json.sh 
+sudo nano /etc/dns-over-https/doh-server.conf
 sudo git stash && sudo git pull
-systemctl status doh
-systemctl status ctp-dns
-sudo systemctl restart ctp-dns
-systemctl status ctp-dns
-dig gcp.ctptech.dev
-exit
-nano ~/reverse_ssh.sh 
-systemctl status ctp-dns
-df -
-df -h
+sudo bash setup/doh_proxy_json.sh 
+bash $PROG/get_network_device
+bash $PROG/get_network_devices_ip_address.sh --default --only-single-interface
+bash $PROG/get_network_devices_ip_address.sh --default --only-sing
+le-interface
+sudo ip route
+sudo ip route | grep '^default'`
+sudo ip route | grep '^default'
+sudo git stash && sudo git pull
+sudo ip route | grep '^default'
+bash $PROG/get_network_devices_ip_address.sh --default --only-single-interface
+sudo git stash && sudo git pull
+bash $PROG/get_network_devices_ip_address.sh --default --only-single-interface
+sudo git stash && sudo git pull
+bash $PROG/get_network_devices_ip_address.sh --default --only-single-interface
+sudo ip route 
+sudp apt purge ufw
 ls
-du -h
-pihole status
-systemctl status ctp-dns
-systemctl status pihole-FTL
-dig @ctp-vpn.local
-dig www.google.com
-dig www.google.com @ctp-vpn.local 
-dig dns.ctptech.dev @ctp-vpn.local 
-dig dns.ctptech.dev @ctp-vpn.local \
-dig dns.ctptech.dev @ctp-vpn.local
-dig dns.ctptech.dev @pihole.local
-dig dns.ctptech.dev @ctp-vpn.local
-pihole -a -p 
-dig dns.ctptech.dev @pihole.local
-pihole -t
-dig dns.ctptech.dev @pihole.local
-sudo nano $sites/*
-hc-log
-systemctl status ctp-dns
-hc-log
-sudo crontab -e
-sudo nano $PROG/server-online-check.sh
-hc-log
-sudo nano $PROG/server-online-check.sh
-hc-log
-sudo nano $PROG/server-online-check.sh
-hc-log
-sudo nano $PROG/server-online-check.sh
-hc-log
-tail -f var/log/server-health-check.log
-tail -f /var/log/server-health-check.log
-sudo crontab -e
-bash $PROG/server-online-check.sh aws.ctptech.dev
-sudo nano $PROG/server-online-check.sh
-sudo crontab -e
-tail -f /var/log/server-health-check.log
-sudo crontab -e
-hc-log
-tail -f /var/log/server-health-check.log
-sudo nano $PROG/server-online-check.sh
-hc-log
-tail -f /var/log/server-health-check.log
-sudo crontab -e
-ctp-dns --config-test-human
-bash $prog/test_dot.sh
-bash $prog/test_dot.sh --mo
-bash $prog/test_dot.sh --co
-bash $prog/test_dot.sh --mo
-sudo git stash && sudo git pull
-bash $prog/test_dot.sh --mo
-sudo git stash && sudo git pull
-bash $prog/test_dot.sh --mo
-sudo nano /etc/nginx/sites-enabled/doh.bk 
-sudo bash /home/ubuntuserver/Programs/copy_certs.sh 
-sudo nano /etc/nginx/sites-enabled/doh.bk 
-bash $prog/test_dot.sh --mo
-sudo nano /home/ubuntuserver/Programs/route-dns/standard-listeners.toml 
-sudo nano $sites/dot
-bash $prog/test_dot.sh --mo
-systemctl status ctp-dns
-ll $LETS
-ll $LETS/live
-sudo ll $LETS/live/ctptech.dev
-sudo ls -l $LETS/live/ctptech.dev
-sudo ls -l $NGINX/ssl
-sudo git stash && sudo git pull && sudo prog/copy_certs.sh 
-bash $PROG/master_copy.sh '/tmp/ssl/*' "$HOME/ssl/" --important
-bash $PROG/master_copy.sh '/tmp/ssl/*' "$HOME/ssl/"' --important'
-bash $PROG/master_copy.sh '/tmp/ssl/*' "$HOME/ssl/" '--important'
-sudo git stash && sudo git pull && sudo prog/copy_certs.sh 
-bash $prog/test_dot.sh --mo
-dig h.g.dns.ctptech.dev
-dig h.g.dns.ctptech.dev @dns.ctptech.de
-dig h.g.dns.ctptech.dev @dns.ctptech.dev
-dig h.g.dns.ctptech.dev @gcp.ctptech.dev
-tail -f /var/log/server-health-check.log 
-sudo crontab -e
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
-tail -f /var/log/server-health-check.log 
-ssudo crontab -e
-sudo crontab -e
-bash $PROG/server-online-check.sh aws.ctptech.dev >> $LOG/server-health-check.log
-bash $PROG/server-online-check.sh aws.ctptech.dev
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
-bash $PROG/server-online-check.sh aws.ctptech.dev
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
-sudo crontab -e
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-aws
-aws --help
-aws -vvv  ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-aws -  ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-aws -v  ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-aws  ec2 reboot-instances --instance-ids i-026c86754b14d7e09 --verbose
-aws  ec2 reboot-instances --instance-ids i-026c86754b14d7e09 --help
-aws  ec2 reboot-instances --instance-ids i-026c86754b14d7e09 help
-aws  ec2 reboot-instances help
-aws  ec2 help
-aws help
-aws  --debug ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-sudo nano /home/ubuntuserver/Programs/Daily.sh
+ifconfig
+sudo nano /etc/netplan/01-static.yaml 
+sudo nano /etc/netplan/01-static.yaml 
+sudo nano /etc/netplan/01-static.yaml 
 cd Pihole-Slave-Install/
-sudo bash /home/ubuntuserver/Programs/copy_certs.sh 
-sudo systemctl restart ctp-dns
-pihole -t
+sudo nano /etc/netplan/01-static.yaml 
+sudo nano /etc/netplan/01-static.yaml 
+ifconfig eth1
+ifconfig 1
+ifconfig eth1
+sudo
+sud
+sudo ip add eth1 show
+sudo ip add 
+sudo ip add show dev eth21
+sudo ip add show dev eth1
+sudo nano $prog/dhcp_fix.sh
+sudo nano $prog/dhcp_fix.sh
+ifconfig
+ping www.google
+ifconfig
+sudo nano $prog/dhcp_fix.sh
+sudo ip add del 192.168.44.244/24 dev eth1
+sudo ip add del 192.168.44.244/24 dev eth1
+sudo ip add del 192.168.44.244/24 dev eth1
+sudo ip add del 192.168.44.244/24 dev eth1
+ifconfig
+ifconfig eth1
+sudo nano $prog/dhcp_fix.sh
+IP_REGEX="([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})"
+NET_DEVICE_REGEX="(e(n(x|s|n|o|p|e)([[:alnum:]]*))|th[0-9]$noWLAN$noLo)\:"
+sudo nano $prog/dhcp_fix.sh
+IP_REGEX="([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})"
+NET_DEVICE_REGEX="(e(n(x|s|n|o|p|e)([[:alnum:]]*))|th[0-9]$noWLAN$noLo)"
+NET_DEVICE_REGEX_IFCONFIG="$NET_DEVICE_REGEX\:"
+IP_REGEX="([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})"
+NET_DEVICE_REGEX="(e(n(x|s|n|o|p|e)([[:alnum:]]*))|th[0-9]$noWLAN$noLo)"
+NET_DEVICE_REGEX_IFCONFIG="$NET_DEVICE_REGEX\:"
+sudo ip route | grep '^default' | grep -oiE "$NET_DEVICE_REGEX"
 sudo git stash && sudo git pull
-systemctl status ctp-dns
-systemctl status nginx-dns-rfc.service 
-systemctl status ctp-dns
-pihole -t
-cd Pihole-Slave-Install/
+bash $PROG/get_network_devices_ip_address.sh --default --only-single-interface
+ifconfig
+sudo ip route
+bash $PROG/get_network_devices_ip_address.sh --default --only-single-interface
+IP_REGEX="([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})"
+ODD_ETH_REGEX="n(x|s|n|o|p|e)([[:alnum:]]*))"
+NET_DEVICE_REGEX="(e($ODD_ETH_REGEX|th[0-9])$noWLAN$noLo)"
+NET_DEVICE_REGEX_IFCONFIG="$NET_DEVICE_REGEX\:"
+sudo ip route | grep '^default' | grep -oiE "$NET_DEVICE_REGEX"`
+sudo ip route | grep '^default' | grep -oiE "$NET_DEVICE_REGEX"
+sudo ip route | grep '^default' 
+sudo ip route | grep '^default' | grep -oiE "$NET_DEVICE_REGEX"
+sudo ip route | grep '^default' | grep -oE "$NET_DEVICE_REGEX"
+IP_REGEX="([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})"
+ODD_ETH_REGEX="(n(x|s|n|o|p|e)([[:alnum:]]*))"
+NET_DEVICE_REGEX="(e($ODD_ETH_REGEX|th[0-9])$noWLAN$noLo)"
+NET_DEVICE_REGEX_IFCONFIG="$NET_DEVICE_REGEX\:"
+sudo ip route | grep '^default' | grep -oE "$NET_DEVICE_REGEX"
 sudo git stash && sudo git pull
-ping 192.168.44.96
-ping 192.168.1.4
-ping -a 192.168.44.247
-pihole - wwww.opm.gov
-pihole -w wwww.opm.gov
-pihole -w www.opm.gov
-pihole -t
-systmctl status ctp-dns
-systemctl status ctp-dns
-ctp-dns --config-test-human
-cd  Pihole-Slave-Install/
+sudo setup/doh_proxy_json.sh 
+ifconfig eth1
+ifconfig eth0
+sudo nano /etc/dns-over-https/doh-server.conf
+bash $PROG/get_network_devices_ip_address.sh --default --only-single-interface
+sudo ifconfig eth0 | awk '{print $2}' | grepip -4
+sudo nano /home/ubuntuserver/Programs/get_network_devices_ip_address.sh 
+bash $PROG/get_network_devices_ip_address.sh --default --only-single-interface
+sudo nano /home/ubuntuserver/Programs/get_network_devices_ip_address.sh 
+bash $PROG/get_network_devices_ip_address.sh --default --only-single-interface
 sudo git stash && sudo git pull
-ctp-dns --config-test-human
-chmod 777  /usr/local/bin/ctp-dns
-sudo chmod 777  /usr/local/bin/ctp-dns
-ctp-dns --config-test-human
-systemctl status ctp-dns
-dig @gcp.ctptech.de
+bash $PROG/get_network_devices_ip_address.sh --default --only-single-interface
+sudo nano /home/ubuntuserver/Programs/get_network_devices_ip_address.sh 
+bash $PROG/get_network_devices_ip_address.sh --default --only-single-interface
+sudo nano /home/ubuntuserver/Programs/get_network_devices_ip_address.sh 
+bash $PROG/get_network_devices_ip_address.sh --default --only-single-interface
+sudo git stash && sudo git pull
+bash $PROG/get_network_devices_ip_address.sh --default --only-single-interface
+sudo setup/doh_proxy_json.sh 
+sudo nano /etc/dns-over-https/doh-server.conf
+sudo nano /etc/nginx/sites-enabled/doh.bk 
+bash $PROG/get_network_devices_ip_address.sh --default --only-single-interface
+sudo nano /etc/dns-over-https/doh-server.conf
+sudo ip add del 192.168.44.244/24 dev eth1
+sudo ip route
+ping www.google.com
 dig @gcp.ctptech.dev
-ping gcp.ctptech.dev
-dig @gcp.ctptech.dev www.google.com
-pihole -t
-dig @ctp-vpn.local 11khsn-dnsotls-ds.metric.gstatic.com
-dig @gcp.ctptech.dev 11khsn-dnsotls-ds.metric.gstatic.com
-pihole -t
-ctp-dns -t
-echo "" | sudo tee $ROUTE/slave-listeners{,-udp-retry-resolvers}.toml
-ctp-dns -t
-ctp-dns restartdns
-sudo nano /home/ubuntuserver/Programs/route-dns/standard-resolvers.toml 
-sudo ctp-dns -u
-sudo ctp-dns --update
-ctp-dns --update
-sudo su
-dig -p 5053 @localhost www.google.com +tcp
-dig -p 5053 @localhost www.google.com
-systemctl status ctp-dns
-systemctl status unbound
-ls $LOG/unbound.log
-sudo nano /etc/apparmor.d/usr.sbin.unbound
-systemctl status ctp-dns
-apparmor_parser apply
-sudo apparmor_parser apply
-sudo apparmor_parser 
-dig -p 5053 @localhost www.google.com
-dig -p 5053 @127.0.0.1 www.google.com
-ls $UBCONF
-ls $UNBCONF
-dig -p 5053 @localhost www.google.com
-sudo lsof -i :5053
-dig -p 5053 @127.0.0.1 www.google.com
-sudo lsof -i :5053
-dig -p 5053 @localhost www.google.com
-cd Pihole-Slave-Install/
-sudo git stash && sudo git pull
-htop
-sudo nano /etc/pihole/setupVars.conf
-ifconfg
+sudo nano /etc/unbound/unbound.conf.d/01-pihole.conf 
+sudo nano /etc/unbound/unbound.conf.d/05-system.conf 
+sudo nano /etc/unbound/unbound.conf.d/08-listeners.conf 
+sudo nano /etc/unbound/unbound.conf.d/05-system.conf 
+dig @gcp.ctptech.dev
 ifconfig
-sudo nano /etc/pihole/setupVars.conf
-pihole restartdns
-pihole -t
-pihole -w ipv6-test.com
-pihole -q whatismyipaddress.com
-pihole --regex -d    ([a-z0-9.]{0,4})(.)ad
-   ([a-z0-9.]{0,4})(.)ad([a-z0-9.]{0,4})[0-9]?
-   [a-z0-9](.)?ad[a-z0-9.][0-9]?
-  ad([a-z0-9.]{0,4})
-pihole --regex -d "google" "-" "\-" "up" "\.co$" "\.com$" "\.io$" "\.go$"  "cdn[a-z,1-9]*\.[a-z,1-9]*\.(com|de|net|org|eu)$"  "\#" "\.mn$" "\.ws" "\.nm$"  "\.ga$" ".ak$" "\.ka$" "\.us$" "\.ma$" "\.tx$" "\.ca$" "\.ar$" "\.mi$" "\.cu$" "\.de$" "\.to$" "\.la$"  "\.pr$" "\.nz$" "\.cd$" "\.fl$" "\.dc$" "\.jp$" "\.uk$" "\.nh" "\.vm$" "\.al$" "\.bk$" "\.fr$" "\.ma" "\.nv$"  "\.gr$" "\.or$" "\.wa$"  "\.nb$" "\.hi$" "\.hw$" "\.sw$" "\.kr$" "\.mk$"  "\.sh$" "\.bh$" "\.mx$" "\.us$" "\.hr$" "\.fm$" "\.id$" "\.kw$" "net$" "gov$" "com$" "org$" "\.cc$" "^static\." "gov$" "mil$" "(^(((([-,_,a-z,1-9]*)\.)*)partner(s?)(\w?((net(z(werk)))*|(prog(gram(m)))*|(link(s))*))([-,_,a-z,1-9]*)\.)((([-,_,a-z,1-9]*)\.)*)(([a-z]*))$)"  "(^(((([-,_,a-z,1-9]*)\.)*)ad([-,_,a-z,1-9]*)\.)((([-,_,a-z,1-9]*)\.)*)(([a-z]*))$)" "\.it$" "\.in$" "\.sh$" "^(.+[_.-])?amp(project)?\." "\.nato$" "^static\." "suggestqueries.google.com" "^shop((ping)*)\." "\.gov$" "\.me$" 'cdn[a-z,1-9]*\.[a-z,1-9]*\.(com|de|net|org|eu)$' '\.gl$' '\.cz$' "(^|\.)youtubei\.googleapis\.com$"  "(^|.)geo[-.]?" "^(ad)[a-z,1-9]*\." "media-amazon\.com" "^[a-z]{7,15}$" "\.mil$" '\.tv$' '\.tw$' '\.py$' '\.qa$' '\.ss$' '\.mu$' '\.ms$' '\.nc$' '\.mo$' '\.mm$' '\.cat$' '\.na$' '\.pw$' '\.ps$' '\.pt$' '\.rw$' '\.kn$' '\.kp$' '\.it$' '^static\.' '(((\w*)\.)*((\w+[^you](?=tube))|\w*[^you]tube([-,_,a-z,1-9]*))\.((([-,_,a-z,1-9]*)\.)*)(([a-z]*)))' '(.+|\.|)doubleclick\.net$' '(^|\.)samsungelectronics\.com$' '(^|\.)samsungcloudsolution\.net$' '(^|\.)samsungcloudsolution\.com$' '(^|\.)samsungcloudcdn\.com$' '(\.|^)()\.com' '\.' '^\.$' '$' '^[a-z].([0-9]+|ad[^d]|click|coun(t|ter)|tra[ck](k|ker|king))' '(^|.)((yandex|qq|tencent).(net|com|org|dev|io|sh|cn|ru)|qq|local|localhost|query|sl|(^.$))' '([a-z0-9.]{0,4})(.)ad' '([a-z0-9.]{0,4})(.)ad([a-z0-9.]{0,4})[0-9]?' '[a-z0-9](.)?ad[a-z0-9.][0-9]?' 'ad([a-z0-9.]{0,4})'
-pihole -q whatismyipaddress.com
-ip -6 addr
-ip -6 route get <probe_addr>/128 >/dev/null 2>&1 
-ip -6 route get 2001:4860:4860:0:0:0:0:8888/128 >/dev/null 2>&1 
-ip -6 route get 2001:4860:4860:0:0:0:0:8888/128 
-sudo sudo ip -6 route get 2001:4860:4860:0:0:0:0:8888/128 
-sudo ip -6 route get 2001:4860:4860:0:0:0:0:8888/128 
-ifconfig
-ping6 2600:1f18:12f6:4eee:e116:f1be:7914:a99f
-pihole -t
- sudo bash $prog/copy_certs.sh 
-df -h
-dpkg-query --show --showformat='${Installed-Size}\t${Package}\n' | sort -rh | head -25 | awk '{print $1/1024, $2}'
-sudo apt autoremove
-sudo apt autoclean
-cd Pihole-Slave-Install/
+sudo ip add
+sudo ip add eth0
+sudo ip add show dev eth0
+sudo ip add show dev eth0 | grepip
+sudo ip add show dev eth0 | grepip | awk '{print $2}'
+sudo ip add show dev eth0 | grepip | awk '{print $2}' | grep -v 192.168.44.250
+sudo nano /home/ubuntuserver/Programs/dhcp_fix.sh
+cat /home/ubuntuserver/Programs/dhcp_fix.sh
+iface=eth1
+should_add=192.168.12.244
+sudo ip add del `sudo ip add show dev $iface | grepip | awk '{print $2}' | grep -v $should_add | sed -n '1p'` dev $iface
+l `sudo ip add show dev $iface | grepip | awk '{print $2}' | grep -v $should_add | sed -n '1p'` 
+`sudo ip add show dev $iface | grepip | awk '{print $2}' | grep -v $should_add | sed -n '1p'` 
+sudo ip add show dev $iface | grepip | awk '{print $2}' | grep -v $should_add | sed -n '1p'
+sudo ip add show dev $iface 
+sudo nano /home/ubuntuserver/Programs/dhcp_fix.sh
+sudo ip add show dev $iface 
+sudo nano /home/ubuntuserver/Programs/dhcp_fix.sh
 sudo git stash && sudo git pull
-sudo ./copy_config.sh 
-hc-log
 sudo crontab -e
- bash $PROG/server-online-check.sh gcp.ctptech.dev 
-ssh gcp.ctptech.dev
-nano /home/ubuntuserver/Programs/server-online-check.sh 
+sudo bash $PROG/server-online-check.sh aws.ctptech.dev
 sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
+ aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+pihole --regex -d '(^|.)((yandex|qq|tencent).(net|com|org|dev|io|sh|cn|ru)|qq|local|localhost|query|sl|(^.$))'         '(^|.)(jujxeeerdcnm.intranet|w|aolrlgqh.intranet|((.)?)intranet)' '(^|.)(jujxeeerdcnm.ntranet|w|aolrlgqh.ntranet|((.)?)intranet)'
+sudo git stash && sudo git pull -ff
+dig intranet.ctptech.dev
+nano /etc/unbound/root.hints
+dig charles.tecg
+dig charlesp.tecg
+dig charlesp.tech
+dig charlesp.tecg
+dig www.google.com
+ifconfig
+dig www.google.com
+pihole status
+hc-log
+pihole restartdns
+pihole status
+ifconfig
+sudo sysctl net.ipv6.conf.lo.disable_ipv6=0
+sudo sysctl net.ipv6.conf.eth1.disable_ipv6
+sudo sysctl net.ipv6.conf.eth.disable_ipv6
+sudo sysctl net.ipv6.conf.eth0.disable_ipv6
+sudo sysctl net.ipv6.conf.all.disable_ipv6
+ifconfig
+ sudo nano $dnsmasq/05-addint-standard.conf
+pihole restartdns
+bash /home/ubuntuserver/Programs/get_network_devices_ip_address.sh 
+sudo nano /home/ubuntuserver/Programs/get_network_devices_ip_address.sh 
+CAT /home/ubuntuserver/Programs/get_network_devices_ip_address.sh 
+Ccathome/ubuntuserver/Programs/get_network_devices_ip_address.sh 
+cat /home/ubuntuserver/Programs/get_network_devices_ip_address.sh 
+sudo git stash && sudo git pull
+sudo ip
+sudo ifconfig
+sudo nano /etc/netplan/01-static.yaml 
+sudo nano /etc/NetworkManager/NetworkManager.conf
+sudo nano /etc/network/interfaces.d/eth0.conf 
+sudo nano /etc/network/interfaces.d/eth1.conf 
+sudo nano /etc/network/interfaces.d/eth0.conf 
+sudo nano /etc/network/interfaces.d/eth1.conf 
+sudo systemctl restart networking
+sudo systemctl status networking
+sudo ifup eth1
+sudo ifdown eth1
+sudo ifup eth1
+ifconfig
+cd Pihole-Slave-Install/
+sudo git stash && sudo git pull && sudo ./copy_config.sh
+sudo systemctl restart networking
+ping www.google.com
+sudo ip
+sudo ifconfig
+sudo nano /etc/network/interfaces.d/eth0.conf 
+pihole status
+curl -6 https://ifconfig.co
+curl -6 https://ifconfig.co --interface eth1
+curl -6 https://ifconfig.co
+curl -6 https://ipv6.icanhazip.com
+curl -6 http://ipinfo.io/ip
+ curl https://api64.ipify.org
+ curl https://api64.ipify.org --interface eth1
+sudo nano /etc/network/interfaces.d/eth0.conf 
+pihole status
+pihole restartdns
+pihole status
+pihole-FTL dnsmasq-test
+sudo pihole-FTL dnsmasq-test
+sudo pihole-FTL test
 cd Pihole-Slave-Install/
 sudo git stash && sudo git pull
-ssh 192.168.44.247
-ssh pi@192.168.44.247
+ifconfig
 sudo git stash && sudo git pull
+cd Pihole-Slave-Install/
+sudo git stash && sudo git pull
+sudo git stash && sudo git pull -ff
+ifconfig
+pihole status
+sudo pihole-FTL test
+sudo nano /home/ubuntuserver/Programs/start-config.sh 
+sudo bash  $PROG/add_cache_interfaces_lo_cache.sh
+ls prog
+sudo ./copy_config.sh 
+sudo bash  $PROG/add_cache_interfaces_lo_cache.sh
+ifconfig
+pihole status
+ping -6 2600:2d00:4004:eb33:c0a8:6309::
+ping -6 2600:2d00:4001:56d7:a80:9::
+ifconfig
+systemctl restart networking
+sudo systemctl restart networking
+sudo systemctl status  networking
+ifconfig
+sudo netplan try
+history | netplan
+history | grep netplan
+sudo  netplan try --state /etc/netplan
+ifconfig
+sudo nano /etc/netplan
+sudo nano /etc/netplan/01-static.yaml 
+sudo apt install ndisc6
+sudo rdisc6 -1 ens3
+sudo rdisc6 -1 eth1
+sudo nano /etc/netplan/
+sudo nano /etc/netplan/01-static.yaml 
+sudo  netplan try --state /etc/netplan
+sudo nano /etc/netplan/01-static.yaml 
+sudo  netplan try --state /etc/netplan
+sudo ip 
+sudo netplan
+sudo ifconfig
+sudo ip route
+sudo ip add
+sudo ip add ens4
+sudo ip add eth1
+sudo ip add show dev eth1
+sudo nano /home/ubuntuserver/Programs/dhcp_fix.sh
+sudo ip add show dev eth1 | grepip -4
+sudo nano /home/ubuntuserver/Programs/dhcp_fix.sh
+sudo ip add show dev $iface | grepip -o4 | awk '{print $2}'
+sudo ip add show dev $iface | grepip -o4 | awk '{print $1}'
+sudo ip add show dev eth1 | grepip -o4 | awk '{print $1}'
+sudo nano /home/ubuntuserver/Programs/dhcp_fix.sh
+sudo ip add show dev eth1 | grepip -o4 | awk '{print $1}'
+sudo ip add show dev eth1 | grepip -o
+sudo ip add show dev eth1 | grepip -4
+sudo nano /home/ubuntuserver/Programs/dhcp_fix.sh
+ifconfig
+cd Pihole-Slave-Install/
+ifconfig
+sudo nano /etc/netplan/01-static.yaml 
+sudo nano /etc/network/interfaces.d/eth1
+sudo nano /etc/network/interfaces.d/eth1.conf 
+ifconfig
+ping www.google.com

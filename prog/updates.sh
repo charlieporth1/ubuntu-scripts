@@ -9,8 +9,8 @@ if [[ -f /var/lib/dpkg/lock ]]; then
 fi
 # UPDATE APT
 yes | sudo dpkg --configure -a
-yes | apt -y update
 yes | apt -y --fix-broken install
+yes | apt -y update
 yes | apt -y upgrade
 yes | apt -y dist-upgrade
 yes | apt -y autoremove
@@ -38,6 +38,7 @@ go get -v -u github.com/AdguardTeam/dnsproxy
 go get -v -u github.com/ameshkov/dnscrypt
 go get -u -v github.com/folbricht/routedns/cmd/routedns
 go get -u -v github.com/DNSCrypt/dnscrypt-proxy/dnscrypt-proxy
+go get -v -u github.com/projectdiscovery/shuffledns/cmd/shuffledns
 sudo /snap/bin/go get -v -u github.com/folbricht/routedns/cmd/routedns
 go get -u -v github.com/natesales/q
 VP=q_0.4.1_linux_amd64.deb
@@ -47,7 +48,7 @@ dpkg -i ~/$VP
 #wget -O /tmp/bfg.jar https://repo1.maven.org/maven2/com/madgag/bfg/$bfg_release/bfg-$bfg_release.jar
 wget -O /tmp/dnscrypt.tar.gz  https://github.com/ameshkov/dnscrypt/releases/latest/download/dnscrypt-linux-amd64-` curl --silent "https://api.github.com/repos/ameshkov/dnscrypt/tags" | jq -r '.[0].name'`.tar.gz
 wget https://github.com/DNSCrypt/encrypted-dns-server/releases/download/0.9.1/encrypted-dns_0.9.1_amd64.deb
-sudo dpkg -i encrypted-dns_0.9.1_amd64.deb 
+sudo dpkg -i encrypted-dns_0.9.1_amd64.deb
 tar -xvf /tmp/dnscrypt.tar.gz -C /tmp
 cp -rf /tmp/linux-amd64/dnscrypt /usr/local/bin
 curl -sSL 'https://github.com/ipinfo/cli/releases/download/ipinfo-1.1.0/deb.sh' | bash
@@ -72,3 +73,17 @@ else
 fi
 go get -v -u github.com/gonejack/hsize
 sudo go get -v -u github.com/gonejack/hsize
+
+if [[ "$HOSTNAME" != "ctp-vpn" ]] then
+	(yes | gcloud beta compute ssh --zone $GCLOUD_ZONE $MASTER_MACHINE --project $GCLOUD_PROJECT)&
+fi
+
+
+sudo update-alternatives --remove iptables /usr/sbin/iptables-legacy
+sudo update-alternatives --remove iptables-save /usr/sbin/iptables-legacy-save
+sudo update-alternatives --remove iptables-restore /usr/sbin/iptables-legacy-restore
+sudo update-alternatives --remove ip6tables /usr/sbin/ip6tables-legacy
+sudo update-alternatives --remove ip6tables-save /usr/sbin/ip6tables-legacy-save
+sudo update-alternatives --remove ip6tables-restore /usr/sbin/ip6tables-legacy-restore
+sudo update-alternatives --remove traceroute /usr/bin/traceroute
+

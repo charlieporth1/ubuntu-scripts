@@ -13,7 +13,7 @@ blocklist-source = [
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/snapchat-blacklist.list", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/facebook-blacklist.list", cache-dir = "/var/cache/ctp-dns"}, 
 #        {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists", cache-dir = "/var/cache/ctp-dns"},
-#        {format = "domain", source = "", cache-dir = "/var/cache/ctp-dns"},
+#        {format = "domain", source = , cache-dir = "/var/cache/ctp-dns"},
 ]
 allowlist-refresh = 1800
 allowlist-resolver = "ctp-dns-fail-back"

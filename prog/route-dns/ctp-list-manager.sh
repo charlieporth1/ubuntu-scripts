@@ -1,12 +1,13 @@
 #!/bin/bash
 source /etc/environment
 export CTP_LIST=$WWW/txt_lists/ctp-lists
+
 if [[ -d $CTP_LIST ]] && [[ "$HOSTNAME" == 'ctp-vpn' ]]; then
 	declare -a domain_lists
 	domain_lists=(
 		$HOLE/goverment-whitelist.list
 		$HOLE/custom-mobile-trackers-blacklist.list
-		$HOLE/ticwatch-blacklist.list
+		$HOLE/ticwatch-{black,white}list.list
 		$HOLE/vulnerability-blacklist.regex
 		$HOLE/gstatic-metric-whitelist.list
 		$HOLE/{hubspot,onedrive,instagram,reddit,speedtest{s,}}-whitelist.list

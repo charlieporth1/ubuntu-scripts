@@ -8,5 +8,5 @@ blocklist-format = "domain"
 resolvers = [ "ctp-dns-blocklist-others" ]
 blocklist-source = [
         {format = "domain", source = "https://raw.githubusercontent.com/maravento/blackweb/master/bwupdate/lst/blockurls.txt", cache-dir = "/var/cache/ctp-dns" }
-#        {format = "domain", source = "", cache-dir = "/var/cache/ctp-dns"},
+#        {format = "domain", source = , cache-dir = "/var/cache/ctp-dns"},
 ]

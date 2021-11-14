@@ -1,5 +1,5 @@
 #!/bin/bash
-source $PROG/test_dns_args.sh
+source $PROG/test_dns_args.sh $@
 CONCURRENT
 [[ "$1" == "-a" ]] && isAuto="+short" || isAuto='-d'
 # kdig -d @dns.google +tls-ca +tls-host=dns.google www.google.com +timeout=4 +dnssec +edns

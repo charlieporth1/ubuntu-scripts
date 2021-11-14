@@ -1,7 +1,7 @@
 #!/bin/bash
-source $PROG/all-scripts-exports.sh
-#CONCURRENT
+CONCURRENT
 if [[ `systemctl-exists pihole-FTL.service` == 'true' ]] && [[ $(systemctl-inbetween-status pihole-FTL.service) == 'false' ]]; then
+	source $PROG/all-scripts-exports.sh
 	source $PROG/populae-log.sh
 	INIT_POP_TEST
 	INIT_POP_TEST
@@ -45,5 +45,6 @@ if [[ `systemctl-exists pihole-FTL.service` == 'true' ]] && [[ $(systemctl-inbet
 elif [[ `systemctl-exists pihole-FTL.service` == 'true' ]]; then
 	echo "stail not run something not found or right"
 	bash $PROG/create_logging.sh
+	IF_RESTART
 	PIHOLE_RESTART_POST
 fi

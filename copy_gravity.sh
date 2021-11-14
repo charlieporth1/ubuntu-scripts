@@ -30,8 +30,6 @@ function remote_size_test() {
 function copy_gravity() {
 #                        --buffer-size 256M \
 #                        --transfers 6 \
-	local byte_size=$(( 1024 * 1024 * 1024 ))
-	local min_gravity_size=$(( $byte_size * 16 ))
 
 	if [[ `remote_size_test` -le $min_gravity_size ]]; then
 		sync

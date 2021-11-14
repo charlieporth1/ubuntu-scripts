@@ -2,10 +2,11 @@
 source /etc/environment
 shopt -s extglob
 SERVICE=ctp-dns.service
-CONFIG_TEST_TIMEOUT=3
+CONFIG_TEST_TIMEOUT=4
 ARGS="$@"
 
-LOG_FILE=error.log
+LOG_FILE=*.log
+#LOG_FILE=error.log
 INSTALL_DIR=/usr/local/bin
 CONFIG_DIR=${ROUTE}
 
@@ -159,8 +160,8 @@ function update_route_dns() {
 export -f update_route_dns
 
 function create_logs() {
-	! [[ -d $CTP_DNS_LOG_DIR/ ]] && sudo mkdir -p $CTP_DNS_LOG_DIR/
-	sudo touch $CTP_DNS_LOG_DIR/{access,error,default}.log
+	! [[ -d $CTP_DNS_LOG_DIR/ ]] && mkdir -p $CTP_DNS_LOG_DIR/
+	touch $CTP_DNS_LOG_DIR/{access,error,default}.log
 }
 export -f create_logs
 
@@ -169,20 +170,20 @@ function clear_cache() {
 	[[ -f $PROG/generarte_vulnerability-blacklist.sh ]] && sudo bash $PROG/generarte_vulnerability-blacklist.sh
 	generate_lists_sha_all_files
 	config_test_human
-	sudo systemctl restart ctp-dns.service
+	sudo systemctl restart $SERVICE
 }
 export -f clear_cache
 
 function clear_logs() {
 	sudo rm -rf $CTP_DNS_LOG_DIR/*.log
 	config_test_human
-	sudo systemctl restart ctp-dns.service
+	sudo systemctl restart $SERVICE
 }
 export -f clear_logs
 
 function config_test_exit_code() {
 	local config_test_dir="${1:-$CONFIG_DIR}"
-	sudo timeout $CONFIG_TEST_TIMEOUT sudo /root/go/bin/routedns $config_test_dir/*.toml --log-level=0 2>  /dev/null
+	sudo timeout $CONFIG_TEST_TIMEOUT sudo /root/go/bin/routedns $config_test_dir/*.toml --log-level=0 2> /dev/null
 	echo $?
 }
 export -f config_test_exit_code
@@ -233,23 +234,28 @@ function ctp_dns_status() {
 export -f ctp_dns_status
 
 function generate_config() {
-	if [[ `config_test` == 'false' ]]; then
+	if [[ `config_test ${CONFIG_DIR}` == 'false' ]]; then
 		source $PROG/generate_ctp-dns-envs.sh
+
+		bash $PROG/if_no_ipv6_do_ipv4_only.sh &
+		if_master_fix
 
 		local RUN_FILE=$PROG/generarte_vulnerability-blacklist.sh
 		[[ -f $RUN_FILE ]] && $RUN_FILE &
 		local RUN_FILE=$PROG/generate_ctp-dns-groups.sh
-		[[ -f $RUN_FILE ]] && bash $RUN_FILE &
+		[[ -f $RUN_FILE ]] && bash $RUN_FILE --preload &
 		local RUN_FILE=$PROG/generate_ctp-dns-well-known-retry-groups.sh
-		[[ -f $RUN_FILE ]] && bash $RUN_FILE &
+		[[ -f $RUN_FILE ]] && bash $RUN_FILE
 		local RUN_FILE=$PROG/generate_ctp-dns-well-known-fail-backup-groups.sh
 		[[ -f $RUN_FILE ]] && bash $RUN_FILE
 		local RUN_FILE=$PROG/generate_ctp-dns-backup-resolvers.sh
-		[[ -f $RUN_FILE ]] && bash $RUN_FILE
+		[[ -f $RUN_FILE ]] && bash $RUN_FILE --preload &
 		local RUN_FILE=$PROG/dns-route.sh
 		[[ -f $RUN_FILE ]] && bash $RUN_FILE
+		local RUN_FILE=$ROUTE/ctp-dns-format.sh
+		[[ -f $RUN_FILE ]] && bash $RUN_FILE --preload
 	fi
-	config_test_human &
+	config_test_human ${CONFIG_DIR} &
 }
 export -f generate_config
 
@@ -306,6 +312,16 @@ function restart_systemd_service() {
 }
 export -f restart_systemd_service
 
+function if_master_fix() {
+	if [[ "$IS_MASTER" == 'true' ]] || [[ "$HOSTNAME" == 'ctp-vpn' ]]; then
+		echo "" | sudo tee $ROUTE/slave-listeners{,-udp-retry-resolvers}.toml
+	else
+		echo "" | sudo tee $ROUTE/$HOSTNAME-resolvers.toml
+	fi
+
+}
+export -f if_master_fix
+
 helpString="""
    -h --help
    -qbl --query-blocklist-log
@@ -328,6 +344,7 @@ helpString="""
    -mlf --manage-lock-file
    -clf --create-lock-file
    -rlf	--rm-lock-file
+   --if-master-fix
    --reset-host-configuration
    --restart
    --reload
@@ -374,6 +391,7 @@ for i in "$@"; do
         *ml | *mlf | --manage-lock?(-file) ) shift ; manage_lock_file;;
         *clf | --create-lock?(-file) ) shift ; create_lock_file;;
         *@(r|c)l | *@(r|c)lf | --@(rm|clear)-lock?(-file) ) shift ; rm_lock_file;;
+        --if-master-fix ) shift ; if_master_fix;;
         --restart | *restart | *restartdns ) shift ; restart_systemd_service;;
         --reload | *reload ) shift ; reload_systemd_service;;
         --status | *status ) shift; ctp_dns_status ;;

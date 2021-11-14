@@ -1,5 +1,5 @@
 #!/bin/bash
-source $PROG/all-scripts-exports.sh --no-log
+source $PROG/test_dns_args.sh $@
 CONCURRENT
 QUERY=dnssec-tools.org
 
@@ -17,14 +17,16 @@ then
     exit
 fi
 
-
+file=/tmp/root.keys
 for dns_server in "${dns_servers[@]}"
 do
-	result=`dig +dnssec $QUERY @$dns_server +timeout=$TIMEOUT +tries=$TRIES +edns -t $qtype -4 +retry=$TRIES | grep -o 'ad'`
-	dns_logger "result $result dns_server $dns_server"
-	if [[ -z "$result" ]]; then
-		dns_logger "FAIL AT $dns_server with result $result"
-		bash $PROG/alert_user.sh "DNSSEC test failed for sever $dns_server; please check $HOSTNAME;; $result;;"
+	dig . DNSKEY @$dns_server | grep -Ev '^($|;)' > $file
+	result=`dig +sigchase +trusted-key=./root.keys A $QUERY`
+	result_ctp=`dig +sigchase +trusted-key=./root.keys A $HOST`
+	dns_logger "result $result dns_server $dns_server $result_ctp"
+	if [[ -z "$result" ]] || [[ -z "$result_ctp" ]]; then
+		dns_logger "FAIL AT $dns_server with result $result $result_ctp"
+		bash $PROG/alert_user.sh "DNSSEC test failed for sever $dns_server; please check $HOSTNAME;; $result, $result_ctp;;"
 		#sleep $WAIT_TIME
 	fi
 done

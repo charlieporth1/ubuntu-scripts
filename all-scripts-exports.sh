@@ -1,6 +1,8 @@
 #!/bin/bash
 source /etc/environment
-source /etc/profile.d/bash-exports-global.sh
+if [[ -f /etc/profile.d/bash-exports-global.sh ]]; then
+	source /etc/profile.d/bash-exports-global.sh
+fi
 ARGS="$@"
 
 [[ -f $PROG/populae-log.sh ]] && source $PROG/populae-log.sh
@@ -46,6 +48,9 @@ export progName=$SCRIPT
 export scriptName=$SCRIPT
 export script_name=$SCRIPT
 export DIR=`realpath . | rev | cut -d '/' -f 1 | rev`
+
+export default_iface=`route | grep '^default' | grep -o '[^ ]*$'  | sort -u`
+export default_iface_address=`ifconfig $default_iface | awk '{print $2}' | grepip -4`
 
 export MASTER_MACHINE="ctp-vpn"
 export GCLOUD_PROJECT="galvanic-pulsar-284521"
@@ -128,7 +133,7 @@ then
         export MASTER=$IS_PIHOLE
 	export HOLE=/etc/pihole
 	export PIHOLE=$HOLE
-	export DNSMASQ=/etc/dnsmasq
+	export DNSMASQ=/etc/dnsmasq.d
 	export GRAVITY=gravity.db
 	export GRAVITY_FILE=$HOLE/$GRAVITY
 	export DB_FILE=$GRAVITY_FILE
@@ -458,6 +463,7 @@ export -f RESET_FTL
 function PIHOLE_RESTART_PRE() {
 	logger "Ran `date`"
 	bash $PROG/create_logging.sh
+	bash $PROG/add_cache_interfaces_lo_cache.sh
         mkdir -p /var/cache/dnsmasq/
         touch /var/cache/dnsmasq/dnsmasq_dnssec_timestamp
         touch /etc/pihole/local.list
@@ -690,7 +696,11 @@ alias wait-on-command='wait_on_command'
 
 function ip_exists() {
 	local ip_address="$1"
-	[[ -z "$ping_return_status" ]] && declare -gx ping_return_status=`timeout 4 ping -c 3 $ip_address > /dev/null; echo $?`
+	local timeout="${2:-6}"
+	local interface_input="${3}"
+	local ping_interval="${4:-2}"
+	[[ -n $interface_input ]] && local interface="-I $interface_input"
+	[[ -z "$ping_return_status" ]] && declare -gx ping_return_status=`ping -w $timeout -A -c $ping_interval $ip_address $interface > /dev/null; echo $?`
 
 	if [[ $ping_return_status = 0 ]]; then
 		echo "true"
@@ -777,5 +787,12 @@ function trim1() {
         awk '{$1=$1;print}'
 }
 export -f trim1
+
+function trim2() {
+  local s2 s="$*"
+  until s2="${s#[[:space:]]}"; [ "$s2" = "$s" ]; do s="$s2"; done
+  until s2="${s%[[:space:]]}"; [ "$s2" = "$s" ]; do s="$s2"; done
+  echo "$s"
+}
 
 source /etc/environment

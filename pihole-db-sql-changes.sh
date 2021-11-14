@@ -29,9 +29,9 @@ function pihole_sqlite3_changes() {
 	sudo sqlite3 $DB_FILE "PRAGMA cache_size;"
 	echo "PRAGMA journal_mode=WAL;" | sudo sqlite3 $DB_FILE
 	echo "PRAGMA journal_mode;"  | sudo sqlite3 $DB_FILE
-	echo "PRAGMA journal_size_limit=5000;"  | sudo sqlite3 $DB_FILE
+#	echo "PRAGMA journal_size_limit=5000;"  | sudo sqlite3 $DB_FILE
 	echo "PRAGMA journal_size_limit;"  | sudo sqlite3 $DB_FILE
-	echo "PRAGMA wal_autocheckpoint=5000;"  | sudo sqlite3 $DB_FILE
+#	echo "PRAGMA wal_autocheckpoint=5000;"  | sudo sqlite3 $DB_FILE
 	echo "PRAGMA wal_autocheckpoint;"  | sudo sqlite3 $DB_FILE
 	echo "PRAGMA auto_vacuum=FULL;"  | sudo sqlite3 $DB_FILE
 	echo "PRAGMA auto_vacuum;"  | sudo sqlite3 $DB_FILE

@@ -1,0 +1,54 @@
+[groups.static-servfail]
+type   = "static-responder"
+answer = [
+        "IN A 35.232.120.211",
+        "IN A 35.192.105.158",
+]
+[groups.static-servfail-a]
+type   = "static-responder"
+answer = [
+        "IN A 35.232.120.211",
+        "IN A 35.192.105.158",
+]
+[groups.static-servfail-aaaa]
+type   = "static-responder"
+answer = [
+        "IN AAAA ::",
+        "IN AAAA ::0",
+]
+[groups.static-servfail-srv]
+type   = "static-responder"
+answer = [
+        "IN SRV 0 0 3000 gcp.ctptech.dev.",
+]
+
+[groups.static-badalg]
+type   = "static-responder"
+ # Response code: 0 = NOERROR, 1 = FORMERR, 2 = SERVFAIL, 3 = NXDOMAIN, 5 = REFUSED... 
+# https://datatracker.ietf.org/doc/html/rfc2929#section-2.3
+rcode  = 21
+
+[groups.static-rfc8482]
+type   = "static-responder"
+answer = [
+        "IN HINFO RFC8482 ANY obsoleted!",
+        "IN A 0.0.0.0",
+        "IN AAAA ::",
+        "IN AAAA ::0",
+]
+rcode  = 5
+
+[groups.static-refuse]
+type = "static-responder"
+answer = [
+        "IN A 0.0.0.0",
+        "IN AAAA ::",
+        "IN AAAA ::0",
+]
+rcode = 5
+
+[groups.static-refused]
+type  = "static-responder"
+rcode = 5 # REFUSED
+
+

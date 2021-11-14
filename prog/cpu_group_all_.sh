@@ -32,29 +32,31 @@ sudo cgcreate -g memory:/256MBRam
 sudo cgcreate -g memory:/128MBRam
 sudo cgcreate -g memory:/64MBRam
 
-echo $(( 2048 * 1024 * 1024 )) | sudo tee /sys/fs/cgroup/memory/2GBRam/memory.limit_in_bytes #2 GB RAM
-echo $(( 2049 * 1024 * 1024 )) | sudo tee /sys/fs/cgroup/memory/2GBRam/memory.memsw.limit_in_bytes #2GB swap, only works if you have swap
+bytes=$(( 1024 * 1024 ))
 
-echo $(( 1024 * 1024 * 1024 )) | sudo tee /sys/fs/cgroup/memory/1GBRam/memory.limit_in_bytes #2 GB RAM
-echo $(( 1024 * 1024 * 1024 )) | sudo tee /sys/fs/cgroup/memory/1GBRam/memory.memsw.limit_in_bytes #2GB swap, only works if you have swap
+echo $(( 2048 * $bytes )) | sudo tee /sys/fs/cgroup/memory/2GBRam/memory.limit_in_bytes #2 GB RAM
+echo $(( 2049 * $bytes )) | sudo tee /sys/fs/cgroup/memory/2GBRam/memory.memsw.limit_in_bytes #2GB swap, only works if you have swap
 
-echo $(( 750 * 1024 * 1024 )) | sudo tee /sys/fs/cgroup/memory/512MBRam/memory.limit_in_bytes #2 GB RAM
-echo $(( 750 * 1024 * 1024 )) | sudo tee /sys/fs/cgroup/memory/512MBRam/memory.memsw.limit_in_bytes #2GB swap, only works if you have swap
+echo $(( 1024 * $bytes )) | sudo tee /sys/fs/cgroup/memory/1GBRam/memory.limit_in_bytes #2 GB RAM
+echo $(( 1024 * $bytes )) | sudo tee /sys/fs/cgroup/memory/1GBRam/memory.memsw.limit_in_bytes #2GB swap, only works if you have swap
 
-echo $(( 512 * 1024 * 1024 )) | sudo tee /sys/fs/cgroup/memory/512MBRam/memory.limit_in_bytes #2 GB RAM
-echo $(( 512 * 1024 * 1024 )) | sudo tee /sys/fs/cgroup/memory/512MBRam/memory.memsw.limit_in_bytes #2GB swap, only works if you have swap
+echo $(( 750 * $bytes )) | sudo tee /sys/fs/cgroup/memory/512MBRam/memory.limit_in_bytes #2 GB RAM
+echo $(( 750 * $bytes )) | sudo tee /sys/fs/cgroup/memory/512MBRam/memory.memsw.limit_in_bytes #2GB swap, only works if you have swap
 
-echo $(( 256 * 1024 * 1024 )) | sudo tee /sys/fs/cgroup/memory/256MBRam/memory.limit_in_bytes #2 GB RAM
-echo $(( 256 * 1024 * 1024 )) | sudo tee /sys/fs/cgroup/memory/256MBRam/memory.memsw.limit_in_bytes #2GB swap, only works if you have swap
+echo $(( 512 * $bytes )) | sudo tee /sys/fs/cgroup/memory/512MBRam/memory.limit_in_bytes #2 GB RAM
+echo $(( 512 * $bytes )) | sudo tee /sys/fs/cgroup/memory/512MBRam/memory.memsw.limit_in_bytes #2GB swap, only works if you have swap
 
-echo $(( 384 * 1024 * 1024 )) | sudo tee /sys/fs/cgroup/memory/384MBRam/memory.limit_in_bytes #2 GB RAM
-echo $(( 384 * 1024 * 1024 )) | sudo tee /sys/fs/cgroup/memory/384MBRam/memory.memsw.limit_in_bytes #2GB swap, only works if you have swap
+echo $(( 256 * $bytes )) | sudo tee /sys/fs/cgroup/memory/256MBRam/memory.limit_in_bytes #2 GB RAM
+echo $(( 256 * $bytes )) | sudo tee /sys/fs/cgroup/memory/256MBRam/memory.memsw.limit_in_bytes #2GB swap, only works if you have swap
 
-echo $(( 128 * 1024 * 1024 )) | sudo tee /sys/fs/cgroup/memory/128MBRam/memory.limit_in_bytes #2 GB RAM
-echo $(( 128 * 1024 * 1024 )) | sudo tee /sys/fs/cgroup/memory/128MBRam/memory.memsw.limit_in_bytes #2GB swap, only works if you have swap
+echo $(( 384 * $bytes )) | sudo tee /sys/fs/cgroup/memory/384MBRam/memory.limit_in_bytes #2 GB RAM
+echo $(( 384 * $bytes )) | sudo tee /sys/fs/cgroup/memory/384MBRam/memory.memsw.limit_in_bytes #2GB swap, only works if you have swap
 
-echo $(( 64 * 1024 * 1024 )) | sudo tee /sys/fs/cgroup/memory/64MBRam/memory.limit_in_bytes #2 GB RAM
-echo $(( 64 * 1024 * 1024 )) | sudo tee /sys/fs/cgroup/memory/64MBRam/memory.memsw.limit_in_bytes #2GB swap, only works if you have swap
+echo $(( 128 * $bytes )) | sudo tee /sys/fs/cgroup/memory/128MBRam/memory.limit_in_bytes #2 GB RAM
+echo $(( 128 * $bytes )) | sudo tee /sys/fs/cgroup/memory/128MBRam/memory.memsw.limit_in_bytes #2GB swap, only works if you have swap
+
+echo $(( 64 * $bytes )) | sudo tee /sys/fs/cgroup/memory/64MBRam/memory.limit_in_bytes #2 GB RAM
+echo $(( 64 * $bytes )) | sudo tee /sys/fs/cgroup/memory/64MBRam/memory.memsw.limit_in_bytes #2GB swap, only works if you have swap
 
 
 

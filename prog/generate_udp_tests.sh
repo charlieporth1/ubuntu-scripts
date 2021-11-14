@@ -22,5 +22,4 @@ sed -i "s/$DNS_ARGS/$DNS_ARGS +notcp/g" $DNS_UDP_FILE
 sed -i "s/+tcp//g" $DNS_UDP_FILE
 sed -i "s/DNS/DNS UDP/gm" $DNS_UDP_FILE
 sed -i "s/Dns/DNS UDP/gm" $DNS_UDP_FILE
-sed -i "s/dns/DNS UDP/gm" $DNS_UDP_FILE
 sed -i "s/DnS/DNS UDP/gm" $DNS_UDP_FILE

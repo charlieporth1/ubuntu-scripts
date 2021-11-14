@@ -14,14 +14,17 @@ files=(
 	`new_linify.sh $(get_local_lists dns-lists.toml) | grep -v 'regex'`
 	`new_linify.sh $(get_local_lists dns-lists-local.toml) | grep -v 'regex'`
 )
+min_line_count=4
 for file in "${files[@]}"
 do
 	if [[ -f $file ]]; then
+		og_file=$ADMIN_HOME/Lists/$file
+		if [[ "$HOSTNAME" == 'ctp-vpn' ]] && [[ `wc -l $file | awk '{print $1}'` -le $min_line_count ]] && [[ -f $og_file ]]; then
+			sudo cp -rf $og_file $ROUTE_LIST/black/
+		fi
+
 		#perl -0777 -i -pe " s/^(\.)?/./gm " $file
-
-		perl -0777 -i -pe " s/(\.)?$//gm " $file
-
-		perl -0777 -i -ne 'print if ! $x{$_}++' $file
+#		perl -0777 -i -pe " s/(\.)?$//gm " $file
 		bash $PROG/sort-lists.sh $file
 	fi
 done

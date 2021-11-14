@@ -1,10 +1,10 @@
 #!/bin/bash
 ARGS="$@"
 file="$1"
-SPACE_ARG_REGEX='\-\-(space)'
+SPACE_ARG_REGEX='\-\-space'
 QUOTES_ARGS_REGEX='\-\-quotes'
 
-[[ -n `echo "$ARGS" | grep -Eio "$SPACE_ARG_REGEX"` ]] && SPACE=true || SPACE=false
+[[ -n `echo "$ARGS" | grep -io "$SPACE_ARG_REGEX"` ]] && SPACE=true || SPACE=false
 [[ -n `echo "$ARGS" | grep -io "$QUOTES_ARGS_REGEX"` ]] && QUOTES=true || QUOTES=false
 
 if [ "$#" -eq 0 ]; then
@@ -54,7 +54,7 @@ fi
 [[ "$QUOTES" == 'true' ]] && REGEX_EXCLUDE="${REGEX_EXCLUDE//,/\",\"}"
 [[ "$SPACE" == 'true' ]] && REGEX_EXCLUDE="${REGEX_EXCLUDE//,/, }" || REGEX_EXCLUDE="${REGEX_EXCLUDE// /,}"
 
-REGEX_EXCLUDE="$( echo "${REGEX_EXCLUDE}" | rev | cut -d ',' -f 2- | rev )"
+REGEX_EXCLUDE="$( echo "${REGEX_EXCLUDE}" | rev | cut -d ',' -f 1- | rev )"
 [[ "$QUOTES" == 'true' ]] && REGEX_EXCLUDE="\"${REGEX_EXCLUDE}"
 echo "$REGEX_EXCLUDE"
 unset REGEX_EXCLUDE

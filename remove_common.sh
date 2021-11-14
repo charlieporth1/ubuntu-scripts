@@ -9,6 +9,8 @@ remove_list=(
 "!!"
 "###"
 )
+pihole --regex -d '(^|.)((yandex|qq|tencent).(net|com|org|dev|io|sh|cn|ru)|qq|local|localhost|query|sl|(^.$))' \
+        '(^|.)(jujxeeerdcnm.intranet|w|aolrlgqh.intranet|((.)?)intranet)' '(^|.)(jujxeeerdcnm.ntranet|w|aolrlgqh.ntranet|((.)?)intranet)'
 export REGEX_EXCLUDE=`$PROG/grepify.sh ${remove_list[@]}`      # result: key1\| key2\| key3\|
 echo $REGEX_EXCLUDE
 parallel -j4 --lb echo "{}" :::: \

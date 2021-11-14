@@ -32,8 +32,8 @@ cache-answer-shuffle = "round-robin"
 [routers.root-router]
 routes = [
   { class = "ANY", resolver = "static-rfc8482" }, # Send queries of type ANY to a static responder
-  { types = [ "RRSIG", "ANY", "SOA", "TXT", "PTR" ], resolver = "static-refuse" }, # Send queries of type RRSIG to a static responder
-  { name = '(^|\.)(doubleclick)\.net\.$', resolver = "static-refuse" },
+  { types = [ "RRSIG", "ANY", "SOA", "TXT", "PTR" ], resolver = "drop-all" }, # Send queries of type RRSIG to a static responder
+  { name = '(^|\.)(doubleclick)\.net\.$', resolver = "drop-all" },
   { name = '(^|\.)(youtube|ytimg|ggpht|youtube-ui\.l\.google|youtubei\.googleapis)\.com\.$', resolver = "ctp-yt-blocker-if-fowarder-router" },
   { name = '(^|\.)(gvt[0-6]?|googlevideo)\.com\.$', resolver = "ctp-yt-blocker-if-fowarder-router" },
   { name = '(^|\.)(fwmrm)\.net\.$', resolver = "ctp-yt-blocker-if-fowarder-router" },
@@ -51,7 +51,7 @@ ttl-max = 3024000
 [groups.ctp-dns-ecs]
 type = "ecs-modifier"
 resolvers = [ "ctp-dns-blocklist" ]
- # "add", "delete", "privacy". Defaults to "" which does nothing.
+ # "add", "delete", "privacy". Defaults to  which does nothing.
 ecs-op = "add"
 ecs-prefix4 = 16
 ecs-prefix6 = 32
@@ -71,73 +71,12 @@ servfail-error = true
 #	"ctp-dns_group-fail-back-home",
 #	"ctp-dns_group-fail-back-aws",
 [groups.ctp-dns-fail-rotate]
-resolvers = [
-	"ctp-dns_group-fastest-gcp-external",
+resolvers = [ 
+	"ctp-dns_group-fastest-home-external",
 	"ctp-dns_group-fastest-aws-external",
-	"ctp-dns_group-fail-rotate-gcp",
+	"ctp-dns_group-fail-rotate-home",
 	"ctp-dns_group-fail-rotate-aws",
-	"ctp-dns_group-fail-back-gcp",
-	"ctp-dns_group-fail-back-aws",
-	"ctp-dns-local-master-tcp",
-	"ctp-dns-local-master-udp",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-tcp",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-udp",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-dot",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-dot-nginx",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-dtls",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-doq",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-doh-doq",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-doh-get",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-doh-post",
-"-fail-back",
-	"ctp-dns_group-fail-rotate-raw",
 ]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 type = "fail-rotate"
 servfail-error = true
 

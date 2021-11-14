@@ -19,7 +19,7 @@ resolvers = [
         "ctp-dns_group-fail-rotate-masters",
         "ctp-dns_group-fail-back-masters",
 ]
-reset-after = 15
+reset-after = 30
 type = "fail-back"
 servfail-error = true
 

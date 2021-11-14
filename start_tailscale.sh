@@ -1,8 +1,23 @@
 #!/bin/bash
+source /etc/environment
+source $PROG/all-scripts-exports.sh
 declare -xg ADDITONAL_ROUTES=""
-GCP_AWS_ROUTE="10.128.0.0/16,172.31.0.0/16"
-GCP_ROUTE="10.128.0.0/16,192.168.99.0/24"
-HOME_ROUTE="192.168.44.0/24"
+declare -xg ADDITONAL_TAGS=""
+AWS_ROUTE="172.31.0.0/20"
+GCP_FREE_ROUTE="10.138.0.0/20"
+GCP_ROUTE_1="10.128.0.0/20"
+GCP_ALL_ROUTE="$GCP_ROUTE_1,192.168.99.0/24,$GCP_FREE_ROUTE"
+GCP_PAID_ROUTE="$GCP_ROUTE_1,192.168.99.0/24"
+GCP_AWS_ROUTE="10.128.0.0/20,$AWS_ROUTE"
+HOME_ROUTE="192.168.44.0/24,192.168.12.0/24"
+
+ALL_ROUTES="$AWS_ROUTE,$HOME_ROUTE,$GCP_ROUTE"
+declare -a routes_arrary=$(decsvify "$ALL_ROUTES")
+
+(
+	sudo apt -y update
+	sudo apt -y install tailscale
+)&>/dev/null
 
 function add_routes() {
 	local route="$1"
@@ -12,18 +27,100 @@ function add_routes() {
 		ADDITONAL_ROUTES="$ADDITONAL_ROUTES,$route"
 	fi
 }
-if [[ "$HOSTNAME" =~ (ctp-vpn|ip-172-31-12-154) ]]; then
-	add_routes "$GCP_AWS_ROUTE"
-#	if [[ "$HOSTNAME" = 'ctp-vpn' ]]; then
-#
-#	fi
-elif [[ "$HOSTNAME" = "ubuntu-server" ]]; then
+
+function route_router_substation(){
+	local route="$1"
+	local subnet=$(echo "$route" | awk -F'\.[0-9]/[0-9]' '{print $1}')
+	local router=$(echo "$subnet.1")
+	echo "$router"
+}
+
+function auto_routes() {
+	for route in ${routes_arrary[@]}
+	do
+		local router=$(route_router_substation $route)
+		if [[ `ip-exists $router` == true ]]; then
+			add_routes $route
+		fi
+	done
+}
+
+function add_tag() {
+	local tag="$1"
+	if [[ -z $ADDITONAL_TAGS ]]; then
+		ADDITONAL_TAGS="$tag"
+	else
+		ADDITONAL_TAGS="$ADDITONAL_TAGS,$tag"
+	fi
+}
+
+function tag_test() {
+	local tag="$1"
+	local port_and_or_ip="$2"
+	local port=$(echo $port_and_or_ip | cut -f 2- -d ':')
+        local port_status=`ss -alunt "sport = :$port" | grep -o "$port_and_or_ip" | sort -u`
+	if [[ -n "$port_status" ]]; then
+		add_tag "$tag"
+	fi
+}
+
+function auto_tags() {
+	tag_test 53 dns_tag
+	tag_test 53 ctp-dns_tag
+	tag_test 853 s-dns_tag
+	tag_test 853 dot_tag
+	tag_test 853 ctp-dot_tag
+	tag_test 8853 doq_tag
+	tag_test 784 doq_draft_1_tag
+	tag_test 1784 doq_draft_2_tag
+	tag_test 1443 doh_quic_tag
+	tag_test 80 http_tag
+	tag_test 443 https_tag
+	tag_test 8443 alt_https_tag_1
+	tag_test 2443 alt_https_tag_2
+	tag_test 22 ssh_tag
+}
+
+if [[ "$HOSTNAME" =~ (ctp-vpn|ip-172-31-12-154|instance-1-ctp-vpn) ]]; then
+	if [[ "$HOSTNAME" = 'ctp-vpn' ]]; then
+		add_routes "$GCP_PAID_ROUTE"
+	fi
+	if [[ "$HOSTNAME" = 'instance-1-ctp-vpn' ]]; then
+		add_routes "$GCP_FREE_ROUTE"
+	else
+		add_routes "$GCP_AWS_ROUTE"
+	fi
+elif [[ "$HOSTNAME" =~ (ubuntu-server|neat-xylophone|led-raspberrypi3) ]]; then
 	add_routes "$HOME_ROUTE"
-fi
-if [[ -n "$ADDITONAL_ROUTES" ]]; then
-	echo "Starting TailScale adding ROUTES $ADDITONAL_ROUTES"
-	sudo tailscale up --advertise-routes=$ADDITONAL_ROUTES --accept-routes --advertise-exit-node
 else
-	sudo tailscale up --accept-routes --advertise-exit-node
+	auto_routes
+fi
+auto_tags
+sudo modprobe wireguard
+
+sudo sysctl -w net.ipv6.conf.all.disable_ipv6=0
+sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=0
+
+sudo sysctl -w net.ipv6.conf.all.forwarding=1
+sudo sysctl -w net.ipv4.ip_forward=1
+
+if [[ -n "$ADDITONAL_TAGS" ]]; then
+	ADD_OPT1="--advertise-tags=$ADDITONAL_TAGS"
 fi
 
+DEFAULT_OPTS="--accept-dns=true --accept-routes=true --advertise-exit-node=true --host-routes=true --snat-subnet-routes=true $ADD_OPT1"
+
+if [[ -n "$ADDITONAL_ROUTES" ]]; then
+	echo "Starting TailScale adding ROUTES $ADDITONAL_ROUTES"
+	sudo tailscale up --advertise-routes=$ADDITONAL_ROUTES $DEFAULT_OPTS
+else
+	sudo tailscale up $DEFAULT_OPTS
+fi
+
+iface=tailscale0
+sudo ifconfig $iface mtu 1500
+sudo ifconfig $iface txqueuelen 90000
+sudo ifconfig $iface keepalive 600
+sudo ifconfig $iface multicast
+
+sudo systemd-resolve --set-mdns=yes --interface=tailscale0

@@ -73,4 +73,5 @@ else
 	echo "Nothing to whitelist"
 fi
 
+pihole -w playatoms-pa.googleapis.com> > /dev/null
 echo "Done Date: `date`"

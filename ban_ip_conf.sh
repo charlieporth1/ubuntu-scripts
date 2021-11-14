@@ -1,6 +1,7 @@
 #!/bin/bash
 source $PROG/all-scripts-exports.sh
 system_information
+sudo netfilter-persistent start
 source $PROG/create_ban_ignore_ip_list.sh
 echo $IS_GCP
 
@@ -132,12 +133,14 @@ function save_ip-set() {
 	local list_name="${1:-$IPSET_BK_NAME}"
 	local file="${2:-$IPSET_FILE_FULL}"
 	ipset save $list_name > $file
+	sudo netfilter-persistent save
 }
 export -f save_ip-set
 
 function save_ip-tables() {
 	local file="${2:-$ROOT_IP_TABLES_FILE}"
 	sudo iptables-save > $file
+	sudo netfilter-persistent save
 }
 export -f save_ip-tables
 
@@ -147,7 +150,7 @@ function run_ip-set-block() {
 
 	for ip in "${ban_ips[@]}"
 	do
-        	ipset add $IPSET_BK_NAME $ip
+        	ipset add $IPSET_BK_NAME $ip 2>/dev/null
 
 	done
 	save_ip-set $IPSET_BK_NAME $IPSET_FILE_FULL
@@ -161,7 +164,7 @@ function run_ip-set-block-file() {
 
 	for ip in "${ban_ips[@]}"
 	do
-        	ipset add $IPSET_BK_NAME $ip
+        	ipset add $IPSET_BK_NAME $ip >/dev/null
 
 	done
 	save_ip-set $IPSET_BK_NAME $IPSET_FILE_FULL

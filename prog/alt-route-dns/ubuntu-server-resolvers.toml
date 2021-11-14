@@ -15,63 +15,57 @@ retry-resolver = "ctp-dns-local-master-tcp"
 
 
 # DNS
-[resolvers.ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-tcp]
-address = "100.86.69.129:53"
+[resolvers.ctp-dns-local-master-gcp-or-vpn-tunnel-10-128-0-9-tcp]
+address = "10.128.0.9:53"
 protocol = "tcp"
-[resolvers.ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-udp]
-address = "100.86.69.129:53"
+
+[resolvers.ctp-dns-local-master-gcp-or-vpn-tunnel-10-128-0-9-udp]
+address = "10.128.0.9:53"
 protocol = "udp"
 edns0-udp-size = 1460
 
-# DoT
-[resolvers.ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-dot]
-address = "gcp.ctptech.dev:853"
-protocol = "dot"
-bootstrap-address = "100.86.69.129"
-[resolvers.ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-dot-nginx]
-address = "gcp.ctptech.dev:11853"
-protocol = "dot"
-bootstrap-address = "100.86.69.129"
 
-# DTLS
-[resolvers.ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-dtls]
-address = "gcp.ctptech.dev:853"
-protocol = "dtls"
-bootstrap-address = "100.86.69.129"
+[resolvers.gcp-or-vpn-tunnel-10-128-0-9-tcp]
+address = "10.128.0.9:53"
+protocol = "tcp"
+
+[resolvers.gcp-or-vpn-tunnel-10-128-0-9-udp]
+address = "10.128.0.9:53"
+protocol = "udp"
 edns0-udp-size = 1460
 
-# QUIC
-[resolvers.ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-doq]
-address = "gcp.ctptech.dev:784"
-protocol = "doq"
-bootstrap-address = "100.86.69.129"
-[resolvers.ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-doh-doq]
-address = "gcp.ctptech.dev:1443"
-protocol = "doh"
-transport = "quic"
-bootstrap-address = "100.86.69.129"
 
-# DoH
-[resolvers.ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-doh-get]
-address = "gcp.ctptech.dev:4443"
-protocol = "doh"
-doh = { method = "GET" }
-bootstrap-address = "100.86.69.129"
-[resolvers.ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-doh-post]
-address = "gcp.ctptech.dev:4443"
-protocol = "doh"
-bootstrap-address = "100.86.69.129"
+# DoT
+[resolvers.gcp-or-vpn-tunnel-10-128-0-9-dot]
+address = "dns.ctptech.dev:853"
+protocol = "dot"
+bootstrap-address = "10.128.0.9"
+
+
+# DTLS
+[resolvers.gcp-or-vpn-tunnel-10-128-0-9-dtls]
+address = "dns.ctptech.dev:853"
+protocol = "dtls"
+bootstrap-address = "10.128.0.9"
+edns0-udp-size = 1460
+
+
 
 # GROUPS
-[groups.ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-truncate-retry-raw]
+[groups.gcp-or-vpn-tunnel-10-128-0-9-truncate-retry-raw]
 type = "truncate-retry"
-resolvers = [ "ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-udp" ]
-retry-resolver = "ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-tcp"
+resolvers = [ "gcp-or-vpn-tunnel-10-128-0-9-udp" ]
+retry-resolver = "gcp-or-vpn-tunnel-10-128-0-9-tcp"
 
-[groups.ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-truncate-retry-encrypted]
+[groups.ctp-dns-local-master-gcp-or-vpn-tunnel-10-128-0-9-truncate-retry-raw]
 type = "truncate-retry"
-resolvers = [ "ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-dtls" ]
-retry-resolver = "ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-dot"
+resolvers = [ "gcp-or-vpn-tunnel-10-128-0-9-udp" ]
+retry-resolver = "gcp-or-vpn-tunnel-10-128-0-9-tcp"
+
+[groups.gcp-or-vpn-tunnel-10-128-0-9-truncate-retry-encrypted]
+type = "truncate-retry"
+resolvers = [ "gcp-or-vpn-tunnel-10-128-0-9-dtls" ]
+retry-resolver = "gcp-or-vpn-tunnel-10-128-0-9-dot"
 
 
 
@@ -80,15 +74,8 @@ retry-resolver = "ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-dot"
 resolvers = [
 	"ctp-dns-local-master-tcp",
 	"ctp-dns-local-master-udp",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-tcp",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-udp",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-dot",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-dot-nginx",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-dtls",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-doq",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-doh-doq",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-doh-get",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-doh-post",
+	"ctp-dns-local-master-gcp-or-vpn-tunnel-10-128-0-9-tcp",
+	"ctp-dns-local-master-gcp-or-vpn-tunnel-10-128-0-9-udp",
 	"ctp-dns_gcp-dot-ip-1",
 	"ctp-dns_gcp-dot-ip-2",
 	"ctp-dns_gcp-dtls-ip-1",
@@ -110,17 +97,12 @@ type = "fastest"
 resolvers = [
 	"ctp-dns-local-master-tcp",
 	"ctp-dns-local-master-udp",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-tcp",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-udp",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-dot",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-dot-nginx",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-dtls",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-doq",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-doh-doq",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-doh-get",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-100-86-69-129-doh-post",
+	"ctp-dns-local-master-gcp-or-vpn-tunnel-10-128-0-9-tcp",
+	"ctp-dns-local-master-gcp-or-vpn-tunnel-10-128-0-9-udp",
 ]
 type = "fastest"
 
+# CTP INSTALL -- DO NOT REMOVE THIS UNLESS YOU PLAN ON REMOVING INSTALL AND REINSTALLING
+# NO CHANGES
 # CTP INSTALL -- DO NOT REMOVE THIS UNLESS YOU PLAN ON REMOVING INSTALL AND REINSTALLING
 # NO CHANGES

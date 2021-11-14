@@ -10,6 +10,7 @@ LOG_FILE=$LOG/health_check.log
 LOCK_FILE=$CTP_DNS_LOCK_FILE
 
 echo "Date last ran `date`"
+chmod 777 /dev/null
 
 if ! [[ -f $LOG_FILE ]]; then
 	echo "Created log file at $LOG_FILE"
@@ -95,7 +96,10 @@ COUNT_ACTION() {
 		fi
 	;;
 	"RESTART_PIHOLE" | "PIHOLE_STATUS" )
-		if [[ $COUNT -gt $(( $max + 3 )) ]]; then
+		if [[ $COUNT -gt $(( $max + 5 )) ]]; then
+			systemctl restart unbound
+			RESTART_PIHOLE
+		elif [[ $COUNT -gt $(( $max + 3 )) ]] && [[ $COUNT -lt $(( $max + 2 )) ]]; then
 			pihole enable
         	        writeLog "$FN" 0 "$SERVICE"
 		elif [[ $COUNT -gt $max ]] && [[ $COUNT -le $(( $max + 2 )) ]]; then
@@ -103,6 +107,7 @@ COUNT_ACTION() {
 		else
 			RESTART_PIHOLE
 		fi
+	;;
 	"nginx" | "nginx.service" )
 		certbot-ocsp-fetcher --output-dir=/var/cache/nginx/
 		restart_service "$FN" "$FN_BIN"
@@ -149,6 +154,7 @@ health_check_action() {
 	local fn="${1}"
 	local fn_bin="${2}"
 	local case_bin="${fn_bin:=$fn}"
+
 	case "$case_bin" in
 		"RESTART_PIHOLE" | "PIHOLE_STATUS" )
 			local fn="$fn_bin"
@@ -210,19 +216,6 @@ service_port_health_check() {
 	fi
 }
 
-# Order matters
-if [[ `systemctl-seconds ctp-dns.service` -ge 300 ]] && [[ -f $LOCK_FILE ]]; then
-	echo "Removing lock file runtime is greater than needed"
-	sudo rm -rf $LOCK_FILE
-elif [[ -f $LOCK_FILE ]]; then
-        fn="$LOCK_FILE"
-        echo $fn
-	health_check_action "$fn"
-        echo "LOCK FILE :: COUNT $(getFailCount $fn)"
-	set -e
-        exit 1
-	kill $$
-fi
 
 fn='pihole-FTL.service'
 if [[ "$IS_MASTER" == 'true' ]] || [[ `systemctl-exists $fn` = 'true' ]]; then
@@ -246,6 +239,19 @@ if [[ "$IS_MASTER" == 'true' ]] || [[ `systemctl-exists $fn` = 'true' ]]; then
 	fi
 fi
 
+# Order matters
+if [[ `systemctl-seconds ctp-dns.service` -ge 300 ]] && [[ -f $LOCK_FILE ]]; then
+	echo "Removing lock file runtime is greater than needed"
+	sudo rm -rf $LOCK_FILE
+elif [[ -f $LOCK_FILE ]]; then
+        fn="$LOCK_FILE"
+        echo $fn
+	health_check_action "$fn"
+        echo "LOCK FILE :: COUNT $(getFailCount $fn)"
+	kill $$
+fi
+
+fn='pihole-FTL.service'
 service_port_health_check "$fn" ":53" "pihole-FTL" "DNS"
 service_port_health_check "$fn" ":4711" "pihole-FTL" "FTL"
 service_port_health_check "$fn" ":53" "RESTART_PIHOLE" "RESTART_PIHOLE-DNS"
@@ -276,6 +282,9 @@ service_port_health_check "$fn" "192.168.40.8:5053" "" "IP-2"
 
 fn="nginx-dns-rfc.service"
 service_port_health_check "$fn" "127.0.0.1:11443"
+
+fn='pihole-loadbalancer-ctp-dns.service'
+service_port_health_check "$fn" "127.0.0.1:5553"
 
 fn='lighttpd.service'
 service_port_health_check "$fn" ":8443"
@@ -327,6 +336,29 @@ service_health_check "$fn"
 
 fn='tailscaled.service'
 service_health_check "$fn"
+
+#fn='zerotier-one.service'
+#service_health_check "$fn"
+
+fn='dhcpcd.service'
+service_health_check "$fn"
+
+#fn='systemd-resolved.service'
+#service_health_check "$fn"
+
+fn='avahi-daemon.service'
+service_health_check "$fn"
+
+fn='asn.service'
+service_health_check "$fn"
+
+fn='containerd.service'
+service_health_check "$fn"
+
+fn='docker.socket'
+service_health_check "$fn"
+
+
 
 if ! ifconfig | grep -o tailscale0 > /dev/null
 then

@@ -4,7 +4,6 @@ shopt -s expand_aliases
 source $PROG/generate_ctp-dns-envs.sh
 system_information
 
-SCRIPT_DIR=`realpath .`
 mkdir -p /etc/letsencrypt/live/vpn.ctptech.dev
 
 #/snap/bin/go get -v github.com/folbricht/eroutedns/cmd/routedns
@@ -19,20 +18,22 @@ mkdir -p /etc/letsencrypt/live/vpn.ctptech.dev
 #sudo /snap/bin/go install
 #cd -
 
+SCRIPT_DIR=`realpath .`
 source $SCRIPT_DIR/.project_env.sh
 ROUTE=$PROG/route-dns
 ROOT_ROUTE=$CONF_PROG_DIR/route-dns
 sudo ln -s $ROOT_ROUTE $ROUTE
-        if [ -d $ROOT_ROUTE ]; then
-          for i in $ROOT_ROUTE/*.toml; do
-            if [ -r $i ]; then
-              ln -s $i $ROUTE/
-            fi
-          done
-          unset i
-        fi
 
-REPLACE_IP=`bash $PROG/get_network_devices_ip_address.sh`
+if [ -d $ROOT_ROUTE ]; then
+   for i in $ROOT_ROUTE/*.toml; do
+    if [ -r $i ]; then
+       ln -s $i $ROUTE/
+    fi
+   done
+   unset i
+fi
+## TO DO ADD OTHER IFACE
+REPLACE_IP=`bash $PROG/get_network_devices_ip_address.sh --default --only-single-interface`
 DEFAULT_IP='0.0.0.0'
 
 
@@ -63,9 +64,11 @@ echo "" | sudo tee $ROUTE/slave-listeners{,-udp-retry-resolvers}.toml
 elif [[ "`$IS_SOLID_HOST`" == 'true' ]]; then
 	echo "" | sudo tee $ROUTE/$HOSTNAME-resolvers.toml
 fi
-
 current_ip=`sudo ip addr show tailscale0 | grepip -4o`
 if [[ "`$IS_SOLID_HOST`" == 'true' ]]; then
+	timeout=3
+	default_iface=`route | grep '^default' | grep -o '[^ ]*$'  | sort -u`
+	default_iface_address=`ifconfig $default_iface | awk '{print $2}' | grepip -4`
 	declare -a ip_list
 #		'100.86.69.129'
 #		'100.71.239.28'
@@ -77,7 +80,7 @@ if [[ "`$IS_SOLID_HOST`" == 'true' ]]; then
 	for ip in "${ip_list[@]}"
 	do
 
-		local_ip_exists=`ip_exists $ip`
+		local_ip_exists=`ip_exists $ip $timeout $default_iface`
 		if [[ "$local_ip_exists" == 'true' ]] && [[ "`$IS_SOLID_HOST`" == 'true' ]] && [[ "$current_ip" != "$ip" ]] ; then
 			ip_title="${ip//\./-}"
 			DOMAIN='dns.ctptech.dev'
@@ -92,24 +95,29 @@ echo """
 [resolvers.$LOCAL_RESOLVER_NAME-$service_name_str-tcp]
 address = \"$IP:53\"
 protocol = \"tcp\"
+local-address = \"$default_iface_address\"
 [resolvers.$LOCAL_RESOLVER_NAME-$service_name_str-udp]
 address = \"$IP:53\"
 protocol = \"udp\"
 edns0-udp-size = 1460
+local-address = \"$default_iface_address\"
 
 [resolvers.$service_name_str-tcp]
 address = \"$IP:53\"
 protocol = \"tcp\"
+local-address = \"$default_iface_address\"
 [resolvers.$service_name_str-udp]
 address = \"$IP:53\"
 protocol = \"udp\"
 edns0-udp-size = 1460
+local-address = \"$default_iface_address\"
 
 # DoT
 [resolvers.$service_name_str-dot]
 address = \"$DOMAIN:853\"
 protocol = \"dot\"
 bootstrap-address = \"$IP\"
+local-address = \"$default_iface_address\"
 
 # DTLS
 [resolvers.$service_name_str-dtls]
@@ -117,6 +125,7 @@ address = \"$DOMAIN:853\"
 protocol = \"dtls\"
 bootstrap-address = \"$IP\"
 edns0-udp-size = 1460
+local-address = \"$default_iface_address\"
 
 
 # GROUPS
@@ -145,17 +154,17 @@ LOCAL_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(grep -E "^.r
 	 --quotes --space))
 
 leftover_fail_rotate_str=""
-NGINX_fail_back_group=",\n\"$RESOLVER_START_GROUP-fail-back\",\n"
+NGINX_fail_back_group="\n\"$NGINX_RESOLVER_GROUP-fail-back\",\n"
 replace_str_front="\[groups.ctp-dns-fail-rotate\]\nresolvers = \[\n"
-replace_str_back="\n$LOCAL_RESOLVERS$NGINX_fail_back_group\"ctp-dns_group-fail-rotate-raw\",\n\]\n$leftover_fail_rotate_str"
+replace_str_back="\n$NGINX_fail_back_group\"ctp-dns_group-fail-rotate-raw\",\n\]\n$leftover_fail_rotate_str"
 
 
 if [[ "$HOSTNAME" = "ip-172-31-12-154" ]]; then
-	replace_str="$replace_str_front\"ctp-dns_group-fastest-gcp-external\",\n\"ctp-dns_group-fastest-home-external\",\n\"ctp-dns_group-fail-rotate-gcp\",\n\"ctp-dns_group-fail-rotate-home\",\n\"ctp-dns_group-fail-back-gcp\",\n\"ctp-dns_group-fail-back-home\",$replace_str_back"
+	replace_str="$replace_str_front\"ctp-dns_group-fastest-gcp-external\",\n\"ctp-dns_group-fastest-home-external\",\n\"ctp-dns_group-fail-rotate-gcp\",\n\"ctp-dns_group-fail-rotate-home\",\n\"ctp-dns_group-fail-back-gcp\",\n\"ctp-dns_group-fail-back-home\",\n$LOCAL_RESOLVERS,$replace_str_back"
 elif [[ "$HOSTNAME" = "ubuntu-server" ]]; then
-	replace_str="$replace_str_front\"ctp-dns_group-fastest-gcp-external\",\n\"ctp-dns_group-fastest-aws-external\",\n\"ctp-dns_group-fail-rotate-gcp\",\n\"ctp-dns_group-fail-rotate-aws\",\n\"ctp-dns_group-fail-back-gcp\",\n\"ctp-dns_group-fail-back-aws\",$replace_str_back"
+	replace_str="$replace_str_front\"ctp-dns_group-fastest-gcp-external\",\n\"ctp-dns_group-fastest-aws-external\",\n\"ctp-dns_group-fail-rotate-gcp\",\n\"ctp-dns_group-fail-rotate-aws\",\n\"ctp-dns_group-fail-back-gcp\",\n\"ctp-dns_group-fail-back-aws\",\n$LOCAL_RESOLVERS,$replace_str_back"
 else
-	replace_str="$replace_str_front\"ctp-dns_group-fastest-masters\",\n\"ctp-dns_group-rotate-masters\"\n\"ctp-dns_group-fail-back-masters,$replace_str_back"
+	replace_str="$replace_str_front\"ctp-dns_group-fastest-masters\",\n\"ctp-dns_group-fail-rotate-masters\",\n\"ctp-dns_group-fail-back-masters\",$replace_str_back"
 fi
 
 ############### Replace failover
@@ -242,18 +251,17 @@ fi
 replace_str="resolvers = [\n$GCP_RESOLVERS\n]"
 FILE=ctp-yt-dns-router.toml
 if [[ `isNotInstalled $ROUTE/$FILE` == 'true' ]]; then
-#	pcregrep -M '^resolvers.*(.|\n)*]' $ROUTE/$FILE > $ROUTE/$FILE.tmp
-#	echo -e "$replace_str" | sudo tee -a $ROUTE/$FILE.tmp
-	str_to_replace=`pcregrep -M '^resolvers.*' $ROUTE/$FILE`
-	str_to_replace=${str_to_replace//]/\\]}
-	str_to_replace=${str_to_replace//[/\\[}
-	replace_str=${replace_str//]/\\]}
-	replace_str=${replace_str//[/\\[}
+	str_to_replace="\"ctp-dns-yt-block-resolver-blocker\""
+#	str_to_replace=`pcregrep -M '^resolvers.*' $ROUTE/$FILE`
+#	str_to_replace=${str_to_replace//]/\\]}
+#	str_to_replace=${str_to_replace//[/\\[}
+#	replace_str=${replace_str//]/\\]}
+#	replace_str=${replace_str//[/\\[}
+	replace_str="\"ctp-dns_group-fastest-gcp-external\""
 
 	perl -0777 -i -pe "s/$str_to_replace/$replace_str/g" $ROUTE/$FILE
 	perl -0777 -i -pe 's/^"ctp/\t"ctp/gm' $ROUTE/$FILE
 
-#	mv $ROUTE/$FILE.tmp $ROUTE/$FILE
 fi
 
 FILE=ctp-yt-googlevideo-ttl-modifier.toml
@@ -281,6 +289,6 @@ fi
 cp -rf $ROUTE/{standard-group-resolvers,$HOSTNAME-resolvers,standard-resolvers,raw-resolvers}.toml $ALT_ROUTE/
 
 sudo chmod 777 /usr/local/bin/ctp-dns{,.sh}
-ctp-dns --config-test-human
 
 format_file $ROUTE/*.toml
+ctp-dns --config-test-human

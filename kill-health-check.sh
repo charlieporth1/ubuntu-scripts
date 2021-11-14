@@ -27,7 +27,7 @@ do
 		echo "not enought"
 	fi
 done
-sudo killall ps dig go pgrep awk grep cpulimit kdig doh doq
+sudo killall ps dig go pgrep awk grep cpulimit kdig doh doq q
 
 if [[ -f /tmp/health-checks.stop.lock ]]; then
 	sudo rm -rf /tmp/health-checks.stop.lock

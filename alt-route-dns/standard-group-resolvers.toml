@@ -74,7 +74,7 @@ resolvers = [
 	"ctp-dns_gcp-quic-ip-1",
 	"ctp-dns_gcp-quic-ip-2",
 	"ctp-dns_aws-quic",
-	"ctp-dns_aws-doh-quic",
+	"ctp-dns_aws-doh-quic",,
 ]
 type = "fastest"
 
@@ -91,7 +91,7 @@ resolvers = [
 	"ctp-dns_gcp-doh-quic-get-ip-1",
 	"ctp-dns_gcp-doh-quic-get-ip-2",
 	"ctp-dns_gcp-quic-ip-1",
-	"ctp-dns_gcp-quic-ip-2",
+	"ctp-dns_gcp-quic-ip-2",,
 ]
 type = "fastest"
 
@@ -104,7 +104,7 @@ resolvers = [
 	"ctp-dns_home-doh-post-route-dns-raw",
 	"ctp-dns_home-quic",
 	"ctp-dns_home-doh-quic-post-ip",
-	"ctp-dns_home-doh-quic-get-ip",
+	"ctp-dns_home-doh-quic-get-ip",,
 ]
 type = "fastest"
 
@@ -112,7 +112,7 @@ type = "fastest"
 resolvers = [
 	"ctp-dns_group-truncate-retry-encrypted-aws",
 	"ctp-dns_aws-quic",
-	"ctp-dns_aws-doh-quic",
+	"ctp-dns_aws-doh-quic",,
 ]
 type = "fastest"
 
@@ -129,7 +129,8 @@ resolvers = [
 	"ctp-dns-home-tcp",
 	"ctp-dns-home-udp",
 	"ctp-dns-aws-tcp",
-	"ctp-dns-aws-udp"
+	"ctp-dns-aws-udp",
+"
 ]
 type = "fastest"
 
@@ -140,7 +141,7 @@ type = "fastest"
 [groups.ctp-dns_group-fail-back-masters]
 resolvers = [
 	"ctp-dns_gcp-quic-ip-1",
-	"ctp-dns_gcp-quic-ip-2",
+	"ctp-dns_gcp-quic-ip-2",,
 	
 	"ctp-dns_group-truncate-retry-encrypted-gcp-ip-1",
 	"ctp-dns_group-truncate-retry-encrypted-gcp-ip-2",
@@ -162,7 +163,7 @@ servfail-error = true
 [groups.ctp-dns_group-fail-back-gcp]
 resolvers = [
 	"ctp-dns_gcp-quic-ip-1",
-	"ctp-dns_gcp-quic-ip-2",
+	"ctp-dns_gcp-quic-ip-2",,
 	
 	"ctp-dns_group-truncate-retry-encrypted-gcp-ip-1",
 	"ctp-dns_group-truncate-retry-encrypted-gcp-ip-2",
@@ -180,7 +181,7 @@ servfail-error = true
 [groups.ctp-dns_group-fail-back-home]
 resolvers = [
 	"ctp-dns_gcp-quic-ip-1",
-	"ctp-dns_gcp-quic-ip-2",
+	"ctp-dns_gcp-quic-ip-2",,
 	
 	"ctp-dns_group-truncate-retry-encrypted-home",
 	"ctp-dns_gcp-doh-post-ip-1",
@@ -196,7 +197,7 @@ servfail-error = true
 [groups.ctp-dns_group-fail-back-aws]
 resolvers = [
 	"ctp-dns_gcp-quic-ip-1",
-	"ctp-dns_gcp-quic-ip-2",
+	"ctp-dns_gcp-quic-ip-2",,
 	
 	"ctp-dns_group-truncate-retry-encrypted-aws",
 	"ctp-dns_gcp-doh-post-ip-1",
@@ -222,7 +223,8 @@ resolvers = [
 	"ctp-dns-home-tcp",
 	"ctp-dns-home-udp",
 	"ctp-dns-aws-tcp",
-	"ctp-dns-aws-udp"
+	"ctp-dns-aws-udp",
+"
 ]
 type = "fail-back"
 reset-after = 6
@@ -236,7 +238,7 @@ servfail-error = true
 [groups.ctp-dns_group-fail-rotate-masters]
 resolvers = [
 	"ctp-dns_gcp-quic-ip-1",
-	"ctp-dns_gcp-quic-ip-2",
+	"ctp-dns_gcp-quic-ip-2",,
 	
 	"ctp-dns_group-truncate-retry-encrypted-gcp-ip-1",
 	"ctp-dns_group-truncate-retry-encrypted-gcp-ip-2",
@@ -257,7 +259,7 @@ servfail-error = true
 [groups.ctp-dns_group-fail-rotate-gcp]
 resolvers = [
 	"ctp-dns_gcp-quic-ip-1",
-	"ctp-dns_gcp-quic-ip-2",
+	"ctp-dns_gcp-quic-ip-2",,
 	
 	"ctp-dns_group-truncate-retry-encrypted-gcp-ip-1",
 	"ctp-dns_group-truncate-retry-encrypted-gcp-ip-2",
@@ -274,7 +276,7 @@ servfail-error = true
 [groups.ctp-dns_group-fail-rotate-home]
 resolvers = [
 	"ctp-dns_gcp-quic-ip-1",
-	"ctp-dns_gcp-quic-ip-2",
+	"ctp-dns_gcp-quic-ip-2",,
 	
 	"ctp-dns_group-truncate-retry-encrypted-home",
 	"ctp-dns_gcp-doh-post-ip-1",
@@ -290,7 +292,7 @@ servfail-error = true
 [groups.ctp-dns_group-fail-rotate-aws]
 resolvers = [
 	"ctp-dns_gcp-quic-ip-1",
-	"ctp-dns_gcp-quic-ip-2",
+	"ctp-dns_gcp-quic-ip-2",,
 	
 	"ctp-dns_group-truncate-retry-encrypted-aws",
 	"ctp-dns_gcp-doh-post-ip-1",
@@ -315,7 +317,8 @@ resolvers = [
 	"ctp-dns-home-tcp",
 	"ctp-dns-home-udp",
 	"ctp-dns-aws-tcp",
-	"ctp-dns-aws-udp"
+	"ctp-dns-aws-udp",
+"
 ]
 type = "fail-rotate"
 servfail-error = true

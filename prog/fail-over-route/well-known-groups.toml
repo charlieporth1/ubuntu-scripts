@@ -101,7 +101,7 @@ resolvers = [
 	"google-quic-doh-get-ip-1",
 	"google-quic-doh-get-ip-2",
 	"google-quic-doh-post-ip-1",
-	"google-quic-doh-post-ip-2"
+
 ]
 type = "fastest"
 

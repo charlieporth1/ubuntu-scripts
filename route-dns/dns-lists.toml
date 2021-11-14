@@ -8,12 +8,13 @@ resolvers = [ "ctp-dns-blocklist-others" ]
 blocklist-source = [
 	{format = "domain", source = "/var/tmp/ctp-dns/lists/black/domains.txt"},
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/google-blacklist.list", cache-dir = "/var/cache/ctp-dns"}, 
+        {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/ticwatch-blacklist.list", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/samsung-blacklist.list", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/amazon-blacklist.list", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/snapchat-blacklist.list", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/facebook-blacklist.list", cache-dir = "/var/cache/ctp-dns"}, 
 #        {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists", cache-dir = "/var/cache/ctp-dns"},
-#        {format = "domain", source = "", cache-dir = "/var/cache/ctp-dns"},
+#        {format = "domain", source = , cache-dir = "/var/cache/ctp-dns"},
 ]
 allowlist-refresh = 1800
 allowlist-resolver = "ctp-dns-fail-back"
@@ -21,6 +22,7 @@ allowlist-source = [
         {format = "domain", source = "/var/tmp/ctp-dns/lists/white/domains.txt"}, 
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/amazon-whitelist.list", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/samsung-whitelist.list", cache-dir = "/var/cache/ctp-dns"}, 
+        {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/ticwatch-whitelist.list", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/google-whitelist.list", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/goverment-whitelist.list", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/hubspot-whitelist.list", cache-dir = "/var/cache/ctp-dns"}, 

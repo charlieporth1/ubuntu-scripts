@@ -6,12 +6,14 @@
 address = "dns.ctptech.dev:853"
 protocol = "dot"
 bootstrap-address = "174.53.130.17"
+
 # DTLS
 [resolvers.ctp-dns_home-dtls]
 address = "dns.ctptech.dev:853"
 protocol = "dtls"
 bootstrap-address = "174.53.130.17"
 edns0-udp-size = 1460
+
 
 # DoH
 [resolvers.ctp-dns_home-doh-get]
@@ -20,16 +22,19 @@ address = "https://dns.ctptech.dev:4443/dns-query{?dns}"
 protocol = "doh"
 doh = { method = "GET" }
 bootstrap-address = "174.53.130.17"
+
 [resolvers.ctp-dns_home-doh-post]
 address = "https://dns.ctptech.dev:4443/dns-query{?dns}"
 #address = "https://home.ctptech.dev:443/dns-query"
 protocol = "doh"
 bootstrap-address = "174.53.130.17"
+
 [resolvers.ctp-dns_home-doh-get-route-dns-raw]
 address = "https://dns.ctptech.dev:4443/dns-query{?dns}"
 protocol = "doh"
 doh = { method = "GET" }
 bootstrap-address = "174.53.130.17"
+
 [resolvers.ctp-dns_home-doh-post-route-dns-raw]
 address = "https://dns.ctptech.dev:4443/dns-query"
 protocol = "doh"
@@ -40,11 +45,13 @@ bootstrap-address = "174.53.130.17"
 address = "dns.ctptech.dev:784"
 protocol = "doq"
 bootstrap-address = "174.53.130.17"
+
 [resolvers.ctp-dns_home-doh-quic-post-ip]
 address = "https://dns.ctptech.dev:1443/dns-query"
 protocol = "doh"
 transport = "quic"
 bootstrap-address = "174.53.130.17"
+
 [resolvers.ctp-dns_home-doh-quic-get-ip]
 address = "https://dns.ctptech.dev:1443/dns-query"
 protocol = "doh"
@@ -154,3 +161,4 @@ address = "https://dns.ctptech.dev:1443/dns-query"
 protocol = "doh"
 transport = "quic"
 bootstrap-address = "54.90.63.26"
+

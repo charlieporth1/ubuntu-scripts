@@ -1,6 +1,7 @@
 #!/bin/bash
 shopt -s expand_aliases
 export IP_REGEX="($IP_REGEX((#[0-9]{1,5})?))"
+export OUT_FILE_SERVERS=$DNSMASQ/10-servers-generated.conf
 
 export TIMEOUT=4
 export TRIES=2

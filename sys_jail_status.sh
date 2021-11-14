@@ -33,7 +33,6 @@ printf "|| $CYAN%-20s $NC|$CYAN %-10s $NC|$CYAN %-20s $NC|$CYAN %-10s $NC|$CYAN 
 
 for jail in "${JAILs[@]}"
 do
-	echo $jail
 	if [[ -n "$jail" ]]; then
 		FAIL2BAN_JAIL=`timeout $TIMEOUT sudo fail2ban-client status $jail`
 		ban_count=`printf '%s\n' "$FAIL2BAN_JAIL" | sed -n '7p' | awk '{print $4}'`

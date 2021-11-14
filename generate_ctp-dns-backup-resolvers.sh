@@ -1,5 +1,5 @@
 #!/bin/bash
-source $PROG/generate_ctp-dns-envs.sh
+source $PROG/generate_ctp-dns-envs.sh $@
 
 OUT_FILE=$BACKUP_RESOVLERS_FILE
 

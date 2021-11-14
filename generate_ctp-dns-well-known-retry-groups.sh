@@ -1,5 +1,5 @@
 #!/bin/bash
-source $PROG/generate_ctp-dns-envs.sh
+source $PROG/generate_ctp-dns-envs.sh --do-well-knowns $@
 
 OUT_FILE=$WELL_KN_RESOVLERS_RT_GROUPS_FILE
 OUT_FILE_R=$WELL_KN_RESOVLERS_RT_RAW_GROUPS_FILE
@@ -58,7 +58,8 @@ do
 	echo "On $resolver"
 	resolver_root_name=$( echo "$resolver" | awk -F"-$search_resolver_type" '{print $1}' )
 	resolver_end_type=$( echo "$resolver" | grep -E '[0-9]' )
-	is_better_half=`printf '%s\n' "$WELL_KNOWN_RESOLVERS_RAW_LIST" | grep -oE "($resolver_root_name|$resolver_end_type|$search_resolver_type_reverse|(-)?)+" | sort -u`
+	[[ -n "$resolver_end_type" ]] && resolver_end_type_regex="|$resolver_end_type"
+	is_better_half=`printf '%s\n' "$WELL_KNOWN_RESOLVERS_RAW_LIST" | grep -oE "($resolver_root_name|$search_resolver_type_reverse$resolver_end_type_regex|(-)?)+" | sort -u`
 
 	if [[ -n $is_better_half ]]; then
 echo """

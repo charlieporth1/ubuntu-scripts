@@ -1,5 +1,5 @@
 #!/bin/bash
-source $PROG/generate_ctp-dns-envs.sh
+source $PROG/generate_ctp-dns-envs.sh --do-well-knowns $@
 
 OUT_FILE=$WELL_KN_GROUP_FILE
 OUT_FILE_R=$WELL_KN_RAW_GROUP_FILE
@@ -21,14 +21,14 @@ WELL_KNOWN_RESOLVERS_QUIC=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(pr
 WELL_KNOWN_RESOLVERS_QUIC_DOH=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$WELL_KNOWN_RESOLVERS_QUIC_DOH_LIST" ) --quotes --space))
 WELL_KNOWN_RESOLVERS_DOH=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$WELL_KNOWN_RESOLVERS_DOH_LIST" ) --quotes --space))
 
+WELL_KNOWN_RESOLVERS_LIST=$(printf '%s\n' "$WELL_KNOWN_RESOLVERS_QUIC_LIST $WELL_KNOWN_RESOLVERS_QUIC_DOH_LIST $WELL_KNOWN_RT_GROUPS_LIST $WELL_KNOWN_RESOLVERS_DOH_LIST," | sort -u )
+WELL_KNOWN_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$WELL_KNOWN_RESOLVERS_LIST" ) --quotes --space))
+
 echo """
 # FALLBACK
 [groups.ctp-dns-failover-backup]
 resolvers = [
-	$(printf '%s\n' "$WELL_KNOWN_RESOLVERS_QUIC,
-	$WELL_KNOWN_RESOLVERS_QUIC_DOH,
-	$WELL_KNOWN_RT_GROUPS,
-	$WELL_KNOWN_RESOLVERS_DOH," | sort -u )
+	$WELL_KNOWN_RESOLVERS
 ]
 type = \"fail-back\"
 reset-after = $timeout

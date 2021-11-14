@@ -129,7 +129,7 @@ resolvers = [
 	"ctp-dns-home-tcp",
 	"ctp-dns-home-udp",
 	"ctp-dns-aws-tcp",
-	"ctp-dns-aws-udp"
+
 ]
 type = "fastest"
 
@@ -233,7 +233,7 @@ resolvers = [
 	"ctp-dns-home-tcp",
 	"ctp-dns-home-udp",
 	"ctp-dns-aws-tcp",
-	"ctp-dns-aws-udp"
+
 ]
 type = "fail-back"
 reset-after = 6
@@ -337,7 +337,7 @@ resolvers = [
 	"ctp-dns-home-tcp",
 	"ctp-dns-home-udp",
 	"ctp-dns-aws-tcp",
-	"ctp-dns-aws-udp"
+
 ]
 type = "fail-rotate"
 servfail-error = true

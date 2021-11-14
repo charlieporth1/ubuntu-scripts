@@ -51,7 +51,7 @@ ttl-max = 3024000
 [groups.ctp-dns-ecs]
 type = "ecs-modifier"
 resolvers = [ "ctp-dns-blocklist" ]
-# "add", "delete", "privacy". Defaults to "" which does nothing.
+# "add", "delete", "privacy". Defaults to  which does nothing.
 ecs-op = "add"
 ecs-prefix4 = 16
 ecs-prefix6 = 32

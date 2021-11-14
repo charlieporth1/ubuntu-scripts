@@ -1,0 +1,63 @@
+#!/bin/bash
+sysctl -w net.ipv6.conf.all.forwarding=1
+sysctl -w net.ipv4.ip_forward=1
+sudo ifconfig eth0 192.168.44.250 up
+count=3
+timeout=3
+
+function iface_restart() {
+	local iface="$1"
+        sudo ip link set $iface up
+        sudo ip link set $iface down
+        sudo ip addr flush $iface
+	sudo ip addr replace 192.168.44.250 dev eth0
+        sudo ip link set $iface up
+	sudo dhclient -r
+	( 	(
+			sudo dhclient -s 192.168.44.1
+		)& 
+	)&
+}
+
+
+iface=wlan0
+if ! ifconfig | grep -o $iface > /dev/null
+then
+	iface_restart $iface
+fi
+
+iface=eth0
+if ! ifconfig | grep -o $iface > /dev/null
+then
+	iface_restart $iface
+fi
+
+
+
+if ! ping -c $count -w $timeout 192.168.44.1 > /dev/null
+then
+	iface_restart eth0
+	sudo systemctl restart networking
+	sudo ifconfig eth0:0 192.168.44.250 up
+	sudo ifconfig eth0:0 192.168.44.252 up
+	sudo ifconfig eth0:1 192.168.44.253 up
+	sudo ifconfig eth0:2 192.168.44.254 up
+	sudo ifconfig eth0:3 192.168.44.243 up
+
+elif ! ping -c $count -w $timeout 1.1.1.1 > /dev/null
+then
+	iface_restart eth0
+	sudo systemctl restart networking
+
+elif ! ping -c $count -w $timeout 192.168.44.249 > /dev/null
+then
+	iface_restart eth0
+	sudo systemctl restart networking
+fi
+
+#sudo ifconfig $iface 192.168.44.250 up
+
+
+
+sudo ifconfig eth0 192.168.44.250 up
+

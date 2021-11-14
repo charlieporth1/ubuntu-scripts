@@ -15,9 +15,13 @@ bash $PROG/modprobes.sh
 bash $PROG/incresse_perf.sh
 bash $PROG/serveronline.sh
 bash $PROG/create_logging.sh
+bash $PROG/start_tailscale.sh
+NET_DEV_NAME=$(bash $PROG/get_network_devices_names.sh --csvify)
+sudo systemd-resolve --set-mdns=yes --interface=tailscale0,$NET_DEV_NAME
 
 if [[ "$IS_MASTER" == 'true' ]]; then
-	bash $PROG/add_cache_interfaces.sh
+#	bash $PROG/add_cache_interfaces.sh
+	bash $PROG/add_cache_interfaces_lo_cache.sh
 	bash $PROG/pihole-db-sql-changes.sh
 	bash $PROG/update.unbound-config.sh
 	bash $PROG/start_processes.sh
@@ -44,4 +48,5 @@ fi
 	        sudo cgexec -g cpu:fourthcpulimied -g memory:512MBRam /bin/bash $PROG/set_fail2ban-defaults.sh
 
         fi
+	bash $PROG/copy_gravity.sh --health-check-gravity &
 )&

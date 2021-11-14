@@ -2,7 +2,7 @@
 address = "127.0.0.1:11443"
 protocol = "doh"
 resolver = "ctp-dns-alt-cached"
-server-crt = "/etc/letsencrypt/live/vpn.ctptech.dev/localhost_certs/server.crt"
-server-key = "/etc/letsencrypt/live/vpn.ctptech.dev/localhost_certs/server.key"
+server-crt = "/etc/letsencrypt/live/ctptech.dev/localhost_certs/server.crt"
+server-key = "/etc/letsencrypt/live/ctptech.dev/localhost_certs/server.key"
 bootstrap-address = "127.0.0.1"
 
