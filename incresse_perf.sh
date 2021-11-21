@@ -36,36 +36,59 @@ sysctl -w net.ipv6.conf.all.disable_ipv6=0
 sysctl -w net.ipv6.conf.lo.disable_ipv6=0
 sysctl -w net.ipv6.conf.all.accept_ra=2
 sysclt -w net.ipv6.conf.all.forwarding=1
+
 function configure_iface() {
 	local iface=$1
-	sysctl -w net.ipv6.conf.$iface.accept_ra=2
-	sysctl -w net.ipv6.conf.$iface.disable_ipv6=0
-	sysctl -w net.ipv4.conf.$iface.send_redirects=0
-	sysctl -w net.ipv4.conf.$iface.rp_filter=0
 
-	ifconfig $iface txqueuelen 90000
-	ifconfig $iface keepalive 600
-	ifconfig $iface multicast
+	sudo systemd-resolve --set-mdns=yes --interface=$iface
+	sudo systemd-resolve --set-dnssec=yes --interface=$iface
+	sudo systemd-resolve --set-llmnr=yes --interface=$iface
+
+	sudo sysctl -w net.ipv6.conf.$iface.accept_ra=2
+	sudo sysctl -w net.ipv6.conf.$iface.disable_ipv6=0
+	sudo sysctl -w net.ipv4.conf.$iface.send_redirects=0
+	sudo sysctl -w net.ipv4.conf.$iface.rp_filter=0
+
+	sudo ifconfig $iface mtu 1500
+	sudo ifconfig $iface txqueuelen 90000
+	sudo ifconfig $iface keepalive 600
+	sudo ifconfig $iface multicast
 }
 
 iface=ens4
 if ifconfig $iface | grep -o $iface; then
 	configure_iface $iface
+	ifmetric $iface 101
 fi
 
 iface=ens5
 if ifconfig $iface | grep -o $iface; then
 	configure_iface $iface
+	ifmetric $iface 202
+fi
+
+iface=ens6
+if ifconfig $iface | grep -o $iface; then
+	configure_iface $iface
+	ifmetric $iface 203
 fi
 
 iface=eth0
 if ifconfig $iface | grep -o $iface; then
 	configure_iface $iface
+	ifmetric $iface 101
 fi
 
 iface=eth1
 if ifconfig $iface | grep -o $iface; then
 	configure_iface $iface
+	ifmetric $iface 202
+fi
+
+iface=eth2
+if ifconfig $iface | grep -o $iface; then
+	configure_iface $iface
+	ifmetric $iface 203
 fi
 
 iface=wlan0
@@ -76,6 +99,7 @@ fi
 iface=tailscale0
 if ifconfig $iface | grep -o $iface; then
 	configure_iface $iface
+	ifmetric $iface 222
 fi
 
 iface=wg0

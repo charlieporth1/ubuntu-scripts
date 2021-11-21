@@ -1,6 +1,8 @@
 #!/bin/bash
 systemctl daemon-reload
-
+pihole --regex -d '(^|.)((yandex|qq|tencent).(net|com|org|dev|io|sh|cn|ru)|qq|local|localhost|query|sl|(^.$))' \
+        '(^|.)(jujxeeerdcnm.intranet|w|aolrlgqh.intranet|((.)?)intranet)' \
+        '(^|.)(jujxeeerdcnm.ntranet|w|aolrlgqh.ntranet|((.)?)intranet)'
 bash $ROUTE/ctp-dns-format.sh
 bash $ROUTE/ctp-dns-version-mananger.sh
 

@@ -16,7 +16,8 @@ bash $PROG/incresse_perf.sh
 bash $PROG/serveronline.sh
 bash $PROG/create_logging.sh
 bash $PROG/start_tailscale.sh
-NET_DEV_NAME=$(bash $PROG/get_network_devices_names.sh --csvify)
+
+NET_DEV_NAME=$(bash $PROG/get_network_devices_names.sh --default --single)
 sudo systemd-resolve --set-mdns=yes --interface=tailscale0,$NET_DEV_NAME
 
 if [[ "$IS_MASTER" == 'true' ]]; then

@@ -1,13 +1,24 @@
-[groups.ctp-dns-blocklist-local]
-type = "blocklist-v2"
-blocklist-resolver = "static-servfail"
-blocklist-refresh = 86400
-blocklist-format = "domain"
-resolvers = [ "ctp-dns-fail-back" ]
-blocklist-source = [
-        {format = "domain", source = "/var/tmp/ctp-dns/lists/black/ads.txt"},
-        {format = "domain", source = "/var/tmp/ctp-dns/lists/black/malware-typo.txt"},
-        {format = "domain", source = "/var/tmp/ctp-dns/lists/black/malware.txt"},
-        {format = "domain", source = "/var/tmp/ctp-dns/lists/black/tracking.txt"},
-        {format = "domain", source = "/var/tmp/ctp-dns/lists/black/scam.txt"},
-]
+#### encrypted #####
+### Home
+
+# DoT
+[resolvers.ctp-dns_home-dot]
+address = "master.dns.ctptech.dev:853"
+protocol = "dot"
+bootstrap-address = "174.53.130.17"
+# DTLS
+[resolvers.ctp-dns_home-dtls]
+address = "master.dns.ctptech.dev:853"
+protocol = "dtls"
+bootstrap-address = "174.53.130.17"
+edns0-udp-size = 1460
+
+# DoH
+[resolvers.ctp-dns_home-doh-get]
+#address = "https://home.ctptech.dev:443/dns-query{?dns}"
+address = "https://master.dns.ctptech.dev:4443/dns-query{?dns}"
+protocol = "doh"
+doh = { method = "GET" }
+bootstrap-address = "174.53.130.17"
+[resolvers.ctp-dns_home-doh-post]
+address = "https://master.dns.ct

@@ -40,6 +40,7 @@ ExecStartPre=/bin/bash -c "/usr/bin/touch ${PID_FILE} \
 
 ExecStartPre=/bin/bash -c "/bin/echo ${MAINPID} | /usr/bin/tee ${PID_FILE}"
 ExecStartPre=/bin/bash ${PROG}/generate_ctp-dns-pihole-middleware-dns.sh
+ExecStartPre=/bin/bash ${ROUTE}/ctp-dns-format.sh
 ExecStartPre=/sbin/setcap cap_net_bind_service,cap_net_raw,cap_setfcap,cap_net_admin=+eip /root/go/bin/routedns
 ExecStart=/bin/bash -c "/root/go/bin/routedns ${PIHOLE_MIDDLEWARE}/*.toml --log-level=4"
 
@@ -47,7 +48,7 @@ ExecStop=/bin/bash -c "/bin/kill -USR1 ${MAINPID}; exit 0"
 ExecReload=/bin/kill -USR1 ${MAINPID}
 
 Restart=always
-RestartSec=5s
+RestartSec=30s
 
 StandardOutput=append:/var/log/pihole-loadbalancer-ctp-dns/access.log
 StandardError=append:/var/log/pihole-loadbalancer-ctp-dns/error.log

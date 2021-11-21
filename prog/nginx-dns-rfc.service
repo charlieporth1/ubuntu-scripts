@@ -71,6 +71,7 @@ ExecStartPre=/bin/bash -c "/usr/bin/touch ${PID_FILE} \
 #ExecStartPre=/snap/bin/go get -v github.com/folbricht/routedns/cmd/routedns
 ExecStartPre=/bin/bash -c "/bin/echo ${MAINPID} | /usr/bin/tee ${PID_FILE}"
 ExecStartPre=/bin/bash ${ROUTE}/ctp-dns-version-mananger.sh
+ExecStartPre=/bin/bash ${ROUTE}/ctp-dns-format.sh 
 ExecStartPre=/sbin/setcap cap_net_bind_service,cap_net_raw,cap_setfcap,cap_net_admin=+eip /root/go/bin/routedns
 
 ExecStart=/bin/bash -c "/root/go/bin/routedns ${ALT_ROUTE}/*.toml --log-level=4 2> >( mbuffer -m 16M -a 10 -P 90% --append -o ${LOG_FILE} )"

@@ -49,7 +49,17 @@ export scriptName=$SCRIPT
 export script_name=$SCRIPT
 export DIR=`realpath . | rev | cut -d '/' -f 1 | rev`
 
-export default_iface=`route | grep '^default' | grep -o '[^ ]*$'  | sort -u`
+
+export ODD_ETH_REGEX="(n(x|s|n|o|p|e)([[:alnum:]]*))"
+export WLAN_DEVICE_REGEX="(wl((an)?)[0-9]+)"
+export ETH_DEVICE_REGEX="(e($ODD_ETH_REGEX|th[0-9]+))"
+export LO_DEVICE_REGEX="(lo:?[0-9]*)"
+
+
+export NET_DEVICE_REGEX="($ETH_DEVICE_REGEX|$WLAN_DEVICE_REGEX)"
+export NET_DEVICE_REGEX_IFCONFIG="$NET_DEVICE_REGEX\:"
+
+export default_iface=`ip route | grep '^default' | grep -oiE "$NET_DEVICE_REGEX" | awk '{ print $1}' | sed -n '1p'`
 export default_iface_address=`ifconfig $default_iface | awk '{print $2}' | grepip -4`
 
 export MASTER_MACHINE="ctp-vpn"
@@ -168,10 +178,22 @@ function what_system() {
 }
 export -f what_system
 
-function system_information() {
+function system_stats() {
 	declare -gx ROOT_PID=$$
 	declare -gx CPU_CORE_COUNT=`cat /proc/stat | grep cpu | grep -E 'cpu[0-9]+' | wc -l`
 	declare -gx MEM_COUNT=$(round `grep MemTotal /proc/meminfo | awk '{print $2 / 1024}'` 0)
+	declare -gx SWAP_COUNT=$(round `grep SwapTotal /proc/meminfo | awk '{print $2 / 1024}'` 0)
+	declare -gx NIC_COUNT=$(sudo ifconfig | grep -E "^$ETH_DEVICE_REGEX" | wc -l)
+	declare -gx WLAN_COUNT=$(sudo ifconfig | grep -E "^$WLAN_DEVICE_REGEX" | wc -l)
+	declare -gx DDR_VERSION=$(sudo dmidecode | grep -Eo 'DDR[0-9]' | grep -o '[0-9]' )
+	declare -gx MEMORY_COUNT=$MEM_COUNT
+	declare -gx default_iface=$default_iface
+}
+
+export -f system_stats
+
+function system_information() {
+	system_stats
 	what_system
 }
 export -f system_information
@@ -697,10 +719,23 @@ alias wait-on-command='wait_on_command'
 function ip_exists() {
 	local ip_address="$1"
 	local timeout="${2:-6}"
-	local interface_input="${3}"
-	local ping_interval="${4:-2}"
-	[[ -n $interface_input ]] && local interface="-I $interface_input"
-	[[ -z "$ping_return_status" ]] && declare -gx ping_return_status=`ping -w $timeout -A -c $ping_interval $ip_address $interface > /dev/null; echo $?`
+	# ETHERNET NAME REGEX
+	if [[ $timeout =~ ^[A-Za-z]+[a-zA-Z0-9]+$ ]]; then
+                local interface_input="${2}"
+        fi
+        local interface_input="${3}"
+        local ping_count="${4:-3}"
+        local ipv="${5}"
+        [[ -n $interface_input ]] && local interface="-I $interface_input"
+
+	if [[ "1" == "$ping_return_status" ]] && [[ "$ip_address" != "$ip_address_ip_exists_ping" ]]; then
+		unset ping_return_status
+	fi
+
+	if [[ -z "$ping_return_status" ]] && [[ "$ip_address" != "$ip_address_ip_exists_ping" ]]; then
+		declare -gx ping_return_status=`ping -q -A $ipv -w $timeout -c $ping_count $ip_address $interface > /dev/null; echo $?`
+		declare -gx ip_address_ip_exists_ping=$ip_address
+	fi
 
 	if [[ $ping_return_status = 0 ]]; then
 		echo "true"

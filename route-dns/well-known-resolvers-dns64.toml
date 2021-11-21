@@ -1,0 +1,31 @@
+[resolvers.google-quic-doh-get-dns64]
+address = "https://dns64.dns.google/dns-query{?dns}"
+protocol = "doh"
+transport = "quic"
+doh = { method = "GET" }
+
+[resolvers.google-quic-doh-post-dns64]
+address = "https://dns64.dns.google/dns-query{?dns}"
+protocol = "doh"
+transport = "quic"
+
+[resolvers.google-doh-get-dns64]
+address = "https://dns64.dns.google/dns-query{?dns}"
+protocol = "doh"
+doh = { method = "GET" }
+
+[resolvers.google-doh-post-dns64]
+address = "https://dns64.dns.google/dns-query{?dns}"
+protocol = "doh"
+
+[resolvers.google-dot-dns64]
+address = "dns64.dns.google:853"
+protocol = "dot"
+
+[resolvers.google-dtls-dns64]
+address = "dns64.dns.google:853"
+protocol = "dtls"
+
+[resolvers.google-doq-dns64]
+address = "dns64.dns.google:8853"
+protocol = "doq"

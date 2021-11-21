@@ -23,12 +23,12 @@ bash $PROG/generate_ctp-dns-well-known-fail-backup-groups.sh
 bash $PROG/generate_ctp-dns-backup-resolvers.sh
 
 if [[ "$HOSTNAME" == "ctp-vpn" ]] || [[ "$IS_MASTER" = 'true' ]];then
-	bash $PROG/generate_cache_interface_shorten_queries.sh
 	bash $PROG/pihole-db-sql-changes.sh
 	bash $PROG/pihole-lighttpd-changes.sh
 	bash $PROG/generate_quad-name-server-list.sh
 	bash $PROG/generate_name-server-list.sh
 	bash $PROG/generate_ctp-dns-pihole-middleware-dns.sh
+	bash $PROG/generate_cache_interface_shorten_queries.sh
 fi
 
 if [[ "$HOSTNAME" == "ctp-vpn" ]]; then

@@ -45,7 +45,7 @@
 (^|\.|[\.\-])?ad(aly[sz]er|am|banner|bureau|click|dynamo|farm|hese|im[a]?g[e]?|info|ition|just|k2|load|log([^(in|out)])(ger|ing)|media|ma(n|nager|x)|ne(t[a-z]+|xus)|nxs|ocean|renaline|revolver|rotat(e|or)|science|script|sense|spirit|[v\-]?s[e]?r(v|ve|ver|vi(ce|ng))|stat|stream)[sxz]?[0-9]?[\.\-]
 (^|\.|www\.)(yandex|qq|tencent)\.(cn|ru|net|com|org)$
 (^|\.|www\.|static\.|ssl\.)(doubleclick|izatcloud|webtrekk)\.net$
-(analytic[s]?|apptic[szx]?|tric[szx]?|lytic[sxz]?|device(-|\.)?metric[sxacz]?)
+(analytic[s]?|apptic[szx]?|lytic[sxz]?|device(-|\.)?metric[sxacz]?)
 (chinese|china|qq|cctv|tencent)
 (grow(th|ing)?|synd(icat)?[e]?(ion)?|target(ing|er)|tag[s]?(ervices))
 (moatads|rubiconproject|smaato|powerlinks|omniture|bluekai|chartbeat|clarium|criteo|crwdcntrl|d[eo]?mdex|gigya|loggly|outbrain|appnexus|sitescout|mediamath|w55c|yieldmanager|mathtag)

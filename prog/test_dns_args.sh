@@ -23,6 +23,17 @@ export QH_PORT=1443
 
 export DNS_IP=$(bash $PROG/grepify.sh $(bash $PROG/get_ext_ip.sh))
 export EXTENRAL_IP=`bash $PROG/get_ext_ip.sh  --current-ip`
+if [[ -z $EXTENRAL_IP ]]; then
+	export EXTENRAL_IP=`bash $PROG/get_ext_ip.sh  --current-ip`
+	if [[ -z $EXTENRAL_IP ]]; then
+		export EXTENRAL_IP=`bash $PROG/get_ext_ip.sh  --current-ip`
+		if [[ -z $EXTENRAL_IP ]]; then
+			export EXTENRAL_IP=`bash $PROG/get_ext_ip.sh  --current-ip`
+		fi
+	fi
+
+fi
+
 #export ROOT_NETWORK=`bash $PROG/get_network_devices_ip_address.sh --grepify`
 #export EXCLUDE_IP="$DNS_IP\|0.0.0.0\|$ROOT_NETWORK"
 
@@ -76,13 +87,30 @@ function if_plain_dns_fail() {
 	fi
 }
 fi
+function ctp_dns_lock_file_fix_check() {
+	echo "LOCK FILE $CTP_DNS_LOCK_FILE"
+        echo "Creating logging and starting nginx incase nginx failed and blocklist failed to load due to webserver down and list unable to load...."
+        bash $PROG/create_logging.sh
+        echo "Starting NGINX now..."
+        sudo systemctl start nginx.service
+        echo "Starting NGINX is done"
+        echo "NGINX is: $(sudo systemctl is-active nginx.service)"
+        echo "Starting CTP-DNS"
+        sudo systemctl start ctp-dns.service
+        echo "CTP-DNS is: $(sudo systemctl is-active ctp-dns.service)"
+        echo "CTP-DNS --config-test-human is"
+        sudo ctp-dns --config-test-human
+}
+export -f ctp_dns_lock_file_fix_check
 
 dns_local=`dig $QUERY @ctp-vpn.local +tries=$TRIES +dnssec +short +timeout=$TIMEOUT +retry=$TRIES -t A`
 dns_local_test=`echo "$dns_local" | grepip --ipv4 -o | xargs`
 
 if [[ "$CONCURENT_OVERRIDE" == 'false' ]] && [[ -n "$isAuto" ]]; then
+
 	if [[ -f $CTP_DNS_LOCK_FILE ]]; then
 	        echo "LOCK FILE"
+		ctp_dns_lock_file_fix_check
 		kill -9 $$
 	fi
 fi

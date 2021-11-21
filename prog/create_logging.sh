@@ -16,9 +16,6 @@ touch $LOG/tailscaled/$DEFAULT_LOG_FILES
 
 chown -R www-data:www-data /var/{cache,log}/nginx/
 
-certbot-ocsp-fetcher --output-dir=/var/cache/nginx/
-ctp-dns.sh --generate-logs
-
 if [[ "$IS_MATER" == 'true' ]] || [[ "$HOSTNAME" == 'ctp-vpn' ]]; then
 	mkdir -p /var/{log,cache}/lighttpd/
 	mkdir -p /var/cache/{dnsmasq,pihole}/
@@ -31,4 +28,10 @@ if [[ "$IS_MATER" == 'true' ]] || [[ "$HOSTNAME" == 'ctp-vpn' ]]; then
 	chown -R pihole:pihole $LOG/pihole{,-FTL}.log
 fi
 
+
+
+(
+	certbot-ocsp-fetcher --output-dir=/var/cache/nginx/
+	ctp-dns.sh --generate-logs
+)&
 

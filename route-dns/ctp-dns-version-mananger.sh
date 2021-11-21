@@ -7,7 +7,8 @@ source $PROG/all-scripts-exports.sh
 if [[ -d $ALT_ROUTE/ ]]; then
 	if [[ `config_test $ROUTE` == 'true' ]] || [[ `config_test $ALT_ROUTE` == 'false' ]] ; then
 		echo "Copying $ALT_ROUTE"
-		cp -rf $ROUTE/{standard-group-resolvers,$HOSTNAME-{resolvers,rate-limiters},standard-resolvers,raw-resolvers,rate-limiter,static-response-groups}.toml $ALT_ROUTE/
+		cp -rf $ROUTE/{standard-group-resolvers,$HOSTNAME-{resolvers,rate-limiters},standard-resolvers,raw-resolvers,static-response-groups}.toml $ALT_ROUTE/
+		sudo rm $ALT_ROUTE/rate-limiter.toml
 	fi
 fi
 

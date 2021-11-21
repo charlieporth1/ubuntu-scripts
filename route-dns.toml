@@ -32,8 +32,8 @@ cache-answer-shuffle = "round-robin"
 [routers.root-router]
 routes = [
   { class = "ANY", resolver = "static-rfc8482" }, # Send queries of type ANY to a static responder
-  { types = [ "RRSIG", "ANY", "SOA", "TXT", "PTR" ], resolver = "drop-all" }, # Send queries of type RRSIG to a static responder
-  { name = '(^|\.)(doubleclick)\.net\.$', resolver = "drop-all" },
+  { types = [ "RRSIG", "ANY", "SOA", "TXT", "PTR" ], resolver = "static-refused" }, # Send queries of type RRSIG to a static responder
+  { name = '(^|\.)(doubleclick)\.net\.$', resolver = "static-nxdomain" },
   { name = '(^|\.)(youtube|ytimg|ggpht|youtube-ui\.l\.google|youtubei\.googleapis)\.com\.$', resolver = "ctp-yt-blocker-if-fowarder-router" },
   { name = '(^|\.)(gvt[0-6]?|googlevideo)\.com\.$', resolver = "ctp-yt-blocker-if-fowarder-router" },
   { name = '(^|\.)(fwmrm)\.net\.$', resolver = "ctp-yt-blocker-if-fowarder-router" },

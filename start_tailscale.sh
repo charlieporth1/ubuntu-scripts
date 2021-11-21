@@ -11,12 +11,12 @@ GCP_PAID_ROUTE="$GCP_ROUTE_1,192.168.99.0/24"
 GCP_AWS_ROUTE="10.128.0.0/20,$AWS_ROUTE"
 HOME_ROUTE="192.168.44.0/24,192.168.12.0/24"
 
-ALL_ROUTES="$AWS_ROUTE,$HOME_ROUTE,$GCP_ROUTE"
+ALL_ROUTES="$AWS_ROUTE,$HOME_ROUTE,$GCP_ALL_ROUTE"
 declare -a routes_arrary=$(decsvify "$ALL_ROUTES")
 
 (
 	sudo apt -y update
-	sudo apt -y install tailscale
+	sudo apt install -y tailscale ifmetric
 )&>/dev/null
 
 function add_routes() {
@@ -48,15 +48,15 @@ function auto_routes() {
 function add_tag() {
 	local tag="$1"
 	if [[ -z $ADDITONAL_TAGS ]]; then
-		ADDITONAL_TAGS="$tag"
+		ADDITONAL_TAGS="tag:$tag"
 	else
-		ADDITONAL_TAGS="$ADDITONAL_TAGS,$tag"
+		ADDITONAL_TAGS="$ADDITONAL_TAGS,tag:$tag"
 	fi
 }
 
 function tag_test() {
-	local tag="$1"
-	local port_and_or_ip="$2"
+	local tag="$2"
+	local port_and_or_ip="$1"
 	local port=$(echo $port_and_or_ip | cut -f 2- -d ':')
         local port_status=`ss -alunt "sport = :$port" | grep -o "$port_and_or_ip" | sort -u`
 	if [[ -n "$port_status" ]]; then
@@ -81,6 +81,57 @@ function auto_tags() {
 	tag_test 22 ssh_tag
 }
 
+function system_score() {
+	system_stats
+
+	local vm_timeout=4
+	local IS_VM=$( timeout $vm_timeout facter is_virtual )
+
+	local standard_nic_mx=16
+	local standard_wl_mx=4
+
+	if [[ $IS_VM == true ]]; then
+		local default_ddr=4
+		local default_nic=10000
+		local default=1000
+	else
+		local default_ddr=2
+		local default_nic=100
+		local default=100
+	fi
+
+	local NIC_SPEEDS=$(bash $PROG/get_network_devices_names.sh | parallel sudo ethtool {} | grep -i speed | grep -oE '[0-9]+' || echo $(( $default_nic * $NIC_COUNT * $standard_nic_mx  )) )
+
+	local DDR_VERSION=$(sudo dmidecode | grep -Eo 'DDR[0-9]' | grep -o '[0-9]' || echo $default_ddr )
+	local DEFAULT_IFACE_SPEED=$(sudo ethtool $default_iface | grep -i speed | grep -oE '[0-9]+' || echo $default_nic )
+
+	if [[ $DEFAULT_IFACE_SPEED -ge 2999 ]]; then
+		local nic_mx=1000
+	elif [[ $DEFAULT_IFACE_SPEED -ge 999 ]]; then
+		local nic_mx=100
+	else
+		local nic_mx=1
+	fi
+
+	# System's smaller than 256 mb ram shouldn't really be used
+	local OTHER_NIC_SCORE=$(( ( $(printf '%s\n' "$NIC_SPEEDS" | awk '{s+=$1} END {print s}') * $NIC_COUNT * $standard_nic_mx ) / 64 ))
+	local WLAN_SCORE=$(( $WLAN_COUNT * $standard_wl_mx ))
+	local DEFAULT_NIC_SCORE=$(( ( $DEFAULT_IFACE_SPEED * $nic_mx * $standard_nic_mx ) / 24 ))
+
+	local NIC_SCORE=$(( $DEFAULT_NIC_SCORE + $OTHER_NIC_SCORE + $WLAN_SCORE ))
+	local MEMORY_SCORE=$(( ( ( $MEM_COUNT / 256 ) * $DDR_VERSION ) / 32 ))
+
+	local SYSTEM_SCORE=$(( ( $CPU_CORE_COUNT + $MEMORY_SCORE + $NIC_SCORE ) / 1024 ))
+	echo $SYSTEM_SCORE
+}
+
+function system_metric() {
+	local SYSTEM_SCORE=$(system_score)
+	local METRIC_SCORE_SCALE=100000
+	echo $SYSTEM_SCORE
+#	echo $(( $METRIC_SCORE_SCALE - $SYSTEM_SCORE ))
+}
+
 if [[ "$HOSTNAME" =~ (ctp-vpn|ip-172-31-12-154|instance-1-ctp-vpn) ]]; then
 	if [[ "$HOSTNAME" = 'ctp-vpn' ]]; then
 		add_routes "$GCP_PAID_ROUTE"
@@ -95,8 +146,10 @@ elif [[ "$HOSTNAME" =~ (ubuntu-server|neat-xylophone|led-raspberrypi3) ]]; then
 else
 	auto_routes
 fi
-auto_tags
-sudo modprobe wireguard
+
+#auto_tags
+
+sudo modprobe wireguard curve25519-generic tcp_htcp dummy veth tunnel4 ipip udp_tunnel ip_tunnel
 
 sudo sysctl -w net.ipv6.conf.all.disable_ipv6=0
 sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=0
@@ -104,11 +157,15 @@ sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=0
 sudo sysctl -w net.ipv6.conf.all.forwarding=1
 sudo sysctl -w net.ipv4.ip_forward=1
 
+# HC HEALTH CHECK
+fn=tailscaled
+sudo systemctl is-failed $fn && sudo systemctl restart $fn
+
 if [[ -n "$ADDITONAL_TAGS" ]]; then
 	ADD_OPT1="--advertise-tags=$ADDITONAL_TAGS"
 fi
 
-DEFAULT_OPTS="--accept-dns=true --accept-routes=true --advertise-exit-node=true --host-routes=true --snat-subnet-routes=true $ADD_OPT1"
+DEFAULT_OPTS="--accept-dns=false --accept-routes=true --netfilter-mode=on --advertise-exit-node=true --host-routes=true --snat-subnet-routes=true $ADD_OPT1"
 
 if [[ -n "$ADDITONAL_ROUTES" ]]; then
 	echo "Starting TailScale adding ROUTES $ADDITONAL_ROUTES"
@@ -120,7 +177,12 @@ fi
 iface=tailscale0
 sudo ifconfig $iface mtu 1500
 sudo ifconfig $iface txqueuelen 90000
-sudo ifconfig $iface keepalive 600
 sudo ifconfig $iface multicast
 
+T_METRIC=$(system_metric)
+echo "Setting $iface metric to $T_METRIC"
+sudo ifmetric $iface $T_METRIC
+
 sudo systemd-resolve --set-mdns=yes --interface=tailscale0
+# sudo ip route show table 52
+

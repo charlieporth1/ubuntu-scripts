@@ -76,6 +76,7 @@ ExecStartPre=/bin/bash -c "/usr/bin/touch ${PID_FILE} \
 #ExecStartPre=/bin/bash -c "! [[ -f /root/go/bin/routedns ]] && /snap/bin/go get -u -v github.com/folbricht/routedns/cmd/routedns"
 #ExecStartPre=/snap/bin/go get -v github.com/folbricht/routedns/cmd/routedns
 ExecStartPre=/bin/bash -c "/bin/echo ${MAINPID} | /usr/bin/tee ${PID_FILE}"
+ExecStartPre=/bin/bash ${PROG}/simple-failover-http-server.sh
 ExecStartPre=/bin/bash ${ROUTE}/ctp-list-manager.sh
 ExecStartPre=/bin/bash ${ROUTE}/ctp-dns.sh --generate-log
 ExecStartPre=/bin/bash ${ROUTE}/ctp-dns.sh --generate-cache
@@ -94,7 +95,7 @@ ExecReload=/bin/kill -USR1 ${MAINPID}
 
 Restart=always
 #Restart=on-failure
-RestartSec=8s
+RestartSec=5s
 
 #StandardInput=tty
 StandardOutput=append:/var/log/ctp-dns/access.log

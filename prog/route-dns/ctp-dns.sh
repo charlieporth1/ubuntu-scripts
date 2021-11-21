@@ -253,7 +253,7 @@ function generate_config() {
 		local RUN_FILE=$PROG/dns-route.sh
 		[[ -f $RUN_FILE ]] && bash $RUN_FILE
 		local RUN_FILE=$ROUTE/ctp-dns-format.sh
-		[[ -f $RUN_FILE ]] && bash $RUN_FILE --preload
+		[[ -f $RUN_FILE ]] && bash $RUN_FILE --preload --no-vars
 	fi
 	config_test_human ${CONFIG_DIR} &
 }

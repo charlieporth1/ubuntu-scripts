@@ -6,7 +6,7 @@ server="$1"
 function server-health-check() {
 	local server="${1:-aws.ctptech.dev}"
 	local port="${2:-22}"
-	if [[ `ip_exists "$server" eth0` = 'false' ]] || [[ `health_check_remote_port_tcp "$server" "$port"` == 'false' ]] ; then
+	if [[ `ip_exists "$server" 6 eth0` = 'false' ]] && [[ `ip_exists "$server" 6 eth1` = 'false' ]] || [[ `health_check_remote_port_tcp "$server" "$port"` == 'false' ]] ; then
 		debug_log "Server $server is unhealthy rebooting"
 		echo "false"
 	else
@@ -32,7 +32,17 @@ function reboot_timer() {
 		echo "false"
 	fi
 }
+function aws_restart() {
+	aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+	aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+	aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+	aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+	aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+	aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+	aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+	aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
 
+}
 function gcp_restart() {
 		HOSTNAME="ctp-vpn"
 		PROJECT="galvanic-pulsar-284521"
@@ -47,7 +57,7 @@ function gcp_restart() {
 			--project "$PROJECT"
 }
 
-if [[ `server-health-check 1.1.1.1 53` = 'true' ]] && [[ `server-health-check one.one.one.one 853` = 'true' ]]; then
+if [[ `server-health-check 1.1.1.1 53` = 'true' ]] && [[ `server-health-check one.one.one.one 853` = 'true' ]] || [[ `server-health-check dns.google 853` = 'true' ]] ||  [[ `server-health-check www.google.com 443` = 'true' ]]; then
 
 	if [[ "$server" = "gcp.ctptech.dev" ]]; then
 		if [[ `server-health-check $server` = 'false' ]] || [[ `server-health-check $server 853` = 'false' ]]; then
@@ -66,30 +76,27 @@ if [[ `server-health-check 1.1.1.1 53` = 'true' ]] && [[ `server-health-check on
 	elif [[ "$server" = "aws.ctptech.dev" ]]; then
 		if [[ `server-health-check $server` = 'false' ]] || [[ `server-health-check $server 853` = 'false' ]]; then
 			echo "Server $server is unhealthy rebooting"
-			aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-			aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+			aws_restart
 		else
 			dot_result=`bash $PROG/test_dot.sh -a $server`
 			dns_result=`bash $PROG/test_dns.sh -a $server`
 			if [[ `health_check_remote_port_tcp "$server" "853"` = 'true' ]] && [[ `health_check_remote_port_tcp "$server" "53"` = 'true' ]]; then
 				if [[ $dot_result = 'false' ]] && [[ $dns_result = 'false' ]]; then
 					echo "Server $server is unhealthy rebooting dig dug"
-					aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-					aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+					aws_restart
 			else
 					echo "Server $server is healthly"
 				fi
 			else
 				echo "Server $server is unhealthy rebooting"
 				echo "Error $server: 11"
-				aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-				aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+				aws_restart
 			fi
 		fi
 	else
 		if [[ `server-health-check aws.ctptech.dev` = 'false' ]]; then
 			echo "Server aws.ctptech.dev is unhealthy rebooting"
-			aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+			aws_restart
 		else
 			echo "Server aws.ctptech.dev is healthly"
 		fi

@@ -40,6 +40,7 @@ do
 		bash $PROG/test_doq.sh -a --preload
 	else
 		echo "LOCK FILE $CTP_DNS_LOCK_FILE"
+		ctp_dns_lock_file_fix_check
 	fi
 	echo "check sleeping $SLEEP_T"
 	echo "$SLEEP_T `date`"

@@ -1,0 +1,164 @@
+#### encrypted #####
+### Home
+
+# DoT
+[resolvers.ctp-dns_home-dot]
+address = "dns.ctptech.dev:853"
+protocol = "dot"
+bootstrap-address = "174.53.130.17"
+
+# DTLS
+[resolvers.ctp-dns_home-dtls]
+address = "dns.ctptech.dev:853"
+protocol = "dtls"
+bootstrap-address = "174.53.130.17"
+edns0-udp-size = 1460
+
+
+# DoH
+[resolvers.ctp-dns_home-doh-get]
+#address = "https://home.ctptech.dev:443/dns-query{?dns}"
+address = "https://dns.ctptech.dev:4443/dns-query{?dns}"
+protocol = "doh"
+doh = { method = "GET" }
+bootstrap-address = "174.53.130.17"
+
+[resolvers.ctp-dns_home-doh-post]
+address = "https://dns.ctptech.dev:4443/dns-query{?dns}"
+#address = "https://home.ctptech.dev:443/dns-query"
+protocol = "doh"
+bootstrap-address = "174.53.130.17"
+
+[resolvers.ctp-dns_home-doh-get-route-dns-raw]
+address = "https://dns.ctptech.dev:4443/dns-query{?dns}"
+protocol = "doh"
+doh = { method = "GET" }
+bootstrap-address = "174.53.130.17"
+
+[resolvers.ctp-dns_home-doh-post-route-dns-raw]
+address = "https://dns.ctptech.dev:4443/dns-query"
+protocol = "doh"
+bootstrap-address = "174.53.130.17"
+
+# QUIC
+[resolvers.ctp-dns_home-quic]
+address = "dns.ctptech.dev:784"
+protocol = "doq"
+bootstrap-address = "174.53.130.17"
+
+[resolvers.ctp-dns_home-doh-quic-post-ip]
+address = "https://dns.ctptech.dev:1443/dns-query"
+protocol = "doh"
+transport = "quic"
+bootstrap-address = "174.53.130.17"
+
+[resolvers.ctp-dns_home-doh-quic-get-ip]
+address = "https://dns.ctptech.dev:1443/dns-query"
+protocol = "doh"
+transport = "quic"
+doh = { method = "GET" }
+bootstrap-address = "174.53.130.178"
+
+### GCP
+
+## DoT
+[resolvers.ctp-dns_gcp-dot-ip-1]
+address = "gcp.ctptech.dev:853"
+protocol = "dot"
+bootstrap-address = "35.192.105.158"
+[resolvers.ctp-dns_gcp-dot-ip-2]
+address = "gcp.ctptech.dev:853"
+protocol = "dot"
+bootstrap-address = "35.232.120.211"
+## DTLS
+[resolvers.ctp-dns_gcp-dtls-ip-1]
+address = "gcp.ctptech.dev:853"
+protocol = "dtls"
+bootstrap-address = "35.192.105.158"
+edns0-udp-size = 1460
+[resolvers.ctp-dns_gcp-dtls-ip-2]
+address = "gcp.ctptech.dev:853"
+protocol = "dtls"
+bootstrap-address = "35.232.120.211"
+edns0-udp-size = 1460
+## DoH
+# Post
+[resolvers.ctp-dns_gcp-doh-post-ip-1]
+address = "https://gcp.ctptech.dev:4443/dns-query"
+protocol = "doh"
+bootstrap-address = "35.192.105.158"
+[resolvers.ctp-dns_gcp-doh-post-ip-2]
+address = "https://gcp.ctptech.dev:4443/dns-query"
+protocol = "doh"
+bootstrap-address = "35.232.120.211"
+# GET
+[resolvers.ctp-dns_gcp-doh-get-ip-1]
+address = "https://gcp.ctptech.dev:4443/dns-query{?dns}"
+protocol = "doh"
+doh = { method = "GET" }
+bootstrap-address = "35.192.105.158"
+[resolvers.ctp-dns_gcp-doh-get-ip-2]
+address = "https://gcp.ctptech.dev:4443/dns-query{?dns}"
+protocol = "doh"
+doh = { method = "GET" }
+bootstrap-address = "35.232.120.211"
+
+## QUIC
+# Post
+[resolvers.ctp-dns_gcp-doh-quic-post-ip-1]
+address = "https://gcp.ctptech.dev:1443/dns-query"
+protocol = "doh"
+transport = "quic"
+bootstrap-address = "35.192.105.158"
+[resolvers.ctp-dns_gcp-doh-quic-post-ip-2]
+address = "https://gcp.ctptech.dev:1443/dns-query"
+protocol = "doh"
+transport = "quic"
+bootstrap-address = "35.232.120.211"
+# GET
+[resolvers.ctp-dns_gcp-doh-quic-get-ip-1]
+address = "https://gcp.ctptech.dev:1443/dns-query"
+protocol = "doh"
+transport = "quic"
+doh = { method = "GET" }
+bootstrap-address = "35.192.105.158"
+[resolvers.ctp-dns_gcp-doh-quic-get-ip-2]
+address = "https://gcp.ctptech.dev:1443/dns-query"
+protocol = "doh"
+transport = "quic"
+doh = { method = "GET" }
+bootstrap-address = "35.232.120.211"
+
+[resolvers.ctp-dns_gcp-quic-ip-1]
+address = "gcp.ctptech.dev:784"
+protocol = "doq"
+bootstrap-address = "35.192.105.158"
+[resolvers.ctp-dns_gcp-quic-ip-2]
+address = "gcp.ctptech.dev:784"
+protocol = "doq"
+bootstrap-address = "35.232.120.211"
+
+
+# AWS
+[resolvers.ctp-dns_aws-dot]
+address = "dns.ctptech.dev:853"
+protocol = "dot"
+bootstrap-address = "54.90.63.26"
+
+[resolvers.ctp-dns_aws-dtls]
+address = "dns.ctptech.dev:853"
+protocol = "dtls"
+bootstrap-address = "54.90.63.26"
+edns0-udp-size = 1460
+
+[resolvers.ctp-dns_aws-quic]
+address = "dns.ctptech.dev:784"
+protocol = "doq"
+bootstrap-address = "54.90.63.26"
+
+[resolvers.ctp-dns_aws-doh-quic]
+address = "https://dns.ctptech.dev:1443/dns-query"
+protocol = "doh"
+transport = "quic"
+bootstrap-address = "54.90.63.26"
+

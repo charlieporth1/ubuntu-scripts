@@ -15,7 +15,7 @@ term_str="Terminated"
 status_str="$OK_STR\|$term_str"
 query_str="$(uuidgen)--salty"
 export byte_size=$(( 1024 * 1024 * 1024 ))
-export min_gravity_size=$(( $byte_size * 16 ))
+export min_gravity_size=$(( $byte_size * 64 ))
 
 shopt -s expand_aliases
 
@@ -98,7 +98,7 @@ function size_test() {
 	local db_file_input="$1"
         local db_file="${db_file_input:=$DB_FILE}"
 	local size_in_bytes=`ls -s $db_file | awk '{print $1}'`
-	if [[ $min_gravity_size < $size_in_bytes ]]; then
+	if [[ $size_in_bytes -ge $min_gravity_size ]]; then
 		echo "true"
 	else
 		echo "false"
@@ -300,7 +300,7 @@ function is_gravity_ok() {
 	local db_file_input="$1"
         local db_file="${db_file_input:=$DB_FILE}"
 	if cmp --silent $db_file $DB_FILE; then
-	    if [[ `size_test $db_file` == true ]]; then
+	    if [[ `size_test $db_file` == 'true' ]]; then
 		if [[ `quick_test $db_file` == 'true' ]]; then
 			run_sqlite_check "$db_file" "$arguments"
 		else
@@ -335,7 +335,8 @@ function after_transfer_gravity_extra() {
 	sleep $sleep_time
 	flush_db
 	pihole --regex -d '(^|.)((yandex|qq|tencent).(net|com|org|dev|io|sh|cn|ru)|qq|local|localhost|query|sl|(^.$))' \
-        '(^|.)(jujxeeerdcnm.intranet|w|aolrlgqh.intranet|((.)?)intranet)' '(^|.)(jujxeeerdcnm.ntranet|w|aolrlgqh.ntranet|((.)?)intranet)'
+        '(^|.)(jujxeeerdcnm.intranet|w|aolrlgqh.intranet|((.)?)intranet)' '(^|.)(jujxeeerdcnm.ntranet|w|aolrlgqh.ntranet|((.)?)intranet)' \ 
+	'(^|.)((yandex|qq|tencent).(net|com|org|dev|io|sh|cn|ru)|qq|local|localhost|query|sl|(^.$)|cn-geo1.uber.com|metadata.google.internal|((.)?)in-addr.arpa)'
 }
 export -f after_transfer_gravity_extra
 
@@ -355,6 +356,9 @@ function after_transfer_gravity() {
         bash $PROG/pihole-db-sql-changes.sh
 	chown -R pihole:pihole $OTHER_DB_FILES
 	chmod -R gu+rw $OTHER_DB_FILES
+	pihole --regex -d '(^|.)((yandex|qq|tencent).(net|com|org|dev|io|sh|cn|ru)|qq|local|localhost|query|sl|(^.$))' \
+	        '(^|.)(jujxeeerdcnm.intranet|w|aolrlgqh.intranet|((.)?)intranet)' \
+	        '(^|.)(jujxeeerdcnm.ntranet|w|aolrlgqh.ntranet|((.)?)intranet)'
 
 	local sleep_time=2s
 	sleep $sleep_time

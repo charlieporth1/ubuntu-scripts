@@ -248,7 +248,6 @@ elif [[ -f $LOCK_FILE ]]; then
         echo $fn
 	health_check_action "$fn"
         echo "LOCK FILE :: COUNT $(getFailCount $fn)"
-	kill $$
 fi
 
 fn='pihole-FTL.service'

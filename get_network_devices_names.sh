@@ -28,7 +28,7 @@ else
                 if [[ $OnlyOneSingle == true ]]; then
                         printf '%s\n' "$default_iface" | sed -n '1p'
                 else
-                        printf '%s\n' "$default_iface"
+                        printf '%s\n' "$default_iface" | sort -u
                 fi
         elif [[ $isCSV == true ]]; then
                 bash $PROG/csvify.sh $IP_ADDRESS

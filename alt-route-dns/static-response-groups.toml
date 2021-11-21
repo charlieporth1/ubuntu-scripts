@@ -4,18 +4,24 @@ answer = [
         "IN A 35.232.120.211",
         "IN A 35.192.105.158",
 ]
+rcode  = 0
+
 [groups.static-servfail-a]
 type   = "static-responder"
 answer = [
         "IN A 35.232.120.211",
         "IN A 35.192.105.158",
 ]
+rcode  = 2
+
 [groups.static-servfail-aaaa]
 type   = "static-responder"
 answer = [
         "IN AAAA ::",
         "IN AAAA ::0",
 ]
+rcode  = 2
+
 [groups.static-servfail-srv]
 type   = "static-responder"
 answer = [
@@ -50,5 +56,9 @@ rcode = 5
 [groups.static-refused]
 type  = "static-responder"
 rcode = 5 # REFUSED
+
+[groups.static-nxdomain]
+type  = "static-responder"
+rcode = 3 # REFUSED
 
 

@@ -67,7 +67,6 @@ fi
 current_ip=`sudo ip addr show tailscale0 | grepip -4o`
 if [[ "`$IS_SOLID_HOST`" == 'true' ]]; then
 	timeout=3
-	default_iface=`route | grep '^default' | grep -o '[^ ]*$'  | sort -u`
 	default_iface_address=`ifconfig $default_iface | awk '{print $2}' | grepip -4`
 	declare -a ip_list
 #		'100.86.69.129'

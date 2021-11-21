@@ -35,7 +35,7 @@ pihole --regex -d "google" "-" "\-" "up" "\.co$" "\.com$" "\.io$" "\.go$" '(.*;q
 '(.+|\.|)doubleclick\.net$' '(^|\.)samsungelectronics\.com$' '(^|\.)samsungcloudsolution\.net$' '(^|\.)samsungcloudsolution\.com$' '(^|\.)samsungcloudcdn\.com$' '(\.|^)()\.com' \
 '\.' '^\.$' '$' '^[a-z].([0-9]+|ad[^d]|click|coun(t|ter)|tra[ck](k|ker|king))' '(^|.)((yandex|qq|tencent).(net|com|org|dev|io|sh|cn|ru)|qq|local|localhost|query|sl|(^.$))' \
 '([a-z0-9.]{0,4})(.)ad' '([a-z0-9.]{0,4})(.)ad([a-z0-9.]{0,4})[0-9]?' '[a-z0-9](.)?ad[a-z0-9.][0-9]?' 'ad([a-z0-9.]{0,4})'
-
+'(^|.)((yandex|qq|tencent).(net|com|org|dev|io|sh|cn|ru)|qq|local|localhost|query|sl|(^.$)|cn-geo1.uber.com|metadata.google.internal|((.)?)in-addr.arpa)'
 sleep 1.5s
 
 pihole -b -d appspot.com sc-cdn.net developers.google.com suggestqueries.google.com
@@ -58,3 +58,14 @@ pihole -w -l | grep --line-buffer "googlevideo" | awk '{print $2}' | parallel -P
 sleep 1.5s
 
 
+pihole --regex -d '(^|.)((yandex|qq|tencent).(net|com|org|dev|io|sh|cn|ru)|qq|local|localhost|query|sl|(^.$))' \
+        '(^|.)(jujxeeerdcnm.intranet|w|aolrlgqh.intranet|((.)?)intranet)' \
+        '(^|.)(jujxeeerdcnm.ntranet|w|aolrlgqh.ntranet|((.)?)intranet)' \
+        '(^|.)((yandex|qq|tencent).(net|com|org|dev|io|sh|cn|ru)|qq|local|localhost|query|sl|(^.$)|cn-geo1.uber.com|metadata.google.internal|((.)?)in-addr.arpa)'
+
+
+# https://stackoverflow.com/questions/10346816/using-grep-to-search-for-a-string-that-has-a-dot-in-it
+REGEX_REMOVE_COMMON_LIST="(^|.)|(.)?|(^.$)"
+pihole --regex -l | grep -F --line-buffer "$REGEX_REMOVE_COMMON_LIST" | awk '{print $2}' | parallel -P 1 -j4 --xargs -m --lb --no-run-if-empty pihole --regex -d
+pihole --regex -l | grep -F --line-buffer "$REGEX_REMOVE_COMMON_LIST" | awk '{print $2}' | parallel -P 1 -j4 --xargs -m --lb --no-run-if-empty pihole --regex -d
+pihole --regex -l | grep -F --line-buffer "$REGEX_REMOVE_COMMON_LIST" | awk '{print $2}' | parallel -P 1 -j4 --xargs -m --lb --no-run-if-empty pihole --regex -d

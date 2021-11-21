@@ -25,7 +25,7 @@ modprobes=(
 	 $(printf '%s\n' "$MODULES_LIST" | grep -i megaraid)
 	 $(printf '%s\n' "$MODULES_LIST" | grep -iE '^ml')
 	 $(printf '%s\n' "$MODULES_LIST" | grep -i matroxfb)
-	 $(printf '%s\n' "$MODULES_LIST" | grep -iE ^dm)
+#	 $(printf '%s\n' "$MODULES_LIST" | grep -iE ^dm)
 	 $(printf '%s\n' "$MODULES_LIST" | grep -i target)
 	 $(printf '%s\n' "$MODULES_LIST" | grep -i 9pnet)
 	 $(printf '%s\n' "$MODULES_LIST" | grep -i midi)
