@@ -25,7 +25,7 @@ str_match=".*matched\sblocklist.* .*matched\sallowlist.* .*ctp-dns-time-router-y
 function get_http_lists() {
 	local file_input="$1"
 	local file="${file_input:=dns-lists.toml}"
-	declare -gx http_lists=`grep http $CONFIG_DIR/$file | awk -F, '{print $2}' | awk -F'"' '{print $2}'`
+	declare -gx http_lists=`grep http $CONFIG_DIR/$file | grep cache-dir | awk -F, '{print $2}' | awk -F'"' '{print $2}'`
 	declare -gx last_list_http=$(printf '%s\n' "$http_lists" | tail -1)
 	printf '%s\n' "$http_lists"
 }
@@ -34,7 +34,7 @@ export -f get_http_lists
 function get_local_lists() {
 	local file_input="$1"
 	local file="${file_input:=dns-lists.toml}"
-	declare -gx local_lists=`grep / $CONFIG_DIR/$file | awk -F, '{print $2}' | awk -F'"' '{print $2}' | grep -E ^/`
+	declare -gx local_lists=`grep / $CONFIG_DIR/$file | grep cache-dir | awk -F, '{print $2}' | awk -F'"' '{print $2}' | grep -E ^/`
 	declare -gx last_list_local=$(printf '%s\n' "$local_lists" | tail -1)
 	printf '%s\n' "$local_lists"
 }

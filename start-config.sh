@@ -8,13 +8,14 @@ chown -R www-data:www-data /var/cache/nginx/
 mkdir -p /tmp/nginx/
 chown -R www-data:www-data /tmp/nginx/
 
+bash $PROG/resolvconf_fix.sh
 bash $PROG/cpu_group_all_.sh
 bash $PROG/copy_certs.sh
-bash $PROG/start_fail2ban_jails.sh
 bash $PROG/modprobes.sh
 bash $PROG/incresse_perf.sh
 bash $PROG/serveronline.sh
 bash $PROG/create_logging.sh
+bash $PROG/start_fail2ban_jails.sh
 bash $PROG/start_tailscale.sh
 
 NET_DEV_NAME=$(bash $PROG/get_network_devices_names.sh --default --single)

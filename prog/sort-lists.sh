@@ -1,3 +1,4 @@
+
 #!/bin/bash
 function trim() {
   local s2 s="$*"
@@ -22,17 +23,29 @@ TMP_F=$LIST.tmp
 cp -rf $LIST $LIST.bk
 cp -rf $LIST $LIST.bk.unsorted
 
-parallel -P4 -j1 --lb -m --trim rl --lb --no-run-if-empty "printf '%s\n' {}" :::: $LIST | sed -e 's/^\([^.]*\.[^.]*\)$/.\1/' | sort -t . -k2 | sed -e 's/^\.//' | sort | uniq | sort -u | awk '{$1=$1;print}' > $TMP_F
+cat $LIST | sed -e 's/^\([^.]*\.[^.]*\)$/.\1/' | sort -t . -k2 | sed -e 's/^\.//' | sort | uniq | sort -u | awk '{$1=$1;print}' > $TMP_F
 
-perl -i -ne 'print if ! $x{$_}++' $TMP_F
-new_linify $TMP_F > $TMP_F.tmp
+
+line_count=`wc -l $TMP_F | awk '{print $1}'`
+# Large file line count
+# 456410 /var/tmp/ctp-dns/lists/black/malware.txt
+max_new_line_amount=50000
+if [[ $line_count -le $max_new_line_amount ]]; then
+	new_linify $TMP_F > $TMP_F.tmp
+	perl -i -ne 'print if ! $x{$_}++' $TMP_F.tmp
+fi
 
 if [[ -f  $TMP_F.tmp ]] && [[ `wc -l $TMP_F.tmp | awk '{print $1}'` -ge $min_line_count ]]; then
 	mv $TMP_F.tmp $TMP_F
+else
+	cp -rf $LIST.bk $TMP_F
 fi
 
 if [[ -f $TMP_F ]] && [[ `wc -l $TMP_F | awk '{print $1}'` -ge $min_line_count ]]; then
 	mv $TMP_F $LIST
 	cat $LIST
 fi
-echo sorted
+
+
+echo "Sorted $LIST"
+echo "Done sorting $LIST"

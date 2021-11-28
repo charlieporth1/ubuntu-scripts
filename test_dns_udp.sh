@@ -51,16 +51,15 @@ else
 					PIHOLE_RESTART_POST 3
 					#sleep $WAIT_TIME
 				fi
-				elif [[ $(systemctl-inbetween-status ctp-dns.service) == 'false' ]]; then
-					if [[ `systemctl-seconds ctp-dns.service` -gt 30 ]]; then
-				                dns_logger "restarting ctp-dns"
-						ctp-dns.sh --generate-log
-						ctp-dns.sh --generate-config
-						systemctl daemon-reload
-						systemctl restart ctp-dns
-						#sleep $WAIT_TIME
-					fi
+			elif [[ $(systemctl-inbetween-status ctp-dns.service) == 'false' ]]; then
+				if [[ `systemctl-seconds ctp-dns.service` -gt 30 ]]; then
+			                dns_logger "restarting ctp-dns"
+					ctp_dns_lock_file_fix_check
+					systemctl daemon-reload
+					systemctl restart ctp-dns
+					#sleep $WAIT_TIME
 				fi
+			fi
 		else
 			run_fail_automation_action
 		fi

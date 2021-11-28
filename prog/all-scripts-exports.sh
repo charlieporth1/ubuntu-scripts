@@ -53,14 +53,17 @@ export DIR=`realpath . | rev | cut -d '/' -f 1 | rev`
 export ODD_ETH_REGEX="(n(x|s|n|o|p|e)([[:alnum:]]*))"
 export WLAN_DEVICE_REGEX="(wl((an)?)[0-9]+)"
 export ETH_DEVICE_REGEX="(e($ODD_ETH_REGEX|th[0-9]+))"
+export USB_DEVICE_REGEX="(usb[0-9]+)"
+export VPN_DEVICE_REGEX="((tailscale|wg|tap|tun((l|nel)?)|sit)[0-9]+)"
+export OTHER_DEVICE_REGEX="((ip_vti|tun((l|nel)?))[0-9]+)"
 export LO_DEVICE_REGEX="(lo:?[0-9]*)"
 
 
-export NET_DEVICE_REGEX="($ETH_DEVICE_REGEX|$WLAN_DEVICE_REGEX)"
+export NET_DEVICE_REGEX="($ETH_DEVICE_REGEX|$WLAN_DEVICE_REGEX|$USB_DEVICE_REGEX)"
 export NET_DEVICE_REGEX_IFCONFIG="$NET_DEVICE_REGEX\:"
 
-export default_iface=`ip route | grep '^default' | grep -oiE "$NET_DEVICE_REGEX" | awk '{ print $1}' | sed -n '1p'`
-export default_iface_address=`ifconfig $default_iface | awk '{print $2}' | grepip -4`
+export default_iface=`sudo ip route | grep '^default' | grep -oiE "$NET_DEVICE_REGEX" | awk '{ print $1}' | sed -n '1p'`
+export default_iface_address=`sudo ifconfig $default_iface | awk '{print $2}' | grepip -4`
 
 export MASTER_MACHINE="ctp-vpn"
 export GCLOUD_PROJECT="galvanic-pulsar-284521"
@@ -197,7 +200,20 @@ function system_information() {
 	what_system
 }
 export -f system_information
+function get_ifaces() {
+	local eth_iface_count=$(ifconfig | grep -oE "$ETH_DEVICE_REGEX" | wc -l)
+	declare -gx default_iface=`sudo ip route | grep '^default' | grep -oiE "$NET_DEVICE_REGEX" | awk '{ print $1}' | sed -n '1p'`
 
+	local iface_eth=`ifconfig | grep -oiE "$ETH_DEVICE_REGEX"`
+	local iface_wlan=`ifconfig  | grep -oiE "$WLAN_DEVICE_REGEX"`
+
+	declare -gx default_iface_address=`sudo ifconfig $default_iface | awk '{print $2}' | grepip -4`
+	declare -gxa ifaces_list=(
+		$default_iface
+		$iface_eth
+		$iface_wlan
+	)
+}
 function KILL_FILE() {
 	bash $PROG/process_count.sh $FILE_NAME $THIS_PID pid | sed -n '2p' | cut -d ':' -f 2- | xargs kill -9 2> /dev/null
 }

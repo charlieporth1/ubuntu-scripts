@@ -404,7 +404,9 @@ if [[ -n "$COPY_FILE" ]] && [ "$0" == "$BASH_SOURCE" ]; then
 		echo "Gravity is ok Replacing"
 		pihole disable 5m
 		sync
+		sudo rm -rf $DB_FILE*
 		sudo cp -vrf $COPY_FILE $DB_FILE && pihole enable
+		sync
 #		tar cf - $COPY_FILE | pv | (cd $DB_FILE; tar xf -)
 s="""
 		sudo rsync \

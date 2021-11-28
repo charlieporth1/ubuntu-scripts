@@ -1,4 +1,5 @@
 #!/bin/bash
+source /etc/environment
 
 declare -a master_services
 pihole_services=(
@@ -10,6 +11,7 @@ pihole_services=(
 declare -a JAILs
 JAILs=(
         $( [[ "$IS_MASTER" == true ]] && echo "${pihole_services[@]}" )
+        $( [[ "$HOSTNAME" == 'ctp-vpn' ]] && echo "${pihole_services[@]}" )
 	"sshd"
 	"selinux-ssh"
 	"dropbear"
@@ -23,7 +25,7 @@ JAILs=(
 
 for jail in "${JAILs[@]}"
 do
-        echo "Enabling, restarting and umasking service $jail"
+        echo "Enabling, starting $jail"
 	sudo fail2ban-client add $jail
 	sudo fail2ban-client start $jail
 done

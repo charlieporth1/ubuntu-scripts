@@ -52,9 +52,7 @@ elif [[ $(systemctl-inbetween-status ctp-dns.service) == 'false' ]]; then
 
 			if [[ `systemctl-seconds ctp-dns.service` -gt 15 ]]; then
 				dns_logger "restarting DOT"
-				ctp-dns.sh --generate-logs
-				ctp-dns.sh --generate-config
-				systemctl daemon-reload
+				ctp_dns_lock_file_fix_check
 			        systemctl restart ctp-dns
 				#sleep $WAIT_TIME
 			fi

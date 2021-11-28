@@ -1,16 +1,17 @@
 #!/bin/bash
 ARGS="$@"
 source ctp-dns.sh --source
+export S_ONE="$1"
 [[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(p|preload)'` ]] && export PRELOAD=true || export PRELOAD=false
-[[ "$1" == "-a" ]] && export isAuto="+short"
+[[ "$S_ONE" == "-a" ]] && export isAuto="+short"
 
 if [[ "$PRELOAD" == 'false' ]]; then
 source $PROG/all-scripts-exports.sh --no-log
 CONCURRENT
 
 export WAIT_TIME=5.5s # TO RESTART NEXT
-export TIMEOUT=16 # DNS
-export TRIES=4
+export TIMEOUT=6 # DNS
+export TRIES=3
 export HOST=dns.ctptech.dev
 export EDNS=174.53.130.17
 
@@ -38,12 +39,12 @@ fi
 #export EXCLUDE_IP="$DNS_IP\|0.0.0.0\|$ROOT_NETWORK"
 
 
-export local_interface=ctp-vpn.local
-export server_input=${2}
-export server=${server_input:=$local_interface}
-export qname=${3:-www.google.com}
-export qtype=${4:-A}
-export QUERY=$qname
+export local_interface="ctp-vpn.local"
+export server_input="${2}"
+export server="${server_input:=$local_interface}"
+export qname="${3:-www.google.com}"
+export qtype="${4:-A}"
+export QUERY="$qname"
 
 export DEFAULT_DNS_ARGS="+tries=$TRIES +dnssec +ttl +edns +timeout=$TIMEOUT -t $qtype -4 +retry=$TRIES +ttlunits"
 
@@ -69,20 +70,25 @@ fi
 
 dns_logger() {
 	local argments="$@"
-	if [[ "$server" == "$local_interface" ]] || [[ '-a' != "$1" ]]; then
+	if [[ "$server" == "$local_interface" ]] && [[ '-a' != "$S_ONE" ]]; then
  	       echo "$argments"
 	fi
 }
 
 function run_fail_automation_action() {
-	[[ "$server" == "$local_interface" ]] && [[ '-a' = "$1" ]] && echo "false"
+	if [[ "$server" == "$local_interface" ]] && [[ '-a' = "$S_ONE" ]]; then
+		echo 'false'
+	else
+		echo 'true'
+	fi
 }
 
 function if_plain_dns_fail() {
+	dns_local=`dig $QUERY @ctp-vpn.local +tries=$TRIES +dnssec +short +timeout=$TIMEOUT +retry=$TRIES -t A`
+	dns_local_test=`echo "$dns_local" | grepip --ipv4 -o | xargs`
+
 	if [[ -z "$dns_local_test" ]] && [[ -n "$isAuto" ]]; then
 		dns_logger "DNS FAILED NOT DOH dns_local_test :$dns_local_test:"
-		set -e
-		kill $THIS_PID
 		exit 1
 	fi
 }
@@ -91,6 +97,8 @@ function ctp_dns_lock_file_fix_check() {
 	echo "LOCK FILE $CTP_DNS_LOCK_FILE"
         echo "Creating logging and starting nginx incase nginx failed and blocklist failed to load due to webserver down and list unable to load...."
         bash $PROG/create_logging.sh
+	bash $PROG/resolvconf_fix.sh
+	systemctl daemon-reload
         echo "Starting NGINX now..."
         sudo systemctl start nginx.service
         echo "Starting NGINX is done"
@@ -103,14 +111,10 @@ function ctp_dns_lock_file_fix_check() {
 }
 export -f ctp_dns_lock_file_fix_check
 
-dns_local=`dig $QUERY @ctp-vpn.local +tries=$TRIES +dnssec +short +timeout=$TIMEOUT +retry=$TRIES -t A`
-dns_local_test=`echo "$dns_local" | grepip --ipv4 -o | xargs`
-
 if [[ "$CONCURENT_OVERRIDE" == 'false' ]] && [[ -n "$isAuto" ]]; then
-
 	if [[ -f $CTP_DNS_LOCK_FILE ]]; then
 	        echo "LOCK FILE"
 		ctp_dns_lock_file_fix_check
-		kill -9 $$
+		exit 1
 	fi
 fi

@@ -21,6 +21,7 @@ bash $PROG/generate_ctp-dns-groups.sh
 bash $PROG/generate_ctp-dns-well-known-retry-groups.sh
 bash $PROG/generate_ctp-dns-well-known-fail-backup-groups.sh
 bash $PROG/generate_ctp-dns-backup-resolvers.sh
+bash $PROG/dns-route-goify_regexes.sh
 
 if [[ "$HOSTNAME" == "ctp-vpn" ]] || [[ "$IS_MASTER" = 'true' ]];then
 	bash $PROG/pihole-db-sql-changes.sh

@@ -3,15 +3,27 @@ source /etc/environment
 source $PROG/all-scripts-exports.sh
 declare -xg ADDITONAL_ROUTES=""
 declare -xg ADDITONAL_TAGS=""
+GCP_AWS_ROUTE="10.128.0.0/20,$AWS_ROUTE"
 AWS_ROUTE="172.31.0.0/20"
+
 GCP_FREE_ROUTE="10.138.0.0/20"
 GCP_ROUTE_1="10.128.0.0/20"
-GCP_ALL_ROUTE="$GCP_ROUTE_1,192.168.99.0/24,$GCP_FREE_ROUTE"
 GCP_PAID_ROUTE="$GCP_ROUTE_1,192.168.99.0/24"
-GCP_AWS_ROUTE="10.128.0.0/20,$AWS_ROUTE"
-HOME_ROUTE="192.168.44.0/24,192.168.12.0/24"
+GCP_ALL_ROUTE="$GCP_PAID_ROUTE,$GCP_FREE_ROUTE"
 
-ALL_ROUTES="$AWS_ROUTE,$HOME_ROUTE,$GCP_ALL_ROUTE"
+CCAST_ROUTE="192.168.44.0/24"
+TMOAIL_ROUTE="192.168.12.0/24"
+HOME_ROUTE="$CCAST_ROUTE,$TMOAIL_ROUTE"
+
+ALT_HOME_ROUTE_0="192.168.43.0/24"
+ALT_HOME_ROUTE_1="192.168.42.0/24"
+ALT_HOME_ROUTE_2="192.168.41.0/24"
+ALT_HOME_ROUTE_3="192.168.100.0/24"
+ALT_HOME_ROUTE_4="192.168.1.0/24"
+ALL_HOME_ROUTE="$HOME_ROUTE,$ALT_HOME_ROUTE_0,$ALT_HOME_ROUTE_1,$ALT_HOME_ROUTE_2,$ALT_HOME_ROUTE_3,$ALT_HOME_ROUTE_4"
+
+ALL_ROUTES="$AWS_ROUTE,$GCP_ALL_ROUTE,$ALL_HOME_ROUTE"
+
 declare -a routes_arrary=$(decsvify "$ALL_ROUTES")
 
 (
@@ -39,9 +51,12 @@ function auto_routes() {
 	for route in ${routes_arrary[@]}
 	do
 		local router=$(route_router_substation $route)
-		if [[ `ip-exists $router` == true ]]; then
-			add_routes $route
-		fi
+		for iface in $(bash $PROG/get_network_devices_names.sh)
+		do
+			if [[ `ip_exist $router 6 $iface` == true ]]; then
+				add_routes $route
+			fi
+		done
 	done
 }
 
@@ -146,10 +161,19 @@ elif [[ "$HOSTNAME" =~ (ubuntu-server|neat-xylophone|led-raspberrypi3) ]]; then
 else
 	auto_routes
 fi
-
+auto_routes
 #auto_tags
 
-sudo modprobe wireguard curve25519-generic tcp_htcp dummy veth tunnel4 ipip udp_tunnel ip_tunnel
+sudo modprobe tcp_htcp tcp_yeah tcp_highspeed tcp_scalable
+sudo modprobe tcp_bbr
+sudo modprobe wireguard
+sudo modprobe curve25519-generic libcurve25519-generic libcurve25519
+sudo modprobe sha3_generic
+sudo modprobe ecdh_generic
+sudo modprobe rsa-generic
+sudo modprobe dummy veth vhost
+sudo modprobe tunnel4 ipip udp_tunnel ip_tunnel ipcomp
+sudo modprobe tls xt_tcpudp xt_cpu async_xor async_memcpy async_tx xor
 
 sudo sysctl -w net.ipv6.conf.all.disable_ipv6=0
 sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=0
@@ -165,7 +189,17 @@ if [[ -n "$ADDITONAL_TAGS" ]]; then
 	ADD_OPT1="--advertise-tags=$ADDITONAL_TAGS"
 fi
 
-DEFAULT_OPTS="--accept-dns=false --accept-routes=true --netfilter-mode=on --advertise-exit-node=true --host-routes=true --snat-subnet-routes=true $ADD_OPT1"
+DEFAULT_OPTS=""" \
+	--accept-dns=false \
+	--accept-routes=true \
+	--advertise-exit-node=true \
+	--netfilter-mode=on \
+	--host-routes=true \
+	--snat-subnet-routes=true \
+	$ADD_OPT1
+
+
+"""
 
 if [[ -n "$ADDITONAL_ROUTES" ]]; then
 	echo "Starting TailScale adding ROUTES $ADDITONAL_ROUTES"

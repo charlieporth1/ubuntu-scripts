@@ -65,6 +65,7 @@ sudo update-ca-certificates
 wget https://raw.githubusercontent.com/yubiuser/pihole_adlist_tool/master/pihole_adlist_tool -O /usr/local/bin/pihole_adlist_tool
 
 if [[ "$IS_GCP" == 'true' ]]; then
+	curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 	sudo apt install -y linux-tools-gcp-edge linux-image-gcp-edge linux-headers-gcp-edge
 elif [[ "$IS_AWS" == 'true' ]]; then
 	sudo apt install -y linux-tools-aws-edge linux-image-aws-edge linux-headers-aws-edge

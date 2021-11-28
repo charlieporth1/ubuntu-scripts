@@ -14,6 +14,9 @@ files=(
 	`new_linify.sh $(get_local_lists dns-lists.toml) | grep -v 'regex'`
 	`new_linify.sh $(get_local_lists dns-lists-local.toml) | grep -v 'regex'`
 )
+
+files=( $( printf '%s\n' "${files[@]}" | sort | sort -u ) )
+
 min_line_count=4
 for file in "${files[@]}"
 do

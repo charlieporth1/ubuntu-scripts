@@ -324,8 +324,8 @@ service_health_check "$fn"
 fn='systemd-resolved.service'
 service_health_check "$fn"
 
-#fn='systemd-networkd.socket'
-#service_health_check "$fn"
+fn='systemd-networkd.socket'
+service_health_check "$fn"
 
 fn='systemd-sysctl.service'
 service_health_check "$fn"
@@ -341,9 +341,6 @@ service_health_check "$fn"
 
 fn='dhcpcd.service'
 service_health_check "$fn"
-
-#fn='systemd-resolved.service'
-#service_health_check "$fn"
 
 fn='avahi-daemon.service'
 service_health_check "$fn"

@@ -72,8 +72,6 @@ servfail-error = true
 #	"ctp-dns_group-fail-back-aws",
 [groups.ctp-dns-fail-rotate]
 resolvers = [ 
-	"ctp-dns_group-fastest-home-external",
-	"ctp-dns_group-fastest-aws-external",
 	"ctp-dns_group-fail-rotate-home",
 	"ctp-dns_group-fail-rotate-aws",
 ]

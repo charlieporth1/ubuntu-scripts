@@ -29,7 +29,11 @@ if [[ "$IS_MATER" == 'true' ]] || [[ "$HOSTNAME" == 'ctp-vpn' ]]; then
 fi
 
 
-
+chown -R www-data:www-data $WWW
+chown -R www-data:www-data $WWW/txt_lists/
+chown -R www-data:www-data $CTP_LISTS
+chmod -R gu+rw $WWW/txt_lists/
+chmod -R gu+rw $CTP_LISTS
 (
 	certbot-ocsp-fetcher --output-dir=/var/cache/nginx/
 	ctp-dns.sh --generate-logs

@@ -32,17 +32,13 @@ function reboot_timer() {
 		echo "false"
 	fi
 }
+
 function aws_restart() {
 	aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
 	aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
 	aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-	aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-	aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-	aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-	aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-	aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-
 }
+
 function gcp_restart() {
 		HOSTNAME="ctp-vpn"
 		PROJECT="galvanic-pulsar-284521"

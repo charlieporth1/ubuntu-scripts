@@ -73,5 +73,6 @@ else
 	echo "Nothing to whitelist"
 fi
 
-pihole -w playatoms-pa.googleapis.com> > /dev/null
+pihole -w playatoms-pa.googleapis.com > /dev/null
+pihole -b firebaselogging-pa.googleapis.com > /dev/null
 echo "Done Date: `date`"

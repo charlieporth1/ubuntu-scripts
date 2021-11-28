@@ -15,7 +15,6 @@ if [[ -d $CTP_LIST ]] && [[ "$HOSTNAME" == 'ctp-vpn' ]]; then
 
 		$HOLE/{snapchat,google}-{white,black}list.{regex,list}
 	)
-
 	sudo rsync \
 		--archive \
 		--no-whole-file \
@@ -53,5 +52,6 @@ if [[ -d $CTP_LIST ]] && [[ "$HOSTNAME" == 'ctp-vpn' ]]; then
 	chmod -R 755 $CTP_LIST/
 	chown -R www-data:www-data $CTP_LIST/
 	echo "Done coping"
+	sudo rm -rf $CTP_LIST/*{list,regex}.{tmp,unsorted}{,.tmp}
 fi
 exit 0

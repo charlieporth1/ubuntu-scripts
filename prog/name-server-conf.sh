@@ -1,15 +1,16 @@
 #!/bin/bash
+source $PROG/all-scripts-exports.sh
 shopt -s expand_aliases
 export IP_REGEX="($IP_REGEX((#[0-9]{1,5})?))"
 export OUT_FILE_SERVERS=$DNSMASQ/10-servers-generated.conf
 
-export TIMEOUT=4
-export TRIES=2
+export TIMEOUT=1
+export TRIES=1
 export NUMBER_AND_DECSAML_REGEX="([0-9\.]{1,6})"
 
-export SECONDS_REGEX='s(ec)?'
-export MSECONDS_REGEX="m($SECONDS_REGEX)?"
-export USECONDS_REGEX="u($SECONDS_REGEX)?"
+export SECONDS_REGEX='s((ec)?)'
+export MSECONDS_REGEX="m(($SECONDS_REGEX)?)"
+export USECONDS_REGEX="u(($SECONDS_REGEX)?)"
 export SECONDS_UNIT_REGEX="($SECONDS_REGEX|$MSECONDS_REGEX|$USECONDS_REGEX)"
 
 export PIHOLE_FILE=$DNSMASQ/01-pihole.conf

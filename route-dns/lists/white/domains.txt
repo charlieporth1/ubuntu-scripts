@@ -15,6 +15,7 @@
 .in
 .info
 .jp
+.local
 .me
 .news
 .radio
@@ -39,9 +40,11 @@ akadns.net
 amp.theguardian.com
 ap.ionationalgeographic.com
 api-0-4-6.twitter.com
+api-openroad.gotruemotion.com
 api-partner.spotify.com
 api.amazonvideo.com
 api.facebook.com
+api.onesignal.com
 api.stripe.com
 app.wire.com
 apple-finance.query.yahoo.com

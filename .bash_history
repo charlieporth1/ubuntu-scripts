@@ -1,502 +1,3 @@
-sudo nano /etc/rc.local
-ifconfig
-ifconfig eth2
-sudo nano /etc/dhcpcd.conf 
-ping www.google.com
-ifconfig
-ping6 dns.google
-ifconfig
-ping 192.168.44.1
-ifconfig
-ping 192.168.44.243
-sudo iptables -S
-sudo iptables6 -S
-sudo ip6tables -S
-ifconfig
-ping www.google
-ifconfig eth0 192.168.44.250 up
-sudoifconfig eth0 192.168.44.250 up
-sudoif config eth0 192.168.44.250 up
-sudo config eth0 192.168.44.250 up
-sudo ifconfig eth0 192.168.44.250 up
-sudo ifconfig eth0 192.168.44.250 broadcast 0.0.0.0 up
-sudo ifconfig eth0 192.168.44.250 broadcast 192.168.44.255 up
-sudo ip route
-ping gcp.ctptech.dev -I eth1
-ping www.google.com
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
-ping www.google.com
-sudo ip route
-sudo ip tunnel
-sudo ip tunnel del tunl0 
-ssudo ip tunnel del tunl0 
-sudo ip add
-Sucreifconfig eth0 192.168.44.250 up eth2
-sudo ip route
-sudo nano /etc/netplan/01-static.yaml 
-sudo nano /etc/netplan/02-he-tunnel.yaml 
-sudo nano /etc/netplan/05-eth2.conf 
-ifconfig
-sudo ip route
-ifconfig
-sudo ip route
-sudo ip tunnel
-sudo ip add
-sudo nano /etc/netplan/04-eth1.conf 
-sudo  netplan try --state /etc/netplan
-ifconfig
-sudo netplan generate
-sudo nano /home/ubuntuserver/Programs/dhcp_fix.sh
-ifconfig
-ping 35.232.120.211
-sud onano /etc/rc.local
-sudo nano /etc/rc.local
-ifconfig
-sudo nano /etc/rc.local
-systemctl status ctp-auto-6to4.service 
-systemctl disable ctp-auto-6to4.service 
-sudo systemctl disable ctp-auto-6to4.service 
-ifconfig
-sudo netplan generate
-sudo nano /home/ubuntuserver/Programs/dhcp_fix.sh
-sudo sudo ip route add 192.168.44.0/24 dev eth0 proto kernel scope link src 192.168.44.250
-sudo nano /etc/dhcpcd.conf 
-sudo systemctl restart dhcpcd
-ifconfig
-sudo netplan generate
-sudo netplan apply
-ifconfig
-sudo nano /etc/netplan/01-static.yaml 
-sudo nano /etc/netplan/04-eth1.conf 
-sudo nano /etc/netplan/05-eth2.conf 
-sudo netplan generate
-history | grep netp
-sudo  netplan try --state /etc/netplan
-ifconfig
-sudo systemctl restart networking
-sudo systemctl status systemd-networkd
-sudo netplan apply
-ifconfig
-sudo systemctl status systemd-networkd
-ping 192.168.44.1
-ping 192.168.44.1 eth0
-ping 192.168.44.1 -I eth0
-ifconfig
-ping 192.168.44.100
-sudo nano /etc/netplan/05-eth2.conf 
-sudo netplan apply
-ifconfig
-ifconfig
-sudo nano /etc/netplan/01-static.yaml 
-sudo nano /etc/netplan/04-eth1.conf 
-sudo nano /etc/netplan/05-eth2.conf 
-sudo  netplan try --state /etc/netplan
-ifconfig
-sudo netplan apply
-ifconfig
-sudo nano /etc/netplan/04-eth1.conf 
-sudo nano /etc/netplan/05-eth2.conf 
-sudo netplan apply
-ifconfig eth0
-ifcofnig eth2
-ifconfig eth2
-sudo ip route
-ping 192.168.44.100
-ping -a 192.168.42.1
-nmap -T4 192.168.42.1
-ping 192.168.42.1
-ifconfig
-sudo ip 
-sudo nano /etc/dhcpcd.conf 
-ifconfig
-sudo ip route
-sudo netplan 
-sudo nano /etc/netplan/05-eth2.conf 
-sudo  netplan try --state /etc/netplan
-sudo ip route
-sudo ip 
-sudo ip
-ifconfig
-ifconfig
-systemctl status asn
-systemctl status asn
-systemctl status asn
-ifconfig
-netstat -a
-netstat -a
-ifconfig
-ifconfig
-ping 192.168.44.250
-ping 192.168.44.250
-ifconfig
-sudo ip 
-sudo ip route
-ifconfig
-?
-ifconfig
-ifconfig
-ifconfig
-ifconfig
-sudo ifconfig
-ping6 2607:fb90:9894:8589:92b:f0e4:0:2a2
-ping 192.168.44.250
-sudo ip route
-sudo nano /etc/netplan/05-eth2.conf 
-sudo nano /etc/netplan/01-static.yaml 
-sudo nano /etc/netplan/03-wlan0.conf 
-sudo nano /etc/netplan/04-eth1.conf 
-sudo  netplan try --state /etc/netplan
-sudo nano /etc/netplan/01-static.yaml 
-sudo nano /etc/netplan/04-eth1.conf 
-sudo nano /etc/netplan/05-eth1.
-sudo nano /etc/netplan/04-eth1.conf 
-sudo nano /etc/netplan/05-eth2.conf 
-sudo nano /etc/netplan/04-eth1.conf 
-sudo nano /etc/netplan/01-static.yaml 
-sudo  netplan try --state /etc/netplan
-ifconfig
-ping -I eth0 192.168.44.1
-ping -I eth0 1.1.1.1
-sudo iptables -S
-curl one.one.one.one
-curl one.one.one.one
-sudo nano /etc/resolv.conf
-sudo nano /etc/resolvconf/resolv.conf.d/base 
-sudo nano /etc/resolvconf/resolv.conf.d/head 
-resolvconf 
-sudo resolvconf 
-sudo resolvconf ---enable-updates
-sudo resolvconf ---enable-updates -a 
-sudo resolvconf -u
-sudo sudo resolvconf -u
-sudo nano /etc/resolv.conf
-sudo sudo resolvconf --enable-updates
-sudo nano /etc/resolv.conf
-sudo sudo resolvconf --updates-are-enabled
-sudo sudo resolvconf --updates-are-enabled
-sudo nano /etc/resolv.conf
-systemctl status resolv
-systemctl status resolvconf
-sudo systemctl status resolvconf
-sudo systemctl restart resolvconf
-systemctl status 
-sudo nano /etc/resolv.conf
-ls /etc/resolvconf/update.d/libc 
-bash /etc/resolvconf/update.d/libc 
-sudo bash /etc/resolvconf/update.d/libc 
-ifconfig
-sudo nano /etc/resolv.conf
-sudo nano /etc/resolvconf/interface-order 
-sudo nano /etc/resolvconf/update-libc.d/avahi-daemon 
- exec /usr/lib/avahi/avahi-daemon-check-dns.sh
-sudo crontab -e
-sudo nano /etc/rc.local
-sudo crontab -e
-ifconfig
-sudo nano /home/ubuntuserver/Programs/Hourly.sh
-sudo crontab -e
-bash $PROG/server-online-check.sh gcp.ctptech.dev
-sudo bash /home/ubuntuserver/Programs/dhcp_fix.sh
-sudo nano /home/ubuntuserver/Programs/dhcp_fix.sh
-sudo modprobe -r sit
-sudo modprobe sit
-sudo nano /home/ubuntuserver/Programs/dhcp_fix.sh
-sudo crontab -e
-ifconfig
-sudo crontab -e
-ifconfig
-sudo nano /etc/rc.local
-sudo crontab -e
-sudo systemctl edit --full asn
-sudo systemctl edit --full asn
-sudo systemctl edit --full asn.service
-sudo systemctl edit --full asn.service
-ifconfig
-sudo ip rout
-sudo nano /etc/netplan/01-static.yaml 
-sudo nano /etc/netplan/0*
-sudo nano /etc/netplan/0*
-sudo netplan generate
-history | grep netp
- sudo  netplan try --state /etc/netplan
-ifconfig
-sudo netplan try
-ifconfig
-sudo systemctl restart networking
-sudo nano /etc/netplan/01-static.yaml 
- sudo  netplan try --state /etc/netplan
-ifconfig
-sudo nano /etc/netplan/04-eth1.conf 
-sudo nano /etc/netplan/01-static.yaml 
-sudo nano /etc/netplan/04-eth1.conf 
-sudo nano /etc/netplan/04-eth1.conf 
-cat /etc/netplan/04-eth1.conf 
-sudo nano /etc/netplan/04-eth1.conf 
-sudo nano /etc/netplan/05-eth2.conf 
-sudo nano /etc/netplan/04-eth1.conf 
-sudo nano /etc/netplan/05-eth2.conf 
-sudo nano /etc/netplan/01-static.yaml 
-sudo nano /etc/netplan/05-eth2.conf 
-ifconfig
- sudo  netplan try --state /etc/netpla
-ifconfig
-sudo nano /etc/netplan/*
-sudo nano /etc/netplan/*
- sudo  netplan try --state /etc/netpla
-ifconfig
-sudo netplan generate          # generate the config files
-sudo netplan apply             # apply the new configuration
-reboot  
-sudo reboot  
-sudo ip 
-sudo ifconfig
-sudo nano /etc/netplan/*
-udo apt-get install tasksel
-sudo tasksel remove ubuntu-desktop
-sudo tasksel install server
-curl one.one.one.one
-sudo nano /etc/resolv.conf
-sudo nano /etc/rc.local
-sudo bash /etc/resolvconf/update.d/libc 
-sudo nano /etc/rc.local
-sudo rm -rf /etc/resolv.conf
-sudo bash /etc/resolvconf/update.d/libc
-ln -s  /run/resolvconf/resolv.conf /etc/resolv.conf
-sudo ln -s  /run/resolvconf/resolv.conf /etc/resolv.conf
-sudo nano /etc/rc.local
-sudo rm -rf /etc/resolv.conf
-sudo ln -s  /run/resolvconf/resolv.conf /etc/resolv.conf
-sudo bash /etc/resolvconf/update.d/libc
-curl one.one.one.one
-ping www.google.com
-ifconfig
-sudo apt-get install tasksel
-sudo tasksel remove ubuntu-desktop
-sudo tasksel install server
-tasksel
-sudo apt-get install ubuntu-desktop^
-sudo nano /etc/rc.local
-sudo nano bash $PROG/dhcp_fix.sh
-sudo nano$PROG/dhcp_fix.sh
-sudo nano $PROG/dhcp_fix.sh
-ifconfig
-sudo nano /home/ubuntuserver/Programs/Hourly.sh
-sudo ip tunnel
-sudo ifconfig eth0 down
-sudo ifconfig eth0 up
-sudo ifconfig eth0 192.168.44.250 up
-ifconfig
-ifconfig eth2 down
-sudo ifconfig eth2 down
-sudo ifconfig eth2 up
-ifconfig
-sudo ip 
-sudo ip route
-ifconfig
-systemctl restart dhcpcd
-sudo systemctl restart dhcpcd dhcp
-sudo systemctl restart 
-sudo systemctl restart dhcpcd
-ifconfig
-sudo netplan apply
-ifconfig eth0
-sudo nano /etc/netplan/05-eth2.conf 
-sudo nano /etc/netplan/04-eth1.conf 
-sudo nano /etc/netplan/05-eth2.conf 
-sudo nano /etc/netplan/01-static.yaml 
-sudo netplan generate
-sudo netplan apply
-ifconfig
-ifconfig eth2
-ifconfig eth0
-sudo ip route
-sudo nano /etc/rc.local
-sudo crontab -e
-ifconfig
-sudo iptables -S
-sudo iptables -F
-sudo iptables -X
-sudo iptables -S
-sudo bash /home/ubuntuserver/Programs/start_tailscale.sh 
-ifconfig
-exit
-exit
-sudo apt-get install tasksel
-sudo tasksel remove ubuntu-desktop
-sudo tasksel install server
-cd Pihole-Slave-Install/
-sudo crontab -e 
-cd Pihole-Slave-Install/
-ls
-sudo ./setup/lightten-system.sh 
-sudo dpkg --configure -a
-ifconfig
-sudo dpkg --configure multipath-tools
-sudo dpkg --configure multipath-tools
-ifconfig
-ifconfig
-sudo apt install ubuntu-server
-ifconfig
-sudo ip add
-ifconfig
-ifconfig -a
-sudo ip tunnel del tunl0
-sudo modprobe sit0
-sudo modprobe sit
-sudo modprobe -r sit
-ifconfig
-ifconfig
-ifconfig
-ifconfig
-ifconfig
-ifconfig
-ping 192.168.44.250
-traceroute www.google.com
-sudo systemctl set-default multi-user.target
-sudo apt-get purge -y btrfs-progs && sudo update-initramfs -uk all
-ifconfig
-ping 192.168.44.250
-ping 192.168.44.1
-sudo dpkg ubuntu-server --configure
-sudo dpkg ubuntu-server --configure 
-sudo dpkg --configure -a
-sudo apt-get purge -y btrfs-progs && sudo update-initramfs -uk all
-sudo apt list --installed | grep "xserver\|x11\|gnome\|cupsd\|cups-browsed\|accountsservice\|man-db\|ubuntu-advantage-tools\|pulseaudio\|bluetooth\|bt\|alasa" | awk -F/ '{print $1}' | xargs sudo apt remove -y
-ifconfig
-sudo systemctl status network.service
-nmcli dev status
-ifconfig
-nmcli dev status
-sudo systemctl enable NetworkManager.service
-systemctl status NetworkManager.service
-systemctl status NetworkManager.service
-sudo systemctl restart NetworkManager.service
-ifconfig
-sudo nano /etc/netplan/01-static.yaml
-sudo nano /etc/netplan/01-static.yaml
-sudo systemctl disable systemd-networking
-ifconfig
-systemctl status NetworkManager.service
-sudo systemctl status systemd-networking
-sudo systemctl status systemd-networkd
-sudo nano /etc/rc.local
-systemctl status NetworkManager
-sudo nano /etc/rc.local
-systemctl status netw
-sudo nano /etc/rc.local
-sudo systemctl status systemd-networkd
-sudo nano /etc/rc.local
-sudo apt remove network-manager
-sudo nano /etc/netplan/01-static.yaml
-sudo netplan apply
-sudo netplan generate
-sudo netplan apply
-sudo apt purge network-manager
-sudo apt purge gnome*
-sudo apt purge *x11*
-sudo nano /etc/resolv.conf
-ping www.google.com
-ping dns.google
-curl dns.google
-sudo rm -rf /etc/resolv.conf
-sudo ln -s  /run/resolvconf/resolv.conf /etc/resolv.conf
-sudo bash /etc/resolvconf/update.d/libc
-sudo nano /etc/resolv.conf
-sudo apt install resolvconf
-sudo apt install --reinstall resolvconf
-sudo nano /etc/rc.local
-sudo resolvconf -u
-sudo nano /etc/rc.local
-sudo rm -rf /etc/resolv.conf
-sudo ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
-sudo resolvconf -u
-sudo nano /etc/resolv
-sudo nano /etc/resolv.conf
-sudo dpkg-reconfigure resolvconf
-cd Pihole-Slave-Install/
-sudo git stash && sudo git pull && sudo bash $PROG/generate_unneeded-modprobes.sh && sudo reboot 
-sudo git stash && sudo git pull -ff && sudo bash $PROG/generate_unneeded-modprobes.sh && sudo reboot 
-sudo git stash
-sudo git stash && sudo git pull -ff && sudo bash $PROG/generate_unneeded-modprobes.sh && sudo reboot 
-sudo nano /etc/resolv.conf
-sudo nano /etc/rc.local
-sudo git stash && sudo git pull -ff && sudo bash $PROG/generate_unneeded-modprobes.sh && sudo reboot 
-sudo git stash pop
-sudo git stash && sudo git pull -ff && sudo bash $PROG/generate_unneeded-modprobes.sh && sudo reboot 
-sudo git stash && sudo git pull -ff && sudo bash $PROG/generate_unneeded-modprobes.sh && sudo reboot 
-git fetch all
-sudo git fetch all
-ls
-git rm --cached -r .
-sudo git stash && sudo git pull -ff && sudo bash $PROG/generate_unneeded-modprobes.sh && sudo reboot 
-ls
-rm -rf pique/
-rm -rf dns-over-https/
-sudo rm -rf dns-over-https/
-ls
-sudo rm -rf auto6to4 
-sudo rm -rf AdGuardHome
-sudo rm -rf AdGuardHome_linux_amd64.tar.gz 
-sudo git stash po
-sudo git stash --pop
-sudo git stash pop
-sudo git stash pop
-sudo git stash pop
-sudo git stash pop
-sudo git stash pop
-sudo git pull -ff
-sudo git pull -ff 
-git stash
-git reset --hard HEAD.
-git reset --hard HEAD
-sudo git reset --hard HEAD
-sudo git stash && sudo git pull -ff && sudo bash $PROG/generate_unneeded-modprobes.sh && sudo reboot 
-sudo git rm --cache -r .
-sudo git reset --hard HEAD && sudo git pull -ff
-sudo git pull --ff --force
-sudo git pull --help
-sudo git pull --autostash --ff
-sudo git pull --autostash --ff --rebase
-sudo git merge --ff
-sudo git merge --ff
-sudo git pull pop
-git fetch 
-sudo git fetch 
-sudo git fetch 
-sudo nano /etc/rc.local
-sudo systemctl enable resolvconf-pull-resolved.service
-sudo systemctl start resolvconf-pull-resolved.service
-sudo systemctl status resolvconf-pull-resolved.service
-sudo systemctl restart resolvconf-pull-resolved.service
-sudo systemctl status resolvconf-pull-resolved.service
-sudo systemctl status resolvconf-pull-resolved.service
-sudo systemctl status resolvconf-pull-resolved.service
-sudo nano /etc/rc.local
-sudo git fetch --ff
-sudo git fetch --force
-sudo git fetch --all
- git reset —hard origin/master
-sudo git reset —hard origin/master
-sudo git reset —hard origin/master -- /
-sudo git reset —hard origin/master -- .
-sudo git reset —hard origin/master -- 
-sudo git reset --hard origin/master
-sudo git stash && sudo git pull -ff && sudo bash $PROG/generate_unneeded-modprobes.sh && sudo reboot 
-sudo git stash && sudo git pull -ff && sudo bash $PROG/generate_unneeded-modprobes.sh && sudo reboot 
-cd Pihole-Slave-Install/
-sudo git stash && sudo git pull -ff && sudo bash $PROG/generate_unneeded-modprobes.sh && sudo reboot 
-sudo reboot 
-sudo reboot
-ifconfig
-time
-uptime
-uptime --help
-uptime -p
-sudo dpkg-reconfigure resolvconf
-systemctl status resolvconf-pull-resolved.service
-systemctl status resolvconf-pull-resolved.service
-systemctl status resolvconf-pull-resolved.service
-systemctl status resolvconf-pull-resolved.path
 systemctl status resolvconf-pull-resolved.path
 ifconfig
 sudo dpkg-reconfigure ubuntu-server
@@ -924,4 +425,96 @@ sudo tailscale ip
 ifconfig
 tailscale ip
 htop
+ifconfig
+pihole -q aws.ctptech.dev
+sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
+htop
+cat /etc/resolv.conf
+systemctl status ctp-dns status
+systemctl status tailscale
+systemctl status tailscaled
+curl 'dns.google'
+ping www.google.com
+curl 'dns.google'
+curl 'www.google.com'
+exit
+htop
+htiop
+pihole --white-regex \\.local
+ pihole --white-regex \\.local
+ping -a 192.168.44.247
+sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
+ifconfig
+curl 'https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/'
+curl 'https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/amazon-blacklist.list'
+sudo apt upgrade
+pihole -w myip.ms
+pihole -w ipstack.com
+pihole -w hackertarget.com
+ping 192.168.44.243
+ssh 192.168.44.243
+ssh admin@192.168.44.243
+exit
+nano ~/reverse_ssh.sh 
+ifconfig
+sudo nano /etc/dhcpcd.conf 
+ifconfig eth2
+sudo nano /etc/dhcpcd.conf 
+sudo nano /etc/netplan/01-static.yaml
+sudo ip add
+ping 192.168.42.1
+sudo nano /home/ubuntuserver/Programs/dhcp_fix.sh
+      sudo netplan generate
+        sudo netplan apply
+ifconfig eth2
+sudo ip -6 add show dev eth2
+ifconfig
+ping6 dns.google -I eth2
+ifconfig eth2
+      sudo netplan generate && sudo netplan app;y
+      sudo netplan generate && sudo netplan apply
+ifconfig eth2
+ping6 dns.google -I eth2
+ifconfig eth2
+      sudo netplan generate && sudo netplan apply
+'
+exit
+ifconfig
+ifconfig eth2
+sudo ifconfig eth2 down
+sudo ifconfig eth2 up
+ifconfig eth2
+ping6 dns.google
+ssh 2001:470:1f10:5ba::2
+ifconfig eth2
+ping6 dns.google -I eth2
+touch /d
+sudo touch /d
+sudo rm -rf /d
+ifconfig
+ifconfig 
+ifconfig eth1
+iexit
+exit
+ifconfig eth1
+ifconfig 
+cd Pihole-Slave-Install
+ifconfig
+sudo git stash && sudo git pull
+chmod 777 /usr/local/bin/timeout3
+sudo chmod 777 /usr/local/bin/timeout3
+sudo git stash && sudo git pull
+sudo crontab 0e
+sudo crontab -e
+bash $PROG/server-online-check.sh aws.ctptech.dev
+sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+ifconfig
+dig @2001:470:1f10:5ba:230:18ff:feb0:7ef
+git clone v
+git clone https://github.com/Spiritdude/nodemcu-shell
+sudo nano /etc/resolv.conf
+dig www.google.com
+htop
+dig www.google.com
 ifconfig

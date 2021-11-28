@@ -1,5 +1,7 @@
 #!/bin/bash
 source $PROG/test_dns_args.sh -a
+bash $PROG/dns-stale-restart.sh --preload
+bash $PROG/test_dns.sh -a --preload
 echo "Date last open `date` $scriptName"
 CONCURRENT
 
@@ -40,7 +42,10 @@ do
 		bash $PROG/test_doq.sh -a --preload
 	else
 		echo "LOCK FILE $CTP_DNS_LOCK_FILE"
-		ctp_dns_lock_file_fix_check
+		if [[ `systemctl-seconds ctp-dns.service` -gt 180 ]]; then
+sud			echo "CTP DNS & LOCK FILE Exceded runtime limit running fixing function"
+			ctp_dns_lock_file_fix_check
+		fi
 	fi
 	echo "check sleeping $SLEEP_T"
 	echo "$SLEEP_T `date`"

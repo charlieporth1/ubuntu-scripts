@@ -1,5 +1,5 @@
 #!/bin/bash
-TIMEOUT=3
+TIMEOUT=6
 NC="\e[39m"
 RED="\e[31m"
 RED_L="\e[91m"

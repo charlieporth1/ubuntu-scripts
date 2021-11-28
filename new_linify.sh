@@ -3,8 +3,18 @@ file="$1"
 if [ "$#" -eq 0 ]; then
   ARUGMENT_ARRAY=( $( cat  /dev/stdin ) )
 else
+	line_count=$(wc -l $file | awk '{print $1}')
+	MAX_ARGS=$( getconf ARG_MAX )
         if [[ -f $file ]] && [ "$#" -eq 1 ]; then
-		ARUGMENT_ARRAY=( $( cat $file ) )
+		if [[ $line_count -lt $MAX_ARGS ]]; then
+			ARUGMENT_ARRAY=( $( cat $file ) )
+		else
+			# TO DO
+			ARUGMENT_ARRAY=( $( parallel -P +4 -j +8 --cat $file ) )
+			ARUGMENT_ARRAY_1=( $( parallel -P +4 -j +8 --cat $file ) )
+			ARUGMENT_ARRAY_2=( $( parallel -P +4 -j +8 --cat $file ) )
+			ARUGMENT_ARRAY_3=( $( parallel -P +4 -j +8 --cat $file ) )
+		fi
 	else
 		ARUGMENT_ARRAY=( "$@" )
 	fi
