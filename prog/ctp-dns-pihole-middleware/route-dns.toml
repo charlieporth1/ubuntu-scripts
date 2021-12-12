@@ -39,14 +39,14 @@ resolvers = [
 	"well_known-group-truncate-retry-1-0-0-2",
 	"well_known-group-truncate-retry-1-1-1-1",
 	"well_known-group-truncate-retry-1-1-1-2",
-	"well_known-group-truncate-retry-149-112-112-112",
-	"well_known-group-truncate-retry-208-67-220-220",
-	"well_known-group-truncate-retry-208-67-222-222",
-	"well_known-group-truncate-retry-75-75-75-75",
-	"well_known-group-truncate-retry-75-75-76-76",
 	"well_known-group-truncate-retry-8-8-4-4",
 	"well_known-group-truncate-retry-8-8-8-8",
 	"well_known-group-truncate-retry-9-9-9-9",
+	"well_known-group-truncate-retry-75-75-75-75",
+	"well_known-group-truncate-retry-75-75-76-76",
+	"well_known-group-truncate-retry-149-112-112-112",
+	"well_known-group-truncate-retry-208-67-220-220",
+	"well_known-group-truncate-retry-208-67-222-222",
 
 ]
 reset-after = 64

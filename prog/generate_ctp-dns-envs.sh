@@ -52,9 +52,9 @@ export WELL_KN_TRUCATE_GROUP_E=$WELL_KN_GROUP_TITLE-$trancate_name-encrypted
 
 export NGINX_RESOLVER_GROUP=$NGINX_RESOLVER-group
 
-
+DWK_REGEX='(\-\-|\-)(dwk|do-well-known(s)?)'
 # RESOLVERS LIST
-if [[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(dwk|do-well-known(s)?)'` ]]; then
+if [[ -n `echo "$ARGS" | grep -Eio "$DWK_REGEX"` ]]; then
 	echo "Using well knowns resolvers"
 	# Well known resolvers
 	export WELL_KNOWN_RESOLVERS_LIST=$(grep -E "^.resolvers\..*" $WELL_KN_FILE | awk -F. '{print $2}' | awk -F] '{print $1}')
@@ -77,24 +77,24 @@ else
 fi
 
 # RESOLVERS
-if [[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(dwk|do-well-known(s)?)'` ]]; then
+if [[ -n `echo "$ARGS" | grep -Eio "$DWK_REGEX"` ]]; then
 	echo "Using well knowns resolvers"
 	# Well known resolvers
-	export WELL_KNOWN_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$WELL_KNOWN_RESOLVERS_LIST" ) --quotes --space ))
-	export WELL_KNOWN_RESOLVERS_RAW=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$WELL_KNOWN_RESOLVERS_RAW_LIST" ) --quotes --space ))
+	export WELL_KNOWN_RESOLVERS=$(new_linify $(csvify $(printf '%s\n' "$WELL_KNOWN_RESOLVERS_LIST" ) --quotes --space ))
+	export WELL_KNOWN_RESOLVERS_RAW=$(new_linify $(csvify $(printf '%s\n' "$WELL_KNOWN_RESOLVERS_RAW_LIST" ) --quotes --space ))
 
-	export WELL_KNOWN_RT_GROUPS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$WELL_KNOWN_RT_RESOLVERS_LIST" ) --quotes --space ))
-	export WELL_KNOWN_RT_GROUPS_RAW=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$WELL_KNOWN_RT_RESOLVERS_RAW_LIST" ) --quotes --space ))
+	export WELL_KNOWN_RT_GROUPS=$(new_linify $(csvify $(printf '%s\n' "$WELL_KNOWN_RT_RESOLVERS_LIST" ) --quotes --space ))
+	export WELL_KNOWN_RT_GROUPS_RAW=$(new_linify $(csvify $(printf '%s\n' "$WELL_KNOWN_RT_RESOLVERS_RAW_LIST" ) --quotes --space ))
 else
 	echo "Using ctp-dns resolvers"
 	# CTP-DNS resolvers
-	export GCP_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$GCP_RESOLVERS_LIST" ) --quotes --space ))
-	export HOME_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$HOME_RESOLVERS_LIST" ) --quotes --space ))
-	export AWS_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$AWS_RESOLVERS_LIST" ) --quotes --space ))
+	export GCP_RESOLVERS=$(new_linify $(csvify $(printf '%s\n' "$GCP_RESOLVERS_LIST" ) --quotes --space ))
+	export HOME_RESOLVERS=$(new_linify $(csvify $(printf '%s\n' "$HOME_RESOLVERS_LIST" ) --quotes --space ))
+	export AWS_RESOLVERS=$(new_linify $(csvify $(printf '%s\n' "$AWS_RESOLVERS_LIST" ) --quotes --space ))
 
-	export ALL_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$ALL_RESOLVERS_LIST" ) --quotes --space ))
-	export RAW_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$RAW_RESOLVERS_LIST" ) --quotes --space ))
-	export BACKUP_RESOLVERS=$(bash $PROG/new_linify.sh $(bash $PROG/csvify.sh $(printf '%s\n' "$BACKUP_RESOLVERS_LIST" ) --quotes --space ))
+	export ALL_RESOLVERS=$(new_linify $(csvify $(printf '%s\n' "$ALL_RESOLVERS_LIST" ) --quotes --space ))
+	export RAW_RESOLVERS=$(new_linify $(csvify $(printf '%s\n' "$RAW_RESOLVERS_LIST" ) --quotes --space ))
+	export BACKUP_RESOLVERS=$(new_linify $(csvify $(printf '%s\n' "$BACKUP_RESOLVERS_LIST" ) --quotes --space ))
 fi
 
 # MISC

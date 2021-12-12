@@ -55,7 +55,7 @@ LogsDirectory=ctp-dns
 CPUQuota=45%
 IOSchedulingPriority=0
 
-Nice=19
+Nice=15
 Type=exec
 PIDFile=/run/ctp-dns.pid
 
@@ -77,6 +77,7 @@ ExecStartPre=/bin/bash -c "/usr/bin/touch ${PID_FILE} \
 #ExecStartPre=/snap/bin/go get -v github.com/folbricht/routedns/cmd/routedns
 ExecStartPre=/bin/bash -c "/bin/echo ${MAINPID} | /usr/bin/tee ${PID_FILE}"
 ExecStartPre=/bin/bash ${PROG}/simple-failover-http-server.sh
+ExecStartPre=/bin/bash ${ROUTE}/ctp-dns-failover-health-check.sh
 ExecStartPre=/bin/bash ${ROUTE}/ctp-list-manager.sh
 ExecStartPre=/bin/bash ${ROUTE}/ctp-dns.sh --generate-log
 ExecStartPre=/bin/bash ${ROUTE}/ctp-dns.sh --generate-cache
@@ -90,12 +91,12 @@ ExecStart=/bin/bash -c "/root/go/bin/routedns ${ROUTE}/*.toml --log-level=5"
 #ExecStartPost=/bin/bash -c "for ((i=0; i < 3; i++)); do ps -aux | grep 'pm.stal\|test_\|pm.hea' | awk '{print $2}' | xargs sudo kill -9;sleep 10s;done"
 #ExecStartPost=/bin/bash -c '/bin/sleep 30s; [[ -f /tmp/health-checks.stop.lock ]] &&/bin/rm /tmp/health-checks.stop.lock'
 
-ExecStop=/bin/bash -c "/bin/kill -USR1 ${MAINPID}; if pgrep sleep; then pkill sleep; fi; test -f ${LOCK_FILE} && /bin/rm ${LOCK_FILE}; exit 0"
+ExecStop=/bin/bash -c "/bin/kill -USR1 ${MAINPID}; if pgrep sleep; then pkill sleep; fi; test -f ${LOCK_FILE} && /bin/rm ${LOCK_FILE}; /bin/bash ${ROUTE}/ctp-dns-failover-health-check.sh; exit 0"
 ExecReload=/bin/kill -USR1 ${MAINPID}
 
 Restart=always
 #Restart=on-failure
-RestartSec=5s
+RestartSec=0s
 
 #StandardInput=tty
 StandardOutput=append:/var/log/ctp-dns/access.log
@@ -105,7 +106,7 @@ TTYPath=/dev/tty0
 TTYReset=yes
 TTYVHangup=yes
 
-TimeoutStartSec=6m
+TimeoutStartSec=5m
 TimeoutStopSec=30s 
 #PermissionsStartOnly=true
 

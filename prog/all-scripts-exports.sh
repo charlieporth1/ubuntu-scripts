@@ -70,8 +70,9 @@ export GCLOUD_PROJECT="galvanic-pulsar-284521"
 export GCLOUD_ZONE="us-central1-a"
 
 alias isFTLRunning='bash $PROG/process_count.sh pihole-FTL'
-alias ip-sort='sort -t . -k 3,3n -k 4,4n | uniq | sort -u'
-alias sort-uniq='sort -u | uniq'
+alias sort-uniq='sort -u | uniq | sort -u'
+alias ip-sort='sort -u -t . -k 1,1n -k 2,2n -k 3,3n -k 4,4n | uniq'
+alias ip-sort-oct='sort -u -t. -n +3.0'
 
 # DO NOT CHANGE ORDER
 export THIS_PID=${BASHPID:-$$}
@@ -845,5 +846,5 @@ function trim2() {
   until s2="${s%[[:space:]]}"; [ "$s2" = "$s" ]; do s="$s2"; done
   echo "$s"
 }
-
+alias pingt='__pingt() { s=0; while :; do s=$(($s+1)); result=$(ping $1 -c1 -W1 |/bin/grep from) && echo "$result, seq=$s" && sleep 1 || echo timeout; done }; __pingt $1'
 source /etc/environment

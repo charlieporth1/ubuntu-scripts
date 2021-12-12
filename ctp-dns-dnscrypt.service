@@ -87,7 +87,7 @@ ExecStop=/bin/bash -c "/bin/kill -USR1 ${MAINPID}; exit 0"
 ExecReload=/bin/kill -USR1 ${MAINPID}
 
 Restart=always
-RestartSec=5s
+RestartSec=1m
 
 #StandardInput=tty
 StandardOutput=append:/var/log/ctp-dns-dnscrypt/access.log

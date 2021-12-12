@@ -70,6 +70,7 @@ servfail-error = true
 
 #	"ctp-dns_group-fail-back-home",
 #	"ctp-dns_group-fail-back-aws",
+
 [groups.ctp-dns-fail-rotate]
 resolvers = [ 
 	"ctp-dns_group-fail-rotate-home",

@@ -50,10 +50,10 @@ function query_domains_tester() {
 		fi
 	done
 }
-BLACK_DOMAINS=`query_domains_tester '!' "${DOMAINS_TO_TEST_BLACK[@]}"`
-WHITE_DOMAINS=`query_domains_tester "${DOMAINS_TO_TEST_WHITE[@]}"`
+#BLACK_DOMAINS=`query_domains_tester '!' "${DOMAINS_TO_TEST_BLACK[@]}"`
+#WHITE_DOMAINS=`query_domains_tester "${DOMAINS_TO_TEST_WHITE[@]}"`
 pihole --regex -d '$' '^[a-z].([0-9]+|ad[^d]|click|coun(t|ter)|tra[ck](k|ker|king))' ' ^[a-z].([0-9]+|ad[^d]|click|coun(t|ter)|tra[ck](k|ker|king))' ''
-
+:'
 if [[ -n "$BLACK_DOMAINS" ]]; then
 	echo "Blacklisting $BLACK_DOMAINS"
 	pihole -b $BLACK_DOMAINS doubleclick.net
@@ -72,7 +72,7 @@ if [[ -n "$WHITE_DOMAINS" ]]; then
 else
 	echo "Nothing to whitelist"
 fi
-
-pihole -w playatoms-pa.googleapis.com > /dev/null
-pihole -b firebaselogging-pa.googleapis.com > /dev/null
+'
+pihole -b firebaselogging-pa.googleapis.com ${DOMAINS_TO_TEST_BLACK[@]}
+pihole -w playatoms-pa.googleapis.com www.google.com stackoverflow.com firebaseremoteconfig.googleapis.com  ${DOMAINS_TO_TEST_WHITE[@]}
 echo "Done Date: `date`"

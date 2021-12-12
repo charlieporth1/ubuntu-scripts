@@ -28,7 +28,28 @@ declare -a routes_arrary=$(decsvify "$ALL_ROUTES")
 
 (
 	sudo apt -y update
-	sudo apt install -y tailscale ifmetric
+	sudo apt install -y tailscale ifmetric wireguard wireguard-tools wireguard-dkms
+	curl -sSL "https://raw.githubusercontent.com/ipinfo/cli/master/range2cidr/deb.sh" | bash
+	curl -sSL "https://raw.githubusercontent.com/ipinfo/cli/master/cidr2range/deb.sh" | bash
+
+	if ! command -v grepip &> /dev/null
+	then
+	    echo "COMMAND grepip could not be found installing"
+	    curl -Ls 'https://raw.githubusercontent.com/ipinfo/cli/master/grepip/deb.sh' | bash
+	fi
+
+	if ! command -v dig &> /dev/null
+	then
+	    echo "COMMAND digcould not be found installing"
+	    sudo apt install -y dnsutils bind9-dnsutils
+	fi
+
+	if ! command -v kdig &> /dev/null
+	then
+	    echo "COMMAND digcould not be found installing"
+	    sudo apt install -y knot-resolver
+	fi
+
 )&>/dev/null
 
 function add_routes() {
@@ -156,12 +177,12 @@ if [[ "$HOSTNAME" =~ (ctp-vpn|ip-172-31-12-154|instance-1-ctp-vpn) ]]; then
 	else
 		add_routes "$GCP_AWS_ROUTE"
 	fi
-elif [[ "$HOSTNAME" =~ (ubuntu-server|neat-xylophone|led-raspberrypi3) ]]; then
+elif [[ "$HOSTNAME" =~ (ubuntu-server|neat-xylophone|led-raspberrypi3|raspberrypi4) ]]; then
 	add_routes "$HOME_ROUTE"
+	auto_routes
 else
 	auto_routes
 fi
-auto_routes
 #auto_tags
 
 sudo modprobe tcp_htcp tcp_yeah tcp_highspeed tcp_scalable

@@ -18,7 +18,8 @@ master_dns_ip=$(bash $PROG/get_ext_ip.sh master.dns.ctptech.dev | grepip -o)
 IPv4_ROUTE=$(sudo ip route list | grepip -o | ip-sort)
 IPv6_ROUTE=$(sudo ip -6 route list | grepip -o | ip-sort)
 
-IPv4_ADDR=$(sudo ip addr | grepip -o | ip-sort)
+IP_ADDR=$(sudo ip addr | grepip -o | ip-sort)
+IPv4_ADDR=$(sudo ip -4 addr | grepip -o | ip-sort)
 IPv6_ADDR=$(sudo ip -6 addr | grepip -o | ip-sort)
 
 tailscale_ip_addresses=$(tailscale status | awk '{print $1}' | grepip -o)
@@ -41,6 +42,7 @@ UNI_IGNORE_IP=(
 	$master_dns_ip
 	$IPv4_ROUTE
 	$IPv6_ROUTE
+	$IP_ADDR
 	$IPv4_ADDR
 	$IPv6_ADDR
 	$current_ip_address
@@ -52,6 +54,9 @@ UNI_IGNORE_IP=(
 	50.224.157.242 # CTP WORK
 	100.101.102.103
 	192.168.0.0/16
+	192.168.0.0/16
+	192.168.12.0/24
+	192.168.100.0/24
 	192.168.45.0/24
 	192.168.44.0/24
 	192.168.43.0/24
@@ -129,8 +134,8 @@ declare -a DEFAULT_DNS_SERVERS=( $( filter_ip_address_array "${DEFAULT_DNS_SERVE
 declare -a UPTIME_IGNORE_IPs=(
         122.248.234.23/24
         63.143.42.248/24
-	$(proxychains -q timeout $curl_timeout curl -sSL 'https://uptimerobot.com/help/locations/' | grep -oE "${IPV4_REGEX_SUBNET}")
-	$(proxychains -q timeout $curl_timeout curl -sSL "https://uptimerobot.com/inc/files/ips/IPv4andIPv6.txt" | grep -oE "${IPV4_REGEX_SUBNET}")
+	$(curl -sSL 'https://uptimerobot.com/help/locations/' | grep -oE "${IPV4_REGEX_SUBNET}")
+	$(curl -sSL "https://uptimerobot.com/inc/files/ips/IPv4andIPv6.txt")
 )
 declare -a UPTIME_IGNORE_IPs=( $( filter_ip_address_array "${UPTIME_IGNORE_IPs[@]}" ) )
 
@@ -173,21 +178,8 @@ T_MobileIPs_SPRINT=(
 		fi
 	)
 
-	$(proxychains -q timeout $curl_timeout curl -sL https://www.robtex.com/as/AS3651.html | grep -oE "${IPV4_REGEX_SUBNET}")
-	$(proxychains -q timeout $curl_timeout curl -sL https://www.robtex.com/as/.html | grep -oE "${IPV4_REGEX_SUBNET}")
-	$(proxychains -q timeout $curl_timeout curl -sL https://www.robtex.com/as/AS36517.html | grep -oE "${IPV4_REGEX_SUBNET}")
-	$(proxychains -q timeout $curl_timeout curl -sL https://www.robtex.com/as/AS10507.html | grep -oE "${IPV4_REGEX_SUBNET}")
-	$(proxychains -q timeout $curl_timeout curl -sL https://www.robtex.com/as/AS19290.html | grep -oE "${IPV4_REGEX_SUBNET}")
-	$(proxychains -q timeout $curl_timeout curl -sL https://www.robtex.com/as/AS27021.html | grep -oE "${IPV4_REGEX_SUBNET}")
-	$(proxychains -q timeout $curl_timeout curl -sL https://www.robtex.com/as/AS5112.html | grep -oE "${IPV4_REGEX_SUBNET}")
-	$(proxychains -q timeout $curl_timeout curl -sL https://www.robtex.com/as/AS32068.html | grep -oE "${IPV4_REGEX_SUBNET}")
-	$(proxychains -q timeout $curl_timeout curl -sL https://www.robtex.com/as/AS19.html | grep -oE "${IPV4_REGEX_SUBNET}")
-	$(proxychains -q timeout $curl_timeout curl -sL https://www.robtex.com/as/AS138667.html | grep -oE "${IPV4_REGEX_SUBNET}")
-	$(proxychains -q timeout $curl_timeout curl -sL https://www.robtex.com/as/AS36134.html | grep -oE "${IPV4_REGEX_SUBNET}")
-	$(proxychains -q timeout $curl_timeout curl -sL https://www.robtex.com/as/AS10507.html | grep -oE "${IPV4_REGEX_SUBNET}")
-	$(proxychains -q timeout $curl_timeout curl -sL https://www.robtex.com/as/AS10507.html | grep -oE "${IPV4_REGEX_SUBNET}")
-	$(proxychains -q timeout $curl_timeout curl -sL https://myip.ms/view/web_hosting/1441/Sprint.html | grepip -4o | parallel echo '{}/18')
-	$(proxychains -q timeout $curl_timeout curl -sL https://myip.ms/view/web_hosting/1441/Sprint.html | grepip -6o | parallel echo '{}/48')
+	$(proxychains -q timeout $curl_timeout curl -sL https://myip.ms/view/web_hosting/1441/Sprint.html | grepip -4o | parallel --no-run-if-empty echo '{}/18')
+	$(proxychains -q timeout $curl_timeout curl -sL https://myip.ms/view/web_hosting/1441/Sprint.html | grepip -6o | parallel --no-run-if-empty echo '{}/48')
 )
 declare -a T_MobileIPs_SPRINT=( $( filter_ip_address_array "${T_MobileIPs_SPRINT[@]}" ) )
 
@@ -219,18 +211,6 @@ ${T_MobileIPs_SPRINT[@]}
 		if [ "$0" == "$BASH_SOURCE" ]; then
 			for asn in "${T_MobileIPs_asn[@]}"
 			do
-				# https://superuser.com/questions/405666/how-to-find-out-all-ip-ranges-belonging-to-a-certain-as
-				# IPv4
-				timeout $curl_timeout curl -sL "https://bgp.he.net/$asn#_prefixes4" | grep -Eo "([0-9.]+){4}/[0-9]+"
-				# IPv6
-				timeout $curl_timeout curl -sL "https://bgp.he.net/$asn#_prefixes6" | grep -Eo "$IPV6_FULL_REGEX_SUBNET"
-			done
-		fi
-	)
-	$(
-		if [ "$0" == "$BASH_SOURCE" ]; then
-			for asn in "${T_MobileIPs_asn[@]}"
-			do
 				# IPv4
 				proxychains -q timeout $curl_timeout curl -sL 'https://www.ipqualityscore.com/asn-details/$asn/t-mobile-usa-inc | grep -oE 
 				proxychains -q timeout $curl_timeout curl -sL https://www.robtex.com/as/$asn.html | grep -oE "${IPV4_REGEX_SUBNET}"
@@ -240,34 +220,14 @@ ${T_MobileIPs_SPRINT[@]}
 			done
 		fi
 	)
-$(timeout $curl_timeout curl -sL https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/mobile.tmobile.list)
-$(timeout $curl_timeout curl -sL https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/mobile.tmobileus.list)
-$(timeout $curl_timeout curl -sL https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/white.tmobileus.ip.list)
+$( curl -sL https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/mobile.tmobile.list )
+$( curl -sL https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/mobile.tmobileus.list )
+$( curl -sL https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/white.tmobileus.ip.list )
 $(proxychains -q timeout $curl_timeout curl -sL 'https://www.ipqualityscore.com/asn-details/AS21928/t-mobile-usa-inc' | grep -oE "${IPV4_REGEX_SUBNET}")
-$(proxychains -q timeout $curl_timeout curl -sL https://myip.ms/view/ip_owners/1779/T_Mobile_Usa_Inc.html | grepip -4o | parallel echo '{}/18')
-$(proxychains -q timeout $curl_timeout curl -sL https://myip.ms/view/ip_owners/1779/T_Mobile_Usa_Inc.html | grepip -6o | parallel echo '{}/48')
-$(proxychains -q timeout $curl_timeout curl -sL https://myip.ms/browse/ip_ranges/1/ownerID/1779/ownerID_A/1 | grepip -4o | parallel echo '{}/18')
-$(proxychains -q timeout $curl_timeout curl -sL https://myip.ms/browse/comp_ip/1/ownerID/1779/ownerID_A/1 | grepip -4o | parallel echo '{}/18')
-$(
-	if [ "$0" == "$BASH_SOURCE" ]; then
-		export counter=0
-		export count_max=3
-		for i in $(seq 1 1000)
-		do
-			if [[ $counter -le $count_max ]]; then
-				export counter=$(( $counter + 1 ))
-				(
-				 	proxychains -q timeout $curl_timeout curl -sL https://myip.ms/browse/comp_ip/1/ownerID/1779/ownerID_A/$i | grepip -4o | parallel echo '{}/18'
-				 	proxychains -q timeout $curl_timeout curl -sL https://myip.ms/browse/comp_ip6/1/ownerID/1779/ownerID_A/$i | grepip -6o | parallel echo '{}/48'
-				)&
-			else
-				export counter=0
-			 	proxychains -q timeout $curl_timeout curl -sL https://myip.ms/browse/comp_ip/1/ownerID/1779/ownerID_A/$i | grepip -4o | parallel echo '{}/18'
-			 	proxychains -q timeout $curl_timeout curl -sL https://myip.ms/browse/comp_ip6/1/ownerID/1779/ownerID_A/$i | grepip -6o | parallel echo '{}/48'
-			fi
-		done
-	fi
-)
+$(proxychains -q timeout $curl_timeout curl -sL https://myip.ms/view/ip_owners/1779/T_Mobile_Usa_Inc.html | grepip -4o | parallel --no-run-if-empty echo '{}/18')
+$(proxychains -q timeout $curl_timeout curl -sL https://myip.ms/view/ip_owners/1779/T_Mobile_Usa_Inc.html | grepip -6o | parallel --no-run-if-empty echo '{}/48')
+$(proxychains -q timeout $curl_timeout curl -sL https://myip.ms/browse/ip_ranges/1/ownerID/1779/ownerID_A/1 | grepip -4o | parallel --no-run-if-empty echo '{}/18')
+$(proxychains -q timeout $curl_timeout curl -sL https://myip.ms/browse/comp_ip/1/ownerID/1779/ownerID_A/1 | grepip -4o | parallel --no-run-if-empty echo '{}/18')
 74.125.42.39
 172.56.0.0/8
 172.100.0.0/16
@@ -385,9 +345,9 @@ declare -a T_MobileIPs=( $( filter_ip_address_array "${TMobileIPs[@]}" ) )
 
 declare -a local_ignore_ips
 local_ignore_ips=(
-	$(proxychains -q timeout $curl_timeout curl -s 'https://en.wikipedia.org/wiki/Reserved_IP_addresses' | grep -oE "${IPV4_REGEX_SUBNET}")
-	$(proxychains -q timeout $curl_timeout curl -s 'https://en.wikipedia.org/wiki/Reserved_IP_addresses' | grep -oE "${IPV6_REGEX_SUBNET}")
-	$(proxychains -q timeout $curl_timeout curl -s https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/private-addresses.list)
+	$( curl -s 'https://en.wikipedia.org/wiki/Reserved_IP_addresses' | grep -oE "${IPV4_REGEX_SUBNET}")
+	$( curl -s 'https://en.wikipedia.org/wiki/Reserved_IP_addresses' | grep -oE "${IPV6_REGEX_SUBNET}")
+	$( curl -s https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/private-addresses.list)
 )
 declare -a DNS_IGNORE_IPs
 DNS_IGNORE_IPs=(
@@ -413,27 +373,26 @@ DNS_IGNORE_IPs=(
 )
 declare -a DNS_IGNORE_IPs=( $( filter_ip_address_array "${DNS_IGNORE_IPs[@]}" ) )
 
+IPv4_subnets_list=$(seq 0 32 | parallel echo /{})
+IPv6_subnets_list=$(seq 0 128 | parallel echo /{})
 declare -a subnet_ignore_list=(
 	0.0.0.0/0
 	0.0.0.0/8
 	::0/0
 	::1/128
 	127.0.0.0/8
+	$(
+		parallel --no-run-if-empty printf '%-1s%-1s\\n' "{}" ::: "$network_interface_ip_subnets" ::: "$IPv4_subnets_list";
+		parallel --no-run-if-empty printf '%-1s%-1s\\n' "{}" ::: "$dns_ip_subnet" ::: "$IPv4_subnets_list";
+		parallel --no-run-if-empty printf '%-1s%-1s\\n' "{}" ::: "$dns_ip_subnet_v6" ::: "$IPv6_subnets_list";
+		parallel --no-run-if-empty printf '%-1s%-1s\\n' "{}" ::: "$current_ip_address" ::: "$IPv4_subnets_list";
+		parallel --no-run-if-empty printf '%-1s%-1s\\n' "{}" ::: "$tailscale_ip_addresses" ::: "$IPv4_subnets_list";
+		parallel --no-run-if-empty printf '%-1s%-1s\\n' "{}" ::: "$IPv4_ADDR" ::: "$IPv4_subnets_list";
+		parallel --no-run-if-empty printf '%-1s%-1s\\n' "{}" ::: "$IPv6_ADDR" ::: "$IPv6_subnets_list";
+		parallel --no-run-if-empty printf '%-1s%-1s\\n' "{}" ::: "0.0.0.0" ::: "$IPv4_subnets_list"
+	)
 )
 # IPv4
-
-for ip_subnet in $(seq 0 32)
-do
-	declare -a subnet_ignore_list=(
-		$(printf '%s\s' "$network_interface_ip_subnets" | parallel echo "{}/$ip_subnet")
-		$(printf '%s\s' "$dns_ip_subnet" | parallel echo "{}/$ip_subnet")
-		$(printf '%s\s' "$current_ip_address" | parallel echo "{}/$ip_subnet")
-		0.0.0.0/$ip_subnet
-		$dns_ip_subnet
-		$network_interface_ip_subnets
-		${subnet_ignore_list[@]}
-	)
-done
 declare -a subnet_ignore_list=( $( filter_ip_address_array "${subnet_ignore_list[@]}" ) )
 
 export FILE_NAME='ban_ignore_ip_list'
@@ -446,19 +405,62 @@ export INGNORE_IP_GREP=/tmp/$FILE_NAME.grep
 export INGNORE_IP_UNI=/tmp/$FILE_NAME-uni.txt
 export INGNORE_IP_TMOBILE=/tmp/$FILE_NAME-t-mobile.txt
 export INGNORE_IP_SUBNET=/tmp/$FILE_NAME-subnet.txt
+export INGNORE_IP_SUBNET_GREP=/tmp/$FILE_NAME-subnet.grep
 
 INGORE_IP_ADRESSES_GREP=$( bash $PROG/grepify.sh $( printf '%s\n' "${DNS_IGNORE_IPs[@]}" | ip-sort ) )
+INGORE_IP_ADRESSES_SUBNET_GREP=$( bash $PROG/grepify.sh $( printf '%s\n' "${subnet_ignore_list[@]}" | ip-sort ) )
 INGORE_IP_ADRESSES_CSV=$( bash $PROG/csvify.sh $( printf '%s\n' "${DNS_IGNORE_IPs[@]}" | ip-sort ) )
 
 
 if [ "$0" == "$BASH_SOURCE" ]; then
+	echo "Bash non source writing files"
 	printf '%s\n' "${DNS_IGNORE_IPs[@]}" | ip-sort | sudo tee $INGNORE_IP_TXT
 	printf "%s\n" "${UNI_IGNORE_IP[@]}" | ip-sort | sudo tee $INGNORE_IP_UNI
-	echo "$INGORE_IP_ADRESSES_GREP" | sudo tee $INGNORE_IP_GREP
-	echo "$INGORE_IP_ADRESSES_CSV" | sudo tee $INGNORE_IP_CSV
 
 
-	printf "%s\n" "${subnet_ignore_list[@]}" | ip-sort | sudo tee $INGNORE_IP_SUBNET
+	printf '%s\n' "${subnet_ignore_list[@]}" | ip-sort | sudo tee $INGNORE_IP_SUBNET
 	printf '%s\n' "${T_MobileIPs[@]}" | sudo tee $INGNORE_IP_TMOBILE
 	printf '%s\n' "${local_ignore_ips[@]}" | sudo tee $INGNORE_IP_LOCAL_TXT
+
+	echo "$INGORE_IP_ADRESSES_SUBNET_GREP" | sudo tee $INGNORE_IP_SUBNET_GREP
+	echo "$INGORE_IP_ADRESSES_GREP" | sudo tee $INGNORE_IP_GREP
+	echo "$INGORE_IP_ADRESSES_CSV" | sudo tee $INGNORE_IP_CSV
+else
+	echo "Bash is source not writing files"
 fi
+
+:'
+$(
+	if [ "$0" == "$BASH_SOURCE" ]; then
+		export counter=0
+		export count_max=3
+		for i in $(seq 1 1000)
+		do
+			if [[ $counter -le $count_max ]]; then
+				export counter=$(( $counter + 1 ))
+				(
+				 	proxychains -q timeout $curl_timeout curl -sL https://myip.ms/browse/comp_ip/1/ownerID/1779/ownerID_A/$i | grepip -4o | parallel --no-run-if-empty echo '{}/18'
+				 	proxychains -q timeout $curl_timeout curl -sL https://myip.ms/browse/comp_ip6/1/ownerID/1779/ownerID_A/$i | grepip -6o | parallel --no-run-if-empty echo '{}/48'
+				)&
+			else
+				export counter=0
+			 	proxychains -q timeout $curl_timeout curl -sL https://myip.ms/browse/comp_ip/1/ownerID/1779/ownerID_A/$i | grepip -4o | parallel --no-run-if-empty echo '{}/18'
+			 	proxychains -q timeout $curl_timeout curl -sL https://myip.ms/browse/comp_ip6/1/ownerID/1779/ownerID_A/$i | grepip -6o | parallel --no-run-if-empty echo '{}/48'
+			fi
+		done
+	fi
+)
+	$(
+		if [ "$0" == "$BASH_SOURCE" ]; then
+			for asn in "${T_MobileIPs_asn[@]}"
+			do
+				# https://superuser.com/questions/405666/how-to-find-out-all-ip-ranges-belonging-to-a-certain-as
+				# IPv4
+				timeout $curl_timeout curl -sL "https://bgp.he.net/$asn#_prefixes4" | grep -Eo "([0-9.]+){4}/[0-9]+"
+				# IPv6
+				timeout $curl_timeout curl -sL "https://bgp.he.net/$asn#_prefixes6" | grep -Eo "$IPV6_FULL_REGEX_SUBNET"
+			done
+		fi
+	)
+
+'

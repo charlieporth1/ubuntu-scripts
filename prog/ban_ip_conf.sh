@@ -140,6 +140,7 @@ export -f save_ip-set
 function save_ip-tables() {
 	local file="${2:-$ROOT_IP_TABLES_FILE}"
 	sudo iptables-save > $file
+	sudo ip6tables-save > $file.6
 	sudo netfilter-persistent save
 }
 export -f save_ip-tables

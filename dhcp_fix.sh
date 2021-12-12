@@ -6,15 +6,17 @@ sysctl -w net.ipv4.ip_forward=1
 count=3
 timeout=9
 sudo ip route change default via 192.168.44.1 dev eth0
+ip_iface_1=192.168.44.250
 #sudo ip route del 192.168.44.0/24 dev eth0 proto kernel scope link src 192.168.44.250
 sudo ifconfig eth0 192.168.44.250 up
 sudo ifconfig eth1 192.168.12.250 up
-sudo rm -rf /etc/resolv.conf
-sudo ln -nsf ../run/resolvconf/resolv.conf /etc/resolv.conf
+#sudo rm -rf /etc/resolv.conf
+#sudo ln -nsf ../run/resolvconf/resolv.conf /etc/resolv.conf
 
 services='networking.service dhcpcd.service'
 function iface_restart() {
 	local iface="$1"
+	sudo bash $PROG/resolvconf_fix.sh
 	sudo ip route change default via 192.168.44.1 dev eth0
 	sudo ifconfig eth0 192.168.44.250 up
         sudo ip link set $iface up
@@ -74,11 +76,15 @@ then
 elif ! ping -c $count -w $timeout 1.1.1.1 -I $iface > /dev/null
 then
 	iface_restart $iface
-
 elif ! ping -c $count -w $timeout 192.168.44.249 -I $iface > /dev/null
 then
 	iface_restart $iface
 elif ! ping -c $count -w $timeout 192.168.44.250 -I $iface > /dev/null
+then
+	sudo ifconfig eth0 192.168.44.250 up
+	iface_restart $iface
+fi
+elif ! dig www.google.com @1.1.1.1 +short > /dev/null
 then
 	sudo ifconfig eth0 192.168.44.250 up
 	iface_restart $iface

@@ -58,7 +58,7 @@ ExecReload=/bin/kill -USR1 ${MAINPID}
 #RemainAfterExit=true
 
 Restart=always
-RestartSec=15s
+RestartSec=25s
 
 #StandardInput=tty
 StandardOutput=append:/var/log/ctp-youtube-blocker/access.log

@@ -53,7 +53,7 @@ LogsDirectory=nginx-dns-rfc
 
 CPUQuota=25%
 
-Nice=10
+Nice=5
 Type=exec
 PIDFile=/run/ctp-dns-nginx-dns-rfc.pid
 
@@ -80,7 +80,7 @@ ExecStop=/bin/bash -c "/bin/kill -USR1 ${MAINPID}; netpid '127.0.0.1:22443'; exi
 ExecReload=/bin/kill -USR1 ${MAINPID}
 
 Restart=always
-RestartSec=10s
+RestartSec=15s
 
 #StandardInput=tty
 StandardOutput=append:/var/log/nginx-dns-rfc/access.log

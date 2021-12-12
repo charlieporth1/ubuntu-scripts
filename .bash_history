@@ -1,442 +1,3 @@
-systemctl status resolvconf-pull-resolved.path
-ifconfig
-sudo dpkg-reconfigure ubuntu-server
-ifconfig
-ping 192.168.44.1
-ifconfig
-sudo apt install --fix-broken
-ifconfig
-sudo apt install --fix-broken
-sudo apt purge *x11*
-htop
-ifconfig
-sudo apt purge -y *x11*
-ifconfig
-ping www.google.com
-ping4 www.google.com
-ping4 www.google.com -I eth0
-ifconfig
-ping www.google.com
-ifconfig 
-sudo apt purge -y *x11*
-sudo apt install -y --fix-broken
-sudo apt purge -y *x11*
-sudo apt purge -y *x11*
-sdo apt purge openmpi-bin
-sodo apt purge openmpi-bin
-sudo apt purge openmpi-bin
-sudo dpkg --remove openmpi-bin
-sudo apt-get install -y openmpi-bin
-sudo apt-get install -y --reinstall openmpi-bin
-sudo rm -f /etc/aternatives/mpi* /var/lib/dpkg/alternatives/mpi*
-sudo apt install open-mpi
-y
-sudo apt install openmpi
-sudo apt install openmpi-bin
-y
-sudo apt purge -y *x11*
-hc-log
-bash /home/ubuntuserver/Programs/get_ext_ip.sh 
-bash /home/ubuntuserver/Programs/get_ext_ip.sh --current-i[
-bash /home/ubuntuserver/Programs/get_ext_ip.sh --current-ip
-sudo nano /home/ubuntuserver/Programs/test_dns_args.sh 
-sudo apt purge gnome
-systemctl status nginx
-sudo ngixn -t
-sudo nginx -t
-sudo nano $sites/doh
-sudo nano $sites/doh.bk
-sudo cp -rf  $sites/doh.bk  $sites/doh
-ifconfig
-sudo nginx -t
-sudo nano $sites/doh.bk
-sudo cp -rf  $sites/doh.bk  $sites/doh
-sudo nginx -t
-sudo crontab -e
-hc-log
-         HOSTNAME="ctp-vpn"
-                PROJECT="galvanic-pulsar-284521"
-                ZONE="us-central1-a"
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
-cd Pihole-Slave-Install/
-                gcloud compute instances stop "$HOSTNAME"                         --zone "$ZONE"                         --project "$PROJECT"
-                gcloud compute instances start "$HOSTNAME"                         --zone "$ZONE"                         --project "$PROJECT"
-sudo git stash && sudo git pull
-ifconfig
-sudo ./copy_config.sh 
-sudo nginx -t
-sudo nano /etc/nginx/nginx.conf
-sudo git stash && sudo git pull
-sudo ./copy_config.sh 
-exit
-hc-log
-ifconfig
-sudo ip add
-sudi modprobe -r sit
-sudo modprobe -r sit
-ifconfig
-sudo modprobe sit
-sudo nano /home/ubuntuserver/Programs/Hourly.sh
-sudo nano /etc/rc.local
-ifconfig
-sudo ip add  del 35.232.120.211 dev eth0
-sudo ip add  del 35.232.120.211/8 dev eth0
-sudo ip add del 35.232.120.211/8 dev eth0
-sudo ip add change 35.232.120.211/8 dev eth0
-sudo ip add change 192.168.44.250/24 dev eth0
-ifconfig
-ifconfig eth0
-sudo ip add change 192.168.44.250/24 dev eth0
-isatapd --help
-ps -aux | grep isa
-ps -aux | grep isa | awk '{rpint $2}' | xargs sudo kill -9
-ps -aux | grep isa | awk '{print $2}' | xargs sudo kill -9
-ps -aux | grep isa
-ifconfig 
-sudo ip tunenl
-sudo ip tunnel
-sudo ip tunnel del is0
-sudo nano /home/ubuntuserver/Programs/start-config.sh 
-sudo nano /home/ubuntuserver/Programs/modprobes.sh 
-sudo nano /home/ubuntuserver/Programs/start-config.sh 
-sudo nano $PROG/start_processes.sh
-sudo nano /home/ubuntuserver/Programs/start-config.sh 
-sudo nano /home/ubuntuserver/Programs/set_fail2ban-defaults.sh 
-sudo ip tunnel del is0
-ifconfig
-sudo 
-sudo  ip tunnel
-sudo modprobe -r sit
-ping www.google.com
-ls
-sudo nano /home/ubuntuserver/Programs/dhcp_fix.sh
-sudo nano /home/ubuntuserver/Programs/set_fail2ban-defaults.sh 
-sudo nano /home/ubuntuserver/Programs/dhcp_fix.sh
-sudo nano /etc/rc.local
-sudo crontab -e
-hc0log
-hc-log
-sudo crontab -e
-bash $PROG/server-online-check.sh gcp.ctptech.dev
-sudo crontab -e
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
-ip_exists
-ip_exists gcp.ctptech.dev 6 eth0
-sudo crontab -e
-source /home/ubuntuserver/Programs/all-scripts-exports.sh 
-ip_exists gcp.ctptech.dev 6 eth0
-ip_exists gcp.ctptech.dev 6 eth1
-sudo nano /home/ubuntuserver/Programs/all-scripts-exports.sh 
-ping -q -A $ipv -w 6 -c 3 1.1.1.1 -I eth0
-ping  -A $ipv -w 6 -c 3 1.1.1.1 -I eth0
-ping  -A $ipv -w 6 -c 3 1.1.1.1 -I eth1
-ping   $ipv -w 6 -c 3 1.1.1.1 -I eth1
-ping   $ipv -w 12 -c 3 1.1.1.1 -I eth1
-ping   $ipv -w 12 -c 3 1.1.1.
-ping   $ipv -w 12 -c 3 1.1.1.1
-ping   $ipv -w 12 -c 3 google.com
-ping   $ipv -w 12 -c 3 www.google.com
-ping   $ipv -w 12 -c 3 1.1.1.1
-dig @1.1.1.1
-ping 1.1.1.1
-ping 192.168.44.1
-ping 1.1.1.1
-ping 1.0.0.1
-ping 8.8.8.8
-ping 127.0.0.53
-dig @127.0.0.53
-sudo nano /etc/resolv.conf
-sudo resolvconf -u
-sudo nano /etc/rc.local
-ls /etc/resolvconf/update.d/
-ls /etc/resolvconf/update-libc.d/
-ls /etc/resolvconf/update-libc.d/tailscale.tmp086209034 
-sudo nano /etc/resolvconf/update-libc.d/tailscale.tmp086209034 
-sudo dpkg-reconfigure tailscale
-sudo nano /etc/resolvconf/update-libc.d/tailscale.tmp086209034 
-sudo resolvconf -u
-sudo nano /etc/resolvconf/
-sudo nano /etc/resolv.conf
-sudo nano/etc/resolvconf/update-libc.d/tailscale.tmp086209034 
-sudo nano /etc/resolvconf/update-libc.d/tailscale.tmp086209034 
-sudo resolvconf -u
-sudo nano /etc/rc.local
-sudo rm -rf /etc/resolv.conf
-sudo ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
-sudo resolvconf -u
-sudo nano /etc/rc.local
-sudo nano /etc/resolv.conf
-sudo nano /etc/resolvconf/update-libc.d/tailscale.tmp086209034 
-sudo nano /etc/resolvconf/resolv.conf.d/base 
-sudo nano /etc/resolvconf/resolv.conf.d/head 
-sudo nano /etc/resolvconf/update-libc.d/tailscale.tmp086209034 
-sudo bash /etc/resolvconf/update-libc.d/tailscale.tmp086209034 
-sudo resolvconf -u
-sudo nano /etc/rc.local
-sudo nano /etc/resolv.conf
-sudo resolvconf -u
-sudo resolvconf --help
-sudo resolvconf --enable-updates
-sudo resolvconf -u
-sudo nano /etc/resolv.conf
-sudo nano /etc/rc.local
-/etc/resolvconf/update.d/libc: Warning: /etc/resolv.conf is not a symbolic link to /run/resolvconf/resolv.conf
-sudo nano /etc/rc.local
-sudo rm -rf /etc/resolv.conf
-sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf
-sudo resolvconf -u
-sudo nano /etc/resolv.conf
-udo ln -nsf ../run/resolvconf/resolv.conf /etc/resolv.conf
-sudo ln -nsf ../run/resolvconf/resolv.conf /etc/resolv.conf
-sudo resolvconf -u
-sudo nano /etc/resolv.conf
-sudo nano /etc/rc.local
-ls /run/resolvconf/
-sudo nano /etc/rc.local
-sudo rm -rf /etc/resolv.conf
-udo ln -nsf /run/resolvconf/resolv.conf /etc/resolv.conf
-sudo ln -nsf /run/resolvconf/resolv.conf /etc/resolv.conf
-sudo resolvconf -u
-sudo nano /etc/resolv.conf
-sudo resolvconf -u
-sudo nano /etc/resolv.conf
-sudo resolvconf -u
-sudo nano /etc/resolv.conf
-sudo rm -rf /etc/resolv.conf
-sudo ln -nsf /run/resolvconf/resolv.conf /etc/resolv.conf
-sudo resolvconf -u
-sudo nano /etc/resolv.conf
-sudo apt purge resolvconf
-sudo apt-get install -y resolvconf
-/bin/sh -c cat /run/systemd/resolve/stub-resolv.conf | /sbin/resolvconf -a systemd-resolved
-sudo su
-ifconfig
-htop
-sudo nano /etc/resolv.conf
-ls /etc/resolvconf/update.d/
-ls /etc/resolvconf/update-libc.d/
-ls /etc/resolvconf/update-libc.d/tailscale.tmp086209034 
-sudo nano /etc/resolvconf/update-libc.d/tailscale.tmp086209034 
-sudo mv  /etc/resolvconf/update-libc.d/tailscale.tmp086209034   ~/tailscale.tmp086209034
-sudo nano /etc/resolv.conf
-sudo apt-get install -y resolvconf
-sudo resolvconf -u
-sudo nano /etc/resolv.conf
-cd /etc/
-sudo ln -s  ../run/resolvconf/resolv.conf /etc/resolv.
-sudo ln -s  ../run/resolvconf/resolv.conf /etc/resolv.conf
-sudo rm -rf /etc/resolv.
-sudo rm -rf /etc/resolv.conf
-sudo ln -s  ../run/resolvconf/resolv.conf /etc/resolv.conf
-sudo resolvconf -u
-sudo nano /etc/resolv.conf
-ping www.google.com
-curl 'one.one.one.one'
-sudo service resolvconf restart
-sudo service resolvconf status
-sido nano /etc/resolv.conf
-sudo nano /etc/resolv.conf
-sudo resolvconf -u
-sudo nano /etc/resolv.conf
-sudo resolvconf -u
-sudo nano /etc/resolv.conf
-dig @100.100.100.100
-ping www.google.com
-sudo nano /etc/resolv.conf
-tailscale status
-ping www.google.com
-sudo resolvconf -u
-ifconfig
-exit
-sudo resolvconf -u
-sudo nano /etc/resolv.conf
-sudo apt install openresolv
-ping 35.232.120.21
-ping 35.232.120.211
-sudo nano /etc/netplan/
-sudo nano /etc/netplan/01-static.yaml
-ping 35.192.105.158
-sudo crontab -e
-bash $PROG/server-online-check.sh gcp.ctptech.dev
-sudo bash $PROG/server-online-check.sh gcp.ctptech.dev
-sudo nano $PROG/server-online-check.sh 
-     HOSTNAME="ctp-vpn"
-                PROJECT="galvanic-pulsar-284521"
-                ZONE="us-central1-a"
-                gcloud compute instances stop "$HOSTNAME"                         --zone "$ZONE"                         --project "$PROJECT"
-                gcloud compute instances start "$HOSTNAME"                         --zone "$ZONE"                         --project "$PROJECT"
-\
-ping 192.168.44.1
-sudo nano /home/ubuntuserver/Programs/dhcp_fix.sh
-ctp-dns -t
-pihole -t
-exit
-sudo apt install apt-fast
-ifconfig
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
-ifconfig
-ifconfig eth2
-ping6 dns.google
-ifconfig eth1
-ifconfig eth2
-ifconfig eth1
-ifconfig eth0
-ctp-dns -t
-sudo git stash && sudo git pull
-cd Pihole-Slave-Install/
-sudo git stash && sudo git pull
-sudo nano /home/ubuntuserver/Programs/route-dns/ubuntu-server-resolvers.toml 
-sudo git stash && sudo git pull && sudo ./setup/dns-route.sh 
-sudo nano /etc/resolv.conf
-dig @100.100.100.100
-sudo nano /etc/resolvconf/resolv.conf.d/base 
-sudo nano /etc/resolvconf/resolv.conf.d/head 
-sudo resolvconf -u
-sudo rm -rf /etc/resolv.conf
-sudo ln -s ../run/resolvconf/resolv.conf /etc/resolv.conf
-sudo rm -rf /etc/resolv.conf
-sudo ln -s ../run/resolvconf/resolv.conf /etc/resolv.conf
-sudo nano /etc/rc.local
-sudo nano /home/ubuntuserver/Programs/dhcp_fix.sh
-dig @100.100.100.100
-ping www.google.com
-sudo nano /etc/resolv.conf
-sudo resolvconf -u
-sudo ln -s ../run/resolvconf/resolv.conf /etc/resolv.conf
-sudo rm -rf /etc/resolv.conf; sudo ln -s ../run/resolvconf/resolv.conf /etc/resolv.conf
-sudo resolvconf -u
-sudo nano /etc/resolv.conf
-fswatch
-sudo fswatch
-fswatch
-sudo apt install fswatch
-fswatch
-ifconfig
-sudo resolvconf -u
-sudo rm -rf /etc/resolv.conf 
-sudo resolvconf -u
-sudo ln -s ../run/resolvconf/resolv.conf /etc/resolv.conf 
-sudo resolvconf -u
-fswatch
-fswatch --help
-cat /etc/resolv.conf
-sudo resolvconf -u
-sudo ln -s ../run/resolvconf/resolv.conf /etc/resolv.conf 
-sudo rm -rf /etc/resolv.conf 
-sudo ln -s ../run/resolvconf/resolv.conf /etc/resolv.conf 
-sudo resolvconf -u
-dig @100.100.100.100
-dig @100.100.100.100 +tcp
-dig @100.100.100.100
-sudo git stash && sudo git pull
-sudo ./copy_config.sh 
-dig @100.100.100.100
-sudo git stash && sudo git pull
-sudo nano /etc/resolv.conf
-sudo resolvconf -u
-sudo rm /etc/resolv.conf
-sudo rm /etc/resolv.conf; sudo ln -s /run/resolvconf/resolv.conf  /etc/resolv.conf
-sudo nano /etc/rc.local
-sudo resolvconf -u
-sudo git stash && sudo git pull
-sudo nano /etc/resolv.conf
-sudo dpkg-reconfigure resolvconf
-systemctl status resolvconf-pull-resolved.service
-systemctl restart  resolvconf-pull-resolved.service
-sudo systemctl restart  resolvconf-pull-resolved.service
-systemctl status resolvconf-pull-resolved.service
-systemctl edit --full resolvconf-pull-resolved.service
-sudo systemctl edit --full resolvconf-pull-resolved.service
-/sbin/resolvconf
-/sbin/resolvconf -u
-sudo /sbin/resolvconf -u
-sudo nano /etc/resolv.conf
-sudo /sbin/resolvconf -u
-sudo git stash && sudo git pull
-sudo nano /etc/resolv.conf
-sudo git stash && sudo git pull
-curl 'dns.google'
-sudo /sbin/resolvconf -u
-curl 'dns.google'
-sudo /sbin/resolvconf -u
-tailscale status
-ifconfig
-sudo /sbin/resolvconf -u
-ifconfgi
-dig @100.100.100.100
-sudo nano /etc/resolv.conf
-cat /etc/resolv.conf
-sudo tailscale.tmp086209034 
-tailscaled --help
-sudo nano /etc/resolv.conf
-sudo git stash && sudo git pull
-sudo /sbin/resolvconf -u && sudo git stash && sudo git pull
-sudo git stash && sudo git pull
-sudo bash /home/ubuntuserver/Programs/start_tailscale.sh 
-sudo git stash && sud ogit pull
-sudo git stash && sudo git pull
-cat /etc/resolv.conf
-curl 'dns.google'
-sudo bash setup/resolve-conf.sh 
-sudo nano setup/resolve-conf.sh 
-curl 'dns.google'
-sudo nano /etc/resolvconf/resolv.conf.d/base 
-htop
-killall dig
-sudo killall dig
-sudo killall -9 dig
-dig 1.1.1.1
-curl 'dns.google'
-sudo nano /etc/resolv.conf
-sudo bash setup/resolve-conf.sh 
-sudo nano setup/resolve-conf.sh 
-DNS_GREPIFIED=$(bash $PROG/grepify.sh ${forbidden_dns[@]})
-cp -r /etc/resolv.conf  /etc/resolv.conf.bk
-sudo nano setup/resolve-conf.sh 
-DNS_GREPIFIED=$(bash $PROG/grepify.sh ${forbidden_dns[@]})
-cp -r /etc/resolv.conf  /etc/resolv.conf.bk
-sudo su
-DNS_GREPIFIED=$(bash $PROG/grepify.sh ${forbidden_dns[@]})
-sudo resolv -u
-sudo resolvconf -u -u
-sudo resolvconf -u
-sudo rm -rf /etc/resolv.conf
-sudo ln -s /run/resolvconf/resolv.conf /etc/resolv.conf
-sudo resolvconf -u
-sudo git stash && sudo git pull
-curl 'dns.google'
-ifconfig
-ping www.google.com
-cat /etc/resolv.conf
-curl dns.google
-ping www.google.com
-cd Pihole-Slave-Install/
-sudo git stash && sudo git pull
-sudo ./setup/cron.sh 
-dig @1.1.1.1 www.google.com
-# Add Tailscale's GPG key
-sudo mkdir -p --mode=0755 /usr/share/keyrings
-curl -fsSL https://pkgs.tailscale.com/unstable/ubuntu/focal.noarmor.gpg | sudo tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null
-# Add the tailscale repository
-curl -fsSL https://pkgs.tailscale.com/unstable/ubuntu/focal.tailscale-keyring.list | sudo tee /etc/apt/sources.list.d/tailscale.list
-# Install Tailscale
-sudo apt-get update && sudo apt-get install tailscale
-sudo tailscale ip
-ifconfig
-tailscale ip
-htop
-ifconfig
-pihole -q aws.ctptech.dev
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
-htop
-cat /etc/resolv.conf
-systemctl status ctp-dns status
-systemctl status tailscale
-systemctl status tailscaled
-curl 'dns.google'
-ping www.google.com
-curl 'dns.google'
-curl 'www.google.com'
 exit
 htop
 htiop
@@ -518,3 +79,519 @@ dig www.google.com
 htop
 dig www.google.com
 ifconfig
+cd Pihole-Slave-Install/
+ifconfig
+exit
+ping 2001:470:1f10:5ba:9eeb:e8ff:fe03:da80
+ping 192.168.100.2
+ifconfig
+tailscale status
+iptables
+sudo iptables
+sudo iptables save
+sudo iptables --help
+sudo git stash && sudo git pull
+sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+aws ec2-instance-connect send-serial-console-ssh-public-key     --instance-id i-001234a4bf70dec41EXAMPLE     --serial-port 0     --ssh-public-key file://my_rsa_key.pub \
+aws ec2-instance-connect send-serial-console-ssh-public-key     --instance-id i-001234a4bf70dec41EXAMPLE     --serial-port 0     --ssh-public-key file://my_rsa_key.pub \
+cat ~/.ssh
+ks ~/.ssh
+ls ~/.ssh
+cat ~/.aws/config 
+cat ~/.aws/credentials 
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09 --help
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09 help
+aws ec2 reboot-instances help  --instance-ids i-026c86754b14d7e09
+sudo nano ~/.bashrc
+ifconfig
+sudo crontab -e
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+ifconfig eth2
+dig -t aaa dns.google
+dig -t aaaa dns.google
+dig -t aaaa one.one.one.one
+ifconfig
+ifconfig eth1
+ifconfig  -I eth1 2001:470:1f10:5ba:230:18ff:feb0:7ef
+ping6  -I eth1 2001:470:1f10:5ba:230:18ff:feb0:7ef
+ifconfig
+ping6 2001:470:1f10:5ba:230:18ff:feb0:7ef
+sudo crontab -e
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+exit
+cd $PROG
+wget https://gist.githubusercontent.com/charlieporth1/4ed2bd5809dc12ec9c5c4bd52aa2eb51/raw/0a6f59ba3686cd6c0e43d7844a2fe8388693522d/dhcp_ip_disconnect.sh
+sudo nano dhcp_ip_disconnect.sh 
+ifconfig
+sudo crontab -e
+exit
+ping 100.86.69.129
+ifconfig
+htop
+aws ec2 help
+sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
+sudo nano $prog/server-online-check.sh 
+htop
+sudo nano $prog/Hourly.sh
+sudo crontab -e
+ping gcp.ctptech.dev
+cd Pihole-Slave-Install/
+sudo crontab -e
+ping 1.1.1.1
+ping one.one.one.one
+sudo crontab -e
+sudo crontab -e
+sudo crontab -e
+ifconfig
+sudo nano $prog/white-regex-yt.sh 
+ifconfig eth2
+ifconfig eths
+ifconfig ens4
+sudo crontab -e
+htop
+cd Pihole-Slave-Install/
+ifconfig
+ifconfig eth2
+sudo crontab -e
+sudo nano /home/ubuntuserver/Programs/server-online-check.sh
+ifconfig
+sudo ip ifconfig
+ifconfig
+ifconfig eth2
+ifconfig
+ifconfig eth2
+ifconfig eth0
+ifconfig eth2
+ifconfig eth2 down
+sudo ifconfig eth2 down && sudo ifconfig eth2 up
+ifconfig eth2
+dig -t aaaa dns.google
+ping6 dns.google
+ifconfig eth2
+dig -t aaaa dns.google
+ping6 dns.google
+ifconfig eth2
+ping6 dns.google
+ifconfig eht2
+ifconfig eth2
+ping6 dns.google
+ping6 -a dns.google
+dig -t aaaa dns.google
+ifconfig eth2
+ifconfig eth0
+ifconfig eth1
+sudo nano /home/ubuntuserver/Programs/server-online-check.sh
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+ping 100.86.69.129
+pihole -t
+pihole -t=block
+pihole -t block
+cd Pihole-Slave-Install/
+sudo git stash && sudo git pull 
+sudo ./copy_config.sh 
+sudo nano /home/ubuntuserver/Programs/route-dns/ctp-dns.sh 
+exit
+ifconfig eth2
+cd Pihole-Slave-Install/
+sudo git stash && sudo git pull
+ifconfig eth1
+ifconfig eth2
+exit
+exit
+sudo nano /home/ubuntuserver/Programs/test_dns_args.sh 
+sudo nano /home/ubuntuserver/Programs/all-scripts-exports.sh 
+sudo nano $prog/test_dot.sh
+sudo nano /home/ubuntuserver/Programs/updates.sh 
+nano ~/.ssh/known_hosts 
+grep 'men' ~/.ssh/known_hosts 
+grep 'mende;' ~/.ssh/known_hosts 
+grep 'mendel' ~/.ssh/known_hosts 
+grep 'mendel' ~/.ssh/config 
+grep mendel ~/.ssh/config 
+ifconfig eth2
+exit
+cd Pihole-Slave-Install/
+exit
+ifconfig eth4
+ifconfig eth0
+ping 2001:470:1f10:5ba:230:18ff:feb0:7ef
+exit
+cd Pihole-Slave-Install/
+ping www.google.com
+sudo nano /etc/resolv.conf
+sudo nano /home/ubuntuserver/Programs/server-online-check.sh
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+curl 'www.google.com'
+sudo nano /etc/resolv.conf
+sudo nano /home/ubuntuserver/Programs/dhcp_fix.sh
+cd Pihole-Slave-Install/
+sudo nano /home/ubuntuserver/Programs/dhcp_fix.sh
+cat /etc/resolv.conf
+sudo nano /home/ubuntuserver/Programs/dhcp_fix.sh
+cat /etc/resolv.conf
+ifconfig eth2
+ifconfig eth1
+ifconfig eth0
+ifconfig  eth0
+cat /etc/resolv.conf
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+sudo nano /home/ubuntuserver/Programs/server-online-check.sh
+ aws ec2 start-instances  --instance-ids i-026c86754b14d7e09
+sudo iptables -S
+sudo ipset
+sudo ipset list | grep 174
+sudo ipset list
+sudo bash /home/ubuntuserver/Programs/iptables-load.sh 
+sudo apt install proxychains
+sudo apt purge proxychains
+sudo apt install proxychains4
+sudo apt install proxychains
+sudo apt purge proxychains
+sudo apt remove proxychains
+sudo git stash && sudo git pull
+sudo bash /home/ubuntuserver/Programs/iptables-load.sh 
+sudo cp -rf user/ /usr/
+ls /usr/
+sudo cp -rf user/ /usr/*
+sudo cp -rf user/* /usr/
+sudo git stash && sudo git pull
+sudo ./copy_config.sh 
+ifconfig
+ping www.google.com
+sudo crontab -e
+sudo nano /home/ubuntuserver/Programs/server-online-check.sh
+aws ec2 start-instances  --instance-ids i-026c86754b14d7e09
+ifconfig eth0
+ifconfig
+ping 192.168.12.237
+ping 192.168.12.237 -I eth1
+ping 192.168.12.237 
+ping -a 192.168.12.237 
+sudo nano /etc/network/interfaces.d/wlan0.conf 
+ping -a 192.168.12.237 
+ping -a 192.168.12.237 
+sudo nano /etc/rc.local
+pihole -q accounts.google.com
+pihole -w accounts.google.com
+ifconfig eth0
+ctp-dns status
+ifconfig eth0
+ifconfig eth1
+ifconfig eth2
+ifconfig eth1
+ping 2600:1f18:12f6:4eee:e116:f1be:7914:a99f
+ping 2607:fb90:9894:8589:3441:a7f1:8183:588c
+sudo nano /etc/netplan/01-static.yaml
+sudo netplan generate && sudo netplan apply
+ping 2607:fb90:9894:8589:3441:a7f1:8183:588c
+ping aws.ctptech.dev
+ping4 aws.ctptech.dev
+sudo crontab -e
+ifconfig eth1
+sudo nano /etc/netplan/01-static.yaml
+sudo netplan generate && sudo netplan apply
+sudo nano /etc/netplan/01-static.yaml
+ifconfig eth1
+sudo nano /etc/netplan/01-static.yaml
+sudo netplan generate && sudo netplan apply
+ifconfig eth1
+sudo nano /etc/netplan/01-static.yaml
+history | grep rdis
+history | grep rdi
+history | grep rd
+history | grep r
+sudo nano /etc/netplan/01-static.yaml
+ifconfig eth1
+sudo netplan generate && sudo netplan apply
+ifconfig eth1
+cd Pihole-Slave-Install/
+ifconfig eth1
+ping6 -I eth0 2607:fb90:9894:8589:2e0:4cff:fe7a:1a1 
+ifconfig eth1
+ping 2607:fb90:9894:8589:2e0:4cff:fe7a:1a1
+ping6 -I eth0 2607:fb90:9894:8589:92b:f0e4:0:2a2
+ifconfig eth2
+ifconfig eth1
+ping6 dns.google -I eth1
+ping4 dns.google -I eth1
+sudo ip route
+sudo rm /etc/netplan/04-eth1.conf 
+sudo rm /etc/netplan/05
+sudo rm /etc/netplan/05-eth2.conf 
+sudo nano/etc/netplan/01-static.yaml
+sudo nano /etc/netplan/01-static.yaml
+sudo netplan generate && sudo netplan apply
+ping dns.google
+ping dns.google -I eth2
+ping dns.google -I eth1
+ping dns.google -I eth0
+sudo nano /etc/netplan/01-static.yaml
+sudo netplan generate && sudo netplan apply
+ping dns.google -I eth1
+ping dns.google -I eth2
+ping dns.google -I eth0
+sudo nano /etc/netplan/01-static.yaml
+sudo netplan generate && sudo netplan apply
+ping dns.google -I eth1
+ping4 dns.google -I eth1
+sudo nano /etc/netplan/01-static.yaml
+sudo netplan generate && sudo netplan apply
+sudo netplan generate && sudo netplan try
+sudo nano /etc/netplan/01-static.yaml
+ping4 dns.google -I eth1
+sudo ip route
+sudo nano /etc/netplan/01-static.yaml
+sudo netplan generate && sudo netplan try
+ping4 dns.google -I eth1
+ping dns.google -I eth1
+sudo nano /etc/netplan/01-static.yaml
+sudo netplan generate && sudo netplan try
+sudo nano /etc/netplan/01-static.yaml
+sudo netplan generate && sudo netplan try
+ping dns.google -I eth1
+ping4 dns.google -I eth1
+ping4 dns.google -I eth2
+ping dns.google -I eth1
+sudo nano /etc/netplan/01-static.yaml
+sudo netplan generate && sudo netplan try
+ping dns.google -I eth1
+ping4 dns.google -I eth2
+ping6 dns.google -I eth2
+sudo nano /etc/netplan/01-static.yaml
+sudo netplan generate && sudo netplan try
+ping dns.google -I eth1
+ping4 dns.google -I eth1
+ping dns.google -I eth1
+sudo nano /etc/netplan/01-static.yaml
+sudo ip route 6
+sudo ip -6 route
+sudo ip -6 route | grep eth1
+dhcpcd --help
+sudo nano /etc/dhcpcd.conf 
+ifconfig eth1
+sudo nano /etc/netplan/01-static.yaml
+sudo netplan generate && sudo netplan try
+ifconfig eth1
+ping dns.google -I eth1
+ping4 dns.google -I eth1
+sudo nano /etc/netplan/01-static.yaml
+sudo netplan generate && sudo netplan try
+ping4 dns.google -I eth1
+ifconfig eth1
+sudo nano /etc/netplan/01-static.yaml
+sudo netplan generate && sudo netplan try
+ifconfig eth1
+sudo nano /etc/netplan/01-static.yaml
+sudo netplan generate && sudo netplan try
+ifconfig eth1
+ping4 dns.google
+ping4 dns.google -I eth1
+pihole -w accounts.google.com
+ping4 dns.google -I eth1
+ping dns.google -I eth1
+ping4 dns.google -I eth1
+ping dns.google -I eth1
+pihole -t
+cd Pihole-Slave-Install/
+sudo nano /etc/nginx/sites-enabled/home.conf 
+ifconfig
+sudo nano /etc/nginx/sites-enabled/OpenAppDrawer.on.TV.conf
+bash /home/ubuntuserver/Programs/pihole-f.sh
+pihole -t
+sudo nano ~/start_osint.sh 
+suo nano /home/ubuntuserver/osint-scraper/run
+ifconfiig eth1
+ifconfig eth1
+sudo nano /etc/netplan/01-static.yaml
+sudo nano /etc/netplan/01-static.yaml
+sudo nano /etc/netplan/01-static.yaml
+sudo netplan generate && sduo netplan apply
+sudo netplan generate && sudo netplan apply
+ifconfig eth0
+ifconfig
+sudo nano $sites/chrome_man_password_save.conf 
+sudo nano $sites/home.conf 
+sudo nano $sites/osint.conf
+sudo nano $sites/osint.conf
+sudo cp -rf $sites/home.conf  $sites/osint.conf
+sudo nano $sites/osint.conf
+sudo nano $sites/osint.conf
+sudo nano $prog/ctp-dns.service 
+sudo nano $sites/osint.conf
+sudo nano $prog/ctp-dns.service 
+sudo nano $sites/osint.conf
+sudo nano $sites/osint.conf
+sudo systemctl restart nginx
+sudo systemctl restart nginx
+sudo nano $sites/osint.conf
+sudo nginx 0t
+sudo nginx -t
+sudo nano $sites/osint.conf
+sudo nano $sites/osint.conf
+sudo nginx -t
+sudo systemctl restart nginx
+sudo nano $sites/osint.conf
+sudo nano $sites/osint.conf
+tail -f $log/nginx/home-*.log
+sudo tail -f $log/nginx/home-*.log
+sudo nano $sites/osint.conf
+sudo tail -f $log/nginx/home-*.log
+sudo nano $nginx/.htpasswd 
+sudo tail -f $log/nginx/home-*.log
+sudo nano $nginx/.htpasswd 
+sudo nano $sites/osint.conf
+sudo nano ~/start_osint.sh 
+ifconfig 
+dig www.google.com
+sudo nano /etc/resolv.conf
+ping fe80::6e3b:6bff:fe7e:ff36
+ping6 fe80::6e3b:6bff:fe7e:ff36
+ping fe80::6e3b:6bff:fe7e:ff36
+dig www.google.com
+sudo nano /etc/resolv.conf
+dig www.google.com
+dig www.google.com @1.1.1.1
+sudo netplan generate && sudo netplan apply
+dig www.google.com @1.1.1.1
+dig www.google.com @1.1.1.1 +short
+sudo nano /home/ubuntuserver/Programs/dhcp_fix.sh
+sudo nano /etc/nginx/sites-enabled/OpenAppDrawer.on.TV.conf
+sudo nano /etc/nginx/sites-enabled/OpenAppDrawer.on.TV.conf.og 
+ls /var/www/html/openResty/
+ls /var/www/html/openResty/open-android-tv-app-drawer.sh 
+nano /var/www/html/openResty/open-android-tv-app-drawer.sh 
+sudo nano $sites/nasa.conf
+sudo cp -rf /etc/nginx/sites-enabled/osint.conf $sites/nasa.conf
+sudo nano $sites/nasa.conf
+sudo nano $snippets/tailscaled_acl.conf
+sudo nano $sites/nasa.conf
+sudo nano $snippets/tailscaled_acl.conf
+sudo nano $sites/nasa.conf
+sudo nano /etc/nginx/sites-enabled/osint.conf 
+sudo nano $sites/nasa.conf
+sudo nano $snippets/tailscaled_acl.conf
+sudo nano $sites/nasa.conf
+sudo nano /etc/nginx/sites-enabled/osint.conf 
+sudo nano $sites/nasa.conf
+sudo nginx -t
+sudo systemctl restart nginx
+sudo nano etc/nginx/ctp.dev/02-upstream-server-core.conf
+sudo nano /etc/nginx/ctp.dev/02-upstream-server-core.conf
+sudo systemctl restart nginx
+systemctl status asn.service 
+sudo nano /etc/nginx/ctp.dev/02-upstream-server-core.conf
+sudo nano /etc/nginx/sites-enabled/osint.conf 
+sudo nano /etc/nginx/ctp.dev/02-upstream-server-core.conf
+sudo nano /etc/nginx/sites-enabled/osint.conf 
+systemctl status asn.service 
+sudo systemctl edit --full asn.service 
+sudo systemctl daemon-reload && sudo systemctl restart asn.service 
+systemctl status asn.service 
+sudo nano /etc/resolv.conf
+exit
+pihole -w login.tailscale.com
+sudo bash /home/ubuntuserver/Programs/copy_gravity.sh 
+ping 192.168.44.237
+ping 192.168.44.99
+ping 192.168.44.97
+ifconfig
+ifconfig
+pihole -t
+ctp-dns -t
+sudo nano /etc/rc.local
+ctp-dns -t
+cd Pihole-Slave-Install/
+sudo git stash && sudo git pull
+ifconfig
+ctp-dns -t
+sudo ctp-dns -t
+chmod 777 /usr/local/bin/ctp-dns
+sudo chmod 777 /usr/local/bin/ctp-dns
+sudo ctp-dns -t
+dig www.google.com
+cd Pihole-Slave-Install/
+ifconfig
+tailscale status
+sudo nano /home/ubuntuserver/Programs/server-online-check.sh
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+sudo nano /home/ubuntuserver/Programs/all-scripts-exports.sh 
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+tailscale status
+sudo ctp-dns -t
+cd Pihole-Slave-Install/
+sudo git stash && sudo git pull
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+ctp-dns -t
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+sudo nano /home/ubuntuserver/Programs/all-scripts-exports.sh 
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+sudo nano /home/ubuntuserver/Programs/server-online-check.sh
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+cd Pihole-Slave-Install/
+ssh 100.86.69.129
+    aws ec2 stop-instances   --instance-ids i-026c86754b14d7e09
+killall aws
+killall -9 aws
+  aws ec2 stop-instances   --instance-ids i-026c86754b14d7e09
+        aws ec2 terminate-instances --instance-ids i-026c86754b14d7e09
+        aws ec2 start-instances  --instance-ids i-026c86754b14d7e09
+        aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+ aws ec2 terminate-instances --instance-ids i-026c86754b14d7e09
+sudo nano /home/ubuntuserver/Programs/server-online-check.sh
+        aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+  aws ec2 stop-instances   --instance-ids i-026c86754b14d7e09
+        aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+        aws ec2 start-instances  --instance-ids i-026c86754b14d7e09
+tailscale status
+bash /home/ubuntuserver/Programs/pihole-f.sh
+bash $PROG/get_network_devices_ip_address.sh --default
+bash $PROG/get_network_devices_ip_address.sh --default --single-one
+bash $PROG/get_network_devices_ip_address.sh --default --single
+hc-log
+sudo crontab -e
+hc-log
+sudo crontab -e
+sudo nano /home/ubuntuserver/Programs/server-online-check.sh
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+htop
+tail -f $LOG/server-health-check.log
+        aws ec2 start-instances  --instance-ids i-026c86754b14d7e09
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+sudo systemctl edit --full tailscale
+sudo systemctl edit --full tailscaled
+ping aws.ctptech.dev
+ping4 aws.ctptech.dev
+ssh -4 gcp.ctptech.dev
+ping aws.ctptech.dev
+ssh aws.ctptech.dev.local 
+ssh aws.ctptech.dev
+aws ec2-instance-connect send-serial-console-ssh-public-key     --instance-id i-001234a4bf70dec41EXAMPLE     --serial-port 0     --ssh-public-key file://my_rsa_key.pub \
+aws ec2-instance-connect send-serial-console-ssh-public-key     --instance-id i-001234a4bf70dec41EXAMPLE     --serial-port 0     --ssh-public-key file://my_rsa_key.pub     --region us-east-1
+aws ec2-instance-connect send-serial-console-ssh-public-key     --instance-id i-026c86754b14d7e09  --serial-port 0     --ssh-public-key file://my_rsa_key.pub     --region us-east-1
+s ~/.ssh
+ls ~/.ssh
+exit
+aws ec2-instance-connect send-serial-console-ssh-public-key     --instance-id i-026c86754b14d7e09  --serial-port 0     --ssh-public-key file://~/.ssh/ctptechfree1.aws.pem     --region us-east-1
+aws ec2-instance-connect send-serial-console-ssh-public-key     --instance-id i-026c86754b14d7e09  --serial-port 0     --ssh-public-key file://my_rsa_key.pub     --region us-east-1
+pihole -q console.aws.amazon.com
+pihole -t
+bash /home/ubuntuserver/Programs/pihole-f.sh
+pihole -t
+cd Pihole-Slave-Install/
+sudo git stash && sudo git pull
+cd Pihole-Slave-Install/
+sudo git stash && sudo git pull
+pihole -t
+hc-log
+sudo crontab -e
+tail -f $LOG/server-health-check.log
+sudo crontab -e
+tail -f $LOG/server-health-check.log
+sudo crontab -e
+sudo nano bash $PROG/server-online-check.sh
+bash $PROG/test_dns.sh -a aws.ctptech.dev
+sudo nano$PROG/server-online-check.sh
+sudo nano $PROG/server-online-check.sh
+bash $PROG/test_dns.sh -a aws.ctptech.dev

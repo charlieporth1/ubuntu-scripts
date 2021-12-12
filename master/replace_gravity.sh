@@ -14,7 +14,8 @@ OK_STR='ok'
 term_str="Terminated"
 status_str="$OK_STR\|$term_str"
 query_str="$(uuidgen)--salty"
-export byte_size=$(( 1024 * 1024 * 1024 ))
+# ALREADY IN KB
+export byte_size=$(( 0 ))
 export min_gravity_size=$(( $byte_size * 64 ))
 
 shopt -s expand_aliases
@@ -98,7 +99,7 @@ function size_test() {
 	local db_file_input="$1"
         local db_file="${db_file_input:=$DB_FILE}"
 	local size_in_bytes=`ls -s $db_file | awk '{print $1}'`
-	if [[ $size_in_bytes -ge $min_gravity_size ]]; then
+	if [[ $size_in_bytes > $min_gravity_size ]]; then
 		echo "true"
 	else
 		echo "false"

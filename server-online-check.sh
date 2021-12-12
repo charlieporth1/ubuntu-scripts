@@ -2,11 +2,11 @@
 source $PROG/all-scripts-exports.sh
 echo "Running: `date`"
 server="$1"
-
+server_timeout=16
 function server-health-check() {
 	local server="${1:-aws.ctptech.dev}"
 	local port="${2:-22}"
-	if [[ `ip_exists "$server" 6 eth0` = 'false' ]] && [[ `ip_exists "$server" 6 eth1` = 'false' ]] || [[ `health_check_remote_port_tcp "$server" "$port"` == 'false' ]] ; then
+	if [[ `ip_exists "$server" $server_timeout eth0` = 'false' ]] && [[ `ip_exists "$server" $server_timeout eth1` = 'false' ]] || [[ `health_check_remote_port_tcp "$server" "$port"` == 'false' ]] ; then
 		debug_log "Server $server is unhealthy rebooting"
 		echo "false"
 	else
@@ -34,8 +34,9 @@ function reboot_timer() {
 }
 
 function aws_restart() {
-	aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-	aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+#	aws ec2 stop-instances   --instance-ids i-026c86754b14d7e09
+#	aws ec2 terminate-instances --instance-ids i-026c86754b14d7e09
+	aws ec2 start-instances  --instance-ids i-026c86754b14d7e09
 	aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
 }
 
@@ -77,7 +78,7 @@ if [[ `server-health-check 1.1.1.1 53` = 'true' ]] && [[ `server-health-check on
 			dot_result=`bash $PROG/test_dot.sh -a $server`
 			dns_result=`bash $PROG/test_dns.sh -a $server`
 			if [[ `health_check_remote_port_tcp "$server" "853"` = 'true' ]] && [[ `health_check_remote_port_tcp "$server" "53"` = 'true' ]]; then
-				if [[ $dot_result = 'false' ]] && [[ $dns_result = 'false' ]]; then
+				if [[ $dot_result = 'true' ]] && [[ $dns_result = 'true' ]]; then
 					echo "Server $server is unhealthy rebooting dig dug"
 					aws_restart
 			else

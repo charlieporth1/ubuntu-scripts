@@ -44,11 +44,11 @@ fi
 #			bash $PROG/copy_gravity.sh --health-check-gravity &
 			bash $PROG/pihole-db-sql-changes.sh
 		fi
+		bash $PROG/copy_gravity.sh --health-check-gravity &
 	else
 	        sleep 10
 	        # This should always come after because it will unblock
 	        sudo cgexec -g cpu:fourthcpulimied -g memory:512MBRam /bin/bash $PROG/set_fail2ban-defaults.sh
 
         fi
-	bash $PROG/copy_gravity.sh --health-check-gravity &
 )&

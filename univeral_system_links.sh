@@ -31,6 +31,9 @@ sudo ln -s $DEFAULT_PROG/cat_comments.sh /usr/local/bin/cat_comments
 sudo ln -s $DEFAULT_PROG/cat_comments.sh /usr/local/bin/ccat.sh
 sudo ln -s $DEFAULT_PROG/cat_comments.sh /usr/local/bin/ccat
 
+sudo ln -s $DEFAULT_PROG/ctp-pihole.sh /usr/local/bin/ctp-pihole.sh
+sudo ln -s $DEFAULT_PROG/ctp-pihole.sh /usr/local/bin/ctp-pihole
+
 # LN $ROUTE
 sudo ln -s $ROUTE/ctp-dns.sh /usr/local/bin/ctp-dns
 sudo ln -s $ROUTE/ctp-dns.sh /usr/local/bin/
@@ -40,9 +43,10 @@ sudo chmod 777 $ROUTE/ctp-dns.sh
 sudo chmod 777 $DEFAULT_PROG/{regexify,grepify,new_linify,csvify}.sh
 sudo chmod 777 $DEFAULT_PROG/{cat_comments,netpid}.sh
 sudo chmod 777 $DEFAULT_PROG/timeout3
+sudo chmod 777 $DEFAULT_PROG/ctp-pihole.sh
 
 # CHMOD /usr/local/bin/
-sudo chmod 777 /usr/local/bin/ctp-dns{,.sh}
+sudo chmod 777 /usr/local/bin/ctp-{dns,pihole}{,.sh}
 sudo chmod 777 /usr/local/bin/{regexify,grepify,new_linify,{de,}csvify}{,.sh}
 sudo chmod 777 /usr/local/bin/{cat_comments,ccat,netpid}{,.sh}
 sudo chmod 777 /usr/local/bin/{timeout3,certbot-ocsp-fetcher}

@@ -1,3 +1,9 @@
+www.maxmind.com
+www.cyberciti.biz
+maps.sp0n.io
+.sp0n.io
+sp0n.io
+citizen.com
 .au
 .auction
 .be
@@ -25,6 +31,7 @@
 .tech
 .top
 .us
+.tailscale.com
 0.gravatar.com
 1.gravatar.com
 2.gravatar.com

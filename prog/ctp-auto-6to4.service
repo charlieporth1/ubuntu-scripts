@@ -51,7 +51,7 @@ LogsDirectory=ctp-auto-6to4
 CPUQuota=25%
 IOSchedulingPriority=5
 
-Nice=19
+Nice=10
 Type=forking
 PIDFile=/run/ctp-auto-6to4.pid
 

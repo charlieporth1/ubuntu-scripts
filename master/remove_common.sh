@@ -39,7 +39,9 @@ pihole --regex -d "google" "-" "\-" "up" "\.co$" "\.com$" "\.io$" "\.go$" '(.*;q
 '(^|.)((yandex|qq|tencent).(net|com|org|dev|io|sh|cn|ru)|qq|local|localhost|query|sl|(^.$))' \
         '(^|.)(jujxeeerdcnm.intranet|w|aolrlgqh.intranet|((.)?)intranet)' \
         '(^|.)(jujxeeerdcnm.ntranet|w|aolrlgqh.ntranet|((.)?)intranet)' \
-        '(^|.)((yandex|qq|tencent).(net|com|org|dev|io|sh|cn|ru)|qq|local|localhost|query|sl|(^.$)|cn-geo1.uber.com|metadata.google.internal|((.)?)in-addr.arpa)'
+'(^|\.)(jujxeeerdcnm\.intranet|\w|aolrlgqh\.intranet|((\.)?)intranet|od\.lk|www\.gbnews\.uk|ocdn\.eu|www\.foxtel\.com\.au|gdl\.singbox\.sg|\.sg|socks\.live\.bigo\.sg)' \
+        '(^|.)((yandex|qq|tencent).(net|com|org|dev|io|sh|cn|ru)|qq|local|localhost|query|sl|(^.$)|cn-geo1.uber.com|metadata.google.internal|((.)?)in-addr.arpa)' \
+'^[a-z]{7,15}$' '^[a-z].([0-9]+|ad[^d]|click|coun(t|ter)|tra[ck](k|ker|king))' 'to'
 
 sleep 1.5s
 
@@ -47,13 +49,13 @@ pihole -b -d appspot.com sc-cdn.net developers.google.com suggestqueries.google.
 sleep 1.5s
 pihole -w googlevideo.com appspot.com gvt1.com gvt2.com suggestqueries.google.com www.google.com google.com developers.google.com
 sleep 0.5s
-pihole -w -d ssl.google-analytics.com app-measurement.com static.doubleclick.net ad.doubleclick.net
+pihole -w -d ssl.google-analytics.com app-measurement.com static.doubleclick.net ad.doubleclick.net realtor.com
 #pihole -w -d device-metrics-us-2.amazon.com device-metrics-us.amazon.com mads.amazon-adsystem.com s.amazon-adsystem.com app-measurement.com \
 #aax-us-east.amazon-adsystem.com ssl.google-analytics.com
 sleep 0.5s
 #pihole -b aan.amazon-adsystem.com aax-us-pdx.amazon-adsystem.com aax.amazon-adsystem.com app-measurement.com device-metrics-us-2.amazon.com device-metrics-us.amazon.com \
 #mads.amazon-adsystem.com s.amazon-adsystem.com aax-us-east.amazon-adsystem.com ssl.google-analytics.com
-pihole -b ssl.google-analytics.com app-measurement.com static.doubleclick.net ad.doubleclick.net
+pihole -b ssl.google-analytics.com app-measurement.com static.doubleclick.net ad.doubleclick.net imasdk.googleapis.com
 
 D='''
 sleep 1.5s
@@ -62,7 +64,8 @@ echo "starting remove blacklist"
 pihole -b -l | grep --line-buffer "$RM_LIST" | awk '{print $2}' | parallel -P 1 -j4 --xargs -m -m --lb --no-run-if-empty pihole -b -d
 sleep 1.5s
 echo "starting remove whitelist"
-pihole -w -l | grep --line-buffer "$RM_LIST" | awk '{print $2}' | parallel -P 1 -j4 --xargs -m --lb --no-run-if-empty pihole -w -d
+pihole -w -l | grep --line-buffer "$RM_LIST" | awk '{print $2}' | parallel -P 1 -j4 --xargs -m --lb \
+	--no-run-if-empty pihole -w -d
 sleep 1.5s
 '''
 

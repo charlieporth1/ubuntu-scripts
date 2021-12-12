@@ -5,9 +5,21 @@ export S_ONE="$1"
 [[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(p|preload)'` ]] && export PRELOAD=true || export PRELOAD=false
 [[ "$S_ONE" == "-a" ]] && export isAuto="+short"
 
-if [[ "$PRELOAD" == 'false' ]]; then
-source $PROG/all-scripts-exports.sh --no-log
-CONCURRENT
+export PORT=53
+export A_PORT=5053
+export E_PORT=853
+export H_PORT=443
+export Q_PORT=8853
+export QH_PORT=1443
+
+export local_interface="ctp-vpn.local"
+export server_input="${2}"
+export server="${server_input:=$local_interface}"
+export qname="${3:-www.google.com}"
+export qtype="${4:-A}"
+export QUERY="$qname"
+
+export DEFAULT_DNS_ARGS="+tries=$TRIES +dnssec +ttl +edns +timeout=$TIMEOUT -t $qtype -4 +retry=$TRIES +ttlunits"
 
 export WAIT_TIME=5.5s # TO RESTART NEXT
 export TIMEOUT=6 # DNS
@@ -15,12 +27,10 @@ export TRIES=3
 export HOST=dns.ctptech.dev
 export EDNS=174.53.130.17
 
-export PORT=53
-export A_PORT=5053
-export E_PORT=853
-export H_PORT=443
-export Q_PORT=8853
-export QH_PORT=1443
+
+if [[ "$PRELOAD" == 'false' ]]; then
+source $PROG/all-scripts-exports.sh --no-log
+CONCURRENT
 
 export DNS_IP=$(bash $PROG/grepify.sh $(bash $PROG/get_ext_ip.sh))
 export EXTENRAL_IP=`bash $PROG/get_ext_ip.sh  --current-ip`
@@ -39,14 +49,6 @@ fi
 #export EXCLUDE_IP="$DNS_IP\|0.0.0.0\|$ROOT_NETWORK"
 
 
-export local_interface="ctp-vpn.local"
-export server_input="${2}"
-export server="${server_input:=$local_interface}"
-export qname="${3:-www.google.com}"
-export qtype="${4:-A}"
-export QUERY="$qname"
-
-export DEFAULT_DNS_ARGS="+tries=$TRIES +dnssec +ttl +edns +timeout=$TIMEOUT -t $qtype -4 +retry=$TRIES +ttlunits"
 
 if ! command -v grepip &> /dev/null
 then
@@ -68,13 +70,6 @@ if [[ -z $EXTENRAL_IP ]]; then
 fi
 
 
-dns_logger() {
-	local argments="$@"
-	if [[ "$server" == "$local_interface" ]] && [[ '-a' != "$S_ONE" ]]; then
- 	       echo "$argments"
-	fi
-}
-
 function run_fail_automation_action() {
 	if [[ "$server" == "$local_interface" ]] && [[ '-a' = "$S_ONE" ]]; then
 		echo 'false'
@@ -93,6 +88,14 @@ function if_plain_dns_fail() {
 	fi
 }
 fi
+
+dns_logger() {
+	local argments="$@"
+	if [[ "$server" == "$local_interface" ]]; then
+ 	       echo "$argments"
+	fi
+}
+
 function ctp_dns_lock_file_fix_check() {
 	echo "LOCK FILE $CTP_DNS_LOCK_FILE"
         echo "Creating logging and starting nginx incase nginx failed and blocklist failed to load due to webserver down and list unable to load...."

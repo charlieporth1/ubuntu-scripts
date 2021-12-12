@@ -24,7 +24,7 @@ LogsDirectory=pihole-loadbalancer-ctp-dns
 CPUQuota=25%
 IOSchedulingPriority=0
 
-Nice=10
+Nice=5
 Type=exec
 PIDFile=/run/pihole-loadbalancer-ctp-dns.pid
 
@@ -53,11 +53,11 @@ RestartSec=30s
 StandardOutput=append:/var/log/pihole-loadbalancer-ctp-dns/access.log
 StandardError=append:/var/log/pihole-loadbalancer-ctp-dns/error.log
 
-TTYPath=/dev/tty0
+TTYPath=/dev/tty4
 TTYReset=yes
 TTYVHangup=yes
 
-TimeoutStartSec=6m
+TimeoutStartSec=1m
 TimeoutStopSec=30s 
 
 [Install]

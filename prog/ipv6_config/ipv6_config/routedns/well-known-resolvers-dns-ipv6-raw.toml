@@ -1,0 +1,53 @@
+
+# GOOOGLE
+[resolvers.google-tcp-ipv6-ip-1]
+address = "2001:4860:4860:0:0:0:0:8888:53"
+protocol = "tcp"
+
+[resolvers.google-udp-ipv6-ip-1]
+address = "2001:4860:4860:0:0:0:0:8888:53"
+protocol = "udp"
+
+[resolvers.google-tcp-ipv6-ip-2]
+address = "2001:4860:4860:0:0:0:0:8844:53"
+protocol = "tcp"
+
+[resolvers.google-udp-ipv6-ip-2]
+address = "2001:4860:4860:0:0:0:0:8844:53"
+protocol = "udp"
+
+# CLOUDLFARE
+[resolvers.cloudflare-tcp-ipv6-ip-1]
+address = "2606:4700:4700::1111:53"
+protocol = "tcp"
+
+[resolvers.cloudflare-udp-ipv6-ip-1]
+address = "2606:4700:4700::1111:53"
+protocol = "udp"
+
+[resolvers.cloudflare-tcp-ipv6-ip-2]
+address = "2606:4700:4700::1001:53"
+protocol = "tcp"
+
+[resolvers.cloudflare-udp-ipv6-ip-2]
+address = "2606:4700:4700::1001:53"
+protocol = "udp"
+
+# CLOUDLFARE ANTI MALWARE
+[resolvers.cloudflare-malware-tcp-ipv6-ip-1]
+address = "2606:4700:4700::1112:53"
+protocol = "tcp"
+
+[resolvers.cloudflare-malware-udp-ipv6-ip-2]
+address = "2606:4700:4700::1112:53"
+protocol = "udp"
+
+[resolvers.cloudflare-malware-tcp-ipv6-ip-2]
+address = "2606:4700:4700::1002:53"
+protocol = "tcp"
+
+[resolvers.cloudflare-malware-udp-ipv6-ip-2]
+address = "2606:4700:4700::1002:53"
+protocol = "udp"
+
+
