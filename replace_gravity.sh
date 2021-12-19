@@ -360,7 +360,7 @@ function after_transfer_gravity() {
 	pihole --regex -d '(^|.)((yandex|qq|tencent).(net|com|org|dev|io|sh|cn|ru)|qq|local|localhost|query|sl|(^.$))' \
 	        '(^|.)(jujxeeerdcnm.intranet|w|aolrlgqh.intranet|((.)?)intranet)' \
 	        '(^|.)(jujxeeerdcnm.ntranet|w|aolrlgqh.ntranet|((.)?)intranet)'
-
+	pihole -w www.google.com playatoms-pa.googleapis.com www.google.com stackoverflow.com firebaseremoteconfig.googleapis.com
 	local sleep_time=2s
 	sleep $sleep_time
 	local RUN_FILE=$PROG/regex.sh

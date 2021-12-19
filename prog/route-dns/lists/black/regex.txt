@@ -40,7 +40,7 @@
 (^|\.)(unityads(\.co)?|unity(3d)?|treasuredata|redshell|bugsnag|buffpanel|samsungads|etargetnet|experience\.tinypass|yovoads|t\.eloqua)\.com$
 (^|\.)adocean\.pl$
 (^|\.|[\.\-])?(telemetr[iy]|(evil[s]?)tra[ck](k|king|ker)|[s]?trk|utm|video[-]?stat)[sz]?[0-9]?[\.\-]?
-(^|\.|[\.\-])?[0-9]?(click|php|preroll|text|web|[mwxy])?ad[sxz]?[0-9]?[\.-]
+(^|\.|[\.\-])?[0-9]?(click|php|preroll|text|web|[mwxy])?ad[sxz][0-9][\.-]
 (^|\.|[\.\-])?ad([v]?server[a-z]?|shuffle|sl|sy(s|stem)|test|(v|ve(r|rt|rtis(e|er|ing)))|trac(k|ker|king[-]?[a-z]?|ker)|wise|word|yield)[sxz]?[0-9]?[\.\-]?
 (^|\.|[\.\-])?ad(aly[sz]er|am|banner|bureau|click|dynamo|farm|hese|im[a]?g[e]?|info|ition|just|k2|load|log([^(in|out)])(ger|ing)|media|ma(n|nager|x)|ne(t[a-z]+|xus)|nxs|ocean|renaline|revolver|rotat(e|or)|science|script|sense|spirit|[v\-]?s[e]?r(v|ve|ver|vi(ce|ng))|stat|stream)[sxz]?[0-9]?[\.\-]
 (^|\.|www\.)(yandex|qq|tencent)\.(cn|ru|net|com|org)$

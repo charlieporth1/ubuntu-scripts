@@ -1,0 +1,5 @@
+#(us-(east|central|west)(|[0-9])-|)(gcp|aws)\.api\.(snapchat\.com|sc-gw\.com)
+#^(us-(east|central|west)(|[0-9])-|)(gcp|aws)\.api\.(snapchat|sc-gw)\.com$
+^us-(east|central|west)[0-9]?-(gcp|aws)\.api\.(snapchat|sc-gw)\.com$
+(^|\.|duplex)(gcp|aws)\.api\.(snapchat|sc-gw)\.com$
+(^|\.)chat\.snapchat\.com$

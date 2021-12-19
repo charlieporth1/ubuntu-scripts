@@ -3,7 +3,7 @@ source /etc/environment
 DEFAULT_PROG=${PROG:=$CONF_PROG_DIR}
 
 # LN EXYRA
-sudo ln -s /etc/fail2ban/filter.d/ctp-custom-vars.conf   /etc/fail2ban/filter.d/common.local
+sudo ln -s /etc/fail2ban/filter.d/ctp-custom-vars.conf /etc/fail2ban/filter.d/common.local
 
 sudo ln -s $PROG/{ctp-dns,nginx-dns-rfc,ctp-fail-over-dns,ctp-auto-6to4,ctp-network-zeroteir}.service /etc/systemd/system/
 

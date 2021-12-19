@@ -25,7 +25,6 @@ bootstrap-address = "174.53.130.17"
 
 [resolvers.ctp-dns_home-doh-post]
 address = "https://dns.ctptech.dev:4443/dns-query{?dns}"
-#address = "https://home.ctptech.dev:443/dns-query"
 protocol = "doh"
 bootstrap-address = "174.53.130.17"
 
@@ -57,7 +56,7 @@ address = "https://dns.ctptech.dev:1443/dns-query"
 protocol = "doh"
 transport = "quic"
 doh = { method = "GET" }
-bootstrap-address = "174.53.130.178"
+bootstrap-address = "174.53.130.17"
 
 ### GCP
 

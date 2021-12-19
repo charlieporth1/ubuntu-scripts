@@ -1,6 +1,7 @@
 #!/bin/bash
 echo "Run Date: `date`"
 source $PROG/all-scripts-exports.sh
+CONCURRENT
 TIMEOUT=2
 TRIES=2
 FILE_W=$HOLE/quick-whitelist.list
@@ -58,8 +59,7 @@ if [[ -n "$BLACK_DOMAINS" ]]; then
 	echo "Blacklisting $BLACK_DOMAINS"
 	pihole -b $BLACK_DOMAINS doubleclick.net
 	pihole -w -d $BLACK_DOMAINS doubleclick.net
-	ccat $HOLE/apple-blacklist.list | xargs pihole -b > /dev/null
-	ccat $HOLE/google-blacklist.list | xargs pihole -b > /dev/null
+
 else
 	echo "Nothing to blacklist"
 fi
@@ -68,11 +68,21 @@ if [[ -n "$WHITE_DOMAINS" ]]; then
 	echo "Whitelisting $WHITE_DOMAINS"
 	pihole -w $WHITE_DOMAINS
 	pihole -b -d $WHITE_DOMAINS
-	ccat $HOLE/amazon-whitelist.list | xargs pihole -w > /dev/null
 else
 	echo "Nothing to whitelist"
 fi
-'
+ccat $HOLE/apple-blacklist.list | xargs pihole -b
+ccat $HOLE/google-blacklist.list | xargs pihole -b
+
+ccat $HOLE/ticwatch-blacklist.list | xargs pihole -b
+ccat $HOLE/amazon-blacklist.list | xargs pihole -b
+
+ccat $HOLE/ticwatch-whitelist.list | xargs pihole -w
+ccat $HOLE/amazon-whitelist.list | xargs pihole -w
+
+
 pihole -b firebaselogging-pa.googleapis.com ${DOMAINS_TO_TEST_BLACK[@]}
-pihole -w playatoms-pa.googleapis.com www.google.com stackoverflow.com firebaseremoteconfig.googleapis.com  ${DOMAINS_TO_TEST_WHITE[@]}
+pihole -w playatoms-pa.googleapis.com www.google.com stackoverflow.com firebaseremoteconfig.googleapis.com ${DOMAINS_TO_TEST_WHITE[@]}
+ccat $FILE_B | xargs pihole -b
+ccat $FILE_W | xargs pihole -w
 echo "Done Date: `date`"

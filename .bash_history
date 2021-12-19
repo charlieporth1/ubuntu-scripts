@@ -1,597 +1,513 @@
-exit
-htop
-htiop
-pihole --white-regex \\.local
- pihole --white-regex \\.local
-ping -a 192.168.44.247
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
-ifconfig
-curl 'https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/'
-curl 'https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/amazon-blacklist.list'
-sudo apt upgrade
-pihole -w myip.ms
-pihole -w ipstack.com
-pihole -w hackertarget.com
-ping 192.168.44.243
-ssh 192.168.44.243
-ssh admin@192.168.44.243
-exit
-nano ~/reverse_ssh.sh 
-ifconfig
-sudo nano /etc/dhcpcd.conf 
-ifconfig eth2
-sudo nano /etc/dhcpcd.conf 
-sudo nano /etc/netplan/01-static.yaml
-sudo ip add
-ping 192.168.42.1
-sudo nano /home/ubuntuserver/Programs/dhcp_fix.sh
-      sudo netplan generate
-        sudo netplan apply
-ifconfig eth2
-sudo ip -6 add show dev eth2
-ifconfig
-ping6 dns.google -I eth2
-ifconfig eth2
-      sudo netplan generate && sudo netplan app;y
-      sudo netplan generate && sudo netplan apply
-ifconfig eth2
-ping6 dns.google -I eth2
-ifconfig eth2
-      sudo netplan generate && sudo netplan apply
-'
-exit
-ifconfig
-ifconfig eth2
-sudo ifconfig eth2 down
-sudo ifconfig eth2 up
-ifconfig eth2
-ping6 dns.google
-ssh 2001:470:1f10:5ba::2
-ifconfig eth2
-ping6 dns.google -I eth2
-touch /d
-sudo touch /d
-sudo rm -rf /d
-ifconfig
-ifconfig 
 ifconfig eth1
-iexit
-exit
-ifconfig eth1
-ifconfig 
-cd Pihole-Slave-Install
-ifconfig
-sudo git stash && sudo git pull
-chmod 777 /usr/local/bin/timeout3
-sudo chmod 777 /usr/local/bin/timeout3
-sudo git stash && sudo git pull
-sudo crontab 0e
-sudo crontab -e
-bash $PROG/server-online-check.sh aws.ctptech.dev
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-ifconfig
-dig @2001:470:1f10:5ba:230:18ff:feb0:7ef
-git clone v
-git clone https://github.com/Spiritdude/nodemcu-shell
-sudo nano /etc/resolv.conf
-dig www.google.com
-htop
-dig www.google.com
-ifconfig
-cd Pihole-Slave-Install/
-ifconfig
-exit
-ping 2001:470:1f10:5ba:9eeb:e8ff:fe03:da80
-ping 192.168.100.2
-ifconfig
-tailscale status
-iptables
-sudo iptables
-sudo iptables save
-sudo iptables --help
-sudo git stash && sudo git pull
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-aws ec2-instance-connect send-serial-console-ssh-public-key     --instance-id i-001234a4bf70dec41EXAMPLE     --serial-port 0     --ssh-public-key file://my_rsa_key.pub \
-aws ec2-instance-connect send-serial-console-ssh-public-key     --instance-id i-001234a4bf70dec41EXAMPLE     --serial-port 0     --ssh-public-key file://my_rsa_key.pub \
-cat ~/.ssh
-ks ~/.ssh
-ls ~/.ssh
-cat ~/.aws/config 
-cat ~/.aws/credentials 
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09 --help
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09 help
-aws ec2 reboot-instances help  --instance-ids i-026c86754b14d7e09
-sudo nano ~/.bashrc
-ifconfig
-sudo crontab -e
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-ifconfig eth2
-dig -t aaa dns.google
-dig -t aaaa dns.google
-dig -t aaaa one.one.one.one
-ifconfig
-ifconfig eth1
-ifconfig  -I eth1 2001:470:1f10:5ba:230:18ff:feb0:7ef
-ping6  -I eth1 2001:470:1f10:5ba:230:18ff:feb0:7ef
-ifconfig
-ping6 2001:470:1f10:5ba:230:18ff:feb0:7ef
-sudo crontab -e
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-exit
-cd $PROG
-wget https://gist.githubusercontent.com/charlieporth1/4ed2bd5809dc12ec9c5c4bd52aa2eb51/raw/0a6f59ba3686cd6c0e43d7844a2fe8388693522d/dhcp_ip_disconnect.sh
-sudo nano dhcp_ip_disconnect.sh 
-ifconfig
-sudo crontab -e
-exit
-ping 100.86.69.129
-ifconfig
-htop
-aws ec2 help
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh 
-sudo nano $prog/server-online-check.sh 
-htop
-sudo nano $prog/Hourly.sh
-sudo crontab -e
-ping gcp.ctptech.dev
-cd Pihole-Slave-Install/
-sudo crontab -e
-ping 1.1.1.1
-ping one.one.one.one
-sudo crontab -e
-sudo crontab -e
-sudo crontab -e
-ifconfig
-sudo nano $prog/white-regex-yt.sh 
-ifconfig eth2
-ifconfig eths
-ifconfig ens4
-sudo crontab -e
-htop
-cd Pihole-Slave-Install/
-ifconfig
-ifconfig eth2
-sudo crontab -e
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh
-ifconfig
-sudo ip ifconfig
-ifconfig
-ifconfig eth2
-ifconfig
-ifconfig eth2
-ifconfig eth0
-ifconfig eth2
-ifconfig eth2 down
-sudo ifconfig eth2 down && sudo ifconfig eth2 up
-ifconfig eth2
-dig -t aaaa dns.google
-ping6 dns.google
-ifconfig eth2
-dig -t aaaa dns.google
-ping6 dns.google
-ifconfig eth2
-ping6 dns.google
-ifconfig eht2
-ifconfig eth2
-ping6 dns.google
-ping6 -a dns.google
-dig -t aaaa dns.google
-ifconfig eth2
-ifconfig eth0
-ifconfig eth1
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-ping 100.86.69.129
-pihole -t
-pihole -t=block
-pihole -t block
-cd Pihole-Slave-Install/
-sudo git stash && sudo git pull 
-sudo ./copy_config.sh 
-sudo nano /home/ubuntuserver/Programs/route-dns/ctp-dns.sh 
-exit
-ifconfig eth2
-cd Pihole-Slave-Install/
-sudo git stash && sudo git pull
-ifconfig eth1
-ifconfig eth2
-exit
-exit
-sudo nano /home/ubuntuserver/Programs/test_dns_args.sh 
-sudo nano /home/ubuntuserver/Programs/all-scripts-exports.sh 
-sudo nano $prog/test_dot.sh
-sudo nano /home/ubuntuserver/Programs/updates.sh 
-nano ~/.ssh/known_hosts 
-grep 'men' ~/.ssh/known_hosts 
-grep 'mende;' ~/.ssh/known_hosts 
-grep 'mendel' ~/.ssh/known_hosts 
-grep 'mendel' ~/.ssh/config 
-grep mendel ~/.ssh/config 
-ifconfig eth2
-exit
-cd Pihole-Slave-Install/
-exit
-ifconfig eth4
-ifconfig eth0
-ping 2001:470:1f10:5ba:230:18ff:feb0:7ef
-exit
-cd Pihole-Slave-Install/
-ping www.google.com
-sudo nano /etc/resolv.conf
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-curl 'www.google.com'
-sudo nano /etc/resolv.conf
-sudo nano /home/ubuntuserver/Programs/dhcp_fix.sh
-cd Pihole-Slave-Install/
-sudo nano /home/ubuntuserver/Programs/dhcp_fix.sh
-cat /etc/resolv.conf
-sudo nano /home/ubuntuserver/Programs/dhcp_fix.sh
-cat /etc/resolv.conf
-ifconfig eth2
-ifconfig eth1
-ifconfig eth0
-ifconfig  eth0
-cat /etc/resolv.conf
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh
- aws ec2 start-instances  --instance-ids i-026c86754b14d7e09
-sudo iptables -S
-sudo ipset
-sudo ipset list | grep 174
-sudo ipset list
-sudo bash /home/ubuntuserver/Programs/iptables-load.sh 
-sudo apt install proxychains
-sudo apt purge proxychains
-sudo apt install proxychains4
-sudo apt install proxychains
-sudo apt purge proxychains
-sudo apt remove proxychains
-sudo git stash && sudo git pull
-sudo bash /home/ubuntuserver/Programs/iptables-load.sh 
-sudo cp -rf user/ /usr/
-ls /usr/
-sudo cp -rf user/ /usr/*
-sudo cp -rf user/* /usr/
-sudo git stash && sudo git pull
-sudo ./copy_config.sh 
-ifconfig
-ping www.google.com
-sudo crontab -e
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh
-aws ec2 start-instances  --instance-ids i-026c86754b14d7e09
-ifconfig eth0
-ifconfig
-ping 192.168.12.237
-ping 192.168.12.237 -I eth1
-ping 192.168.12.237 
-ping -a 192.168.12.237 
-sudo nano /etc/network/interfaces.d/wlan0.conf 
-ping -a 192.168.12.237 
-ping -a 192.168.12.237 
-sudo nano /etc/rc.local
-pihole -q accounts.google.com
-pihole -w accounts.google.com
-ifconfig eth0
-ctp-dns status
-ifconfig eth0
-ifconfig eth1
-ifconfig eth2
-ifconfig eth1
-ping 2600:1f18:12f6:4eee:e116:f1be:7914:a99f
-ping 2607:fb90:9894:8589:3441:a7f1:8183:588c
-sudo nano /etc/netplan/01-static.yaml
-sudo netplan generate && sudo netplan apply
-ping 2607:fb90:9894:8589:3441:a7f1:8183:588c
-ping aws.ctptech.dev
-ping4 aws.ctptech.dev
-sudo crontab -e
-ifconfig eth1
-sudo nano /etc/netplan/01-static.yaml
-sudo netplan generate && sudo netplan apply
-sudo nano /etc/netplan/01-static.yaml
-ifconfig eth1
-sudo nano /etc/netplan/01-static.yaml
-sudo netplan generate && sudo netplan apply
-ifconfig eth1
-sudo nano /etc/netplan/01-static.yaml
-history | grep rdis
-history | grep rdi
-history | grep rd
-history | grep r
-sudo nano /etc/netplan/01-static.yaml
-ifconfig eth1
-sudo netplan generate && sudo netplan apply
-ifconfig eth1
-cd Pihole-Slave-Install/
-ifconfig eth1
-ping6 -I eth0 2607:fb90:9894:8589:2e0:4cff:fe7a:1a1 
-ifconfig eth1
-ping 2607:fb90:9894:8589:2e0:4cff:fe7a:1a1
-ping6 -I eth0 2607:fb90:9894:8589:92b:f0e4:0:2a2
-ifconfig eth2
-ifconfig eth1
+ping6 dns.gogle -I eth1
 ping6 dns.google -I eth1
-ping4 dns.google -I eth1
-sudo ip route
-sudo rm /etc/netplan/04-eth1.conf 
-sudo rm /etc/netplan/05
-sudo rm /etc/netplan/05-eth2.conf 
-sudo nano/etc/netplan/01-static.yaml
-sudo nano /etc/netplan/01-static.yaml
-sudo netplan generate && sudo netplan apply
-ping dns.google
-ping dns.google -I eth2
-ping dns.google -I eth1
-ping dns.google -I eth0
-sudo nano /etc/netplan/01-static.yaml
-sudo netplan generate && sudo netplan apply
-ping dns.google -I eth1
-ping dns.google -I eth2
-ping dns.google -I eth0
-sudo nano /etc/netplan/01-static.yaml
-sudo netplan generate && sudo netplan apply
-ping dns.google -I eth1
-ping4 dns.google -I eth1
-sudo nano /etc/netplan/01-static.yaml
-sudo netplan generate && sudo netplan apply
-sudo netplan generate && sudo netplan try
-sudo nano /etc/netplan/01-static.yaml
-ping4 dns.google -I eth1
-sudo ip route
-sudo nano /etc/netplan/01-static.yaml
-sudo netplan generate && sudo netplan try
-ping4 dns.google -I eth1
-ping dns.google -I eth1
-sudo nano /etc/netplan/01-static.yaml
-sudo netplan generate && sudo netplan try
-sudo nano /etc/netplan/01-static.yaml
-sudo netplan generate && sudo netplan try
-ping dns.google -I eth1
-ping4 dns.google -I eth1
-ping4 dns.google -I eth2
-ping dns.google -I eth1
-sudo nano /etc/netplan/01-static.yaml
-sudo netplan generate && sudo netplan try
-ping dns.google -I eth1
-ping4 dns.google -I eth2
-ping6 dns.google -I eth2
-sudo nano /etc/netplan/01-static.yaml
-sudo netplan generate && sudo netplan try
-ping dns.google -I eth1
-ping4 dns.google -I eth1
-ping dns.google -I eth1
-sudo nano /etc/netplan/01-static.yaml
-sudo ip route 6
-sudo ip -6 route
-sudo ip -6 route | grep eth1
-dhcpcd --help
-sudo nano /etc/dhcpcd.conf 
-ifconfig eth1
-sudo nano /etc/netplan/01-static.yaml
-sudo netplan generate && sudo netplan try
-ifconfig eth1
-ping dns.google -I eth1
-ping4 dns.google -I eth1
-sudo nano /etc/netplan/01-static.yaml
-sudo netplan generate && sudo netplan try
-ping4 dns.google -I eth1
-ifconfig eth1
-sudo nano /etc/netplan/01-static.yaml
-sudo netplan generate && sudo netplan try
-ifconfig eth1
-sudo nano /etc/netplan/01-static.yaml
-sudo netplan generate && sudo netplan try
-ifconfig eth1
-ping4 dns.google
-ping4 dns.google -I eth1
-pihole -w accounts.google.com
-ping4 dns.google -I eth1
-ping dns.google -I eth1
-ping4 dns.google -I eth1
-ping dns.google -I eth1
-pihole -t
+ping6 dns.google -I eth0
+dig +short myip.opendns.com @resolver1.opendns.com +timeout=6
+dig +short myip.opendns.com @resolver1.opendns.com +timeout=6; echo $?
+cur
+curl $CURL_IP_TYPE -s -w '\n' 'https://api64.ipify.org' 
+curl -6 -s -w '\n' 'https://api.ipify.org/'
+curl -4  -s -w '\n' 'https://api64.ipify.org' 
+sudo git stash && sudo git pull
 cd Pihole-Slave-Install/
-sudo nano /etc/nginx/sites-enabled/home.conf 
+sudo git stash && sudo git pull
+sudo bash $prog/get_ext_ip.sh -6 --current-ip
+sudo bash -x $prog/get_ext_ip.sh -6 --current-ip
+sudo nano /home/ubuntuserver/Programs/get_ext_ip.sh 
+sudo bash -x $prog/get_ext_ip.sh -6 --current-ip
+sudo nano /home/ubuntuserver/Programs/get_ext_ip.sh 
+sudo bash -x $prog/get_ext_ip.sh -6 --current-ip
+sudo bash ./setup/new_server.sh 
+sudo git stash && sudo git pull
+bash  $prog/get_ext_ip.sh --multiple-nic
+bash  $PROG/get_ext_ip.sh --multiple-nic
+bash  prog/get_ext_ip.sh --multiple-nic
+bash -x $prog/get_ext_ip.sh --multiple-nic
+sudo reboot 
+bash $prog/pihole-f.sh
+cd Pihole-Slave-Install/
+bash -x $prog/get_ext_ip.sh --multiple-nic
+sudo nano /etc/environment
+bash -x $prog/get_ext_ip.sh --multiple-nic
+sudo nano  /home/ubuntuserver/Programs/get_ext_ip.sh
+bash -x $prog/get_ext_ip.sh --multiple-nic
+sudo nano  /home/ubuntuserver/Programs/get_ext_ip.sh
+dig www.google.com
+sudo nano  /home/ubuntuserver/Programs/get_ext_ip.sh
+dig -t $DNS_IP_TYPE $DIG_IFACE +short myip.opendns.com @resolver1.opendns.com 
+dig  +short myip.opendns.com @resolver1.opendns.com 
+dig   -t aaaa +short myip.opendns.com @resolver1.opendns.com 
+dig  +short myip.opendns.com @resolver1.opendns.com 
 ifconfig
-sudo nano /etc/nginx/sites-enabled/OpenAppDrawer.on.TV.conf
-bash /home/ubuntuserver/Programs/pihole-f.sh
-pihole -t
-sudo nano ~/start_osint.sh 
-suo nano /home/ubuntuserver/osint-scraper/run
-ifconfiig eth1
-ifconfig eth1
-sudo nano /etc/netplan/01-static.yaml
-sudo nano /etc/netplan/01-static.yaml
-sudo nano /etc/netplan/01-static.yaml
-sudo netplan generate && sduo netplan apply
-sudo netplan generate && sudo netplan apply
+dig  -b 192.168.44.250 +short myip.opendns.com @resolver1.opendns.com 
+dig  -b 192.168.12.250 +short myip.opendns.com @resolver1.opendns.com 
+dig  -t a  -b 192.168.12.250 +short myip.opendns.com @resolver1.opendns.com 
+htop
+curl -4 --interface eth1 -s -w '\n' 'https://api64.ipify.org/' 
+ctp-dns -qbl
+sudo ./copy_config.sh 
+sudo ctp-dns-qbl
+sudo ctp-dns -qbl
+bash $prog/pihole-f.sh
+ifconfig
+ifconfig eth2
+ping 192.168.42.1
+ping 192.168.44.243
+nmap -T4 192.168.44.243
+ping 192.168.44.243
+ifconfig
+ping 192.168.44.243
+ping 192.168.42,1
+ing 192.168.42.1
+ifconfig eth2
 ifconfig eth0
+ifconfig eth2
+ping 192.168.42.1
+ifconfig eth2
+sudo netplan generate && sudo netplan try
+ifconfig eth2
+ping 192.168.42.1
+ping 192.168.44.243
+cd Pihole-Slave-Install/
+sudo nano /home/ubuntuserver/Programs/quick-whitelist.sh 
+ifconfig eth2
+ifconfig eth0
+ifconfig eth1
+sudo nano /etc/dhcpcd.conf 
+bash /home/ubuntuserver/Programs/get_ext_ip.sh 
+bash /home/ubuntuserver/Programs/get_ext_ip.sh --mn
+ping4 dns.google -I eth1
+bash /home/ubuntuserver/Programs/get_ext_ip.sh --mn
+ping4 dns.google -I eth1
+ping4 dns.google -I eth0
+ping4 dns.google -I eth2
 ifconfig
-sudo nano $sites/chrome_man_password_save.conf 
+ifconfig eth2
+sudo netplan generate && sudo netplan try
+ifconfig eth2
+ping6 dns.google -I eth0
+ifconfig eth2
+ifconfig
+sudo nano /etc/netplan/01-static.yaml
+sudo netplan generate && sudo netplan try
+ifconfig
+ping6 dns.google
+ping6 dns.google -I eth4
+ping6 dns.google -I eth2
+ifconfig eth0
+htop
+bash $prog/get_ext_ip.sh 
+bash $prog/get_ext_ip.sh --current-ip
+bash $prog/get_ext_ip.sh --current-ip
+bash $prog/get_ext_ip.sh --current-ip
+bash $prog/get_ext_ip.sh --mn
+nmap -T4 172.58.84.29
+ping 172.58.84.29
+ifconfig
+ifconfig
+sudo nano $prog/server-online-check.sh
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+ssh 100.86.69.129
+ssh aws.ctptech.dev
+ssh aws.ctptech.dev
+ssh aws.ctptech.dev
+ssh aws.ctptech.dev
+ifconfig eth0
+ping6 -I eth0 dns.google
+ping 67d306317121.sn.mynetname.net
+ping4 67d306317121.sn.mynetname.net
+ping 67d306317121.sn.mynetname.net
 sudo nano $sites/home.conf 
-sudo nano $sites/osint.conf
-sudo nano $sites/osint.conf
-sudo cp -rf $sites/home.conf  $sites/osint.conf
-sudo nano $sites/osint.conf
-sudo nano $sites/osint.conf
-sudo nano $prog/ctp-dns.service 
-sudo nano $sites/osint.conf
-sudo nano $prog/ctp-dns.service 
-sudo nano $sites/osint.conf
-sudo nano $sites/osint.conf
-sudo systemctl restart nginx
-sudo systemctl restart nginx
-sudo nano $sites/osint.conf
+sudo nano $sites/osint.conf 
+ifconfig
+screen /dev/ttyACM0 
+screen /dev/ttyACM0 
+screen /dev/ttyUSB0 
+screen /dev/serial/by-id/usb-Prolific_Technology_Inc._USB-Serial_Controller_D-if00-port0 
+screen /dev/ttyprintk 
+
+killall scren
+killall screen
+killall screen
+killall screen
+killall screen
+cd Pihole-Slave-Install/
+sudo git stash && sudo git pull
+htop
+nano ~/start_osint.sh 
+sudo nano /etc/netplan/01-static.yaml
+sudo nano /etc/netplan/01-static.yaml
+exit
+sudo nano /etc/netplan/01-static.yaml
+exit
+cd Pihole-Slave-Install/
+cd ..
+scp start_osint.sh charlieporth1:~/
+scp start_osint.sh charlieporth1@192.168.44.244:~/
+sudo crontab -e
+sudo crontab -e
+sudo bash /home/charlieporth1/phoneinfoga/start_osint.sh
+sudo nano $sites/osint.conf 
 sudo nginx 0t
 sudo nginx -t
-sudo nano $sites/osint.conf
-sudo nano $sites/osint.conf
-sudo nginx -t
-sudo systemctl restart nginx
-sudo nano $sites/osint.conf
-sudo nano $sites/osint.conf
-tail -f $log/nginx/home-*.log
-sudo tail -f $log/nginx/home-*.log
-sudo nano $sites/osint.conf
-sudo tail -f $log/nginx/home-*.log
-sudo nano $nginx/.htpasswd 
-sudo tail -f $log/nginx/home-*.log
-sudo nano $nginx/.htpasswd 
-sudo nano $sites/osint.conf
-sudo nano ~/start_osint.sh 
-ifconfig 
-dig www.google.com
-sudo nano /etc/resolv.conf
-ping fe80::6e3b:6bff:fe7e:ff36
-ping6 fe80::6e3b:6bff:fe7e:ff36
-ping fe80::6e3b:6bff:fe7e:ff36
-dig www.google.com
-sudo nano /etc/resolv.conf
-dig www.google.com
-dig www.google.com @1.1.1.1
-sudo netplan generate && sudo netplan apply
-dig www.google.com @1.1.1.1
-dig www.google.com @1.1.1.1 +short
-sudo nano /home/ubuntuserver/Programs/dhcp_fix.sh
-sudo nano /etc/nginx/sites-enabled/OpenAppDrawer.on.TV.conf
-sudo nano /etc/nginx/sites-enabled/OpenAppDrawer.on.TV.conf.og 
-ls /var/www/html/openResty/
-ls /var/www/html/openResty/open-android-tv-app-drawer.sh 
-nano /var/www/html/openResty/open-android-tv-app-drawer.sh 
-sudo nano $sites/nasa.conf
-sudo cp -rf /etc/nginx/sites-enabled/osint.conf $sites/nasa.conf
-sudo nano $sites/nasa.conf
-sudo nano $snippets/tailscaled_acl.conf
-sudo nano $sites/nasa.conf
-sudo nano $snippets/tailscaled_acl.conf
-sudo nano $sites/nasa.conf
-sudo nano /etc/nginx/sites-enabled/osint.conf 
-sudo nano $sites/nasa.conf
-sudo nano $snippets/tailscaled_acl.conf
-sudo nano $sites/nasa.conf
-sudo nano /etc/nginx/sites-enabled/osint.conf 
-sudo nano $sites/nasa.conf
-sudo nginx -t
-sudo systemctl restart nginx
-sudo nano etc/nginx/ctp.dev/02-upstream-server-core.conf
-sudo nano /etc/nginx/ctp.dev/02-upstream-server-core.conf
-sudo systemctl restart nginx
-systemctl status asn.service 
-sudo nano /etc/nginx/ctp.dev/02-upstream-server-core.conf
-sudo nano /etc/nginx/sites-enabled/osint.conf 
-sudo nano /etc/nginx/ctp.dev/02-upstream-server-core.conf
-sudo nano /etc/nginx/sites-enabled/osint.conf 
-systemctl status asn.service 
-sudo systemctl edit --full asn.service 
-sudo systemctl daemon-reload && sudo systemctl restart asn.service 
-systemctl status asn.service 
-sudo nano /etc/resolv.conf
 exit
-pihole -w login.tailscale.com
-sudo bash /home/ubuntuserver/Programs/copy_gravity.sh 
-ping 192.168.44.237
-ping 192.168.44.99
-ping 192.168.44.97
-ifconfig
-ifconfig
-pihole -t
-ctp-dns -t
-sudo nano /etc/rc.local
-ctp-dns -t
-cd Pihole-Slave-Install/
-sudo git stash && sudo git pull
-ifconfig
-ctp-dns -t
-sudo ctp-dns -t
-chmod 777 /usr/local/bin/ctp-dns
-sudo chmod 777 /usr/local/bin/ctp-dns
-sudo ctp-dns -t
-dig www.google.com
-cd Pihole-Slave-Install/
-ifconfig
-tailscale status
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-sudo nano /home/ubuntuserver/Programs/all-scripts-exports.sh 
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-tailscale status
-sudo ctp-dns -t
-cd Pihole-Slave-Install/
-sudo git stash && sudo git pull
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-ctp-dns -t
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-sudo nano /home/ubuntuserver/Programs/all-scripts-exports.sh 
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-cd Pihole-Slave-Install/
-ssh 100.86.69.129
-    aws ec2 stop-instances   --instance-ids i-026c86754b14d7e09
-killall aws
-killall -9 aws
-  aws ec2 stop-instances   --instance-ids i-026c86754b14d7e09
-        aws ec2 terminate-instances --instance-ids i-026c86754b14d7e09
-        aws ec2 start-instances  --instance-ids i-026c86754b14d7e09
-        aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
- aws ec2 terminate-instances --instance-ids i-026c86754b14d7e09
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh
-        aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-  aws ec2 stop-instances   --instance-ids i-026c86754b14d7e09
-        aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-        aws ec2 start-instances  --instance-ids i-026c86754b14d7e09
-tailscale status
-bash /home/ubuntuserver/Programs/pihole-f.sh
-bash $PROG/get_network_devices_ip_address.sh --default
-bash $PROG/get_network_devices_ip_address.sh --default --single-one
-bash $PROG/get_network_devices_ip_address.sh --default --single
-hc-log
-sudo crontab -e
-hc-log
-sudo crontab -e
-sudo nano /home/ubuntuserver/Programs/server-online-check.sh
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
 htop
-tail -f $LOG/server-health-check.log
-        aws ec2 start-instances  --instance-ids i-026c86754b14d7e09
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-sudo systemctl edit --full tailscale
-sudo systemctl edit --full tailscaled
-ping aws.ctptech.dev
-ping4 aws.ctptech.dev
-ssh -4 gcp.ctptech.dev
-ping aws.ctptech.dev
-ssh aws.ctptech.dev.local 
-ssh aws.ctptech.dev
-aws ec2-instance-connect send-serial-console-ssh-public-key     --instance-id i-001234a4bf70dec41EXAMPLE     --serial-port 0     --ssh-public-key file://my_rsa_key.pub \
-aws ec2-instance-connect send-serial-console-ssh-public-key     --instance-id i-001234a4bf70dec41EXAMPLE     --serial-port 0     --ssh-public-key file://my_rsa_key.pub     --region us-east-1
-aws ec2-instance-connect send-serial-console-ssh-public-key     --instance-id i-026c86754b14d7e09  --serial-port 0     --ssh-public-key file://my_rsa_key.pub     --region us-east-1
-s ~/.ssh
-ls ~/.ssh
+sudo nano $sites/osint.conf 
+sudo systemctl restart nginx
+sudo apt purge docker.io
+htop
+ping 192.168.44.247
+ping -a 192.168.44.247
+htop
+ping www.google.com
+cd Pihole-Slave-Install/
+ifconfig
+screen /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_AJ035PB3-if00-port0 
+screen /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_AJ035PB3-if00-port0 115200
+stty /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_AJ035PB3-if00-port0 
+stty < /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_AJ035PB3-if00-port0 
+killall screen
+stty < /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_AJ035PB3-if00-port0 
+stty < /dev/serial/by-id/usb-Prolific_Technology_Inc._USB-Serial_Controller_D-if00-port0 
+screen /dev/serial/by-id/usb-Prolific_Technology_Inc._USB-Serial_Controller_D-if00-port0 
+kilall screen
+killall screen
+stty < /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_AJ035PB3-if00-port0 
+screen /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_AJ035PB3-if00-port0 
 exit
-aws ec2-instance-connect send-serial-console-ssh-public-key     --instance-id i-026c86754b14d7e09  --serial-port 0     --ssh-public-key file://~/.ssh/ctptechfree1.aws.pem     --region us-east-1
-aws ec2-instance-connect send-serial-console-ssh-public-key     --instance-id i-026c86754b14d7e09  --serial-port 0     --ssh-public-key file://my_rsa_key.pub     --region us-east-1
-pihole -q console.aws.amazon.com
-pihole -t
-bash /home/ubuntuserver/Programs/pihole-f.sh
-pihole -t
-cd Pihole-Slave-Install/
-sudo git stash && sudo git pull
-cd Pihole-Slave-Install/
-sudo git stash && sudo git pull
-pihole -t
-hc-log
+tar -vxf ~/intel_edison_setup_lin_2016.2.002.tar.gz 
+cd Intel_Edison_Setup_Lin_2016.2.002/
+ls
+sudo ./install.sh 
+sudo ./install.sh --help
+ls
+nano install.sh 
+sudo ./install.sh
+ls
+ls tools/
+ls tools/dfu-util/
+ls
+cd ..
+wget https://www.jubilinux.org/dist/jubilinux-v9+0.4.zip
+unzip jubilinux-v9+0.4.zip 
+cd jubilinux-stretch/
+ls
+sudo ./flashall.sh 
+sudo apt install dfu-util
+sudo ./flashall.sh 
+sudo ./flashall.sh  --recovery
+sudo apt install xfstk
+sudo ./flashall.sh  --recovery
+sudo ./flashall.sh  
+lsusb
+ls 
+ls /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A402IXRQ-if00-port0 
+sudo ./flashall.sh  
+nano flashall.sh 
+screen -r
+screen /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A402IXRQ-if00-port0 
+screen -d
+killall screen
+sudo ./flashall.sh  
+pihole -w xfstk
+pihole -b xfstk
+sudo apt install openvpn
+openvpn --help
+openvpn --config ~/charlieporth1.home.ovpn 
+sudo nano /etc/rc.local
+sudo  openvpn --config $ADMIN_HOME/charlieporth1.home.ovpn 
+sudo nano /etc/rc.local
+sudo sytemctl edit --full ctp-private-ip-openvpn.service
+sudo systemctl edit --full ctp-private-ip-openvpn.service
+sudo systemctl edit --force --full ctp-private-ip-openvpn.service
+which openvpn
+sudo systemctl edit --full ctp-private-ip-openvpn.service
+sudo systemctl start ctp-private-ip-openvpn.service
+sudo systemctl enable ctp-private-ip-openvpn.service
+sudo systemctl status ctp-private-ip-openvpn.service
+ wget https://cdn.tunnelin.com/installers/linux/console/tunnelin
+screen /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A402IXRQ-if00-port0 115200
+curl -s https://pitunnel.com/inst/SmRnapuIs  |  sudo python3
+ wget https://cdn.tunnelin.com/installers/linux/console/tunnelin
+wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.tgz
+tar -xvf ngrok-stable-linux-amd64.tgz 
+cd ngrok-stable-linux-amd64.tgz 
+cd ngrok
+ls
+ls ngrok/
+../ngrok authtoken 3v2A97WPYoFc8sxXUYCeE_6eNLJojGagF7Te68XjLZp
+chmod 777 ./ngrok
+./ngrok authtoken 3v2A97WPYoFc8sxXUYCeE_6eNLJojGagF7Te68XjLZp
+sudo ./ngrok authtoken 3v2A97WPYoFc8sxXUYCeE_6eNLJojGagF7Te68XjLZp
+./ngrok --hep
+./ngrok udp
+./ngrok http 80
+./ngrok http 8443
+sudo ./tunnelin
+chmod +x tunnelin
+sudo ./tunnelin
+curl -s https://pitunnel.com/inst/SmRnapuIs  |  sudo python3
+pitunnel
+pitunnel --host=192.168.44.243 --port=4500 --name=mikrovpnctp --persist
+sudo apt install wireguard
+sudo nano /etc/wireguard/wg0-client.conf
+sudo wg --help
+sudo wg-quick 
+sudo wg-quick up
+sudo wg-quick --help
+sudo wg-quick up eth0
+sudo wg-quick up wg0-client
+sudo apt install resconf
+sudo apt install resolvconf
+sudo wg-quick up wg0-client
+ping 10.128.0.9
+ping 10.128.0.9 -I wg0-client 
+ping 10.128.0.9
+ping 172.31.12.154
+ping 10.128.0.9
+ping 172.31.12.154
+ping 10.128.0.9
+ifconfig
+ping 169.254.169.254
+sudo nano /etc/rc.local
+sudo nano /etc/wireguard/wg0-client.conf
+exit
+wget https://github.com/Nyr/wireguard-install/blob/master/wireguard-install.sh
+wget https://raw.githubusercontent.com/Nyr/wireguard-install/master/wireguard-install.sh
+sudo nano /etc/resolv.conf
+wget https://raw.githubusercontent.com/Nyr/wireguard-install/master/wireguard-install.sh
+sudo nano /etc/resolv.conf
+wget https://raw.githubusercontent.com/Nyr/wireguard-install/master/wireguard-install.sh
+sudo nano /etc/resolv.conf
+wget https://raw.githubusercontent.com/Nyr/wireguard-install/master/wireguard-install.sh
+sudo nano /etc/resolv.conf
+wget https://raw.githubusercontent.com/Nyr/wireguard-install/master/wireguard-install.sh
+sudo nano /etc/resolv.conf
+ping 1.1.1.1
+ping -a  1.1.1.1
+htop
+ping -a  1.1.1.1
+sudo ip route
+ping 192.168.44.1
+ping 192.168.12.1
+ping -a  1.1.1.1
+sudo iptables -S
+sudo iptables | grep -i docker
+sudo iptables -S | grep -i docker
+sudo iptables -S | grep -i docker | xargs sudo iptables -D
+for rule in $(sudo iptables -S | grep -i docker ); do sudo iptables -D  $rule;done
+sudo iptables -S | grep -i docker
+for rule in $(sudo iptables -S | grep -i docker ); do sudo iptables -D  $rule;done
+for rule in $(sudo iptables -S | grep -i docker ); do echo $rule;done
+IFS=$'\n' for rule in $(sudo iptables -S | grep -i docker ); do sudo iptables -D  $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker ); do sudo iptables -D  $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | grep -v "A\|N"); do sudo iptables -D  $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | awk '{print !$1}'); do sudo iptables -D  $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | awk '{print !$1}'); do echo $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | awk '{print $1}'); do echo $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | awk '!{print $1}'); do echo $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | rev ; do echo $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | rev ); do echo $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | rev | cut -f 1- -d - | rev ); do echo $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | rev | cut -f 2- -d - | rev ); do echo $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | rev | cut -f -1 -d - | rev ); do echo $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | rev | cut -f 1- -d - | rev ); do echo $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | rev | cut -f 2- -d - | rev ); do echo $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | rev | cut -f 2- -d\- | rev ); do echo $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | rev | cut -f 2- -d'-' | rev ); do echo $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | rev | cut -f -2 -d'-' | rev ); do echo $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | rev | cut -f -1 -d'-' | rev ); do echo $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | rev | cut -f 1--d'-' | rev ); do echo $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | rev | cut -f 1- -d'-' | rev ); do echo $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | rev | cut -f 2- -d'-' | rev ); do echo $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | '{for (i=2; i<=NF; i++) print $i}'  ); do echo $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | awk '{for (i=2; i<=NF; i++) print $i}'  ); do echo $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | awk '{for (i=2; i<=NF; i++) printf $i}'  ); do echo $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | awk '{for (i=2; i<=NF; i++)  printf $i " "; print $NF}' } '  ); do echo $rule;done
+
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | awk '{for (i=2; i<=NF; i++)  printf $i " "; print $NF}}} '  ); do echo $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | awk '{for (i=2; i<=NF; i++)  printf $i " "; print $NF} '  ); do echo $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | awk '{for (i=2; i<=NF; i++)  printf $i " "; print $NF} '  ); do sudo iptables -D ;done 
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | awk '{for (i=2; i<=NF; i++)  printf $i " "; print $NF} '  ); do sudo iptables -D $rule ;done 
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | awk '{for (i=2; i<=NF; i++)  printf $i " "; print ""} '  ); do echo $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | awk '{for (i=2; i<=NF; i++)  printf $i " "; print ""} '  ); do echo $rule; sudo iptables -D $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | awk '{for (i=2; i<=NF; i++)  printf $i " "; print $NF} '  ); do echo $rule; sudo iptables -D $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | awk '{for (i=2; i<=NF; i++)  printf $i " "; print ""} '  ); do echo $rule; sudo iptables -D $rule;done
+sudo iptables -S
+sudo iptables -S | grep -i docker
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker |  '{ $(NF+1)=$1;$1="";$0=$0;} NF=NF '  ); do echo $rule; sudo iptables -D $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker |awk  '{ $(NF+1)=$1;$1="";$0=$0;} NF=NF '  ); do echo $rule; sudo iptables -D $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker |awk  '{ $(NF+1)=$1;$1="";sub(OFS,"");}1'   ); do echo $rule; sudo iptables -D $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7'   ); do echo $rule; sudo iptables -D $rule;done
+sudo iptables
+sudo iptables -S
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7'   ); do echo $rule; sudo iptables -D $rule;done
+sudo iptables -S
+sudo iptables -D DOCKER-USER -j RETURN
+sudo iptables -D DOCKER-ISOLATION-STAGE-2 -j RETURN
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7'   ); do echo $rule; sudo iptables -D $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7'   ); do echo $rule; sudo iptables -D "$rule";done
+IFS=$'\n'; for rule in "$(sudo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7'   );" do echo $rule; sudo iptables -D "$rule";done
+IFS=$'\n'; for rule in "$(sudo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7'   )"; do echo $rule; sudo iptables -D "$rule";done
+IFS=$'\n'; for rule in "$(sudo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7'   )"; do echo $rule; sudo iptables -D $rule;done
+sudo iptables -S
+IFS=$'\n'; for rule in "$(sudo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7'   )"; do echo $rule; sudo iptables -D "$rule";done
+IFS=$'\n'; for rule in "$(sudo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7'   )"; do echo $rule; sudo iptables -D $rule;done
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7'   ); do echo $rule; sudo iptables -D $rule;done
+udo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7'
+sudo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7'
+sudo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7' | xargs sudo iptables -D
+sudo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7' | xargs sudo iptables --hel[
+sudo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7' | xargs sudo iptables --help
+IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7'   ); do echo $rule; sudo iptables -D "$rule";done
+sudo iptables -S  --line-numbers
+sudo iptables -L  --line-numbers
+udo iptables -L  --line-numbers | grep docker
+sudo iptables -L  --line-numbers | grep -i docker
+sudo iptables -L  --line-numbers | grep -i docker | awk '{print $1}'
+sudo iptables --delete-chainDOCKER-ISOLATION-STAGE-2
+sudo iptables --delete-chain DOCKER-ISOLATION-STAGE-2
+sudo iptables --delete-chain DOCKER-USER 
+sudo iptables --delete-chain DOCKER-USER  -W 10
+sudo iptables --delete-chain DOCKER-USER  -w=10
+sudo iptables --delete-chain DOCKER-USER  -w 10
+sudo apt purge docker.io
+sudo apt install -y docker.io && sudo apt purge -y docker.io
+sudo apt pruge resolvconf
+sudo apt purge resolvconf
+ping 1.1.1.1
+sudo iptables -F
+sudo iptables -X
+ping 1.1.1.1
+htop
+ping 100.100.100.100
+sudo systemctl edit --full tailscaled
+sudo reboot
+ifconfig
+sudo nano /etc/rc.local
+sudo wg-quick up wg0-client
+ifconfig
+sudo nano /etc/rc.local
+ping 1.1.1.
+ping 1.1.1.1
+sudo apt install resolvconf
+ifconfig
+sudo wg-quick up wg0-client
+ping 10.128.0.9
+ifconfig
+wget https://raw.githubusercontent.com/Nyr/wireguard-install/master/wireguard-install.sh
+ping 1.1.1.1
+sudo wg-quick down wg0-client
+ping 1.1.1.1
+sudo iptables
+sudo nano /etc/wireguard/wg0-client.conf
+sudo wg-quick up wg0-client
+ping 1.1.1.1
+sudo iptables
+sudo wg-quick down wg0-client
+sudo nano /etc/wireguard/wg0-client.conf
+sudo wg-quick down wg0-client
+sudo wg-quick up wg0-client
+ping 1.1.1.1
+sudo wg-quick down wg0-client
+sudo nano /etc/wireguard/wg0-client.conf
+sudo nano /etc/wireguard/wg0
+sudo nano /etc/wireguard/wg0-client.conf
+sudo nano /etc/wireguard/wg0-client.conf
+sudo wg-quick up wg0-client
+ping 10.128.0.9
+ping 10.66.66.1
+ssh 10.66.66.1
+nano ~/.ssh/config 
+ssh 10.66.66.1
+nano ~/.ssh/config 
+ssh 10.66.66.1
+rm -rf ~/.ssh/c
+ssh 10.66.66.1
+rm -rf ~/.ssh/master-*
+ssh 10.66.66.1
+nano ~/.ssh/config 
+ping 100.71.239.28
+ssh 10.66.66.1
+ssh 10.66.66.1
+sudo wg-quick down wg0-client
+sudo wg-quick up wg0-client
+sudo wg-quick down wg0-client
+ping 10.66.66.1
+ping 10.66.66.1
+sudo wg-quick down wg0-client
+sudo wg-quick up wg0-client
+nano ~/.ssh/config 
+nano /etc/ssh/ssh_config
+nano ~/.ssh/config 
+ping 10.66.66.1
+ssh 10.66.66.1
+nano ~/.ssh/config 
+ping 10.66.66.1
+ifconfig
+ping 10.66.66.2
+ping 10.66.66.1
+nano ~/.ssh/config 
+sudo wg-quick down wg0-client
+ping 35.192.105.158
 sudo crontab -e
-tail -f $LOG/server-health-check.log
-sudo crontab -e
-tail -f $LOG/server-health-check.log
-sudo crontab -e
-sudo nano bash $PROG/server-online-check.sh
-bash $PROG/test_dns.sh -a aws.ctptech.dev
-sudo nano$PROG/server-online-check.sh
-sudo nano $PROG/server-online-check.sh
-bash $PROG/test_dns.sh -a aws.ctptech.dev
+*/10 6-23   *   *   *       bash $PROG/server-online-check.sh gcp.ctptech.dev 
+ bash $PROG/server-online-check.sh gcp.ctptech.dev 
+ping gcp.ctptech.dev
+ping gcp.ctptech.dev
+ssh 35.192.105.158
+ssh gcp.ctptech.dev
+sudo wg-quick up wg0-client
+ping 10.128.0.9
+ping 10.66.66.2
+ping 10.66.66.1
+ping 10.66.66.1
+sudo nano /etc/wireguard/wg0-client
+sudo nano /etc/wireguard/wg0-client.conf
+sudo nano /etc/wireguard/wg0-client.conf
+sudo wg-quick upn wg0-client
+sudo wg-quick up wg0-client
+sudo wg-quick down wg0-client
+sudo wg-quick up wg0-client
+ping 10.128.0.9
+ping 10.128.0.9 -I wg0-client
+sudo wg-quick  up wg0
+sudo wg-quick  up wg0
+wget https://raw.githubusercontent.com/Nyr/wireguard-install/master/wireguard-install.sh
+sudo wg-quick down wg0-client
+https://raw.githubusercontent.com/Nyr/wireguard-install/master/wireguard-install.sh
+wget https://raw.githubusercontent.com/Nyr/wireguard-install/master/wireguard-install.sh
+ifconfig
+sudo apt search pia
+sudo apt search pia
+sudo apt search private-internet
+wget https://www.privateinternetaccess.com/installer/x/download_installer_linux
+wget https://www.privateinternetaccess.com/installer/download_installer_linux_beta
+tar -xvf download_installer_linux_beta 
+chmod +x ./download_installer_linux_beta 
+./download_installer_linux_beta 
+chmod +x pia-linux-3.2-06857.run 
+./pia-linux-3.2-06857.run 
+wget https://github.com/pia-foss/manual-connections/archive/refs/tags/v2.0.0.tar.gz
+tar -vxf v2.0.0.tar.gz 
+cd manual-connections-2.0.0/
+ls
+./run_setup.sh 
+sudo ./run_setup.sh 

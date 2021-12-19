@@ -1,7 +1,6 @@
 #!/bin/bash
 source $PROG/all-scripts-exports.sh
 dig www.robtex.com uptimerobot.com www.ipqualityscore.com > /dev/null
-
 dns_ip_subnet=$(bash $PROG/get_ext_ip.sh dns.ctptech.dev | grepip -o)
 dns_ip_subnet_v6=$(dig -t aaaa dns.ctptech.dev | grepip -o)
 
@@ -178,8 +177,8 @@ T_MobileIPs_SPRINT=(
 		fi
 	)
 
-	$(proxychains -q timeout $curl_timeout curl -sL https://myip.ms/view/web_hosting/1441/Sprint.html | grepip -4o | parallel --no-run-if-empty echo '{}/18')
-	$(proxychains -q timeout $curl_timeout curl -sL https://myip.ms/view/web_hosting/1441/Sprint.html | grepip -6o | parallel --no-run-if-empty echo '{}/48')
+	$(proxychains -q timeout $curl_timeout curl -sL https://myip.ms/view/web_hosting/1441/Sprint.html | grepip -4o | parallel $parallel_args echo '{}/18')
+	$(proxychains -q timeout $curl_timeout curl -sL https://myip.ms/view/web_hosting/1441/Sprint.html | grepip -6o | parallel $parallel_args echo '{}/48')
 )
 declare -a T_MobileIPs_SPRINT=( $( filter_ip_address_array "${T_MobileIPs_SPRINT[@]}" ) )
 
@@ -224,10 +223,10 @@ $( curl -sL https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/mob
 $( curl -sL https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/mobile.tmobileus.list )
 $( curl -sL https://raw.githubusercontent.com/cbuijs/accomplist/master/chris/white.tmobileus.ip.list )
 $(proxychains -q timeout $curl_timeout curl -sL 'https://www.ipqualityscore.com/asn-details/AS21928/t-mobile-usa-inc' | grep -oE "${IPV4_REGEX_SUBNET}")
-$(proxychains -q timeout $curl_timeout curl -sL https://myip.ms/view/ip_owners/1779/T_Mobile_Usa_Inc.html | grepip -4o | parallel --no-run-if-empty echo '{}/18')
-$(proxychains -q timeout $curl_timeout curl -sL https://myip.ms/view/ip_owners/1779/T_Mobile_Usa_Inc.html | grepip -6o | parallel --no-run-if-empty echo '{}/48')
-$(proxychains -q timeout $curl_timeout curl -sL https://myip.ms/browse/ip_ranges/1/ownerID/1779/ownerID_A/1 | grepip -4o | parallel --no-run-if-empty echo '{}/18')
-$(proxychains -q timeout $curl_timeout curl -sL https://myip.ms/browse/comp_ip/1/ownerID/1779/ownerID_A/1 | grepip -4o | parallel --no-run-if-empty echo '{}/18')
+$(proxychains -q timeout $curl_timeout curl -sL https://myip.ms/view/ip_owners/1779/T_Mobile_Usa_Inc.html | grepip -4o | parallel $parallel_args echo '{}/18')
+$(proxychains -q timeout $curl_timeout curl -sL https://myip.ms/view/ip_owners/1779/T_Mobile_Usa_Inc.html | grepip -6o | parallel $parallel_args echo '{}/48')
+$(proxychains -q timeout $curl_timeout curl -sL https://myip.ms/browse/ip_ranges/1/ownerID/1779/ownerID_A/1 | grepip -4o | parallel $parallel_args echo '{}/18')
+$(proxychains -q timeout $curl_timeout curl -sL https://myip.ms/browse/comp_ip/1/ownerID/1779/ownerID_A/1 | grepip -4o | parallel $parallel_args echo '{}/18')
 74.125.42.39
 172.56.0.0/8
 172.100.0.0/16
@@ -373,8 +372,8 @@ DNS_IGNORE_IPs=(
 )
 declare -a DNS_IGNORE_IPs=( $( filter_ip_address_array "${DNS_IGNORE_IPs[@]}" ) )
 
-IPv4_subnets_list=$(seq 0 32 | parallel echo /{})
-IPv6_subnets_list=$(seq 0 128 | parallel echo /{})
+IPv4_subnets_list=$(seq 0 32 | parallel echo '/{}')
+IPv6_subnets_list=$(seq 0 128 | parallel echo '/{}')
 declare -a subnet_ignore_list=(
 	0.0.0.0/0
 	0.0.0.0/8
@@ -382,14 +381,18 @@ declare -a subnet_ignore_list=(
 	::1/128
 	127.0.0.0/8
 	$(
-		parallel --no-run-if-empty printf '%-1s%-1s\\n' "{}" ::: "$network_interface_ip_subnets" ::: "$IPv4_subnets_list";
-		parallel --no-run-if-empty printf '%-1s%-1s\\n' "{}" ::: "$dns_ip_subnet" ::: "$IPv4_subnets_list";
-		parallel --no-run-if-empty printf '%-1s%-1s\\n' "{}" ::: "$dns_ip_subnet_v6" ::: "$IPv6_subnets_list";
-		parallel --no-run-if-empty printf '%-1s%-1s\\n' "{}" ::: "$current_ip_address" ::: "$IPv4_subnets_list";
-		parallel --no-run-if-empty printf '%-1s%-1s\\n' "{}" ::: "$tailscale_ip_addresses" ::: "$IPv4_subnets_list";
-		parallel --no-run-if-empty printf '%-1s%-1s\\n' "{}" ::: "$IPv4_ADDR" ::: "$IPv4_subnets_list";
-		parallel --no-run-if-empty printf '%-1s%-1s\\n' "{}" ::: "$IPv6_ADDR" ::: "$IPv6_subnets_list";
-		parallel --no-run-if-empty printf '%-1s%-1s\\n' "{}" ::: "0.0.0.0" ::: "$IPv4_subnets_list"
+		parallel $parallel_args printf '%-1s%-1s\\n' "{}" ::: $network_interface_ip_subnets ::: $IPv4_subnets_list;
+		parallel $parallel_args printf '%-1s%-1s\\n' "{}" ::: $current_ip_address ::: $IPv4_subnets_list;
+		parallel $parallel_args printf '%-1s%-1s\\n' "{}" ::: $tailscale_ip_addresses ::: $IPv4_subnets_list;
+
+		parallel $parallel_args printf '%-1s%-1s\\n' "{}" ::: $dns_ip_subnet ::: $IPv4_subnets_list
+		parallel $parallel_args printf '%-1s%-1s\\n' "{}" ::: $dns_ip_subnet_v6 ::: $IPv6_subnets_list
+
+		parallel $parallel_args printf '%-1s%-1s\\n' "{}" ::: $IPv4_ADDR ::: $IPv4_subnets_list;
+		parallel $parallel_args printf '%-1s%-1s\\n' "{}" ::: $IPv6_ADDR ::: $IPv6_subnets_list;
+
+		parallel $parallel_args printf '%-1s%-1s\\n' "{}" ::: 0.0.0.0 127.0.0.1 ::: $IPv4_subnets_list
+		parallel $parallel_args printf '%-1s%-1s\\n' "{}" ::: :: ::0 ::1 ::: $IPv6_subnets_list
 	)
 )
 # IPv4
@@ -439,13 +442,13 @@ $(
 			if [[ $counter -le $count_max ]]; then
 				export counter=$(( $counter + 1 ))
 				(
-				 	proxychains -q timeout $curl_timeout curl -sL https://myip.ms/browse/comp_ip/1/ownerID/1779/ownerID_A/$i | grepip -4o | parallel --no-run-if-empty echo '{}/18'
-				 	proxychains -q timeout $curl_timeout curl -sL https://myip.ms/browse/comp_ip6/1/ownerID/1779/ownerID_A/$i | grepip -6o | parallel --no-run-if-empty echo '{}/48'
+				 	proxychains -q timeout $curl_timeout curl -sL https://myip.ms/browse/comp_ip/1/ownerID/1779/ownerID_A/$i | grepip -4o | parallel $parallel_args echo '{}/18'
+				 	proxychains -q timeout $curl_timeout curl -sL https://myip.ms/browse/comp_ip6/1/ownerID/1779/ownerID_A/$i | grepip -6o | parallel $parallel_args echo '{}/48'
 				)&
 			else
 				export counter=0
-			 	proxychains -q timeout $curl_timeout curl -sL https://myip.ms/browse/comp_ip/1/ownerID/1779/ownerID_A/$i | grepip -4o | parallel --no-run-if-empty echo '{}/18'
-			 	proxychains -q timeout $curl_timeout curl -sL https://myip.ms/browse/comp_ip6/1/ownerID/1779/ownerID_A/$i | grepip -6o | parallel --no-run-if-empty echo '{}/48'
+			 	proxychains -q timeout $curl_timeout curl -sL https://myip.ms/browse/comp_ip/1/ownerID/1779/ownerID_A/$i | grepip -4o | parallel $parallel_args echo '{}/18'
+			 	proxychains -q timeout $curl_timeout curl -sL https://myip.ms/browse/comp_ip6/1/ownerID/1779/ownerID_A/$i | grepip -6o | parallel $parallel_args echo '{}/48'
 			fi
 		done
 	fi

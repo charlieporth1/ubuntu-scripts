@@ -1,8 +1,15 @@
 www.maxmind.com
+fast.forbes.com
 www.cyberciti.biz
 maps.sp0n.io
 .sp0n.io
 sp0n.io
+.lt
+.lt
+.tl
+.io
+.gov
+bnc.lt
 citizen.com
 .au
 .auction

@@ -1,0 +1,12 @@
+(^|\.|www\.)?(content-cdn\.ampproject|cdn\.ampproject)\.org$
+^yt[1-6]?\.ggpht\.com$
+^s[1-3]?\.youtube\.com$
+^[si]?[1-6]?\.ytimg\.com
+(^|\.)clients[0-9]?(l\.)?\.google\.com$
+^(ssl|www|t|s|encrypted-tbn)?[0-9]?\.gstatic\.com$
+([0-9a-zA-Z_\.-]{4,10})[-]?dnsotls-ds\.metric\.gstatic\.com$
+(^|\.)(optimizely|cache\.google|corp\.google|blicnet\.google|l\.google|cloud\.google|client-channel\.google|googleusercontent)\.com
+(\.|^)beacons[9-9]?\.(gcp\.)?gvt[0-9]?\.com$
+(\.|^)connectivitycheck\.gstatic\.com$
+^beacon[s]?[0-9]?\.(gcp\.)?gvt[0-6]?\.com$
+\.firebaseio\.com

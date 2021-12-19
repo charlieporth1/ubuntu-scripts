@@ -50,6 +50,12 @@ declare -a routes_arrary=$(decsvify "$ALL_ROUTES")
 	    sudo apt install -y knot-resolver
 	fi
 
+	if ! command -v parallel &> /dev/null
+	then
+	    echo "COMMAND digcould not be found installing"
+	    sudo apt install -y parallel
+	fi
+
 )&>/dev/null
 
 function add_routes() {

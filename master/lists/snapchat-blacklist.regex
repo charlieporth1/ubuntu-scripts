@@ -1,0 +1,4 @@
+#(us-(east|central|west)(|[0-9])-|)(gcp|aws)\.api\.(snapchat\.com|sc-gw\.com)
+(^|\.)snapad(s|x|n)?\.com$
+^gtq[0-9]\.sct\.sc-prod.net$
+^app-analytics(-v2)?\.snapchat\.com$

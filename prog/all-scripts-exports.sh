@@ -63,8 +63,8 @@ export NET_DEVICE_REGEX="($ETH_DEVICE_REGEX|$WLAN_DEVICE_REGEX|$USB_DEVICE_REGEX
 export NET_DEVICE_REGEX_IFCONFIG="$NET_DEVICE_REGEX\:"
 
 export default_iface=`sudo ip route | grep '^default' | grep -oiE "$NET_DEVICE_REGEX" | awk '{ print $1}' | sed -n '1p'`
-export default_iface_address=`sudo ifconfig $default_iface | awk '{print $2}' | grepip -4`
-
+#export default_iface_address=`sudo ifconfig $default_iface | awk '{print $2}' | grepip -4`
+export default_iface_address=`sudo ip add show dev $default_iface | grepip | awk '{print $2}' | sed -n '1p' | awk  -F/ '{print $1}'`
 export MASTER_MACHINE="ctp-vpn"
 export GCLOUD_PROJECT="galvanic-pulsar-284521"
 export GCLOUD_ZONE="us-central1-a"
@@ -79,6 +79,13 @@ export THIS_PID=${BASHPID:-$$}
 export isRunning_str="bash $PROG/process_count.sh $THIS_PID"
 export isRunning="`$isRunning_str`"
 alias isRunning="$isRunning_str"
+
+export parallel_args=" --trim rl --no-run-if-empty --jobs +1"
+export parallel_args_lb=" --lb $parallel_args"
+export parallel_xargs="$parallel_args -m --xargs"
+export parallel_xargs_lb="$parallel_args_lb -m --xargs"
+export parallel_args_pihole="$parallel_xargs_lb -P 1 "
+export parallel_xargs_pihole="$parallel_args_pihole"
 
 export LOG_ROOT=${LOG:-/var/log}
 export LOG_DIR=$LOG_ROOT/$FILE_NAME

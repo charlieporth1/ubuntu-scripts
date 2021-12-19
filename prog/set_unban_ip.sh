@@ -5,6 +5,7 @@ CONCURRENT
 FILE_NAME='ban_ignore_ip_list'
 DEFUALT_FILE=/tmp/$FILE_NAME.txt
 IP_SET_LISTS=$(sudo ipset list  | grep -E Name:* | awk '{print $2}')
+
 if ! [[ -f $DEFUALT_FILE ]]; then
         bash $PROG/create_ban_ignore_ip_list.sh
 fi
@@ -102,11 +103,24 @@ sudo ipset del subnet-block-blklst-pihole 35.232.112.0/21
 sudo ipset del subnet-block-blklst-pihole 35.232.120.192/28
 sudo ipset del subnet-block-blklst-pihole 35.232.120.211
 sudo ipset del subnet-block-blklst-pihole 35.192.105.158
-sudo ipset del subnet-block-blklst-pihole $(dig -t a +short gcp.ctptech.dev)
-sudo ipset del subnet-block-blklst-pihole $(dig -t aaaa +short gcp.ctptech.dev)
-sudo ipset del subnet-block-blklst-pihole $(dig -t a +short aws.ctptech.dev)
-sudo ipset del subnet-block-blklst-pihole $(dig -t aaaa +short aws.ctptech.dev)
-sudo ipset del subnet-block-blklst-pihole $(dig -t a +short home.ctptech.dev)
-sudo ipset del subnet-block-blklst-pihole $(dig -t aaaa +short home.ctptech.dev)
+
+sudo ipset del subnet-block-blklst-pihole $(dig -t a +short gcp.ctptech.dev | xargs )
+sudo ipset del subnet-block-blklst-pihole $(dig -t aaaa +short gcp.ctptech.dev | xargs )
+
+sudo ipset del subnet-block-blklst-pihole $(dig -t a +short aws.ctptech.dev | xargs )
+sudo ipset del subnet-block-blklst-pihole $(dig -t aaaa +short aws.ctptech.dev | xargs )
+
+sudo ipset del subnet-block-blklst-pihole $(dig -t a +short home.ctptech.dev | xargs)
+sudo ipset del subnet-block-blklst-pihole $(dig -t aaaa +short home.ctptech.dev | xargs)
+
+sudo ipset del subnet-block-blklst-pihole $(dig -t a +short aws.ctptech.dev | xargs )
+sudo ipset del subnet-block-blklst-pihole $(dig -t aaaa +short aws.ctptech.dev | xargs )
+
+sudo ipset del subnet-block-blklst-pihole $(dig -t a +short dns.ctptech.dev | xargs)
+sudo ipset del subnet-block-blklst-pihole $(dig -t aaaa +short dns.ctptech.dev | xargs)
+
+sudo ipset del subnet-block-blklst-pihole $(dig -t a +short dns.i.ctptech.dev | xargs )
+sudo ipset del subnet-block-blklst-pihole $(dig -t aaaa +short dns.i.ctptech.dev | xargs )
+
 
 save_ip-tables
