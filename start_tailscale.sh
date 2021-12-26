@@ -24,7 +24,7 @@ ALL_HOME_ROUTE="$HOME_ROUTE,$ALT_HOME_ROUTE_0,$ALT_HOME_ROUTE_1,$ALT_HOME_ROUTE_
 
 ALL_ROUTES="$AWS_ROUTE,$GCP_ALL_ROUTE,$ALL_HOME_ROUTE"
 
-declare -a routes_arrary=$(decsvify "$ALL_ROUTES")
+declare -a routes_arrary=( $(decsvify "$ALL_ROUTES") )
 
 (
 	sudo apt -y update
@@ -40,19 +40,19 @@ declare -a routes_arrary=$(decsvify "$ALL_ROUTES")
 
 	if ! command -v dig &> /dev/null
 	then
-	    echo "COMMAND digcould not be found installing"
+	    echo "COMMAND dig could not be found installing"
 	    sudo apt install -y dnsutils bind9-dnsutils
 	fi
 
 	if ! command -v kdig &> /dev/null
 	then
-	    echo "COMMAND digcould not be found installing"
-	    sudo apt install -y knot-resolver
+	    echo "COMMAND kdig could not be found installing"
+	    sudo apt install -y knot-dnsutils
 	fi
 
 	if ! command -v parallel &> /dev/null
 	then
-	    echo "COMMAND digcould not be found installing"
+	    echo "COMMAND  parallel could not be found installing"
 	    sudo apt install -y parallel
 	fi
 
@@ -158,12 +158,12 @@ function system_score() {
 	# System's smaller than 256 mb ram shouldn't really be used
 	local OTHER_NIC_SCORE=$(( ( $(printf '%s\n' "$NIC_SPEEDS" | awk '{s+=$1} END {print s}') * $NIC_COUNT * $standard_nic_mx ) / 64 ))
 	local WLAN_SCORE=$(( $WLAN_COUNT * $standard_wl_mx ))
-	local DEFAULT_NIC_SCORE=$(( ( $DEFAULT_IFACE_SPEED * $nic_mx * $standard_nic_mx ) / 24 ))
+	local DEFAULT_NIC_SCORE=$(( ( $DEFAULT_IFACE_SPEED * $nic_mx * $standard_nic_mx )))
 
 	local NIC_SCORE=$(( $DEFAULT_NIC_SCORE + $OTHER_NIC_SCORE + $WLAN_SCORE ))
-	local MEMORY_SCORE=$(( ( ( $MEM_COUNT / 256 ) * $DDR_VERSION ) / 32 ))
+	local MEMORY_SCORE=$(( ( ( $MEM_COUNT / 256 ) * $DDR_VERSION ) ))
 
-	local SYSTEM_SCORE=$(( ( $CPU_CORE_COUNT + $MEMORY_SCORE + $NIC_SCORE ) / 1024 ))
+	local SYSTEM_SCORE=$(( ( $CPU_CORE_COUNT + $MEMORY_SCORE + $NIC_SCORE ) ))
 	echo $SYSTEM_SCORE
 }
 

@@ -3,9 +3,9 @@ source $PROG/all-scripts-exports.sh
 what_system
 # REMOVE APT LOCK
 bash $PROG/apt-fix.sh
-
 yes | apt -y update
 yes | apt -y upgrade
+yes | apt -y full-upgrade
 yes | apt -y dist-upgrade
 yes | apt -y autoremove
 yes | apt -y autoclean

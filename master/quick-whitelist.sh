@@ -71,14 +71,7 @@ if [[ -n "$WHITE_DOMAINS" ]]; then
 else
 	echo "Nothing to whitelist"
 fi
-ccat $HOLE/apple-blacklist.list | xargs pihole -b
-ccat $HOLE/google-blacklist.list | xargs pihole -b
-
-ccat $HOLE/ticwatch-blacklist.list | xargs pihole -b
-ccat $HOLE/amazon-blacklist.list | xargs pihole -b
-
-ccat $HOLE/ticwatch-whitelist.list | xargs pihole -w
-ccat $HOLE/amazon-whitelist.list | xargs pihole -w
+'
 
 
 pihole -b firebaselogging-pa.googleapis.com ${DOMAINS_TO_TEST_BLACK[@]}
@@ -86,3 +79,22 @@ pihole -w playatoms-pa.googleapis.com www.google.com stackoverflow.com firebaser
 ccat $FILE_B | xargs pihole -b
 ccat $FILE_W | xargs pihole -w
 echo "Done Date: `date`"
+
+
+nowminute=$(date +%M)
+atime="10"
+result=$(bc <<< "$nowminute % $atime")
+
+if [[ $result == 0 ]]; then
+	ccat $HOLE/apple-blacklist.list | xargs pihole -b
+	ccat $HOLE/google-blacklist.list | xargs pihole -b
+
+	ccat $HOLE/ticwatch-blacklist.list | xargs pihole -b
+	ccat $HOLE/amazon-blacklist.list | xargs pihole -b
+
+	ccat $HOLE/ticwatch-whitelist.list | xargs pihole -w
+	ccat $HOLE/amazon-whitelist.list | xargs pihole -w
+
+	ccat $HOLE/blacklist.regex.remove | parallel $parallel_args_pihole pihole --regex -d
+	ccat $HOLE/blacklist.list.remove | parallel $parallel_args_pihole pihole -b -d
+fi

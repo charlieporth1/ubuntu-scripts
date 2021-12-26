@@ -30,6 +30,30 @@ else
 
 fi
 
+if ! command -v grepip &> /dev/null
+then
+        echo "COMMAND grepip could not be found installing"
+	curl -Ls 'https://raw.githubusercontent.com/ipinfo/cli/master/grepip/deb.sh' | bash
+fi
+
+if ! command -v dig &> /dev/null
+then
+    echo "COMMAND dig could not be found installing"
+    sudo apt install -y dnsutils bind9-dnsutils
+fi
+
+if ! command -v kdig &> /dev/null
+then
+     echo "COMMAND kdig could not be found installing"
+     sudo apt install -y knot-dnsutils
+fi
+
+if ! command -v parallel &> /dev/null
+then
+    echo "COMMAND parallel could not be found installing"
+    sudo apt install -y parallel
+fi
+
 [[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(d|debug)'` ]] && export DEBUG=true || export DEBUG=false
 [[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(no-log)[s]?'` ]] && export NO_LOG=true || export NO_LOG=false
 
@@ -49,6 +73,48 @@ export scriptName=$SCRIPT
 export script_name=$SCRIPT
 export DIR=`realpath . | rev | cut -d '/' -f 1 | rev`
 
+export IP_REGEX="(([0-9]{1,3})\.){3}[0-9]{1,3}"
+export IPV4_REGEX="$IP_REGEX"
+
+export IP_REGEX_PORT="$IP_REGEX$PORT_REGEX"
+export IPV4_REGEX_PORT="$IP_REGEX_PORT"
+
+export IP_REGEX_SUBNET="$IP_REGEX$PORT_REGEX"
+export IPV4_REGEX_SUBNET="$IP_REGEX_SUBNET"
+
+export IP_REGEX_PORT_SUBNET="$IP_REGEX$PORT_SUBNET_REGEX"
+export IPV4_REGEX_PORT="$IP_REGEX_PORT_SUBNET"
+
+export IP_REGEX_FULL="(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])"
+export IPV4_REGEX_FULL="(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])"
+
+export IPV6_REGEX="(([0-9a-fA-F]{0,4}:){1,7}[0-9a-fA-F]{0,4})"
+
+export IPV6_FULL_REGEX="[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}"
+export IPV6_FULL_REGEX_PORT="[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}$PORT_SEPERATOR_REGEX$PORT_REGEX"
+export IPV6_FULL_REGEX_SUBNET="[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}$SUBNET_SEPERATOR_REGEX$PORT_REGEX"
+
+
+	# RECHCK AND CREATE IF NUKK
+if ! command -v grepip &> /dev/null
+then
+	function grepip() {
+		local args="$@"
+		pipe_args=$({ read -p "Change Parameters?" b; echo $b; })
+		if  echo "$args" | grep -o '\-o' > /dev/null; then
+			grep_args=-o
+		fi
+
+		if echo "$args" | grep -o '\-4' > /dev/null; then
+			grep $grep_args -E "($IP_REGEX)"  "$pipe_args"
+		elif echo "$args" | grep -o '\-6' > /dev/null;  then
+			grep $grep_args -E "($IPV6_REGEX)" "$pipe_args"
+		else
+			grep $grep_args -E "($IP_REGEX|$IPV6_REGEX)" "$pipe_args"
+		fi
+	}
+	export -f grepip
+fi
 
 export ODD_ETH_REGEX="(n(x|s|n|o|p|e)([[:alnum:]]*))"
 export WLAN_DEVICE_REGEX="(wl((an)?)[0-9]+)"
@@ -61,7 +127,6 @@ export LO_DEVICE_REGEX="(lo:?[0-9]*)"
 
 export NET_DEVICE_REGEX="($ETH_DEVICE_REGEX|$WLAN_DEVICE_REGEX|$USB_DEVICE_REGEX)"
 export NET_DEVICE_REGEX_IFCONFIG="$NET_DEVICE_REGEX\:"
-
 export default_iface=`sudo ip route | grep '^default' | grep -oiE "$NET_DEVICE_REGEX" | awk '{ print $1}' | sed -n '1p'`
 #export default_iface_address=`sudo ifconfig $default_iface | awk '{print $2}' | grepip -4`
 export default_iface_address=`sudo ip add show dev $default_iface | grepip | awk '{print $2}' | sed -n '1p' | awk  -F/ '{print $1}'`
@@ -114,28 +179,6 @@ PORT_SEPERATOR_REGEX="(:|#|@)"
 PORT_SUBNET_SEPERATOR_REGEX="($PORT_SEPERATOR_REGEX|$SUBNET_SEPERATOR_REGEX)"
 export PORT_SUBNET_REGEX="($PORT_SUBNET_SEPERATOR_REGEX)($PORT_REGEX?)"
 export DOMAIN_REGEX="(([0-9A-Za-z\.-]{1,64}){0,64})((\.[a-z]{2,5}){1,4})"
-
-export IP_REGEX="(([0-9]{1,3})\.){3}[0-9]{1,3}"
-export IPV4_REGEX="$IP_REGEX"
-
-export IP_REGEX_PORT="$IP_REGEX$PORT_REGEX"
-export IPV4_REGEX_PORT="$IP_REGEX_PORT"
-
-export IP_REGEX_SUBNET="$IP_REGEX$PORT_REGEX"
-export IPV4_REGEX_SUBNET="$IP_REGEX_SUBNET"
-
-export IP_REGEX_PORT_SUBNET="$IP_REGEX$PORT_SUBNET_REGEX"
-export IPV4_REGEX_PORT="$IP_REGEX_PORT_SUBNET"
-
-export IP_REGEX_FULL="(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])"
-export IPV4_REGEX_FULL="(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])"
-
-export IPV6_REGEX="(([0-9a-fA-F]{0,4}:){1,7}[0-9a-fA-F]{0,4})"
-
-export IPV6_FULL_REGEX="[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}"
-export IPV6_FULL_REGEX_PORT="[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}$PORT_SEPERATOR_REGEX$PORT_REGEX"
-export IPV6_FULL_REGEX_SUBNET="[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}$SUBNET_SEPERATOR_REGEX$PORT_REGEX"
-
 
 round() {
     printf "%.${2:-0}f" "$1"
@@ -855,3 +898,14 @@ function trim2() {
 }
 alias pingt='__pingt() { s=0; while :; do s=$(($s+1)); result=$(ping $1 -c1 -W1 |/bin/grep from) && echo "$result, seq=$s" && sleep 1 || echo timeout; done }; __pingt $1'
 source /etc/environment
+function get_route_from_ipconf() {
+	local ip_address="$1"
+	sudo ip add show | grep "$ip_address" | awk '{print $2}'
+}
+function route_router_substation(){
+        local route="$1"
+        local subnet=$(echo "$route" | awk -F'\.[0-9]/[0-9]' '{print $1}')
+        local router=$(echo "$subnet.1")
+        echo "$router"
+}
+export -f route_router_substation

@@ -10,7 +10,7 @@ mkdir -p /var/log/tailscaled
 
 mkdir -p /var/cache/nginx/
 
-touch $LOG/{auth,unbound}.log
+touch $LOG/{auth,unbound,mail,fail2ban}.log
 touch $LOG/{ctp-dns,nginx-dns-rfc,ctp-fail-over-dns,ctp-auto-6to4}/$DEFAULT_LOG_FILES
 touch $LOG/tailscaled/$DEFAULT_LOG_FILES
 
@@ -39,3 +39,8 @@ chmod -R gu+rw $CTP_LISTS
 	ctp-dns.sh --generate-logs
 )&
 
+
+chmod -R 640 $LOG/{auth,mail}.log
+chown -R syslog:adm $LOG/{auth,mail}.log
+
+chown -R root:adm $LOG/fail2ban.log

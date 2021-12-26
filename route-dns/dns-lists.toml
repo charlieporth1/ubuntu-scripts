@@ -15,6 +15,8 @@ blocklist-source = [
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/apple-blacklist.list", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/snapchat-blacklist.list", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/facebook-blacklist.list", cache-dir = "/var/cache/ctp-dns"}, 
+        {format = "regexp", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/vulnerability-blacklist.list", cache-dir = "/var/cache/ctp-dns"},
+        {format = "regexp", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/tld-blacklist.list", cache-dir = "/var/cache/ctp-dns"},
 #        {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists", cache-dir = "/var/cache/ctp-dns"},
 #        {format = "domain", source = , cache-dir = "/var/cache/ctp-dns"},
 ]
@@ -41,6 +43,7 @@ allowlist-source = [
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/instagram-whitelist.list", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/onedrive-whitelist.list", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/facebook-whitelist.list", cache-dir = "/var/cache/ctp-dns"}, 
+        {format = "regexp", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/tld-whitelist.list", cache-dir = "/var/cache/ctp-dns"},
 ]
 
 [groups.ctp-dns-blocklist-others]

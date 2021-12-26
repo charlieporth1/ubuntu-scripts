@@ -1,415 +1,3 @@
-ifconfig eth1
-ping6 dns.gogle -I eth1
-ping6 dns.google -I eth1
-ping6 dns.google -I eth0
-dig +short myip.opendns.com @resolver1.opendns.com +timeout=6
-dig +short myip.opendns.com @resolver1.opendns.com +timeout=6; echo $?
-cur
-curl $CURL_IP_TYPE -s -w '\n' 'https://api64.ipify.org' 
-curl -6 -s -w '\n' 'https://api.ipify.org/'
-curl -4  -s -w '\n' 'https://api64.ipify.org' 
-sudo git stash && sudo git pull
-cd Pihole-Slave-Install/
-sudo git stash && sudo git pull
-sudo bash $prog/get_ext_ip.sh -6 --current-ip
-sudo bash -x $prog/get_ext_ip.sh -6 --current-ip
-sudo nano /home/ubuntuserver/Programs/get_ext_ip.sh 
-sudo bash -x $prog/get_ext_ip.sh -6 --current-ip
-sudo nano /home/ubuntuserver/Programs/get_ext_ip.sh 
-sudo bash -x $prog/get_ext_ip.sh -6 --current-ip
-sudo bash ./setup/new_server.sh 
-sudo git stash && sudo git pull
-bash  $prog/get_ext_ip.sh --multiple-nic
-bash  $PROG/get_ext_ip.sh --multiple-nic
-bash  prog/get_ext_ip.sh --multiple-nic
-bash -x $prog/get_ext_ip.sh --multiple-nic
-sudo reboot 
-bash $prog/pihole-f.sh
-cd Pihole-Slave-Install/
-bash -x $prog/get_ext_ip.sh --multiple-nic
-sudo nano /etc/environment
-bash -x $prog/get_ext_ip.sh --multiple-nic
-sudo nano  /home/ubuntuserver/Programs/get_ext_ip.sh
-bash -x $prog/get_ext_ip.sh --multiple-nic
-sudo nano  /home/ubuntuserver/Programs/get_ext_ip.sh
-dig www.google.com
-sudo nano  /home/ubuntuserver/Programs/get_ext_ip.sh
-dig -t $DNS_IP_TYPE $DIG_IFACE +short myip.opendns.com @resolver1.opendns.com 
-dig  +short myip.opendns.com @resolver1.opendns.com 
-dig   -t aaaa +short myip.opendns.com @resolver1.opendns.com 
-dig  +short myip.opendns.com @resolver1.opendns.com 
-ifconfig
-dig  -b 192.168.44.250 +short myip.opendns.com @resolver1.opendns.com 
-dig  -b 192.168.12.250 +short myip.opendns.com @resolver1.opendns.com 
-dig  -t a  -b 192.168.12.250 +short myip.opendns.com @resolver1.opendns.com 
-htop
-curl -4 --interface eth1 -s -w '\n' 'https://api64.ipify.org/' 
-ctp-dns -qbl
-sudo ./copy_config.sh 
-sudo ctp-dns-qbl
-sudo ctp-dns -qbl
-bash $prog/pihole-f.sh
-ifconfig
-ifconfig eth2
-ping 192.168.42.1
-ping 192.168.44.243
-nmap -T4 192.168.44.243
-ping 192.168.44.243
-ifconfig
-ping 192.168.44.243
-ping 192.168.42,1
-ing 192.168.42.1
-ifconfig eth2
-ifconfig eth0
-ifconfig eth2
-ping 192.168.42.1
-ifconfig eth2
-sudo netplan generate && sudo netplan try
-ifconfig eth2
-ping 192.168.42.1
-ping 192.168.44.243
-cd Pihole-Slave-Install/
-sudo nano /home/ubuntuserver/Programs/quick-whitelist.sh 
-ifconfig eth2
-ifconfig eth0
-ifconfig eth1
-sudo nano /etc/dhcpcd.conf 
-bash /home/ubuntuserver/Programs/get_ext_ip.sh 
-bash /home/ubuntuserver/Programs/get_ext_ip.sh --mn
-ping4 dns.google -I eth1
-bash /home/ubuntuserver/Programs/get_ext_ip.sh --mn
-ping4 dns.google -I eth1
-ping4 dns.google -I eth0
-ping4 dns.google -I eth2
-ifconfig
-ifconfig eth2
-sudo netplan generate && sudo netplan try
-ifconfig eth2
-ping6 dns.google -I eth0
-ifconfig eth2
-ifconfig
-sudo nano /etc/netplan/01-static.yaml
-sudo netplan generate && sudo netplan try
-ifconfig
-ping6 dns.google
-ping6 dns.google -I eth4
-ping6 dns.google -I eth2
-ifconfig eth0
-htop
-bash $prog/get_ext_ip.sh 
-bash $prog/get_ext_ip.sh --current-ip
-bash $prog/get_ext_ip.sh --current-ip
-bash $prog/get_ext_ip.sh --current-ip
-bash $prog/get_ext_ip.sh --mn
-nmap -T4 172.58.84.29
-ping 172.58.84.29
-ifconfig
-ifconfig
-sudo nano $prog/server-online-check.sh
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
-ssh 100.86.69.129
-ssh aws.ctptech.dev
-ssh aws.ctptech.dev
-ssh aws.ctptech.dev
-ssh aws.ctptech.dev
-ifconfig eth0
-ping6 -I eth0 dns.google
-ping 67d306317121.sn.mynetname.net
-ping4 67d306317121.sn.mynetname.net
-ping 67d306317121.sn.mynetname.net
-sudo nano $sites/home.conf 
-sudo nano $sites/osint.conf 
-ifconfig
-screen /dev/ttyACM0 
-screen /dev/ttyACM0 
-screen /dev/ttyUSB0 
-screen /dev/serial/by-id/usb-Prolific_Technology_Inc._USB-Serial_Controller_D-if00-port0 
-screen /dev/ttyprintk 
-
-killall scren
-killall screen
-killall screen
-killall screen
-killall screen
-cd Pihole-Slave-Install/
-sudo git stash && sudo git pull
-htop
-nano ~/start_osint.sh 
-sudo nano /etc/netplan/01-static.yaml
-sudo nano /etc/netplan/01-static.yaml
-exit
-sudo nano /etc/netplan/01-static.yaml
-exit
-cd Pihole-Slave-Install/
-cd ..
-scp start_osint.sh charlieporth1:~/
-scp start_osint.sh charlieporth1@192.168.44.244:~/
-sudo crontab -e
-sudo crontab -e
-sudo bash /home/charlieporth1/phoneinfoga/start_osint.sh
-sudo nano $sites/osint.conf 
-sudo nginx 0t
-sudo nginx -t
-exit
-htop
-sudo nano $sites/osint.conf 
-sudo systemctl restart nginx
-sudo apt purge docker.io
-htop
-ping 192.168.44.247
-ping -a 192.168.44.247
-htop
-ping www.google.com
-cd Pihole-Slave-Install/
-ifconfig
-screen /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_AJ035PB3-if00-port0 
-screen /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_AJ035PB3-if00-port0 115200
-stty /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_AJ035PB3-if00-port0 
-stty < /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_AJ035PB3-if00-port0 
-killall screen
-stty < /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_AJ035PB3-if00-port0 
-stty < /dev/serial/by-id/usb-Prolific_Technology_Inc._USB-Serial_Controller_D-if00-port0 
-screen /dev/serial/by-id/usb-Prolific_Technology_Inc._USB-Serial_Controller_D-if00-port0 
-kilall screen
-killall screen
-stty < /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_AJ035PB3-if00-port0 
-screen /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_AJ035PB3-if00-port0 
-exit
-tar -vxf ~/intel_edison_setup_lin_2016.2.002.tar.gz 
-cd Intel_Edison_Setup_Lin_2016.2.002/
-ls
-sudo ./install.sh 
-sudo ./install.sh --help
-ls
-nano install.sh 
-sudo ./install.sh
-ls
-ls tools/
-ls tools/dfu-util/
-ls
-cd ..
-wget https://www.jubilinux.org/dist/jubilinux-v9+0.4.zip
-unzip jubilinux-v9+0.4.zip 
-cd jubilinux-stretch/
-ls
-sudo ./flashall.sh 
-sudo apt install dfu-util
-sudo ./flashall.sh 
-sudo ./flashall.sh  --recovery
-sudo apt install xfstk
-sudo ./flashall.sh  --recovery
-sudo ./flashall.sh  
-lsusb
-ls 
-ls /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A402IXRQ-if00-port0 
-sudo ./flashall.sh  
-nano flashall.sh 
-screen -r
-screen /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A402IXRQ-if00-port0 
-screen -d
-killall screen
-sudo ./flashall.sh  
-pihole -w xfstk
-pihole -b xfstk
-sudo apt install openvpn
-openvpn --help
-openvpn --config ~/charlieporth1.home.ovpn 
-sudo nano /etc/rc.local
-sudo  openvpn --config $ADMIN_HOME/charlieporth1.home.ovpn 
-sudo nano /etc/rc.local
-sudo sytemctl edit --full ctp-private-ip-openvpn.service
-sudo systemctl edit --full ctp-private-ip-openvpn.service
-sudo systemctl edit --force --full ctp-private-ip-openvpn.service
-which openvpn
-sudo systemctl edit --full ctp-private-ip-openvpn.service
-sudo systemctl start ctp-private-ip-openvpn.service
-sudo systemctl enable ctp-private-ip-openvpn.service
-sudo systemctl status ctp-private-ip-openvpn.service
- wget https://cdn.tunnelin.com/installers/linux/console/tunnelin
-screen /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A402IXRQ-if00-port0 115200
-curl -s https://pitunnel.com/inst/SmRnapuIs  |  sudo python3
- wget https://cdn.tunnelin.com/installers/linux/console/tunnelin
-wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.tgz
-tar -xvf ngrok-stable-linux-amd64.tgz 
-cd ngrok-stable-linux-amd64.tgz 
-cd ngrok
-ls
-ls ngrok/
-../ngrok authtoken 3v2A97WPYoFc8sxXUYCeE_6eNLJojGagF7Te68XjLZp
-chmod 777 ./ngrok
-./ngrok authtoken 3v2A97WPYoFc8sxXUYCeE_6eNLJojGagF7Te68XjLZp
-sudo ./ngrok authtoken 3v2A97WPYoFc8sxXUYCeE_6eNLJojGagF7Te68XjLZp
-./ngrok --hep
-./ngrok udp
-./ngrok http 80
-./ngrok http 8443
-sudo ./tunnelin
-chmod +x tunnelin
-sudo ./tunnelin
-curl -s https://pitunnel.com/inst/SmRnapuIs  |  sudo python3
-pitunnel
-pitunnel --host=192.168.44.243 --port=4500 --name=mikrovpnctp --persist
-sudo apt install wireguard
-sudo nano /etc/wireguard/wg0-client.conf
-sudo wg --help
-sudo wg-quick 
-sudo wg-quick up
-sudo wg-quick --help
-sudo wg-quick up eth0
-sudo wg-quick up wg0-client
-sudo apt install resconf
-sudo apt install resolvconf
-sudo wg-quick up wg0-client
-ping 10.128.0.9
-ping 10.128.0.9 -I wg0-client 
-ping 10.128.0.9
-ping 172.31.12.154
-ping 10.128.0.9
-ping 172.31.12.154
-ping 10.128.0.9
-ifconfig
-ping 169.254.169.254
-sudo nano /etc/rc.local
-sudo nano /etc/wireguard/wg0-client.conf
-exit
-wget https://github.com/Nyr/wireguard-install/blob/master/wireguard-install.sh
-wget https://raw.githubusercontent.com/Nyr/wireguard-install/master/wireguard-install.sh
-sudo nano /etc/resolv.conf
-wget https://raw.githubusercontent.com/Nyr/wireguard-install/master/wireguard-install.sh
-sudo nano /etc/resolv.conf
-wget https://raw.githubusercontent.com/Nyr/wireguard-install/master/wireguard-install.sh
-sudo nano /etc/resolv.conf
-wget https://raw.githubusercontent.com/Nyr/wireguard-install/master/wireguard-install.sh
-sudo nano /etc/resolv.conf
-wget https://raw.githubusercontent.com/Nyr/wireguard-install/master/wireguard-install.sh
-sudo nano /etc/resolv.conf
-ping 1.1.1.1
-ping -a  1.1.1.1
-htop
-ping -a  1.1.1.1
-sudo ip route
-ping 192.168.44.1
-ping 192.168.12.1
-ping -a  1.1.1.1
-sudo iptables -S
-sudo iptables | grep -i docker
-sudo iptables -S | grep -i docker
-sudo iptables -S | grep -i docker | xargs sudo iptables -D
-for rule in $(sudo iptables -S | grep -i docker ); do sudo iptables -D  $rule;done
-sudo iptables -S | grep -i docker
-for rule in $(sudo iptables -S | grep -i docker ); do sudo iptables -D  $rule;done
-for rule in $(sudo iptables -S | grep -i docker ); do echo $rule;done
-IFS=$'\n' for rule in $(sudo iptables -S | grep -i docker ); do sudo iptables -D  $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker ); do sudo iptables -D  $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | grep -v "A\|N"); do sudo iptables -D  $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | awk '{print !$1}'); do sudo iptables -D  $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | awk '{print !$1}'); do echo $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | awk '{print $1}'); do echo $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | awk '!{print $1}'); do echo $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | rev ; do echo $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | rev ); do echo $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | rev | cut -f 1- -d - | rev ); do echo $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | rev | cut -f 2- -d - | rev ); do echo $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | rev | cut -f -1 -d - | rev ); do echo $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | rev | cut -f 1- -d - | rev ); do echo $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | rev | cut -f 2- -d - | rev ); do echo $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | rev | cut -f 2- -d\- | rev ); do echo $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | rev | cut -f 2- -d'-' | rev ); do echo $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | rev | cut -f -2 -d'-' | rev ); do echo $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | rev | cut -f -1 -d'-' | rev ); do echo $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | rev | cut -f 1--d'-' | rev ); do echo $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | rev | cut -f 1- -d'-' | rev ); do echo $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | rev | cut -f 2- -d'-' | rev ); do echo $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | '{for (i=2; i<=NF; i++) print $i}'  ); do echo $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | awk '{for (i=2; i<=NF; i++) print $i}'  ); do echo $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | awk '{for (i=2; i<=NF; i++) printf $i}'  ); do echo $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | awk '{for (i=2; i<=NF; i++)  printf $i " "; print $NF}' } '  ); do echo $rule;done
-
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | awk '{for (i=2; i<=NF; i++)  printf $i " "; print $NF}}} '  ); do echo $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | awk '{for (i=2; i<=NF; i++)  printf $i " "; print $NF} '  ); do echo $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | awk '{for (i=2; i<=NF; i++)  printf $i " "; print $NF} '  ); do sudo iptables -D ;done 
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | awk '{for (i=2; i<=NF; i++)  printf $i " "; print $NF} '  ); do sudo iptables -D $rule ;done 
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | awk '{for (i=2; i<=NF; i++)  printf $i " "; print ""} '  ); do echo $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | awk '{for (i=2; i<=NF; i++)  printf $i " "; print ""} '  ); do echo $rule; sudo iptables -D $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | awk '{for (i=2; i<=NF; i++)  printf $i " "; print $NF} '  ); do echo $rule; sudo iptables -D $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker | awk '{for (i=2; i<=NF; i++)  printf $i " "; print ""} '  ); do echo $rule; sudo iptables -D $rule;done
-sudo iptables -S
-sudo iptables -S | grep -i docker
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker |  '{ $(NF+1)=$1;$1="";$0=$0;} NF=NF '  ); do echo $rule; sudo iptables -D $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker |awk  '{ $(NF+1)=$1;$1="";$0=$0;} NF=NF '  ); do echo $rule; sudo iptables -D $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker |awk  '{ $(NF+1)=$1;$1="";sub(OFS,"");}1'   ); do echo $rule; sudo iptables -D $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7'   ); do echo $rule; sudo iptables -D $rule;done
-sudo iptables
-sudo iptables -S
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7'   ); do echo $rule; sudo iptables -D $rule;done
-sudo iptables -S
-sudo iptables -D DOCKER-USER -j RETURN
-sudo iptables -D DOCKER-ISOLATION-STAGE-2 -j RETURN
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7'   ); do echo $rule; sudo iptables -D $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7'   ); do echo $rule; sudo iptables -D "$rule";done
-IFS=$'\n'; for rule in "$(sudo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7'   );" do echo $rule; sudo iptables -D "$rule";done
-IFS=$'\n'; for rule in "$(sudo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7'   )"; do echo $rule; sudo iptables -D "$rule";done
-IFS=$'\n'; for rule in "$(sudo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7'   )"; do echo $rule; sudo iptables -D $rule;done
-sudo iptables -S
-IFS=$'\n'; for rule in "$(sudo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7'   )"; do echo $rule; sudo iptables -D "$rule";done
-IFS=$'\n'; for rule in "$(sudo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7'   )"; do echo $rule; sudo iptables -D $rule;done
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7'   ); do echo $rule; sudo iptables -D $rule;done
-udo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7'
-sudo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7'
-sudo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7' | xargs sudo iptables -D
-sudo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7' | xargs sudo iptables --hel[
-sudo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7' | xargs sudo iptables --help
-IFS=$'\n'; for rule in $(sudo iptables -S | grep -i docker |awk  '{sub($1 FS,"")}7'   ); do echo $rule; sudo iptables -D "$rule";done
-sudo iptables -S  --line-numbers
-sudo iptables -L  --line-numbers
-udo iptables -L  --line-numbers | grep docker
-sudo iptables -L  --line-numbers | grep -i docker
-sudo iptables -L  --line-numbers | grep -i docker | awk '{print $1}'
-sudo iptables --delete-chainDOCKER-ISOLATION-STAGE-2
-sudo iptables --delete-chain DOCKER-ISOLATION-STAGE-2
-sudo iptables --delete-chain DOCKER-USER 
-sudo iptables --delete-chain DOCKER-USER  -W 10
-sudo iptables --delete-chain DOCKER-USER  -w=10
-sudo iptables --delete-chain DOCKER-USER  -w 10
-sudo apt purge docker.io
-sudo apt install -y docker.io && sudo apt purge -y docker.io
-sudo apt pruge resolvconf
-sudo apt purge resolvconf
-ping 1.1.1.1
-sudo iptables -F
-sudo iptables -X
-ping 1.1.1.1
-htop
-ping 100.100.100.100
-sudo systemctl edit --full tailscaled
-sudo reboot
-ifconfig
-sudo nano /etc/rc.local
-sudo wg-quick up wg0-client
-ifconfig
-sudo nano /etc/rc.local
-ping 1.1.1.
-ping 1.1.1.1
-sudo apt install resolvconf
-ifconfig
-sudo wg-quick up wg0-client
 ping 10.128.0.9
 ifconfig
 wget https://raw.githubusercontent.com/Nyr/wireguard-install/master/wireguard-install.sh
@@ -511,3 +99,403 @@ cd manual-connections-2.0.0/
 ls
 ./run_setup.sh 
 sudo ./run_setup.sh 
+nano   ./port_forwarding.sh
+ifconfig
+curl -LO https://raw.githubusercontent.com/SomajitDey/tunnel/main/tunnel
+cd ..
+curl -LO https://raw.githubusercontent.com/SomajitDey/tunnel/main/tunnel
+chmod +x ./tunnel
+./tunnel -c install
+tunnel 
+tunnel -h
+cat /proc/sys/net/ipv4/conf/ppp0/forwarding 
+iptables -t nat -A PREROUTING -p tcp -i ppp0 --dport 8001 -j DNAT --to-destination 192.168.1.200:8080
+iptables -A FORWARD -p tcp -d 192.168.1.200 --dport 8080 -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+sudo iptables -A FORWARD -p udp -d 192.168.44.243 --dport 13231 -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+sudo iptables -t nat -A PREROUTING -p udp -i ppp0 --dport 13231 -j DNAT --to-destination 192.168.44.243:13231
+sudo nmap -sU -T4 192.168.44.250 -p 13231
+sudo nmap -sU -T4 192.168.44.243 -p 13231
+sudo nmap -sU -T4 192.168.44.250 -p 13231
+sudo iptables -t nat -A PREROUTING -p udp -i ppp0 --dport 13231 -j DNAT --to-destination 192.168.44.243:13231
+ifconfig
+sudo iptables -t nat -D PREROUTING -p udp -i ppp0 --dport 13231 -j DNAT --to-destination 192.168.44.243:13231
+sudo iptables -D FORWARD -p udp -d 192.168.44.243 --dport 13231 -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+sudo iptables -A FORWARD -p udp -d 192.168.44.243 --dport 13231 -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+iptables -t nat -A PREROUTING -p tcp --dport 8001 -j DNAT --to-destination
+sudo iptables -t nat -A PREROUTING -p tcp --dport 13231  -j DNAT --to-destination  192.168.44.243:13231
+sudo iptables -t nat -A PREROUTING -p udp --dport 13231  -j DNAT --to-destination  192.168.44.243:13231
+sudo nmap -sU -T4 192.168.44.250 -p 13231
+sudo nmap -sU -T4 192.168.12.250 -p 13231
+sudo nmap -sU -T4 192.168.44.250 -p 13231
+yours_wan_ip=$(bash /home/ubuntuserver/Programs/get_ext_ip.sh --current-ip)
+echo $yours_wan_ip
+yours_wan_ip=$(bash /home/ubuntuserver/Programs/get_ext_ip.sh --current-ip)
+echo $yours_wan_ip
+sudo ip route
+yours_wan_ip=174.53.130.17
+sudo iptables -A PREROUTING  -p tcp -m tcp -d $yours_wan_ip --dport 8001 -j DNAT --to-destination 192.168.1.200:8080
+sudo iptables -A PREROUTING  -p tcp -m tcp -d $yours_wan_ip --dport 13231 -j DNAT --to-destination 192.168.44.243:13231
+sudo iptables -A PREROUTING  -p udp -m udp -d $yours_wan_ip --dport 13231 -j DNAT --to-destination 192.168.44.243:13231
+sudo iptables -t nat  -A PREROUTING  -p udp -m udp -d $yours_wan_ip --dport 13231 -j DNAT --to-destination 192.168.44.243:13231
+sudo iptables -A FORWARD -m state -p udp -d 192.168.44.243 --dport 13231 --state NEW,ESTABLISHED,RELATED -j ACCEPT
+sudo iptables -t nat -A POSTROUTING -t nat -p udp -m udp -s 192.168.44.243 --sport 13231 -j SNAT --to-source $yours_wan_ip
+sudo nmap -sU -T4 192.168.12.250 -p 13231
+sudo nmap -sU -T4 192.168.44.250 -p 13231
+sudo nmap -sU -T4 $yours_wan_ipubuntuserver -p 13231
+sudo iptables -t nat -D POSTROUTING -t nat -p udp -m udp -s 192.168.44.243 --sport 13231 -j SNAT --to-source $yours_wan_ip
+sudo iptables -D FORWARD -m state -p udp -d 192.168.44.243 --dport 13231 --state NEW,ESTABLISHED,RELATED -j ACCEPT
+sudo iptables -t nat  -D PREROUTING  -p udp -m udp -d $yours_wan_ip --dport 13231 -j DNAT --to-destination 192.168.44.243:13231
+sudo iptables -t nat -D POSTROUTING -t nat -p udp -m udp -s 192.168.44.243 --sport 13231 -j SNAT --to-source $yours_wan_ip
+sudo nano $PROG/port_forwarding.sh
+sudo chmod +x $PROG/port_forwarding.sh
+sudo $PROG/port_forwarding.sh
+sudo ip 
+ifconfig
+sudo wg-quick down pia
+sudo $PROG/port_forwarding.sh
+sudo $PROG/port_forwarding.sh 192.168.44.243 13231
+sudo nmap -sU -T4 192.168.44.250 -p 13231
+sudo nmap -sU -T4 $yours_wan_ipubuntuserver -p 13231
+cp -rf /home/ubuntuserver/Programs/port_forwarding.sh /home/ubuntuserver/Programs/port_forwarding_1.sh
+sudo nano /home/ubuntuserver/Programs/port_forwarding_1.sh
+sudo $PROG/port_forwarding.sh -r 192.168.44.243 13231
+sudo $PROG/port_forwarding.sh  192.168.44.243 13231 192.168.44.250
+sudo nano /home/ubuntuserver/Programs/port_forwarding_1.sh
+sudo nano  /home/ubuntuserver/Programs/port_forwarding.sh 
+sudo $PROG/port_forwarding.sh  192.168.44.243 13231 13231 192.168.44.250
+sudo nmap -sU -T4 192.168.44.250 -p 13231
+ wg genkey > server_privatekey
+wg pubkey < server_privatekey > server_publickey_client1
+cat server_publickey_client1
+sudo wg-quick up wg1-client
+sudo wg-quick up wg0-client
+ping 192.168.44.1
+ping 1.1.1.1
+ping 10.128.0.9
+history | grep nmap
+ sudo nmap -sU -T4 192.168.44.243 -p 13231
+ifconfig
+ping 1.1.1.1
+sudo wg-quick up wg0
+sudo ./wireguard-install.sh 
+sudo bash ./wireguard-install.sh 
+ping 1.1.1.1
+ifconfig
+sudo wg-quick down wg0-client
+sudo nano /etc/rc.local
+ping 1.1.1.1
+ssh 
+te1.tunnelin.com:54768
+te1.tunnelin.com -p 54768 
+ssh te1.tunnelin.com -p 54768 
+te1.tunnelin.com:54768
+wget https://mullvad.net/download/app/deb/latest/
+wget https://mullvad.net/media/app/MullvadVPN-2021.6_amd64.deb
+tar -vxf MullvadVPN-2021.6_amd64.deb 
+sudo dpkg -i MullvadVPN-2021.6_amd64.deb 
+systemctl status mullvad-vpn
+systemctl status mullvad-daemon
+mullvad
+mullvad account
+mullvad account set 1309 7710 9536 4462
+mullvad account set "1309 7710 9536 4462"
+mullvad 
+mullvad connect
+ifconfig
+mullvad connect
+mullvad connect ?
+mullvad connect --help
+mullvad connect -w 
+ifconfig
+bash /home/ubuntuserver/Programs/get_ext_ip.sh 
+nano /home/ubuntuserver/Programs/get_ext_ip.sh 
+exit
+sudo apt install docker.io; Cudo
+sudo apt install docker.io;sudo apt purge docøker.io
+y
+y
+sudoø apt install -y coøntainerd
+sudoø apt install -y coøntainerd
+sudoø apt install -y coøntainerd
+sudoø apt install -y coøntainerd
+sudoø apt install -y coønt
+sudoø apt install -y coøntaøinerd
+sudoø apt install -y coøntaøin
+sudoø apt i purge  0 y oøntaøin
+sudoø apt i purge  0 -øntaøin
+sudo apt purge 0y con
+sudo apt purge -y containerd
+bash /home/ubuntuserver/Programs/get_ext_ip.sh 
+bash /home/ubuntuserver/Programs/get_ext_ip.sh --currebt-ip
+bash /home/ubuntuserver/Programs/get_ext_ip.sh --current-ip
+ifconfig
+mullvad connect
+mullvad connect
+bash /home/ubuntuserver/Programs/get_ext_ip.sh --currebt-ip
+
+nc -l 5555
+ifconfig
+sudo ip add
+piactl 
+piactl allowlan
+piactl alloøset allowlan
+piactl alloøset allowlan
+piactl aset allowlan
+piact aset allowlan
+piactl sset allowlan
+piactl sst allowlan
+piactl set allowlan
+piactl set allowlan tøue
+piactl set allowlan tørue
+piactl set allowlan tøuòe
+piactl set allowlan tøurue
+piactl set allowlan ture
+piactl set allowlan true
+piactl set allowlan tøue
+piactl set allowlan tpia
+piactl 
+ifconifg
+udo mu
+mullvad ødown
+mullvad ødisconnect
+mullvad disconnect
+mullvad disconnect
+mullvad disconnect
+exit
+ifconfig
+pia
+piactl 
+piactl set requestportforward 500
+piactl set requestportforward 500 trie
+piactl  requestportforward 500 
+piactl set  requestportforward 500
+piactl set  requestportforward 500 
+ifconfig
+nmap -T4 192.168.44.250
+nmap -T4 -sU 192.168.44.250 -p 4500,500
+sudo nmap -T4 -sU 192.168.44.250 -p 4500,500
+exit
+ping -I eth0 10.128.0.9
+ping -I eth2 10.128.0.9
+ping -I eth2 10.128.0.9 -a
+ping -I ethI 10.128.0.9 -a
+ping -I eth1 10.128.0.9 -a
+ping -I eth0 10.128.0.9 -a
+nmap -T4 -sU 192.168.44.250 -p 4500,500
+sudo nmap -T4 -sU 192.168.44.250 -p 4500,500
+sudo iptables
+sudo iptables -S
+sudo apt install strongswan
+sudo sud
+sudo su
+ping 10.128.0.9 -I eth0
+ping 10.128.0.9 -I eth0 -a
+htop
+ping 192.168.44.1
+ping 192.168.44.243
+ping 192.168.42.1
+ssh admin@192.168.42.1
+ping 192.168.42.1
+ssh admin@192.168.42.1
+ping 192.168.42.1
+ping -a 192.168.42.1
+ping 192.168.42.1
+dig dns.google
+dig dns.google -t aaaa
+ifconfig eth0
+ping6 dns.google -I eth0
+ifconfig eth0
+ping6 dns.google -I eth0
+ping6 dns.google -I eth0 -a
+ifconfig
+ping6 dns.google -I eth0 -a
+last
+ping6 dns.google -I eth0 -a
+ping6 dns.google -I eth0
+ifconfg eth0
+ifconfig eth0
+pihole -up
+ping6 dns.google -I eth0 -a
+ping6 dns.google -I eth0 -a
+ping6 dns.google -a -I 2001:470:1f11:5ba:230:18ff:feb0:7ef
+ping6 dns.google -I eth0 -a
+ping6 dns.google -a -I 2001:470:1f11:5ba:230:18ff:feb0:7ef
+ping6 dns.google -a -I 2001:470:1f10:5ba:230:18ff:feb0:7ef
+ping6 dns.google -a -I 2001:470:1f11:5ba:230:18ff:feb0:7ef
+ping6 dns.google -a -I eth0
+ping6 dns.google -a -I 2001:470:1f10:5ba:230:18ff:feb0:7ef
+ping6 dns.google -a -I eth0
+ping6 dns.google -a -I 2001:470:1f10:5ba:230:18ff:feb0:7ef
+sudo crontab -e
+sudo nano /etc/rc.local
+ping6 dns.google -a -I 2001:470:1f10:5ba:230:18ff:feb0:7ef
+sudo su
+ping6 dns.google -a -I 2001:470:1f10:5ba:230:18ff:feb0:7ef
+ifconfig
+mullvad
+mullvad tunnel
+mullvad tunnel wireguard 
+mullvad tunnel wireguard key 
+mullvad tunnel wireguard key regenerate 
+pihole -w www.paypal.com
+sudo wget https://support.vyprvpn.com/hc/article_attachments/360052622052/ca.vyprvpn.com.crt -O /etc/openvpn/ca.vyprvpn.com.crt
+scp /etc/openvpn/ca.vyprvpn.com.crt 192.168.44.243
+scp /etc/openvpn/ca.vyprvpn.com.crt admin@192.168.44.243:/
+sudo apt install openvpn -y
+wget https://support.vyprvpn.com/hc/article_attachments/360052617332/Vypr_OpenVPN_20200320.zip
+unzip Vypr_OpenVPN_20200320.zip 
+sudo openvpn --config GF_OpenVPN_20200320/USA\ \-\ Chicago.ovpn
+n GF_OpenVPN_20200320/USA\ \-\ Chicago.ovpn
+nano GF_OpenVPN_20200320/USA\ \-\ Chicago.ovpn
+sudo openvpn --config GF_OpenVPN_20200320/OpenVPN256/USA\ -\ Chicago.ovpn
+ifconfig
+ping www.google.com
+ping4 www.google.com
+ip
+ifconfig
+sudo nmap -T4 10.2.2.175
+bash /home/ubuntuserver/Programs/get_ext_ip.sh
+bash /home/ubuntuserver/Programs/get_ext_ip.sh --current-ip
+nmap -T4 208.91.71.234
+nmap -T4 -Pn 208.91.71.234
+sudo openvpn --config GF_OpenVPN_20200320/OpenVPN256/USA\ -\ Chicago.ovpn
+sudo ip route
+ifconnifg
+ifconfig
+sudo ip tunnel
+sudo ip route del tun1
+sudo ip add del dev tun1
+sudo ip tunnel
+sudo ip tunnel -a
+sudo ip tunnel a
+sudo ip tunnel all
+sudo ip tunnel
+sudo ip add
+sudo ip 
+sudo ip tuntap
+sudo ip tuntap del tun1
+sudo ip tuntap del tun0
+sudo ip tuntap del dev tun0 
+sudo ip tuntap del ?
+sudo ip tuntap help
+sudo ip tuntap del dev tun0
+sudo ip tuntap del dev tun0 
+sudo ip tuntap del dev tun1
+sudo openvpn --config GF_OpenVPN_20200320/OpenVPN256/USA\ -\ Chicago.ovpn
+htop
+ifconfig
+nmap -T4 -sU home.ctptech.dev -p 500
+sudo nmap -T4 -sU home.ctptech.dev -p 500
+sudo nmap -T2 -sU home.ctptech.dev -p 500
+sudo nmap -T2 -sU 174.53.130.17 -p 500
+sudo nmap -T4 -sU 174.53.130.17 -p 500
+sudo nmap -T4 -sU 174.53.130.17 -p 22
+sudo nmap -T4 -sU 174.53.130.17 -p 53
+sudo nmap -T4 -sU 174.53.130.17 -p 853
+sudo nmap -T4 -sU 174.53.130.17 -p 784
+sudo nmap -T4 -sU 174.53.130.17 -p 500
+sudo nmap -T4 -sU 174.53.130.17 -p 784
+bash /home/ubuntuserver/Programs/get_ext_ip.sh --current-ip
+sudo ip
+sudo ip route
+nmap -T4 -Pn 208.91.71.234
+sudo nmap -T4 -sU 208.91.71.234
+sudo nmap -T4 -sU 208.91.71.234 -p 4500,500
+bash /home/ubuntuserver/Programs/get_ext_ip.sh --current-ip
+bash /home/ubuntuserver/Programs/get_ext_ip.sh --current-ip
+ping 208.91.71.234
+nmap -T4 208.91.71.234
+ssh 208.91.71.234
+ping eth0 10.128.0.9
+ping -I  eth0 10.128.0.9
+ping -I  eth0 10.128.0.9 -a
+ping -I eth2 10.128.0.9 -a
+ping -I eth2 10.128.0.9 -a
+screen /dev/serial/by-id/usb-Prolific_Technology_Inc._USB-Serial_Controller_D-if00-port0 
+screen -r
+screen -d
+screen -k
+screen -D
+screen -D
+screen -d
+screen -x
+screen -J
+screen -R
+screen -q
+screen -D
+screen /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A402IXRQ-if00-port0 
+screen /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A402IXRQ-if00-port0 115200
+screen /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A402IXRQ-if00-port0 115200
+screen /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A402IXRQ-if00-port0 115200
+screen /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A402IXRQ-if00-port0 115200
+screen /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A402IXRQ-if00-port0 115200
+screen /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A402IXRQ-if00-port0 115200
+screen /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A402IXRQ-if00-port0 115200
+killall screen
+killall screen
+screen /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A402IXRQ-if00-port0 115200
+ping dns.google
+sudo nano /etc/resolv.conf
+ping dns.google
+ping5 dns.google
+ping6 dns.google
+dig 1.1.1.1
+dig @1.1.1.1
+ifconfig
+ping 192.168.44.1
+ping 192.168.44.2
+ping 192.168.12.1
+dig 1.1.1.1
+ping dns.google
+systemctl status systemd-resolvconf
+systemctl status systemd-resolvconf
+systemctl status systemd-resolved.service 
+sudo nano /etc/systemd/resolved.conf
+FIRST_NAME_SERVER=`grep nameserver $DNS_FILE | sed -n '1p'`
+DNS_FILE=/etc/resolv.conf
+DNS_SERVER=169.254.169.254
+FIRST_NAME_SERVER=`grep nameserver $DNS_FILE | sed -n '1p'`
+ DNS_SERVER=192.168.44.1
+sed -i "s/$FIRST_NAME_SERVER/nameserver $DNS_SERVER\n nameserver192.168.12.1\n nameserver 192.168.44.243/g" $DNS_FILE
+sudo sed -i "s/$FIRST_NAME_SERVER/nameserver $DNS_SERVER\n nameserver192.168.12.1\n nameserver 192.168.44.243/g" $DNS_FILE
+sudo nano $DNS_FILE 
+FIRST_NAME_SERVER=`grep nameserver $DNS_FILE | sed -n '1p'`
+  sed -i "s/$FIRST_NAME_SERVER/nameserver $DNS_SERVER\nnameserver 192.168.12.1\nnameserver 192.168.44.243/g" $DNS_FILE
+sudo  sed -i "s/$FIRST_NAME_SERVER/nameserver $DNS_SERVER\nnameserver 192.168.12.1\nnameserver 192.168.44.243/g" $DNS_FILE
+sudo nano $DNS_FILE 
+cd Pihole-Slave-Install/
+sudo git stash && sudo git pull
+x
+ping 1.1.1.1 -a
+ifconfig
+ping 1.1.1.1 -a
+sudo reboot
+ping 1.1.1.1 -a
+ping 1.1.1.1 -a
+iperf 
+iperf -s
+iperf -c 192.168.44.99
+iperf -c 192.168.44.99 --help
+iperf -c 192.168.44.99 -B 192.168.42.250
+iperf -c 192.168.44.99 -B 192.168.42.250
+killall iperf
+iperf -c 192.168.44.99 -B 192.168.42.250:5001
+iperf -c 192.168.44.99 -B 192.168.44.100:5001
+iperf -c 192.168.44.99 -B 192.168.44.100:5001
+whle true; do iperf -c 192.168.44.99 -B 192.168.44.100:5001 ;done
+while true; do iperf -c 192.168.44.99 -B 192.168.44.100:5001 ;done
+cd Pihole-Slave-Install/
+sudo git stash && sudo git pull
+ifconfig
+ping6 dns.google -I eth0
+ping6 dns.google -I eth0 -c 100 -i 200
+cat /proc/cpuinfo | grep aes
+cat /proc/cpuinfo
+ifconfig
+ifconfig
+htop
+cat /proc/cpuinfo
+ifconfig
+NetTechScience99#ifconfig=
+sudo apt-get update && sudo apt-get install tailscale
+systemctl status ctp-dns

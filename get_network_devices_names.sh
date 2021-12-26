@@ -1,6 +1,7 @@
 #!/bin/bash
 ARGS="$@"
 source $PROG/all-scripts-exports.sh
+
 [[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(g|grepify|grep)'` ]] && isGrepify=true || isGrepify=false
 [[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(c|csvify|csv)'` ]] && isCSV=true || isCSV=false
 [[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(l|lo|local|loop|localhost|loopback)'` ]] && noLo="|lo:?[0-9]?" || noLo=""

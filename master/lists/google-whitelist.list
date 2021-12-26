@@ -19,6 +19,8 @@ aa.google.com
 accounts.google.com
 addons-pa.clients6.google.com
 ajax.googleapis.com
+alt1-mtalk.google.com
+alt1.mobile-gtalk.l.google.com
 analytics.google.com
 analyticsinsights-pa.clients6.google.com
 analyticsmobile-pa.googleapis.com
@@ -41,6 +43,8 @@ beacons.gcp.gvt2.com
 beacons.gcp.gvt3.com
 beacons.gcp.gvt4.com
 beacons.gcp.gvt5.com
+calendarpushsubscription-pa.googleapis.com
+calendarsync-pa.googleapis.com
 careers.google.com
 cast.google.com
 cdn.optimizely.com
@@ -51,6 +55,7 @@ cdn2.optimizely.com
 cdn3.optimizely.com
 cello.client-channel.google.com
 chat-pa.clients6.google.com
+chrome.google.com
 chromecontentsuggestions-pa.googleapis.com
 chromefeedcontentsuggestions-pa.googleapis.com
 chromesyncpasswords-pa.googleapis.com
@@ -63,6 +68,9 @@ clients4.google.com
 clients5.google.com
 clients6.google.com
 clientservices.googleapis.com
+cloud-mobile-prod.appspot.com
+cloudconsole-pa.googleapis.com
+cloudresourcemanager.googleapis.com
 code.google.com
 connectivitycheck.android.com
 connectivitycheck.gstatic.com
@@ -131,6 +139,7 @@ mapsphotoupload.googleapis.com
 marketingplatform.google.com
 meet.google.com
 megaphone.fm
+messages.google.com
 mobile-gtalk.l.google.com
 nexus.dropcam.com
 notifications-pa.googleapis.com
@@ -156,6 +165,7 @@ readaloud.googleapis.com
 realtimesupport.clients6.google.com
 reminders-pa.clients6.google.com
 reminders-pa.googleapis.com
+remotedesktop-pa.googleapis.com
 remotedesktop.google.com
 research.google.com
 reserved.cache.google.com
@@ -168,6 +178,7 @@ sb-ssl.google.com
 sb.l.google.com
 script.google.com
 shopping.google.com
+speechs3proto2-pa.googleapis.com
 ssl.accounts.google.com
 staging-notifications-pa.sandbox.googleapis.com
 staticadssl.l.google.com
@@ -181,6 +192,7 @@ t2.gstatic.com
 t3.gstatic.com
 t4.gstatic.com
 t5.gstatic.com
+tasks-pa.googleapis.com
 telephony.goog
 telephonyspamprotect-pa.googleapis.com
 time.google.com
