@@ -1,6 +1,6 @@
 #!/bin/bash
 source $PROG/.my_envs.sh sample.com #we do this because this script works in tagin with domain_filter.sh
-source $PROG/test_dns_args.sh $@
+source $PROG/test_dns_args.sh
 CONCURRENT
 #SUDDOMAIN_REGEX="(?=^.{4,253}$)(^(?:[a-zA-Z0-9](?:(?:[a-zA-Z0-9\-]){0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$)"
 SUDDOMAIN_REGEX="^[a-zA-Z0-9]{1,65}\.[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$"

@@ -4,6 +4,7 @@ aax-us-pdx.amazon-adsystem.com
 accounts.google.com
 ajax.aspnetcdn.com
 android.clients.google.com
+apis.google.com
 bolt-gcdn.sc-cdn.net
 cf-st.sc-cdn.net
 client.wns.windows.com
@@ -13,6 +14,7 @@ developers.google.com
 device-metrics-us-2.amazon.com
 device-metrics-us.amazon.com
 eas3.msg.t-mobile.com
+fcm.googleapis.com
 filters.adtidy.org
 firebaseremoteconfig.googleapis.com
 fonts.gstatic.com

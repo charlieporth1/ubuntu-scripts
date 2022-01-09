@@ -113,7 +113,7 @@ if [[ -d $FAIL_ROUTE/ ]] && [[ `systemctl-exists $FAIL_SERVICE` == 'true' ]]; th
     if [[ `systemctl-inbetween-status $DEFAULT_SERVICE` == 'true' ]] || [[ `systemctl-is-failed $DEFAULT_SERVICE` == 'true' ]]; then
         if [[ `config_test $FAIL_ROUTE` == 'true' ]] && [[ `ctp-dns.sh --config-test` == 'false' ]] ; then
 		start_failover
-	elif [[ `config_test $FAIL_ROUTE` == 'true' ]] && [[ `ctp-dns.sh --config-test` == 'true' ]]; then
+	elif [[ `ctp-dns.sh --config-test` == 'true' ]]; then
 		stop_failover
 	elif [[ `config_test $FAIL_ROUTE` == 'false' ]]; then
 		gen_listen

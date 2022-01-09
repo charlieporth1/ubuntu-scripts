@@ -4,6 +4,7 @@ source ctp-dns.sh --source
 export S_ONE="$1"
 [[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(p|preload)'` ]] && export PRELOAD=true || export PRELOAD=false
 [[ "$S_ONE" == "-a" ]] && export isAuto="+short"
+[[ "$S_ONE" =~ -((-)?)((h(elp)?)) ]] && display_help=true
 
 export PORT=53
 export A_PORT=5053
@@ -12,12 +13,12 @@ export H_PORT=443
 export Q_PORT=8853
 export QH_PORT=1443
 
-export local_interface="ctp-vpn.local"
-export server_input="${2}"
-export server="${server_input:=$local_interface}"
-export qname="${3:-www.google.com}"
-export qtype="${4:-A}"
-export QUERY="$qname"
+export local_interface=ctp-vpn.local
+export server_input=${2}
+export server=${server_input:=$local_interface}
+export qname=${3:-www.google.com}
+export qtype=${4:-A}
+export QUERY=$qname
 
 export DEFAULT_DNS_ARGS="+tries=$TRIES +dnssec +ttl +edns +timeout=$TIMEOUT -t $qtype -4 +retry=$TRIES +ttlunits"
 
@@ -27,7 +28,7 @@ export TRIES=3
 export HOST=dns.ctptech.dev
 export EDNS=174.53.130.17
 
-
+bash $PROG/fix_devnull.sh &
 if [[ "$PRELOAD" == 'false' ]]; then
 source $PROG/all-scripts-exports.sh --no-log
 CONCURRENT
@@ -44,7 +45,19 @@ if [[ -z $EXTENRAL_IP ]]; then
 	fi
 
 fi
+if [[ -n $display_help ]]; then
 
+echo """$scriptName help
+\$1 == -a or null for automation
+\$2 == queried server e.g. dns.google
+\$3 == qname e.g. www.google.com
+\$4 == qtype e.g. A, AAAA or CNAME
+for missing args use empty \$1
+e.g:
+	bash $scriptName \"\" dns.google \"\" AAAA
+"""
+	exit 0
+fi
 #export ROOT_NETWORK=`bash $PROG/get_network_devices_ip_address.sh --grepify`
 #export EXCLUDE_IP="$DNS_IP\|0.0.0.0\|$ROOT_NETWORK"
 

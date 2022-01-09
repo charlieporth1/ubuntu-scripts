@@ -58,20 +58,42 @@ retry-resolver = \"$LOCAL_RESOLVER_NAME-tcp\"
 
 """ | sudo tee $ROUTE/$HOSTNAME-resolvers.toml
 
+for ip_address in $(bash $PROG/get_network_devices_ip_address.sh)
+do
+	port=53
+	port_and_ip=$ip_address:$port
+	port_status=`ss -alunt "sport = :$port" | grep -o "$port_and_ip" | sort -u`
+	if [[ -n $port_status ]]; then
+		ip_address=${ip_address//\./-}
+echo """
+[resolvers.$LOCAL_RESOLVER_NAME-$ip_address-tcp]
+address = \"$ip_address:53\"
+protocol = \"tcp\"
+[resolvers.$LOCAL_RESOLVER_NAME-$ip_address-udp]
+address = \"$ip_address:53\"
+protocol = \"udp\"
+edns0-udp-size = 1460
 
-echo "" | sudo tee $ROUTE/slave-listeners{,-udp-retry-resolvers}.toml
+[groups.$LOCAL_RESOLVER_NAME-$ip_address-truncate-retry]
+type = \"truncate-retry\"
+resolvers = [ \"$LOCAL_RESOLVER_NAME-$ip_address-udp\" ]
+retry-resolver = \"$LOCAL_RESOLVER_NAME-$ip_address-tcp\"
+
+""" | sudo tee -a $ROUTE/$HOSTNAME-resolvers.toml
+	fi
+
+done
+
 
 elif [[ "`$IS_SOLID_HOST`" == 'true' ]]; then
 	echo "" | sudo tee $ROUTE/$HOSTNAME-resolvers.toml
 fi
 current_ip=`sudo ip addr show tailscale0 | grepip -4o`
 if [[ "`$IS_SOLID_HOST`" == 'true' ]]; then
-	timeout=3
+	timeout=6
 	default_iface_address=`ifconfig $default_iface | awk '{print $2}' | grepip -4`
 	declare -a ip_list
-#		'100.86.69.129'
-#		'100.71.239.28'
-#		'100.120.180.109'
+
 	ip_list=(
 		'192.168.99.9'
 		'10.128.0.9'
@@ -80,7 +102,9 @@ if [[ "`$IS_SOLID_HOST`" == 'true' ]]; then
 	do
 
 		local_ip_exists=`ip_exists $ip $timeout $default_iface`
+		echo "$ip exists $local_ip_exists from interface $default_iface"
 		if [[ "$local_ip_exists" == 'true' ]] && [[ "`$IS_SOLID_HOST`" == 'true' ]] && [[ "$current_ip" != "$ip" ]] ; then
+			echo "IT DOES!"
 			ip_title="${ip//\./-}"
 			DOMAIN='dns.ctptech.dev'
 			TUNNEL_STR='gcp-or-vpn-tunnel'
@@ -289,5 +313,9 @@ cp -rf $ROUTE/{standard-group-resolvers,$HOSTNAME-resolvers,standard-resolvers,r
 
 sudo chmod 777 /usr/local/bin/ctp-dns{,.sh}
 
-format_file $ROUTE/*.toml
+JOBS=8
+PROC=16
+R_DIR=$ROUTE
+parallel -j $JOBS -P $PROC sudo bash $ROUTE/route-format.sh ::: $R_DIR/*.toml
+
 ctp-dns --config-test-human

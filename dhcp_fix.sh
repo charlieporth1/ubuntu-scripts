@@ -1,10 +1,8 @@
-
-
 #!/bin/bash
 sysctl -w net.ipv6.conf.all.forwarding=1
 sysctl -w net.ipv4.ip_forward=1
 count=3
-timeout=9
+timeout=12
 sudo ip route change default via 192.168.44.1 dev eth0
 ip_iface_1=192.168.44.250
 #sudo ip route del 192.168.44.0/24 dev eth0 proto kernel scope link src 192.168.44.250
@@ -28,9 +26,9 @@ function iface_restart() {
 #		sudo dhclient -r
 #		sudo dhclient -s 192.168.44.1
 #	)&
+	sudo systemctl restart systemd-networkd dhcpcd.service
 	sudo netplan generate
 	sudo netplan apply
-	sudo systemctl restart systemd-networkd
 
 	sudo ip tunnel del he-ipv6
 	sudo ip tunnel del is0
@@ -84,7 +82,7 @@ then
 	sudo ifconfig eth0 192.168.44.250 up
 	iface_restart $iface
 fi
-elif ! dig www.google.com @1.1.1.1 +short > /dev/null
+elif ! dig www.google.com +short > /dev/null
 then
 	sudo ifconfig eth0 192.168.44.250 up
 	iface_restart $iface

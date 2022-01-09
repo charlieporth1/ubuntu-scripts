@@ -52,7 +52,7 @@ CacheDirectory=ctp-dns
 LogsDirectory=ctp-dns
 #RuntimeDirectory=
 
-CPUQuota=45%
+CPUQuota=60%
 IOSchedulingPriority=0
 
 Nice=15
@@ -77,7 +77,6 @@ ExecStartPre=/bin/bash -c "/usr/bin/touch ${PID_FILE} \
 #ExecStartPre=/snap/bin/go get -v github.com/folbricht/routedns/cmd/routedns
 ExecStartPre=/bin/bash -c "/bin/echo ${MAINPID} | /usr/bin/tee ${PID_FILE}"
 ExecStartPre=/bin/bash ${PROG}/simple-failover-http-server.sh
-ExecStartPre=/bin/bash ${ROUTE}/ctp-dns-failover-health-check.sh
 ExecStartPre=/bin/bash ${ROUTE}/ctp-list-manager.sh
 ExecStartPre=/bin/bash ${ROUTE}/ctp-dns.sh --generate-log
 ExecStartPre=/bin/bash ${ROUTE}/ctp-dns.sh --generate-cache

@@ -1,4 +1,3 @@
-# 3600 * 3 = 10800
 [groups.ctp-dns-blocklist]
 type = "blocklist-v2"
 blocklist-resolver = "static-servfail"
@@ -15,12 +14,10 @@ blocklist-source = [
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/apple-blacklist.list", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/snapchat-blacklist.list", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/facebook-blacklist.list", cache-dir = "/var/cache/ctp-dns"}, 
-        {format = "regexp", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/vulnerability-blacklist.list", cache-dir = "/var/cache/ctp-dns"},
-        {format = "regexp", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/tld-blacklist.list", cache-dir = "/var/cache/ctp-dns"},
 #        {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists", cache-dir = "/var/cache/ctp-dns"},
 #        {format = "domain", source = , cache-dir = "/var/cache/ctp-dns"},
 ]
-allowlist-refresh = 1800
+allowlist-refresh = 3600
 allowlist-resolver = "ctp-dns-fail-back"
 allowlist-source = [
         {format = "domain", source = "/var/tmp/ctp-dns/lists/white/domains.txt"}, 
@@ -43,7 +40,6 @@ allowlist-source = [
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/instagram-whitelist.list", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/onedrive-whitelist.list", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/facebook-whitelist.list", cache-dir = "/var/cache/ctp-dns"}, 
-        {format = "regexp", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/tld-whitelist.list", cache-dir = "/var/cache/ctp-dns"},
 ]
 
 [groups.ctp-dns-blocklist-others]
@@ -58,7 +54,7 @@ blocklist-source = [
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/accomplist/standard/routedns.blocklist.top-n.domain.list", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "domain", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/custom-mobile-trackers-blacklist.list", cache-dir = "/var/cache/ctp-dns"}, 
 ]
-allowlist-refresh = 1800
+allowlist-refresh = 86400
 allowlist-resolver = "ctp-dns-fail-back"
 allowlist-source = [
         {format = "domain", source = "https://raw.githubusercontent.com/cbuijs/my-allowlist/master/routedns.allow.list", cache-dir = "/var/cache/ctp-dns"}, 
@@ -78,10 +74,9 @@ blocklist-source = [
         {format = "regexp", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/china-blacklist.regex", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "regexp", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/google-blacklist.regex", cache-dir = "/var/cache/ctp-dns"}, 
         {format = "regexp", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/vulnerability-blacklist.regex", cache-dir = "/var/cache/ctp-dns"},
-        {format = "regexp", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/snapchat-blacklist.regex", cache-dir = "/var/cache/ctp-dns"}, 
 #        {format = "regexp", source = "https://gcp.pihole.ctptech.dev/txt_lists/ctp-lists/", cache-dir = "/var/cache/ctp-dns"},
 ]
-allowlist-refresh = 1800
+allowlist-refresh = 3600
 allowlist-resolver = "ctp-dns-fail-back"
 allowlist-source = [
         {format = "regexp", source = "/var/tmp/ctp-dns/lists/white/regex.txt"}, 

@@ -1,5 +1,5 @@
 #!/bin/bash
-source $PROG/test_dns_args.sh $@
+source $PROG/test_dns_args.sh
 CONCURRENT
 
 if ! command -v dig &> /dev/null
@@ -28,14 +28,19 @@ log_d "dns_local dns_master dns_global :$dns_local: :$dns__master: :$dns_global:
 log_d "result dns_local_test :$dns_local_test:"
 
 if [[ -z "$isAuto" ]]; then
-	echo -e "GLOBAL \n$(bash $PROG/lines.sh '*')"
-	printf '%s\n' "$dns_global"
-	echo -e "MASTER \n$(bash $PROG/lines.sh '*')"
-        printf '%s\n' "$dns_master"
-	echo -e "EXTERNAL \n$(bash $PROG/lines.sh '*')"
-        printf '%s\n' "$dns_external"
-        echo -e "LOCAL \n$(bash $PROG/lines.sh '*')"
-	printf '%s\n' "$dns_local"
+	if [[ $server == $local_interface ]]; then
+		echo -e "GLOBAL \n$(bash $PROG/lines.sh '*')"
+		printf '%s\n' "$dns_global"
+		echo -e "MASTER \n$(bash $PROG/lines.sh '*')"
+	        printf '%s\n' "$dns_master"
+		echo -e "EXTERNAL \n$(bash $PROG/lines.sh '*')"
+	        printf '%s\n' "$dns_external"
+	        echo -e "LOCAL \n$(bash $PROG/lines.sh '*')"
+		printf '%s\n' "$dns_local"
+	else
+	        echo -e "Server: $server \n$(bash $PROG/lines.sh '*')\n"
+	        printf '%s\n' "$dns_local"
+	fi
 else
 	if [[ -z "$dns_local_test" ]]; then
 		dns_logger "DNS Failed"

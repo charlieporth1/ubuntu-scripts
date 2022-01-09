@@ -10,7 +10,7 @@ routes = [
 
 [routers.ctp-dns-gcp-time-router]
 routes = [
-  { before = "01:25", after = "05:20", resolver = "ctp-dns-yt-block-resolver-blocker" },
+  { before = "01:25", after = "05:20", resolver = "ctp-dns_group-fastest-gcp-external" },
   { resolver = "ctp-dns-group-local" },
 ]
 
@@ -19,3 +19,4 @@ routes = [
 # "ctp-dns-group"
 type = "fastest"
 resolvers = [ "ctp-dns-group" ] 
+# CTP INSTALL -- DO NOT REMOVE THIS UNLESS YOU PLAN ON REMOVING INSTALL AND REINSTALLING

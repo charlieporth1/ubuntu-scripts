@@ -1,5 +1,5 @@
 #!/bin/bash
-source $PROG/test_dns_args.sh $@
+source $PROG/test_dns_args.sh
 CONCURRENT
 [[ "$1" == "-a" ]] && isAuto="+short" || isAuto='-d'
 # kdig -d @dns.google +tls-ca +tls-host=dns.google www.google.com +timeout=4 +dnssec +edns
@@ -31,14 +31,19 @@ log_d "IP_REGEX NET_DEVICE_REGEX :$NET_DEVICE_REGEX: :$IP_REGEX:"
 log_d "EXCLUDE_IP ROOT_NETWORK DNS_IP :$EXCLUDE_IP: :$ROOT_NETWORK: :$DNS_IP:"
 
 if [[ "$isAuto" == "-d"  ]]; then
-	echo -e "EXTERNAL \n$(bash $PROG/lines.sh '*')\n"
-	printf '%s\n' "$dot"
-	echo -e "MASTER \n$(bash $PROG/lines.sh '*')\n"
-	printf '%s\n' "$dot_master"
-	echo -e "EXTENRAL \n$(bash $PROG/lines.sh '*')\n"
-	printf '%s\n' "$dot_external"
-	echo -e "LOCAL \n$(bash $PROG/lines.sh '*')\n"
-	printf '%s\n' "$dot_local"
+	if [[ $server == $local_interface ]]; then
+		echo -e "EXTERNAL \n$(bash $PROG/lines.sh '*')\n"
+		printf '%s\n' "$dot"
+		echo -e "MASTER \n$(bash $PROG/lines.sh '*')\n"
+		printf '%s\n' "$dot_master"
+		echo -e "EXTENRAL \n$(bash $PROG/lines.sh '*')\n"
+		printf '%s\n' "$dot_external"
+		echo -e "LOCAL \n$(bash $PROG/lines.sh '*')\n"
+		printf '%s\n' "$dot_local"
+	else
+		echo -e "Server: $server \n$(bash $PROG/lines.sh '*')\n"
+		printf '%s\n' "$dot_local"
+	fi
 elif [[ $(systemctl-inbetween-status ctp-dns.service) == 'false' ]]; then
 
     	dot_test=`echo "$dot" | grepip --ipv4 -o`

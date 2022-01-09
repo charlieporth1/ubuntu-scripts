@@ -72,10 +72,28 @@ servfail-error = true
 #	"ctp-dns_group-fail-back-aws",
 
 [groups.ctp-dns-fail-rotate]
-resolvers = [ 
-	"ctp-dns_group-fail-rotate-home",
+resolvers = [
+	"ctp-dns_group-fastest-gcp-external",
+	"ctp-dns_group-fastest-aws-external",
+	"ctp-dns_group-fail-rotate-gcp",
 	"ctp-dns_group-fail-rotate-aws",
+	"ctp-dns_group-fail-back-gcp",
+	"ctp-dns_group-fail-back-aws",
+	"ctp-dns-local-master-tcp",
+	"ctp-dns-local-master-udp",
+	"ctp-dns-local-master-192-168-44-250-tcp",
+	"ctp-dns-local-master-192-168-44-250-udp",
+	"ctp-dns-local-master-192-168-12-250-tcp",
+	"ctp-dns-local-master-192-168-12-250-udp",
+	"ctp-dns-local-master-192-168-42-250-tcp",
+	"ctp-dns-local-master-192-168-42-250-udp",
+
+
+	"ctp-dns_nginx-back-up-group-fail-back",
+	"ctp-dns_group-fail-rotate-raw",
 ]
+
 type = "fail-rotate"
 servfail-error = true
 
+# CTP INSTALL -- DO NOT REMOVE THIS UNLESS YOU PLAN ON REMOVING INSTALL AND REINSTALLING

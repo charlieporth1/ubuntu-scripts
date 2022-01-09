@@ -94,7 +94,9 @@ if [[ $result == 0 ]]; then
 
 	ccat $HOLE/ticwatch-whitelist.list | xargs pihole -w
 	ccat $HOLE/amazon-whitelist.list | xargs pihole -w
+	ccat $HOLE/he-whitelist.list | xargs pihole -w
 
 	ccat $HOLE/blacklist.regex.remove | parallel $parallel_args_pihole pihole --regex -d
 	ccat $HOLE/blacklist.list.remove | parallel $parallel_args_pihole pihole -b -d
+
 fi

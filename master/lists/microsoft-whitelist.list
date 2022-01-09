@@ -1,3 +1,6 @@
+www.bing.com
+outlook.office.com
+in.appcenter.ms
 activity.windows.com
 alive.github.com
 apps.skype.com
@@ -28,6 +31,7 @@ ipv6.msftncsi.com
 licensing.xboxlive.com
 login.live.com
 login.microsoftonline.com
+login.windows.net
 m.hotmail.com
 mobile.pipe.aria.microsoft.com
 msedge.api.cdp.microsoft.com
@@ -35,11 +39,13 @@ msedge.net
 msftncsi.com
 notify.xboxlive.com
 officeclient.microsoft.com
+outlook.office.com
 outlook.office365.com
 pricelist.skype.com
 products.office.com
 s.gateway.messenger.live.com
 sa.symcb.com
+schemastore.azurewebsites.net
 self.events.data.microsoft.com
 settings-win.data.microsoft.com
 sfdataservice.microsoft.com
@@ -63,6 +69,7 @@ v20.vortex-win.data.microsoft.com
 wdcpalt.microsoft.com
 web.opendrive.com
 www.msftncsi.com
+www.schemastore.org
 www.xboxlive.com
 xbox.ipv6.microsoft.com
 xboxexperiencesprod.experimentation.xboxlive.com

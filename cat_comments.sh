@@ -21,5 +21,6 @@ function trim ()
 }
 export -f trim
 
-parallel --lb -P 4 -j4 echo '{}' :::: $file | grep "\S" | grep -Ev --line-buffer "^(#|//|\!!$ADLIST_REGEX)" | trim
+cat $file | grep "\S" | grep -Ev --line-buffer "^(#|//|\!!$ADLIST_REGEX)" | trim
+#parallel --lb -P 4 --jobs +1 echo '{}' :::: $file | grep "\S" | grep -Ev --line-buffer "^(#|//|\!!$ADLIST_REGEX)" | trim
 

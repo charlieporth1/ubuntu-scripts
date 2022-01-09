@@ -226,9 +226,13 @@ export -f config_test_human
 function ctp_dns_status() {
 	source $PROG/all-scripts-exports.sh --no-log
 	local mark_status=`systemctl is-active --quiet $SERVICE && echo "$TICK" || echo "$X"`
+	local service_status=$(systemctl status $SERVICE | grep "")
+	local service_memory_usage=$(printf '%s\n' "$service_status" | grep -i mem | awk -F: '{print $2}')
+
 	echo -e "Active Status: `systemctl is-active $SERVICE` $mark_status"
 	echo -e "Start time: `systemctl-run-time $SERVICE`"
 	echo -e "Run time in seconds: `systemctl-seconds $SERVICE`"
+	echo -e "RAM Usage: $service_memory_usage"
 	config_test_human
 }
 export -f ctp_dns_status
@@ -281,19 +285,22 @@ function flush_cache() {
 	local host="${2:-ctp-vpn.local}"
 	local full_query="$FLUSH_CACHE_QUERY_SUFEX$query"
 	kdig -d @$host $KDIG_OPTIONS $full_query 2>&1 > /dev/null
-	[[ $? -le 0 ]] && echo "Flushing cache Success: Query $full_query; Host: $host" || "Flushing cache Failed: Query $full_query; Host: $host"
+	[[ $? == 0 ]] && echo "Flushing cache Success: Query $full_query; Host: $host" || "Flushing cache Failed: Query $full_query; Host: $host"
 }
 export -f flush_cache
 
 function flush_cache_local() {
-	flush_cache 'root'
-	flush_cache 'front'
+	# NULL WHEN NOT THERE
+	local location=$1
+	flush_cache 'root' $location
+	flush_cache 'front' $location
+	flush_cache 'vulnerability' $location
 }
 export -f flush_cache_local
 
 function flush_cache_all() {
-	flush_cache 'root' 'dns.ctptech.dev'
-	flush_cache 'front' 'dns.ctptech.dev'
+	# ADDED GLOBAL
+	flush_cache_local 'dns.ctptech.dev'
 }
 export -f flush_cache_all
 
@@ -369,6 +376,10 @@ for i in "$@"; do
         *qal | *qwl | --query-@(allow|white)?(list)-log?(s) ) shift ;
 		setup_tail_logs
 		grep --color=auto "matched allowlist" $CTP_DNS_LOG_DIR/$LOG_FILE
+	;;
+        *qfl | --query-@(failure)?(s)-log?(s) ) shift ;
+		setup_tail_logs
+		grep --color=auto "resolver returned failure" $CTP_DNS_LOG_DIR/$LOG_FILE
 	;;
         *gc | --generate-cache ) shift ; generate_lists_sha_all_files;;
         *gl | *gls | --generate-log?(s) ) shift ; create_logs;;

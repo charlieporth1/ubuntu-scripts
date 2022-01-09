@@ -38,6 +38,7 @@ function aws_restart() {
 #	aws ec2 terminate-instances --instance-ids i-026c86754b14d7e09
 	aws ec2 start-instances  --instance-ids i-026c86754b14d7e09
 	aws ec2 reboot-instances --instance-ids i-026c86754b14d7e09
+	aws ec2 start-instances  --instance-ids i-026c86754b14d7e09
 }
 
 function gcp_restart() {

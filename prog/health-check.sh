@@ -1,5 +1,6 @@
 #!/bin/bash
 source $PROG/all-scripts-exports.sh
+bash $PROG/fix_devnull.sh
 echo "Date last open `date` $scriptName"
 source ctp-dns.sh --source
 CONCURRENT
@@ -10,7 +11,6 @@ LOG_FILE=$LOG/health_check.log
 LOCK_FILE=$CTP_DNS_LOCK_FILE
 
 echo "Date last ran `date`"
-chmod 777 /dev/null
 
 if ! [[ -f $LOG_FILE ]]; then
 	echo "Created log file at $LOG_FILE"
@@ -287,6 +287,12 @@ service_port_health_check "$fn" "127.0.0.1:5553"
 
 fn='lighttpd.service'
 service_port_health_check "$fn" ":8443"
+
+fn='cockpit.socket'
+service_port_health_check "$fn" ":9090"
+
+fn='cockpit.service'
+service_port_health_check "$fn" ":9090"
 
 fn='ctp-YouTube-Ad-Blocker.service'
 service_health_check "$fn"

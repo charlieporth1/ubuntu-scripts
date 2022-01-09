@@ -5,6 +5,11 @@ if [[ -f /etc/profile.d/bash-exports-global.sh ]]; then
 fi
 ARGS="$@"
 
+arm64_regex_root="((v|m)?)"
+arm64_regex="($arm64_regex_root(8|9|64)$arm64_regex_root)"
+arm32_regex_root="((h|l|f|v|7|6)?)"
+arm32_regex="($arm32_regex_root{1,3})"
+
 [[ -f $PROG/populae-log.sh ]] && source $PROG/populae-log.sh
 ! [[ -d $PROG ]] && PROG=${CONF_PROG_DIR:-$PROG}
 
@@ -14,6 +19,9 @@ export FAILED_STR_LOG="FAILURE\|SIGTERM\|SIGFAIL"
 export FULL_FAIL_STR="$FAILED_STR\|$FAILED_STR_LOG\|stop\|inactive\|dead\|stopped"
 #export FAILED_STR_LOG="FAILURE\|SIGTERM\|config error is REFUSED"
 export pihole_blocking_disabled_grep_around="Pi-hole blocking is disabled\|[✗] Pi-hole blocking is disabled"
+export CPU_ARCH=$(uname -m)
+export IS_X86=$( [[ $CPU_ARCH =~ (x86((_64)?)) ]] && echo true || echo false )
+export IS_ARM=$( [[ $CPU_ARCH =~ ((arm)(($arm32_regex|$arm64_regex)?)) ]] && echo true || echo false )
 
 if [[ -z "$ENV" ]] && [[ -z `echo "$ARGS" | grep -Eio '(\-\-|\-)(e|env)'` ]]; then
 	export ENV='PROD'
@@ -28,30 +36,6 @@ elif [[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-|)(DEV|PROD)'` ]] && [[ -z "$ENV" 
 else
 	export ENV="$ENV"
 
-fi
-
-if ! command -v grepip &> /dev/null
-then
-        echo "COMMAND grepip could not be found installing"
-	curl -Ls 'https://raw.githubusercontent.com/ipinfo/cli/master/grepip/deb.sh' | bash
-fi
-
-if ! command -v dig &> /dev/null
-then
-    echo "COMMAND dig could not be found installing"
-    sudo apt install -y dnsutils bind9-dnsutils
-fi
-
-if ! command -v kdig &> /dev/null
-then
-     echo "COMMAND kdig could not be found installing"
-     sudo apt install -y knot-dnsutils
-fi
-
-if ! command -v parallel &> /dev/null
-then
-    echo "COMMAND parallel could not be found installing"
-    sudo apt install -y parallel
 fi
 
 [[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(d|debug)'` ]] && export DEBUG=true || export DEBUG=false
@@ -93,28 +77,6 @@ export IPV6_REGEX="(([0-9a-fA-F]{0,4}:){1,7}[0-9a-fA-F]{0,4})"
 export IPV6_FULL_REGEX="[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}"
 export IPV6_FULL_REGEX_PORT="[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}$PORT_SEPERATOR_REGEX$PORT_REGEX"
 export IPV6_FULL_REGEX_SUBNET="[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}:[0-9a-fA-F]{1,4}$SUBNET_SEPERATOR_REGEX$PORT_REGEX"
-
-
-	# RECHCK AND CREATE IF NUKK
-if ! command -v grepip &> /dev/null
-then
-	function grepip() {
-		local args="$@"
-		pipe_args=$({ read -p "Change Parameters?" b; echo $b; })
-		if  echo "$args" | grep -o '\-o' > /dev/null; then
-			grep_args=-o
-		fi
-
-		if echo "$args" | grep -o '\-4' > /dev/null; then
-			grep $grep_args -E "($IP_REGEX)"  "$pipe_args"
-		elif echo "$args" | grep -o '\-6' > /dev/null;  then
-			grep $grep_args -E "($IPV6_REGEX)" "$pipe_args"
-		else
-			grep $grep_args -E "($IP_REGEX|$IPV6_REGEX)" "$pipe_args"
-		fi
-	}
-	export -f grepip
-fi
 
 export ODD_ETH_REGEX="(n(x|s|n|o|p|e)([[:alnum:]]*))"
 export WLAN_DEVICE_REGEX="(wl((an)?)[0-9]+)"
@@ -242,6 +204,12 @@ function system_stats() {
 	declare -gx DDR_VERSION=$(sudo dmidecode | grep -Eo 'DDR[0-9]' | grep -o '[0-9]' )
 	declare -gx MEMORY_COUNT=$MEM_COUNT
 	declare -gx default_iface=$default_iface
+	declare -gx IS_AES_HW=$(cat /proc/cpuinfo | grep -io aes > /dev/null && echo true || echo false)
+	declare -gx IS_AES=$IS_AES_HW
+	declare -gx IS_64BIT=$(grep -o -w 'lm' /proc/cpuinfo  > /dev/null && echo true || echo false)
+	declare -gx CPU_ARCH=$CPU_ARCH
+	declare -gx IS_X86=$IS_X86
+	declare -gx IS_ARM=$IS_ARM
 }
 
 export -f system_stats
@@ -787,7 +755,7 @@ function ip_exists() {
 	local ip_address="$1"
 	local timeout="${2:-6}"
 	# ETHERNET NAME REGEX
-	if [[ $timeout =~ ^[A-Za-z]+[a-zA-Z0-9]+$ ]]; then
+	if [[ $timeout =~ ^[A-Za-z][a-zA-Z0-9]+$ ]]; then
                 local interface_input="${2}"
         fi
         local interface_input="${3}"
@@ -909,3 +877,40 @@ function route_router_substation(){
         echo "$router"
 }
 export -f route_router_substation
+
+function needed_installs() {
+	if ! command -v grepip &> /dev/null
+	then
+		if [[ $IS_X86 == 'true' ]]; then
+		        echo "COMMAND grepip could not be found installing"
+			curl -Ls 'https://raw.githubusercontent.com/ipinfo/cli/master/grepip/deb.sh' | bash
+		elif [[ $IS_ARM == 'true' ]]; then
+		        echo "COMMAND grepip could not be found installing"
+			curl -sSL 'https://raw.githubusercontent.com/emugel/grepip/master/grepip' | sudo tee /usr/local/bin/grepip
+			sudo chmod 777 /usr/local/bin/grepip
+		fi
+	fi
+
+	if ! command -v dig &> /dev/null
+	then
+	    echo "COMMAND dig could not be found installing"
+	    sudo apt install -y dnsutils bind9-dnsutils
+	fi
+
+	if ! command -v kdig &> /dev/null
+	then
+	     echo "COMMAND kdig could not be found installing"
+	     sudo apt install -y knot-dnsutils
+	fi
+
+	declare -a _same_pkg_as_cmd=( parallel fail2ban )
+
+	for pkg in "${_same_pkg_as_cmd[@]}"
+	do
+		if ! command -v $pkg &> /dev/null
+		then
+		    echo "COMMAND $pkg could not be found installing"
+		    yes | sudo apt install -y parallel
+		fi
+	done
+}

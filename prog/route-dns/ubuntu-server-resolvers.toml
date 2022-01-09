@@ -14,59 +14,48 @@ retry-resolver = "ctp-dns-local-master-tcp"
 
 
 
-# DNS
-[resolvers.ctp-dns-local-master-gcp-or-vpn-tunnel-10-128-0-9-tcp]
-address = "10.128.0.9:53"
+[resolvers.ctp-dns-local-master-192-168-44-250-tcp]
+address = "192-168-44-250:53"
 protocol = "tcp"
-
-[resolvers.ctp-dns-local-master-gcp-or-vpn-tunnel-10-128-0-9-udp]
-address = "10.128.0.9:53"
+[resolvers.ctp-dns-local-master-192-168-44-250-udp]
+address = "192-168-44-250:53"
 protocol = "udp"
 edns0-udp-size = 1460
 
+[groups.ctp-dns-local-master-192-168-44-250-truncate-retry]
+type = "truncate-retry"
+resolvers = [ "ctp-dns-local-master-192-168-44-250-udp" ]
+retry-resolver = "ctp-dns-local-master-192-168-44-250-tcp"
 
-[resolvers.gcp-or-vpn-tunnel-10-128-0-9-tcp]
-address = "10.128.0.9:53"
+
+
+[resolvers.ctp-dns-local-master-192-168-12-250-tcp]
+address = "192-168-12-250:53"
 protocol = "tcp"
-
-[resolvers.gcp-or-vpn-tunnel-10-128-0-9-udp]
-address = "10.128.0.9:53"
+[resolvers.ctp-dns-local-master-192-168-12-250-udp]
+address = "192-168-12-250:53"
 protocol = "udp"
 edns0-udp-size = 1460
 
-
-# DoT
-[resolvers.gcp-or-vpn-tunnel-10-128-0-9-dot]
-address = "dns.ctptech.dev:853"
-protocol = "dot"
-bootstrap-address = "10.128.0.9"
+[groups.ctp-dns-local-master-192-168-12-250-truncate-retry]
+type = "truncate-retry"
+resolvers = [ "ctp-dns-local-master-192-168-12-250-udp" ]
+retry-resolver = "ctp-dns-local-master-192-168-12-250-tcp"
 
 
-# DTLS
-[resolvers.gcp-or-vpn-tunnel-10-128-0-9-dtls]
-address = "dns.ctptech.dev:853"
-protocol = "dtls"
-bootstrap-address = "10.128.0.9"
+
+[resolvers.ctp-dns-local-master-192-168-42-250-tcp]
+address = "192-168-42-250:53"
+protocol = "tcp"
+[resolvers.ctp-dns-local-master-192-168-42-250-udp]
+address = "192-168-42-250:53"
+protocol = "udp"
 edns0-udp-size = 1460
 
-
-
-# GROUPS
-[groups.gcp-or-vpn-tunnel-10-128-0-9-truncate-retry-raw]
+[groups.ctp-dns-local-master-192-168-42-250-truncate-retry]
 type = "truncate-retry"
-resolvers = [ "gcp-or-vpn-tunnel-10-128-0-9-udp" ]
-retry-resolver = "gcp-or-vpn-tunnel-10-128-0-9-tcp"
-
-[groups.ctp-dns-local-master-gcp-or-vpn-tunnel-10-128-0-9-truncate-retry-raw]
-type = "truncate-retry"
-resolvers = [ "gcp-or-vpn-tunnel-10-128-0-9-udp" ]
-retry-resolver = "gcp-or-vpn-tunnel-10-128-0-9-tcp"
-
-[groups.gcp-or-vpn-tunnel-10-128-0-9-truncate-retry-encrypted]
-type = "truncate-retry"
-resolvers = [ "gcp-or-vpn-tunnel-10-128-0-9-dtls" ]
-retry-resolver = "gcp-or-vpn-tunnel-10-128-0-9-dot"
-
+resolvers = [ "ctp-dns-local-master-192-168-42-250-udp" ]
+retry-resolver = "ctp-dns-local-master-192-168-42-250-tcp"
 
 
 
@@ -74,8 +63,13 @@ retry-resolver = "gcp-or-vpn-tunnel-10-128-0-9-dot"
 resolvers = [
 	"ctp-dns-local-master-tcp",
 	"ctp-dns-local-master-udp",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-10-128-0-9-tcp",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-10-128-0-9-udp",
+	"ctp-dns-local-master-192-168-44-250-tcp",
+	"ctp-dns-local-master-192-168-44-250-udp",
+	"ctp-dns-local-master-192-168-12-250-tcp",
+	"ctp-dns-local-master-192-168-12-250-udp",
+	"ctp-dns-local-master-192-168-42-250-tcp",
+	"ctp-dns-local-master-192-168-42-250-udp",
+
 	"ctp-dns_gcp-dot-ip-1",
 	"ctp-dns_gcp-dot-ip-2",
 	"ctp-dns_gcp-dtls-ip-1",
@@ -90,6 +84,7 @@ resolvers = [
 	"ctp-dns_gcp-doh-quic-get-ip-2",
 	"ctp-dns_gcp-quic-ip-1",
 	"ctp-dns_gcp-quic-ip-2",
+
 ]
 type = "fastest"
 
@@ -97,12 +92,15 @@ type = "fastest"
 resolvers = [
 	"ctp-dns-local-master-tcp",
 	"ctp-dns-local-master-udp",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-10-128-0-9-tcp",
-	"ctp-dns-local-master-gcp-or-vpn-tunnel-10-128-0-9-udp",
+	"ctp-dns-local-master-192-168-44-250-tcp",
+	"ctp-dns-local-master-192-168-44-250-udp",
+	"ctp-dns-local-master-192-168-12-250-tcp",
+	"ctp-dns-local-master-192-168-12-250-udp",
+	"ctp-dns-local-master-192-168-42-250-tcp",
+	"ctp-dns-local-master-192-168-42-250-udp",
+
 ]
 type = "fastest"
 
-# CTP INSTALL -- DO NOT REMOVE THIS UNLESS YOU PLAN ON REMOVING INSTALL AND REINSTALLING
-# NO CHANGES
 # CTP INSTALL -- DO NOT REMOVE THIS UNLESS YOU PLAN ON REMOVING INSTALL AND REINSTALLING
 # NO CHANGES

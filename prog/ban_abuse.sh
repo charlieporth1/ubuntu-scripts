@@ -2,8 +2,11 @@
 source $PROG/ban_ip_conf.sh
 CONCURRENT
 
+sudo lastb -a | grepip -o | grep -v "${INGORE_IP_ADRESSES}" | find-ip-block > /tmp/ban_abuse_ips_ssh.list
 
-sudo lastb -a | grep -oE "$IP_REGEX" | grep -v "${INGORE_IP_ADRESSES}" > /tmp/ban_abuse_ips_ssh.list
+jail=sshd
+cat /tmp/ban_abuse_ips_ssh.list | xargs sudo fail2ban-client set $jail banip
+
 create_ip-set ssh-log abuse
 run_ip-set-block-file /tmp/ban_abuse_ips_ssh.list
 
@@ -15,10 +18,14 @@ if [[ "$IS_PIHOLE" == 'true' ]]; then
 #	IP_ARRAY=( $( printf '%s\n' "$PIHOLE_LOG_QUERY_TAIL" | find-ip-block) )
 #        echo "${IP_ARRAY[@]}" | xargs sudo fail2ban-client set ctp-dns-1-block banip
 #	fi
+	jail=pihole-dns-1-block
 
 	PIHOLE_LOG_QUERY_TAIL=`tail -7500 $PIHOLE_LOG | grep 'query'`
+	BLOCKED_TLDS=$(grepify $HOLE/tld-blacklist.list | sed 's/\./\\./g')
 
-	FREQ_QUERIES_TO_BLOCK="(^\.|^sl|hitnslab|query|open-resolver-scan\.research\.icann\.org|internet-census\.org|pizzaseo\.com|ip\.parrotdns\.com|parrotdns\.com|\.test)$"
+	FREQ_QUERIES_TO_BLOCK_1="(^\.|^sl|hitnslab|query|open-resolver-scan\.research\.icann\.org|internet-census\.org|\.test|tictok|localhost|(((version|hostname)\.)?)bind))$"
+	FREQ_QUERIES_TO_BLOCK_2="(xiaomi|miui|footprintdns|tiktokcdn|pizzaseo|parrotdns|spiderprobe|tiktokv|www\.123|anticheatexpert)\.(net|com)"
+	FREQ_QUERIES_TO_BLOCK="($BLOCKED_TLDS|$FREQ_QUERIES_TO_BLOCK_1|$FREQ_QUERIES_TO_BLOCK_2)"
 
 
 
@@ -28,7 +35,6 @@ if [[ "$IS_PIHOLE" == 'true' ]]; then
 
 	create_ip-set dns-log abuse
 	run_ip-set-block-file /tmp/ban_abuse_ips.list
-#| xargs sudo fail2ban-client set ctp-dns-1-block-ipset banip
-#        grep -E "$PIHOLE_F2B_REGEX" /var/log/pihole.log | grepip --exclude-reserved --only-matching | grep -v "${INGORE_IP_ADRESSES}" | \
-#	xargs sudo fail2ban-client set ctp-dns-1-block banip
+	cat /tmp/ban_abuse_ips_ssh.list | xargs sudo fail2ban-client set $jail banip
+
 fi

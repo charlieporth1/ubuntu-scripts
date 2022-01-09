@@ -9,18 +9,20 @@ export DB_FILE=$HOLE/$GRAVITY
 export OTHER_FILES_BLOB={,-{wal,shm}}
 export OTHER_DB_FILE=$DB_FILE$OTHER_FILES_BLOB
 export OTHER_DB_FILES=$OTHER_DB_FILE
+export default_channel="#pihole_gravity"
 
-OK_STR='ok'
+OK_STR="ok"
 term_str="Terminated"
 status_str="$OK_STR\|$term_str"
 query_str="$(uuidgen)--salty"
 # ALREADY IN KB
-export byte_size=$(( 0 ))
+export byte_size=$(( 1024 ))
 export min_gravity_size=$(( $byte_size * 64 ))
 
 shopt -s expand_aliases
 
 [[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(full-update|full|full-after)'` ]] && export FULL_AFTER=true || export FULL_AFTER=false
+[[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(quick-check)'` ]] && export QUICK_CHECK=true || export QUICK_CHECK=false
 [[ -n `echo "$ARGS" | grep -Eio '(\-\-|\-)(nc|no-check(-|_|\.)?(error|db|database)?)'` ]] && export NO_CHECK=true || export NO_CHECK=false
 
 function pihole_json_test() {
@@ -99,7 +101,8 @@ function size_test() {
 	local db_file_input="$1"
         local db_file="${db_file_input:=$DB_FILE}"
 	local size_in_bytes=`ls -s $db_file | awk '{print $1}'`
-	if [[ $size_in_bytes > $min_gravity_size ]]; then
+#	if [[ $size_in_bytes > $min_gravity_size ]]; then
+	if [[ $min_gravity_size -le $size_in_bytes ]]; then
 		echo "true"
 	else
 		echo "false"
@@ -130,11 +133,12 @@ function integrity_test_quick() {
         local db_file="${db_file_input:=$DB_FILE}"
 
 	if [[ -f $db_file ]]; then
+	    debug_logger "$db_file exists moving quick_check integrity_test_quick"
 	    if [[ `size_test $db_file` == true ]]; then
 		debug_logger "$db_file exists moving quick_check integrity_test_quick"
-		local db_status=`sudo sqlite3 $db_file "PRAGMA quick_check"`
-		local result=`echo "$db_status" | grep -io "$status_str"`
-		debug_logger "quick_check test result db_status_quick_light $db_status result $result"
+		local db_status=`sudo sqlite3 $db_file "PRAGMA quick_check" | grep -io "$status_str"`
+		local result="$db_status"
+		debug_logger "quick_check test result db_status_quick_light: $db_status result: $result"
 		if [[ "$result" == "$OK_STR" ]]; then
 	              	echo "true"
 			return 0
@@ -167,8 +171,8 @@ function integrity_test() {
 		local quick_result=`integrity_test_quick $db_file`
 		if [[ "$quick_result" == 'true' ]]; then
 			debug_logger "$db_file quick_check sucess moving to integrity_check"
-		       	local db_status=`sudo cgexec -g cpu:38thspulimied -g memory:750MBRam --sticky /usr/bin/sudo /usr/bin/sqlite3 $db_file "PRAGMA integrity_check"`
-			local result=`echo "$db_status" | grep -io "$status_str"`
+		       	local db_status=`/usr/bin/sudo /usr/bin/sqlite3 $db_file "PRAGMA integrity_check" | grep -io "$status_str"`
+			local result="$db_status"
 			debug_logger "integrity_check test result db_status $db_status result $result"
 	        	if [[ "$result" == "$OK_STR" ]]; then
 	               		echo "true"
@@ -247,15 +251,20 @@ function run_sqlite_check() {
         local arguments="$2"
         local db_file="$1"
 
-        if [[ "$arguments" == '--quick-check' ]]; then
-                local result=`integrity_test_quick $db_file`
-                echo "$result"
-                return $?
-        else
-                local result=`integrity_test $db_file`
-                echo "$result"
-                return $?
-        fi
+	if [[ `size_test $db_file` == 'true' ]]; then
+        	if [[ "true" == 'true' ]]; then
+        	        local result=`integrity_test_quick $db_file`
+        	        echo "$result"
+        	        return $?
+        	else
+        	        local result=`integrity_test $db_file`
+        	        echo "$result"
+        	        return $?
+        	fi
+	else
+      		echo "false"
+        	return 1
+	fi
 
 }
 
@@ -321,10 +330,14 @@ alias is-gravity-ok='is_gravity_ok'
 alias gravity_ok='is_gravity_ok'
 alias gravity-ok='is_gravity_ok'
 
+#	bash $PROG/pihole-db-sql-changes.sh
 function after_transfer_gravity_extra() {
-	bash $PROG/pihole-db-sql-changes.sh
 	flush_db
 	local sleep_time=2s
+	sleep $sleep_time
+
+	local RUN_FILE=$PROG/generate_vulnerability-blacklist.sh
+	[[ -f $RUN_FILE ]] && sudo bash $RUN_FILE
 	sleep $sleep_time
 
 	local RUN_FILE=$PROG/update-blacklist.sh
@@ -336,8 +349,9 @@ function after_transfer_gravity_extra() {
 	sleep $sleep_time
 	flush_db
 	pihole --regex -d '(^|.)((yandex|qq|tencent).(net|com|org|dev|io|sh|cn|ru)|qq|local|localhost|query|sl|(^.$))' \
-        '(^|.)(jujxeeerdcnm.intranet|w|aolrlgqh.intranet|((.)?)intranet)' '(^|.)(jujxeeerdcnm.ntranet|w|aolrlgqh.ntranet|((.)?)intranet)' \ 
+        '(^|.)(jujxeeerdcnm.intranet|w|aolrlgqh.intranet|((.)?)intranet)' '(^|.)(jujxeeerdcnm.ntranet|w|aolrlgqh.ntranet|((.)?)intranet)' \
 	'(^|.)((yandex|qq|tencent).(net|com|org|dev|io|sh|cn|ru)|qq|local|localhost|query|sl|(^.$)|cn-geo1.uber.com|metadata.google.internal|((.)?)in-addr.arpa)'
+
 }
 export -f after_transfer_gravity_extra
 
@@ -351,10 +365,10 @@ function flush_db() {
 export -f flush_db
 alias flush_transactions_db='flush_db'
 
+#	bash $PROG/pihole-db-sql-changes.sh
 function after_transfer_gravity() {
 	sync
 	flush_db
-        bash $PROG/pihole-db-sql-changes.sh
 	chown -R pihole:pihole $OTHER_DB_FILES
 	chmod -R gu+rw $OTHER_DB_FILES
 	pihole --regex -d '(^|.)((yandex|qq|tencent).(net|com|org|dev|io|sh|cn|ru)|qq|local|localhost|query|sl|(^.$))' \
@@ -368,6 +382,10 @@ function after_transfer_gravity() {
 	sleep $sleep_time
 
 	local RUN_FILE=$PROG/pihole-company-lists-update.sh
+	[[ -f $RUN_FILE ]] && sudo bash $RUN_FILE
+	sleep $sleep_time
+
+	local RUN_FILE=$PROG/generate_vulnerability-blacklist.sh
 	[[ -f $RUN_FILE ]] && sudo bash $RUN_FILE
 	sleep $sleep_time
 
@@ -400,13 +418,14 @@ export -f after_transfer_gravity_full
 
 
 if [[ -n "$COPY_FILE" ]] && [ "$0" == "$BASH_SOURCE" ]; then
-	if [[ "$NO_CHECK" == 'true' ]] || [[ `is_gravity_ok $COPY_FILE` == 'true' ]] || [[ `is_gravity_ok $DB_FILE` == 'false' ]]
+	if [[ "$NO_CHECK" == 'true' ]] || [[ `is_gravity_ok $COPY_FILE ` == 'true' ]] || [[ `is_gravity_ok $DB_FILE` == 'false' ]]
 	then
 		echo "Gravity is ok Replacing"
 		pihole disable 5m
 		sync
 		sudo rm -rf $DB_FILE*
-		sudo cp -vrf $COPY_FILE $DB_FILE && pihole enable
+		sudo cp -vrf $COPY_FILE $DB_FILE && pihole enable || \
+			bash $PROG/alert_user.sh "ERROR COPING GRAVITY GRAVITY" --channel="$default_channel"
 		sync
 #		tar cf - $COPY_FILE | pv | (cd $DB_FILE; tar xf -)
 s="""
@@ -431,7 +450,7 @@ s="""
                 	--checksum \
                 	--recursive \
                 	--verbose \
-                	--human-readable && pihole enable
+                	--human-readable && pihole enable || bash $PROG/alert_user.sh "ERROR UPLOADING GRAVITY"
 """
 		if [[ "$FULL_AFTER" == 'true' ]]; then
 			after_transfer_gravity_full

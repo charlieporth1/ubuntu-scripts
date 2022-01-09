@@ -1,4 +1,5 @@
 #!/bin/bash
+
 source /etc/environment
 export CTP_LIST=$WWW/txt_lists/ctp-lists
 

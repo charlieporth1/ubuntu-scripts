@@ -1,5 +1,6 @@
 #!/bin/bash
 source $PROG/test_dns_args.sh -a
+bash $PROG/fix_devnull.sh
 bash $PROG/dns-stale-restart.sh --preload
 bash $PROG/test_dns.sh -a --preload
 echo "Date last open `date` $scriptName"
@@ -33,6 +34,7 @@ fi
 for ((i=1; i < ( $max ); i++))
 do
 	echo "Check #$i DNS `date`"
+	bash $PROG/fix_devnull.sh
 	bash $PROG/dns-stale-restart.sh --preload
 	bash $PROG/test_dns_unbound.sh -a --preload
 	bash $PROG/test_dns.sh -a --preload

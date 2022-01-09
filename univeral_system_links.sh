@@ -50,3 +50,4 @@ sudo chmod 777 /usr/local/bin/ctp-{dns,pihole}{,.sh}
 sudo chmod 777 /usr/local/bin/{regexify,grepify,new_linify,{de,}csvify}{,.sh}
 sudo chmod 777 /usr/local/bin/{cat_comments,ccat,netpid}{,.sh}
 sudo chmod 777 /usr/local/bin/{timeout3,certbot-ocsp-fetcher}
+sudo chmod 777 /usr/local/bin/grepip

@@ -1,5 +1,5 @@
 #!/bin/bash
-source $PROG/test_dns_args.sh $@
+source $PROG/test_dns_args.sh
 CONCURRENT
 
 if [[ `systemctl-exists unbound.service` == false ]]; then

@@ -937,3 +937,218 @@ shopt -s extquote
 shopt -s failglob
 shopt -s complete_fullquote
 shopt -s sourcepath
+#!/bin/bash
+
+# https://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=5000
+HISTFILESIZE=5000
+SAVEHIST=5000
+
+export HISTCONTROL=ignoredups:erasedups
+
+#complete -p modprobe
+
+shopt -s histappend
+shopt -s autocd             # change to named directory
+shopt -s cdable_vars        # if cd arg is not valid, assumes its a var defining a dir
+shopt -s cdspell            # autocorrects cd misspellings
+shopt -s checkwinsize        #  update the value of LINES and COLUMNS after each command if altered
+
+shopt -s cmdhist            # save multi-line commands in history as single line
+shopt -s dotglob            # include dotfiles in pathname expansion
+shopt -s expand_aliases       # expand aliases
+shopt -s extglob             # enable extended pattern-matching features
+shopt -s hostcomplete         # attempt hostname expansion when @ is at the beginning of a word
+
+shopt -u progcomp
+shopt -s progcomp_alias
+shopt -s promptvars
+shopt -s direxpand
+shopt -s compat44
+shopt -s globstar
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+shopt -s extglob
+shopt -s extquote
+shopt -s failglob
+shopt -s complete_fullquote
+shopt -s sourcepath
+#!/bin/bash
+
+# https://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=5000
+HISTFILESIZE=5000
+SAVEHIST=5000
+
+export HISTCONTROL=ignoredups:erasedups
+
+#complete -p modprobe
+
+shopt -s histappend
+shopt -s autocd             # change to named directory
+shopt -s cdable_vars        # if cd arg is not valid, assumes its a var defining a dir
+shopt -s cdspell            # autocorrects cd misspellings
+shopt -s checkwinsize        #  update the value of LINES and COLUMNS after each command if altered
+
+shopt -s cmdhist            # save multi-line commands in history as single line
+shopt -s dotglob            # include dotfiles in pathname expansion
+shopt -s expand_aliases       # expand aliases
+shopt -s extglob             # enable extended pattern-matching features
+shopt -s hostcomplete         # attempt hostname expansion when @ is at the beginning of a word
+
+shopt -u progcomp
+shopt -s progcomp_alias
+shopt -s promptvars
+shopt -s direxpand
+shopt -s compat44
+shopt -s globstar
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+shopt -s extglob
+shopt -s extquote
+shopt -s failglob
+shopt -s complete_fullquote
+shopt -s sourcepath
+#!/bin/bash
+
+# https://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=5000
+HISTFILESIZE=5000
+SAVEHIST=5000
+
+export HISTCONTROL=ignoredups:erasedups
+
+#complete -p modprobe
+
+shopt -s histappend
+shopt -s autocd             # change to named directory
+shopt -s cdable_vars        # if cd arg is not valid, assumes its a var defining a dir
+shopt -s cdspell            # autocorrects cd misspellings
+shopt -s checkwinsize        #  update the value of LINES and COLUMNS after each command if altered
+
+shopt -s cmdhist            # save multi-line commands in history as single line
+shopt -s dotglob            # include dotfiles in pathname expansion
+shopt -s expand_aliases       # expand aliases
+shopt -s extglob             # enable extended pattern-matching features
+shopt -s hostcomplete         # attempt hostname expansion when @ is at the beginning of a word
+
+shopt -u progcomp
+shopt -s progcomp_alias
+shopt -s promptvars
+shopt -s direxpand
+shopt -s compat44
+shopt -s globstar
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+shopt -s extglob
+shopt -s extquote
+shopt -s failglob
+shopt -s complete_fullquote
+shopt -s sourcepath
+#!/bin/bash
+
+# https://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=5000
+HISTFILESIZE=5000
+SAVEHIST=5000
+
+export HISTCONTROL=ignoredups:erasedups
+
+#complete -p modprobe
+
+shopt -s histappend
+shopt -s autocd             # change to named directory
+shopt -s cdable_vars        # if cd arg is not valid, assumes its a var defining a dir
+shopt -s cdspell            # autocorrects cd misspellings
+shopt -s checkwinsize        #  update the value of LINES and COLUMNS after each command if altered
+
+shopt -s cmdhist            # save multi-line commands in history as single line
+shopt -s dotglob            # include dotfiles in pathname expansion
+shopt -s expand_aliases       # expand aliases
+shopt -s extglob             # enable extended pattern-matching features
+shopt -s hostcomplete         # attempt hostname expansion when @ is at the beginning of a word
+
+shopt -u progcomp
+shopt -s progcomp_alias
+shopt -s promptvars
+shopt -s direxpand
+shopt -s compat44
+shopt -s globstar
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+shopt -s extglob
+shopt -s extquote
+shopt -s failglob
+shopt -s complete_fullquote
+shopt -s sourcepath
+#!/bin/bash
+
+# https://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=5000
+HISTFILESIZE=5000
+SAVEHIST=5000
+
+export HISTCONTROL=ignoredups:erasedups
+
+#complete -p modprobe
+
+shopt -s histappend
+shopt -s autocd             # change to named directory
+shopt -s cdable_vars        # if cd arg is not valid, assumes its a var defining a dir
+shopt -s cdspell            # autocorrects cd misspellings
+shopt -s checkwinsize        #  update the value of LINES and COLUMNS after each command if altered
+
+shopt -s cmdhist            # save multi-line commands in history as single line
+shopt -s dotglob            # include dotfiles in pathname expansion
+shopt -s expand_aliases       # expand aliases
+shopt -s extglob             # enable extended pattern-matching features
+shopt -s hostcomplete         # attempt hostname expansion when @ is at the beginning of a word
+
+shopt -u progcomp
+shopt -s progcomp_alias
+shopt -s promptvars
+shopt -s direxpand
+shopt -s compat44
+shopt -s globstar
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+shopt -s extglob
+shopt -s extquote
+shopt -s failglob
+shopt -s complete_fullquote
+shopt -s sourcepath

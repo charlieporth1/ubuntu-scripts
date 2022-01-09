@@ -1,5 +1,5 @@
 #!/bin/bash
-source $PROG/test_dns_args.sh $@
+source $PROG/test_dns_args.sh
 CONCURRENT
 dns_logger "Running DNS Refresh TEST"
 

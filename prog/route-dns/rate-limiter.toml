@@ -9,9 +9,9 @@
 [groups.client-listener-rrl-standard]
 type = "rate-limiter"
 #resolvers = [ "root-router" ]
-resolvers = [ "ctp-dns-cached-front" ]
+resolvers = [ "ctp-dns-blocklist-vulnerability" ]
 limit-resolver = "drop-all"
-requests = 5000
+requests = 2000
 window = 15
 prefix4 = 32
 prefix6 = 64

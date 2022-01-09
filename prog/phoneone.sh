@@ -30,7 +30,7 @@ else
 fi
 export loginINFO="Someone has logged into your one of your servers under the User: $USER; and the Server: $HOSTNAME; at the time of $(date); the external IP address of the login was from $IP_ADD; the GeoIP $geoIPCountry; $geoIPCity; the ISP of the login $geoIPASN"
 (
-	bash $PROG/alert_user.sh "$loginINFO"
+	bash $PROG/alert_user.sh "$loginINFO" --channel="#login"
 )&>/dev/null
 
 echo -e "$yellow$Login $red$alert$nc $yellow$sent$nc to the $yellow$owner$nc of this server via $cyan$sms$nc over $cyan$email$nc"

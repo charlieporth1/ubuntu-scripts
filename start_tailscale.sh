@@ -20,7 +20,7 @@ ALT_HOME_ROUTE_1="192.168.42.0/24"
 ALT_HOME_ROUTE_2="192.168.41.0/24"
 ALT_HOME_ROUTE_3="192.168.100.0/24"
 ALT_HOME_ROUTE_4="192.168.1.0/24"
-ALL_HOME_ROUTE="$HOME_ROUTE,$ALT_HOME_ROUTE_0,$ALT_HOME_ROUTE_1,$ALT_HOME_ROUTE_2,$ALT_HOME_ROUTE_3,$ALT_HOME_ROUTE_4"
+ALL_HOME_ROUTE="$HOME_ROUTE,$ALT_HOME_ROUTE_0,$ALT_HOME_ROUTE_1,$ALT_HOME_ROUTE_2,$ALT_HOME_ROUTE_3,$ALT_HOME_ROUTE_4,192.16.88.0/24"
 
 ALL_ROUTES="$AWS_ROUTE,$GCP_ALL_ROUTE,$ALL_HOME_ROUTE"
 
@@ -32,29 +32,7 @@ declare -a routes_arrary=( $(decsvify "$ALL_ROUTES") )
 	curl -sSL "https://raw.githubusercontent.com/ipinfo/cli/master/range2cidr/deb.sh" | bash
 	curl -sSL "https://raw.githubusercontent.com/ipinfo/cli/master/cidr2range/deb.sh" | bash
 
-	if ! command -v grepip &> /dev/null
-	then
-	    echo "COMMAND grepip could not be found installing"
-	    curl -Ls 'https://raw.githubusercontent.com/ipinfo/cli/master/grepip/deb.sh' | bash
-	fi
-
-	if ! command -v dig &> /dev/null
-	then
-	    echo "COMMAND dig could not be found installing"
-	    sudo apt install -y dnsutils bind9-dnsutils
-	fi
-
-	if ! command -v kdig &> /dev/null
-	then
-	    echo "COMMAND kdig could not be found installing"
-	    sudo apt install -y knot-dnsutils
-	fi
-
-	if ! command -v parallel &> /dev/null
-	then
-	    echo "COMMAND  parallel could not be found installing"
-	    sudo apt install -y parallel
-	fi
+	needed_installs
 
 )&>/dev/null
 

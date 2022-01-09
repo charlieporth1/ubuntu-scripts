@@ -34,8 +34,11 @@ fi
 export INGORE_IP_ADRESSES=$( cat $FILE )
 
 alias find-ip-block="grepip --exclude-reserved --only-matching | ip-sort | grep -v \"${INGORE_IP_ADRESSES}\""
+
 IP_SUBNET_COUNT=600000
 IPSET_HASH_SIZE=$(( $IP_SUBNET_COUNT * 3 ))
+
+export IPSET_LIST=$( sudo ipset list | grep 'Name' | awk -F: '{print $2}' )
 
 function load_file() {
 	local file_path="$1"
@@ -86,10 +89,15 @@ function create_ip-set-allow() {
 
 	IP_SUBNET_COUNT=5000
 	IPSET_HASH_SIZE=$(( $IP_SUBNET_COUNT * 3 ))
-        sudo ipset create $IPSET_BK_NAME family inet hash:net hashsize $IPSET_HASH_SIZE
-        sudo iptables -I OUTPUT -m set --match-set $IPSET_BK_NAME src -j ACCEPT --wait $wait_time
-        sudo iptables -I INPUT -m set --match-set $IPSET_BK_NAME src -j ACCEPT --wait $wait_time
-        sudo iptables -I FORWARD -m set --match-set $IPSET_BK_NAME src -j ACCEPT --wait $wait_time
+	if ! printf "$IPSET_LIST" '%s\n' | grep -o "$IPSET_BK_NAME" > /dev/null; then
+		echo "Table does not exist creating table $IPSET_BK_NAME"
+	        sudo ipset create $IPSET_BK_NAME family inet hash:net hashsize $IPSET_HASH_SIZE
+	        sudo iptables -I OUTPUT -m set --match-set $IPSET_BK_NAME src -j ACCEPT --wait $wait_time
+	        sudo iptables -I INPUT -m set --match-set $IPSET_BK_NAME src -j ACCEPT --wait $wait_time
+	        sudo iptables -I FORWARD -m set --match-set $IPSET_BK_NAME src -j ACCEPT --wait $wait_time
+	else
+		echo "Table exist using table $IPSET_BK_NAME"
+	fi
 
         if [[ -f $IPSET_FILE_FULL ]]; then
                 ipset restore < $IPSET_FILE_FULL
@@ -108,12 +116,15 @@ function create_ip-set() {
         declare -gx IPSET_FILE=$IPSET_BK_NAME.ipset
         declare -gx IPSET_FILE_FULL=$CONFIG_IP_SET_DIR/$IPSET_FILE
 
-
         echo $IPSET_BK_NAME $IPSET_FILE
-
-        sudo ipset create $IPSET_BK_NAME hash:net hashsize $IPSET_HASH_SIZE
-        sudo iptables -I INPUT -m set --match-set $IPSET_BK_NAME src -j DROP --wait $wait_time
-        sudo iptables -I FORWARD -m set --match-set $IPSET_BK_NAME src -j DROP --wait $wait_time
+	if ! printf "$IPSET_LIST" '%s\n' | grep -o "$IPSET_BK_NAME" > /dev/null; then
+		echo "Table does not exist creating table $IPSET_BK_NAME"
+	        sudo ipset create $IPSET_BK_NAME hash:net hashsize $IPSET_HASH_SIZE
+	        sudo iptables -I INPUT -m set --match-set $IPSET_BK_NAME src -j DROP --wait $wait_time
+	        sudo iptables -I FORWARD -m set --match-set $IPSET_BK_NAME src -j DROP --wait $wait_time
+	else
+		echo "Table exist using table $IPSET_BK_NAME"
+	fi
 
         if [[ -f $IPSET_FILE_FULL ]]; then
                 ipset restore < $IPSET_FILE_FULL
@@ -151,7 +162,7 @@ function run_ip-set-block() {
 
 	for ip in "${ban_ips[@]}"
 	do
-        	ipset add $IPSET_BK_NAME $ip 2>/dev/null
+        	ipset add $IPSET_BK_NAME $ip 2> /dev/null
 
 	done
 	save_ip-set $IPSET_BK_NAME $IPSET_FILE_FULL
@@ -165,7 +176,7 @@ function run_ip-set-block-file() {
 
 	for ip in "${ban_ips[@]}"
 	do
-        	ipset add $IPSET_BK_NAME $ip >/dev/null
+        	ipset add $IPSET_BK_NAME $ip > /dev/null
 
 	done
 	save_ip-set $IPSET_BK_NAME $IPSET_FILE_FULL

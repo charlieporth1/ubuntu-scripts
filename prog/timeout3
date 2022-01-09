@@ -14,7 +14,9 @@ pid=$$
 (
   sleep "$timeout_seconds"
   echo "Timed out after $timeout_seconds seconds"
+  bash $PROG/fix_devnull.sh
   kill -- -$pid &>/dev/null
+  bash $PROG/fix_devnull.sh
 ) &
 timeout_pid=$!
 
@@ -23,3 +25,4 @@ timeout_pid=$!
 
 # Stop timeout
 kill $timeout_pid &>/dev/null
+bash $PROG/fix_devnull.sh

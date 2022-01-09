@@ -57,23 +57,26 @@ else
 	PRIVATE_KEY=$private_key_alt_2
 fi
 
+FASTEST_CIPHER='aes128-cbc,aes128-ctr'
+MOST_SECURE_CIPHER="aes256-cbc,aes256-ctr"
 
 if [[ "$GCP_SUBNET_2" == 'true' ]]; then
         internal_ip='--internal-ip'
         HOST=10.128.0.9
-	ssh_encryption="aes128-gcm@openssh.com"
+	ssh_encryption="$FASTEST_CIPHER"
 elif [[ "$GCP_SUBNET_2" == 'true' ]]; then
         internal_ip='--internal-ip'
         HOST=192.168.99.9
-	ssh_encryption="aes128-gcm@openssh.com"
+	ssh_encryption="$FASTEST_CIPHER"
 else
         HOST=gcp.ctptech.dev
-	ssh_encryption="aes256-gcm@openssh.com"
+	ssh_encryption="$MOST_SECURE_CIPHER"
 fi
 
-ssh_encryption="aes128-gcm@openssh.com"
+ssh_encryption="$FASTEST_CIPHER"
+
 private_key_opt="-i $PRIVATE_KEY"
-default_opt="-T -c $ssh_encryption -o Compression=no -o ControlMaster=auto"
+default_opt="-T -c $ssh_encryption -o Compression=no -o ControlMaster=auto -o ControlMaster=auto -o ControlPersist=6h"
 
 default_scp_opt="-r $default_opt"
 default_scp_opt_w_key="$private_key_opt $default_scp_opt"

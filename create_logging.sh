@@ -40,7 +40,8 @@ chmod -R gu+rw $CTP_LISTS
 )&
 
 
+chmod -R 775 /var/log/nginx
 chmod -R 640 $LOG/{auth,mail}.log
-chown -R syslog:adm $LOG/{auth,mail}.log
 
+chown -R syslog:adm $LOG/{auth,mail}.log
 chown -R root:adm $LOG/fail2ban.log

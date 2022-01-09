@@ -105,6 +105,8 @@ SERVICES=(
 	'systemd-hostnamed'
 	'system-getty.slice'
 	'unattended-upgrades.service'
+	'cockpit.service'
+	'cockpit.socket'
 	$( [[ "$IS_GCP" == 'true' ]] && echo ${GOOGLE_SERVICES[@]} )
 )
 
@@ -112,7 +114,7 @@ printf "|| $CYAN%-40s $NC| $CYAN %-10s $NC|$CYAN %-13s $NC|$CYAN %-30s $NC|$CYAN
 
 function print_service() {
 	local service="$1"
-	local sys_service_status=`systemctl status $service`
+	local sys_service_status=`systemctl status $service | grep ""`
 	local active_str=`echo "$sys_service_status" | grep 'Active'`
 	local active_time=`echo "$active_str" | rev | cut -d ';' -f 1 | rev | xargs`
 	local status_real=`echo "$active_str" | awk '{print $2}'`
@@ -128,6 +130,7 @@ do
 	if [[ `systemctl-exists "$service"` == 'true' ]]; then
 		if [[ -n "$isAutomation" ]]; then
 			if [[ -z `echo "$service" | grep -o "$GOOGLE_SERVICES_GREPIFY"` ]] && [[ "$is_service" == 'true' ]]; then
+				systemctl enable $service
 				systemctl stop $service
 	       	        	systemctl reset-failed $service
 				sleep 0.025s

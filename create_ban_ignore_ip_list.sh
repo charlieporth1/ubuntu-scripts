@@ -24,6 +24,14 @@ IPv6_ADDR=$(sudo ip -6 addr | grepip -o | ip-sort)
 tailscale_ip_addresses=$(tailscale status | awk '{print $1}' | grepip -o)
 current_tailscale_ip_addresses=$(tailscale ip | grepip -o)
 
+if [ "$0" == "$BASH_SOURCE" ]; then
+	echo "IS_SOURCED"
+	export IS_SOURCED=false
+else
+	export IS_SOURCED=true
+fi
+echo "IS_SOURCED $IS_SOURCED"
+
 curl_timeout=8
 CONCURRENT
 #proxychains -q timeout $curl_timeout curl -H "Authorization: Bearer 29b6b3b552a343" ipinfo.io/AS21928
@@ -156,17 +164,15 @@ T_MobileIPs_SPRINT_asn=(
 declare -a T_MobileIPs_SPRINT
 T_MobileIPs_SPRINT=(
 	$(
-		for asn in "${T_MobileIPs_SPRINT_asn[@]}"
-		do
-			# https://superuser.com/questions/405666/how-to-find-out-all-ip-ranges-belonging-to-a-certain-as
-			# IPv4
-			whois -h whois.radb.net -- "-i origin $asn" | grep -Eo "([0-9.]+){4}/[0-9]+"
-			# IPv6
-			whois -h whois.radb.net -- "\!6$asn" | grep -Eo "$IPV6_FULL_REGEX_SUBNET"
-		done
-	)
-	$(
-		if [ "$0" == "$BASH_SOURCE" ]; then
+		if [ "$IS_SOURCED" == 'false' ]; then
+			for asn in "${T_MobileIPs_SPRINT_asn[@]}"
+			do
+				# https://superuser.com/questions/405666/how-to-find-out-all-ip-ranges-belonging-to-a-certain-as
+				# IPv4
+				whois -h whois.radb.net -- "-i origin $asn" | grep -Eo "([0-9.]+){4}/[0-9]+"
+				# IPv6
+				whois -h whois.radb.net -- "\!6$asn" | grep -Eo "$IPV6_FULL_REGEX_SUBNET"
+			done
 			for asn in "${T_MobileIPs_SPRINT_asn[@]}"
 			do
 				# IPv4
@@ -207,7 +213,7 @@ ${T_MobileIPs_SPRINT[@]}
 		done
 	)
 	$(
-		if [ "$0" == "$BASH_SOURCE" ]; then
+		if [ "$IS_SOURCED" == 'false' ]; then
 			for asn in "${T_MobileIPs_asn[@]}"
 			do
 				# IPv4
@@ -381,18 +387,21 @@ declare -a subnet_ignore_list=(
 	::1/128
 	127.0.0.0/8
 	$(
-		parallel $parallel_args printf '%-1s%-1s\\n' "{}" ::: $network_interface_ip_subnets ::: $IPv4_subnets_list;
 		parallel $parallel_args printf '%-1s%-1s\\n' "{}" ::: $current_ip_address ::: $IPv4_subnets_list;
-		parallel $parallel_args printf '%-1s%-1s\\n' "{}" ::: $tailscale_ip_addresses ::: $IPv4_subnets_list;
-
 		parallel $parallel_args printf '%-1s%-1s\\n' "{}" ::: $dns_ip_subnet ::: $IPv4_subnets_list
-		parallel $parallel_args printf '%-1s%-1s\\n' "{}" ::: $dns_ip_subnet_v6 ::: $IPv6_subnets_list
 
-		parallel $parallel_args printf '%-1s%-1s\\n' "{}" ::: $IPv4_ADDR ::: $IPv4_subnets_list;
-		parallel $parallel_args printf '%-1s%-1s\\n' "{}" ::: $IPv6_ADDR ::: $IPv6_subnets_list;
+		if [ "$IS_SOURCED" == 'false' ]; then
+			parallel $parallel_args printf '%-1s%-1s\\n' "{}" ::: $network_interface_ip_subnets ::: $IPv4_subnets_list;
+			parallel $parallel_args printf '%-1s%-1s\\n' "{}" ::: $tailscale_ip_addresses ::: $IPv4_subnets_list;
 
-		parallel $parallel_args printf '%-1s%-1s\\n' "{}" ::: 0.0.0.0 127.0.0.1 ::: $IPv4_subnets_list
-		parallel $parallel_args printf '%-1s%-1s\\n' "{}" ::: :: ::0 ::1 ::: $IPv6_subnets_list
+			parallel $parallel_args printf '%-1s%-1s\\n' "{}" ::: $dns_ip_subnet_v6 ::: $IPv6_subnets_list
+
+			parallel $parallel_args printf '%-1s%-1s\\n' "{}" ::: $IPv4_ADDR ::: $IPv4_subnets_list;
+			parallel $parallel_args printf '%-1s%-1s\\n' "{}" ::: $IPv6_ADDR ::: $IPv6_subnets_list;
+
+			parallel $parallel_args printf '%-1s%-1s\\n' "{}" ::: 0.0.0.0 127.0.0.1 ::: $IPv4_subnets_list
+			parallel $parallel_args printf '%-1s%-1s\\n' "{}" ::: :: ::0 ::1 ::: $IPv6_subnets_list
+		fi
 	)
 )
 # IPv4
@@ -415,7 +424,7 @@ INGORE_IP_ADRESSES_SUBNET_GREP=$( bash $PROG/grepify.sh $( printf '%s\n' "${subn
 INGORE_IP_ADRESSES_CSV=$( bash $PROG/csvify.sh $( printf '%s\n' "${DNS_IGNORE_IPs[@]}" | ip-sort ) )
 
 
-if [ "$0" == "$BASH_SOURCE" ]; then
+if [ "$IS_SOURCED" == 'false' ]; then
 	echo "Bash non source writing files"
 	printf '%s\n' "${DNS_IGNORE_IPs[@]}" | ip-sort | sudo tee $INGNORE_IP_TXT
 	printf "%s\n" "${UNI_IGNORE_IP[@]}" | ip-sort | sudo tee $INGNORE_IP_UNI
@@ -432,7 +441,7 @@ else
 	echo "Bash is source not writing files"
 fi
 
-:'
+d='
 $(
 	if [ "$0" == "$BASH_SOURCE" ]; then
 		export counter=0
